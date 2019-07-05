@@ -4,7 +4,7 @@
 <h1 align="center">
     Levels Ranks - WEB Interface
 </h1>
-Пользовательский WEB интерфейс для взаимодействием с плагином статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>.
+Пользовательский WEB интерфейс для взаимодействия с плагином статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>.
 
 -----
 <p align="center">
@@ -202,6 +202,31 @@ array ('LevelsRanks' =>
       );
 ```
 
+</details>
+
+Доступные модули:
+-----
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Мини-Статистика</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_stats.png">
+</p>
+
+- **Старница отображения**: Главная
+- **Информация**: Добавляет три мини блока с описанием количества игроков, игроков которые заходили за последние 24 часа и количестве убийств в голову.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Мониторинг онлайна</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_servers_monitoring_type_3.png">
+</p>
+
+- **Старница отображения**: Главная
+- **Информация**: Добавляет мониторинг онлайна серверов с возможностью подключения.
+- **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
 Блок разработчика:
