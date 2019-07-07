@@ -60,7 +60,7 @@ class Db {
                 // Создаём подключение по PDO для определенной базы данных.
                 $this->pdo[ $this->mod_name[ $i ] ][ $i2 ] = new PDO( $this->dns[ $this->mod_name[ $i ] ][ $i2 ], $this->db[ $this->mod_name[ $i ] ][0]['USER'], $this->db[ $this->mod_name[ $i ] ][0]['PASS'], $this->options );
 
-                $this->table_count_for[ $this->mod_name[ $i ] ] += sizeof($this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix']);
+                $this->table_count_for[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'] );
 
                 // Циклом перебираем все таблицы которые описаны в файле настроек баз данных.
                 for ( $i3 = 0; $i3 < $this->table_count_for[ $this->mod_name[ $i ] ]; $i3++ ) {
@@ -73,10 +73,12 @@ class Db {
                         'mod' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['mod'],
                         'steam' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['steam'],
                     ];
+
                 }
+
             }
 
-            $this->table_count[ $this->mod_name[ $i ] ] = $this->table_count_for[ $this->mod_name[ $i ] ];
+            $this->table_count[ $this->mod_name[ $i ] ] = sizeof( $this->db_data[ $this->mod_name[ $i ] ] );
         }
     }
 

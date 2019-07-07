@@ -22,10 +22,11 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
     // Сохраняем текущее время и прибавляем к нему 1 час.
     $data['module_block_main_stats']['time'] = time() + 7200;
 
+
     // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
         $data['module_block_main_stats']['Total_players'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
-        $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' ' )[0];
+        $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1' )[0];
         $data['module_block_main_stats']['Headshot'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
     }
     // Сохраняем новый кэш для данного модуля.
