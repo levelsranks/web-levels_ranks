@@ -61,9 +61,9 @@ if( get_section( 'profile', false ) == true ) {
         $Player_top[$server_group] = array_merge($Player_top[$server_group]['ASC'], $Db->queryAll( 'LevelsRanks', $Player_found[$server_group]['DB'],"SELECT name, rank, steam, value FROM " . $Player_found[$server_group]['Table'] . " WHERE value <= '" . $Player[$server_group]['value'] . "' ORDER BY value DESC LIMIT 11"));
 
         // Работа с модулем оружий
-		
-		$weapons = $Db->mysql_table_search( 'LevelsRanks', $Player_found[$server_group]['DB'], $Player_found[$server_group]['Table'] . '_weapons' );
-		
+
+        $weapons = $Db->mysql_table_search( 'LevelsRanks', $Player_found[$server_group]['DB'], $Player_found[$server_group]['Table'] . '_weapons' );
+
         if ($res_data[$server_group]['mod'] == 'csgo' && $weapons == true) {
             $Player[$server_group]['weapons'] = $Db->query('LevelsRanks', $Player_found[$server_group]['DB'], "SELECT weapon_knife,weapon_taser,weapon_inferno,weapon_hegrenade,weapon_glock,weapon_hkp2000,weapon_tec9,weapon_usp,weapon_p250,weapon_cz75a,weapon_fiveseven,weapon_elite,weapon_revolver,weapon_deagle,weapon_negev,weapon_m249,weapon_mag7,weapon_sawedoff,weapon_nova,weapon_xm1014,weapon_bizon,weapon_mac10,weapon_ump45,weapon_mp9,weapon_mp7,weapon_p90,weapon_galilar,weapon_famas,weapon_ak47,weapon_m4a1,weapon_m4a1_silencer,weapon_aug,weapon_sg556,weapon_ssg08,weapon_awp,weapon_scar20,weapon_g3sg1,weapon_mp5sd FROM " . $Player_found[$server_group]['Table'] . "_weapons WHERE steam='" . get_section('profile', false) . "' LIMIT 1");
         } elseif ($res_data[$server_group]['mod'] == 'css' && $weapons == true){

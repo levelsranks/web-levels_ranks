@@ -39,8 +39,8 @@ if ( $_GET["auch"] == 'login' ) {
                     header('Location: ' . $this->arr_general['site']);
                     exit;
                 } else {?>
-                    <script type="text/javascript">window.location.href="<?=$this->arr_general['site'] ?>";</script>
-                    <noscript><meta http-equiv="refresh" content="0;url=<?=$this->arr_general['site'] ?>" /></noscript>
+                    <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
+                    <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
                     <?php exit;
                 }
             }
@@ -55,8 +55,8 @@ if ( $_GET["auch"] == 'logout' ) {
         header('Location: ' . $this->arr_general['site']);
         exit;
     } else {?>
-        <script type="text/javascript">window.location.href="<?=$this->arr_general['site'] ?>";</script>
-        <noscript><meta http-equiv="refresh" content="0;url=<?=$this->arr_general['site'] ?>" /></noscript>
+        <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
+        <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
         <?php exit;
     }
 }

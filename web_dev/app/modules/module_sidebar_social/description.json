@@ -22,7 +22,7 @@
   "sidebar":
   {
     "0": {
-      "href": "https://steamcommunity.com/",
+      "href": "https://steamcommunity.com/groups/ocgnpro",
       "open_new_tab": "1",
       "icon_group": "zmdi",
       "icon_category": "",
@@ -30,7 +30,7 @@
       "name": "Группа Steam"
     },
     "1": {
-      "href": "https://vk.com/",
+      "href": "https://vk.com/ocgnpro",
       "open_new_tab": "1",
       "icon_group": "zmdi",
       "icon_category": "",
@@ -38,7 +38,7 @@
       "name": "Группа Вконтакте"
     },
     "2": {
-      "href": "https://discord.gg/",
+      "href": "https://discord.gg/xM8mbAF",
       "open_new_tab": "1",
       "icon_group": "custom",
       "icon_category": "socials",

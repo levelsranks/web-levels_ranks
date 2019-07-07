@@ -36,28 +36,28 @@
                 <thead>
                 <tr>
                     <th class="text-center">#</th>
-                    <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="tb-avatar"></th><? } ?>
+                    <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="tb-avatar"></th><?php } ?>
                     <th><?php echo $Modules->get_translate_phrase('_Player') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'value') ?>';" class="text-center a-type tb-name <? $_SESSION['filter'] == 'value' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Point') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'rank') ?>';" class="text-center a-type tb-rank <? $_SESSION['filter'] == 'rank' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Rank') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'kills') ?>';" class="text-center a-type <? $_SESSION['filter'] == 'kills' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Kills') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'deaths') ?>';" class="text-center a-type tb-death <? $_SESSION['filter'] == 'deaths' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Deaths') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'headshots') ?>';" class="text-center a-type tb-hs <? $_SESSION['filter'] == 'headshots' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Headshot') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'playtime') ?>';" class="text-center a-type tb-time <? $_SESSION['filter'] == 'playtime' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Play_time') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'value') ?>';" class="text-center a-type tb-name <?php $_SESSION['filter'] == 'value' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Point') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'rank') ?>';" class="text-center a-type tb-rank <?php $_SESSION['filter'] == 'rank' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Rank') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'kills') ?>';" class="text-center a-type <?php $_SESSION['filter'] == 'kills' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Kills') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'deaths') ?>';" class="text-center a-type tb-death <?php $_SESSION['filter'] == 'deaths' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Deaths') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'headshots') ?>';" class="text-center a-type tb-hs <?php $_SESSION['filter'] == 'headshots' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Headshot') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'playtime') ?>';" class="text-center a-type tb-time <?php $_SESSION['filter'] == 'playtime' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Play_time') ?></th>
                 </tr>
                 </thead>
                 <tbody><?php $sz = sizeof( $res[$server_group] );
                 for ($sz_i = 0; $sz_i < $sz; $sz_i++) { ?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?=$General->checkAvatar($General->steam32to64($res[$server_group][$sz_i]['steam']), 2)?>;
+                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$server_group][$sz_i]['steam']), 2)?>;
                         if (CheckAvatar == 1) {
-                            avatar.push("<? echo $General->steam32to64($res[$server_group][$sz_i]['steam'])?>");
+                            avatar.push("<?php echo $General->steam32to64($res[$server_group][$sz_i]['steam'])?>");
                         }</script><?php } ?>
                     <tr class="pointer"
                         <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[$server_group][$sz_i]['steam'] ?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle"
-                                                              id="<? echo $General->steam32to64($res[$server_group][$sz_i]['steam']) ?>"
+                                                              id="<?php echo $General->steam32to64($res[$server_group][$sz_i]['steam']) ?>"
                             <?php if ($sz_i < '20') {
                                 echo 'src';
                             } else {
@@ -79,7 +79,7 @@
                                 echo 'src';
                             } else {
                                 echo 'data-src';
-                            } ?>="<? echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/';
+                            } ?>="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/';
                             if ($res[$server_group][$sz_i]['rank'] == '') {
                                 echo '00';
                             } else {

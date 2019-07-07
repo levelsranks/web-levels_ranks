@@ -37,11 +37,11 @@
                 <tbody>
                 <?php for ( $i = 0, $sz = sizeof( $res ); $i < $sz; $i++ ):?>
                 <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$i]['authid']), 2)?>;
-                        if (CheckAvatar == 1) { avatar.push("<?=$General->steam32to64($res[$i]['authid'])?>"); }</script><?php }?>
+                        if (CheckAvatar == 1) { avatar.push("<?php echo $General->steam32to64($res[$i]['authid'])?>"); }</script><?php }?>
                 <?php if ($res[$i]['aid'] != '0'):?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?=$General->checkAvatar($General->steam32to64($res[$i]['admin_authid']), 2)?>;
+                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$i]['admin_authid']), 2)?>;
                         if (CheckAvatar == 1) {
-                            avatar.push("<?=$General->steam32to64($res[ $i ]['admin_authid'])?>");
+                            avatar.push("<?php echo $General->steam32to64($res[ $i ]['admin_authid'])?>");
                         }</script><?php }?>
                 <?php endif;?>
                     <tr>

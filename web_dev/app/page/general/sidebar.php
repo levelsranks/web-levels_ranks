@@ -64,14 +64,14 @@ if ( $_SESSION['steamid'] ) {
                         </div>
                         </a>
                         <ul class="treeview-menu">
-                            <? for ( $d = 1; $d < $user_rank_count; ++$d ):?>
+                            <?php for ( $d = 1; $d < $user_rank_count; ++$d ):?>
                                 <li>
                                     <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $res_data_sidebar[ $d ]['name_servers']?>">
                                         <img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png">
                                         <div class="rank-details"><?php echo $Modules->get_translate_phrase( '_Rank_' . $user_auth[$d]['rank'] )?></div>
                                     </div>
                                 </li>
-                            <? endfor;?>
+                            <?php endfor;?>
                         </ul>
                     </li>
                 </div>

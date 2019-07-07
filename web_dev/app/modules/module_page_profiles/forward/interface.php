@@ -43,7 +43,7 @@
                             <div class="name"><?php echo action_text_clear( action_text_trim($Player[$server_group]['name'],16) )?></div>
                             <div class="country">-</div>
                             <img class="rank-img" src="storage/cache/img/ranks/<?php echo $General->arr_general['ranks_pack'] . '/'; if($Player[$server_group]['rank'] == ''){echo '00';}else{echo $Player[$server_group]['rank'];}?>.png">
-                            <div class="rank"><?=$Modules->get_translate_phrase('_Rank_' . $Player[$server_group]['rank'])?></div>
+                            <div class="rank"><?php echo $Modules->get_translate_phrase('_Rank_' . $Player[$server_group]['rank'])?></div>
                         <div class="user-stats">Игрок</div>
                     </div>
                 <div class="best-weapon-block">
@@ -89,11 +89,11 @@
                     </div>
                     <div class="right-stats-block">
                         <ul>
-                            <li><span><? $procent=round($Player[$server_group]['round_lose']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['round_win']/$procent, 1);}?>% (<?php echo $Player[$server_group]['round_win']?> / <?php echo $Player[$server_group]['round_lose']?>)</span></li>
-                            <li><span><?php if($Player[$server_group]['kills'] == '' || $Player[$server_group]['deaths'] == ''){echo '0';}else{echo round($Player[$server_group]['kills']/$Player[$server_group]['deaths'], 2);}?> (<?=$Player[$server_group]['kills']?> / <?=$Player[$server_group]['deaths']?>)</span></li>
-                            <li><span><? $procent=round($Player[$server_group]['shoots']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['hits']/$procent, 1);}?>% (<?php echo $Player[$server_group]['hits']?> / <?php echo $Player[$server_group]['shoots']?>)</span></li>
+                            <li><span><?php $procent=round($Player[$server_group]['round_lose']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['round_win']/$procent, 1);}?>% (<?php echo $Player[$server_group]['round_win']?> / <?php echo $Player[$server_group]['round_lose']?>)</span></li>
+                            <li><span><?php if($Player[$server_group]['kills'] == '' || $Player[$server_group]['deaths'] == ''){echo '0';}else{echo round($Player[$server_group]['kills']/$Player[$server_group]['deaths'], 2);}?> (<?php echo $Player[$server_group]['kills']?> / <?php echo $Player[$server_group]['deaths']?>)</span></li>
+                            <li><span><?php $procent=round($Player[$server_group]['shoots']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['hits']/$procent, 1);}?>% (<?php echo $Player[$server_group]['hits']?> / <?php echo $Player[$server_group]['shoots']?>)</span></li>
                             <li><span><?php echo round($Player[$server_group]['playtime'] /60 /60) , ' ' , $Modules->get_translate_phrase('_Hour')?></span></li>
-                            <li><span><?php echo str_replace(";","",$Player[$server_group]['headshots'])?><? if($Player[$server_group]['headshots'] == ''){echo '0';}?> (<? $procent=round($Player[$server_group]['kills']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['headshots']/$procent, 1);}?>%)</span></li>
+                            <li><span><?php echo str_replace(";","",$Player[$server_group]['headshots'])?><?php if($Player[$server_group]['headshots'] == ''){echo '0';}?> (<?php $procent=round($Player[$server_group]['kills']/100, 1); if($procent == ''){echo '0';}else{echo round($Player[$server_group]['headshots']/$procent, 1);}?>%)</span></li>
                             <li><span>-</span></li>
                         </ul>
                     </div>
@@ -187,11 +187,11 @@
                             </thead>
                             <tbody>
                             <?php $top = $Player[$server_group]['top']-6;for ($ti = 0; $ti < 11; $ti++) {?>
-                                <tr class="pointer <?php if($Player[$server_group]['steam'] == $Player_top[$server_group][$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?=$General->arr_general['site']?>?page=profiles&server_group=<?php echo $server_group?>&profile=<?=$Player_top[$server_group][$ti]['steam']?>';">
+                                <tr class="pointer <?php if($Player[$server_group]['steam'] == $Player_top[$server_group][$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $server_group?>&profile=<?php echo $Player_top[$server_group][$ti]['steam']?>';">
                                     <th class="text-center">#</th>
                                     <th class="table-text"><?php echo action_text_trim($Player_top[$server_group][$ti]['name'],16)?></th>
                                     <th class="text-center"><?php echo $Player_top[$server_group][$ti]['value']?></th>
-                                    <th class="text-center table-text"><img data-src="<? echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/'; if($Player_top[$server_group][$ti]['rank'] == ''){echo '00';}else{echo $Player_top[$server_group][$ti]['rank'];}?>.png"></th>
+                                    <th class="text-center table-text"><img data-src="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/'; if($Player_top[$server_group][$ti]['rank'] == ''){echo '00';}else{echo $Player_top[$server_group][$ti]['rank'];}?>.png"></th>
                                 </tr>
                             <?php }?>
                             </tbody>

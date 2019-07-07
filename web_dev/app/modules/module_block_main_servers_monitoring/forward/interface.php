@@ -34,7 +34,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                         </div>
                     </div>
                 </div>
-            <?}?>
+            <?php }?>
 			<?php if ( $General->server_list_count % 3 != 0 ):?>
             <div class="col-md-4 mon-1"><div class="card plug"><div class="x_1"></div></div></div>
         <?php endif;?>

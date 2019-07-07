@@ -144,7 +144,10 @@ if( isset( $_POST['option_save'] ) ) {
     file_put_contents( SESSIONS . '/admins.php', '<?php return '.var_export_opt( $admin, true ).";" );
 
     header( 'Location: ' . get_url(1) );
-}?>
+}
+
+echo $_SERVER['PHP_SELF'];
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -358,7 +361,7 @@ if( isset( $_POST['option_save'] ) ) {
 <div class="container">
     <div class="line"></div>
     <div class="php_block">
-        <div class="php_version">Ваша версия PHP: <? if(phpversion() >= '7') { echo '<div class="color-green">'  . phpversion() . '</div>';} else { echo '<div class="color-red">'  . phpversion() . '</div>
+        <div class="php_version">Ваша версия PHP: <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
         <div class="php_version_recomendet">Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O</div>';} ?>
     </div>
     </div>
