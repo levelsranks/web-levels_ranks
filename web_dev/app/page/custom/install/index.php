@@ -71,7 +71,7 @@ $URL = 'http';
 if ( $_SERVER["HTTPS"] == "on" ) {
     $URL .= "s";
 }
-echo $URL .= '://' . $_SERVER["SERVER_NAME"] . explode('app/',$_SERVER['REQUEST_URI'])[0];
+$URL .= '://' . $_SERVER["SERVER_NAME"] . explode('app/',$_SERVER['REQUEST_URI'])[0];
 
 ! file_exists( SESSIONS . '/db.php' ) ? $eb_db = '0' : $eb_db = 1;
 
