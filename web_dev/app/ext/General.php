@@ -16,6 +16,7 @@ class General {
      * Инициализация основных настроек.
      */
     public function _initiation() {
+
         // Проверка на существоавание option.php
         file_exists( SESSIONS . '/option.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
 
@@ -34,8 +35,8 @@ class General {
             for ( $i = 0, $admins_count = sizeof( $admins ); $i < $admins_count; $i++ ) {
 
                 if($admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
-                    $_SESSION['steamid'] = $this->arr_general['admin'];
-                    $_SESSION['steamid32'] = $this->steam64to32( $this->arr_general['admin'] );
+                    $_SESSION['steamid'] = $this->steam32to64( $this->arr_general['admin'] );
+                    $_SESSION['steamid32'] = $this->arr_general['admin'];
                     $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                     $_SESSION['HTTP_X'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
                     $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
