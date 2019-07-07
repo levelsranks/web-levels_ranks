@@ -1,5 +1,5 @@
 <p align="center">
-        <img height="250px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/logo.png"/>
+        <img height="250px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/logo.png"/>
 </p>
 <h1 align="center">
     Levels Ranks - WEB Interface
@@ -8,16 +8,16 @@
 
 -----
 <p align="center">
-        <img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/just_themes.png"/>
+        <img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/just_themes.png"/>
 </p>
 <p align="center">
-        <img height="560px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/interface.png"/>
+        <img height="560px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/interface.png"/>
 </p>
 <p align="center">
-        <img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/full_adaptation.png"/>
+        <img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/full_adaptation.png"/>
 </p>
 <p align="center">
-        <img height="880px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/profile.png"/>
+        <img height="880px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/profile.png"/>
 </p>
 
 -----
@@ -221,7 +221,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Мини-Статистика на главной странице</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_stats.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_stats.png">
 </p>
 
 - **Старница отображения**: Главная
@@ -232,7 +232,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Мониторинг онлайна на главной странице</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_servers_monitoring_type_3.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
 </p>
 
 - **Старница отображения**: Главная
@@ -243,7 +243,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Топ игроков на главной странице</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_top.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
 </p>
 
 - **Старница отображения**: Главная
@@ -254,7 +254,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Профили</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_profiles.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_profiles.png">
 </p>
 
 - **Старница отображения**: profiles
@@ -265,7 +265,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Статистика игроков</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_toppoints.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_toppoints.png">
 </p>
 
 - **Старница отображения**: toppoints
@@ -276,7 +276,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Распределением рангов</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_rankstats.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_rankstats.png">
 </p>
 
 - **Старница отображения**: rankstats
@@ -294,7 +294,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Страница с банами</summary>
         
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_bans.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
 </p>
 
 - **Старница отображения**: bans
@@ -307,7 +307,7 @@
 <details><summary>LR WEB ( min. dev #0.2.92 ) - Страница с мутами</summary>
         
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_comms.png">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_comms.png">
 </p>
 
 - **Старница отображения**: comms
@@ -379,5 +379,5 @@
 -----
 
 <p align="right">
-        <img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/authors.png"/>
+        <img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png"/>
 </p>
