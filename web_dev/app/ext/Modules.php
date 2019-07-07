@@ -50,7 +50,7 @@ class Modules extends General {
                  $module = array_keys( $this->array_modules )[ $i ];
                 if (
                      $this->array_modules[ $module ]['setting']['status'] == 1
-                     && $this->array_modules[ $module ]['required']['php'] <= phpversion()
+                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                      && $this->array_modules[ $module ]['required']['core'] <= VERSION
                  ):
                      $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;

@@ -144,10 +144,7 @@ if( isset( $_POST['option_save'] ) ) {
     file_put_contents( SESSIONS . '/admins.php', '<?php return '.var_export_opt( $admin, true ).";" );
 
     header( 'Location: ' . get_url(1) );
-}
-
-echo $_SERVER['PHP_SELF'];
-?>
+}?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -370,11 +367,11 @@ echo $_SERVER['PHP_SELF'];
         <div class="title">Настройка базы данных - storage/cache/sessions/db.php</div>
         <form id="db_check" enctype="multipart/form-data" method="post">
         <div class="db_setting">
-            <div class="name">Хост: <input name="host" value="<?php echo $_POST['host']?>"></div>
-            <div class="name">Пользователь: <input name="user" value="<?php echo $_POST['user']?>"></div>
-            <div class="name">Пароль: <input name="pass" value="<?php echo $_POST['pass']?>"></div>
-            <div class="name">База данных: <input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
-            <div class="name">Название таблицы: <input name="table" placeholder="Пример: lvl_base" value="<?php echo $_POST['table']?>"></div>
+            <div class="name">Host: <input name="host" value="<?php echo $_POST['host']?>"></div>
+            <div class="name">User: <input name="user" value="<?php echo $_POST['user']?>"></div>
+            <div class="name">Pass: <input name="pass" value="<?php echo $_POST['pass']?>"></div>
+            <div class="name">DB: <input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
+            <div class="name">Table: <input name="table" placeholder="Пример: lvl_base" value="<?php echo $_POST['table']?>"></div>
             <div class="name">Название группы серверов: <input name="servers" placeholder="Пример: Основные сервера Retakes" value="<?php if($_POST['servers'] == ''){echo '';} else { echo $_POST['servers'];}?>"></div>
             <div class="name">Мод:
                 <select name="game_mod">

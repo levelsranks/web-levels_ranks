@@ -5,8 +5,7 @@
   "page": "comms",
   "version": "0.1",
   "required": {
-    "core": "0.2.92",
-    "php": "7.0"
+    "core":"0.2","php":"5.4"
   },
   "setting": {
     "status": "1",
