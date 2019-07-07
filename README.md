@@ -56,7 +56,7 @@
 <details><summary>Основной шаблон</summary>
 
 ```
-['LevelsRanks' => 
+return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -84,7 +84,7 @@
 <details><summary>Если вы используете две и более таблиц в одной базе данных</summary>
 
 ```
-['LevelsRanks' => 
+return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -119,7 +119,7 @@
 <details><summary>Если вы используете две и более базы данных из под одного пользователя</summary>
 
 ```
-['LevelsRanks' => 
+return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -168,7 +168,7 @@
 Пример. Интерация SourceBans или Material Admin:
 
 ```
-['LevelsRanks' => 
+return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
