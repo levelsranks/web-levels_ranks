@@ -47,65 +47,71 @@
 Детальная настройка базы данных:
 -----
 
-- Файл и директория - **/storage/cache/sessions/db.php**
+Файл и директория:
 
+```
+/storage/cache/sessions/db.php
+```
 
 <details><summary>Основной шаблон</summary>
 
 ```
-array ('LevelsRanks' => 
-      array (0 => 
-            array (
-                  'HOST' => 'Ваш хост',
-                  'USER' => 'Логин',
-                  'PASS' => 'Пароль',
-                  'DB'   => array (0 => 
-                                   array (
-                                         'DB'     => 'Имя основной базы данных',
-                                         'Prefix' => array (0 => 
-                                                            array (
-                                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                                  'name'  => 'Название ( Основной AWP сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                           ),
-                                         ),
-                                  ),
-                  ),
-            ),
-      );
+['LevelsRanks' => 
+                [0 => 
+                    [
+                    'HOST' => 'Ваш хост',
+                    'USER' => 'Логин',
+                    'PASS' => 'Пароль',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя основной базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                  ],
+                                               ],
+                                  ],
+                              ],
+                    ],
+                ],
+];
 ```
 </details>
 
 <details><summary>Если вы используете две и более таблиц в одной базе данных</summary>
 
 ```
-array ('LevelsRanks' => 
-      array (0 => 
-            array (
-                  'HOST' => 'Ваш хост',
-                  'USER' => 'Логин',
-                  'PASS' => 'Пароль',
-                  'DB'   => array (0 => 
-                                   array (
-                                         'DB'     => 'Имя основной базы данных',
-                                         'Prefix' => array (0 => 
-                                                            array (
-                                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                                  'name'  => 'Название ( Основной AWP сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                            array (
-                                                                  'table' => 'Название таблицы 2 ( lvl_base_2 )',
-                                                                  'name'  => 'Название ( Основной MM сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                           ),
-                                         ),
-                                  ),
-                  ),
-            ),
-      );
+['LevelsRanks' => 
+                [0 => 
+                    [
+                    'HOST' => 'Ваш хост',
+                    'USER' => 'Логин',
+                    'PASS' => 'Пароль',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя основной базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                  ],
+                                                  [
+                                                  'table' => 'Название таблицы 2 ( lvl_base_2 )',
+                                                  'name'  => 'Название ( Основной MM сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                  ],
+                                              ],
+                                  ],
+                              ],
+                    ],
+                ],
+];
 ```
 
 </details>
@@ -113,42 +119,45 @@ array ('LevelsRanks' =>
 <details><summary>Если вы используете две и более базы данных из под одного пользователя</summary>
 
 ```
-array ('LevelsRanks' => 
-      array (0 => 
-            array (
-                  'HOST' => 'Ваш хост',
-                  'USER' => 'Логин',
-                  'PASS' => 'Пароль',
-                  'DB'   => array (0 => 
-                                   array (
-                                         'DB'     => 'Имя основной базы данных',
-                                         'Prefix' => array (0 => 
-                                                            array (
-                                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                                  'name'  => 'Название ( Основной AWP сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                            array (
-                                                                  'table' => 'Название таблицы 2 ( lvl_base_2 )',
-                                                                  'name'  => 'Название ( Основной MM сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                           ),
-                                         ),
-                                         (
-                                         'DB'     => 'Имя второй базы данных',
-                                         'Prefix' => array (0 => 
-                                                            array (
-                                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                                  'name'  => 'Название ( Новый MM сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  )
-                                                           ),
-                                         ),
-                                  ),
-                  ),
-            ),
-      );
+['LevelsRanks' => 
+                [0 => 
+                    [
+                    'HOST' => 'Ваш хост',
+                    'USER' => 'Логин',
+                    'PASS' => 'Пароль',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя основной базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                   ],
+                                                   [
+                                                   'table' => 'Название таблицы 2 ( lvl_base_2 )',
+                                                   'name'  => 'Название ( Основной MM сервер )',
+                                                   'mod' => 'csgo / css',
+                                                   'steam' => '1 / 0'
+                                                   ],
+                                               ],
+                                  ],
+                                  [
+                                  'DB'     => 'Имя второй базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Новый MM сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                  ]
+                                              ],
+                                  ],
+                              ],
+                    ],
+                ],
+];
 ```
 
 </details>
@@ -159,47 +168,49 @@ array ('LevelsRanks' =>
 Пример. Интерация SourceBans или Material Admin:
 
 ```
-array ('LevelsRanks' => 
-      array (0 => 
-            array (
-                  'HOST' => 'Ваш хост',
-                  'USER' => 'Логин',
-                  'PASS' => 'Пароль',
-                  'DB'   => array (0 => 
-                                   array (
-                                         'DB'     => 'Имя основной базы данных',
-                                         'Prefix' => array (0 => 
-                                                            array (
-                                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                                  'name'  => 'Название ( Основной AWP сервер )',
-                                                                  'mod' => 'CSGO / CSS',
-                                                                  ),
-                                                           ),
-                                         ),
-                                  ),
-                  ),
-       ),
-      'SourceBans' => 
-       array (0 => 
-             array (
+['LevelsRanks' => 
+                [0 => 
+                    [
+                    'HOST' => 'Ваш хост',
+                    'USER' => 'Логин',
+                    'PASS' => 'Пароль',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя основной базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                  ],
+                                              ],
+                                  ],
+                              ],
+                    ],
+                ],
+ 'SourceBans' => 
+               [0 => 
+                   [
                    'HOST' => 'Хост SB / MA',
                    'USER' => 'Логин SB / MA',
                    'PASS' => 'Пароль SB / MA',
-                   'DB'   => array (0 => 
-                                    array (
-                                          'DB'     => 'Имя базы данных SB / MA',
-                                          'Prefix' => array (0 => 
-                                                             array (
-                                                                   'table' => 'sb_',
-                                                                   'name'  => 'SourceBans',
-                                                                   'mod' => 'CSGO / CSS',
-                                                                   ),
-                                                            ),
-                                          ),
-                                   ),
-                   ),
-             ),
-      );
+                   'DB'   => [0 => 
+                                 [
+                                 'DB'     => 'Имя базы данных SB / MA',
+                                 'Prefix' => [0 => 
+                                                 [
+                                                 'table' => 'sb_',
+                                                 'name'  => 'SourceBans',
+                                                 'mod' => 'csgo / css',
+                                                 'steam' => '1 / 0'
+                                                 ],
+                                             ],
+                                 ],
+                             ],
+                   ],
+               ],
+];
 ```
 
 </details>
@@ -207,7 +218,7 @@ array ('LevelsRanks' =>
 Доступные модули:
 -----
 
-<details><summary>LR WEB ( min. dev #0.2.92 ) - Мини-Статистика</summary>
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Мини-Статистика на главной странице</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_stats.png">
@@ -218,7 +229,7 @@ array ('LevelsRanks' =>
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.92 ) - Мониторинг онлайна</summary>
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Мониторинг онлайна на главной странице</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_servers_monitoring_type_3.png">
@@ -226,6 +237,83 @@ array ('LevelsRanks' =>
 
 - **Старница отображения**: Главная
 - **Информация**: Добавляет мониторинг онлайна серверов с возможностью подключения.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Топ игроков на главной странице</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_block_main_top.png">
+</p>
+
+- **Старница отображения**: Главная
+- **Информация**: Добавляет блоки с "топ 10" каждой подключенной таблице Levels Ranks.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Профили</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_profiles.png">
+</p>
+
+- **Старница отображения**: profiles
+- **Информация**: Добавляет страницы игроков с их личной статистикой.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Статистика игроков</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_toppoints.png">
+</p>
+
+- **Старница отображения**: toppoints
+- **Информация**: Добавляет страницу со статистикой всех игроков игроков.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Распределением рангов</summary>
+
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_rankstats.png">
+</p>
+
+- **Старница отображения**: rankstats
+- **Информация**: Добавляет страницу с распределением рангов на серверах.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Панель администратора</summary>
+
+- **Старница отображения**: adminpanel
+- **Информация**: Добавляет гибкое администрирование вэб интерфейсом и полезные функции.
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Страница с банами</summary>
+        
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_bans.png">
+</p>
+
+- **Старница отображения**: bans
+- **Информация**: 
+  - Интеграция с SB / MA.
+  - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
+- **Скачать:** Доступен в базовом пакете модулей.
+</details>
+
+<details><summary>LR WEB ( min. dev #0.2.92 ) - Страница с мутами</summary>
+        
+<p align="center">
+        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/master/.github/modules/module_page_comms.png">
+</p>
+
+- **Старница отображения**: comms
+- **Информация**: 
+  - Интеграция с SB / MA.
+  - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
