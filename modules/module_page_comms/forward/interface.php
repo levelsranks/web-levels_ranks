@@ -45,7 +45,7 @@
                         }</script><?php }?>
                 <?php endif;?>
                     <tr>
-                        <th class="text-center tb-game"><img id="<?php echo $General->steam32to64($res[ $i ]['authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
+                        <th class="text-center tb-game"><img <?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
                         <th class="text-center"><?php echo date('Y-m-d', $res[ $i ]['created']) ?></th>
                         <th class="text-center tb-type"><?php $res[ $i ]['type'] == 1 ? $General->get_icon( 'zmdi', 'mic', null ) : $General->get_icon( 'zmdi', 'comment-text', null )?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>

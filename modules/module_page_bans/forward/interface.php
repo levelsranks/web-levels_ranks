@@ -44,7 +44,7 @@
                         }</script><?php }?>
                 <?php endif;?>
                     <tr>
-                        <th class="text-center tb-game"><img id="<?php echo $General->steam32to64($res[ $i ]['authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
+                        <th class="text-center tb-game"><img <?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
                         <th class="text-center"><?php echo date('Y-m-d', $res[ $i ]['created']) ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                             <th class="text-right tb-avatar pointer" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['authid'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo $General->steam32to64($res[ $i ]['authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
