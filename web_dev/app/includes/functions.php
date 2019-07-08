@@ -139,8 +139,8 @@ function get_iframe( $code, $description, $die = true ) {
  *
  * @return string               Сокращенный текст.
  */
-function action_text_trim( $text, $max ) {
-    return mb_strimwidth( $text, 0, $max, ".." );
+function action_text_trim( $text, $max = 18 ) {
+    return strlen( $text ) >= $max ? substr( $text, 0, $max ) . '..' : $text;
 }
 
 /**
@@ -151,7 +151,7 @@ function action_text_trim( $text, $max ) {
  * @return string               Очищенный текст.
  */
 function action_text_clear( $text ) {
-    return stripslashes ( trim( strip_tags( htmlspecialchars( $text, null, null, false ) ) ) );
+    return stripslashes( trim( strip_tags( htmlspecialchars( $text, null, null, false ) ) ) );
 }
 
 /**

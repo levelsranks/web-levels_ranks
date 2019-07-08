@@ -68,7 +68,7 @@
                         <?php $weapon_names = array_keys($Player[$server_group]['weapons']);$count_w = count($Player[$server_group]['weapons']);for ($w = 0; $w < $count_w; $w++) {?>
                             <tr>
                                 <th class="text-right"><?php $General->get_icon( 'custom', $weapon_names[$w], 'weapons' )?></th>
-                                <th class="text-left"><?php echo str_replace('_',' ',mb_strtoupper(str_replace('weapon_','',$weapon_names[$w])))?></th>
+                                <th class="text-left"><?php echo str_replace('_',' ',strtoupper(str_replace('weapon_','',$weapon_names[$w])))?></th>
                                 <th class="text-center"><?php echo $Player[$server_group]['weapons'][$weapon_names[$w]] ?> kills</th>
                             </tr>
                         <?php } ?>
