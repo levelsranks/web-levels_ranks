@@ -36,12 +36,12 @@
                 </thead>
                 <tbody>
                 <?php for ( $i = 0, $sz = sizeof( $res ); $i < $sz; $i++ ):?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$i]['authid']), 2)?>;
-                        if (CheckAvatar == 1) { avatar.push("<?php echo $General->steam32to64($res[$i]['authid'])?>"); }</script><?php }?>
+                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64($res[$i]['authid']), 2)?>;
+                        if (CheckAvatar == 1) { avatar.push("<?php echo con_steam32to64($res[$i]['authid'])?>"); }</script><?php }?>
                 <?php if ($res[$i]['aid'] != '0'):?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$i]['admin_authid']), 2)?>;
+                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64($res[$i]['admin_authid']), 2)?>;
                         if (CheckAvatar == 1) {
-                            avatar.push("<?php echo $General->steam32to64($res[ $i ]['admin_authid'])?>");
+                            avatar.push("<?php echo con_steam32to64($res[ $i ]['admin_authid'])?>");
                         }</script><?php }?>
                 <?php endif;?>
                     <tr>
@@ -49,8 +49,8 @@
                         <th class="text-center"><?php echo date('Y-m-d', $res[ $i ]['created']) ?></th>
                         <th class="text-center tb-type"><?php $res[ $i ]['type'] == 1 ? $General->get_icon( 'zmdi', 'mic', null ) : $General->get_icon( 'zmdi', 'comment-text', null )?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
-                        <th class="text-right tb-avatar pointer" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['authid'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo $General->steam32to64($res[ $i ]['authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
-                        <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar($General->steam32to64($res[ $i ]['authid']), 2);
+                        <th class="text-right tb-avatar pointer" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['authid'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo con_steam32to64($res[ $i ]['authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
+                        <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[ $i ]['authid']), 2);
                             } elseif( $General->arr_general['avatars'] == 2) {
                                 echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                             }?>"></th>
@@ -60,8 +60,8 @@
                             <a <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['authid'] ?>&search=1"<?php } ?>><?php echo action_text_clear( action_text_trim($res[ $i ]['name'], 16) )?></a>
                         </th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
-                        <th class="text-right tb-avatar <?php $res[ $i ]['aid'] != '0' && print 'a-type'?>" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1' && $res[ $i ]['aid'] != '0'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['admin_authid'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo $General->steam32to64($res[ $i ]['admin_authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
-                        <?php if( $res[ $i ]['admin_authid'] != 'STEAM_ID_SERVER' ) { if( $General->arr_general['avatars'] == 1){ echo $General->getAvatar($General->steam32to64($res[ $i ]['admin_authid']), 2);
+                        <th class="text-right tb-avatar <?php $res[ $i ]['aid'] != '0' && print 'a-type'?>" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1' && $res[ $i ]['aid'] != '0'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[ $i ]['admin_authid'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo con_steam32to64($res[ $i ]['admin_authid']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
+                        <?php if( $res[ $i ]['admin_authid'] != 'STEAM_ID_SERVER' ) { if( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[ $i ]['admin_authid']), 2);
                             } elseif( $General->arr_general['avatars'] == 2) { echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                             }?>
                         <?php } else {

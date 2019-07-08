@@ -14,7 +14,7 @@ if( get_section( 'profile', false ) == true ) {
     // Проверка на URL запроса
     $type_id = ( substr( get_section( 'profile', false ), 0, 5) === "STEAM") ? 'steam' : 'id';
 
-    $type_id == 'steam' ? $profile = get_section( 'profile', false ) : $profile = $General->steam64to32( get_section( 'profile', false ) );
+    $type_id == 'steam' ? $profile = get_section( 'profile', false ) : $profile = con_steam64to32( get_section( 'profile', false ) );
 
     // Получаем так же из URL к какой группе серверов должен быть закреплен игрок.
     $server_group = get_section( 'server_group', '0' );
@@ -91,4 +91,5 @@ if( get_section( 'profile', false ) == true ) {
 
 $data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] . ' :: ' . $Modules->get_translate_phrase('_Player') . ' :: ' . $Player[$server_group]['name'];
 $data['global']['info'] = $General->arr_general['short_name'] . " :: " . $Db->db_data['LevelsRanks'][$server_group]['name'] . " :: Steam ID :: " . get_section( 'profile', false ) . " :: Ранг - " . $Modules->get_translate_phrase('_Rank_' . $Player[$server_group]['rank']) . " :: Количество очков - " . $Player[$server_group]['value'];
-$data['global']['avatar'] = $General->getAvatar($General->steam32to64($Player[$server_group]['steam']),1);
+
+$data['global']['avatar'] = $General->arr_general['avatars'] == 1 ? $General->getAvatar(con_steam32to64($Player[$server_group]['steam']),1) : 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';

@@ -48,23 +48,23 @@
                 </thead>
                 <tbody><?php $sz = sizeof( $res[$server_group] );
                 for ($sz_i = 0; $sz_i < $sz; $sz_i++) { ?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($res[$server_group][$sz_i]['steam']), 2)?>;
+                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64($res[$server_group][$sz_i]['steam']), 2)?>;
                         if (CheckAvatar == 1) {
-                            avatar.push("<?php echo $General->steam32to64($res[$server_group][$sz_i]['steam'])?>");
+                            avatar.push("<?php echo con_steam32to64($res[$server_group][$sz_i]['steam'])?>");
                         }</script><?php } ?>
                     <tr class="pointer"
                         <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[$server_group][$sz_i]['steam'] ?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle"
-                                                              id="<?php echo $General->steam32to64($res[$server_group][$sz_i]['steam']) ?>"
+                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$server_group][$sz_i]['steam']);} ?>"
                             <?php if ($sz_i < '20') {
                                 echo 'src';
                             } else {
                                 echo 'data-src';
                             } ?>=
                             "
-                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar($General->steam32to64($res[$server_group][$sz_i]['steam']), 2);
+                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[$server_group][$sz_i]['steam']), 2);
                             } elseif( $General->arr_general['avatars'] == 2) {
                                 echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                             }?>">

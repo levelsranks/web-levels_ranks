@@ -149,40 +149,6 @@ class General {
     }
 
     /**
-     * Конвертация Steam ID 32 -> 64.
-     *
-     * @param string       $steamid32    Steam ID игрока.
-     *
-     * @return string                    Выводит итог конвертации.
-     */
-    public function steam32to64( $steamid32 ) {
-        list( , $m1, $m2 ) = explode( ':', $steamid32, 3 );
-        list( $steam_cid, ) = explode( '.', bcadd((((int)$m2 * 2) + $m1 ) , '76561197960265728') , 2 );
-        return $steam_cid;
-    }
-
-    /**
-     * Конвертация Steam ID 64 -> 32.
-     *
-     * @param string       $steamid64    Steam ID игрока.
-     *
-     * @return string                    Выводит итог конвертации.
-     */
-    public function steam64to32( $steamid64 ) {
-        if ( preg_match( '/^(7656119)([0-9]{10})$/', $steamid64, $match ) ) {
-            $const1 = 7960265728;
-            $steam32 = '';
-            if ( $const1 <= $match[2] ) {
-                $a = ( $match[2] - $const1 ) % 2;
-                $b = ( $match[2] - $const1 - $a ) / 2;
-                $steam32 = 'STEAM_1:' . $a . ':' . $b;
-            }
-            return $steam32;
-        }
-        return false;
-    }
-
-    /**
      * Получение настроек по умолчанию для вэб-интерфейса.
      *
      * @return array                 Массив с настройками.

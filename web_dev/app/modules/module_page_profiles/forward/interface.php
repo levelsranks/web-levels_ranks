@@ -34,9 +34,9 @@
                 <div class="col-md-12">
                 <div class="left-block">
                     <div class="user-block">
-                            <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar($General->steam32to64($Player[$server_group]['steam']),1)?>;if(CheckAvatar == 1) {avatar.push("<?php echo $General->steam32to64( $Player[$server_group]['steam'] )?>");}</script><?php } ?>
-                            <a href="<?php $res_data[$server_group]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . $General->steam32to64($Player[$server_group]['steam'])?>" target="_blank"><img id="<?php echo $General->steam32to64( $Player[$server_group]['steam'] )?>"class="rounded-circle avatar" data-src="
-                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( $General->steam32to64($Player[$server_group]['steam'] ), 1);
+                            <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64($Player[$server_group]['steam']),1)?>;if(CheckAvatar == 1) {avatar.push("<?php echo con_steam32to64( $Player[$server_group]['steam'] )?>");}</script><?php } ?>
+                            <a href="<?php $res_data[$server_group]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64($Player[$server_group]['steam'])?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64( $Player[$server_group]['steam'] )?>"class="rounded-circle avatar" data-src="
+                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64($Player[$server_group]['steam'] ), 1);
                                 } elseif( $General->arr_general['avatars'] == 2 || $General->arr_general['avatars'] == 0) {
                                     echo 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
                                 }?>"></a>
