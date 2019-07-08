@@ -15,7 +15,7 @@
     </div>
     <ul class="right-area">
         <li class="section">
-            <a href="#" class="language">
+            <a href="#" class="navbar-icon">
                 <?php $General->get_icon( 'custom', 'translate', 'global' )?>
             </a>
             <ul class="subsection">
@@ -41,10 +41,26 @@
                 </li>
             </ul>
         </li>
-        <li class="section dark-mode">
+        <li class="section navbar-icon">
             <a href="javascript:void(0);" onclick="dark_mode()">
                 <?php $General->get_icon( 'custom', 'moon', 'global' )?>
             </a>
+        </li>
+        <li class="section">
+            <a href="#" class="navbar-icon">
+                <div class="search"><?php $General->get_icon( 'zmdi', 'search' )?></div>
+            </a>
+            <ul class="subsection">
+                <form enctype="multipart/form-data" method="post">
+                <div class="search_form">
+                    <div class="input-form">
+                        <label>Поиск</label>
+                        <input type="text" value="" name="_steam_id" placeholder="STEAM_1:1:390... / 7656119803..." >
+                    </div>
+                    <input class="btn no_steam" name="btn_search" type="submit" value="Найти">
+                </div>
+                </form>
+            </ul>
         </li>
     </ul>
 </div>

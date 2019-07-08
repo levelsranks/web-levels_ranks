@@ -10,7 +10,6 @@
 
 // задаём основную кодировку страницы.
 header('Content-Type: text/html; charset=utf-8');
-mb_internal_encoding ("utf-8");
 
 // Отключаем вывод ошибок.
 error_reporting(0);
@@ -27,7 +26,7 @@ date_default_timezone_set('Etc/GMT+3');
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.100');
+define('VERSION', '0.2.101');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -85,9 +84,6 @@ spl_autoload_register( function( $class ) {
 
 // Создание основного экземпляра класса.
 $General = new General;
-
-// Проверка параметров по умолчанию.
-$General->_initiation();
 
 // Создание экземпляра класса работающего с модулями.
 $Modules = new Modules;

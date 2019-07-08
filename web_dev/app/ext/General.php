@@ -15,7 +15,7 @@ class General {
     /**
      * Инициализация основных настроек.
      */
-    public function _initiation() {
+    function __construct() {
 
         // Проверка на существоавание option.php
         file_exists( SESSIONS . '/option.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
@@ -31,9 +31,7 @@ class General {
 
         // Костыльная авторизация для главного администратора - В будущем поправить
         if( isset( $_POST['log_in'] ) && IN_LR == true ) { $admins = require SESSIONS . 'admins.php';
-
             for ( $i = 0, $admins_count = sizeof( $admins ); $i < $admins_count; $i++ ) {
-
                 if($admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
                     $_SESSION['steamid'] = $this->steam32to64( $this->arr_general['admin'] );
                     $_SESSION['steamid32'] = $this->arr_general['admin'];
@@ -45,6 +43,11 @@ class General {
                 }
             }
             header( 'Location: ' . get_url(1) );
+            exit;
+        }
+
+        if( isset( $_POST['btn_search'] ) && IN_LR == true ) {
+            header( 'Location: ' . $this->arr_general['site'] . '/?page=profiles&search=1&profile=' . $_POST['_steam_id'] );
             exit;
         }
 

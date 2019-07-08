@@ -113,6 +113,8 @@ if( isset( $_POST['save_db'] ) ) {
 
 if( isset( $_POST['option_save'] ) ) {
 
+    $steam_admin = substr( $_POST['admin'], 0, 7) === "STEAM_0" ? str_replace("STEAM_0", "STEAM_1", $_POST['admin'] ) : $_POST['admin'];
+
     $default = [
         'full_name' => $_POST['full_name'],
         'short_name' => $_POST['short_name'],
@@ -132,7 +134,7 @@ if( isset( $_POST['option_save'] ) ) {
         'badge_type' => 2,
         'steam_auth' => (int) $_POST['steam_auth'],
         'secure_key' => 'this_is_key_is_default_privet_wender_secure',
-        'admin' => $_POST['admin']
+        'admin' => $steam_admin
     ];
 
     file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
