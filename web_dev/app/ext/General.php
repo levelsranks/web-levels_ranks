@@ -33,7 +33,7 @@ class General {
         if( isset( $_POST['log_in'] ) && IN_LR == true ) { $admins = require SESSIONS . 'admins.php';
             for ( $i = 0, $admins_count = sizeof( $admins ); $i < $admins_count; $i++ ) {
                 if($admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
-                    $_SESSION['steamid'] = $this->steam32to64( $this->arr_general['admin'] );
+                    $_SESSION['steamid'] = con_steam32to64( $this->arr_general['admin'] );
                     $_SESSION['steamid32'] = $this->arr_general['admin'];
                     $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                     $_SESSION['HTTP_X'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -47,7 +47,10 @@ class General {
         }
 
         if( isset( $_POST['btn_search'] ) && IN_LR == true ) {
-            header( 'Location: ' . $this->arr_general['site'] . '/?page=profiles&search=1&profile=' . $_POST['_steam_id'] );
+
+            $search = substr( $_POST['_steam_id'], 0, 7) === "STEAM_0" ? str_replace("STEAM_0", "STEAM_1", $_POST['_steam_id'] ) : $_POST['_steam_id'];
+
+            header( 'Location: ' . $this->arr_general['site'] . '/?page=profiles&search=1&profile=' . $search );
             exit;
         }
 
