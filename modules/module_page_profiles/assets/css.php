@@ -25,8 +25,6 @@
         filter: invert(70%) sepia(64%) saturate(4691%) hue-rotate(345deg) brightness(98%) contrast(91%);
     }
 
-
-
     @media (max-width: 767.98px) {
 
         .header-profile {
@@ -568,7 +566,7 @@
         .user-block{
             position: relative;
             float: left;
-            padding: 25px;
+            padding-top: 25px;
             height: 40vw;
             width:100%;
             max-width: 38%;
@@ -1078,7 +1076,7 @@
         .user-block{
             position: relative;
             float: left;
-            padding: 25px;
+            padding-top: 25px;
             height: 28vw;
             width:100%;
             max-width: 38%;
@@ -1588,7 +1586,7 @@
         .user-block{
             position: relative;
             float: left;
-            padding: 25px;
+            padding-top: 25px;
             height: 26vw;
             width:100%;
             max-width: 38%;
@@ -2098,7 +2096,7 @@
         .user-block{
             position: relative;
             float: left;
-            padding: 25px;
+            padding-top: 25px;
             height: 20vw;
             width:100%;
             max-width: 38%;

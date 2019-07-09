@@ -12,15 +12,51 @@ namespace app\ext;
 use pdo;
 
 class Db {
-    private     $options            = array();
-    private     $db                 = array();
-    private     $dns                = array();
-    protected   $pdo                = array();
-    public      $db_data            = array();
-    private     $table_count_for;
-    public      $db_count;
-    public      $table_count;
-    public      $mod_name;
+
+    /**
+     * @var array
+     */
+    private $options            = array();
+
+    /**
+     * @var array
+     */
+    private $db                 = array();
+
+    /**
+     * @var array
+     */
+    private $dns                = array();
+
+    /**
+     * @var array
+     */
+    protected $pdo              = array();
+
+    /**
+     * @var array
+     */
+    public    $db_data          = array();
+
+    /**
+     * @var array
+     */
+    private   $table_count_for;
+
+    /**
+     * @var array
+     */
+    public    $db_count;
+
+    /**
+     * @var array
+     */
+    public    $table_count;
+
+    /**
+     * @var array
+     */
+    public    $mod_name;
 
     /**
      * Организация работы вэб-приложения с базой данных.

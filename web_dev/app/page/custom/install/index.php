@@ -55,9 +55,6 @@ require INCLUDES . 'functions.php';
 // Проверка на PDO
 class_exists('PDO') || get_iframe('001','Для работы нужна поддержка PDO');
 
-// Проверка прав доступа коренного каталога ( 0777 )
-substr( sprintf( '%o', fileperms( '../../../../' ) ), -4 ) !== '0777' && get_iframe( '003', 'Не установлены права доступа 777 на коренной каталог' );
-
 // Проверка прав доступа каталога кэша ( 0777 )
 substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '004','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
 
