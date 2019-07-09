@@ -56,7 +56,7 @@
 <details><summary>Основной шаблон</summary>
 
 ```
-return ['LevelsRanks' => 
+<?php return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -84,7 +84,7 @@ return ['LevelsRanks' =>
 <details><summary>Если вы используете две и более таблиц в одной базе данных</summary>
 
 ```
-return ['LevelsRanks' => 
+<?php return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -119,7 +119,7 @@ return ['LevelsRanks' =>
 <details><summary>Если вы используете две и более базы данных из под одного пользователя</summary>
 
 ```
-return ['LevelsRanks' => 
+<?php return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -168,7 +168,7 @@ return ['LevelsRanks' =>
 Пример. Интерация SourceBans или Material Admin:
 
 ```
-return ['LevelsRanks' => 
+<?php return ['LevelsRanks' => 
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
@@ -316,6 +316,11 @@ return ['LevelsRanks' =>
   - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
+
+Благодарность:
+-----
+
+- xek#1152 ( Discord ) - 200 RUB.
 
 Блок разработчика:
 -----
