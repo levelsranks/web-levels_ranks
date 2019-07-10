@@ -317,10 +317,31 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
+Демо:
+-----
+
+- https://ocgn.ru/
+- https://wocawp.ru/stats/
+- https://stats.unity.pp.ua/
+- http://lr.neostrike.ru/
+- http://ilitagame.ru/
+- https://gg-pro.ru/levels/
+- http://prog-cs.ru/levelrank/
+
 Благодарность:
 -----
 
-- xek#1152 ( Discord ) - 200 RUB.
+- Larsalex    ( hlmod.ru )  - 3000 RUB.
+- Unity       ( hlmod.ru )  - 460 RUB.
+- Paranoiiik  ( hlmod.ru )  - 300 RUB.
+- Wend4r      ( hlmod.ru )  - 250 RUB.
+- Rabb1t      ( hlmod.ru )  - 250 RUB.
+- xek#1152    ( Discord )   - 200 RUB.
+- valerun     ( hlmod.ru )  - 150 RUB.
+- SynZilla    ( hlmod.ru )  - 150 RUB.
+- DismoraL    ( hlmod.ru )  - 100 RUB.
+- xXMaXimXx   ( hlmod.ru )  - 100 RUB.
+- Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
 -----
@@ -384,5 +405,5 @@
 -----
 
 <p align="right">
-        <img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png"/>
+        <img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png">
 </p>
