@@ -339,6 +339,7 @@
 - xek#1152    ( Discord )   - 200 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
+- SV3N#9923   ( Discord )   - 100.40 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
