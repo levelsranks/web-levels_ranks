@@ -1,1 +1,22 @@
-{"title":"LR WEB - Home - Мониторинг серверов","info":"Server's monitoring in home page","author":"M0st1ce","page":"home","version":"0.2","required":{"core":"0.2","php":"5.4"},"setting":{"status":"1","type":"3","available_types":"1;2;3","sessions":"0","translation":"1","interface":"1","data":"0","css":"1","js":"1"},"extra_modules":{"module_graph_core":"0.1"}}
+{
+  "title": "LR WEB - Home - Мониторинг серверов",
+  "info": "Server's monitoring in home page",
+  "author": "M0st1ce",
+  "page": "home",
+  "version": "0.2",
+  "required": {
+    "core": "0.2",
+    "php": "5.4"
+  },
+  "setting": {
+    "status": "1",
+    "type": "3",
+    "available_types": "1;2;3",
+    "sessions": "0",
+    "translation": "1",
+    "interface": "1",
+    "data": "0",
+    "css": "1",
+    "js": "1"
+  }
+}

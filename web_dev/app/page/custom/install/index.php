@@ -317,7 +317,6 @@ if( isset( $_POST['option_save'] ) ) {
         border: 1px solid #fff;
         font-weight: 400;
         font-size: 0.7vw;
-
     }
 
     .db_setting{

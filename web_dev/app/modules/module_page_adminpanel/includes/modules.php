@@ -1,8 +1,8 @@
 <?php if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }?>
-<div class="col-md-4">
+<div class="col-md-6">
     <div class="card">
         <div class="card-header">
-            <h5 class="badge">Настройка модулей</h5>
+            <h5 class="badge">Порядок загрузки модулей</h5>
             <div class="select-panel select-panel-pages badge">
                 <select onChange="window.location.href=this.value">
                     <option style="display:none" value="" disabled selected><?php echo get_section( 'module_page', 'home' )?></option>
@@ -15,11 +15,8 @@
                 </select>
             </div>
         </div>
-    </div>
-    <?php if( get_section( 'module_page', 'home' ) != ''):?>
-        <div class="card">
-            <div class="card-container">
-                <h5>Порядок загрузки модулей</h5>
+        <div class="card-container">
+    <?php if( get_section( 'module_page', 'home' ) != '' ):?>
                 <div class="dd" id="nestable">
                     <ol class="dd-list">
                         <?php
@@ -32,12 +29,27 @@
                             </li>
                         <?php } ?>
                     </ol>
+                    <input type="hidden" id="nestable-output">
                 </div>
-                <input type="hidden" id="nestable-output">
-                <form id="form" enctype="multipart/form-data" method="post">
-                    <input class="button" type="submit" name="update_modules" Value="Обновить кэш и список модулей" form="form">
-                </form>
+    <?php endif; ?>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="badge">Опции</h5>
+        </div>
+        <div class="card-container">
+            <div class="btn_form">
+            <form enctype="multipart/form-data" method="post">
+                <input class="btn" type="submit" name="clear_cache_modules" Value="Обновить кэш модулей">
+            </form>
+            <div class="btn_form">
+            <form enctype="multipart/form-data" method="post">
+                <input class="btn" type="submit" name="clear_modules_initialization" Value="Обновить список модулей">
+            </form>
             </div>
         </div>
-    <?php endif; ?>
-</div>
+        </div>
+    </div>

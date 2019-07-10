@@ -8,37 +8,33 @@
  * @license GNU General Public License Version 3
  */
 ?>
-<style>.input-form {
+<style>
+    .option_one .btn{
+        margin-top: 12px;
+        float: right;
+    }
+
+    .option_two .btn{
+        margin-top: 12px;
+        float: right;
+    }
+
+    .global-container {
+        margin-right: 220px;
+    }
+
+    .input-form {
         position: relative;
+        text-align: left;
         margin-top: 6px;
         margin-bottom: 6px;
         width: 100%;
-        float: left;
     }
 
     .server_line {
         position: relative;
         width: 92%;
         margin-left: 4%;
-    }
-
-    .page_modules button{
-        margin-right: 16px;
-        color: #FFF;
-        float: left;
-        background-color: #f37c00;
-        border: none;
-        cursor: pointer;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        background-image: none;
-        text-align: center;
-        line-height: 26px;
-        vertical-align: middle;
-        user-select: none;
-        outline: none;
-        margin-top: 8px;
-        margin-bottom: 8px;
     }
 
     .remove_servers {
@@ -314,7 +310,6 @@
         display: block;
         margin: 0;
         padding: 0;
-        max-width: 600px;
         list-style: none;
         font-size: 13px;
         line-height: 20px;
@@ -397,5 +392,4 @@
             width: 100%;
         }
     }
-
 </style>

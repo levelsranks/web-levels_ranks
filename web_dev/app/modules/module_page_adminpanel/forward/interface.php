@@ -9,22 +9,32 @@
  */
 
 if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }?>
+<aside class="sidebar-right">
+    <section class="sidebar">
+        <div class="user-sidebar-right-block">
+            <div class="info">
+                <div class="details">
+                    <div class="admin_type">Гл. Администратор</div>
+                    <div class="admin_rights">Полные права доступа</div>
+                </div>
+            </div>
+        </div>
+        <div class="card menu">
+            <ul class="nav">
+                <li <?php get_section( 'section', 'modules' ) == 'general' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','general')?>';">
+                    <a>Основные настройки</a>
+                </li>
+                <li <?php get_section( 'section', 'modules' ) == 'modules' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','modules')?>';">
+                    <a>Настройка модулей</a>
+                </li>
+                <li <?php get_section( 'section', 'modules' ) == 'servers' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','servers')?>';">
+                    <a>Настройка серверов</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</aside>
 <div class="row">
-    <div class="col-md-2">
-                    <div class="card menu">
-                            <div class="card-header">
-                                <h5 class="badge">Настройки</h5>
-                            </div>
-                            <ul class="nav">
-                                <li <?php get_section( 'section', 'modules' ) == 'modules' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','modules')?>';">
-                                    <a>Настройка модулей</a>
-                                </li>
-                                <li <?php get_section( 'section', 'modules' ) == 'servers' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','servers')?>';">
-                                    <a>Настройка серверов</a>
-                                </li>
-                            </ul>
-                        </div>
-    </div>
     <?php switch ( get_section( 'section', 'modules' ) ) {
         case 'general':
             require MODULES . 'module_page_adminpanel' . '/includes/general.php';

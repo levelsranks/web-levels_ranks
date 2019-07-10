@@ -4,6 +4,7 @@
   "--sidebar-color": "#fdfdfd",
   "--item-color": "#111",
   "--default-text-color": "#111",
+  "--top-text-color": "#737373",
   "--default-text-color-invert": "#fff",
   "--hover": "#f3f3f3",
   "--table-line": "#CDCBCB",

@@ -8,14 +8,55 @@
  * @license GNU General Public License Version 3
  */
 
-if($_SESSION['steamid32'] == $General->arr_general['admin']){
+if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site'] ); exit; }
 
-    if(isset($_POST['update_modules']) && IN_LR == true) {
-        unlink(SESSIONS . '/modules_initialization.php');
-        unlink(SESSIONS . '/modules_cache.php');
-        header('Location: ' . get_url(1));
+    if( isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
+        for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {
+            $module = array_keys( $Modules->array_modules )[ $i ];
+            if ( file_exists( SESSIONS . 'modules/' . $module . '/cache.php' ) ) {
+                unlink(SESSIONS . 'modules/' . $module . '/cache.php');
+            }
+        }
+        unlink( SESSIONS . '/modules_cache.php' );
+        header( 'Location: ' . get_url(1) );
         exit;
     }
+
+    if( isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
+        unlink( SESSIONS . '/modules_initialization.php' );
+        header( 'Location: ' . get_url(1) );
+        exit;
+    }
+
+    if( isset( $_POST['option_one_save'] ) && IN_LR == true ) {
+        $arr = require SESSIONS . 'options.php';
+        $option = [
+            'full_name' => $_POST['full_name'],
+            'short_name' => $_POST['short_name'],
+            'info' => $_POST['info'],
+            'language' => $_POST['language'],
+            'steam_auth' => $_POST['steam_auth'],
+            'web_key' => $_POST['web_key'],
+            'admin' => $_POST['admin']
+        ];
+        file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
+        header( 'Location: ' . get_url(1) );
+        exit;
+    }
+
+    if( isset( $_POST['option_two_save'] ) && IN_LR == true ) {
+      $arr = require SESSIONS . 'options.php';
+      $option = [
+          'dark_mode' => $_POST['dark_mode'],
+          'animations' => $_POST['animations'],
+          'avatars' => $_POST['avatars'],
+          'sidebar_open' => $_POST['sidebar_open'],
+          'form_border' => $_POST['form_border']
+       ];
+       file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
+       header( 'Location: ' . get_url(1) );
+       exit;
+}
 
     if(isset($_POST['data']) && IN_LR == true) {
 
@@ -49,8 +90,3 @@ if($_SESSION['steamid32'] == $General->arr_general['admin']){
         header('Location: ' . get_url(1));
         exit;
     }
-
-} else {
-    header('Location: ' . $General->arr_general['site']);
-    exit;
-}

@@ -6,6 +6,10 @@ li {
     list-style-type: none
 }
 
+.sidebar-menu {
+    height: 100%;
+}
+
 .sidebar-menu .sidebar-icon {
     margin-right: 0;
     display: inline-block
@@ -45,7 +49,8 @@ li {
 .sidebar-menu {
     list-style: outside none none;
     padding: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     white-space: nowrap
 }
 
@@ -181,15 +186,11 @@ hr {
     margin-left: 18px
 }
 
-.sidebar-menu:hover {
-    overflow: visible
-}
-
 .main-sidebar {
     margin-top: 56px;
     top: 0;
     left: 0;
-    min-height: 100%;
+    height: 100%;
     position: fixed !important;
     width: 270px;
     z-index: 2;
@@ -203,14 +204,12 @@ hr {
 transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
 }
 <?php } ?>
-
 @media (max-width: 1025px) {
+
     .global-container {
         margin-left: 0
     }
-}
 
-@media (max-width: 1025px) {
     .sidebar-collapse .global-container {
         margin-left: 0px
     }
@@ -221,6 +220,13 @@ transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2
         -ms-transform: translate(-330px, 0);
         -o-transform: translate(-330px, 0);
         transform: translate(-330px, 0)
+    }
+
+    .sidebar-open .swipe-area {
+        -webkit-transform: translate(270px, 0);
+        -ms-transform: translate(270px, 0);
+        -o-transform: translate(270px, 0);
+        transform: translate(270px, 0)
     }
 
     .swipe-area {
@@ -239,6 +245,14 @@ transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2
         -o-transform: translate(270px, 0);
         transform: translate(270px, 0)
     }
+
+    .sidebar-open .main-sidebar {
+        overflow-y: auto;
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0)
+    }
 }
 
 @media (min-width: 1025px) {
@@ -247,6 +261,10 @@ transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2
         -ms-transform: translate(-210px, 0);
         -o-transform: translate(-210px, 0);
         transform: translate(-210px, 0)
+    }
+
+    .sidebar-collapse .sidebar-menu {
+        overflow: visible;
     }
 
     .sidebar-collapse .global-container {
@@ -313,15 +331,6 @@ if( !isset( $_SESSION['steamid32'] ) ) {
         -ms-transform: translate(-207px, 0);
         -o-transform: translate(-207px, 0);
         transform: translate(-207px, 0)
-    }
-}
-
-@media (max-width: 1024px) {
-    .sidebar-open .main-sidebar {
-        -webkit-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -o-transform: translate(0, 0);
-        transform: translate(0, 0)
     }
 }
 

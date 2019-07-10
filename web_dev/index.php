@@ -26,7 +26,7 @@ date_default_timezone_set('Etc/GMT+3');
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.101');
+define('VERSION', '0.2.103');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
