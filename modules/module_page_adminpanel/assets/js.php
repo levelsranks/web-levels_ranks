@@ -13,14 +13,23 @@ if($_GET["section"] == 'modules' || $_GET["section"] == ''){?><script>!function(
     $(document).ready(function () {
         $('#add').click(function(){
             var str = '<tr class="server_line">'+
-'                                    <th class="text-center ip"><div class="input-form ">'+
-'                                            <input type="text" value="" name="serversip[]"/>'+
-'                                        </div></th>'+
-'                                    <th class="text-center fakeip"><div class="input-form">'+
+                '<th class="text-center ip"><div class="input-form ">'+
+'<input type="text" value="" name="serversip[]"/>'+
+'</div></th>'+
+'<th class="text-center fakeip"><div class="input-form">'+
 '                                            <input type="text" value="" name="serversfakeip[]"/>'+
 '                                        </div></th>'+
-'                                    <th class="text-center"><button class="remove_servers" type="submit"><?php $General->get_icon( zmdi, close )?></button></th>'+
-'                                </tr>';
+'<th class="text-center">'+
+            '<div class="input-form">'+
+            '<select class="select" name="serversdb[]">'+
+               <?php for ( $l = 0, $cc = sizeof( $Db->db_data ); $l < $cc; $l++ ):?>
+            '   <option value="<?php echo $Db->db_data['LevelsRanks'][ $l ]['USER_ID'] . ';' . $Db->db_data['LevelsRanks'][ $l ]['DB'] . ';' . $Db->db_data['LevelsRanks'][ $l ]['Table']?>"><?php echo $Db->db_data['LevelsRanks'][ $l ]['USER']?> -> <?php echo $Db->db_data['LevelsRanks'][ $l ]['DB']?> -> <?php echo $Db->db_data['LevelsRanks'][ $l ]['Table']?></option>'+
+            <?php endfor; ?>
+            '</select>'+
+            '</div>'+
+            '</th>'+
+'<th class="text-center"><button class="remove_servers" type="submit"><?php $General->get_icon( zmdi, close )?></button></th>'+
+'</tr>';
             $('#servers').append(str);
         });
         $('body').on('click', '.remove_servers', function() {

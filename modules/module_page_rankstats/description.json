@@ -16,7 +16,8 @@
     "interface": "1",
     "data": "1",
     "css": "1",
-    "js": "0"
+    "js": "0",
+    "cache_time": 86400
   },
   "sidebar": {
     "0": {

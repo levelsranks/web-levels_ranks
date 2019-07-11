@@ -14,8 +14,10 @@ $data['module_block_main_top'] = $Modules->get_module_cache('module_block_main_t
 // Если кэш морально устарел, то думаю его нужно обновить
 if ( ( $data['module_block_main_top'] == '' ) || ( time() > $data['module_block_main_top']['time'] ) ) {
 
+    unset( $data['module_block_main_top'] );
+    
     // Тут мы создаём таймку и увеличиваем её на 1 час т.е 7200 сек.
-    $data['module_block_main_top']['time'] = time() + 7200;
+    $data['module_block_main_top']['time'] = time() + $Modules->array_modules['module_block_main_top']['setting']['cache_time'];
 
     // Хоба, for подъехал
     for ($d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {

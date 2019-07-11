@@ -30,6 +30,9 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
                 <li <?php get_section( 'section', 'modules' ) == 'servers' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','servers')?>';">
                     <a>Настройка серверов</a>
                 </li>
+                <li <?php get_section( 'section', 'modules' ) == 'db' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','db')?>';">
+                    <a>Настройка базы данных</a>
+                </li>
             </ul>
         </div>
     </section>
@@ -44,6 +47,9 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
             break;
         case 'servers':
             require MODULES . 'module_page_adminpanel' . '/includes/servers.php';
+            break;
+        case 'db':
+            require MODULES . 'module_page_adminpanel' . '/includes/db.php';
             break;
     }?>
 </div>

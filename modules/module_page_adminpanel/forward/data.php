@@ -89,9 +89,10 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
     if(isset($_POST['save_servers']) && IN_LR == true) {
         $ip = $_POST['serversip'];
         $fakeip = $_POST['serversfakeip'];
+        $db = $_POST['serversdb'];
         $count = sizeof($_POST['serversip']);
         for ($i = 0; $i < $count; $i++) {
-            $arr_servers[$i] = ['ip' => $ip[$i],'fakeip' => $fakeip[$i]];
+            $arr_servers[$i] = ['ip' => $ip[$i],'fakeip' => $fakeip[$i],'db' => $db[$i]];
         }
         file_put_contents( SESSIONS . 'servers_list.php', '<?php return '.var_export_min( $arr_servers, true ).";" );
         header('Location: ' . get_url(1));

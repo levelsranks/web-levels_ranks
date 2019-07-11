@@ -19,9 +19,6 @@ ini_set('display_startup_errors', 0);
 // Ограничиваем время выполнения скрипта.
 set_time_limit(3);
 
-// Назначаем основную таймзону.
-date_default_timezone_set('Etc/GMT+3');
-
 // Нахожение в пространстве LR.
 define('IN_LR', true);
 
@@ -66,7 +63,6 @@ session_start();
 
 // Включение буферизации.
 ob_start();
-
 
 // Импортирование глобального класса отвечающего за работу с модулями.
 use app\ext\Modules;

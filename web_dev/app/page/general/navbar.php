@@ -11,7 +11,7 @@
 <div class=navbar>
     <div class=logo-area>
         <a href="#" data-toggle="offcanvas" class="nav-toggle pp-nav-toggle"><i></i></a>
-        <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="storage/cache/img/global/logo.png"></a>
+        <a href="/"><img ondrag="return false" ondragstart="return false" src="storage/cache/img/global/logo.png"></a>
     </div>
     <ul class="right-area">
         <li class="section">

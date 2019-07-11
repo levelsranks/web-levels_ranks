@@ -42,62 +42,34 @@
         white-space: nowrap;
         text-align: center;
         height: 30px;
-        outline: none;
-        font-weight: 400;
-        font-size: .80vw;
-        background: #f37c00;
+        background: inherit;
         color: #fff;
-        border: 0px solid #fff;
     }
 
     .remove_servers img{
         filter: invert(var(--svg));
     }
 
-    .add_server {
-        margin-right: 4%;
-        color: #FFF;
-        float: right;
-        background-color: #f37c00;
-        border: none;
-        cursor: pointer;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        background-image: none;
-        text-align: center;
-        line-height: 26px;
-        vertical-align: middle;
-        user-select: none;
-        outline: none;
-        margin-bottom: 25px;
+    ._add_server  {
+        display: inline-block;
+        float: left;
     }
 
-    .save_servers {
-        display: inline-block;
-        color: #FFF;
-        float: left;
-        margin-left: 4%;
-        background-color: #f37c00;
-        border: none;
-        cursor: pointer;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        background-image: none;
-        text-align: center;
-        line-height: 26px;
-        vertical-align: middle;
-        user-select: none;
-        outline: none;
+    ._save_list {
+        float: right;
     }
 
     .card-block {
         width: 100%;
         margin-left: 0%;
-        margin-bottom: 10px;
     }
 
     ._servers {
         width: 100%;
+    }
+
+    ._servers input {
+        text-align: center;
     }
 
     .text-group {
@@ -228,18 +200,19 @@
         border-color: #f37c00
     }
 
-    .border-checkbox-group .border-checkbox-label {
+    .input-form .border-checkbox-label {
         position: relative;
-        display: inline-block;
+        width: 100%;
         cursor: pointer;
-        line-height: 20px;
+        line-height: 22px;
+        margin-top: 4px;
         padding-left: 30px;
-        margin-bottom: 18px;
-        font-size: 13px;
-        font-weight: 500
+        color: var(--top-text-color);
+        font-size: 12px;
+        font-weight: var(--font-weight-2);
     }
 
-    .border-checkbox-group .border-checkbox-label:after {
+    .input-form .border-checkbox-label:after {
         content: "";
         display: block;
         width: 5px;
@@ -256,7 +229,7 @@
         transform-origin: left top
     }
 
-    .border-checkbox-group .border-checkbox-label:before {
+    .input-form .border-checkbox-label:before {
         content: "";
         display: block;
         border: 2px solid #f37c00;

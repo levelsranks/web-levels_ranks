@@ -27,6 +27,10 @@
                     </div>
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>
                     <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value="<?php echo $General->arr_general['admin']?>"></div>
+                <div class="input-form">
+                        <input class="border-checkbox" type="checkbox" name="SB_admins_import" id="SB_admins_import">
+                        <label class="border-checkbox-label" for="SB_admins_import">Импорт админ. листа из SB / MA ( Steam )</label>
+                </div>
             </form>
             <input class='btn' name="option_one_save" type="submit" form="options_one" value="Сохранить">
         </div>

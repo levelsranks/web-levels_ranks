@@ -46,6 +46,11 @@ class Db {
     /**
      * @var array
      */
+    public    $user_count;
+
+    /**
+     * @var array
+     */
     public    $db_count;
 
     /**
@@ -84,33 +89,42 @@ class Db {
             // Получаем название мода.
             $this->mod_name[] = array_keys( $this->db )[ $i ];
 
+            // Подсчёт количества пользователей.
+            $this->user_count[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ] );
+
+            // Циклом подключаемся ко всем возможным базам данны.
+            for ( $i4 = 0; $i4 < $this->user_count[ $this->mod_name[ $i ] ]; $i4++ ) {
+
             // Подсчёт количества баз данных подключенных из под одного пользователя.
-            $this->db_count[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][0]['DB'] );
+            $this->db_count[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'] );
 
             // Циклом подключаемся ко всем возможным базам данны.
             for ( $i2 = 0; $i2 < $this->db_count[ $this->mod_name[ $i ] ]; $i2++ ) {
 
                 // Описываем сигнатуру DNS для PDO.
-                $this->dns[ $this->mod_name[ $i ] ][ $i2 ] = 'mysql:host=' . $this->db[ $this->mod_name[ $i ] ][0]["HOST"] . ';port=3306;dbname=' . $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['DB'] . ';charset=utf8';
+                $this->dns[ $this->mod_name[ $i ] ][ $i2 ] = 'mysql:host=' . $this->db[ $this->mod_name[ $i ] ][ $i4 ]["HOST"] . ';port=3306;dbname=' . $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['DB'] . ';charset=utf8';
 
                 // Создаём подключение по PDO для определенной базы данных.
-                $this->pdo[ $this->mod_name[ $i ] ][ $i2 ] = new PDO( $this->dns[ $this->mod_name[ $i ] ][ $i2 ], $this->db[ $this->mod_name[ $i ] ][0]['USER'], $this->db[ $this->mod_name[ $i ] ][0]['PASS'], $this->options );
+                $this->pdo[ $this->mod_name[ $i ] ][ $i2 ] = new PDO( $this->dns[ $this->mod_name[ $i ] ][ $i2 ], $this->db[ $this->mod_name[ $i ] ][ $i4 ]['USER'], $this->db[ $this->mod_name[ $i ] ][ $i4 ]['PASS'], $this->options );
 
-                $this->table_count_for[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'] );
+                $this->table_count_for[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'] );
 
                 // Циклом перебираем все таблицы которые описаны в файле настроек баз данных.
                 for ( $i3 = 0; $i3 < $this->table_count_for[ $this->mod_name[ $i ] ]; $i3++ ) {
                     // Создаём массив с описанием таблиц.
                     $this->db_data[ $this->mod_name[ $i ] ][] = [
-                        'DB' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['DB'],
+                        'USER_ID' => $i4,
+                        'USER' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['USER'],
+                        'DB' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['DB'],
                         'DB_num' => $i2,
-                        'Table' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['table'],
-                        'name' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['name'],
-                        'mod' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['mod'],
-                        'steam' => $this->db[ $this->mod_name[ $i ] ][0]['DB'][ $i2 ]['Prefix'][ $i3 ]['steam'],
+                        'Table' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['table'],
+                        'name' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['name'],
+                        'mod' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['mod'],
+                        'steam' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['steam'],
                     ];
-
                 }
+
+            }
 
             }
 

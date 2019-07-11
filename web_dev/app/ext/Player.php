@@ -57,12 +57,14 @@ class Player {
      */
     public $Db;
 
-    function __construct( $Db, $id, $sg ) {
+    function __construct( $General, $Db, $id, $sg ) {
 
         $check_it = false;
 
         // Работа с базой данных.
         $this->Db = $Db;
+
+        $this->General = $General;
 
         // Присвоение группы серверов.
         $this->server_group = $sg;
@@ -90,10 +92,12 @@ class Player {
                                 $check_it = true;
                                 $this->server_group = $i;
                             endif;
-                            endif;
-                            endif;
+                    endif;
                 endif;
+            endif;
         endfor;
+
+        $this->found[ $this->server_group ] == '' && header( 'Location: ' . $this->General->arr_general['site']) && exit;
 
         $this->arr_default_info = $this->get_db_arr_default_info();
 

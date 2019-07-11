@@ -20,7 +20,7 @@ if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_r
     unset( $data['module_page_rankstats']['data'] );
 
     // Сохраняем текущее время и прибавляем к нему 1 час.
-    $data['module_page_rankstats']['time'] = time() + 172800;
+    $data['module_page_rankstats']['time'] = time() + $Modules->array_modules['module_page_rankstats']['setting']['cache_time'];
 
     // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {

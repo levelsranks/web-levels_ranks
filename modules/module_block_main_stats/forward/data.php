@@ -18,10 +18,10 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
     unset( $data['module_block_main_stats']['Total_players'] );
     unset( $data['module_block_main_stats']['Players_24h'] );
     unset( $data['module_block_main_stats']['Headshot'] );
+    unset( $data['module_block_main_stats']['time'] );
 
     // Сохраняем текущее время и прибавляем к нему 1 час.
-    $data['module_block_main_stats']['time'] = time() + 7200;
-
+    $data['module_block_main_stats']['time'] = time() + $Modules->array_modules['module_block_main_stats']['setting']['cache_time'];
 
     // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
