@@ -23,6 +23,13 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
     }
 
     if( isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
+        for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {
+            $module = array_keys( $Modules->array_modules )[ $i ];
+            if ( file_exists( SESSIONS . 'modules/' . $module . '/cache.php' ) ) {
+                unlink(SESSIONS . 'modules/' . $module . '/cache.php');
+            }
+        }
+        unlink( SESSIONS . '/modules_cache.php' );
         unlink( SESSIONS . '/modules_initialization.php' );
         header( 'Location: ' . get_url(1) );
         exit;

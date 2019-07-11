@@ -15,7 +15,9 @@ class General {
     /**
      * Инициализация основных настроек.
      */
-    function __construct() {
+    function __construct( $Modules ) {
+
+        $this->Modules = $Modules;
 
         // Проверка на существоавание option.php
         file_exists( SESSIONS . '/option.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
@@ -186,6 +188,39 @@ class General {
             } else {
                 return print '<img src="' . CACHE . 'img/icons/' . $group . '/' . $name . '.svg">';
             }
+        }
+    }
+
+    /**
+     * Перевод времени.
+     *
+     * @param int $seconds          Время в секундах
+     *
+     * @return string               Итог перевода.
+     */
+    function action_time_exchange( $seconds ) {
+        if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 ) {
+            $month = floor($seconds / 60 / 60 / 24 / 30 );
+            return $month > 1 ? $month . ' ' . $this->Modules->get_translate_phrase('_Months') : $month . ' ' . $this->Modules->get_translate_phrase('_Month');
+
+        } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 ) {
+            $week = floor($seconds / 60 / 60 / 24 / 7 );
+            return $week > 1 ? $week . ' ' . $this->Modules->get_translate_phrase('_Weeks') : $week . ' ' . $this->Modules->get_translate_phrase('_Week');
+
+        } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 ) {
+            $day = floor($seconds / 60 / 60 / 24 );
+            return $day > 1 ? $day . ' ' . $this->Modules->get_translate_phrase('_Days') : $day . ' ' . $this->Modules->get_translate_phrase('_Day');
+
+        } elseif ( floor($seconds / 60 / 60 ) != 0 ) {
+            $hour = floor($seconds / 60 / 60 );
+            return $hour > 1 ? $hour . ' ' . $this->Modules->get_translate_phrase('_Hour') : $hour . ' ' . $this->Modules->get_translate_phrase('_Hour');
+
+        } elseif ( floor($seconds / 60 ) != 0 ) {
+            $min = floor($seconds / 60 );
+            return $min > 1 ? floor($seconds / 60 ) . ' ' . $this->Modules->get_translate_phrase('_Minute') : $min . ' ' . $this->Modules->get_translate_phrase('_Minute');
+
+        } else {
+            return $seconds . ' ' . $this->Modules->get_translate_phrase('_Second');
         }
     }
 }

@@ -100,7 +100,7 @@ if ( $_SESSION['steamid'] ) {
                   endfor;
                   if( $General->arr_general['admin'] == $_SESSION['steamid32'] ):?>
             <li class="tooltip-right" data-tooltip="Панель администратора">
-                <a href="<?php echo get_url(2) . '?page=adminpanel'?>">
+                <a href="<?php echo get_url(2) . '?page=adminpanel'?>" <?php get_section( 'page', 'home' ) == 'adminpanel' && print 'class="table-active"'?>>
                     <div class="sidebar-icon">
                         <?php $General->get_icon( 'zmdi', 'coffee' )?>
                     </div>

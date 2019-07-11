@@ -72,16 +72,16 @@
                         </th>
                         <th class="text-left"><?php echo $res[ $i ]['reason'] ?></th>
                         <th class="text-center"><?php
-                            if ($res[$i]['length'] == '0' && $res[$i]['RemoveType'] != 'U') {
+                            if ( $res[ $i ]['length'] == '0' && $res[ $i ]['RemoveType'] != 'U' ) {
                                 echo $comms_type['0'];
-                            } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
-                                echo $comms_type['2'];
-                            } elseif ($res[$i]['length'] < '0' && time() <= $res[$i]['ends']) {
-                                echo $comms_type['3'];
-                            } elseif ($res[$i]['RemoveType'] == 'U') {
+                            } elseif ( $res[$i]['RemoveType'] == 'U') {
                                 echo $comms_type['1'];
-                            } else {
-                                echo $res[$i]['length'] / 60 / 60 . ' Час.';
+                            } elseif ( $res[$i]['length'] < '0' && time() >= $res[$i]['ends'] ) {
+                                echo $comms_type['2'];
+                            } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
+                                echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res[$i]['length'] ) . '</strike></div>';
+                            }  else {
+                                echo $Genetal->action_time_exchange( $res[$i]['length'] );
                             }?>
                         </th>
                     </tr>

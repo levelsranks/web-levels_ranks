@@ -10,10 +10,6 @@
 
 namespace app\ext;
 
-use app\ext\unit\Exstats_weapons;
-
-use pdo;
-
 class Player {
 
     /**

@@ -413,6 +413,48 @@
             'UA' => 'г.',
             'LT' => 'h.',
         ),
+    '_Day' =>
+        array (
+            'EN' => 'Day',
+            'RU' => 'День',
+            'UA' => 'День',
+            'LT' => 'Diena',
+        ),
+    '_Days' =>
+        array (
+            'EN' => 'Days',
+            'RU' => 'Дн.',
+            'UA' => 'Дн.',
+            'LT' => 'Dien.',
+        ),
+    '_Week' =>
+        array (
+            'EN' => 'Week',
+            'RU' => 'Неделя',
+            'UA' => 'Тиждень',
+            'LT' => 'Savaitė',
+        ),
+    '_Weeks' =>
+        array (
+            'EN' => 'Weeks',
+            'RU' => 'Недели',
+            'UA' => 'Тижні',
+            'LT' => 'Savaitės',
+        ),
+    '_Month' =>
+        array (
+            'EN' => 'Month',
+            'RU' => 'Мес.',
+            'UA' => 'Міс.',
+            'LT' => 'Mėnuo',
+        ),
+    '_Months' =>
+        array (
+            'EN' => 'Months',
+            'RU' => 'Мес.',
+            'UA' => 'Міс.',
+            'LT' => 'Mėn.',
+        ),
     '_Rank_' =>
         array (
             'EN' => 'No rank',

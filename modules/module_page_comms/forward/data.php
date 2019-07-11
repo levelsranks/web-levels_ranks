@@ -15,7 +15,7 @@ define('PLAYERS_ON_PAGE', '80');
 $page_num = get_section( 'num', '1' );
 
 // Типа банов.
-$comms_type = ['<div class="color-red">' . $Modules->get_translate_phrase('_Forever') . '</div>','<div class="color-blue">' . $Modules->get_translate_phrase('_Uncomm') . '</div>','<div class="color-green">' . $Modules->get_translate_phrase('_Has_expired') . '</div>','Сессия'];
+$comms_type = [0 => '<div class="color-red">' . $Modules->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Modules->get_translate_phrase('_Uncomm') . '</div>',2 => 'Сессия'];
 
 // CSGO || CSS
 $mod = $Db->db_data['SourceBans'][0]['mod'];

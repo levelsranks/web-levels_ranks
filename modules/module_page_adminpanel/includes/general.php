@@ -6,9 +6,9 @@
         </div>
         <div class="card-container option_one">
             <form id="options_one" enctype="multipart/form-data" method="post">
-                    <div class="input-form"><div class="input_text">Полное название</div><input name="full_name" placeholder="Полное название" value="<?php echo $General->arr_general['full_name']?>"></div>
-                    <div class="input-form"><div class="input_text">Короткое название</div><input name="short_name" placeholder="Короткое название" value="<?php echo $General->arr_general['short_name']?>"></div>
-                    <div class="input-form"><div class="input_text">Общая информация</div><input name="info" placeholder="Общая информация" value="<?php echo $General->arr_general['info']?>"></div>
+                    <div class="input-form"><div class="input_text">Полное название</div><input name="full_name" value="<?php echo $General->arr_general['full_name']?>"></div>
+                    <div class="input-form"><div class="input_text">Короткое название</div><input name="short_name" value="<?php echo $General->arr_general['short_name']?>"></div>
+                    <div class="input-form"><div class="input_text">Общая информация</div><input name="info" value="<?php echo $General->arr_general['info']?>"></div>
                     <div class="input-form"><div class="input_text">Язык</div>
                         <select class="select" name="language">
                             <option style="display:none" value="<?php echo $General->arr_general['language']?>"><?php echo $Modules->get_translate_phrase( '_' . $General->arr_general['language'] )?></option>
@@ -26,7 +26,7 @@
                         </select>
                     </div>
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>
-                    <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" placeholder="Пример: STEAM_1:1:39075162 . Поле не должно быть пустым в любом случае." value="<?php echo $General->arr_general['admin']?>"></div>
+                    <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value="<?php echo $General->arr_general['admin']?>"></div>
             </form>
             <input class='btn' name="option_one_save" type="submit" form="options_one" value="Сохранить">
         </div>
@@ -68,7 +68,7 @@
                         <option value="0">Свёрнут</option>
                     </select>
                 </div>
-                <div class="input-form"><div class="input_text">Закруглять ли края блоков</div>
+                <div class="input-form"><div class="input_text">Закруглять ли углы у форм</div>
                     <select name="form_border">
                         <option style="display:none" value="<?php echo (int) $General->arr_general['form_border']?>"><?php $General->arr_general['form_border'] == 1 ? print 'Закруглить' : print 'Оквадратить'?></option>
                         <option value="1">Закруглить</option>

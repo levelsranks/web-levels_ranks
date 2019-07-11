@@ -14,10 +14,8 @@ if ( $_GET["auch"] == 'login' ) {
         $openid = new LightOpenID( $this->arr_general['site'] );
         if ( ! $openid->mode ) {
             $openid->identity = 'https://steamcommunity.com/openid';
-            if ( ! headers_sent() ) {
-                header( 'Location: ' . $openid->authUrl() );
-                exit;
-            } else {?>
+            header( 'Location: ' . $openid->authUrl() );
+            if ( ! headers_sent() ) {?>
                 <script type="text/javascript">window.location.href="<?php echo $openid->authUrl() ?>";</script>
                 <noscript><meta http-equiv="refresh" content="0;url=<?php echo $openid->authUrl() ?>" /></noscript>
                 <?php exit;
@@ -31,14 +29,12 @@ if ( $_GET["auch"] == 'login' ) {
                 preg_match( $ptn, $id, $matches );
 
                 $_SESSION['steamid'] = $matches[1];
-                $_SESSION['steamid32'] = con_steam64to32($matches[1]);
+                $_SESSION['steamid32'] = con_steam64to32( $matches[1] );
                 $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                 $_SESSION['HTTP_X'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
                 $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-                if ( ! headers_sent() ) {
-                    header('Location: ' . $this->arr_general['site']);
-                    exit;
-                } else {?>
+                header('Location: ' . $this->arr_general['site']);
+                if ( ! headers_sent() ) {?>
                     <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
                     <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
                     <?php exit;
@@ -51,10 +47,8 @@ if ( $_GET["auch"] == 'login' ) {
 if ( $_GET["auch"] == 'logout' ) {
     session_unset();
     session_destroy();
-    if ( ! headers_sent() ) {
-        header('Location: ' . $this->arr_general['site']);
-        exit;
-    } else {?>
+    header('Location: ' . $this->arr_general['site']);
+    if ( ! headers_sent() ) {?>
         <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
         <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
         <?php exit;

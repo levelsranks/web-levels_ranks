@@ -71,14 +71,14 @@
                         <th class="text-center"><?php
                             if ($res[$i]['length'] == '0' && $res[$i]['RemoveType'] != 'U') {
                                 echo $ban_type['0'];
-                            } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
-                                echo $ban_type['2'];
-                            } elseif ($res[$i]['length'] < '0' && time() <= $res[$i]['ends']) {
-                                echo $ban_type['3'];
                             } elseif ($res[$i]['RemoveType'] == 'U') {
                                 echo $ban_type['1'];
-                            } else {
-                                echo $res[$i]['length'] / 60 / 60 . ' Час.';
+                            } elseif ($res[$i]['length'] < '0' && time() >= $res[$i]['ends']) {
+                                echo $ban_type['2'];
+                            } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
+                                echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res[$i]['length'] ) . '</strike></div>';
+                            }  else {
+                                echo $General->action_time_exchange( $res[$i]['length'] );
                             }?>
                         </th>
                     </tr>

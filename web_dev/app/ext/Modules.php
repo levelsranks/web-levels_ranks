@@ -10,7 +10,7 @@
 
 namespace app\ext;
 
-class Modules extends General {
+class Modules {
 
     /**
      * Организация работы вэб-приложения с модулями.
