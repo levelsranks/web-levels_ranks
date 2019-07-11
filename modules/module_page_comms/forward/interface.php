@@ -81,7 +81,7 @@
                             } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
                                 echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res[$i]['length'] ) . '</strike></div>';
                             }  else {
-                                echo $Genetal->action_time_exchange( $res[$i]['length'] );
+                                echo $General->action_time_exchange( $res[$i]['length'] );
                             }?>
                         </th>
                     </tr>
