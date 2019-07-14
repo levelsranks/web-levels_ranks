@@ -19,9 +19,6 @@ class General {
 
         $this->Modules = $Modules;
 
-        // Проверка на существоавание option.php
-        file_exists( SESSIONS . '/option.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
-
         if ( ! empty( $_SESSION['steamid'] ) ):
             if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['HTTP_X'] != $_SERVER['HTTP_X_FORWARDED_FOR'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR']  ):
                 session_unset() && session_destroy() && die('Fake request');
