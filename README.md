@@ -336,6 +336,7 @@
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
+- Sleep#0725  ( Discord )   - 250 RUB.
 - Felya#1342  ( Discord )   - 248.12 RUB.
 - xek#1152    ( Discord )   - 200 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
