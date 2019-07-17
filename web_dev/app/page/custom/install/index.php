@@ -149,312 +149,180 @@ if( isset( $_POST['option_save'] ) ) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
     <title>Добро пожаловать в мастер установки LR!</title>
 </head>
+<link rel="stylesheet" href="../../../../storage/assets/css/themes/mainstream_white/style.css">
 <style>
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 300;
-        src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v13/JTURjIg1_i6t8kCHKm45_cJD3gnD_g.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');
-        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v13/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
+    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/dark_mode_palette.json' ) ) )?>
+</style>
+<style>
+    .badge {
+        display: inline-block;
+        padding: .35em .6em;
+        font-size: 75%;
         font-weight: 500;
-        src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v13/JTURjIg1_i6t8kCHKm45_ZpC3g3D_u50.woff2) format('woff2');
-        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v13/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 600;
-        src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v13/JTURjIg1_i6t8kCHKm45_bZF3g3D_u50.woff2) format('woff2');
-        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-    }
-
-    @font-face {
-        font-display: fallback;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 600;
-        src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v13/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    }
-
-    body{
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        font-size: 15px;
-        position: relative;
-        background-color: #2b2b2b;
-        overflow: hidden;
-        color: #fff;
-    }
-
-    dl,
-    ol,
-    ul,
-    ol ol,
-    ol ul,
-    ul ol,
-    ul ul {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding: 0;
-    }
-
-    .color-red {
-        color: #dc3545!important;
-    }
-
-    .color-green {
-        color: #28a745!important;
-    }
-
-    .container {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .line {
-        position: fixed;
-        margin-top: 2%;
-        left: 20%;
-        background: #3e3d3e;
-        height: 0.18%;
-        width: 60%;
-        z-index: 3;
-    }
-
-    .php_block{
-        position: fixed;
-        font-weight: 700;
-        font-size: 1.4vw;
-        margin-top: 2.85%;
-        left: 19.85%;
-        border-radius: 4px;
-        z-index: 99;
-    }
-    .php_block .color-green, .php_block .color-red{
-        display: inline-block
-    }
-
-    .install_block{
-        position: fixed;
-        overflow: hidden;
-        margin-top: 7%;
-        left: 20%;
-        background-color: rgba(31, 31, 31, 0.7);
-        height: 80%;
-        width: 60%;
-        z-index: 99;
-        border-radius: 4px;
-    }
-
-    .install_block .title{
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 99;
-        font-weight: 600;
-        font-size: 1.1vw;
-        color: #ffffff;
-    }
-
-    .install_block .next{
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        z-index: 99;
-        font-weight: 600;
-        font-size: 1.1vw;
-    }
-    .install_block input,.install_block select{
-        cursor: pointer;
-        white-space: nowrap;
+        line-height: 1;
         text-align: center;
-        outline: none;
+        white-space: nowrap;
+        vertical-align: baseline;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        fill: #ffffff;
+        color: #ffffff!important;
+        background-color: var(--span-color);
+        box-shadow: var(--span-color-back) 5px 5px;
+    }
+
+    .badge a {
+        fill: #ffffff;
+        color: #ffffff!important;
+        transition-duration: 400ms;
+    }
+
+    .input-form {
+        position: relative;
+        text-align: left;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        width: 100%;
+    }
+
+    .btn {
+        margin-top: 12px;
         float: right;
-        padding: 7px 16px;
-        color: #fff;
-        background-color: #3E3D3E;
-        border: 1px solid #fff;
-        font-weight: 400;
-        font-size: 0.7vw;
     }
 
-    .db_setting{
-        position: absolute;
-        left: 23px;
-        top: 80px;
+    .container-fluid {
+        width: 100%;
+        padding-top: 0px;
     }
 
-    .db_setting .name{
-        color: #ffffff;
-        font-weight: 500;
-        font-size: 0.9vw;
-        margin-bottom: 20px;
-        text-align: left;
+    .card {
+        margin-bottom: 17px;
     }
-
-    .db_setting .name input{
-        cursor: text;
-        margin-left: 20px;
-        text-align: left;
-        background-color: inherit;
-        color: #ffffff;
-        width: 30vw;
-    }
-
-    .db_setting .name select{
-        cursor: text;
-        margin-left: 10px;
-        text-align: left;
-        background-color: rgba(31, 31, 31, 0.7);
-        color: #ffffff;
-        width: 8vw;
-    }
-
 </style>
 <body>
-<div class="container">
-    <div class="line"></div>
-    <div class="php_block">
-        <div class="php_version">Ваша версия PHP: <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
-        <div class="php_version_recomendet">Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O</div>';} ?>
-    </div>
-    </div>
-    <div class="install_block">
-        <?php if( $eb_db == '0' ) {?>
-        <div class="title">Настройка базы данных - storage/cache/sessions/db.php</div>
-        <form id="db_check" enctype="multipart/form-data" method="post">
-        <div class="db_setting">
-            <div class="name">Host: <input name="host" value="<?php echo $_POST['host']?>"></div>
-            <div class="name">User: <input name="user" value="<?php echo $_POST['user']?>"></div>
-            <div class="name">Pass: <input name="pass" value="<?php echo $_POST['pass']?>"></div>
-            <div class="name">DB: <input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
-            <div class="name">Table: <input name="table" placeholder="Пример: lvl_base" value="<?php echo $_POST['table']?>"></div>
-            <div class="name">Название группы серверов: <input name="servers" placeholder="Пример: Основные сервера Retakes" value="<?php if($_POST['servers'] == ''){echo '';} else { echo $_POST['servers'];}?>"></div>
-            <div class="name">Мод:
-                <select name="game_mod">
-                    <option value="csgo">CS:GO</option>
-                    <option value="css">CSS</option>
-                </select>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <?php if( $eb_db == '0' ) {?>
+                <div class="card-header">
+                    <h5 class="badge">Настройка базы данных - storage/cache/sessions/db.php</h5>
+                </div>
+                <div class="card-container option_one">
+                    <form id="db_check" enctype="multipart/form-data" method="post">
+                    <div class="input-form"><div class="input_text">Host: </div><input name="host" value="<?php echo $_POST['host']?>"></div>
+                        <div class="input-form"><div class="input_text">User: </div><input name="user" value="<?php echo $_POST['user']?>"></div>
+                        <div class="input-form"><div class="input_text">Pass: </div><input name="pass" value="<?php echo $_POST['pass']?>"></div>
+                        <div class="input-form"><div class="input_text">DB: </div><input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
+                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="Пример: lvl_base" name="table" value="<?php echo $_POST['table']?>"></div>
+                        <div class="input-form"><div class="input_text">Название группы серверов: </div><input placeholder="Пример: Основные сервера Retakes" name="servers" value="<?php if($_POST['servers'] == ''){echo '';} else { echo $_POST['servers'];}?>"></div>
+                        <div class="input-form"><div class="input_text">Мод</div>
+                            <select name="game_mod">
+                                <option value="csgo">CS:GO</option>
+                                <option value="css">CSS</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Steam mode</div>
+                            <select name="steam_mod">
+                                <option value="1">Only Steam</option>
+                                <option value="0">No Steam</option>
+                            </select>
+                        </div>
+                    </form>
+                    <?php if ( $db_check != 2 ):?>
+                    <input class="btn" name="db_check" type="submit" form="db_check" value="Проверить">
+                    <?php endif;?>
+                    <?php if ( $db_check == 2 ):?>
+                        <input class="btn" name="save_db" type="submit" form="db_check" value="Далее">
+                    <?php endif;?>
+                </div>
             </div>
-            <div class="name">Steam mode:
-                <select name="steam_mod">
-                    <option value="1">Only Steam</option>
-                    <option value="0">No Steam</option>
-                </select>
-            </div><?php if ( $db_check == 1 ):?>
-                <div class="name">Подключение к базе данных отсутствует</div>
-            <?php elseif ( $db_check == 2 ): ?>
-            <div class="name">База данных с таблицей успешно подключена!</div>
-            <?php endif; ?>
-            <input type="submit" value="Проверить" name="db_check" form="db_check">
         </div>
-        </form>
-        <?php if ( $db_check == 2 ):?>
-        <div class="next"><input name="save_db" type="submit" form="db_check" value="Далее"></div>
-        <?php endif;?>
         <?php } ?>
         <?php if( $eb_option == '0' ) {?>
-            <div class="title">Основные настройки - storage/cache/sessions/options.php</div>
-            <form id="options" enctype="multipart/form-data" method="post">
-                <div class="db_setting">
-                    <div class="name">Полное название: <input name="full_name" placeholder="Пример: OCGN.RU | OCGN.PRO :: Соревновательная платформа CS:GO" value=""></div>
-                    <div class="name">Короткое название: <input name="short_name" placeholder="Пример: OCGN.RU | OCGN.PRO" value=""></div>
-                    <div class="name">Общая информация: <input name="info" placeholder="Пример: OCGN.RU | OCGN.PRO :: Соревновательная платформа без читеров, позволяющая вам тренироваться и участвовать на турнирах по Counter-Strike: Global Offensive!" value=""></div>
-                    <div class="name">Язык:
-                        <select name="language">
-                            <option value="RU">Русский</option>
-                            <option value="EN">Английский</option>
-                            <option value="UA">Украинский</option>
-                            <option value="LT">Литовский</option>
-                        </select>
-                    </div>
-                    <div class="name">Тёмный режим по умолчанию:
-                        <select name="dark_mode">
-                            <option value="1">Включен</option>
-                            <option value="0">Выключен и вообще я хорошо вижу</option>
-                        </select>
-                    </div>
-                    <div class="name">Анимации по умолчанию:
-                        <select name="animations">
-                            <option value="1">Включены</option>
-                            <option value="0">Лучше поменьше</option>
-                        </select>
-                    </div>
-                    <div class="name">Показывать ли аватарки:
-                        <select name="avatars">
-                            <option value="1">Показывать</option>
-                            <option value="2">Использовать случайные аватарки</option>
-                            <option value="0">Не показывать</option>
-                        </select>
-                    </div>
-                    <div class="name">Сайтбар по умолчанию:
-                        <select name="sidebar_open">
-                            <option value="1">Развёрнут</option>
-                            <option value="0">Свёрнут</option>
-                        </select>
-                    </div>
-                    <div class="name">Закруглять ли края блоков:
-                        <select name="form_border">
-                            <option value="1">Закруглить</option>
-                            <option value="0">Оквадратить</option>
-                        </select>
-                    </div>
-                    <div class="name">Авторизация по Steam:
-                        <select name="steam_auth">
-                            <option value="1">Есть</option>
-                            <option value="0">Нету</option>
-                        </select>
-                    </div>
-                    <div class="name">Steam WEB KEY: <input name="web_key" value=""></div>
-                    <div class="name">Глав. админ. ( Steam авторизация ): <input name="admin" placeholder="Пример: STEAM_1:1:39075162 . Поле не должно быть пустым в любом случае." value=""></div>
-                    <div class="name">Глав. админ. логин ( No Steam авторизация ): <input name="admin_login" placeholder="Пример: M0st1ce" value=""></div>
-                    <div class="name">Глав. админ. пароль ( No Steam авторизация ): <input name="admin_pass" placeholder="Пример: 123_321" value=""></div>
+                <div class="card-header">
+                    <h5 class="badge">Основные настройки - storage/cache/sessions/options.php</h5>
                 </div>
-            </form>
-                <div class="next"><input name="option_save" type="submit" form="options" value="Сохранить"></div>
+                <div class="card-container option_one">
+                    <form id="options" enctype="multipart/form-data" method="post">
+                        <div class="input-form"><div class="input_text">Полное название</div><input name="full_name" value=""></div>
+                        <div class="input-form"><div class="input_text">Короткое название</div><input name="short_name" value=""></div>
+                        <div class="input-form"><div class="input_text">Общая информация</div><input name="info" value=""></div>
+                        <div class="input-form"><div class="input_text">Язык</div>
+                            <select class="select" name="language">
+                                <option style="display:none" value="RU">Русский</option>
+                                <option value="RU">Русский</option>
+                                <option value="EN">Английский</option>
+                                <option value="UA">Украинский</option>
+                                <option value="LT">Литовский</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Тёмный режим по умолчанию:</div>
+                            <select name="dark_mode">
+                                <option value="1">Включен</option>
+                                <option value="0">Выключен и вообще я хорошо вижу</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Анимации по умолчанию:</div>
+                            <select name="animations">
+                                <option value="1">Включены</option>
+                                <option value="0">Лучше поменьше</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Показывать ли аватарки:</div>
+                            <select name="avatars">
+                                <option value="1">Показывать</option>
+                                <option value="2">Использовать случайные аватарки</option>
+                                <option value="0">Не показывать</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Сайтбар по умолчанию:</div>
+                            <select name="sidebar_open">
+                                <option value="1">Развёрнут</option>
+                                <option value="0">Свёрнут</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Закруглять ли края блоков:</div>
+                            <select name="form_border">
+                                <option value="1">Закруглить</option>
+                                <option value="0">Оквадратить</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Авторизация по Steam</div>
+                            <select name="steam_auth">
+                                <option style="display:none" value="1">Есть</option>
+                                <option value="1">Есть</option>
+                                <option value="0">Нету</option>
+                            </select>
+                        </div>
+                        <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value=""></div>
+                        <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value=""></div>
+                        <div class="input-form"><div class="input_text">Глав. админ. логин ( No Steam авторизация ): </div><input name="admin_login" value=""></div>
+                        <div class="input-form"><div class="input_text">Глав. админ. пароль ( No Steam авторизация ): </div><input name="admin_pass" value=""></div>
+                    </form>
+                    <input class="btn" name="option_save" type="submit" form="options" value="Сохранить">
+                </div>
+            </div>
+        </div>
         <?php } ?>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="badge">Информация</h5>
+                </div>
+                <div class="card-container">
+                    Ваша версия PHP: <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
+                    <div>Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O</div>';} ?>
+                    <?php if ( $db_check == 1 ):?>
+                        <div>Подключение к базе данных отсутствует!</div>
+                    <?php elseif ( $db_check == 2 ): ?>
+                        <div>База данных с таблицей успешно подключена!</div>
+                    <?php endif; ?>
+        </div>
+        </div>
     </div>
+</div>
 </div>
 </body>
 </html>
