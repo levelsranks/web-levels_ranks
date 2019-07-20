@@ -12,8 +12,10 @@
 if ( $_SESSION['steamid'] ) {
     // С помощью цикла делаем запросы к базе данных.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
-        $res_data_sidebar[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'], 'mod' => $Db->db_data['LevelsRanks'][$d]['mod'], 'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table']];
-        $base_info = $Db->query('LevelsRanks',  $Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $Db->db_data['LevelsRanks'][$d]["Table"] . ' where steam="' . $_SESSION['steamid32'] . '"' );
+        $res_data_sidebar[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],
+                               'mod' => $Db->db_data['LevelsRanks'][$d]['mod'],
+                               'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table']];
+        $base_info = $Db->query('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $Db->db_data['LevelsRanks'][$d]["Table"] . ' where steam="' . $_SESSION['steamid32'] . '"' );
         if ($base_info != '') {
             $user_auth[] = $base_info;
             $lastconnect[] = $base_info['lastconnect'];
@@ -59,7 +61,9 @@ if ( $_SESSION['steamid'] ) {
                                 <?php echo $Modules->get_translate_phrase( '_Rank_' . $user_auth[0]['rank'] )?>
                             </div>
                             <?php if ( $user_rank_count != 1 ):?>
-                            <div class="icon-down"><?php $General->get_icon( 'zmdi', 'chevron-down', null )?></div>
+                            <div class="icon-down">
+                                <?php $General->get_icon( 'zmdi', 'chevron-down', null )?>
+                            </div>
                             <?php endif;?>
                         </div>
                         </a>
@@ -79,8 +83,12 @@ if ( $_SESSION['steamid'] ) {
         </div>
         <ul class="sidebar-menu">
             <li class="tooltip-right" data-tooltip="<?php echo $Modules->get_translate_phrase('_Home')?>"><a href="?page=home" <?php get_section( 'page', 'home' ) == 'home' && print 'class="table-active"'?>>
-                    <div class="sidebar-icon"><?php $General->get_icon('zmdi', 'home', null )?></div>
-                    <div class="item-name"><?php echo $Modules->get_translate_phrase('_Home')?></div>
+                    <div class="sidebar-icon">
+                        <?php $General->get_icon('zmdi', 'home', null )?>
+                    </div>
+                    <div class="item-name">
+                        <?php echo $Modules->get_translate_phrase('_Home')?>
+                    </div>
                 </a>
             </li>
             <?php for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++ ):
@@ -131,7 +139,9 @@ if ( $_SESSION['steamid'] ) {
                 <label>Пароль</label>
                 <input type="text" value="" name="_pass"/>
             </div>
-                <?php if( $General->arr_general['steam_auth'] == 1 ) {?><a href="?auch=login">Войти по Steam</a><?php }?>
+                <?php if( $General->arr_general['steam_auth'] == 1 ):?>
+                    <a href="?auch=login">Войти по Steam</a>
+                <?php endif;?>
                 <input class="btn no_steam" name="log_in" nam type="submit" value="Войти">
             </div>
             </form>

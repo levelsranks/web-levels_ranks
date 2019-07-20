@@ -22,7 +22,7 @@ if ( ( $data['module_block_main_top'] == '' ) || ( time() > $data['module_block_
     // Хоба, for подъехал
     for ($d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
             // Забираем в кэш всё что сможем унести
-        $data['module_block_main_top'][ $d ] = $Db->queryAll( 'LevelsRanks', $Db->db_data['LevelsRanks'][$d]['DB_num'],'SELECT name,rank,steam,playtime,value,kills,deaths FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
+        $data['module_block_main_top'][ $d ] = $Db->queryAll( 'LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'],'SELECT name,rank,steam,playtime,value,kills,deaths FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
     }
     // Обновляем кэш
     $Modules->set_module_cache( 'module_block_main_top', $data['module_block_main_top'] );

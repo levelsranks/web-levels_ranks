@@ -26,10 +26,14 @@ if($page_num <= '0'){
     header('Location: ' . $General->arr_general);
     exit;
 }
-// Хоба, for в for'e, получаем массив необъятной информации со страницы! :D
 
 for ($d = 0; $d < $Db->table_count['LevelsRanks']; $d++) {
-        $res_data[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],'mod' => $Db->db_data['LevelsRanks'][$d]['mod'],'data_db' => $Db->db_data['LevelsRanks'][$d]['DB_num'],'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table'],'count' => ceil($Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['DB_num'], "SELECT COUNT(*) FROM " . $Db->db_data['LevelsRanks'][$d]['Table'] . " ")[0]/PLAYERS_ON_PAGE)];
+        $res_data[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],
+                       'mod' => $Db->db_data['LevelsRanks'][$d]['mod'],
+                       'USER_ID' => $Db->db_data['LevelsRanks'][$d]['USER_ID'],
+                       'data_db' => $Db->db_data['LevelsRanks'][$d]['DB_num'],
+                       'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table'],
+                       'count' => ceil($Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'], "SELECT COUNT(*) FROM " . $Db->db_data['LevelsRanks'][$d]['Table'] . " ")[0]/PLAYERS_ON_PAGE)];
 }
 
 $res_data_count = sizeof( $res_data );
@@ -39,10 +43,9 @@ $page_max = $res_data[$server_group]['count'];
 
 $page_num > $page_max && header('Location: ' . $General->arr_general['site']);
 
-
 // Запрос
 
-$res[$server_group] = $Db->queryAll( 'LevelsRanks', $res_data[$server_group]['data_db'], "SELECT name,rank,steam,playtime,value,kills,headshots,deaths FROM " . $res_data[$server_group]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
+$res[$server_group] = $Db->queryAll( 'LevelsRanks', $res_data[$server_group]['USER_ID'], $res_data[$server_group]['data_db'], "SELECT name,rank,steam,playtime,value,kills,headshots,deaths FROM " . $res_data[$server_group]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
 
 $res[$server_group] == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
 ($server_group > $res_data_count-1 || ctype_digit($server_group) != 1) ? header('Location: ' . $General->arr_general['site']) : false;

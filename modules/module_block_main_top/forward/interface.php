@@ -55,7 +55,9 @@
                                 </th>
                                 <th class="text-center"><?php echo round($data_paste[ $d ][ $dd ]['kills'] / $data_paste[ $d ][ $dd ]['deaths'], 2); ?></th>
                                 <th class="text-center tb-time-two"><?php echo round($data_paste[ $d ][ $dd ]['playtime'] / 60 / 60), ' ', $Modules->get_translate_phrase('_Hour') ?></th>
-                            </tr><?php } ?>
+                            </tr><div class="card_info_block">213</div>
+                            <?php } ?>
+
                         </tbody>
                     </table>
                 </div>

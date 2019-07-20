@@ -76,6 +76,13 @@
             'UA' => 'Список банів',
             'LT' => 'Blokavimų sąrašas',
         ),
+    '_Demos' =>
+        array (
+            'EN' => 'Demos List',
+            'RU' => 'Архив демо-записей',
+            'UA' => 'Архив демо-записей',
+            'LT' => 'Demos List',
+        ),
     '_Page' =>
         array (
             'EN' => 'Page',

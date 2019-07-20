@@ -123,7 +123,6 @@ if( isset( $_POST['option_save'] ) ) {
         'animations' => (int) $_POST['animations'],
         'sidebar_open' => (int) $_POST['sidebar_open'],
         'form_border' => (int) $_POST['form_border'],
-        'sidebar' => 'mainstream',
         'web_key' => $_POST['web_key'],
         'avatars' => (int) $_POST['avatars'],
         'ranks_pack' => 'default',

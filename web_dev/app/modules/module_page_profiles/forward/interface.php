@@ -7,6 +7,13 @@
      *
      * @license GNU General Public License Version 3
      */
+
+    /*
+     * In your head, in your head
+     * Zombie, zombie, zombie
+     * What's in your head, in your head
+     * Zombie, zombie, zombie?
+     */
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -17,9 +24,9 @@
                     <div class="select-panel select-panel-table badge">
                         <select onChange="window.location.href=this.value">
                             <option style="display:none" value="" disabled selected><?php echo $Player->found[  $Player->server_group  ]['name_servers']?></option>
-                            <?php for ($b = 0, $_c = sizeof( $Player->found );$b < $_c;$b++) { if($Player->found[$b] != ''){ ?>
-                                <option value="<?php echo set_url_section( get_url( 2 ), 'server_group', $b )?>">
-                                    <a href="<?php echo set_url_section( get_url( 2 ), 'server_group', $b )?>"><?php echo $Player->found[$b]['name_servers']?></a></option>
+                            <?php for ($b = 0, $_c = sizeof( $Player->found );$b < $_c;$b++) { if($Player->found_fix[$b] != ''){ ?>
+                                <option value="<?php echo set_url_section( get_url( 2 ), 'server_group', $Player->found_fix[$b]['server_group'] )?>">
+                                    <a href="<?php echo set_url_section( get_url( 2 ), 'server_group', $Player->found_fix[$b]['server_group'] )?>"><?php echo $Player->found_fix[$b]['name_servers']?></a></option>
                             <?php }} ?>
                         </select>
                     </div>
@@ -29,10 +36,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="profile">
-        <div class="col-md-12">
             <div class="left-block">
+                <div class="profile__block">
                 <div class="user-block">
+                    <div class="block">
                     <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64( $Player->get_steam_32() ),1)?>;if(CheckAvatar == 1) {avatar.push("<?php echo con_steam32to64(  $Player->get_steam_32()  )?>");}</script><?php } ?>
                     <a href="<?php $Player->found[  $Player->server_group  ]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64( $Player->get_steam_32() )?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64(  $Player->get_steam_32()  )?>"class="rounded-circle avatar" data-src="
                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64( $Player->get_steam_32()  ), 1);
@@ -44,8 +51,10 @@
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $General->arr_general['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                     <div class="rank"><?php echo $Modules->get_translate_phrase('_Rank_' . $Player->get_rank())?></div>
                     <div class="user-stats">Игрок</div>
+                    </div>
                 </div>
                 <div class="best-weapon-block">
+                    <div class="block">
                     <ul class="weapons">
                         <?php for ( $i = 0; $i < 3; $i++ ):?>
                         <li>
@@ -75,7 +84,11 @@
                     </table>
                         </div>
                 </div>
+                </div>
+                </div>
+                <div class="profile__block">
                 <div class="short-stats-block">
+                    <div class="block">
                     <div class="left-stats-block">
                         <ul>
                             <li><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Total_winning_percentage')?></li>
@@ -83,7 +96,6 @@
                             <li><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Ratio_SH')?></li>
                             <li><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Game_time')?></li>
                             <li><?php echo $Modules->get_translate_phrase('_Headshot')?>:</li>
-                            <li><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_First_round_kills')?></li>
                         </ul>
                     </div>
                     <div class="right-stats-block">
@@ -93,7 +105,6 @@
                             <li><span><?php echo $Player->get_percent_hits()?></span></li>
                             <li><span><?php echo $Player->get_playtime()?> <?php echo $Modules->get_translate_phrase('_Hour')?></span></li>
                             <li><span><?php echo $Player->get_percent_headshots()?></span></li>
-                            <li><span>-</span></li>
                         </ul>
                     </div>
                     <div class="skull-block">
@@ -112,9 +123,12 @@
                     </div>
                 </div>
                 </div>
+                </div>
+                </div>
                 <div class="middle-block">
-                    <div class="up_block">
+                    <div class="profile__block">
                     <div class="best-maps">
+                        <div class="block">
                         <div class="map-top">
                             <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_mirage.jpg">
                             <div class="map-lower">
@@ -123,43 +137,60 @@
                                 <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
                             </div>
                         </div>
-                        <ul class="map-bottom">
-                            <li>
-                            <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_dust2.jpg">
-                            <div class="map-lower">
-                                <div class="map-one"><span>2</span></div>
-                                <div class="map-pretty-name"><span>DUST 2</span></div>
-                                <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
+                            <div class="map-bottom">
+                                <div class="weapon-table">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-right"></th>
+                                            <th class="text-left">Карта</th>
+                                            <th class="text-center">Победы</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_dust2.png"></th>
+                                                <th class="text-left">de_dust2</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_cache.png"></th>
+                                                <th class="text-left">de_cache</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_inferno.png"></th>
+                                                <th class="text-left">de_inferno</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_nuke.png"></th>
+                                                <th class="text-left">de_nuke</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_cbble.png"></th>
+                                                <th class="text-left">de_cbble</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_overpass.png"></th>
+                                                <th class="text-left">de_overpass</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_train.png"></th>
+                                                <th class="text-left">de_train</th>
+                                                <th class="text-center">-</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            </li>
-                            <li>
-                                <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_train.jpg">
-                                <div class="map-lower">
-                                    <div class="map-one"><span>3</span></div>
-                                    <div class="map-pretty-name"><span>TRAIN</span></div>
-                                    <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_inferno.jpg">
-                                <div class="map-lower">
-                                    <div class="map-one"><span>4</span></div>
-                                    <div class="map-pretty-name"><span>INFERNO</span></div>
-                                    <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_nuke.jpg">
-                                <div class="map-lower">
-                                    <div class="map-one"><span>5</span></div>
-                                    <div class="map-pretty-name"><span>NUKE</span></div>
-                                    <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
-                                </div>
-                            </li>
-                        </ul>
+                    </div>
                     </div>
                         <div class="hitstats-block">
-                            <div class="hitstats">
+                            <div class="block">
                                 <img class="back" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/back' ?>.jpg">
                                 <div class="hit_player">
                                     <a class="tooltip-top" data-tooltip="% hits - Head - -%"><img class="hit_head" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/head' ?>.png"></a>
@@ -169,12 +200,90 @@
                                     <a class="tooltip-top" data-tooltip="% hits - Right Leg - -%"><img class="hit_right_leg" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/right_leg' ?>.png"></a>
                                     <a class="tooltip-top" data-tooltip="% hits - Body - -%"><img class="hit_body" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/body' ?>.png"></a>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+                    <?php if( $Player->unusualkills != false ):?>
+                    <div class="profile__block">
+                            <div class="unusualkills_block_left">
+                                <div class="block">
+                                    <div class="unusualkills_score"><?php echo $Player->get_unusualkills_op()?></div>
+                                    <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_First_round_kills')?></div>
+                                    <div class="icon_block">
+                                        <i class="zmdi zmdi-fire zmdi-hc-fw"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="unusualkills_block">
+                                <div class="block">
+                                    <div class="unusualkills_score"><?php echo $Player->get_unusualkills_penetrated()?></div>
+                                    <div class="unusualkills_text">Убийств прострелом</div>
+                                    <div class="icon_block">
+                                        <i class="zmdi zmdi-flash zmdi-hc-fw"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="unusualkills_block">
+                                <div class="block">
+                                    <div class="unusualkills_score"><?php echo $Player->get_unusualkills_noscope()?></div>
+                                    <div class="unusualkills_text">Убийств без прицела</div>
+                                    <div class="icon_block">
+                                        <i class="zmdi zmdi-circle-o zmdi-hc-fw"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="unusualkills_block_left">
+                            <div class="block">
+                                <div class="unusualkills_score"><?php echo $Player->get_unusualkills_run()?></div>
+                                <div class="unusualkills_text">Убийств на бегу</div>
+                                <div class="icon_block">
+                                    <i class="zmdi zmdi-run zmdi-hc-fw"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unusualkills_block">
+                            <div class="block">
+                                <div class="unusualkills_score"><?php echo $Player->get_unusualkills_flash()?></div>
+                                <div class="unusualkills_text">Убийств слепым</div>
+                                <div class="icon_block">
+                                    <i class="zmdi zmdi-eye-off zmdi-hc-fw"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unusualkills_block">
+                            <div class="block">
+                                <div class="unusualkills_score"><?php echo $Player->get_unusualkills_jump()?></div>
+                                <div class="unusualkills_text">Убиств в прыжке</div>
+                                <div class="icon_block">
+                                    <i class="zmdi zmdi-star-outline zmdi-hc-fw"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unusualkills_block_left">
+                            <div class="block">
+                                <div class="unusualkills_score"><?php echo $Player->get_unusualkills_smoke()?></div>
+                                <div class="unusualkills_text">Убийств в дым</div>
+                                <div class="icon_block">
+                                    <i class="zmdi zmdi-mood-bad zmdi-hc-fw"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="unusualkills_block">
+                            <div class="block">
+                                <div class="unusualkills_score"><?php echo $Player->get_unusualkills_whirl()?></div>
+                                <div class="unusualkills_text">Убийств с разворота</div>
+                                <div class="icon_block">
+                                    <i class="zmdi zmdi-money zmdi-hc-fw"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif;?>
+                </div>
                 <div class="right-block">
+                    <div class="profile__block">
                     <div class="top">
+                        <div class="block">
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -197,6 +306,6 @@
                         </table>
                     </div>
                 </div>
-        </div>
-    </div>
+                </div>
+                </div>
 </div>

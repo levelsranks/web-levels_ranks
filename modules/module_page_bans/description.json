@@ -24,7 +24,7 @@
     "href": "?page=bans",
     "open_new_tab": "0",
     "icon_group": "zmdi",
-    "icon_category": "",
+    "icon_category": null,
     "icon": "block",
     "name": "_Bans"
   }}

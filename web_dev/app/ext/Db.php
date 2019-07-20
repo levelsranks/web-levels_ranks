@@ -68,7 +68,7 @@ class Db {
      */
     public function __construct() {
 
-        // Получение настроек с модами, пользователями, базами данных и таблицами.
+        # Получение настроек с модами, пользователями, базами данных и таблицами.
         ! file_exists ( SESSIONS . '/db.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
 
         $this->db = require SESSIONS . '/db.php';
@@ -80,47 +80,64 @@ class Db {
             PDO::ATTR_EMULATE_PREPARES   => false
         ];
 
-        // Подсчёт количества модов.
+        # Подсчёт -> Количество модов.
         $this->mod_count = sizeof( $this->db );
 
-        // Циклом подключаемся ко всем возможным базам данны.
-        for ( $i = 0; $i < $this->mod_count; $i++ ) {
+        # Цикл -> Количество модов.
+        for ( $m = 0; $m < $this->mod_count; $m++ ) {
 
-            // Получаем название мода.
-            $this->mod_name[] = array_keys( $this->db )[ $i ];
+            /*
+             * $m - Номер -> Модуль.
+             */
 
-            // Подсчёт количества пользователей.
-            $this->user_count[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ] );
+            # Получаем название определенного мода.
+            $this->mod_name[] = array_keys( $this->db )[ $m ];
 
-            // Циклом подключаемся ко всем возможным базам данны.
-            for ( $i4 = 0; $i4 < $this->user_count[ $this->mod_name[ $i ] ]; $i4++ ) {
+            # Подсчёт -> Количество пользователей определенного мода.
+            $this->user_count[ $this->mod_name[ $m ] ] = sizeof( $this->db[ $this->mod_name[ $m ] ] );
 
-            // Подсчёт количества баз данных подключенных из под одного пользователя.
-            $this->db_count[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'] );
+            # Цикл -> Количество пользователей.
+            for ( $u = 0; $u < $this->user_count[ $this->mod_name[ $m ] ]; $u++ ) {
 
-            // Циклом подключаемся ко всем возможным базам данны.
-            for ( $i2 = 0; $i2 < $this->db_count[ $this->mod_name[ $i ] ]; $i2++ ) {
+                /*
+                 * $u - Номер Пользователя.
+                 */
 
-                // Описываем сигнатуру DNS для PDO.
-                $this->dns[ $this->mod_name[ $i ] ][ $i2 ] = 'mysql:host=' . $this->db[ $this->mod_name[ $i ] ][ $i4 ]["HOST"] . ';port=3306;dbname=' . $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['DB'] . ';charset=utf8';
+                # Подсчёт -> Количество баз данных определенного пользователя.
+                $this->db_count[ $this->mod_name[ $m ] ][ $u ] = sizeof( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'] );
+
+                # Цикл -> Количество баз данных.
+                for ( $d = 0; $d < $this->db_count[ $this->mod_name[ $m ] ][ $u ]; $d++ ) {
+
+                /*
+                 * $d - Номер Базы данных.
+                 */
+
+                // Сигнатура DNS.
+                $this->dns[ $this->mod_name[ $m ] ][ $u ][ $d ] = 'mysql:host=' . $this->db[ $this->mod_name[ $m ] ][ $u ]["HOST"] . ';port=3306;dbname=' . $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'] . ';charset=utf8';
 
                 // Создаём подключение по PDO для определенной базы данных.
-                $this->pdo[ $this->mod_name[ $i ] ][ $i2 ] = new PDO( $this->dns[ $this->mod_name[ $i ] ][ $i2 ], $this->db[ $this->mod_name[ $i ] ][ $i4 ]['USER'], $this->db[ $this->mod_name[ $i ] ][ $i4 ]['PASS'], $this->options );
+                $this->pdo[ $this->mod_name[ $m ] ][ $u ][ $d ] = new PDO( $this->dns[ $this->mod_name[ $m ] ][ $u ][ $d ], $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'], $this->db[ $this->mod_name[ $m ] ][ $u ]['PASS'], $this->options );
 
-                $this->table_count_for[ $this->mod_name[ $i ] ] = sizeof( $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'] );
+                $this->table_count_for[ $this->mod_name[ $m ] ] = sizeof( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'] );
 
                 // Циклом перебираем все таблицы которые описаны в файле настроек баз данных.
-                for ( $i3 = 0; $i3 < $this->table_count_for[ $this->mod_name[ $i ] ]; $i3++ ) {
+                for ( $t = 0; $t < $this->table_count_for[ $this->mod_name[ $m ] ]; $t++ ) {
+
+                    /*
+                     * $t - Номер таблицы.
+                     */
+
                     // Создаём массив с описанием таблиц.
-                    $this->db_data[ $this->mod_name[ $i ] ][] = [
-                        'USER_ID' => $i4,
-                        'USER' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['USER'],
-                        'DB' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['DB'],
-                        'DB_num' => $i2,
-                        'Table' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['table'],
-                        'name' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['name'],
-                        'mod' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['mod'],
-                        'steam' => $this->db[ $this->mod_name[ $i ] ][ $i4 ]['DB'][ $i2 ]['Prefix'][ $i3 ]['steam'],
+                    $this->db_data[ $this->mod_name[ $m ] ][] = [
+                        'USER_ID' => $u,
+                        'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
+                        'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
+                        'DB_num' => $d,
+                        'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
+                        'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
+                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
+                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
                     ];
                 }
 
@@ -128,7 +145,7 @@ class Db {
 
             }
 
-            $this->table_count[ $this->mod_name[ $i ] ] = sizeof( $this->db_data[ $this->mod_name[ $i ] ] );
+            $this->table_count[ $this->mod_name[ $m ] ] = sizeof( $this->db_data[ $this->mod_name[ $m ] ] );
         }
     }
 
@@ -136,65 +153,63 @@ class Db {
      * Шаблон запроса отдающий массив с индексированными именами столбцов.
      *
      * @param string $mod           Навание мода.
-     * @param string $db_num        Номер подключенной базы данных.
+     * @param int $user_id          Номер пользователя.
+     * @param int $db_id            Номер подключенной базы данных.
      * @param string $sql           SQL запрос.
      *
      * @return array|false          Возвращает результат SQL запроса.
      */
-    public function query($mod, $db_num = '0', $sql ) {
-        return $this->pdo[ $mod ][ $db_num ]->query( $sql )->fetch( PDO::FETCH_ASSOC );
+    public function query($mod, $user_id = 0, $db_id = 0, $sql ) {
+        return $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query( $sql )->fetch( PDO::FETCH_ASSOC );
     }
 
     /**
      * Шаблон запроса отдающий массив с индексированными номерами столбцов.
      *
      * @param string $mod           Навание мода.
-     * @param string $db_num        Номер подключенной базы данных.
+     * @param int $user_id          Номер пользователя.
+     * @param int $db_id            Номер подключенной базы данных.
      * @param string $sql           SQL запрос.
      *
      * @return array|false          Возвращает результат SQL запроса.
      */
-    public function queryNum( $mod, $db_num = '0', $sql ) {
-        return $this->pdo[ $mod ][ $db_num ]->query( $sql )->fetch( PDO::FETCH_NUM );
+    public function queryNum( $mod, $user_id = 0, $db_id = 0, $sql ) {
+        return $this->pdo[ $mod ][ (int) $user_id ][ $db_id ]->query( $sql )->fetch( PDO::FETCH_NUM );
     }
 
     /**
      * Шаблон запроса отдающий массив со всеми строками.
      *
      * @param string $mod           Навание мода.
-     * @param string $db_num        Номер подключенной базы данных.
+     * @param int $user_id          Номер пользователя.
+     * @param int $db_id        Номер подключенной базы данных.
      * @param string $sql           SQL запрос.
      *
      * @return array|false          Возвращает результат SQL запроса.
      */
-    public function queryAll( $mod, $db_num = '0', $sql ) {
-        return $this->pdo[ $mod ][ $db_num ]->query( $sql )->fetchAll( PDO::FETCH_ASSOC );
+    public function queryAll( $mod, $user_id = 0, $db_id = 0, $sql ) {
+        return $this->pdo[ $mod ][ (int) $user_id ][ $db_id ]->query( $sql )->fetchAll( PDO::FETCH_ASSOC );
     }
 
     /**
      * Запрос проверяющий существование таблицы в той или иной базе данных.
      *
      * @param string $mod          Навание мода.
-     * @param string $dbnum        Номер подключенной базы данных.
+     * @param int $user_id          Номер пользователя.
+     * @param int $db_id        Номер подключенной базы данных.
      * @param string $tablename    Название таблицы которую нужно проверить проверки
      *
      * @return int                 Возвращает результат проверки.
      */
-    public function mysql_table_search( $mod, $dbnum = '0', $tablename ) {
-        return ( $this->pdo[ $mod ][ $dbnum ]->query("SHOW TABLES FROM `" . $this->db_data['LevelsRanks'][ $dbnum ]['DB'] . "` like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
+    public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename ) {
+        return ( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES FROM `" . $this->db_data['LevelsRanks'][ (int) $db_id ]['DB'] . "` like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
     }
 
     /**
      * "Разрыв соединения с базой данных".
      */
     public function __destruct() {
-        // Циклом перебираем доступные моды.
-        for ( $mi = 0; $mi < $this->mod_count; $mi++ ) {
-            // Чистим переменные связанные с подлючением к базам данных.
-            for ( $i = 0; $i < $this->db_count[ $this->mod_name[ $mi ] ]; $i++ ) {
-                unset( $this->dns[ $this->mod_name[ $mi ] ][ $i ] );
-                unset( $this->pdo[ $this->mod_name[ $mi ] ][ $i ] );
-            }
-        }
+        unset( $this->dns );
+        unset( $this->pdo );
     }
 }
