@@ -46,7 +46,7 @@ if ( $_SESSION['steamid'] ) {
                 <div class="user-details">
                     <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print 'Герой без имени' : print $user_auth[0]['name']?></span>
                     <?php if( $_SESSION['steamid'] != '' ):?>
-                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span>
+                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="/?auth=logout"><i class="zmdi zmdi-mail-reply-all"></i></a></span>
                     <?php else:?>
                         <span><a href="#login">Войти</a></span>
                     <?php endif;?>
@@ -140,7 +140,7 @@ if ( $_SESSION['steamid'] ) {
                 <input type="text" value="" name="_pass"/>
             </div>
                 <?php if( $General->arr_general['steam_auth'] == 1 ):?>
-                    <a href="?auch=login">Войти по Steam</a>
+                    <a href="?auth=login">Войти по Steam</a>
                 <?php endif;?>
                 <input class="btn no_steam" name="log_in" nam type="submit" value="Войти">
             </div>

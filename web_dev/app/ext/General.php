@@ -33,6 +33,7 @@ class General {
 
         // Костыльная авторизация для главного администратора - В будущем поправить
         if( isset( $_POST['log_in'] ) && IN_LR == true ) { $admins = require SESSIONS . 'admins.php';
+        $_POST['_login'] == '' && header( 'Location: ' . get_url(1) ) && exit;
             for ( $i = 0, $admins_count = sizeof( $admins ); $i < $admins_count; $i++ ) {
                 if($admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
                     $_SESSION['steamid'] = con_steam32to64( $this->arr_general['admin'] );
@@ -72,7 +73,7 @@ class General {
         $this->get_default_url_section('sidebar_open', $this->arr_general['sidebar_open'], array( true, false ) );
 
         // получение информации об авторизации по Steam.
-        isset( $_GET["auch"] ) && $this->arr_general['steam_auth'] == 1 && in_array( $_GET["auch"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
+        isset( $_GET["auth"] ) && $this->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
     }
 
     /**

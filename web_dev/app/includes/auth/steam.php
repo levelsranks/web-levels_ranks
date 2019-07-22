@@ -8,7 +8,7 @@
  * @license GNU General Public License Version 3
  */
 
-if ( $_GET["auch"] == 'login' ) {
+if ( $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try {
         $openid = new LightOpenID( $this->arr_general['site'] );
@@ -44,7 +44,7 @@ if ( $_GET["auch"] == 'login' ) {
     } catch( ErrorException $e ) {
     }
 };
-if ( $_GET["auch"] == 'logout' ) {
+if ( $_GET["auth"] == 'logout' ) {
     session_unset();
     session_destroy();
     header('Location: ' . $this->arr_general['site']);

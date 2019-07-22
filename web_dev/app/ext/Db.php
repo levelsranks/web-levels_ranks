@@ -202,7 +202,7 @@ class Db {
      * @return int                 Возвращает результат проверки.
      */
     public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename ) {
-        return ( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES FROM `" . $this->db_data['LevelsRanks'][ (int) $db_id ]['DB'] . "` like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
+        return ( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
     }
 
     /**
