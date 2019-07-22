@@ -135,12 +135,6 @@
                                                   'mod' => 'csgo / css',
                                                   'steam' => '1 / 0'
                                                    ],
-                                                   [
-                                                   'table' => 'Название таблицы 2 ( lvl_base_2 )',
-                                                   'name'  => 'Название ( Основной MM сервер )',
-                                                   'mod' => 'csgo / css',
-                                                   'steam' => '1 / 0'
-                                                   ],
                                                ],
                                   ],
                                   [
@@ -162,7 +156,54 @@
 
 </details>
 
-<details><summary>Если модулю необходимо подключение к другому "моду"</summary>
+<details><summary>Если вы используете двух и более пользователей с разными базами данных</summary>
+
+```
+<?php return ['LevelsRanks' => 
+                [0 => 
+                    [
+                    'HOST' => 'Ваш хост',
+                    'USER' => 'Логин',
+                    'PASS' => 'Пароль',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя основной базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                   ],
+                                               ],
+                                  ],
+                              ],
+                    ],
+                    [
+                    'HOST' => 'Ваш хост 2',
+                    'USER' => 'Логин 2',
+                    'PASS' => 'Пароль 2',
+                    'DB'   => [0 => 
+                                  [
+                                  'DB'     => 'Имя базы данных',
+                                  'Prefix' => [0 => 
+                                                  [
+                                                  'table' => 'Название таблицы ( lvl_base )',
+                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'mod' => 'csgo / css',
+                                                  'steam' => '1 / 0'
+                                                   ],
+                                               ],
+                                  ],
+                              ],
+                    ],
+                ],
+];
+```
+
+</details>
+
+<details><summary>Если модулю необходимо подключение к другому "моду" ( SB / MA пример )</summary>
 
 Используйте шаблон подключения из описания модуля.
 Пример. Интерация SourceBans или Material Admin:
@@ -342,6 +383,7 @@
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
+- DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
