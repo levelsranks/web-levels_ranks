@@ -94,10 +94,12 @@ class Player {
                 if( $check_it == false ):
                     $check_it = $this->found[ $i ]['server_group'] == $this->server_group ? true : false;
                     if( $_GET['search'] == 1 ):
-                            if ( ! empty( $this->found[ $i ]['server_group'] ) ):
-                                $check_it = true;
+                        if ( ! empty( $this->found[ $i ]['server_group'] ) ):
+                            $check_it = true;
+                            if ( empty( $_GET['server_group'] ) ):
                                 $this->server_group = $i;
                             endif;
+                        endif;
                     endif;
                 endif;
             endif;

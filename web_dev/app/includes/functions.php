@@ -155,6 +155,17 @@ function action_text_clear( $text ) {
 }
 
 /**
+ * Очистка текста до последнего слэша
+ *
+ * @param string        $text   Текст.
+ *
+ * @return string               Текст после последнего слэша
+ */
+function action_text_clear_before_slash( $text ) {
+    return array_reverse( explode( "/", $text ) )[0];
+}
+
+/**
  * Конвертация Steam ID 32 -> 64.
  *
  * @param string       $id    Steam ID игрока.
