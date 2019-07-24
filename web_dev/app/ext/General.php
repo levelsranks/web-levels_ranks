@@ -20,7 +20,7 @@ class General {
         $this->Modules = $Modules;
 
         // Проверка на существоавание option.php
-        file_exists( SESSIONS . '/option.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
+        ! file_exists( SESSIONS . '/options.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
 
         if ( ! empty( $_SESSION['steamid'] ) ):
             if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['HTTP_X'] != $_SERVER['HTTP_X_FORWARDED_FOR'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR']  ):
@@ -56,6 +56,8 @@ class General {
             header( 'Location: ' . $this->arr_general['site'] . '/?page=profiles&search=1&profile=' . $search );
             exit;
         }
+
+        ! file_exists( SESSIONS . 'servers_list.php' ) && file_put_contents( SESSIONS . 'servers_list.php', '<?php return []; ' );
 
         // Получение списка игровых серверов.
         $this->server_list = require SESSIONS . 'servers_list.php';

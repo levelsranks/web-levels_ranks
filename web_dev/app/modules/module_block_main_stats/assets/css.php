@@ -103,7 +103,7 @@
             min-height: 70px
         }
 
-        .card-block-big svg, .card-block-big img {
+        .card-block-big i, .card-block-big img {
             display: none
         }
 

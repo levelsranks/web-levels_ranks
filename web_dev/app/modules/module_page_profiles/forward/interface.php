@@ -46,7 +46,7 @@
                            } elseif( $General->arr_general['avatars'] == 2 || $General->arr_general['avatars'] == 0) {
                                echo 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
                            }?>"></a>
-                    <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 16 ) )?></div>
+                    <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 17 ) )?></div>
                     <div class="country">-</div>
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $General->arr_general['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                     <div class="rank"><?php echo $Modules->get_translate_phrase('_Rank_' . $Player->get_rank())?></div>
@@ -193,12 +193,14 @@
                             <div class="block">
                                 <img class="back" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/back' ?>.jpg">
                                 <div class="hit_player">
-                                    <a class="tooltip-top" data-tooltip="% hits - Head - -%"><img class="hit_head" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/head' ?>.png"></a>
-                                    <a class="tooltip-top" data-tooltip="% hits - Left Arm - -%"><img class="hit_left_arm" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/left_arm' ?>.png"></a>
-                                    <a class="tooltip-top" data-tooltip="% hits - Right Arm - -%"><img class="hit_right_arm" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/right_arm' ?>.png"></a>
-                                    <a class="tooltip-top" data-tooltip="% hits - Left Leg - -%"><img class="hit_left_leg" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/left_leg' ?>.png"></a>
-                                    <a class="tooltip-top" data-tooltip="% hits - Right Leg - -%"><img class="hit_right_leg" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/right_leg' ?>.png"></a>
-                                    <a class="tooltip-top" data-tooltip="% hits - Body - -%"><img class="hit_body" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/body' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В голову: <?php echo $Player->get_hits_head()?>"><img class="hit_head" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/head' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В шею: <?php echo $Player->get_hits_neak()?>"><img class="hit_neak" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/neak' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В левую руку: <?php echo $Player->get_hits_leftarm()?>"><img class="hit_left_arm" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/left_arm' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В правую руку: <?php echo $Player->get_hits_rightarm()?>"><img class="hit_right_arm" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/right_arm' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В левую ногу: <?php echo $Player->get_hits_leftleg()?>"><img class="hit_left_leg" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/left_leg' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В правую ногу: <?php echo $Player->get_hits_rightleg()?>"><img class="hit_right_leg" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/right_leg' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В живот: <?php echo $Player->get_hits_belly()?>"><img class="hit_belly" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/belly' ?>.png"></a>
+                                    <a class="tooltip-top" data-tooltip="В грудь: <?php echo $Player->get_hits_chest()?>"><img class="hit_chest" ondrag="return false" ondragstart="return false" src="<?php echo CACHE . 'img/hitstats/chest' ?>.png"></a>
                                 </div>
                         </div>
                     </div>

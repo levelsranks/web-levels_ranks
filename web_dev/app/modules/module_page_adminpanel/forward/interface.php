@@ -33,6 +33,9 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
                 <li <?php get_section( 'section', 'modules' ) == 'db' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','db')?>';">
                     <a>Настройка базы данных</a>
                 </li>
+                <li <?php get_section( 'section', 'modules' ) == 'translator' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','translator')?>';">
+                    <a>Настройка переводов</a>
+                </li>
             </ul>
         </div>
     </section>
@@ -50,6 +53,9 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
             break;
         case 'db':
             require MODULES . 'module_page_adminpanel' . '/includes/db.php';
+            break;
+            case 'translator':
+            require MODULES . 'module_page_adminpanel' . '/includes/translator.php';
             break;
     }?>
 </div>

@@ -46,7 +46,7 @@ if ( $_SESSION['steamid'] ) {
                 <div class="user-details">
                     <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print 'Герой без имени' : print $user_auth[0]['name']?></span>
                     <?php if( $_SESSION['steamid'] != '' ):?>
-                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="/?auth=logout"><i class="zmdi zmdi-mail-reply-all"></i></a></span>
+                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
                     <?php else:?>
                         <span><a href="#login">Войти</a></span>
                     <?php endif;?>

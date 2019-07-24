@@ -92,7 +92,9 @@
                     </tr><?php } ?></tbody>
             </table>
             <div class="card-bottom">
+                <?php if( $page_max != 1):?>
                 <div class="select-panel-pages">
+                    <?php endif;?>
                     <?php if ($page_num != 1) { ?>
                         <a href="<?php echo set_url_section(get_url(2), 'num', $page_num - 1) ?>"><h5
                                     class="badge"><?php $General->get_icon('zmdi', 'chevron-left') ?></h5></a>
@@ -101,7 +103,9 @@
                         <a href="<?php echo set_url_section(get_url(2), 'num', $page_num + 1) ?>"><h5
                                     class="badge"><?php $General->get_icon('zmdi', 'chevron-right') ?></h5></a>
                     <?php } ?>
+                    <?php if( $page_max != 1):?>
                 </div>
+            <?php endif;?>
             </div>
         </div>
     </div>

@@ -25,6 +25,22 @@
         filter: invert(70%) sepia(64%) saturate(4691%) hue-rotate(345deg) brightness(98%) contrast(91%);
     }
 
+    .middle-block .hitstats-block .hit_player img{
+        filter: brightness(40%);
+    }
+
+    .middle-block .hitstats-block .hit_player .hit_head:hover,
+    .middle-block .hitstats-block .hit_player .hit_neak:hover,
+    .middle-block .hitstats-block .hit_player .hit_chest:hover,
+    .middle-block .hitstats-block .hit_player .hit_belly:hover,
+    .middle-block .hitstats-block .hit_player .hit_left_arm:hover,
+    .middle-block .hitstats-block .hit_player .hit_right_arm:hover,
+    .middle-block .hitstats-block .hit_player .hit_left_leg:hover,
+    .middle-block .hitstats-block .hit_player .hit_right_leg:hover{
+        -webkit-filter: none;
+        filter: none;
+    }
+
     @media (max-width: 767.98px) {
         .left-block{
             position: relative;
@@ -67,7 +83,7 @@
         }
 
         .user-block{
-            height: 42vw;
+            height: 350px;
             position: relative;
             width: 100%;
             -ms-flex: 0 0 38%;
@@ -94,7 +110,7 @@
         }
 
         .best-weapon-block{
-            height: 42vw;
+            height: 350px;
             position: relative;
             width: 100%;
             /* Отступ слева -> Блоки */
@@ -113,7 +129,7 @@
         }
         .user-block .name{
             margin-top: 10px;
-            font-size: 1.5em;
+            font-size: 1em;
             font-weight: var(--font-weight-1);
             color: #F17A26;
         }
@@ -155,7 +171,7 @@
         .best-weapon-block .weapons{
             padding-top:18px;
             text-align: center;
-            height: 26%;
+            height: 86px;
         }
 
         .best-weapon-block .weapons .kills{
@@ -276,7 +292,7 @@
         }
 
         .middle-block .best-maps{
-            height: 62vw;
+            height: 53vw;
             position: relative;
             width: 100%;
             -ms-flex: 0 0 70%;
@@ -286,7 +302,7 @@
 
         .middle-block .best-maps .map-top{
             position: relative;
-            height: 35%;
+            height: 30%;
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%;
@@ -295,7 +311,7 @@
         .middle-block .best-maps .map-bottom{
             position: relative;
             overflow: auto;
-            height: 65%;
+            height: 70%;
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%;
@@ -397,8 +413,9 @@
         }
 
         .middle-block .hitstats-block{
-            height: 62vw;
+            height: 53vw;
             position: relative;
+            overflow: hidden;
             width: 100%;
             /* Отступ слева -> Блоки */
             padding-left: 6px;
@@ -428,66 +445,74 @@
 
         .hit_head{
             position: absolute;
-            height:13.2vw;
-            width:12.9vw;
+            height:11vw;
+            width:10vw;
             z-index: 101;
-            bottom: 42.5vw;
-            left: 9vw;
+            bottom: 33.6vw;
+            left: 10.2vw;
         }
 
-        .hit_body{
+        .hit_neak{
             position: absolute;
-            height:22vw;
-            width: 21vw;
-            bottom: 24.6vw;
-            left: 3.5vw;
-            z-index: 105;
+            height:3.5vw;
+            width:7.6vw;
+            z-index: 103;
+            bottom: 33.6vw;
+            left: 10.2vw;
         }
 
         .hit_left_arm{
             position: absolute;
-            height:29vw;
-            width:9.8vw;
-            bottom: 30vw;
-            left: -4.3vw;
+            height:24vw;
+            width:8vw;
+            bottom: 24vw;
+            left: 0.3vw;
             z-index: 101;
         }
 
         .hit_right_arm{
             position: absolute;
-            height:29vw;
-            width:8vw;
-            bottom: 14vw;
-            left: 21vw;
+            height:23vw;
+            width:6vw;
+            bottom: 11.5vw;
+            left: 20vw;
             z-index: 104;
+        }
+
+        .hit_chest{
+            position: absolute;
+            height:12vw;
+            width: 15vw;
+            bottom: 25.8vw;
+            left: 6.3vw;
+            z-index: 101;
+        }
+
+        .hit_belly{
+            position: absolute;
+            height:10vw;
+            width: 16vw;
+            bottom: 18.6vw;
+            left: 6vw;
+            z-index: 101;
         }
 
         .hit_left_leg{
             position: absolute;
-            height:26.5vw;
-            width: 10vw;
+            height:20vw;
+            width: 8vw;
             bottom: 0;
-            left: 5.5vw;
+            left: 7.5vw;
             z-index: 101;
         }
 
         .hit_right_leg{
             position: absolute;
-            height:26vw;
-            width: 14vw;
+            height:19.7vw;
+            width: 11vw;
             bottom: 0;
-            left: 13vw;
+            left: 13.8vw;
             z-index: 101;
-        }
-
-        .hit_head:hover,
-        .hit_body:hover,
-        .hit_left_arm:hover,
-        .hit_right_arm:hover,
-        .hit_left_leg:hover,
-        .hit_right_leg:hover{
-            -webkit-filter: none;
-            filter: none;
         }
 
         .unusualkills_block{
@@ -824,7 +849,7 @@
         }
 
         .middle-block .best-maps{
-            height: 62vw;
+            height: 52vw;
             position: relative;
             width: 100%;
             -ms-flex: 0 0 70%;
@@ -834,7 +859,7 @@
 
         .middle-block .best-maps .map-top{
             position: relative;
-            height: 35%;
+            height: 30%;
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%;
@@ -843,7 +868,7 @@
         .middle-block .best-maps .map-bottom{
             position: relative;
             overflow: auto;
-            height: 65%;
+            height: 70%;
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%;
@@ -945,8 +970,9 @@
         }
 
         .middle-block .hitstats-block{
-            height: 62vw;
+            height: 52vw;
             position: relative;
+            overflow: hidden;
             width: 100%;
             /* Отступ слева -> Блоки */
             padding-left: 6px;
@@ -976,66 +1002,74 @@
 
         .hit_head{
             position: absolute;
-            height:13.2vw;
-            width:12.9vw;
+            height:11vw;
+            width:10vw;
             z-index: 101;
-            bottom: 42.5vw;
-            left: 9vw;
+            bottom: 33.6vw;
+            left: 10.2vw;
         }
 
-        .hit_body{
+        .hit_neak{
             position: absolute;
-            height:22vw;
-            width: 21vw;
-            bottom: 24.6vw;
-            left: 3.5vw;
-            z-index: 105;
+            height:3.5vw;
+            width:7.6vw;
+            z-index: 103;
+            bottom: 33.6vw;
+            left: 10.2vw;
         }
 
         .hit_left_arm{
             position: absolute;
-            height:29vw;
-            width:9.8vw;
-            bottom: 30vw;
-            left: -4.3vw;
+            height:24vw;
+            width:8vw;
+            bottom: 24vw;
+            left: 0.3vw;
             z-index: 101;
         }
 
         .hit_right_arm{
             position: absolute;
-            height:29vw;
-            width:8vw;
-            bottom: 14vw;
-            left: 21vw;
+            height:23vw;
+            width:6vw;
+            bottom: 11.5vw;
+            left: 20vw;
             z-index: 104;
+        }
+
+        .hit_chest{
+            position: absolute;
+            height:12vw;
+            width: 15vw;
+            bottom: 25.8vw;
+            left: 6.3vw;
+            z-index: 101;
+        }
+
+        .hit_belly{
+            position: absolute;
+            height:10vw;
+            width: 16vw;
+            bottom: 18.6vw;
+            left: 6vw;
+            z-index: 101;
         }
 
         .hit_left_leg{
             position: absolute;
-            height:26.5vw;
-            width: 10vw;
+            height:20vw;
+            width: 8vw;
             bottom: 0;
-            left: 5.5vw;
+            left: 7.5vw;
             z-index: 101;
         }
 
         .hit_right_leg{
             position: absolute;
-            height:26vw;
-            width: 14vw;
+            height:19.7vw;
+            width: 11vw;
             bottom: 0;
-            left: 13vw;
+            left: 13.8vw;
             z-index: 101;
-        }
-
-        .hit_head:hover,
-        .hit_body:hover,
-        .hit_left_arm:hover,
-        .hit_right_arm:hover,
-        .hit_left_leg:hover,
-        .hit_right_leg:hover{
-            -webkit-filter: none;
-            filter: none;
         }
 
         .unusualkills_block{
@@ -1163,7 +1197,7 @@
         }
 
         .user-block{
-            height: 26vw;
+            height: 300px;
             position: relative;
             width: 100%;
             -ms-flex: 0 0 38%;
@@ -1190,7 +1224,7 @@
         }
 
         .best-weapon-block{
-            height: 26vw;
+            height: 300px;
             position: relative;
             width: 100%;
             /* Отступ слева -> Блоки */
@@ -1495,6 +1529,7 @@
         .middle-block .hitstats-block{
             height: 22vw;
             position: relative;
+            overflow: hidden;
             width: 100%;
             /* Отступ слева -> Блоки */
             padding-left: 6px;
@@ -1524,37 +1559,55 @@
 
         .hit_head{
             position: absolute;
-            height:3.6vw;
-            width:3.32vw;
+            height:3.2vw;
+            width:3vw;
             z-index: 101;
             bottom: 12.1vw;
-            left: 3.9vw;
+            left: 4.1vw;
         }
 
-        .hit_body{
+        .hit_neak{
             position: absolute;
-            height:6.4vw;
-            width: 5.4vw;
-            bottom: 6.9vw;
-            left: 2.5vw;
-            z-index: 105;
+            height:1.3vw;
+            width:2.25vw;
+            z-index: 102;
+            bottom: 12vw;
+            left: 4.22vw;
+        }
+
+        .hit_chest{
+            position: absolute;
+            height:4vw;
+            width: 4.5vw;
+            bottom: 9.3vw;
+            left: 3vw;
+            z-index: 101;
+        }
+
+        .hit_belly{
+            position: absolute;
+            height:2.8vw;
+            width: 4.7vw;
+            bottom: 7.5vw;
+            left: 3vw;
+            z-index: 101;
         }
 
         .hit_left_arm{
             position: absolute;
             height:8vw;
-            width:2.65vw;
+            width:2.5vw;
             bottom: 8.9vw;
-            left: 0.5vw;
+            left: 1.1vw;
             z-index: 101;
         }
 
         .hit_right_arm{
             position: absolute;
-            height:8.3vw;
-            width:2vw;
-            bottom: 4.2vw;
-            left: 7.1vw;
+            height:7.6vw;
+            width:1.9vw;
+            bottom: 4.8vw;
+            left: 7vw;
             z-index: 104;
         }
 
@@ -1574,16 +1627,6 @@
             bottom: 0;
             left: 5.40vw;
             z-index: 101;
-        }
-
-        .hit_head:hover,
-        .hit_body:hover,
-        .hit_left_arm:hover,
-        .hit_right_arm:hover,
-        .hit_left_leg:hover,
-        .hit_right_leg:hover{
-            -webkit-filter: none;
-            filter: none;
         }
 
         .unusualkills_block{
@@ -2044,6 +2087,7 @@
         .middle-block .hitstats-block{
             height: 22vw;
             position: relative;
+            overflow: hidden;
             width: 100%;
             /* Отступ слева -> Блоки */
             padding-left: 6px;
@@ -2073,37 +2117,55 @@
 
         .hit_head{
             position: absolute;
-            height:3.6vw;
-            width:3.32vw;
+            height:3.2vw;
+            width:3vw;
             z-index: 101;
             bottom: 12.1vw;
-            left: 3.9vw;
+            left: 4.1vw;
         }
 
-        .hit_body{
+        .hit_neak{
             position: absolute;
-            height:6.4vw;
-            width: 5.4vw;
-            bottom: 6.9vw;
-            left: 2.5vw;
-            z-index: 105;
+            height:1.3vw;
+            width:2.25vw;
+            z-index: 102;
+            bottom: 12vw;
+            left: 4.22vw;
+        }
+
+        .hit_chest{
+            position: absolute;
+            height:4vw;
+            width: 4.5vw;
+            bottom: 9.3vw;
+            left: 3vw;
+            z-index: 101;
+        }
+
+        .hit_belly{
+            position: absolute;
+            height:2.8vw;
+            width: 4.7vw;
+            bottom: 7.5vw;
+            left: 3vw;
+            z-index: 101;
         }
 
         .hit_left_arm{
             position: absolute;
             height:8vw;
-            width:2.65vw;
+            width:2.5vw;
             bottom: 8.9vw;
-            left: 0.5vw;
+            left: 1.1vw;
             z-index: 101;
         }
 
         .hit_right_arm{
             position: absolute;
-            height:8.3vw;
-            width:2vw;
-            bottom: 4.2vw;
-            left: 7.1vw;
+            height:7.6vw;
+            width:1.9vw;
+            bottom: 4.8vw;
+            left: 7vw;
             z-index: 104;
         }
 
@@ -2123,16 +2185,6 @@
             bottom: 0;
             left: 5.40vw;
             z-index: 101;
-        }
-
-        .hit_head:hover,
-        .hit_body:hover,
-        .hit_left_arm:hover,
-        .hit_right_arm:hover,
-        .hit_left_leg:hover,
-        .hit_right_leg:hover{
-            -webkit-filter: none;
-            filter: none;
         }
 
         .unusualkills_block{
@@ -2592,6 +2644,7 @@
         .middle-block .hitstats-block{
             height: 20vw;
             position: relative;
+            overflow: hidden;
             width: 100%;
             /* Отступ слева -> Блоки */
             padding-left: 6px;
@@ -2621,28 +2674,46 @@
 
         .hit_head{
             position: absolute;
-            height:3.6vw;
-            width:3.32vw;
-            z-index: 101;
-            bottom: 12.1vw;
-            left: 3.9vw;
+            height:3.4vw;
+            width:3.16vw;
+            z-index: 103;
+            bottom: 11.8vw;
+            left: 4.3vw;
         }
 
-        .hit_body{
+        .hit_neak{
             position: absolute;
-            height:6.4vw;
-            width: 5.4vw;
-            bottom: 6.9vw;
-            left: 2.5vw;
-            z-index: 105;
+            height:1.26vw;
+            width: 2.68vw;
+            bottom: 11.7vw;
+            left: 4.2vw;
+            z-index: 103;
+        }
+
+        .hit_chest{
+            position: absolute;
+            height:3.9vw;
+            width: 4.9vw;
+            bottom: 9.1vw;
+            left: 3vw;
+            z-index: 101;
+        }
+
+        .hit_belly{
+            position: absolute;
+            height:2.6vw;
+            width: 4.9vw;
+            bottom: 7.5vw;
+            left: 2.9vw;
+            z-index: 102;
         }
 
         .hit_left_arm{
             position: absolute;
             height:8vw;
             width:2.65vw;
-            bottom: 8.9vw;
-            left: 0.5vw;
+            bottom: 8.4vw;
+            left: 0.96vw;
             z-index: 101;
         }
 
@@ -2650,9 +2721,9 @@
             position: absolute;
             height:8.3vw;
             width:2vw;
-            bottom: 4.2vw;
-            left: 7.1vw;
-            z-index: 104;
+            bottom: 4.3vw;
+            left: 7vw;
+            z-index: 102;
         }
 
         .hit_left_leg{
@@ -2671,16 +2742,6 @@
             bottom: 0;
             left: 5.40vw;
             z-index: 101;
-        }
-
-        .hit_head:hover,
-        .hit_body:hover,
-        .hit_left_arm:hover,
-        .hit_right_arm:hover,
-        .hit_left_leg:hover,
-        .hit_right_leg:hover{
-            -webkit-filter: none;
-            filter: none;
         }
 
         .unusualkills_block{

@@ -151,7 +151,20 @@ function action_text_trim( $text, $max = 18 ) {
  * @return string               Очищенный текст.
  */
 function action_text_clear( $text ) {
-    return stripslashes( trim( strip_tags( htmlspecialchars( $text, null, null, false ) ) ) );
+    return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_COMPAT,'ISO-8859-1', true ) ) ) );
+}
+
+/**
+ * Процент от числа ( Округление ).
+ *
+ * @param int        $int      Число.
+ * @param int        $all      Всего.
+ *
+ * @return int                  Итог.
+ */
+function action_int_percent_of_all( $int, $all ) {
+    $res = floor( 100 * $int / $all );
+    return is_nan ( $res ) ? 0 : $res;
 }
 
 /**

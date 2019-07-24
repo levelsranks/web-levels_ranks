@@ -47,7 +47,7 @@
                                     }?>"></th>
                                 <?php }?>
                                 <th class="text-left tb-name"><a
-                                            href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 13) )?></a>
+                                            href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 15) )?></a>
                                 </th>
                                 <th class="text-center"><?php echo number_format($data_paste[ $d ][ $dd ]['value'], 0, '.', ' ') ?></th>
                                 <th class="text-center"><img
@@ -55,7 +55,7 @@
                                 </th>
                                 <th class="text-center"><?php echo round($data_paste[ $d ][ $dd ]['kills'] / $data_paste[ $d ][ $dd ]['deaths'], 2); ?></th>
                                 <th class="text-center tb-time-two"><?php echo round($data_paste[ $d ][ $dd ]['playtime'] / 60 / 60), ' ', $Modules->get_translate_phrase('_Hour') ?></th>
-                            </tr><div class="card_info_block">213</div>
+                            </tr>
                             <?php } ?>
 
                         </tbody>
