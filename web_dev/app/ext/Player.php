@@ -89,6 +89,7 @@ class Player {
                     'name_servers'  => $Db->db_data['LevelsRanks'][ $i ]['name'],
                     'mod'           => $Db->db_data['LevelsRanks'][ $i ]['mod'],
                     'steam'         => $Db->db_data['LevelsRanks'][ $i ]['steam'],
+                    'ranks_pack'    => $Db->db_data['LevelsRanks'][ $i ]['ranks_pack'],
                     "server_group"  => $i
                 ];
 

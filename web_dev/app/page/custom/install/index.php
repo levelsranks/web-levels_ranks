@@ -103,7 +103,7 @@ if(isset($_POST['db_check'])) {
 
 // Сохранение настроек базы данных
 if( isset( $_POST['save_db'] ) ) {
-    $db = ['LevelsRanks' => [['HOST' => $_POST['host'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'name' => $_POST['servers'], 'mod' => $_POST['game_mod'], 'steam' => (int) $_POST['steam_mod']]]]]]]];
+    $db = ['LevelsRanks' => [['HOST' => $_POST['host'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'name' => $_POST['servers'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
     file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
     header( 'Location: ' . get_url(2) );
 }
@@ -125,7 +125,6 @@ if( isset( $_POST['option_save'] ) ) {
         'form_border' => (int) $_POST['form_border'],
         'web_key' => $_POST['web_key'],
         'avatars' => (int) $_POST['avatars'],
-        'ranks_pack' => 'default',
         'icon_type' => 'SVG',
         'badge_type' => 2,
         'steam_auth' => (int) $_POST['steam_auth'],

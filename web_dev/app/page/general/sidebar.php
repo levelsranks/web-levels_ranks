@@ -14,6 +14,7 @@ if ( $_SESSION['steamid'] ) {
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
         $res_data_sidebar[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],
                                'mod' => $Db->db_data['LevelsRanks'][$d]['mod'],
+                               'ranks_pack' => $Db->db_data['LevelsRanks'][$d]['ranks_pack'],
                                'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table']];
         $base_info = $Db->query('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $Db->db_data['LevelsRanks'][$d]["Table"] . ' where steam="' . $_SESSION['steamid32'] . '"' );
         if ($base_info != '') {
@@ -46,7 +47,7 @@ if ( $_SESSION['steamid'] ) {
                 <div class="user-details">
                     <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print 'Герой без имени' : print $user_auth[0]['name']?></span>
                     <?php if( $_SESSION['steamid'] != '' ):?>
-                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
+                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
                     <?php else:?>
                         <span><a href="#login">Войти</a></span>
                     <?php endif;?>
@@ -56,9 +57,9 @@ if ( $_SESSION['steamid'] ) {
                 <div class="rank-info">
                     <li class="rank-mini-li"><a href="">
                         <div class="user-rank tooltip-right" data-tooltip="<?php echo $res_data_sidebar[0]['name_servers'];?>">
-                            <img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png">
+                            <img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $res_data_sidebar[ 0 ]['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png">
                             <div class="rank-details">
-                                <?php echo $Modules->get_translate_phrase( '_Rank_' . $user_auth[0]['rank'] )?>
+                                <?php echo $Modules->get_translate_phrase( $user_auth[0]['rank'], 'ranks_' . $res_data_sidebar[ 0 ]['ranks_pack'] )?>
                             </div>
                             <?php if ( $user_rank_count != 1 ):?>
                             <div class="icon-down">
@@ -71,8 +72,8 @@ if ( $_SESSION['steamid'] ) {
                             <?php for ( $d = 1; $d < $user_rank_count; ++$d ):?>
                                 <li>
                                     <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $res_data_sidebar[ $d ]['name_servers']?>">
-                                        <img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png">
-                                        <div class="rank-details"><?php echo $Modules->get_translate_phrase( '_Rank_' . $user_auth[$d]['rank'] )?></div>
+                                        <img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $res_data_sidebar[ $d ]['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png">
+                                        <div class="rank-details"><?php echo $Modules->get_translate_phrase( $user_auth[ $d ]['rank'], 'ranks_' . $res_data_sidebar[ $d ]['ranks_pack'] )?></div>
                                     </div>
                                 </li>
                             <?php endfor;?>

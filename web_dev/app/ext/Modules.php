@@ -95,8 +95,8 @@ class Modules {
      *
      * @return string               Выводит слово в переводе.
      */
-    public function get_translate_phrase( $phrase ) {
-        return $this->arr_translations[ $phrase ][ $_SESSION['language'] ];
+    public function get_translate_phrase( $phrase, $group = '' ) {
+        return $result = empty ( $group ) ? $this->arr_translations[ $phrase ][ $_SESSION['language'] ] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
     }
 
     /**
@@ -125,8 +125,14 @@ class Modules {
             // Сканирование папки с модулями.
             $this->scan_modules = array_diff( scandir( MODULES, 1 ), array( '..', '.' ) );
 
+            // Сканирование папки с Паками рангов.
+            $this->scan_ranks_pack = array_diff( scandir( RANKS_PACK, 1 ), array( '..', '.' ) );
+
             // Подсчёт количества модулей.
             $this->array_modules_count = sizeof( $this->scan_modules );
+
+            // Подсчёт количества паков рангов.
+            $this->array_ranks_pack_count = sizeof( $this->scan_ranks_pack );
 
             if( $this->array_modules_count != 0 ) {
             // Цикл перебора описания модулей.
@@ -140,7 +146,14 @@ class Modules {
                     $result_translation[ $this->scan_modules[ $i ] ] = json_decode(file_get_contents(MODULES_SESSIONS . $this->scan_modules[ $i ] . '/translation.json') , true);
                 }
             }
-            // Объединение общего кэша мульти-перевода с кэшэм модулей.
+
+            for ( $i = 0; $i < $this->array_ranks_pack_count; $i++ ):
+                $this->rank_pack[ 'ranks_' . $this->scan_ranks_pack[ $i ] ] = json_decode( file_get_contents( RANKS_PACK . $this->scan_ranks_pack[ $i ] . '/title.json' ) , true);
+            endfor;
+
+            $result_translation += $this->rank_pack;
+
+            // Объединение общего кэша мульти-перевода с кэшэм переводов модулей.
             $result_translation += require SESSIONS . 'translator.php';
             }
 
