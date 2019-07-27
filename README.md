@@ -70,7 +70,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+					          'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ],
                                                ],
@@ -99,14 +99,14 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ],
                                                   [
                                                   'table' => 'Название таблицы 2 ( lvl_base_2 )',
                                                   'name'  => 'Название ( Основной MM сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ],
                                               ],
@@ -136,7 +136,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                    ],
                                                ],
@@ -148,7 +148,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Новый MM сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ]
                                               ],
@@ -178,7 +178,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                    ],
                                                ],
@@ -197,7 +197,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                    ],
                                                ],
@@ -230,7 +230,7 @@
                                                   'table' => 'Название таблицы ( lvl_base )',
                                                   'name'  => 'Название ( Основной AWP сервер )',
                                                   'mod' => 'csgo / css',
-												  'ranks_pack' => 'default',
+						  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ],
                                               ],
