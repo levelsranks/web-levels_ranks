@@ -48,7 +48,7 @@
                            }?>"></a>
                     <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 17 ) )?></div>
                     <div class="country">-</div>
-                    <img class="rank-img" src="storage/cache/img/ranks/<?php echo $General->arr_general['ranks_pack'] . '/' . $Player->get_rank()?>.png">
+                    <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                     <div class="rank"><?php echo $Modules->get_translate_phrase('_Rank_' . $Player->get_rank())?></div>
                     <div class="user-stats">Игрок</div>
                     </div>
@@ -301,7 +301,7 @@
                                     <th class="text-center">#</th>
                                     <th class="table-text"><?php echo action_text_trim($Player->top_with_player[$ti]['name'],16)?></th>
                                     <th class="text-center"><?php echo $Player->top_with_player[$ti]['value']?></th>
-                                    <th class="text-center table-text"><img src="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>
+                                    <th class="text-center table-text"><img src="<?php echo 'storage/cache/img/ranks/' . $Player->found[  $Player->server_group  ]['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>
                                 </tr>
                             <?php }?>
                             </tbody>
