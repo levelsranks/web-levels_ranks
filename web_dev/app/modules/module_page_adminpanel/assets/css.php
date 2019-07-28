@@ -23,11 +23,47 @@
         margin-right: 220px;
     }
 
+    .info_form {
+        position: relative;
+        text-align: left;
+        margin-bottom: 6px;
+        width: 100%;
+        color: var(--default-text-color);
+    }
+
+    .info_form_left {
+        width: 50%;
+        float: left;
+    }
+
+    .info_form_right {
+        width: 50%;
+        text-align: right;
+        float: right;
+        display: inline-block;
+    }
+
+    .info_form_line {
+        color: var(--top-text-color);
+        font-size: 12px;
+        font-weight: var(--font-weight-2);
+    }
+
+    .info_form_line_value {
+        font-size: 14px;
+        font-weight: var(--font-weight-1);
+    }
+
+    .module_block .btn{
+        float: right;
+    }
+
     .input-form {
         position: relative;
         text-align: left;
         margin-top: 6px;
         margin-bottom: 6px;
+        float: left;
         width: 100%;
     }
 
@@ -232,7 +268,7 @@
     .input-form .border-checkbox-label:before {
         content: "";
         display: block;
-        border: 2px solid #f37c00;
+        border: 2px solid #3a3a3a;;
         width: 23px;
         height: 23px;
         position: absolute;
@@ -326,6 +362,7 @@
         background: var(--hover);
         box-sizing: border-box;
         -moz-box-sizing: border-box;
+        transition: all 0.3s ease;
     }
 
     .dd-handle:hover {
@@ -364,5 +401,22 @@
         .dd {
             width: 100%;
         }
+    }
+
+    .module_setting i{
+        font-size: 17px;
+    }
+
+    .module_setting {
+        float: right;
+        padding-top: 6px;
+        padding-left: 6px;
+        padding-right: 6px;
+        opacity: .2;
+    }
+
+    .module_setting:hover {
+        opacity: 1;
+        transition: all 0.3s ease;
     }
 </style>

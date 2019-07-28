@@ -51,7 +51,7 @@
                                 </th>
                                 <th class="text-center"><?php echo number_format($data_paste[ $d ][ $dd ]['value'], 0, '.', ' ') ?></th>
                                 <th class="text-center"><img
-                                            data-src="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/' . $data_paste[ $d ][ $dd ]['rank'] ?>.png">
+                                            data-src="<?php echo 'storage/cache/img/ranks/' . $Db->db_data['LevelsRanks'][ $d ]['ranks_pack'] . '/' . $data_paste[ $d ][ $dd ]['rank'] ?>.png">
                                 </th>
                                 <th class="text-center"><?php echo round($data_paste[ $d ][ $dd ]['kills'] / $data_paste[ $d ][ $dd ]['deaths'], 2); ?></th>
                                 <th class="text-center tb-time-two"><?php echo round($data_paste[ $d ][ $dd ]['playtime'] / 60 / 60), ' ', $Modules->get_translate_phrase('_Hour') ?></th>

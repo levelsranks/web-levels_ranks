@@ -34,7 +34,7 @@
             <div class="container-ranks">
                 <?php for ( $i = 1, $count = sizeof( $data['module_page_rankstats']['data'][ $server_group ] ); $i < $count; $i++ ): ?>
                 <div class="row-rank">
-                    <div class="rank"><img src="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/' . $data['module_page_rankstats']['data'][ $server_group ][ $i ]['rank'] ?>.png"></div>
+                    <div class="rank"><img src="<?php echo 'storage/cache/img/ranks/' . $Db->db_data['LevelsRanks'][$server_group]['ranks_pack'] . '/' . $data['module_page_rankstats']['data'][ $server_group ][ $i ]['rank'] ?>.png"></div>
                     <div class="line">
                         <div class="i" style="width:<?php echo $data['module_page_rankstats']['data'][ $server_group ][ $i ]['Percent'] ?>%"></div>
                         <div class="value" ><?php echo $data['module_page_rankstats']['data'][ $server_group ][ $i ]['Percent'] ?>%</div>

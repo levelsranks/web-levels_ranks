@@ -35,6 +35,12 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
         exit;
     }
 
+if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
+    unlink( SESSIONS . '/translator_cache.php' );
+    header( 'Location: ' . get_url(1) );
+    exit;
+}
+
     if( isset( $_POST['option_one_save'] ) && IN_LR == true ) {
         $arr = require SESSIONS . 'options.php';
         $option = [

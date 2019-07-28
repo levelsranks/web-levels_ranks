@@ -79,7 +79,7 @@
                                 echo 'src';
                             } else {
                                 echo 'data-src';
-                            } ?>="<?php echo 'storage/cache/img/ranks/' . $General->arr_general['ranks_pack'] . '/';
+                            } ?>="<?php echo 'storage/cache/img/ranks/' . $Db->db_data['LevelsRanks'][$server_group]['ranks_pack']  . '/';
                             if ($res[$server_group][$sz_i]['rank'] == '') {
                                 echo '00';
                             } else {
