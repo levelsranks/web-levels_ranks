@@ -49,7 +49,7 @@
                     <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 17 ) )?></div>
                     <div class="country">-</div>
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">
-                    <div class="rank"><?php echo $Modules->get_translate_phrase('_Rank_' . $Player->get_rank())?></div>
+                    <div class="rank"><?php echo $Modules->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] )?></div>
                     <div class="user-stats">Игрок</div>
                     </div>
                 </div>
