@@ -1,0 +1,110 @@
+{
+  "_": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "0": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "00": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "1": {
+    "EN" : "Lab Rat I",
+    "RU" : "Lab Rat I",
+    "UA" : "Lab Rat I",
+    "LT" : "Lab Rat I"
+  },
+  "2": {
+    "EN" : "Lab Rat II",
+    "RU" : "Lab Rat II",
+    "UA" : "Lab Rat II",
+    "LT" : "Lab Rat II"
+  },
+  "3": {
+    "EN" : "Sprinting Hare I",
+    "RU" : "Sprinting Hare I",
+    "UA" : "Sprinting Hare I",
+    "LT" : "Sprinting Hare I"
+  },
+  "4": {
+    "EN" : "Sprinting Hare II",
+    "RU" : "Sprinting Hare II",
+    "UA" : "Sprinting Hare II",
+    "LT" : "Sprinting Hare II"
+  },
+  "5": {
+    "EN" : "Wild Scout I",
+    "RU" : "Wild Scout I",
+    "UA" : "Wild Scout I",
+    "LT" : "Wild Scout I"
+  },
+  "6": {
+    "EN" : "Wild Scout II",
+    "RU" : "Wild Scout II",
+    "UA" : "Wild Scout II",
+    "LT" : "Wild Scout II"
+  },
+  "7": {
+    "EN" : "Wild Scout Elite",
+    "RU" : "Wild Scout Elite",
+    "UA" : "Wild Scout Elite",
+    "LT" : "Wild Scout Elite"
+  },
+  "8": {
+    "EN" : "Hunter Fox I",
+    "RU" : "Hunter Fox I",
+    "UA" : "Hunter Fox I",
+    "LT" : "Hunter Fox I"
+  },
+  "9": {
+    "EN" : "Hunter Fox II",
+    "RU" : "Hunter Fox II",
+    "UA" : "Hunter Fox II",
+    "LT" : "Hunter Fox II"
+  },
+  "10": {
+    "EN" : "Hunter Fox III",
+    "RU" : "Hunter Fox III",
+    "UA" : "Hunter Fox III",
+    "LT" : "Hunter Fox III"
+  },
+  "11": {
+    "EN" : "Hunter Fox Elite",
+    "RU" : "Hunter Fox Elite",
+    "UA" : "Hunter Fox Elite",
+    "LT" : "Hunter Fox Elite"
+  },
+  "12": {
+    "EN" : "Timber Wolf",
+    "RU" : "Timber Wolf",
+    "UA" : "Timber Wolf",
+    "LT" : "Timber Wolf"
+  },
+  "13": {
+    "EN" : "Ember Wolf",
+    "RU" : "Ember Wolf",
+    "UA" : "Ember Wolf",
+    "LT" : "Ember Wolf"
+  },
+  "14": {
+    "EN" : "Wildfire Wolf",
+    "RU" : "Wildfire Wolf",
+    "UA" : "Wildfire Wolf",
+    "LT" : "Wildfire Wolf"
+  },
+  "15": {
+    "EN" : "The Howling Alpha",
+    "RU" : "The Howling Alpha",
+    "UA" : "The Howling Alpha",
+    "LT" : "The Howling Alpha"
+  }
+}
