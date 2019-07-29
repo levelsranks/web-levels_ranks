@@ -10,7 +10,7 @@
 ?>
 <div class=navbar>
     <div class=logo-area>
-        <a href="#" data-toggle="offcanvas" class="nav-toggle pp-nav-toggle"><i></i></a>
+        <a href="javascript:void(0);" onclick="action_sidebar()" class="nav-toggle pp-nav-toggle"><i></i></a>
         <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="storage/cache/img/global/logo.png"></a>
     </div>
     <ul class="right-area">
@@ -66,8 +66,3 @@
 </div>
 <div class="global-container">
     <div class="container-fluid">
-<?php
-// Подгрузка данных из модулей которые относятся к интерфейсу
-for ( $module_id = 0, $c = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'] ); $module_id < $c; $module_id++ ):
-    require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'][ $module_id ] . '/forward/interface.php';
-endfor;

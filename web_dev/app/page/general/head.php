@@ -1,17 +1,3 @@
-<?php
-/**
- * @author Anastasia Sidak <m0st1ce.nastya@gmail.com>
- *
- * @link https://steamcommunity.com/profiles/76561198038416053
- * @link https://github.com/M0st1ce
- *
- * @license GNU General Public License Version 3
- */
-
-// Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы
-for ( $module_id = 0, $c = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'] ); $module_id < $c; $module_id++ ):
-    require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'][ $module_id ] . '/forward/data.php';
-endfor;?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>

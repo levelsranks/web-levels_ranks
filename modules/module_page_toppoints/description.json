@@ -25,7 +25,8 @@
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "accounts-alt",
-      "name": "_Statistics"
+      "name": "_Statistics",
+      "sidebar_directory": "_Sidebar_statistics"
     }
   }
 }

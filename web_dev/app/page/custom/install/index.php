@@ -295,7 +295,7 @@ if( isset( $_POST['option_save'] ) ) {
                             </select>
                         </div>
                         <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value=""></div>
-                        <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value=""></div>
+                        <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value="STEAM_1:"></div>
                         <div class="input-form"><div class="input_text">Глав. админ. логин ( No Steam авторизация ): </div><input name="admin_login" value=""></div>
                         <div class="input-form"><div class="input_text">Глав. админ. пароль ( No Steam авторизация ): </div><input name="admin_pass" value=""></div>
                     </form>

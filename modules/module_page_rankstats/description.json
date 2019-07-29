@@ -26,7 +26,8 @@
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "flag",
-      "name": "Распределение рангов"
+      "name": "Распределение рангов",
+      "sidebar_directory": "_Sidebar_statistics"
     }
   }
 }

@@ -30,6 +30,12 @@ if ( $_SESSION['steamid'] ) {
     }
 
     $user_rank_count = sizeof( $user_auth );
+    for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++ ):
+        for ( $_d = 0, $_c = sizeof( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ); $_d < $_c; $_d++ ):
+         $sidebar_inc[ $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['sidebar_directory'] ][] = $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ];
+        endfor;
+    endfor;
+    //print_r($sidebar_inc);
 }?>
 <aside class="main-sidebar offcanvas">
     <section class="sidebar">
@@ -55,7 +61,7 @@ if ( $_SESSION['steamid'] ) {
             </div>
             <?php if( ! empty( $_SESSION['steamid'] ) ):?>
                 <div class="rank-info">
-                    <li class="rank-mini-li"><a href="">
+                    <li class="rank-mini-li"><a href="javascript:void(0);" onclick="action_treeview()" >
                         <div class="user-rank tooltip-right" data-tooltip="<?php echo $res_data_sidebar[0]['name_servers'];?>">
                             <img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $res_data_sidebar[ 0 ]['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png">
                             <div class="rank-details">
@@ -92,8 +98,12 @@ if ( $_SESSION['steamid'] ) {
                     </div>
                 </a>
             </li>
-            <?php for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++ ):
-                    for ( $_d = 0, $_c = sizeof( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ); $_d < $_c; $_d++ ):?>
+<?php
+// Цикл -> Количество разделов sidebar
+for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++ ):
+
+    // Цикл -> Счёт количества
+    for ( $_d = 0, $_c = sizeof( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ); $_d < $_c; $_d++ ):?>
             <li class="tooltip-right" data-tooltip="<?php substr( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'], 0, 1) == '_' ? print $Modules->get_translate_phrase($Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) : print $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']?>">
                 <a href="<?php echo $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['href']?>" <?php get_section( 'page', 'home' ) == str_replace('?page=','',$Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['href']) ? print 'class="table-active"' : false?>
                     <?php ( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['open_new_tab'] == true ) ? print 'target="_blank"' : false?>>
@@ -105,7 +115,8 @@ if ( $_SESSION['steamid'] ) {
                     </div>
                 </a>
             </li>
-            <?php   endfor;
+<?php
+endfor;
                   endfor;
                   if( $General->arr_general['admin'] == $_SESSION['steamid32'] ):?>
             <li class="tooltip-right" data-tooltip="Панель администратора">

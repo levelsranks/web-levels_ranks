@@ -28,7 +28,6 @@ class Modules {
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
         // Проверка для роутера страниц
-
         empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && $_GET["page"] != '' && get_iframe( '009', 'Данная страница не существует' );
 
         // Получение кэшированного листа переводов.
@@ -92,6 +91,7 @@ class Modules {
      * Получить перевод определенной фразы из общего кэша.
      *
      * @param string $phrase        Слово для перевода.
+     * @param string $group         Подмассив.
      *
      * @return string               Выводит слово в переводе.
      */

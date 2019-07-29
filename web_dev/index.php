@@ -8,7 +8,7 @@
  * @license GNU General Public License Version 3
  */
 
-// задаём основную кодировку страницы.
+// Задаём основную кодировку страницы.
 header('Content-Type: text/html; charset=utf-8');
 
 // Отключаем вывод ошибок.
@@ -23,7 +23,7 @@ set_time_limit(3);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.106');
+define('VERSION', '0.2.107');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -73,6 +73,9 @@ use app\ext\General;
 // Импортирование глобального класса отвечающего за работу с базами данных.
 use app\ext\Db;
 
+// Импортирование графического класса.
+use app\ext\Graphics;
+
 // __autoload()
 spl_autoload_register( function( $class ) {
     $path = str_replace( '\\', '/', $class . '.php' );
@@ -80,22 +83,13 @@ spl_autoload_register( function( $class ) {
 } );
 
 // Создание экземпляра класса работающего с модулями.
-$Modules = new Modules;
+$Modules    = new Modules;
 
 // Создание основного экземпляра класса.
-$General = new General ( $Modules );
+$General    = new General ( $Modules );
 
 // Создание экземпляра класса работающего с базами данных.
-$Db = new Db;
+$Db         = new Db;
 
-// Рендер head-блока страницы с пре-инициализацией модулей
-require PAGE . 'head.php';
-
-// Рендер sidebar-панели
-require PAGE . 'sidebar.php';
-
-// Рендер шабки с инициализацией модулей
-require PAGE . 'navbar.php';
-
-// Редер подвала страницы
-require PAGE . 'footer.php';
+// Создание экземпляра графического класса.
+$Graphics   = new Graphics ( $General, $Modules, $Db );

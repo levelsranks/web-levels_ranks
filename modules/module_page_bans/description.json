@@ -26,6 +26,7 @@
     "icon_group": "zmdi",
     "icon_category": null,
     "icon": "block",
-    "name": "_Bans"
+    "name": "_Bans",
+    "sidebar_directory": "_Sidebar_blocks"
   }}
 }

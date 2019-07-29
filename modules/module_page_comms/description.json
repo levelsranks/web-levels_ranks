@@ -26,6 +26,7 @@
     "icon_group": "zmdi",
     "icon_category": "",
     "icon": "mic-off",
-    "name": "_Comms"
+    "name": "_Comms",
+    "sidebar_directory": "_Sidebar_blocks"
   }}
 }
