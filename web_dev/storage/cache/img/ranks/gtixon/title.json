@@ -1,0 +1,320 @@
+{
+  "_": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "0": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "00": {
+    "EN" : "No rank",
+    "RU" : "Нету ранга",
+    "UA" : "Нема рангу",
+    "LT" : "Nėra rango"
+  },
+  "1": {
+    "EN" : "Silver 1",
+    "RU" : "Серебро 1",
+    "UA" : "Срібло 1",
+    "LT" :	"Silver 1"
+  },
+  "2": {
+    "EN" : "Silver 2",
+    "RU" : "Серебро 2",
+    "UA" : "Срібло 2",
+    "LT" :	"Silver 2"
+  },
+  "3": {
+    "EN" : "Silver 3",
+    "RU" : "Серебро 3",
+    "UA" : "Срібло 3",
+    "LT" :	"Silver 3"
+  },
+  "4": {
+    "EN" : "Silver 4",
+    "RU" : "Серебро 4",
+    "UA" : "Срібло 4",
+    "LT" :	"Silver 4"
+  },
+  "5": {
+    "EN" : "Silver Elite",
+    "RU" : "Серебро Элита",
+    "UA" : "Срібло Еліта",
+    "LT" : "Silver Elite"
+  },
+  "6": {
+    "EN" : "Silver Elite Master",
+    "RU" : "Серебро - Великий Магистр",
+    "UA" : "Срібло - Великий Магістр",
+    "LT" : "Silver Elite Master"
+  },
+  "7": {
+    "EN" : "Gold Nova 1",
+    "RU" : "Золотая звезда 1",
+    "UA" : "Золота зірка 1",
+    "LT" : "Gold Nova 1"
+  },
+  "8": {
+    "EN" : "Gold Nova 2",
+    "RU" : "Золотая звезда 2",
+    "UA" : "Золота зірка 2",
+    "LT" : "Gold Nova 2"
+  },
+  "9": {
+    "EN" : "Gold Nova 3",
+    "RU" : "Золотая звезда 3",
+    "UA" : "Золота зірка 3",
+    "LT" : "Gold Nova 3"
+  },
+  "10": {
+    "EN" : "Gold Nova Master",
+    "RU" : "Золотая звезда - Магистр",
+    "UA" : "Золота зірка - Магістр",
+    "LT" : "Gold Nova Master"
+  },
+  "11": {
+    "EN" : "Master Guardian 1",
+    "RU" : "Магистр-хранитель 1",
+    "UA" : "Магістр-хранитель 1",
+    "LT" : "Master Guardian 1"
+  },
+  "12": {
+    "EN" : "Master Guardian 2",
+    "RU" : "Магистр-хранитель 2",
+    "UA" : "Магістр-хранитель 2",
+    "LT" : "Master Guardian 2"
+  },
+  "13": {
+    "EN" : "Master Guardian Elite",
+    "RU" : "Магистр-хранитель Элита",
+    "UA" : "Магістр-хранитель Еліта",
+    "LT" : "Master Guardian Elite"
+  },
+  "14": {
+    "EN" : "Distinguished Master Guardian",
+    "RU" : "Заслуженный Магистр-хранитель",
+    "UA" : "Заслужений Магістр-хранитель",
+    "LT" : "Distinguished Master Guardian"
+  },
+  "15": {
+    "EN" : "Legendary Eagle",
+    "RU" : "Легендарный Беркут",
+    "UA" : "Легендарный Беркут",
+    "LT" : "Legendary Eagle"
+  },
+  "16": {
+    "EN" : "Legendary Eagle Master",
+    "RU" : "Легендарный Беркут-магистр",
+    "UA" : "Легендарний Беркут-магістр",
+    "LT" : "Legendary Eagle Master"
+  },
+  "17": {
+    "EN" : "Supreme Master First Class",
+    "RU" : "Великий Магистр Высшего Ранга",
+    "UA" : "Великий Магістр Вищого Рангу",
+    "LT" : "Supreme Master First Class"
+  },
+  "18": {
+    "EN" : "The Global Elite",
+    "RU" : "Всемирная Элита",
+    "UA" : "Всесвітня Еліта",
+    "LT" : "The Global Elite"
+  },
+  "19": {
+    "EN" : "Rank 19",
+    "RU" : "Rank 19",
+    "UA" : "Rank 19",
+    "LT" : "Rank 19"
+  },
+  "20": {
+    "EN" : "Rank 20",
+    "RU" : "Rank 20",
+    "UA" : "Rank 20",
+    "LT" : "Rank 20"
+  },
+  "21": {
+    "EN" : "Rank 21",
+    "RU" : "Rank 21",
+    "UA" : "Rank 21",
+    "LT" : "Rank 21"
+  },
+  "22": {
+    "EN" : "Rank 22",
+    "RU" : "Rank 22",
+    "UA" : "Rank 22",
+    "LT" : "Rank 22"
+  },
+  "23": {
+    "EN" : "Rank 23",
+    "RU" : "Rank 23",
+    "UA" : "Rank 23",
+    "LT" : "Rank 23"
+  },
+  "24": {
+    "EN" : "Rank 24",
+    "RU" : "Rank 24",
+    "UA" : "Rank 24",
+    "LT" : "Rank 24"
+  },
+  "25": {
+    "EN" : "Rank 25",
+    "RU" : "Rank 25",
+    "UA" : "Rank 25",
+    "LT" : "Rank 25"
+  },
+  "26": {
+    "EN" : "Rank 26",
+    "RU" : "Rank 26",
+    "UA" : "Rank 26",
+    "LT" : "Rank 26"
+  },
+  "27": {
+    "EN" : "Rank 27",
+    "RU" : "Rank 27",
+    "UA" : "Rank 27",
+    "LT" : "Rank 27"
+  },
+  "28": {
+    "EN" : "Rank 28",
+    "RU" : "Rank 28",
+    "UA" : "Rank 28",
+    "LT" : "Rank 28"
+  },
+  "29": {
+    "EN" : "Rank 29",
+    "RU" : "Rank 29",
+    "UA" : "Rank 29",
+    "LT" : "Rank 29"
+  },
+  "30": {
+    "EN" : "Rank 30",
+    "RU" : "Rank 30",
+    "UA" : "Rank 30",
+    "LT" : "Rank 30"
+  },
+  "31": {
+    "EN" : "Rank 31",
+    "RU" : "Rank 31",
+    "UA" : "Rank 31",
+    "LT" : "Rank 31"
+  },
+  "32": {
+    "EN" : "Rank 32",
+    "RU" : "Rank 32",
+    "UA" : "Rank 32",
+    "LT" : "Rank 32"
+  },
+  "33": {
+    "EN" : "Rank 33",
+    "RU" : "Rank 33",
+    "UA" : "Rank 33",
+    "LT" : "Rank 33"
+  },
+  "34": {
+    "EN" : "Rank 34",
+    "RU" : "Rank 34",
+    "UA" : "Rank 34",
+    "LT" : "Rank 34"
+  },
+  "35": {
+    "EN" : "Rank 35",
+    "RU" : "Rank 35",
+    "UA" : "Rank 35",
+    "LT" : "Rank 35"
+  },
+  "36": {
+    "EN" : "Rank 36",
+    "RU" : "Rank 36",
+    "UA" : "Rank 36",
+    "LT" : "Rank 36"
+  },
+  "37": {
+    "EN" : "Rank 37",
+    "RU" : "Rank 37",
+    "UA" : "Rank 37",
+    "LT" : "Rank 37"
+  },
+  "38": {
+    "EN" : "Rank 38",
+    "RU" : "Rank 38",
+    "UA" : "Rank 38",
+    "LT" : "Rank 38"
+  },
+  "39": {
+    "EN" : "Rank 39",
+    "RU" : "Rank 39",
+    "UA" : "Rank 39",
+    "LT" : "Rank 39"
+  },
+  "40": {
+    "EN" : "Rank 40",
+    "RU" : "Rank 40",
+    "UA" : "Rank 40",
+    "LT" : "Rank 40"
+  },
+  "41": {
+    "EN" : "Rank 41",
+    "RU" : "Rank 41",
+    "UA" : "Rank 41",
+    "LT" : "Rank 41"
+  },
+  "42": {
+    "EN" : "Rank 42",
+    "RU" : "Rank 42",
+    "UA" : "Rank 42",
+    "LT" : "Rank 42"
+  },
+  "43": {
+    "EN" : "Rank 43",
+    "RU" : "Rank 43",
+    "UA" : "Rank 43",
+    "LT" : "Rank 43"
+  },
+  "44": {
+    "EN" : "Rank 44",
+    "RU" : "Rank 44",
+    "UA" : "Rank 44",
+    "LT" : "Rank 44"
+  },
+  "45": {
+    "EN" : "Rank 45",
+    "RU" : "Rank 45",
+    "UA" : "Rank 45",
+    "LT" : "Rank 45"
+  },
+  "46": {
+    "EN" : "Rank 46",
+    "RU" : "Rank 46",
+    "UA" : "Rank 46",
+    "LT" : "Rank 46"
+  },
+  "47": {
+    "EN" : "Rank 47",
+    "RU" : "Rank 47",
+    "UA" : "Rank 47",
+    "LT" : "Rank 47"
+  },
+  "48": {
+    "EN" : "Rank 48",
+    "RU" : "Rank 48",
+    "UA" : "Rank 48",
+    "LT" : "Rank 48"
+  },
+  "49": {
+    "EN" : "Rank 49",
+    "RU" : "Rank 49",
+    "UA" : "Rank 49",
+    "LT" : "Rank 49"
+  },
+  "50": {
+    "EN" : "Rank 50",
+    "RU" : "Rank 50",
+    "UA" : "Rank 50",
+    "LT" : "Rank 50"
+  }
+}
