@@ -186,7 +186,7 @@ function action_text_clear_before_slash( $text ) {
  * @return string                    Выводит итог конвертации.
  */
 function con_steam32to64( $id ) {
-    if( PHP_VERSION >= 7.3 ) {
+    if ( version_compare( PHP_VERSION, "7.3", "=" ) ) {
         $accountarray =	explode(":", $id);
         return $accountarray[2] * 2 + $accountarray[1] + '76561197960265728';
     } else {

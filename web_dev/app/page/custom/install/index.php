@@ -55,6 +55,9 @@ require INCLUDES . 'functions.php';
 // Проверка на PDO
 class_exists('PDO') || get_iframe('001','Для работы нужна поддержка PDO');
 
+// Проверка на bcmath
+extension_loaded('bcmath') == 0 && get_iframe('002','Расширение для PHP не было найдено :: bcmath');
+
 // Проверка прав доступа каталога кэша ( 0777 )
 substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '004','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
 

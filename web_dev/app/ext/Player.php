@@ -117,7 +117,6 @@ class Player {
 
         $this->top_with_player = $this->get_db_top_with_player();
 
-
         # Плагин -> Ex_weapons
         if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_weapons' ) == 1 ):
             $this->weapons = $this->get_db_exstats_weapons();

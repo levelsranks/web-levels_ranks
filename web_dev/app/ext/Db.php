@@ -193,6 +193,21 @@ class Db {
     }
 
     /**
+     * Запрос проверяющий существование столбика в той или иной таблице.
+     *
+     * @param string $mod          	Навание мода.
+     * @param int $user_id          Номер пользователя.
+     * @param int $db_id        	Номер подключенной базы данных.
+     * @param string $tablename    	Название таблицы.
+     * @param string $column    	Название столбика который нужно проверить.
+     *
+     * @return int                 Возвращает результат проверки.
+     */
+    public function mysql_column_search( $mod, $user_id = 0, $db_id = 0, $tablename, $column ) {
+        return in_array( $column, $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query('SHOW COLUMNS from ' . $tablename . ' ')->fetchAll( PDO::FETCH_COLUMN ) );
+    }
+
+    /**
      * Запрос проверяющий существование таблицы в той или иной базе данных.
      *
      * @param string $mod          Навание мода.
