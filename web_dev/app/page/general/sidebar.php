@@ -35,14 +35,13 @@ if ( $_SESSION['steamid'] ) {
          $sidebar_inc[ $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['sidebar_directory'] ][] = $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ];
         endfor;
     endfor;
-    //print_r($sidebar_inc);
 }?>
 <aside class="main-sidebar offcanvas">
     <section class="sidebar">
         <div class="user-sidebar-block">
             <div class="user-info">
                 <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid32']?>">
-                    <?php if( $General->arr_general['avatars'] != 0 ) {?><script>CheckAvatar = <?php empty( $_SESSION['steamid'] ) ? print 0 : $General->checkAvatar( $_SESSION['steamid'], 2 )?>;if(CheckAvatar == 1) {avatar.push("<?php echo $_SESSION['steamid']?>");}</script><?php }?>
+                    <?php $General->get_js_relevance_avatar( $_SESSION['steamid'] )?>
                     <img id="<?php empty( $_SESSION['steamid'] ) ? print 0 : print $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="
                     <?php if( empty( $_SESSION['steamid'] ) ) { echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                     } else{

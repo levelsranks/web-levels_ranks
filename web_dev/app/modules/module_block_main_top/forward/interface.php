@@ -35,8 +35,8 @@
                         <tbody>
                         <?php $count = sizeof( $data['module_block_main_top'][ $d ] );
                         $data_paste[ $d ] = $data['module_block_main_top'][ $d ];
-                        for ( $dd = 0; $dd < $count; $dd++ ) { ?>
-                            <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar( con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ), 2)?>;if (CheckAvatar == 1) {avatar.push("<?php echo con_steam32to64( $data_paste[ $d ][ $dd ]['steam'])?>");}</script><?php } ?>
+                        for ( $dd = 0; $dd < $count; $dd++ ) {
+                            $General->get_js_relevance_avatar( $data_paste[ $d ][ $dd ]['steam'] )?>
                             <tr class="pointer" onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>';">
                                 <th class="text-center"><?php echo ++$a[ $d ] ?></th>
                                 <?php if( $General->arr_general['avatars'] != 0 ) {?>

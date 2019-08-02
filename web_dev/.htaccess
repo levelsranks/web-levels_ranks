@@ -1,1 +1,4 @@
+php_flag register_globals off
+AddDefaultCharset utf-8
+DirectoryIndex index.php index.html index.htm
 Options -Indexes

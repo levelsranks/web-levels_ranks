@@ -47,11 +47,8 @@
                 </tr>
                 </thead>
                 <tbody><?php $sz = sizeof( $res[$server_group] );
-                for ($sz_i = 0; $sz_i < $sz; $sz_i++) { ?>
-                <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64($res[$server_group][$sz_i]['steam']), 2)?>;
-                        if (CheckAvatar == 1) {
-                            avatar.push("<?php echo con_steam32to64($res[$server_group][$sz_i]['steam'])?>");
-                        }</script><?php } ?>
+                for ($sz_i = 0; $sz_i < $sz; $sz_i++) {
+                    $General->get_js_relevance_avatar( $res[$server_group][$sz_i]['steam'] )?>
                     <tr class="pointer"
                         <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[$server_group][$sz_i]['steam'] ?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>

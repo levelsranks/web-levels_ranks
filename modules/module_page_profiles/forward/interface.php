@@ -40,7 +40,7 @@
                 <div class="profile__block">
                 <div class="user-block">
                     <div class="block">
-                    <?php if( $General->arr_general['avatars'] == 1 ) {?><script>CheckAvatar = <?php echo $General->checkAvatar(con_steam32to64( $Player->get_steam_32() ),1)?>;if(CheckAvatar == 1) {avatar.push("<?php echo con_steam32to64(  $Player->get_steam_32()  )?>");}</script><?php } ?>
+                    <?php $General->get_js_relevance_avatar( $Player->get_steam_32() )?>
                     <a href="<?php $Player->found[  $Player->server_group  ]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64( $Player->get_steam_32() )?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64(  $Player->get_steam_32()  )?>"class="rounded-circle avatar" data-src="
                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64( $Player->get_steam_32()  ), 1);
                            } elseif( $General->arr_general['avatars'] == 2 || $General->arr_general['avatars'] == 0) {

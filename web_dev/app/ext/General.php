@@ -135,12 +135,12 @@ class General {
             if ( time() - $cachetime <= $time ) {
                 unlink($url);
                 unlink($url_slim);
-                echo 1;
+                return 1;
             } else {
-                echo 0;
+                return 0;
             }
         } else {
-            echo 1;
+            return 1;
         }
         } elseif( $type == 2 ) {
 
@@ -149,12 +149,12 @@ class General {
                 if ( time() - $cachetime <= $time ) {
                     unlink($url);
                     unlink($url_slim);
-                    echo 1;
+                    return 1;
                 } else {
-                    echo 0;
+                    return 0;
                 }
             } else {
-                echo 1;
+                return 1;
             }
         }
     }
@@ -221,5 +221,18 @@ class General {
         } else {
             return $seconds . ' ' . $this->Modules->get_translate_phrase('_Second');
         }
+    }
+
+    /**
+     * Вывод JS скрипта на проверку актуальности аватара.
+     *
+     * @param string $id      Steam ID - 32.
+     *
+     * @return string         Скрипт.
+     */
+    function get_js_relevance_avatar( $id ) {
+        $con = con_steam32to64( $id );
+        $check = ( int )$this->checkAvatar( $con, 2 );
+        $this->arr_general['avatars'] == 1 && print sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
     }
 }
