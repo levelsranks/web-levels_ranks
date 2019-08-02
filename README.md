@@ -5,6 +5,7 @@
     Levels Ranks - WEB Interface
 </h1>
 Пользовательский WEB интерфейс для взаимодействия с плагином статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>.
+Официальный канал поддержки в <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
 -----
 <p align="center">
