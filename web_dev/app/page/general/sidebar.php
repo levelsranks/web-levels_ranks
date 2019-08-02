@@ -41,7 +41,7 @@ if ( $_SESSION['steamid'] ) {
         <div class="user-sidebar-block">
             <div class="user-info">
                 <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid32']?>">
-                    <?php $General->get_js_relevance_avatar( $_SESSION['steamid'] )?>
+                    <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
                     <img id="<?php empty( $_SESSION['steamid'] ) ? print 0 : print $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="
                     <?php if( empty( $_SESSION['steamid'] ) ) { echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                     } else{
