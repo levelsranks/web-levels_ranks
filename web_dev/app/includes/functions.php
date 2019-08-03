@@ -62,7 +62,7 @@ function var_export_opt($var, $return = true) {
  * @return string|false         Выводит итоговое значение раздела.
  */
 function get_section( $section, $default ) {
-    return $_GET[ $section ] == true ? $_GET[ $section ] : $default;
+    return ! empty( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
 }
 
 /**
@@ -190,9 +190,12 @@ function con_steam32to64( $id ) {
         $accountarray =	explode(":", $id);
         return $accountarray[2] * 2 + $accountarray[1] + '76561197960265728';
     } else {
-        list( , $m1, $m2 ) = explode( ':', $id, 3 );
-        list( $steam_cid, ) = explode( '.', bcadd((((int)$m2 * 2) + $m1 ) , '76561197960265728') , 2 );
-        return $steam_cid;
+        $accountarray	=	explode(":", $id);
+        $idnum			=	$accountarray[1];
+        $accountnum		=	$accountarray[2];
+        $constant		=	'76561197960265728';
+        $number			=	bcadd(bcmul($accountnum, 2), bcadd($idnum, $constant));
+        return $number;
     }
 }
 

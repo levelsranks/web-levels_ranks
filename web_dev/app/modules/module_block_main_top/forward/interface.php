@@ -38,7 +38,7 @@
                         for ( $dd = 0; $dd < $count; $dd++ ) {
                             $General->get_js_relevance_avatar( $data_paste[ $d ][ $dd ]['steam'] )?>
                             <tr class="pointer" onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>';">
-                                <th class="text-center"><?php echo ++$a[ $d ] ?></th>
+                                <th class="text-center"><?php echo $dd+1 ?></th>
                                 <?php if( $General->arr_general['avatars'] != 0 ) {?>
                                     <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($data_paste[ $d ][ $dd ]['steam']);} ?>" data-src="
                                     <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64($data_paste[ $d ][ $dd ]['steam']), 2);

@@ -18,5 +18,5 @@ use app\ext\Player;
 $Player = new Player ( $General, $Db, get_section( 'profile', false ), get_section( 'server_group', '0' ) );
 
 $data['global']['title'] = $General->arr_general['short_name'] . ' :: ' .  $Db->db_data['LevelsRanks'][ get_section( 'server_group', '0' ) ]['name'] . ' :: ' . $Modules->get_translate_phrase('_Player') . ' :: ' .  $Player->get_name();
-$data['global']['info'] = $General->arr_general['short_name'] . " :: " .  $Db->db_data['LevelsRanks'][ get_section( 'server_group', '0' ) ]['name'] . " :: Steam ID :: " . get_section( 'profile', false ) . " :: Ранг - " . $Modules->get_translate_phrase('_Rank_' .  $Player->get_rank() ) . " :: Количество очков - " .  $Player->get_value();
+$data['global']['info'] = $General->arr_general['short_name'] . " :: " .  $Db->db_data['LevelsRanks'][ get_section( 'server_group', '0' ) ]['name'] . " :: Steam ID :: " . get_section( 'profile', false ) . " :: Ранг - " . $Modules->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] ) . " :: Количество очков - " .  $Player->get_value();
 $data['global']['avatar'] = $General->arr_general['avatars'] == 1 ? $General->getAvatar(con_steam32to64( $Player->get_steam_32() ),1) : 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';

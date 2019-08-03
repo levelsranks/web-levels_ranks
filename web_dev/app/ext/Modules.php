@@ -28,7 +28,7 @@ class Modules {
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
         // Проверка для роутера страниц
-        empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && $_GET["page"] != '' && get_iframe( '009', 'Данная страница не существует' );
+        ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
 
         // Получение кэшированного листа переводов.
         $this->arr_translations = require SESSIONS . 'translator_cache.php';
@@ -96,7 +96,7 @@ class Modules {
      * @return string               Выводит слово в переводе.
      */
     public function get_translate_phrase( $phrase, $group = '' ) {
-        return $result = empty ( $group ) ? $this->arr_translations[ $phrase ][ $_SESSION['language'] ] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
+        return empty ( $group ) ? $this->arr_translations[ $phrase ][ $_SESSION['language'] ] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
     }
 
     /**

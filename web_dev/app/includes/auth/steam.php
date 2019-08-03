@@ -31,7 +31,6 @@ if ( $_GET["auth"] == 'login' ) {
                 $_SESSION['steamid'] = $matches[1];
                 $_SESSION['steamid32'] = con_steam64to32( $matches[1] );
                 $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
-                $_SESSION['HTTP_X'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
                 $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
                 header('Location: ' . $this->arr_general['site']);
                 if ( ! headers_sent() ) {?>

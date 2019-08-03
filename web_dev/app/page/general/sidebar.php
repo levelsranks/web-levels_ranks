@@ -9,7 +9,7 @@
  */
 
 // Проверяем на существование сессию и при её наличии собираем информацию об игроке.
-if ( $_SESSION['steamid'] ) {
+if ( ! empty( $_SESSION['steamid'] ) ) {
     // С помощью цикла делаем запросы к базе данных.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
         $res_data_sidebar[] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],
@@ -51,7 +51,7 @@ if ( $_SESSION['steamid'] ) {
                     }}?>"></a>
                 <div class="user-details">
                     <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print 'Герой без имени' : print $user_auth[0]['name']?></span>
-                    <?php if( $_SESSION['steamid'] != '' ):?>
+                    <?php if( ! empty( $_SESSION['steamid'] ) ):?>
                         <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
                     <?php else:?>
                         <span><a href="#login">Войти</a></span>
@@ -117,7 +117,7 @@ for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++
 <?php
 endfor;
                   endfor;
-                  if( $General->arr_general['admin'] == $_SESSION['steamid32'] ):?>
+                  if( ! empty( $_SESSION['steamid32'] ) && $General->arr_general['admin'] == $_SESSION['steamid32'] ):?>
             <li class="tooltip-right" data-tooltip="Панель администратора">
                 <a href="<?php echo get_url(2) . '?page=adminpanel'?>" <?php get_section( 'page', 'home' ) == 'adminpanel' && print 'class="table-active"'?>>
                     <div class="sidebar-icon">

@@ -75,9 +75,8 @@ class Db {
 
         // PDO Условия.
         $this->options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false
+            PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION,
+            PDO::MYSQL_ATTR_USE_BUFFERED_QUERY
         ];
 
         # Подсчёт -> Количество модов.
@@ -128,6 +127,8 @@ class Db {
                      * $t - Номер таблицы.
                      */
 
+                    $rank_pack = empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['ranks_pack'] ) ? false : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['ranks_pack'];
+
                     // Создаём массив с описанием таблиц.
                     $this->db_data[ $this->mod_name[ $m ] ][] = [
                         'USER_ID' => $u,
@@ -138,7 +139,7 @@ class Db {
                         'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
                         'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
                         'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
-                        'ranks_pack' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['ranks_pack']
+                        'ranks_pack' => $rank_pack
                     ];
                 }
 
@@ -218,7 +219,7 @@ class Db {
      * @return int                 Возвращает результат проверки.
      */
     public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename ) {
-        return ( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
+        return ! empty( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;
     }
 
     /**

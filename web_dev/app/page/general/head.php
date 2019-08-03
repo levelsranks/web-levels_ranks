@@ -104,9 +104,11 @@
         .badge {border: 0px solid transparent;border-radius: 2px;} .card {border: 0px solid transparent;border-radius: 4px;} .tooltip-left:after, .tooltip-right:after,.tooltip-top:after {border: 0px solid transparent;border-radius: 2px;}
     </style>
 <?php endif; ?>
-<?php for ( $i = 0, $c = get_arr_size( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'] ); $i < $c; $i++ ):
+<?php if ( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'] ) ):
+for ( $i = 0, $c = get_arr_size( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'] ); $i < $c; $i++ ):
     require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'][ $i ] . '/assets/css.php';
-endfor;?>
+endfor;
+endif;?>
     <script>var avatar=[];var servers=[];var profile;</script>
 </head>
 <body <?php $_SESSION['sidebar_open'] == false && print 'class="sidebar-collapse"'?>>
