@@ -34,7 +34,9 @@
   - PHP 7.0 и выше.
   - Поддержка PHP PDO.
   - Поддержка PHP GMP.
-  - Поддержка PHP bcmath.
+  - Поддержка PHP BCMath.
+  - Поддержка PHP cURL.
+  - Поддержка PHP Zip.
 - Рекомендуется:
   - MySQL 5.7 или MariaDB 10.1 и выше.
 
