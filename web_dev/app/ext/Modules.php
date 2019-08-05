@@ -16,6 +16,10 @@ class Modules {
      * Организация работы вэб-приложения с модулями.
      */
     function __construct() {
+
+        // Проверка на существоавание option.php
+        ! file_exists( SESSIONS . '/options.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
+
         // Получение кэшированного списка модулей.
         $this->array_modules = $this->get_arr_modules();
 
