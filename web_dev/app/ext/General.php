@@ -19,31 +19,8 @@ class General {
 
         $this->Modules = $Modules;
 
-        if ( ! empty( $_SESSION['steamid'] ) ):
-            if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR']  ):
-                session_unset() && session_destroy() && die('Fake request');
-            endif;
-        endif;
-
         // Получение настроек вэб-интерфейса.
         $this->arr_general = $this->get_default_options();
-
-        // Костыльная авторизация для главного администратора - В будущем поправить
-        if( isset( $_POST['log_in'] ) && IN_LR == true ) { $admins = require SESSIONS . 'admins.php';
-        $_POST['_login'] == '' && header( 'Location: ' . get_url(1) ) && exit;
-            for ( $i = 0, $admins_count = sizeof( $admins ); $i < $admins_count; $i++ ) {
-                if($admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
-                    $_SESSION['steamid'] = con_steam32to64( $this->arr_general['admin'] );
-                    $_SESSION['steamid32'] = $this->arr_general['admin'];
-                    $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
-                    $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-                    header( 'Location: ' . get_url(1) . '#' );
-                    exit;
-                }
-            }
-            header( 'Location: ' . get_url(1) );
-            exit;
-        }
 
         if( isset( $_POST['btn_search'] ) && IN_LR == true ) {
 

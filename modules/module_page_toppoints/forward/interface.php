@@ -40,8 +40,9 @@
                     <th><?php echo $Modules->get_translate_phrase('_Player') ?></th>
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'value') ?>';" class="text-center a-type tb-name <?php $_SESSION['filter'] == 'value' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Point') ?></th>
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'rank') ?>';" class="text-center a-type tb-rank <?php $_SESSION['filter'] == 'rank' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Rank') ?></th>
-                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'kills') ?>';" class="text-center a-type <?php $_SESSION['filter'] == 'kills' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Kills') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'kills') ?>';" class="text-center a-type tb-death<?php $_SESSION['filter'] == 'kills' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Kills') ?></th>
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'deaths') ?>';" class="text-center a-type tb-death <?php $_SESSION['filter'] == 'deaths' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Deaths') ?></th>
+                    <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'kd') ?>';" class="text-center a-type <?php $_SESSION['filter'] == 'kd' && print 'selected';?>">K/D</th>
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'headshots') ?>';" class="text-center a-type tb-hs <?php $_SESSION['filter'] == 'headshots' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Headshot') ?></th>
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'playtime') ?>';" class="text-center a-type tb-time <?php $_SESSION['filter'] == 'playtime' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Play_time') ?></th>
                 </tr>
@@ -82,8 +83,9 @@
                             } else {
                                 echo $res[$server_group][$sz_i]['rank'];
                             } ?>.png"></th>
-                        <th class="text-center"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['kills']), 0, '.', ' ') ?></th>
+                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['kills']), 0, '.', ' ') ?></th>
                         <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['deaths']), 0, '.', ' ') ?></th>
+                        <th class="text-center"><?php echo $res[$server_group][$sz_i]['kd'] ?></th>
                         <th class="text-center tb-hs"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['headshots']), 0, '.', ' ') ?></th>
                         <th class="text-center tb-time"><?php echo round($res[$server_group][$sz_i]['playtime'] / 60 / 60) . ' Час.' ?></th>
                     </tr><?php } ?></tbody>

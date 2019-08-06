@@ -8,7 +8,9 @@
  * @license GNU General Public License Version 3
  */
 
-if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site'] ); exit; }
+! empty( $_SESSION['steamid32'] ) && $_SESSION['steamid32'] == $General->arr_general['admin'] && $Modules->set_sidebar_select('module_page_adminpanel', ["href" =>"?page=adminpanel", "open_new_tab" =>"0", "icon_group" =>"zmdi", "icon_category" =>"", "icon" =>"coffee", "name" =>"Панель администратора", "sidebar_directory" =>""]);
+
+if( $_GET['page'] == 'adminpanel' & $_SESSION['steamid32'] == $General->arr_general['admin'] ):
 
     if( isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
         for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {
@@ -104,3 +106,4 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
         header('Location: ' . get_url(1));
         exit;
     }
+endif;

@@ -11,7 +11,7 @@
 if ( $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try {
-        $openid = new LightOpenID( $this->arr_general['site'] );
+        $openid = new LightOpenID( 'http:' . $this->arr_general['site'] );
         if ( ! $openid->mode ) {
             $openid->identity = 'https://steamcommunity.com/openid';
             header( 'Location: ' . $openid->authUrl() );

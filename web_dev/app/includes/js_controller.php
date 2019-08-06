@@ -61,10 +61,14 @@ if( $_POST["function"] == 'avatars' ) {
         $avatars = $_POST['data'];
 
         // Генерация запроса к Steam API.
-        $result = file_get_contents( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $web_key . '&steamids=' . implode( ",", $avatars ) );
+        $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $web_key . '&steamids=' . implode( ",", $avatars ) );
+
+        curl_setopt($result, CURLOPT_RETURNTRANSFER, 1);
+
+        $url = curl_exec($result);
 
         // Полученные данные из запроса декодируем.
-        $data = json_decode( $result, true )['response']['players'];
+        $data = json_decode( $url, true )['response']['players'];
 
         // Подсчёт количества элементов массива.
         $data_count = sizeof( $data );

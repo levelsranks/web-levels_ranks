@@ -9,7 +9,7 @@
  */
 
 // Белый список, все любят белые списки!
-$General->get_default_url_section('filter', 'value', array('value', 'kills', 'rank', 'playtime', 'headshots', 'deaths', 'playtime') );
+$General->get_default_url_section('filter', 'value', array('value', 'kills', 'rank', 'playtime', 'headshots', 'deaths', 'playtime', 'kd') );
 
 // Очень важная настройка, кол-во человек на странице
 define('PLAYERS_ON_PAGE', '80');
@@ -45,7 +45,7 @@ $page_num > $page_max && header('Location: ' . $General->arr_general['site']);
 
 // Запрос
 
-$res[$server_group] = $Db->queryAll( 'LevelsRanks', $res_data[$server_group]['USER_ID'], $res_data[$server_group]['data_db'], "SELECT name,rank,steam,playtime,value,kills,headshots,deaths FROM " . $res_data[$server_group]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
+$res[$server_group] = $Db->queryAll( 'LevelsRanks', $res_data[$server_group]['USER_ID'], $res_data[$server_group]['data_db'], "SELECT name,rank,steam,playtime,value,kills,headshots,deaths, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[$server_group]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
 
 $res[$server_group] == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
 ($server_group > $res_data_count-1 || ctype_digit($server_group) != 1) ? header('Location: ' . $General->arr_general['site']) : false;

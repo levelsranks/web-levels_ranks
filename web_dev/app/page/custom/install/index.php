@@ -55,8 +55,17 @@ require INCLUDES . 'functions.php';
 // Проверка на PDO
 class_exists('PDO') || get_iframe('001','Для работы нужна поддержка PDO');
 
-// Проверка на bcmath
-extension_loaded('bcmath') == 0 && get_iframe('002','Расширение для PHP не было найдено :: bcmath');
+// Проверка на BCMath
+extension_loaded('bcmath') == 0 && get_iframe('002','Расширение для PHP не было найдено :: BCMath');
+
+// Проверка на cURL
+extension_loaded('curl') == 0 && get_iframe('007','Расширение для PHP не было найдено :: cURL');
+
+// Проверка на Zip
+extension_loaded('zip') == 0 && get_iframe('008','Расширение для PHP не было найдено :: Zip');
+
+// Проверка на GMP
+extension_loaded('gmp') == 0 && get_iframe('009','Расширение для PHP не было найдено :: GMP');
 
 // Проверка прав доступа каталога кэша ( 0777 )
 substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '004','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
@@ -67,11 +76,7 @@ substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && 
 // Проверка прав доступа на кэш слим - аватарок ( 0777 )
 substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/slim/' ) ), -4) !== '0777' && get_iframe( '006','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/slim/' );;
 
-$URL = 'http';
-if ( $_SERVER["HTTPS"] == "on" ) {
-    $URL .= "s";
-}
-$URL .= '://' . $_SERVER["SERVER_NAME"] . explode('app/',$_SERVER['REQUEST_URI'])[0];
+$URL = '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0];
 
 ! file_exists( SESSIONS . '/db.php' ) ? $eb_db = '0' : $eb_db = 1;
 

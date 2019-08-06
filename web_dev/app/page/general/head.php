@@ -18,7 +18,7 @@
     <link rel="image_src" href="<?php echo $General->arr_general['site'] . CACHE . 'img/global/bar_logo.jpg'?>">
     <meta name="twitter:image" content="<?php echo $General->arr_general['site'] . CACHE . 'img/global/bar_logo.jpg'?>">
 <?php endif; ?>
-    <link rel="stylesheet" href="<?php echo $General->arr_general['site']?>storage/assets/css/themes/<?php echo $General->arr_general['theme']?>/style.css">
+    <link rel="stylesheet" href="<?php echo $General->arr_general['site']?>/storage/assets/css/themes/<?php echo $General->arr_general['theme']?>/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 <?php if ( $_SESSION['dark_mode'] == true ) { ?>
     <style>

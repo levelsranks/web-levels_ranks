@@ -15,34 +15,38 @@
     "translation": "0",
     "interface": "0",
     "data": "0",
+    "data_always": "0",
     "css": "0",
     "js": "0"
   },
   "sidebar":
   {
     "0": {
-      "href": "https://steamcommunity.com/",
+      "href": "https://steamcommunity.com/groups/ocgnpro",
       "open_new_tab": "1",
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "steam-square",
-      "name": "Группа Steam"
+      "name": "Группа Steam",
+      "sidebar_directory": "_Sidebar_social"
     },
     "1": {
-      "href": "https://vk.com/",
+      "href": "https://vk.com/ocgnpro",
       "open_new_tab": "1",
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "vk",
-      "name": "Группа Вконтакте"
+      "name": "Группа Вконтакте",
+      "sidebar_directory": "_Sidebar_social"
     },
     "2": {
-      "href": "https://discord.gg/",
+      "href": "https://discord.gg/xM8mbAF",
       "open_new_tab": "1",
       "icon_group": "custom",
       "icon_category": "socials",
       "icon": "discord",
-      "name": "Канал Discord"
+      "name": "Канал Discord",
+      "sidebar_directory": "_Sidebar_social"
     }
   }
 }

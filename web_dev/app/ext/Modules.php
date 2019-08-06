@@ -45,8 +45,10 @@ class Modules {
      */
     public function get_module_init() {
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( !file_exists( SESSIONS . 'modules_initialization.php' ) ) {
+        if ( !file_exists( SESSIONS . 'modules_initialization.php' ) ):
+
             $result = [];
+            $data_always = [];
 
             // Перебором забираем корневое название модулей.
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
@@ -58,15 +60,33 @@ class Modules {
                  ):
                      $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;
                      $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
+                     $this->array_modules[ $module ]['setting']['data_always'] == 1 && $data_always[] = $module;
                      $this->array_modules[ $module ]['setting']['css'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['css'][] = $module;
                      $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
                      $this->array_modules[ $module ]['sidebar'] != '' && $result['sidebar'][] = $module;
                  endif;
             endfor;
 
+            $c_page = sizeof( $result['page'] );
+
+            $data_always_size = sizeof( $data_always );
+
+            // Дополнительный перебор.
+            for ( $i = 0; $i < $c_page; $i++ ):
+                $module = array_keys( $this->array_modules )[ $i ];
+
+                for ( $i2 = 0; $i2 < $data_always_size; $i2++ ):
+
+                    if ( ! in_array( $data_always[ $i2 ], $result['page'][ $this->array_modules[ $module ]['page'] ]['data'] ) ) {
+                        $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $data_always[ $i2 ];
+                    }
+
+                endfor;
+            endfor;
+
             // Сохраняем наш файл с перебором модулей.
             file_put_contents( SESSIONS . 'modules_initialization.php', '<?php return '.var_export_min( $result ).";\n" );
-        }
+        endif;
         return require SESSIONS . 'modules_initialization.php';
     }
 
@@ -106,13 +126,24 @@ class Modules {
     /**
      * Получить перевод определенной фразы из кэша модуля.
      *
-     * @param string $module_id       Название модуля.
+     * @param string $module_id         ID модуля.
      * @param string $phrase            Слово для перевода.
      *
      * @return string                   Выводит слово в переводе.
      */
     public function get_translate_module_phrase( $module_id, $phrase ) {
         return $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
+    }
+
+    /**
+     * Получить список переводов определенного модуля.
+     *
+     * @param string $module_id         ID модуля.
+     *
+     * @return array                    Массив переводов.
+     */
+    public function get_arr_translate_module( $module_id ) {
+        return $this->arr_translations[ $module_id ];
     }
 
     /**
@@ -168,5 +199,21 @@ class Modules {
             file_put_contents( SESSIONS . 'translator_cache.php', '<?php return '.var_export_min( $result_translation ).";" );
         }
         return require SESSIONS . 'modules_cache.php';
+    }
+
+    /**
+     * Самостоятельно добавить раздел в sidebar
+     *
+     * @param string $module_id         ID модуля.
+     * @param string $array             Опции раздела.
+     *
+     */
+    public function set_sidebar_select( $module_id, $array ) {
+        if ( ! in_array( $module_id, $this->arr_module_init['sidebar'] ) ):
+            $this->arr_module_init['sidebar'][] = $module_id;
+            $this->array_modules[ $module_id ]['sidebar'][] = $array;
+        else:
+            $this->array_modules[ $module_id ]['sidebar'][] = $array;
+        endif;
     }
 }
