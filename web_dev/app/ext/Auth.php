@@ -14,6 +14,8 @@ class Auth {
 
     function __construct( $General ) {
 
+        $this->General = $General;
+
         $this->admins = require SESSIONS . 'admins.php';
 
         $this->admins_count = sizeof( $this->admins );
@@ -29,12 +31,11 @@ class Auth {
 
     public function _POST() {
         if( isset( $_POST['log_in'] ) ) {
-
             $_POST['_login'] == '' && exit;
             for ( $i = 0; $i < $this->admins_count; $i++ ) {
                 if($this->admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $this->admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
-                    $_SESSION['steamid'] = con_steam32to64( $General->arr_general['admin'] );
-                    $_SESSION['steamid32'] = $this->arr_general['admin'];
+                    $_SESSION['steamid'] = con_steam32to64( $this->General->arr_general['admin'] );
+                    $_SESSION['steamid32'] = $this->General->arr_general['admin'];
                     $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                     $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
                     header( 'Location: ' . get_url(1) . '#' );
