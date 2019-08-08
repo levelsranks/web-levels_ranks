@@ -1,0 +1,20 @@
+{
+  "_Count_admins": {
+    "EN": "Total Administrators",
+    "RU": "Всего администраторов",
+    "UA": "Всього адміністраторів",
+    "LT": "Iš viso administratorių"
+  },
+  "_Count_bans": {
+    "EN": "Total bans",
+    "RU": "Всего банов",
+    "UA": "Всього банів",
+    "LT": "Total bans"
+  },
+  "_Count_comms": {
+    "EN": "Total comms",
+    "RU": "Всего мутов / гагов",
+    "UA": "Всього мутов / гагов",
+    "LT": "Total comms"
+  }
+}
