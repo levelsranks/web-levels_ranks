@@ -48,11 +48,16 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                             echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                         }}?>"></a>
                 <div class="user-details">
-                    <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print 'Герой без имени' : print $user_auth[0]['name']?></span>
+                    <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print $Modules->get_translate_phrase('_Hero_without_name') : print $user_auth[0]['name']?></span>
                     <?php if( ! empty( $_SESSION['steamid'] ) ):?>
-                        <span class="user_datetime"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
+                        <span class="user_text"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
+                        <?php if( ! empty( $Modules->arr_user_info ) ):
+                        for ( $i5 = 0, $arr_user_info_c = sizeof( $Modules->arr_user_info ); $i5 < $arr_user_info_c; ++$i5 ):?>
+                        <span class="user_text"><?php echo $Modules->arr_user_info[ $i5 ]?></span>
+                        <?php endfor;
+                        endif;?>
                     <?php else:?>
-                        <span><a href="#login">Войти</a></span>
+                        <span><a href="#login"><?php echo $Modules->get_translate_phrase('_Log_in')?></a></span>
                     <?php endif;?>
                 </div>
             </div>
@@ -98,7 +103,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
             <?php
             // Цикл -> Количество разделов sidebar
             for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++ ):
-
+                if( ! empty( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ) ):
                 // Цикл -> Счёт количества
                 for ( $_d = 0, $_c = sizeof( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ); $_d < $_c; $_d++ ):?>
                     <li class="tooltip-right" data-tooltip="<?php substr( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'], 0, 1) == '_' ? print $Modules->get_translate_phrase($Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) : print $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']?>">
@@ -114,6 +119,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                     </li>
                 <?php
                 endfor;
+                endif;
             endfor;?>
         </ul>
     </section>
@@ -123,23 +129,23 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
     <div>
         <div class="card">
             <div class="card-header">
-                <h5 class="badge">Авторизация</h5>
+                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Authorization')?></h5>
                 <a href="#" title="Закрыть" class="modal-close badge"><?php $General->get_icon( 'zmdi', 'close' )?></a>
             </div>
             <form id="log_in" enctype="multipart/form-data" method="post">
                 <div class="login_form">
                     <div class="input-form">
-                        <label>Логин</label>
+                        <label><?php echo $Modules->get_translate_phrase('_Login')?></label>
                         <input type="text" value="" name="_login"/>
                     </div>
                     <div class="input-form">
-                        <label>Пароль</label>
+                        <label><?php echo $Modules->get_translate_phrase('_Password')?></label>
                         <input type="text" value="" name="_pass"/>
                     </div>
                     <?php if( $General->arr_general['steam_auth'] == 1 ):?>
-                        <a href="?auth=login">Войти по Steam</a>
+                        <a href="?auth=login"><?php echo $Modules->get_translate_phrase('_Steam_login')?></a>
                     <?php endif;?>
-                    <input class="btn no_steam" name="log_in" nam type="submit" value="Войти">
+                    <input class="btn no_steam" name="log_in" nam type="submit" value="<?php echo $Modules->get_translate_phrase('_Log_in')?>">
                 </div>
             </form>
         </div>

@@ -163,7 +163,11 @@ function action_text_clear( $text ) {
  * @return int                  Итог.
  */
 function action_int_percent_of_all( $int, $all ) {
-    $res = floor( 100 * $int / $all );
+    if( $int == 0 || $all == 0 ) {
+        $res = 0;
+    } else {
+        $res = floor( 100 * $int / $all );
+    }
     return is_nan ( $res ) ? 0 : $res;
 }
 
@@ -186,11 +190,10 @@ function action_text_clear_before_slash( $text ) {
  * @return string                    Выводит итог конвертации.
  */
 function con_steam32to64( $id ) {
+    $accountarray =	explode(":", $id);
     if ( version_compare( PHP_VERSION, "7.3", "=" ) ) {
-        $accountarray =	explode(":", $id);
         return $accountarray[2] * 2 + $accountarray[1] + '76561197960265728';
     } else {
-        $accountarray	=	explode(":", $id);
         $idnum			=	$accountarray[1];
         $accountnum		=	$accountarray[2];
         $constant		=	'76561197960265728';

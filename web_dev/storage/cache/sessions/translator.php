@@ -1,4 +1,11 @@
-<?php return array (
+<?php /*
+       * Ich will nicht mehr wissen, wie es war
+       * Ich will nicht mehr wissen, warum es vorbei ist
+       * Ich will nicht mehr wissen, wie es war
+       * Ich will nicht wissen, was du machst, wenn du high bist
+       */
+
+return array (
     '_RU' =>
         array (
             'EN' => 'Russian',
@@ -43,10 +50,38 @@
         ),
     '_Statistics' =>
         array (
+            'EN' => 'Statistics players',
+            'RU' => 'Статистика игроков',
+            'UA' => 'Статистика гравців',
+            'LT' => 'Statistika žaidėjai',
+        ),
+    '_Sidebar_blocks' =>
+        array (
+            'EN' => 'Blocking',
+            'RU' => 'Блокировки',
+            'UA' => 'Блокування',
+            'LT' => 'Spynos',
+        ),
+    '_Sidebar_servers' =>
+        array (
+            'EN' => 'Game servers',
+            'RU' => 'Игровые сервера',
+            'UA' => 'Ігрові сервера',
+            'LT' => 'Žaidimų serveriai'
+        ),
+    '_Sidebar_social' =>
+        array (
+            'EN' => 'Social networks',
+            'RU' => 'Социальные сети',
+            'UA' => 'Соціальні мережі',
+            'LT' => 'Socialiniai tinklai'
+        ),
+    '_Sidebar_statistics' =>
+        array (
             'EN' => 'Statistics',
             'RU' => 'Статистика',
             'UA' => 'Статистика',
-            'LT' => 'Statistika',
+            'LT' => 'Statistika'
         ),
     '_Comms' =>
         array (
@@ -96,6 +131,13 @@
             'RU' => 'Уведомления',
             'UA' => 'Повідомлення',
             'LT' => 'Pranešimai',
+        ),
+    '_No_Notifications' =>
+        array (
+            'EN' => 'no new notifications',
+            'RU' => 'нет новых уведомлений',
+            'UA' => 'немає нових повідомлень',
+            'LT' => 'naujų pranešimų nėra',
         ),
     '_Plays_since' =>
         array (
@@ -187,6 +229,63 @@
             'RU' => 'Истёк',
             'UA' => 'Закінчився',
             'LT' => 'Pasibaigęs',
+        ),
+		
+	'_List_recent_bans' =>
+        array (
+            'EN' => 'List of recent bans',
+            'RU' => 'Список последних банов',
+            'UA' => 'Список останніх банів',
+            'LT' => 'List of recent bans',
+        ),
+	'_List_recent_mut_gags' =>
+        array (
+            'EN' => 'List of recent mut / gags',
+            'RU' => 'Список последних мутов / гагов',
+            'UA' => 'Список останніх мутов / гагов',
+            'LT' => 'List of recent mut / gags',
+        ),
+	'_Rank_distribution' =>
+        array (
+            'EN' => 'Rank distribution',
+            'RU' => 'Распределение рангов',
+            'UA' => 'Розподіл рангів',
+            'LT' => 'Rank distribution',
+        ),
+	'_Hero_without_name' =>
+        array (
+            'EN' => 'Hero without a name',
+            'RU' => 'Герой без имени',
+            'UA' => 'Герой без імені',
+            'LT' => 'Hero without a name',
+        ),
+	'_Authorization' =>
+        array (
+            'EN' => 'Authorization',
+            'RU' => 'Авторизация',
+            'UA' => 'Авторизація',
+            'LT' => 'Authorization',
+        ),
+	'_Login' =>
+        array (
+            'EN' => 'Login',
+            'RU' => 'Логин',
+            'UA' => 'Логін',
+            'LT' => 'Login',
+        ),
+	'_Password' =>
+        array (
+            'EN' => 'Password',
+            'RU' => 'Пароль',
+            'UA' => 'Пароль',
+            'LT' => 'Password',
+        ),
+	'_Steam_login' =>
+        array (
+            'EN' => 'Sign in with Steam',
+            'RU' => 'Войти через Steam',
+            'UA' => 'Увійти через Steam',
+            'LT' => 'Sign in with Steam',
         ),
     '_Update' =>
         array (
@@ -292,6 +391,13 @@
             'RU' => 'Победа',
             'UA' => 'Перемога',
             'LT' => 'Laimėjimai',
+        ),
+	'_Wins' =>
+        array (
+            'EN' => 'Wins',
+            'RU' => 'Победы',
+            'UA' => 'Перемога',
+            'LT' => 'Wins',
         ),
     '_Loss' =>
         array (
@@ -462,146 +568,7 @@
             'UA' => 'Міс.',
             'LT' => 'Mėn.',
         ),
-    '_Rank_' =>
-        array (
-            'EN' => 'No rank',
-            'RU' => 'Нету ранга',
-            'UA' => 'Нема рангу',
-            'LT' => 'Nėra rango',
-        ),
-    '_Rank_00' =>
-        array (
-            'EN' => 'No rank',
-            'RU' => 'Нету ранга',
-            'UA' => 'Нема рангу',
-            'LT' => 'Nėra rango',
-        ),
-    '_Rank_1' =>
-        array (
-            'EN' => 'Silver 1',
-            'RU' => 'Серебро 1',
-            'UA' => 'Срібло 1',
-            'LT' =>	'Silver 1'
-        ),
-    '_Rank_2' =>
-        array (
-            'EN' => 'Silver 2',
-            'RU' => 'Серебро 2',
-            'UA' => 'Срібло 2',
-            'LT' =>	'Silver 2'
-        ),
-    '_Rank_3' =>
-        array (
-            'EN' => 'Silver 3',
-            'RU' => 'Серебро 3',
-            'UA' => 'Срібло 3',
-            'LT' =>	'Silver 3'
-        ),
-    '_Rank_4' =>
-        array (
-            'EN' => 'Silver 4',
-            'RU' => 'Серебро 4',
-            'UA' => 'Срібло 4',
-            'LT' =>	'Silver 4'
-        ),
-    '_Rank_5' =>
-        array (
-            'EN' => 'Silver Elite',
-            'RU' => 'Серебро Элита',
-            'UA' => 'Срібло Еліта',
-            'LT' => 'Silver Elite',
-        ),
-    '_Rank_6' =>
-        array (
-            'EN' => 'Silver Elite Master',
-            'RU' => 'Серебро - Великий Магистр',
-            'UA' => 'Срібло - Великий Магістр',
-            'LT' => 'Silver Elite Master',
-        ),
-    '_Rank_7' =>
-        array (
-            'EN' => 'Gold Nova 1',
-            'RU' => 'Золотая звезда 1',
-            'UA' => 'Золота зірка 1',
-            'LT' => 'Gold Nova 1',
-        ),
-    '_Rank_8' =>
-        array (
-            'EN' => 'Gold Nova 2',
-            'RU' => 'Золотая звезда 2',
-            'UA' => 'Золота зірка 2',
-            'LT' => 'Gold Nova 2',
-        ),
-    '_Rank_9' =>
-        array (
-            'EN' => 'Gold Nova 3',
-            'RU' => 'Золотая звезда 3',
-            'UA' => 'Золота зірка 3',
-            'LT' => 'Gold Nova 3',
-        ),
-    '_Rank_10' =>
-        array (
-            'EN' => 'Gold Nova Master',
-            'RU' => 'Золотая звезда - Магистр',
-            'UA' => 'Золота зірка - Магістр',
-            'LT' => 'Gold Nova Master',
-        ),
-    '_Rank_11' =>
-        array (
-            'EN' => 'Master Guardian 1',
-            'RU' => 'Магистр-хранитель 1',
-            'UA' => 'Магістр-хранитель 1',
-            'LT' => 'Master Guardian 1',
-        ),
-    '_Rank_12' =>
-        array (
-            'EN' => 'Master Guardian 2',
-            'RU' => 'Магистр-хранитель 2',
-            'UA' => 'Магістр-хранитель 2',
-            'LT' => 'Master Guardian 2',
-        ),
-    '_Rank_13' =>
-        array (
-            'EN' => 'Master Guardian Elite',
-            'RU' => 'Магистр-хранитель Элита',
-            'UA' => 'Магістр-хранитель Еліта',
-            'LT' => 'Master Guardian Elite',
-        ),
-    '_Rank_14' =>
-        array (
-            'EN' => 'Distinguished Master Guardian',
-            'RU' => 'Заслуженный Магистр-хранитель',
-            'UA' => 'Заслужений Магістр-хранитель',
-            'LT' => 'Distinguished Master Guardian',
-        ),
-    '_Rank_15' =>
-        array (
-            'EN' => 'Legendary Eagle',
-            'RU' => 'Легендарный Беркут',
-            'LT' => 'Legendary Eagle',
-        ),
-    '_Rank_16' =>
-        array (
-            'EN' => 'Legendary Eagle Master',
-            'RU' => 'Легендарный Беркут-магистр',
-            'UA' => 'Легендарний Беркут-магістр',
-            'LT' => 'Legendary Eagle Master',
-        ),
-    '_Rank_17' =>
-        array (
-            'EN' => 'Supreme Master First Class',
-            'RU' => 'Великий Магистр Высшего Ранга',
-            'UA' => 'Великий Магістр Вищого Рангу',
-            'LT' => 'Supreme Master First Class',
-        ),
-    '_Rank_18' =>
-        array (
-            'EN' => 'The Global Elite',
-            'RU' => 'Всемирная Элита',
-            'UA' => 'Всесвітня Еліта',
-            'LT' => 'The Global Elite',
-        ),
-    '_Login' =>
+    '_Log_in' =>
         array (
             'EN' => 'Log in',
             'RU' => 'Войти',
@@ -614,5 +581,5 @@
             'RU' => 'Выйти',
             'UA' => 'Вийти',
             'LT' => 'Atsijungti',
-        ),
+        )
 );

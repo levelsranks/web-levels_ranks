@@ -1,0 +1,121 @@
+{
+  "_Ratio_KD": {
+    "EN": "Ratio K/D:",
+    "RU": "Убийств / Смертей - К/Д:",
+    "UA": "Убийств / Смертей - К/Д:"
+  },
+  "_Ratio_SH": {
+    "EN": "Shoots / Hits:",
+    "RU": "Попаданий / Выстрелов:",
+    "UA": "Попаданий / Выстрелов:"
+  },
+  "_Game_time": {
+    "EN": "Game time:",
+    "RU": "Игровое время:",
+    "UA": "ігровий час:"
+  },
+   "_First_round_kills": {
+    "EN": "Open frags",
+    "RU": "Первых убийств",
+    "UA": "Перших вбивств"
+  },
+  "_Favorite_weapons": {
+    "EN": "Favorite weapons:",
+    "RU": "Любимое оружие:",
+    "UA": "Улюблена зброя:"
+  },
+  "_Kill count": {
+    "EN": "Count kills:",
+    "RU": "Количество убийств:",
+    "UA": "Кількість вбивств:"
+  },
+  "_Matches": {
+    "EN": "Matches:",
+    "RU": "Матчей:",
+    "UA": "Матчів:"
+  },
+  "_Winning_percentage": {
+    "EN": "Win Rate",
+    "RU": "Побед %",
+    "UA": "Перемог %"
+  },
+  "_Triple_Kills": {
+    "EN": "Triple kills:",
+    "RU": "Трипл-киллов:",
+    "UA": "Три вбивства:"
+  },
+  "_Quad_kills": {
+    "EN": "Quad kills:",
+    "RU": "Квадро-киллов:",
+    "UA": "Чотири вбивства:"
+  },
+  "_Ace": {
+    "EN": "Ace:",
+    "RU": "Эйсов:",
+    "UA": "Ace:"
+  },
+  "_Value_rank": {
+    "EN": "Total points / Rank:",
+    "RU": "Количество очков / ранг:",
+    "UA": "Кількість поінтів / звання:"
+  },
+  "_Total_winning_percentage": {
+    "EN": "Total winning %:",
+    "RU": "Общий процент побед:",
+    "UA": "Загальні перемог %:"
+  },
+   "_Weapon": {
+    "EN": "Weapon",
+    "RU": "Оружие",
+    "UA": "Зброя",
+	"LT": "Weapon"
+  },
+  "_Player_profile": {
+    "EN": "Player profile",
+    "RU": "Профиль игрока",
+    "UA": "Сторінка гравця",
+	"LT": "Player profile"
+  },
+  "_Penetrated_kills": {
+    "EN": "Penetrated kills",
+    "RU": "Убийств прострелом",
+    "UA": "Вбивств прострілом",
+	"LT": "Penetrated kills"
+  },
+  "_Killing_without_scope": {
+    "EN": "Killing without scope",
+    "RU": "Убийств без прицела",
+    "UA": "Вбивств без прицілу",
+	"LT": "Killing without scope"
+  },
+  "_Kills_on_run": {
+    "EN": "Kills on the run",
+    "RU": "Убийств на бегу",
+    "UA": "Вбивств на бігу",
+	"LT": "Kills on the run"
+  },
+  "_Kills_flash": {
+    "EN": "Kills in flash",
+    "RU": "Убийств слепым",
+    "UA": "Вбивств сліпим",
+	"LT": "Kills in flash"
+  },
+  "_Jump_kills": {
+    "EN": "Jump kills",
+    "RU": "Убийств в прыжке",
+    "UA": "Вбивств в стрибку",
+	"LT": "Jump kills"
+  },
+  "_Smoke_kills": {
+    "EN": "Smoke kills",
+    "RU": "Убийств в дым",
+    "UA": "Вбивств в дим",
+	"LT": "Smoke kills"
+  },
+  "_Kills_whirl": {
+    "EN": "Kills 180-360°",
+    "RU": "Убийств с разворота",
+    "UA": "Вбивств з розвороту",
+	"LT": "Kills 180-360°"
+  }
+}

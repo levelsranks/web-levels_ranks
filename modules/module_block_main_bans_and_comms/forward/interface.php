@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge">Список последних банов</h5>
+                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_List_recent_bans')?></h5>
             </div>
             <div class=table-responsive>
                 <table class="table table-hover mb-0">
@@ -71,7 +71,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge">Список последних мутов / гагов</h5>
+                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_List_recent_mut_gags')?></h5>
             </div>
             <div class=table-responsive>
                 <table class="table table-hover mb-0">

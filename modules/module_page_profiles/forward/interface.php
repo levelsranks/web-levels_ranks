@@ -20,7 +20,7 @@
         <div class="card">
             <div class="header-profile">
                 <div class="card-header">
-                <h5 class="badge">Профиль игрока :: <?php echo action_text_trim( $Player->get_name(),16 )?></h5>
+                <h5 class="badge"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Player_profile')?> :: <?php echo action_text_trim( $Player->get_name(),16 )?></h5>
                     <div class="select-panel select-panel-table badge">
                         <select onChange="window.location.href=this.value">
                             <option style="display:none" value="" disabled selected><?php echo $Player->found[  $Player->server_group  ]['name_servers']?></option>
@@ -50,7 +50,7 @@
                     <div class="country">-</div>
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                     <div class="rank"><?php echo $Modules->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] )?></div>
-                    <div class="user-stats">Игрок</div>
+                    <div class="user-stats"><?php echo $Modules->get_translate_phrase('_Player')?></div>
                     </div>
                 </div>
                 <div class="best-weapon-block">
@@ -68,8 +68,8 @@
                         <thead>
                         <tr>
                             <th class="text-right"></th>
-                            <th class="text-left">Оружие</th>
-                            <th class="text-center">Убийства</th>
+                            <th class="text-left"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Weapon')?></th>
+                            <th class="text-center"><?php echo $Modules->get_translate_phrase('_Kills')?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -143,8 +143,8 @@
                                         <thead>
                                         <tr>
                                             <th class="text-right"></th>
-                                            <th class="text-left">Карта</th>
-                                            <th class="text-center">Победы</th>
+                                            <th class="text-left"><?php echo $Modules->get_translate_phrase('_Map')?></th>
+                                            <th class="text-center"><?php echo $Modules->get_translate_phrase('_Wins')?></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -219,7 +219,7 @@
                             <div class="unusualkills_block">
                                 <div class="block">
                                     <div class="unusualkills_score"><?php echo $Player->get_unusualkills_penetrated()?></div>
-                                    <div class="unusualkills_text">Убийств прострелом</div>
+                                    <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Penetrated_kills')?></div>
                                     <div class="icon_block">
                                         <i class="zmdi zmdi-flash zmdi-hc-fw"></i>
                                     </div>
@@ -228,7 +228,7 @@
                             <div class="unusualkills_block">
                                 <div class="block">
                                     <div class="unusualkills_score"><?php echo $Player->get_unusualkills_noscope()?></div>
-                                    <div class="unusualkills_text">Убийств без прицела</div>
+                                    <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Killing_without_scope')?></div>
                                     <div class="icon_block">
                                         <i class="zmdi zmdi-circle-o zmdi-hc-fw"></i>
                                     </div>
@@ -237,7 +237,7 @@
                         <div class="unusualkills_block_left">
                             <div class="block">
                                 <div class="unusualkills_score"><?php echo $Player->get_unusualkills_run()?></div>
-                                <div class="unusualkills_text">Убийств на бегу</div>
+                                <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Kills_on_run')?></div>
                                 <div class="icon_block">
                                     <i class="zmdi zmdi-run zmdi-hc-fw"></i>
                                 </div>
@@ -246,7 +246,7 @@
                         <div class="unusualkills_block">
                             <div class="block">
                                 <div class="unusualkills_score"><?php echo $Player->get_unusualkills_flash()?></div>
-                                <div class="unusualkills_text">Убийств слепым</div>
+                                <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Kills_flash')?></div>
                                 <div class="icon_block">
                                     <i class="zmdi zmdi-eye-off zmdi-hc-fw"></i>
                                 </div>
@@ -255,7 +255,7 @@
                         <div class="unusualkills_block">
                             <div class="block">
                                 <div class="unusualkills_score"><?php echo $Player->get_unusualkills_jump()?></div>
-                                <div class="unusualkills_text">Убиств в прыжке</div>
+                                <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Jump_kills')?></div>
                                 <div class="icon_block">
                                     <i class="zmdi zmdi-star-outline zmdi-hc-fw"></i>
                                 </div>
@@ -264,7 +264,7 @@
                         <div class="unusualkills_block_left">
                             <div class="block">
                                 <div class="unusualkills_score"><?php echo $Player->get_unusualkills_smoke()?></div>
-                                <div class="unusualkills_text">Убийств в дым</div>
+                                <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Smoke_kills')?></div>
                                 <div class="icon_block">
                                     <i class="zmdi zmdi-mood-bad zmdi-hc-fw"></i>
                                 </div>
@@ -273,7 +273,7 @@
                         <div class="unusualkills_block">
                             <div class="block">
                                 <div class="unusualkills_score"><?php echo $Player->get_unusualkills_whirl()?></div>
-                                <div class="unusualkills_text">Убийств с разворота</div>
+                                <div class="unusualkills_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_profiles','_Kills_whirl')?></div>
                                 <div class="icon_block">
                                     <i class="zmdi zmdi-money zmdi-hc-fw"></i>
                                 </div>

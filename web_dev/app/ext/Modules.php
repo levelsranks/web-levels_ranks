@@ -13,6 +13,51 @@ namespace app\ext;
 class Modules {
 
     /**
+     * @var array
+     */
+    public $array_modules = [];
+
+    /**
+     * @var int
+     */
+    public $array_modules_count = 0;
+
+    /**
+     * @var array
+     */
+    public $arr_module_init = [];
+
+    /**
+     * @var int
+     */
+    public $arr_module_init_page_count = 0;
+
+    /**
+     * @var array
+     */
+    public $arr_user_info = [];
+
+    /**
+     * @var array
+     */
+    public $scan_modules = [];
+
+    /**
+     * @var array
+     */
+    public $scan_ranks_pack = [];
+
+    /**
+     * @var int
+     */
+    public $array_ranks_pack_count = 0;
+
+    /**
+     * @var array
+     */
+    public $arr_translations = [];
+
+    /**
      * Организация работы вэб-приложения с модулями.
      */
     function __construct() {
@@ -173,12 +218,12 @@ class Modules {
             // Цикл перебора описания модулей.
             for ( $i = 0; $i < $this->array_modules_count; $i++ ) {
                 // Получение описания определенного модуля.
-                $result[ $this->scan_modules[ $i ] ] = json_decode(file_get_contents(MODULES . $this->scan_modules[ $i ] . '/description.json') , true);
+                $result[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents( MODULES . $this->scan_modules[ $i ] . '/description.json') , true);
 
                 // Проверка на поддержку мульти-перевода.
                 if ($result[ $this->scan_modules[ $i ] ]['setting']['translation'] == 1) {
                     // Получение кэша перевода модулей.
-                    $result_translation[ $this->scan_modules[ $i ] ] = json_decode(file_get_contents(MODULES_SESSIONS . $this->scan_modules[ $i ] . '/translation.json') , true);
+                    $result_translation[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents(MODULES . $this->scan_modules[ $i ] . '/translation.json') , true);
                 }
             }
 
@@ -202,10 +247,10 @@ class Modules {
     }
 
     /**
-     * Самостоятельно добавить раздел в sidebar
+     * Самостоятельно добавить раздел в sidebar.
      *
      * @param string $module_id         ID модуля.
-     * @param string $array             Опции раздела.
+     * @param array $array              Опции раздела.
      *
      */
     public function set_sidebar_select( $module_id, $array ) {
@@ -215,5 +260,15 @@ class Modules {
         else:
             $this->array_modules[ $module_id ]['sidebar'][] = $array;
         endif;
+    }
+
+    /**
+     * Добавление какого-либо текста в информационный блок авторизованного игрока в sidebar.
+     *
+     * @param string $text             Опции раздела.
+     *
+     */
+    public function set_user_info_text( $text ) {
+        $this->arr_user_info[] = $text;
     }
 }

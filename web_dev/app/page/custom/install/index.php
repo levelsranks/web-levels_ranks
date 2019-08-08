@@ -104,6 +104,17 @@ if(isset($_POST['db_check'])) {
 
     if ( $result ) {
         $db_check = '2';
+        $table = 'CREATE TABLE IF NOT EXISTS lr_web_notifications (
+                  `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+                  steam VARCHAR(128) NOT NULL,
+                  text VARCHAR(256) NOT NULL,
+                  values_insert VARCHAR(512) NOT NULL,
+                  url VARCHAR(128) NOT NULL,
+                  icon VARCHAR(64) NOT NULL,
+                  seen int(11) NOT NULL,
+                  status int(11) NOT NULL,
+                  date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;';
+        $con->query( $table );
     } else {
         $db_check = '1';
     }

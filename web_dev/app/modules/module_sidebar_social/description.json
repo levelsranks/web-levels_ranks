@@ -27,7 +27,7 @@
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "steam-square",
-      "name": "Группа Steam",
+      "name": "Steam",
       "sidebar_directory": "_Sidebar_social"
     },
     "1": {
@@ -45,7 +45,7 @@
       "icon_group": "custom",
       "icon_category": "socials",
       "icon": "discord",
-      "name": "Канал Discord",
+      "name": "Discord",
       "sidebar_directory": "_Sidebar_social"
     }
   }

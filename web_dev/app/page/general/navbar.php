@@ -62,6 +62,21 @@
                 </form>
             </ul>
         </li>
+        <?php if( ! empty( $_SESSION['steamid32'] ) ):?>
+            <li class="section">
+                <a href="#" class="navbar-icon">
+                    <div class="search notification">
+                        <?php $General->get_icon( 'zmdi', 'notifications' )?>
+                        <span id="main_notifications_badge"></span>
+                    </div>
+                </a>
+                <ul class="subsection">
+                    <div class="search_form">
+                        <ul class="main_notifications" id="main_notifications"></ul>
+                    </div>
+                </ul>
+            </li>
+        <?php endif?>
     </ul>
 </div>
 <div class="global-container">

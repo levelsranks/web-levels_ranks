@@ -58,12 +58,11 @@ if (isset($_POST['data'])) {
     }
 
     if( !file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) ) {
-
+        if( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) ) mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
         file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export($cache, true) . ";");
-
     } else {
-
         if ($cache != require '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php') {
+            if( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) ) mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
             file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export($cache, true) . ";");
         }
     }

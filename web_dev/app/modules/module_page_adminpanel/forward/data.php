@@ -10,7 +10,7 @@
 
 ! empty( $_SESSION['steamid32'] ) && $_SESSION['steamid32'] == $General->arr_general['admin'] && $Modules->set_sidebar_select('module_page_adminpanel', ["href" =>"?page=adminpanel", "open_new_tab" =>"0", "icon_group" =>"zmdi", "icon_category" =>"", "icon" =>"coffee", "name" =>"Панель администратора", "sidebar_directory" =>""]);
 
-if( $_GET['page'] == 'adminpanel' & $_SESSION['steamid32'] == $General->arr_general['admin'] ):
+if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page'] == 'adminpanel' && $_SESSION['steamid32'] == $General->arr_general['admin'] ):
 
     if( isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
         for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {

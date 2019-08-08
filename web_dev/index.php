@@ -23,7 +23,7 @@ set_time_limit(3);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.109');
+define('VERSION', '0.2.110');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -73,6 +73,9 @@ use app\ext\General;
 // Импортирование глобального класса отвечающего за работу с базами данных.
 use app\ext\Db;
 
+// Импортирование класса уведомлений.
+use app\ext\Notifications;
+
 // Импортирование глобального класса отвечающего за работу с авторизованными пользователями.
 use app\ext\Auth;
 
@@ -86,16 +89,19 @@ spl_autoload_register( function( $class ) {
 } );
 
 // Создание экземпляра класса работающего с модулями.
-$Modules    = new Modules;
+$Modules        = new Modules;
 
 // Создание основного экземпляра класса.
-$General    = new General ( $Modules );
+$General        = new General       ( $Modules );
 
 // Создание экземпляра класса работающего с базами данных.
-$Db         = new Db;
+$Db             = new Db;
+
+// Создание экземпляра класса уведомлений.
+$Notifications  = new Notifications ( $General, $Db, $Modules );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
-$Auth       = new Auth ( $General );
+$Auth           = new Auth          ( $General );
 
 // Создание экземпляра графического класса.
-$Graphics   = new Graphics ( $General, $Modules, $Db );
+$Graphics       = new Graphics      ( $General, $Modules, $Db );
