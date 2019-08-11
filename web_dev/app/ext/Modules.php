@@ -86,7 +86,7 @@ class Modules {
      * @return array         Возвращает список модулей для инициализации.
      */
     public function get_module_init() {
-
+        
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
         if ( !file_exists( SESSIONS . 'modules_initialization.php' ) ):
 

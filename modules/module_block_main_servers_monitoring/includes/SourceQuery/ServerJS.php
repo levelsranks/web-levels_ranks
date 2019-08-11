@@ -25,7 +25,7 @@ if (isset($_POST['data'])) {
         try {
             $Query->Connect($server[$i_server][0], $server[$i_server][1], 3, SourceQuery :: SOURCE);
             $info[$i_server] = $Query->GetInfo();
-            if ( ! empty( $servers[$i_ser]['fakeip'] ) && $servers[$i_ser]['fakeip'] !== '') {
+            if ( $servers[$i_ser]['fakeip'] !== '') {
                 $return[$i_server]['ip'] = $server_fakeip[$i_server][0];
                 $return[$i_server]['port'] = $server_fakeip[$i_server][1];
             } else {
@@ -34,6 +34,11 @@ if (isset($_POST['data'])) {
             }
             $return[$i_server]['HostName'] = $info[$i_server]['HostName'];
             $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
+            if( file_exists( '../../../../../storage/cache/img/maps/' . $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0] . '.jpg') ) {
+                $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
+            } else {
+                $return[$i_server]['Map'] = '-';
+            }
             $return[$i_server]['Players'] = $info[$i_server]['Players'];
             $return[$i_server]['MaxPlayers'] = $info[$i_server]['MaxPlayers'];
             $return[$i_server]['Mod'] = $info[$i_server]['ModDir'];
@@ -47,7 +52,7 @@ if (isset($_POST['data'])) {
                 $return[$i_server]['port'] = $server[$i_server][1];
             }
             $return[$i_server]['HostName'] = 'Сервер отключен';
-            $return[$i_server]['Map'] = 'none';
+            $return[$i_server]['Map'] = '-';
             $return[$i_server]['Players'] = 0;
             $return[$i_server]['MaxPlayers'] = 0;
             $return[$i_server]['Mod'] = 0;
