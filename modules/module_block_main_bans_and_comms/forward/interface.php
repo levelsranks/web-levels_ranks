@@ -77,7 +77,6 @@
                 <table class="table table-hover mb-0">
                     <thead>
                     <tr>
-                        <th class="text-center tb-game"><?php echo $Modules->get_translate_phrase('_Game') ?></th>
                         <th class="text-center"><?php echo $Modules->get_translate_phrase('_Type') ?></th>
                         <th class="text-center"><?php echo $Modules->get_translate_phrase('_Date') ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
@@ -92,7 +91,6 @@
                     for ($i = 0; $i < 10; $i++) {
                         $General->get_js_relevance_avatar( $res_comms[ $i ]['authid'] );
                         $res_comms[ $i ]['aid'] != '0' && $General->get_js_relevance_avatar( $res_comms[ $i ]['admin_authid'] )?><tr>
-                            <th class="text-center tb-game"><img <?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
                             <th class="text-center tb-type"><?php $res_comms[ $i ]['type'] == 1 ? $General->get_icon( 'zmdi', 'mic', null ) : $General->get_icon( 'zmdi', 'comment-text', null )?></th>
                             <th class="text-center"><?php echo date('Y-m-d', $res_comms[ $i ]['created']) ?></th>
                             <?php if( $General->arr_general['avatars'] != 0 ) {?>

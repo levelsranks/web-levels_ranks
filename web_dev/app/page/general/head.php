@@ -20,26 +20,8 @@
 <?php endif; ?>
     <link rel="stylesheet" href="<?php echo $General->arr_general['site']?>/storage/assets/css/themes/<?php echo $General->arr_general['theme']?>/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<?php if ( $_SESSION['dark_mode'] == true ) { ?>
-    <style>
-        :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $General->arr_general['theme'] . '/dark_mode_palette.json' ) ) )?>
-    </style>
-<?php } else {?>
-    <style>
-        :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $General->arr_general['theme'] . '/original_palette.json' ) ) )?>
-    </style>
-<?php } ?>
-<?php if ( $General->arr_general['animations'] == true ) :?>
-    <style>
-        .global-container{transition: transform .5s ease-in-out, margin .5s ease-in-out} .offcanvas{transition: transform .5s ease-in-out, margin .5s ease-in-out}
-                                                                                         
-        [data-tooltip]:before, [data-tooltip]:after, .tooltip:before, .tooltip:after {
-            -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, -webkit-transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
-            -moz-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, -moz-transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
-            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
-        }
-    </style>
-<?php endif; ?>
+    <?php echo $Graphics->get_css_color_palette();
+          echo $Graphics->get_css_animation();?>
     <style>
         .sidebar-collapse .user-sidebar-block {
         <?php

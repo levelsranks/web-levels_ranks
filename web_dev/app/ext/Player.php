@@ -71,7 +71,7 @@ class Player {
         $this->General = $General;
 
         // Присвоение группы серверов.
-        $this->server_group = $sg;
+        $this->server_group = (int) $sg;
 
         // Конвертация Steam ID
         substr( $id, 0, 5) === "STEAM" ? $this->steam_32 = $id : $this->steam_32 = con_steam64to32( $id );
@@ -80,7 +80,7 @@ class Player {
 
         // Поиск игрока в таблицах.
         for ( $i = 0; $i < $Db->table_count['LevelsRanks']; $i++ ):
-            if ( $Db->query( 'LevelsRanks', $Db->db_data['LevelsRanks'][ $i ]['USER_ID'], $Db->db_data['LevelsRanks'][ $i ]['DB_num'], "SELECT steam FROM " . $Db->db_data['LevelsRanks'][ $i ]['Table'] . " WHERE steam='" . $this->get_steam_32() . "' limit 1" ) ):
+            if ( $Db->query( 'LevelsRanks', $Db->db_data['LevelsRanks'][ $i ]['USER_ID'], $Db->db_data['LevelsRanks'][ $i ]['DB_num'], "SELECT steam FROM " . $Db->db_data['LevelsRanks'][ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" ) ):
 
                 $this->found[$i] = [
                     "DB"            => $Db->db_data['LevelsRanks'][ $i ]['DB_num'],
@@ -126,6 +126,8 @@ class Player {
 
         empty( $this->weapons ) && $this->weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
 
+        arsort($this->weapons);
+
         for ( $i = 0; $i < 3; $i++ ):
             $this->top_weapons[ $i ]['name'] = array_search( max( $this->weapons ), $this->weapons );
             $this->top_weapons[ $i ]['kills'] = max( $this->weapons );
@@ -152,7 +154,21 @@ class Player {
     }
 
     public function get_steam_32() {
-        return (string) $this->steam_32;
+        $type = "/([0-9a-zA-Z_]+):(.+):(.+)/u";
+        preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
+        $id = (int) action_text_clear_characters( $arr[0][3] );
+        return (string) $arr[0][1] . ':' . $arr[0][2] . ':' . $id;
+    }
+
+    public function get_steam_32_short() {
+        $type = "/[0-9a-zA-Z_]+:.+:(.+)/u";
+        preg_match_all($type, $this->get_steam_32(), $arr, PREG_SET_ORDER);
+        $id = (int) action_text_clear_characters( $arr[0][1] );
+        if( is_int( $id ) ) {
+            return $arr[0][1];
+        } else {
+            exit;
+        }
     }
 
     public function get_name() {
@@ -237,7 +253,7 @@ class Player {
     }
 
     private function get_db_arr_default_info() {
-        return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths,round_win,round_lose,shoots,hits FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam='" . $this->get_steam_32() . "' LIMIT 1");
+        return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths,round_win,round_lose,shoots,hits FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
     }
 
     private function get_db_top_position() {
@@ -246,14 +262,14 @@ class Player {
 
     private function get_db_exstats_weapons() {
         if ( $this->found[ $this->server_group ]['mod'] == 'csgo' ) {
-            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_knife,weapon_taser,weapon_inferno,weapon_hegrenade,weapon_glock,weapon_hkp2000,weapon_tec9,weapon_usp,weapon_p250,weapon_cz75a,weapon_fiveseven,weapon_elite,weapon_revolver,weapon_deagle,weapon_negev,weapon_m249,weapon_mag7,weapon_sawedoff,weapon_nova,weapon_xm1014,weapon_bizon,weapon_mac10,weapon_ump45,weapon_mp9,weapon_mp7,weapon_p90,weapon_galilar,weapon_famas,weapon_ak47,weapon_m4a1,weapon_m4a1_silencer,weapon_aug,weapon_sg556,weapon_ssg08,weapon_awp,weapon_scar20,weapon_g3sg1,weapon_mp5sd FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam='" . $this->get_steam_32() . "' LIMIT 1" );
+            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_knife,weapon_taser,weapon_inferno,weapon_hegrenade,weapon_glock,weapon_hkp2000,weapon_tec9,weapon_usp,weapon_p250,weapon_cz75a,weapon_fiveseven,weapon_elite,weapon_revolver,weapon_deagle,weapon_negev,weapon_m249,weapon_mag7,weapon_sawedoff,weapon_nova,weapon_xm1014,weapon_bizon,weapon_mac10,weapon_ump45,weapon_mp9,weapon_mp7,weapon_p90,weapon_galilar,weapon_famas,weapon_ak47,weapon_m4a1,weapon_m4a1_silencer,weapon_aug,weapon_sg556,weapon_ssg08,weapon_awp,weapon_scar20,weapon_g3sg1,weapon_mp5sd FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
         } elseif ( $this->found[ $this->server_group ]['mod'] == 'css' ){
-            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_usp, weapon_sg552, weapon_sg550, weapon_scout, weapon_galil, weapon_mp5navy, weapon_tmp, weapon_m3, weapon_p228, weapon_knife, weapon_glock, weapon_deagle, weapon_elite, weapon_fiveseven, weapon_xm1014, weapon_mac10, weapon_ump45, weapon_p90, weapon_famas, weapon_ak47, weapon_m4a1, weapon_awp, weapon_aug, weapon_ssg08, weapon_m249, weapon_g3sg1 FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam='" . $this->get_steam_32() . "' LIMIT 1" );
+            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_usp, weapon_sg552, weapon_sg550, weapon_scout, weapon_galil, weapon_mp5navy, weapon_tmp, weapon_m3, weapon_p228, weapon_knife, weapon_glock, weapon_deagle, weapon_elite, weapon_fiveseven, weapon_xm1014, weapon_mac10, weapon_ump45, weapon_p90, weapon_famas, weapon_ak47, weapon_m4a1, weapon_awp, weapon_aug, weapon_ssg08, weapon_m249, weapon_g3sg1 FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
         }
     }
 
     private function get_db_plugin_module_unusualkills() {
-            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID='" . $this->get_steam_32() . "' LIMIT 1" );
+            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
     }
 
     public function get_unusualkills_op() {
@@ -289,7 +305,7 @@ class Player {
     }
 
     private function get_db_plugin_module_hits() {
-        return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID='" . $this->get_steam_32() . "' LIMIT 1" );
+        return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
     }
 
     public function get_hits_all() {

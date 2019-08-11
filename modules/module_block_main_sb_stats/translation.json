@@ -1,9 +1,9 @@
 {
   "_Count_admins": {
-    "EN": "Total Administrators",
-    "RU": "Всего администраторов",
-    "UA": "Всього адміністраторів",
-    "LT": "Iš viso administratorių"
+    "EN": "Total Admins",
+    "RU": "Всего админ-ов.",
+    "UA": "Всього адмін-ов.",
+    "LT": "Iš viso admin."
   },
   "_Count_bans": {
     "EN": "Total bans",

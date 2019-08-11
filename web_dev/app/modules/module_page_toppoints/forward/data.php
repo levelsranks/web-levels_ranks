@@ -14,11 +14,11 @@ $General->get_default_url_section('filter', 'value', array('value', 'kills', 'ra
 // Очень важная настройка, кол-во человек на странице
 define('PLAYERS_ON_PAGE', '80');
 
-$server_group = get_section( 'server_group', '0' );
+$server_group = (int) get_section( 'server_group', '0' );
 
 // Получаем номер страницы
 
-$page_num = get_section( 'num', '1' );
+$page_num = (int) get_section( 'num', '1' );
 
 // Проверочка
 
@@ -48,7 +48,7 @@ $page_num > $page_max && header('Location: ' . $General->arr_general['site']);
 $res[$server_group] = $Db->queryAll( 'LevelsRanks', $res_data[$server_group]['USER_ID'], $res_data[$server_group]['data_db'], "SELECT name,rank,steam,playtime,value,kills,headshots,deaths, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[$server_group]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
 
 $res[$server_group] == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
-($server_group > $res_data_count-1 || ctype_digit($server_group) != 1) ? header('Location: ' . $General->arr_general['site']) : false;
+($server_group > $res_data_count-1) ? header('Location: ' . $General->arr_general['site']) : false;
 
 $data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
 $data['global']['info'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;

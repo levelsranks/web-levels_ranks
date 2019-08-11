@@ -144,7 +144,7 @@ function action_text_trim( $text, $max = 18 ) {
 }
 
 /**
- * Очистка текста.
+ * Очистка текста от мусора.
  *
  * @param string        $text   Текст.
  *
@@ -152,6 +152,17 @@ function action_text_trim( $text, $max = 18 ) {
  */
 function action_text_clear( $text ) {
     return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_COMPAT,'ISO-8859-1', true ) ) ) );
+}
+
+/**
+ * Очистка текста от символов.
+ *
+ * @param string        $text   Текст.
+ *
+ * @return string               Очищенный текст.
+ */
+function action_text_clear_characters( $text ) {
+    return preg_replace('/[^A-Za-z0-9]/', '', $text);
 }
 
 /**

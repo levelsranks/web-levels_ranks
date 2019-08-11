@@ -32,21 +32,22 @@ class Notifications {
     * @param string $url 			Ссылка, например на платеж 
     * @param string $icon 			название иконки для отображения
     */
-	public function SendNotification( $steam, $text, $values_insert, $url, $icon ) {
-		//Проверка Параметров на пустоту
+    public function SendNotification( $steam, $text, $values_insert, $url, $icon ) {
+        //Проверка Параметров на пустоту
         if($values_insert == null){
-        	//Если пустые укажем для json что это массив
+            //Если пустые укажем для json что это массив
             $values_insert =[];
         }
         //Устанавливаем параметры для SQL запроса
         $param = [
             'steam' => $steam,
+            'text' => $text,
             'values_insert' => json_encode($values_insert),//Формируем Json
             'url' => $url,
             'icon' => $icon,
         ];
         $this->db->query('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "INSERT INTO `lr_web_notifications`(`steam`, `text`, `values_insert`, `url`, `icon`, `seen`, `status`) VALUES ('$param[steam]', '$param[text]', '$param[values_insert]', '$param[url]', '$param[icon]', 0, 0)");
-}
+    }
     
     /**
     * Функция прослушивания на пост запрос о выводе уведемлений

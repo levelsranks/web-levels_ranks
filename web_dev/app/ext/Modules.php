@@ -62,9 +62,6 @@ class Modules {
      */
     function __construct() {
 
-        // Проверка на существоавание option.php
-        ! file_exists( SESSIONS . '/options.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
-
         // Получение кэшированного списка модулей.
         $this->array_modules = $this->get_arr_modules();
 
@@ -89,6 +86,7 @@ class Modules {
      * @return array         Возвращает список модулей для инициализации.
      */
     public function get_module_init() {
+
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
         if ( !file_exists( SESSIONS . 'modules_initialization.php' ) ):
 

@@ -18,6 +18,7 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
     unset( $data['module_block_main_stats']['Total_players'] );
     unset( $data['module_block_main_stats']['Players_24h'] );
     unset( $data['module_block_main_stats']['Headshot'] );
+    unset( $data['module_block_main_stats']['playtime'] );
     unset( $data['module_block_main_stats']['time'] );
 
     // Сохраняем текущее время и прибавляем к нему 1 час.
@@ -28,6 +29,7 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
         $data['module_block_main_stats']['Total_players'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
         $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1' )[0];
         $data['module_block_main_stats']['Headshot'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
+        $data['module_block_main_stats']['playtime'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(playtime) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
     }
 
     ! file_exists( MODULES_SESSIONS . 'module_block_main_stats' ) && mkdir( MODULES_SESSIONS . 'module_block_main_stats', 0777, true );

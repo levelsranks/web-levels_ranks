@@ -8,6 +8,8 @@
  * @license GNU General Public License Version 3
  */
 
+empty( $Db->db_data['SourceBans'] ) && get_iframe( '012','Не найден мод - SourceBans  :: /storage/cache/sessions/db.php' );
+
 // Получаем кэша данного модуля.
 $data['module_block_main_sb_stats'] = $Modules->get_module_cache('module_block_main_sb_stats');
 

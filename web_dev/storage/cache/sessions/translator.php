@@ -90,6 +90,13 @@ return array (
             'UA' => 'Перелік мутов',
             'LT' => 'List of mutts',
         ),
+    '_Admins_sb' =>
+        array (
+            'EN' => 'Admin List',
+            'RU' => 'Список администраторов',
+            'UA' => 'Список адміністраторів',
+            'LT' => 'Administratorių sąrašas',
+        ),
     '_Rank_stats' =>
         array (
             'EN' => 'Statistics - Rank Distribution',

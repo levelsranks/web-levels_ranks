@@ -25,7 +25,7 @@ if (isset($_POST['data'])) {
         try {
             $Query->Connect($server[$i_server][0], $server[$i_server][1], 3, SourceQuery :: SOURCE);
             $info[$i_server] = $Query->GetInfo();
-            if ($servers[$i_ser]['fakeip'] !== '') {
+            if ( ! empty( $servers[$i_ser]['fakeip'] ) && $servers[$i_ser]['fakeip'] !== '') {
                 $return[$i_server]['ip'] = $server_fakeip[$i_server][0];
                 $return[$i_server]['port'] = $server_fakeip[$i_server][1];
             } else {

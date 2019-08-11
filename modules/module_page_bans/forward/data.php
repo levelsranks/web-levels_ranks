@@ -14,7 +14,7 @@ empty( $Db->db_data['SourceBans'] ) && get_iframe( '012','Не найден мо
 define('PLAYERS_ON_PAGE', '80');
 
 // Номер страницы.
-$page_num = get_section( 'num', '1' );
+$page_num = (int) get_section( 'num', '1' );
 
 // Типа банов.
 $ban_type = [0 => '<div class="color-red">' . $Modules->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Modules->get_translate_phrase('_Unban') . '</div>',2 => '<strike>Сессия</strike>'];

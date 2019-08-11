@@ -11,7 +11,7 @@
 // Получаем кэша данного модуля.
 $data['module_page_rankstats'] = $Modules->get_module_cache('module_page_rankstats');
 
-$server_group = get_section( 'server_group', '0' );
+$server_group = (int) get_section( 'server_group', '0' );
 
 // Проверяем актуальность кэша.
 if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_rankstats']['time'] ) ) {
