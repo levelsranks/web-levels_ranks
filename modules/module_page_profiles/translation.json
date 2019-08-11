@@ -1,6 +1,6 @@
 {
   "_Ratio_KD": {
-    "EN": "Ratio K/D:",
+    "EN": "K/D Ratio:",
     "RU": "Убийств / Смертей - К/Д:",
     "UA": "Убийств / Смертей - К/Д:"
   },
@@ -10,22 +10,22 @@
     "UA": "Попаданий / Выстрелов:"
   },
   "_Game_time": {
-    "EN": "Game time:",
+    "EN": "Playtime:",
     "RU": "Игровое время:",
     "UA": "ігровий час:"
   },
    "_First_round_kills": {
-    "EN": "Open frags",
+    "EN": "First Blood",
     "RU": "Первых убийств",
     "UA": "Перших вбивств"
   },
   "_Favorite_weapons": {
-    "EN": "Favorite weapons:",
+    "EN": "Favorite Weapons:",
     "RU": "Любимое оружие:",
     "UA": "Улюблена зброя:"
   },
   "_Kill count": {
-    "EN": "Count kills:",
+    "EN": "No̲ of Kills:",
     "RU": "Количество убийств:",
     "UA": "Кількість вбивств:"
   },
@@ -40,27 +40,27 @@
     "UA": "Перемог %"
   },
   "_Triple_Kills": {
-    "EN": "Triple kills:",
+    "EN": "Triple Kills:",
     "RU": "Трипл-киллов:",
     "UA": "Три вбивства:"
   },
   "_Quad_kills": {
-    "EN": "Quad kills:",
+    "EN": "Quad Kills:",
     "RU": "Квадро-киллов:",
     "UA": "Чотири вбивства:"
   },
   "_Ace": {
-    "EN": "Ace:",
+    "EN": "Aces:",
     "RU": "Эйсов:",
     "UA": "Ace:"
   },
   "_Value_rank": {
-    "EN": "Total points / Rank:",
+    "EN": "Total Points / Rank:",
     "RU": "Количество очков / ранг:",
     "UA": "Кількість поінтів / звання:"
   },
   "_Total_winning_percentage": {
-    "EN": "Total winning %:",
+    "EN": "Winnings Percentage:",
     "RU": "Общий процент побед:",
     "UA": "Загальні перемог %:"
   },
@@ -71,49 +71,49 @@
 	"LT": "Weapon"
   },
   "_Player_profile": {
-    "EN": "Player profile",
+    "EN": "Player Profile",
     "RU": "Профиль игрока",
     "UA": "Сторінка гравця",
 	"LT": "Player profile"
   },
   "_Penetrated_kills": {
-    "EN": "Penetrated kills",
+    "EN": "Penetrated Kills",
     "RU": "Убийств прострелом",
     "UA": "Вбивств прострілом",
 	"LT": "Penetrated kills"
   },
   "_Killing_without_scope": {
-    "EN": "Killing without scope",
+    "EN": "No-Scope Kills",
     "RU": "Убийств без прицела",
     "UA": "Вбивств без прицілу",
 	"LT": "Killing without scope"
   },
   "_Kills_on_run": {
-    "EN": "Kills on the run",
+    "EN": "While Running Kills",
     "RU": "Убийств на бегу",
     "UA": "Вбивств на бігу",
 	"LT": "Kills on the run"
   },
   "_Kills_flash": {
-    "EN": "Kills in flash",
+    "EN": "While Flashed Kills",
     "RU": "Убийств слепым",
     "UA": "Вбивств сліпим",
 	"LT": "Kills in flash"
   },
   "_Jump_kills": {
-    "EN": "Jump kills",
+    "EN": "Jump Kills",
     "RU": "Убийств в прыжке",
     "UA": "Вбивств в стрибку",
 	"LT": "Jump kills"
   },
   "_Smoke_kills": {
-    "EN": "Smoke kills",
+    "EN": "Smoke Kills",
     "RU": "Убийств в дым",
     "UA": "Вбивств в дим",
 	"LT": "Smoke kills"
   },
   "_Kills_whirl": {
-    "EN": "Kills 180-360°",
+    "EN": "180-360° Kills",
     "RU": "Убийств с разворота",
     "UA": "Вбивств з розвороту",
 	"LT": "Kills 180-360°"
