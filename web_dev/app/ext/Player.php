@@ -154,21 +154,19 @@ class Player {
     }
 
     public function get_steam_32() {
-        $type = "/([0-9a-zA-Z_]+):(.+):(.+)/u";
+        $type = "/([0-9a-zA-Z_]{7}):([0-9]{1}):([0-9]+)/u";
         preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
-        $id = (int) action_text_clear_characters( $arr[0][3] );
-        return (string) $arr[0][1] . ':' . $arr[0][2] . ':' . $id;
+        return (string) $arr[0][1] . ':' . $arr[0][2] . ':' . $arr[0][3];
     }
 
     public function get_steam_32_short() {
-        $type = "/[0-9a-zA-Z_]+:.+:(.+)/u";
-        preg_match_all($type, $this->get_steam_32(), $arr, PREG_SET_ORDER);
-        $id = (int) action_text_clear_characters( $arr[0][1] );
-        if( is_int( $id ) ) {
-            return $arr[0][1];
-        } else {
-            exit;
-        }
+        $type = "/[0-9a-zA-Z_]{7}:[0-9]{1}:([0-9]+)/u";
+        preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
+        return (int) $arr[0][1];
+    }
+
+    public function get_steam_64() {
+        return con_steam32to64( $this->get_steam_32() );
     }
 
     public function get_name() {
@@ -236,10 +234,6 @@ class Player {
 
     public function get_playtime() {
         return (int) round( $this->arr_default_info['playtime'] / 60 / 60 , 0 );
-    }
-
-    public function get_steam_64() {
-        return (int) $this->steam_64;
     }
 
     public function get_top_position() {
