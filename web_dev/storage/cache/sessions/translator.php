@@ -50,7 +50,7 @@ return array (
         ),
     '_Statistics' =>
         array (
-            'EN' => 'Statistics players',
+            'EN' => 'Players Statistics',
             'RU' => 'Статистика игроков',
             'UA' => 'Статистика гравців',
             'LT' => 'Statistika žaidėjai',
@@ -64,14 +64,14 @@ return array (
         ),
     '_Sidebar_servers' =>
         array (
-            'EN' => 'Game servers',
+            'EN' => 'Game Servers',
             'RU' => 'Игровые сервера',
             'UA' => 'Ігрові сервера',
             'LT' => 'Žaidimų serveriai'
         ),
     '_Sidebar_social' =>
         array (
-            'EN' => 'Social networks',
+            'EN' => 'Social Networks',
             'RU' => 'Социальные сети',
             'UA' => 'Соціальні мережі',
             'LT' => 'Socialiniai tinklai'
@@ -85,7 +85,7 @@ return array (
         ),
     '_Comms' =>
         array (
-            'EN' => 'List of mutts',
+            'EN' => 'Mute List',
             'RU' => 'Список мутов',
             'UA' => 'Перелік мутов',
             'LT' => 'List of mutts',
@@ -120,7 +120,7 @@ return array (
         ),
     '_Demos' =>
         array (
-            'EN' => 'Demos List',
+            'EN' => 'Demo Archive',
             'RU' => 'Архив демо-записей',
             'UA' => 'Архив демо-записей',
             'LT' => 'Demos List',
@@ -141,14 +141,14 @@ return array (
         ),
     '_No_Notifications' =>
         array (
-            'EN' => 'no new notifications',
+            'EN' => 'All Clear',
             'RU' => 'нет новых уведомлений',
             'UA' => 'немає нових повідомлень',
             'LT' => 'naujų pranešimų nėra',
         ),
     '_Plays_since' =>
         array (
-            'EN' => 'Last Play:',
+            'EN' => 'Played Last:',
             'RU' => 'Последняя игра:',
             'UA' => 'Остання гра',
             'LT' => 'Paskutinį kartą žaista',
@@ -204,35 +204,35 @@ return array (
         ),
     '_Term' =>
         array (
-            'EN' => 'Term',
+            'EN' => 'Length',
             'RU' => 'Срок',
             'UA' => 'Термін',
             'LT' => 'Terminas',
         ),
     '_Forever' =>
         array (
-            'EN' => 'Forever',
+            'EN' => 'Permanent',
             'RU' => 'Навсегда',
             'UA' => 'Назавжди',
             'LT' => 'Amžinai',
         ),
     '_Unban' =>
         array (
-            'EN' => 'Unban',
+            'EN' => 'Unbaned',
             'RU' => 'Разбанен',
             'UA' => 'Разбанен',
             'LT' => 'Unban',
         ),
     '_Uncomm' =>
         array (
-            'EN' => 'Uncomm',
+            'EN' => 'Unmuted',
             'RU' => 'Размут',
             'UA' => 'Размут',
             'LT' => 'Uncomm',
         ),
     '_Has_expired' =>
         array (
-            'EN' => 'Has expired',
+            'EN' => 'Expired',
             'RU' => 'Истёк',
             'UA' => 'Закінчився',
             'LT' => 'Pasibaigęs',
@@ -240,14 +240,14 @@ return array (
 		
 	'_List_recent_bans' =>
         array (
-            'EN' => 'List of recent bans',
+            'EN' => 'Banlist Overview',
             'RU' => 'Список последних банов',
             'UA' => 'Список останніх банів',
             'LT' => 'List of recent bans',
         ),
 	'_List_recent_mut_gags' =>
         array (
-            'EN' => 'List of recent mut / gags',
+            'EN' => 'Communications Blocklist Overview',
             'RU' => 'Список последних мутов / гагов',
             'UA' => 'Список останніх мутов / гагов',
             'LT' => 'List of recent mut / gags',
@@ -261,7 +261,7 @@ return array (
         ),
 	'_Hero_without_name' =>
         array (
-            'EN' => 'Hero without a name',
+            'EN' => 'Hello, Stranger',
             'RU' => 'Герой без имени',
             'UA' => 'Герой без імені',
             'LT' => 'Hero without a name',
@@ -289,7 +289,7 @@ return array (
         ),
 	'_Steam_login' =>
         array (
-            'EN' => 'Sign in with Steam',
+            'EN' => 'Sign In through SteamⓇ',
             'RU' => 'Войти через Steam',
             'UA' => 'Увійти через Steam',
             'LT' => 'Sign in with Steam',
@@ -331,7 +331,7 @@ return array (
         ),
     '_Online_mon' =>
         array (
-            'EN' => 'Online monitoring',
+            'EN' => 'Online Monitoring',
             'RU' => 'Мониторинг онлайна',
             'UA' => 'Моніторинг онлайну',
             'LT' => 'Interneto stebėjimas',
@@ -387,7 +387,7 @@ return array (
         ),
     '_Play_time' =>
         array (
-            'EN' => 'Play Time',
+            'EN' => 'Playtime',
             'RU' => 'Время игры',
             'UA' => 'Час гри',
             'LT' => 'Pražaistas Laikas',
@@ -422,7 +422,7 @@ return array (
         ),
     '_Top_players' =>
         array (
-            'EN' => 'Top players',
+            'EN' => 'Top Players',
             'RU' => 'Рейтинг игроков',
             'UA' => 'Рейтинг гравців',
             'LT' => 'Žaidėjų reitingai',
@@ -443,7 +443,7 @@ return array (
         ),
     '_Month_march' =>
         array (
-            'EN' => 'mar.',
+            'EN' => 'Mar.',
             'RU' => 'мар.',
             'UA' => 'бер.',
             'LT' => 'Kov.',
