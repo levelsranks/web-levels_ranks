@@ -76,7 +76,8 @@ class Db {
         // PDO Условия.
         $this->options = [
             PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION,
-            PDO::MYSQL_ATTR_USE_BUFFERED_QUERY
+            PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,
+            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ];
 
         # Подсчёт -> Количество модов.
