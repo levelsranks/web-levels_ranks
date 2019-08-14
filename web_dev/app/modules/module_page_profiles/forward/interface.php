@@ -297,8 +297,8 @@
                             </thead>
                             <tbody>
                             <?php for ($ti = 0; $ti < 11; $ti++) {?>
-                                <tr class="pointer <?php if( $Player->get_steam_32()  == $Player->top_with_player[$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php echo $Player->top_with_player[$ti]['steam']?>';">
-                                    <th class="text-center">#</th>
+                                <tr class="pointer <?php if( $Player->get_steam_32() == $Player->top_with_player[$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php echo $Player->top_with_player[$ti]['steam']?>';">
+                                    <th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
                                     <th class="table-text"><?php echo action_text_trim($Player->top_with_player[$ti]['name'],16)?></th>
                                     <th class="text-center"><?php echo $Player->top_with_player[$ti]['value']?></th>
                                     <th class="text-center table-text"><img src="<?php echo 'storage/cache/img/ranks/' . $Player->found[  $Player->server_group  ]['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>

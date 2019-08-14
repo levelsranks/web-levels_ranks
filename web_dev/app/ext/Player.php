@@ -109,7 +109,7 @@ class Player {
 
         $this->found_fix = array_values( $this->found );
 
-        $this->found[ $this->server_group ] == '' && header( 'Location: ' . $this->General->arr_general['site']) && exit;
+        $this->found[ $this->server_group ] == '' && header( 'Location: ' . $this->General->arr_general['site'] ) && exit;
 
         $this->arr_default_info = $this->get_db_arr_default_info();
 
@@ -242,7 +242,9 @@ class Player {
 
     public function get_db_top_with_player() {
         $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+        $size_a = sizeof( $a );
         $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+        $b['countdown_from'] = $this->top_position - $size_a;
         return $b;
     }
 
