@@ -86,8 +86,22 @@ if( $_POST["function"] == 'avatars' ) {
             $cacheFile_slim = "../../storage/cache/img/avatars/slim/" . $data[$i]['steamid'] . ".jpg";
 
             // Сохраняем/редактируем новые аватары.
-            file_put_contents( $cacheFile, file_get_contents( $data[$i]['avatarfull'] ) );
-            file_put_contents( $cacheFile_slim, file_get_contents( $data[$i]['avatar'] ) );
+
+            $avatarfull_headers = @get_headers( $data[$i]['avatarfull'] );
+
+            if( ! $avatarfull_headers || $avatarfull_headers[0] == 'HTTP/1.1 404 Not Found') {
+                file_put_contents( $cacheFile, '../../storage/cache/img/avatars_random/' . rand(1,30) . '.jpg' );
+            } else {
+                file_put_contents( $cacheFile, file_get_contents( $data[$i]['avatarfull'] ) );
+            }
+
+            $avatar_headers = @get_headers( $data[$i]['avatar'] );
+
+            if( ! $avatar_headers || $avatar_headers[0] == 'HTTP/1.1 404 Not Found') {
+                file_put_contents( $cacheFile_slim, '../../storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' );
+            } else {
+                file_put_contents( $cacheFile_slim, file_get_contents( $data[$i]['avatar'] ) );
+            }
         }
 
         // Вывод итоговых данных.

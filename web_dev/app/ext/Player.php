@@ -156,13 +156,21 @@ class Player {
     public function get_steam_32() {
         $type = "/([0-9a-zA-Z_]{7}):([0-9]{1}):([0-9]+)/u";
         preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
-        return (string) $arr[0][1] . ':' . $arr[0][2] . ':' . $arr[0][3];
+        if ( ! empty( $arr[0][1] ) && ! empty( $arr[0][3] ) ):
+            return $arr[0][1] . ':' . $arr[0][2] . ':' . $arr[0][3];
+        else:
+            return false;
+        endif;
     }
 
     public function get_steam_32_short() {
         $type = "/[0-9a-zA-Z_]{7}:[0-9]{1}:([0-9]+)/u";
         preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
-        return (int) $arr[0][1];
+        if ( ! empty( $arr[0][1] ) ):
+            return (int) $arr[0][1];
+        else:
+            return false;
+        endif;
     }
 
     public function get_steam_64() {
@@ -199,19 +207,19 @@ class Player {
     }
 
     public function get_percent_hits() {
-        $a = round( $this->get_shoots() / 100, 1 );
-        $b = empty( $this->get_shoots() ) ? 0 : round( $this->get_hits() / $a, 1 );
-        return $b . '% ( ' . $this->get_hits() . ' / ' . $this->get_shoots() . ' )';
+        $a = 0;
+        ! empty( $this->get_shoots() ) && $a = (float) round( 100 * $this->get_hits() / $this->get_shoots() , 1);
+        return $a . '% ( ' . $this->get_hits() . ' / ' . $this->get_shoots() . ' )';
     }
 
     public function get_headshots() {
-        return (int) $this->arr_default_info['headshots'];
+        return (int) empty( $this->arr_default_info['headshots'] ) ? 0 : $this->arr_default_info['headshots'];
     }
 
     public function get_percent_headshots() {
-        $a = round( $this->get_kills() / 100, 1 );
-        $b = empty( $this->get_headshots() ) ? 0 : round( $this->get_headshots() / $a , 1 );
-        return $this->arr_default_info['headshots'] . ' ( ' . $b . '% )';
+        $a = 0;
+        ! empty( $this->get_kills() ) && $a = (float) round( 100 * $this->get_headshots() / $this->get_kills() , 1);
+        return $this->arr_default_info['headshots'] . ' ( ' . $a . '% )';
     }
 
     public function get_assists() {
@@ -227,9 +235,9 @@ class Player {
     }
 
     public function get_percent_win() {
-        $a = round( $this->get_round_lose() / 100, 1 );
-        $b = empty( $this->get_round_win() ) ? 0 : round( $this->get_round_win() / $a, 1 );
-        return $b . '% (' . $this->get_round_win() . '/' . $this->get_round_lose() . ')';
+        $a = 0;
+        ! empty( $this->get_round_lose() ) && $a = (float) round( 100 * $this->get_round_win() / $this->get_round_lose() , 1);
+        return $a . '% (' . $this->get_round_win() . '/' . $this->get_round_lose() . ')';
     }
 
     public function get_playtime() {
@@ -305,7 +313,7 @@ class Player {
     }
 
     public function get_hits_all() {
-        return (int) array_sum ( array_values ( $this->hits ) );
+        return ! empty( $this->hits ) ? (int) array_sum ( array_values ( $this->hits ) ) : 0;
     }
 
     public function get_hits_head() {

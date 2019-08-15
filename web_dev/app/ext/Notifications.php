@@ -91,8 +91,13 @@ class Notifications {
 		            }
 		        }
 		        //Вывод
-		         echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Modules->get_translate_phrase('_No_Notifications'), 'notifications' => array_reverse($notifications)));
-		         exit;
+                if ( ! empty( $notifications ) ):
+                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Modules->get_translate_phrase('_No_Notifications'), 'notifications' => array_reverse($notifications)));
+                    exit;
+                else:
+                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Modules->get_translate_phrase('_No_Notifications'), 'notifications' => null));
+                    exit;
+                endif;
 		    }
 		}
 	}

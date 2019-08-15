@@ -201,16 +201,10 @@ function action_text_clear_before_slash( $text ) {
  * @return string                    Выводит итог конвертации.
  */
 function con_steam32to64( $id ) {
-    $accountarray =	explode(":", $id);
-    if ( version_compare( PHP_VERSION, "7.3", "=" ) ) {
-        return $accountarray[2] * 2 + $accountarray[1] + '76561197960265728';
-    } else {
-        $idnum			=	$accountarray[1];
-        $accountnum		=	$accountarray[2];
-        $constant		=	'76561197960265728';
-        $number			=	bcadd(bcmul($accountnum, 2), bcadd($idnum, $constant));
-        return $number;
-    }
+    $arr =	explode(":", $id);
+        if ( ! empty( $arr[2] ) ):
+            return bcadd( bcmul( (int) $arr[2], 2 ), bcadd( (int) $arr[1], '76561197960265728' ) );
+        endif;
 }
 
 /**
@@ -232,4 +226,19 @@ function con_steam64to32( $steamid64 ) {
         return $steam32;
     }
     return false;
+}
+
+/**
+ * Замена значений перевода
+ *
+ * @param string       $phares    Текст перевода
+ * @param array        $values    Значения перевода
+ *
+ * @return string                 Выводит итог замены.
+ */
+function LangValReplace($phares,$values=[]){
+    foreach($values as $key => $val){
+        $replace = str_replace('%' . $key . '%', $val, $phares);
+    }
+    return $replace;
 }

@@ -11,7 +11,7 @@
 if ( $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try {
-        $openid = new LightOpenID( 'http:' . $this->arr_general['site'] );
+        $openid = new LightOpenID( 'http:' . $this->General->arr_general['site'] );
         if ( ! $openid->mode ) {
             $openid->identity = 'https://steamcommunity.com/openid';
             header( 'Location: ' . $openid->authUrl() );
@@ -32,10 +32,10 @@ if ( $_GET["auth"] == 'login' ) {
                 $_SESSION['steamid32'] = con_steam64to32( $matches[1] );
                 $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                 $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-                header('Location: ' . $this->arr_general['site']);
+                header('Location: ' . $this->General->arr_general['site']);
                 if ( ! headers_sent() ) {?>
-                    <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
-                    <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
+                    <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
+                    <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
                     <?php exit;
                 }
             }
@@ -46,10 +46,10 @@ if ( $_GET["auth"] == 'login' ) {
 if ( $_GET["auth"] == 'logout' ) {
     session_unset();
     session_destroy();
-    header('Location: ' . $this->arr_general['site']);
+    header('Location: ' . $this->General->arr_general['site']);
     if ( ! headers_sent() ) {?>
-        <script type="text/javascript">window.location.href="<?php echo $this->arr_general['site'] ?>";</script>
-        <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->arr_general['site'] ?>" /></noscript>
+        <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
+        <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
         <?php exit;
     }
 }

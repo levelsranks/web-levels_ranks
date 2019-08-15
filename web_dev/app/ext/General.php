@@ -46,9 +46,6 @@ class General {
 
         // Получение информации о состоянии сайт-бара.
         $this->get_default_url_section('sidebar_open', $this->arr_general['sidebar_open'], array( true, false ) );
-
-        // получение информации об авторизации по Steam.
-        isset( $_GET["auth"] ) && $this->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
     }
 
     /**

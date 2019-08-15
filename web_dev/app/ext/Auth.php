@@ -26,6 +26,9 @@ class Auth {
             endif;
         endif;
 
+        // получение информации об авторизации по Steam.
+        isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
+
         $this->_POST();
     }
 

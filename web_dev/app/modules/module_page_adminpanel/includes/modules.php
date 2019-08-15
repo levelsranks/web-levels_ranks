@@ -25,7 +25,7 @@
                             $data_id = ( get_section( 'module_page', 'home' ) == 'sidebar' ) ? $Modules->arr_module_init['sidebar'][ $i ] : $Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ $i ];
                             $data_title = ( get_section( 'module_page', 'home' ) == 'sidebar' ) ? $Modules->array_modules[$Modules->arr_module_init['sidebar'][ $i ]]['title'] : $Modules->array_modules[$Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ $i ]]['title']?>
                             <li class="dd-item" data-id="<?php echo $data_id?>">
-                                <a class="module_setting" href="<?=$General->array_general['site']?>?page=adminpanel&section=modules&options=<?php echo $data_id?>"><i class="zmdi zmdi-chevron-right zmdi-hc-fw"></i></a>
+                                <a class="module_setting" href="<?php echo $General->arr_general['site']?>?page=adminpanel&section=modules&options=<?php echo $data_id?>"><i class="zmdi zmdi-chevron-right zmdi-hc-fw"></i></a>
                                 <div class="dd-handle"><?php echo $data_title?></div>
                             </li>
                         <?php } ?>
@@ -60,7 +60,7 @@
         </div>
         </div>
     </div>
-<?php if ($_GET['options']):?>
+<?php if ( ! empty( $_GET['options'] ) ):?>
 <div class="col-md-6">
     <div class="card">
         <div class="card-header">
