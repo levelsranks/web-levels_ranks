@@ -8,85 +8,46 @@
  * @license GNU General Public License Version 3
  */
 ?>
-<style>.card-block-big {
+<style>.card-block-sb-big {
         position: relative;
         min-height: 120px
     }
 
-    .card-block-big .figure {
+    .card-block-sb-big .figure {
         position: absolute;
-        margin-left: 42%;
-        width: 6%;
-        height: 130px;
-        transform: skew(45deg);
-        background: var(--span-color-addit);
-    }
-
-    .card-block-big .figure_2 {
-        position: absolute;
-        margin-left: 47.5%;
-        width: 6%;
-        height: 130px;
-        transform: skew(45deg);
+        margin-left: 85%;
+        width: 36%;
+        top: 36px;
+        height: 14%;
         background: var(--span-color);
     }
 
-    .card-block-big .icon-stats {
+    .card-block-sb-big .figure_2 {
         position: absolute;
-        right: 25px;
-        bottom: 25px
+        margin-left: 92%;
+        width: 22%;
+        top: 59px;
+        height: 14%;
+        background: var(--span-color-addit);
     }
 
-    .card-block-big svg {
+    .card-block-sb-big h3 {
         position: relative;
-        width: 42px;
-        height: 42px;
-        opacity: .4;
-        transition: all ease-in .3s;
-        fill: var(--span-color);
-    }
-    .card-block-big img {
-        position: relative;
-        width: 42px;
-        height: 42px;
-        opacity: .4;
-        transition: all ease-in .3s;
-        filter: invert(70%) sepia(64%) saturate(4691%) hue-rotate(345deg) brightness(98%) contrast(91%);
-    }
-    .card-block-big i {
-        position: relative;
-        width: 42px;
-        height: 42px;
-        opacity: .4;
-        transition: all ease-in .3s;
-        font-size: 1.52em;
         text-align: center;
-        color: var(--span-color);
-    }
-
-    .card-block-big h3 {
-        position: absolute;
-        left: 25px;
+        margin-left: auto;
+        margin-right: auto;
         top: 25px;
         font-size: 32px;
         font-weight: 700;
         color: var(--default-text-color)
     }
 
-    .card-block-big:hover svg, .card-block-big:hover img {
-        opacity: 1;
-        transform: scale(1.1)
-    }
-
-    .card-block-big:hover i {
-        opacity: 1;
-        transform: scale(1.1)
-    }
-
-    .card-block-big .info {
-        position: absolute;
-        left: 25px;
-        bottom: 25px;
+    .card-block-sb-big .info {
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        top: 25px;
         font-size: 13px;
         font-weight: 400;
         color: var(--default-text-color)
@@ -98,33 +59,37 @@
             max-width: 33.333333%
         }
 
-        .card-block-big {
+        .card-block-sb-big .figure {
+            display: none;
+        }
+
+        .card-block-sb-big .figure_2 {
+            display: none;
+        }
+
+        .card-block-sb-big {
             position: relative;
             min-height: 70px
         }
 
-        .card-block-big i, .card-block-big img {
-            display: none
-        }
-
-        .card-block-big h3 {
-            position: absolute;
-            top: 18px;
-            left: 1%;
-            right: 1%;
+        .card-block-sb-big h3 {
+            position: relative;
             text-align: center;
-            font-size: 18px;
+            margin-left: auto;
+            margin-right: auto;
+            top: 10px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--default-text-color)
         }
 
-        .card-block-big .info {
-            position: absolute;
-            left: 4%;
-            right: 4%;
+        .card-block-sb-big .info {
+            position: relative;
             text-align: center;
-            bottom: 15px;
-            font-size: 9px;
+            margin-left: auto;
+            margin-right: auto;
+            top: 0px;
+            font-size: 6px;
             font-weight: 400;
             color: var(--default-text-color)
         }
@@ -136,33 +101,37 @@
             max-width: 33.333333%
         }
 
-        .card-block-big {
+        .card-block-sb-big .figure {
+            display: none;
+        }
+
+        .card-block-sb-big .figure_2 {
+            display: none;
+        }
+
+        .card-block-sb-big {
             position: relative;
             min-height: 80px
         }
 
-        .card-block-big svg, .card-block-big img {
-            display: none
-        }
-
-        .card-block-big h3 {
-            position: absolute;
-            top: 18px;
-            left: 1%;
-            right: 1%;
+        .card-block-sb-big h3 {
+            position: relative;
             text-align: center;
-            font-size: 26px;
+            margin-left: auto;
+            margin-right: auto;
+            top: 10px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--default-text-color)
         }
 
-        .card-block-big .info {
-            position: absolute;
-            left: 5%;
-            right: 5%;
+        .card-block-sb-big .info {
+            position: relative;
             text-align: center;
-            bottom: 11px;
-            font-size: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            top: 0px;
+            font-size: 9 px;
             font-weight: 400;
             color: var(--default-text-color)
         }

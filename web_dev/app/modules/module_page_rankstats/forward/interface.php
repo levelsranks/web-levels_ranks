@@ -32,7 +32,8 @@
                 </div>
             </div>
             <div class="container-ranks">
-                <?php for ( $i = 1, $count = sizeof( $data['module_page_rankstats']['data'][ $server_group ] ); $i < $count; $i++ ): ?>
+                <?php for ( $i = 0, $count = sizeof( $data['module_page_rankstats']['data'][ $server_group ] ); $i < $count; $i++ ):
+                    if( ! empty( $data['module_page_rankstats']['data'][ $server_group ][ $i ]['Percent'] ) && $data['module_page_rankstats']['data'][ $server_group ][ $i ]['Percent'] != 0 ):?>
                 <div class="row-rank">
                     <div class="rank"><img src="<?php echo 'storage/cache/img/ranks/' . $Db->db_data['LevelsRanks'][$server_group]['ranks_pack'] . '/' . $data['module_page_rankstats']['data'][ $server_group ][ $i ]['rank'] ?>.png"></div>
                     <div class="line">
@@ -40,7 +41,8 @@
                         <div class="value" ><?php echo $data['module_page_rankstats']['data'][ $server_group ][ $i ]['Percent'] ?>%</div>
                     </div>
                 </div>
-                <?php endfor;?>
+                <?php endif;
+                endfor;?>
             </div>
             </div>
             </div>
