@@ -36,13 +36,14 @@ if (isset($_POST['data'])) {
             $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
             if( file_exists( '../../../../../storage/cache/img/maps/' . $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0] . '.jpg') ) {
                 $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
+                $cache[$i_server] = $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0];
             } else {
                 $return[$i_server]['Map'] = '-';
+                $cache[$i_server] = 'csgo/-';
             }
             $return[$i_server]['Players'] = $info[$i_server]['Players'];
             $return[$i_server]['MaxPlayers'] = $info[$i_server]['MaxPlayers'];
             $return[$i_server]['Mod'] = $info[$i_server]['ModDir'];
-            $cache[$i_server] = $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0];
         } catch (Exception $e) {
             if ($servers[$i_ser]['fakeip'] !== '') {
                 $return[$i_server]['ip'] = $server_fakeip[$i_server][0];
