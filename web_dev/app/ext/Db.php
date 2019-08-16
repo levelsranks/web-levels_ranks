@@ -153,57 +153,125 @@ class Db {
     }
 
     /**
+     * Подготовительный подзапрос.
+     *
+     * @param  string    $mod           Навание мода.
+     * @param  int       $user_id       Номер пользователя.
+     * @param  int       $db_id         Номер подключенной базы данных.
+     * @param  string    $sql           SQL запрос.
+     * @param  array     $params        Параметры.
+     *
+     * @return array                    Итог подготовленного подзапроса
+     */
+    public function inquiry( $mod, $user_id, $db_id, $sql, $params ) {
+
+        $stmt = $this->pdo[ $mod ][ $user_id ][ $db_id ]->prepare( $sql );
+
+        if ( ! empty( $params ) ) {
+            foreach ( $params as $key => $val ) {
+                if ( is_int( $val ) ) {
+                    $type = PDO::PARAM_INT;
+                } else {
+                    $type = PDO::PARAM_STR;
+                }
+                $stmt->bindValue( ':'.$key, $val, $type );
+            }
+        }
+
+        $stmt->execute();
+        return $stmt;
+    }
+
+    /**
      * Шаблон запроса отдающий массив с индексированными именами столбцов.
      *
-     * @param string $mod           Навание мода.
-     * @param int $user_id          Номер пользователя.
-     * @param int $db_id            Номер подключенной базы данных.
-     * @param string $sql           SQL запрос.
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
      *
-     * @return array|false          Возвращает результат SQL запроса.
+     * @return array                  Возвращает результат SQL запроса.
      */
-    public function query($mod, $user_id = 0, $db_id = 0, $sql ) {
-        return $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query( $sql )->fetch( PDO::FETCH_ASSOC );
+    public function query( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetch( PDO::FETCH_ASSOC );
     }
 
     /**
      * Шаблон запроса отдающий массив с индексированными номерами столбцов.
      *
-     * @param string $mod           Навание мода.
-     * @param int $user_id          Номер пользователя.
-     * @param int $db_id            Номер подключенной базы данных.
-     * @param string $sql           SQL запрос.
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
      *
-     * @return array|false          Возвращает результат SQL запроса.
+     * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryNum( $mod, $user_id = 0, $db_id = 0, $sql ) {
-        return $this->pdo[ $mod ][ (int) $user_id ][ $db_id ]->query( $sql )->fetch( PDO::FETCH_NUM );
+    public function queryNum( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetch( PDO::FETCH_NUM );
     }
 
     /**
      * Шаблон запроса отдающий массив со всеми строками.
      *
-     * @param string $mod           Навание мода.
-     * @param int $user_id          Номер пользователя.
-     * @param int $db_id        Номер подключенной базы данных.
-     * @param string $sql           SQL запрос.
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
      *
-     * @return array|false          Возвращает результат SQL запроса.
+     * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryAll( $mod, $user_id = 0, $db_id = 0, $sql ) {
-        return $this->pdo[ $mod ][ (int) $user_id ][ $db_id ]->query( $sql )->fetchAll( PDO::FETCH_ASSOC );
+    public function queryAll( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetchAll( PDO::FETCH_ASSOC );
+    }
+
+    /**
+     * Шаблон запроса отдающий массив стобца.
+     *
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
+     *
+     * @return array                  Возвращает результат SQL запроса.
+     */
+    public function queryColumn( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetchColumn();
+    }
+
+    /**
+     * Шаблон запроса отдающий данные одного стобца.
+     *
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
+     *
+     * @return array                  Возвращает результат SQL запроса.
+     */
+    public function queryOneColumn( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetch( PDO::FETCH_COLUMN );
     }
 
     /**
      * Запрос проверяющий существование столбика в той или иной таблице.
      *
-     * @param string $mod          	Навание мода.
-     * @param int $user_id          Номер пользователя.
-     * @param int $db_id        	Номер подключенной базы данных.
-     * @param string $tablename    	Название таблицы.
-     * @param string $column    	Название столбика который нужно проверить.
+     * @param  string  $mod          Навание мода.
+     * @param  int     $user_id      Номер пользователя.
+     * @param  int     $db_id        Номер подключенной базы данных.
+     * @param  string  $tablename    Название таблицы.
+     * @param  string  $column    	 Название столбика который нужно проверить.
      *
-     * @return int                 Возвращает результат проверки.
+     * @return int                   Возвращает результат проверки.
      */
     public function mysql_column_search( $mod, $user_id = 0, $db_id = 0, $tablename, $column ) {
         return in_array( $column, $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query('SHOW COLUMNS from ' . $tablename . ' ')->fetchAll( PDO::FETCH_COLUMN ) );
@@ -212,12 +280,12 @@ class Db {
     /**
      * Запрос проверяющий существование таблицы в той или иной базе данных.
      *
-     * @param string $mod          Навание мода.
-     * @param int $user_id          Номер пользователя.
-     * @param int $db_id        Номер подключенной базы данных.
-     * @param string $tablename    Название таблицы которую нужно проверить проверки
+     * @param  string  $mod          Навание мода.
+     * @param  int     $user_id      Номер пользователя.
+     * @param  int     $db_id        Номер подключенной базы данных.
+     * @param  string  $tablename    Название таблицы которую нужно проверить проверки
      *
-     * @return int                 Возвращает результат проверки.
+     * @return int                   Возвращает результат проверки.
      */
     public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename ) {
         return ! empty( $this->pdo[ $mod ][ (int) $user_id ][ (int) $db_id ]->query("SHOW TABLES like '$tablename'")->fetchAll( PDO::FETCH_NUM )[0] ) ? true : false;

@@ -142,7 +142,7 @@
 
         .user-block .rank-img {
             margin-top: 10px;
-            width: 70px;
+            max-height: 28px;
         }
 
         .user-block .rank {
@@ -699,7 +699,7 @@
 
         .user-block .rank-img {
             margin-top: 10px;
-            width: 70px;
+            max-height: 28px;
         }
 
         .user-block .rank {
@@ -1256,7 +1256,7 @@
 
         .user-block .rank-img {
             margin-top: 10px;
-            width: 70px;
+            max-height: 28px;
         }
 
         .user-block .rank {
@@ -1814,7 +1814,7 @@
 
         .user-block .rank-img {
             margin-top: 10px;
-            width: 70px;
+            max-height: 28px;
         }
 
         .user-block .rank {
@@ -2371,7 +2371,7 @@
 
         .user-block .rank-img {
             margin-top: 10px;
-            width: 70px;
+            max-height: 28px;
         }
 
         .user-block .rank {

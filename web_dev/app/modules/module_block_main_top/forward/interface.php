@@ -1,23 +1,23 @@
 <?php
-    /**
-     * @author Anastasia Sidak <m0st1ce.nastya@gmail.com>
-     *
-     * @link https://steamcommunity.com/profiles/76561198038416053
-     * @link https://github.com/M0st1ce
-     *
-     * @license GNU General Public License Version 3
-     */
+/**
+ * @author Anastasia Sidak <m0st1ce.nastya@gmail.com>
+ *
+ * @link https://steamcommunity.com/profiles/76561198038416053
+ * @link https://github.com/M0st1ce
+ *
+ * @license GNU General Public License Version 3
+ */
 ?>
 <div class="row">
-    <?php if ( $Db->table_count['LevelsRanks'] % 2 == 1 ):?>
-        <div class="col-md-3"><div class="card plug"></div></div>
-    <?php endif;?>
     <?php for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):?>
+        <?php if ( $d+1 == $Db->table_count['LevelsRanks'] && $Db->table_count['LevelsRanks'] % 2 == 1 ):?>
+            <div class="col-md-3"><div class="card plug"></div></div>
+        <?php endif;?>
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_phrase( '_Top_players' )?>
-                    :: <?php echo $Db->db_data['LevelsRanks'][ $d ]['name']?></h5>
+                    <h5 class="badge"><?php echo $Modules->get_translate_phrase( '_Top_players' )?>
+                        :: <?php echo $Db->db_data['LevelsRanks'][ $d ]['name']?></h5>
                 </div>
                 <div class=table-responsive>
                     <table class="table table-hover mb-0">
@@ -42,9 +42,9 @@
                                 <?php if( $General->arr_general['avatars'] != 0 ) {?>
                                     <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($data_paste[ $d ][ $dd ]['steam']);} ?>" data-src="
                                     <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64($data_paste[ $d ][ $dd ]['steam']), 2);
-                                    } elseif( $General->arr_general['avatars'] == 2) {
-                                        echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                                    }?>"></th>
+                                        } elseif( $General->arr_general['avatars'] == 2) {
+                                            echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
+                                        }?>"></th>
                                 <?php }?>
                                 <th class="text-left tb-name"><a
                                             href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 15) )?></a>
@@ -56,14 +56,14 @@
                                 <th class="text-center"><?php echo round($data_paste[ $d ][ $dd ]['kills'] / $data_paste[ $d ][ $dd ]['deaths'], 2); ?></th>
                                 <th class="text-center tb-time-two"><?php echo round($data_paste[ $d ][ $dd ]['playtime'] / 60 / 60), ' ', $Modules->get_translate_phrase('_Hour') ?></th>
                             </tr>
-                            <?php } ?>
+                        <?php } ?>
 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <?php if ( $Db->table_count['LevelsRanks'] % 2 == 1 && $d == 0 ):?>
+        <?php if ( $d+1 == $Db->table_count['LevelsRanks'] && $Db->table_count['LevelsRanks'] % 2 == 1 ):?>
             <div class="col-md-3"><div class="card plug"></div></div>
         <?php endif;?>
     <?php endfor;?>

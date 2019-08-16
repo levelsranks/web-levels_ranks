@@ -65,7 +65,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                 <div class="rank-info">
                     <li class="rank-mini-li"><a href="javascript:void(0);" onclick="action_treeview()" >
                             <div class="user-rank tooltip-right" data-tooltip="<?php echo $server_info[0]['name_servers'];?>">
-                                <img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ 0 ]['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png">
+                                <div class="rank_img"><img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ 0 ]['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png"></div>
                                 <div class="rank-details">
                                     <?php echo $Modules->get_translate_phrase( $user_auth[0]['rank'], 'ranks_' . $server_info[ 0 ]['ranks_pack'] )?>
                                 </div>
@@ -80,7 +80,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                             <?php for ( $d = 1; $d < $user_rank_count; ++$d ):?>
                                 <li>
                                     <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $server_info[ $d ]['name_servers']?>">
-                                        <img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ $d ]['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png">
+                                        <div class="rank_img"><img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ $d ]['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png"></div>
                                         <div class="rank-details"><?php echo $Modules->get_translate_phrase( $user_auth[ $d ]['rank'], 'ranks_' . $server_info[ $d ]['ranks_pack'] )?></div>
                                     </div>
                                 </li>
