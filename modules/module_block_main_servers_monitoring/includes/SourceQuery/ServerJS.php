@@ -55,8 +55,8 @@ if (isset($_POST['data'])) {
             $return[$i_server]['Map'] = '-';
             $return[$i_server]['Players'] = 0;
             $return[$i_server]['MaxPlayers'] = 0;
-            $return[$i_server]['Mod'] = 0;
-            $cache[$i_server] = 'none';
+            $return[$i_server]['Mod'] = 'csgo';
+            $cache[$i_server] = 'csgo/-';
         } finally {
             $Query->Disconnect();
         }

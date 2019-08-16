@@ -122,7 +122,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                             </div>
                             <input id="server-connect-<?php echo $i_server?>" onclick="" type="button" value="<?php echo $Modules->get_translate_phrase('_Connect_2')?>">
                         </div>
-                        <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php if( $servers_cache !== false ) { echo $servers_cache[ $i_server ]; }?>.jpg">
+                        <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php if( $servers_cache !== false ) { echo $servers_cache[ $i_server ]; } else { echo 'csgo/-';}?>.jpg">
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                         <tbody>
                         <?php for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ) {?>
                             <tr id="server-connect-table-<?php echo $i_server?>" onclick="">
-                                <th class="text-center"><img id="server-tablemod-<?php echo $i_server?>" src="./storage/cache/img/global/null.png"></th>
+                                <th class="text-center"><img id="server-tablemod-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php if( $servers_cache !== false ) { echo $servers_cache[ $i_server ]; } else { echo 'csgo/-';}?>"></th>
                                 <th class="text-left" id="server-tablename-<?php echo $i_server?>"></th>
                                 <th class="text-center" id="server-tableplayers-<?php echo $i_server?>"></th>
                                 <th class="text-center" id="server-tablemap-<?php echo $i_server?>"></th>
