@@ -20,6 +20,8 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
             }
         }
         unlink( SESSIONS . '/modules_cache.php' );
+        unlink(ASSETS_CSS . 'style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
+        unlink(ASSETS_JS . 'app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
         header( 'Location: ' . get_url(1) );
         exit;
     }
@@ -33,6 +35,8 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         }
         unlink( SESSIONS . '/modules_cache.php' );
         unlink( SESSIONS . '/modules_initialization.php' );
+        unlink(ASSETS_CSS . 'style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
+        unlink(ASSETS_JS . 'app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
         header( 'Location: ' . get_url(1) );
         exit;
     }
@@ -69,6 +73,8 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
           'form_border' => $_POST['form_border']
        ];
        file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
+       unlink(ASSETS_CSS . 'style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
+       unlink(ASSETS_JS . 'app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
        header( 'Location: ' . get_url(1) );
        exit;
 }

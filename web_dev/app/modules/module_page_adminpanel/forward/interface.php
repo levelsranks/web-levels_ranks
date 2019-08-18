@@ -40,7 +40,7 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
         </div>
     </section>
 </aside>
-<div class="row">
+<div class="row row_admins">
     <?php switch ( get_section( 'section', 'modules' ) ) {
         case 'general':
             require MODULES . 'module_page_adminpanel' . '/includes/general.php';

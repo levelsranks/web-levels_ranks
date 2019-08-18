@@ -60,7 +60,9 @@ class Modules {
     /**
      * Организация работы вэб-приложения с модулями.
      */
-    function __construct() {
+    function __construct( $General ) {
+
+        $this->General = $General;
 
         // Получение кэшированного списка модулей.
         $this->array_modules = $this->get_arr_modules();
@@ -70,6 +72,12 @@ class Modules {
 
         // Получение списка инициализвации модулей в определенном порядке.
         $this->arr_module_init = $this->get_module_init();
+
+        // Проверка таблици стилей.
+        $this->check_generated_style();
+
+        // Проверка таблици стилей.
+        $this->check_generated_js();
 
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
@@ -104,7 +112,6 @@ class Modules {
                      $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;
                      $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
                      $this->array_modules[ $module ]['setting']['data_always'] == 1 && $data_always[] = $module;
-                     $this->array_modules[ $module ]['setting']['css'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['css'][] = $module;
                      $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
                      $this->array_modules[ $module ]['sidebar'] != '' && $result['sidebar'][] = $module;
                  endif;
@@ -245,6 +252,83 @@ class Modules {
     }
 
     /**
+     * Проверка сгенерированного стиля.
+     */
+    public function check_generated_style() {
+
+        // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
+        if ( ! file_exists( ASSETS_CSS . 'style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
+
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
+
+            // Лучше в будущем переработать и преобразовать в цикл, а для начала - НОРМ
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/animations/' . (int) $this->General->arr_general['animations'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/animations/' . (int) $this->General->arr_general['animations'] . '.css';
+
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/badge/' . (int) $this->General->arr_general['badge_type'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/badge/' . (int) $this->General->arr_general['badge_type'] . '.css';
+
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/form_border/' . (int) $this->General->arr_general['form_border'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/form_border/' . (int) $this->General->arr_general['form_border'] . '.css';
+
+            // Перебором забираем корневое название модулей.
+            for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+                $module = array_keys( $this->array_modules )[ $i ];
+                if (
+                    $this->array_modules[ $module ]['setting']['status'] == 1
+                    && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
+                    && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                ):
+                    $this->array_modules[ $module ]['setting']['css'] == 1 && $files_css_compress[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
+                endif;
+            endfor;
+
+            $final_css_compress = $this->action_css_compress( $files_css_compress );
+
+            $default = $this->General->arr_general;
+            $default['actual_css_ver'] = time();
+
+            //Обновляем options
+            file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
+
+            // Сохраняем итоговый CSS файл.
+            file_put_contents( ASSETS_CSS . 'style_generated.min.ver.' . $default['actual_css_ver'] . '.css', $final_css_compress );
+            endif;
+    }
+
+    /**
+     * Проверка сгенерированного JavaScript.
+     */
+    public function check_generated_js() {
+
+        // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
+        if ( ! file_exists( ASSETS_JS . 'app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
+
+            file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
+
+            // Перебором забираем корневое название модулей.
+            for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+                $module = array_keys( $this->array_modules )[ $i ];
+                if (
+                    $this->array_modules[ $module ]['setting']['status'] == 1
+                    && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
+                    && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                ):
+                    $this->array_modules[ $module ]['setting']['js'] == 1 && $files_js_compress[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
+                endif;
+            endfor;
+
+            $final_js_compress = $this->action_js_compress( $files_js_compress );
+
+            $default = $this->General->arr_general;
+            $default['actual_js_ver'] = time();
+
+            //Обновляем options
+            file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
+
+            // Сохраняем итоговый JS файл.
+            file_put_contents( ASSETS_JS . 'app_generated.min.ver.' . $default['actual_js_ver'] . '.js', $final_js_compress );
+        endif;
+    }
+
+    /**
      * Самостоятельно добавить раздел в sidebar.
      *
      * @param string $module_id         ID модуля.
@@ -268,5 +352,77 @@ class Modules {
      */
     public function set_user_info_text( $text ) {
         $this->arr_user_info[] = $text;
+    }
+
+    /**
+     * Компрессирует CSS файлы
+     *
+     * @param  array   $files         Массив файлов.
+     *
+     * @return string                 Итог компрессии.
+     */
+    public function action_css_compress( $files = [] ) {
+        $buffer = "";
+        foreach ($files as $cssFile) {
+            $buffer .= file_get_contents($cssFile);
+        }
+        $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+
+        $buffer = str_replace(': ', ':', $buffer);
+
+        $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+
+        return $buffer;
+    }
+
+    /**
+     * Компрессирует JS файлы
+     *
+     * @param  array   $files         Массив файлов.
+     *
+     * @return string                 Итог компрессии.
+     */
+    public function action_js_compress( $files = [] ) {
+        $buffer = "";
+        foreach ($files as $File) {
+            $buffer .= file_get_contents($File);
+        }
+
+        //$buffer = preg_replace(array("/\s+\n/","/\n\s+/","/ +/"),array("\n","\n "," "),$buffer);
+
+        return $buffer;
+    }
+
+    /**
+     * Перевод времени.
+     *
+     * @param int $seconds          Время в секундах
+     *
+     * @return string               Итог перевода.
+     */
+    function action_time_exchange( $seconds ) {
+        if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 ) {
+            $month = floor($seconds / 60 / 60 / 24 / 30 );
+            return $month > 1 ? $month . ' ' . $this->get_translate_phrase('_Months') : $month . ' ' . $this->get_translate_phrase('_Month');
+
+        } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 ) {
+            $week = floor($seconds / 60 / 60 / 24 / 7 );
+            return $week > 1 ? $week . ' ' . $this->get_translate_phrase('_Weeks') : $week . ' ' . $this->get_translate_phrase('_Week');
+
+        } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 ) {
+            $day = floor($seconds / 60 / 60 / 24 );
+            return $day > 1 ? $day . ' ' . $this->get_translate_phrase('_Days') : $day . ' ' . $this->get_translate_phrase('_Day');
+
+        } elseif ( floor($seconds / 60 / 60 ) != 0 ) {
+            $hour = floor($seconds / 60 / 60 );
+            return $hour > 1 ? $hour . ' ' . $this->get_translate_phrase('_Hour') : $hour . ' ' . $this->get_translate_phrase('_Hour');
+
+        } elseif ( floor($seconds / 60 ) != 0 ) {
+            $min = floor($seconds / 60 );
+            return $min > 1 ? floor($seconds / 60 ) . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
+
+        } else {
+            return $seconds . ' ' . $this->get_translate_phrase('_Second');
+        }
     }
 }

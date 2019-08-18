@@ -56,21 +56,4 @@ class Graphics {
             return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/original_palette.json' ) ) ) .  '</style>';
         }
     }
-
-    /**
-     * Вывод информации свойтвах анимации на сайте.
-     */
-    public function get_css_animation() {
-        if ( ! empty( $this->General->arr_general['animations'] ) && $this->General->arr_general['animations'] == true ) {
-            return '
-<style>
-.global-container{transition: transform .5s ease-in-out, margin .5s ease-in-out} .offcanvas{transition: transform .5s ease-in-out, margin .5s ease-in-out}
-[data-tooltip]:before, [data-tooltip]:after, .tooltip:before, .tooltip:after {
--webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, -webkit-transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
--moz-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, -moz-transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
-transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s cubic-bezier(.71, 1.7, .77, 1.24);
-}
-</style>';
-        }
-    }
 }

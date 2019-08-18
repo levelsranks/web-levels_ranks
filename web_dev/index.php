@@ -23,7 +23,7 @@ set_time_limit(3);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.112');
+define('VERSION', '0.2.113');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -46,14 +46,38 @@ define('MODULES_SESSIONS', 'storage/cache/sessions/modules/');
 // Директория содержащая графические кэш-файлы.
 define('CACHE', 'storage/cache/');
 
-// Директория с шаблонами "Sidebars".
-define('SIDEBARS', 'storage/assets/css/sidebars/');
+// Директория с ресурсами.
+define('ASSETS', 'storage/assets/');
+
+// Директория с CSS шаблонами.
+define('ASSETS_CSS', 'storage/assets/css/');
+
+// Директория с JS библиотеками.
+define('ASSETS_JS', 'storage/assets/js/');
 
 // Директория с шаблонами "Themes".
 define('THEMES', 'storage/assets/css/themes/');
 
 // Директория с изображениями рангов.
 define('RANKS_PACK', 'storage/cache/img/ranks/');
+
+// Временные константы ( Постоянные времени ) - Минута.
+define( 'MINUTE_IN_SECONDS', 60 );
+
+// Временные константы ( Постоянные времени ) - Час.
+define( 'HOUR_IN_SECONDS', 60 * MINUTE_IN_SECONDS );
+
+// Временные константы ( Постоянные времени ) - День.
+define( 'DAY_IN_SECONDS', 24 * HOUR_IN_SECONDS );
+
+// Временные константы ( Постоянные времени ) - Неделя.
+define( 'WEEK_IN_SECONDS', 7 * DAY_IN_SECONDS );
+
+// Временные константы ( Постоянные времени ) - Месяц.
+define( 'MONTH_IN_SECONDS', 30 * DAY_IN_SECONDS );
+
+// Временные константы ( Постоянные времени ) - Год.
+define( 'YEAR_IN_SECONDS', 365 * DAY_IN_SECONDS );
 
 // Регистраниция основных функций.
 require INCLUDES . 'functions.php';
@@ -64,11 +88,11 @@ session_start();
 // Включение буферизации.
 ob_start();
 
-// Импортирование глобального класса отвечающего за работу с модулями.
-use app\ext\Modules;
-
 // Импортирование основного глобального класса.
 use app\ext\General;
+
+// Импортирование глобального класса отвечающего за работу с модулями.
+use app\ext\Modules;
 
 // Импортирование глобального класса отвечающего за работу с базами данных.
 use app\ext\Db;
@@ -88,11 +112,11 @@ spl_autoload_register( function( $class ) {
     file_exists( $path ) && require $path;
 } );
 
-// Создание экземпляра класса работающего с модулями.
-$Modules        = new Modules;
-
 // Создание основного экземпляра класса.
-$General        = new General       ( $Modules );
+$General        = new General;
+
+// Создание экземпляра класса работающего с модулями.
+$Modules        = new Modules ( $General );
 
 // Создание экземпляра класса работающего с базами данных.
 $Db             = new Db;

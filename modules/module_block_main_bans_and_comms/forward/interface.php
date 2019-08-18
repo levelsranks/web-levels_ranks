@@ -56,9 +56,9 @@
                                 } elseif ($res_bans[$i]['length'] < '0' && time() >= $res_bans[$i]['ends']) {
                                     echo $ban_type['2'];
                                 } elseif (time() >= $res_bans[$i]['ends'] && $res_bans[$i]['length'] != '0') {
-                                    echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res_bans[$i]['length'] ) . '</strike></div>';
+                                    echo '<div class="color-green"><strike>' . $Modules->action_time_exchange( $res_bans[$i]['length'] ) . '</strike></div>';
                                 }  else {
-                                    echo $General->action_time_exchange( $res_bans[$i]['length'] );
+                                    echo $Modules->action_time_exchange( $res_bans[$i]['length'] );
                                 }?>
                             </th>
                         </tr>
@@ -123,9 +123,9 @@
                                 } elseif ( $res_comms[$i]['length'] < '0' && time() >= $res_comms[$i]['ends'] ) {
                                     echo $comms_type['2'];
                                 } elseif (time() >= $res_comms[$i]['ends'] && $res_comms[$i]['length'] != '0') {
-                                    echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res_comms[$i]['length'] ) . '</strike></div>';
+                                    echo '<div class="color-green"><strike>' . $Modules->action_time_exchange( $res_comms[$i]['length'] ) . '</strike></div>';
                                 }  else {
-                                    echo $General->action_time_exchange( $res_comms[$i]['length'] );
+                                    echo $Modules->action_time_exchange( $res_comms[$i]['length'] );
                                 }?>
                             </th>
                         </tr>

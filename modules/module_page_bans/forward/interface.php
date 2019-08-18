@@ -70,9 +70,9 @@
                             } elseif ($res[$i]['length'] < '0' && time() >= $res[$i]['ends']) {
                                 echo $ban_type['2'];
                             } elseif (time() >= $res[$i]['ends'] && $res[$i]['length'] != '0') {
-                                echo '<div class="color-green"><strike>' . $General->action_time_exchange( $res[$i]['length'] ) . '</strike></div>';
+                                echo '<div class="color-green"><strike>' . $Modules->action_time_exchange( $res[$i]['length'] ) . '</strike></div>';
                             }  else {
-                                echo $General->action_time_exchange( $res[$i]['length'] );
+                                echo $Modules->action_time_exchange( $res[$i]['length'] );
                             }?>
                         </th>
                     </tr>
