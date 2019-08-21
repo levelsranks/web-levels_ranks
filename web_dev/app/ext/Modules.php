@@ -257,7 +257,7 @@ class Modules {
     public function check_generated_style() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( ASSETS_CSS . 'style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
+        if ( ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
 
             file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
@@ -285,11 +285,21 @@ class Modules {
             $default = $this->General->arr_general;
             $default['actual_css_ver'] = time();
 
-            //Обновляем options
+            // Обновляем options
             file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
 
+            // Проверка на существование каталога с генерируемыми файлами
+            ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
+
+            // Очистка старых кэш файлов
+            $temp_files = glob(ASSETS_CSS . 'generation/*');
+            foreach($temp_files as $temp_file){
+                if( is_file( $temp_file ) )
+                    unlink( $temp_file );
+            }
+
             // Сохраняем итоговый CSS файл.
-            file_put_contents( ASSETS_CSS . 'style_generated.min.ver.' . $default['actual_css_ver'] . '.css', $final_css_compress );
+            file_put_contents( ASSETS_CSS . '/generation/style_generated.min.ver.' . $default['actual_css_ver'] . '.css', $final_css_compress );
             endif;
     }
 
@@ -299,7 +309,7 @@ class Modules {
     public function check_generated_js() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( ASSETS_JS . 'app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
+        if ( ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
 
             file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
 
@@ -323,8 +333,18 @@ class Modules {
             //Обновляем options
             file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
 
+            // Проверка на существование каталога с генерируемыми файлами
+            ! file_exists( ASSETS_JS . 'generation' ) && mkdir( ASSETS_JS . 'generation', 0777, true );
+
+            // Очистка старых кэш файлов
+            $temp_files = glob(ASSETS_JS . 'generation/*');
+            foreach($temp_files as $temp_file){
+                if( is_file( $temp_file ) )
+                    unlink( $temp_file );
+            }
+
             // Сохраняем итоговый JS файл.
-            file_put_contents( ASSETS_JS . 'app_generated.min.ver.' . $default['actual_js_ver'] . '.js', $final_js_compress );
+            file_put_contents( ASSETS_JS . '/generation/app_generated.min.ver.' . $default['actual_js_ver'] . '.js', $final_js_compress );
         endif;
     }
 
@@ -387,8 +407,6 @@ class Modules {
         foreach ($files as $File) {
             $buffer .= file_get_contents($File);
         }
-
-        //$buffer = preg_replace(array("/\s+\n/","/\n\s+/","/ +/"),array("\n","\n "," "),$buffer);
 
         return $buffer;
     }

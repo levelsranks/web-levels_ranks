@@ -165,7 +165,8 @@ class General {
      * @return string         Скрипт.
      */
     function get_js_relevance_avatar( $id ) {
-        $con = con_steam32to64( $id );
+        $pos = strpos( $id, 'S' );
+        $con = $pos === false ? $id : con_steam32to64( $id );
         $check = ( int )$this->checkAvatar( $con, 2 );
         $this->arr_general['avatars'] == 1 && print sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
     }

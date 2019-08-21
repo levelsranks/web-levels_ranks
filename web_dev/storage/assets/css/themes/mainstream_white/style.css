@@ -2286,6 +2286,10 @@ li {
     position: relative
 }
 
+.rank_img {
+    text-align: center;
+    width: 20%;
+}
 .user-rank-more {
     align-items: center;
     display: flex;

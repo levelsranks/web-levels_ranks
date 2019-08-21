@@ -10,6 +10,6 @@
 ?>
 <footer class="footer"><?php echo date("Y") ?> &copy; <a href="https://github.com/levelsranks/levels-ranks-web">Levels Ranks - Web Interface</a> #<?php echo VERSION?> by <a href="https://steamcommunity.com/id/M0st1ce/">M0st1ce</a></footer></div></div>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-<script src="<?php echo $General->arr_general['site']?>/storage/assets/js/app_generated.min.ver.<?php echo $General->arr_general['actual_js_ver']?>.js"></script>
+<script src="<?php echo $General->arr_general['site']?>/storage/assets/js/generation/app_generated.min.ver.<?php echo $General->arr_general['actual_js_ver']?>.js"></script>
 </body>
 </html>
