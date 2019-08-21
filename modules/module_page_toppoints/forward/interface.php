@@ -49,9 +49,9 @@
                 </thead>
                 <tbody><?php $sz = sizeof( $res[$server_group] );
                 for ($sz_i = 0; $sz_i < $sz; $sz_i++) {
-                    $General->get_js_relevance_avatar( $res[$server_group][$sz_i]['steam'] )?>
+                    $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam'] )?>
                     <tr class="pointer"
-                        <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[$server_group][$sz_i]['steam'] ?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
+                        <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam']?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle"
@@ -69,7 +69,7 @@
                         </th>
                         <?php }?>
                         <th class="table-text text-left tb-name"><a
-                                <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $res[$server_group][$sz_i]['steam'] ?>&server_group=<?php echo $server_group ?>"<?php } ?>><?php echo action_text_clear( action_text_trim($res[$server_group][$sz_i]['name'], 16) )?></a>
+                                <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam']?>&server_group=<?php echo $server_group ?>"<?php } ?>><?php echo action_text_clear( action_text_trim($res[$server_group][$sz_i]['name'], 16) )?></a>
                         </th>
                         <th class="text-center"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['value']), 0, '.', ' ') ?></th>
                         <th class="text-center table-text"><img

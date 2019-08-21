@@ -297,7 +297,7 @@
                             </thead>
                             <tbody>
                             <?php for ($ti = 0; $ti < 11; $ti++) {?>
-                                <tr class="pointer <?php if( $Player->get_steam_32() == $Player->top_with_player[$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php echo $Player->top_with_player[$ti]['steam']?>';">
+                                <tr class="pointer <?php if( $Player->get_steam_32() == $Player->top_with_player[$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>';">
                                     <th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
                                     <th class="table-text"><?php echo action_text_trim($Player->top_with_player[$ti]['name'],16)?></th>
                                     <th class="text-center"><?php echo $Player->top_with_player[$ti]['value']?></th>

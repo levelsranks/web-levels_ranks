@@ -28,7 +28,11 @@
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>
                     <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value="<?php echo $General->arr_general['admin']?>"></div>
                 <div class="input-form">
-                        <input class="border-checkbox" type="checkbox" name="SB_admins_import" id="SB_admins_import">
+                    <input class="border-checkbox" type="checkbox" name="only_steam_64" id="only_steam_64" <?php $General->arr_general['only_steam_64'] === 1 && print 'checked'?>>
+                    <label class="border-checkbox-label" for="only_steam_64">Использовать Steam ID 64</label>
+                </div>
+                <div class="input-form">
+                        <input class="border-checkbox" type="checkbox" name="SB_admins_import" id="SB_admins_import" <?php $General->arr_general['SB_admins_import'] === 1 && print 'checked'?>>
                         <label class="border-checkbox-label" for="SB_admins_import">Импорт админ. листа из SB / MA ( Steam )</label>
                 </div>
             </form>

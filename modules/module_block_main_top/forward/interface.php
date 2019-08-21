@@ -36,18 +36,18 @@
                         <?php $count = sizeof( $data['module_block_main_top'][ $d ] );
                         $data_paste[ $d ] = $data['module_block_main_top'][ $d ];
                         for ( $dd = 0; $dd < $count; $dd++ ) {
-                            $General->get_js_relevance_avatar( $data_paste[ $d ][ $dd ]['steam'] )?>
-                            <tr class="pointer" onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>';">
+                            $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ) : $data_paste[ $d ][ $dd ]['steam'] )?>
+                            <tr class="pointer" onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ) : $data_paste[ $d ][ $dd ]['steam']?>&server_group=<?php echo $d ?>';">
                                 <th class="text-center"><?php echo $dd+1 ?></th>
                                 <?php if( $General->arr_general['avatars'] != 0 ) {?>
-                                    <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($data_paste[ $d ][ $dd ]['steam']);} ?>" data-src="
-                                    <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64($data_paste[ $d ][ $dd ]['steam']), 2);
+                                    <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] );} ?>" data-src="
+                                    <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ), 2);
                                         } elseif( $General->arr_general['avatars'] == 2) {
                                             echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                                         }?>"></th>
                                 <?php }?>
                                 <th class="text-left tb-name"><a
-                                            href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $data_paste[ $d ][ $dd ]['steam'] ?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 15) )?></a>
+                                            href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ) : $data_paste[ $d ][ $dd ]['steam']?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 15) )?></a>
                                 </th>
                                 <th class="text-center"><?php echo number_format($data_paste[ $d ][ $dd ]['value'], 0, '.', ' ') ?></th>
                                 <th class="text-center"><img

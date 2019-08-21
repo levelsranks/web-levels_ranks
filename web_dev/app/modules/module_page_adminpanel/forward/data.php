@@ -56,7 +56,9 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
             'language' => $_POST['language'],
             'steam_auth' => $_POST['steam_auth'],
             'web_key' => $_POST['web_key'],
-            'admin' => $_POST['admin']
+            'admin' => $_POST['admin'],
+            'only_steam_64' => $_POST['only_steam_64'] == 'on' ? 1 : 0,
+            'SB_admins_import' => $_POST['SB_admins_import']  == 'on' ? 1 : 0
         ];
         file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
         header( 'Location: ' . get_url(1) );
