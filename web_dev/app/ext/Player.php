@@ -164,10 +164,10 @@ class Player {
     }
 
     public function get_steam_32_short() {
-        $type = "/[0-9a-zA-Z_]{7}:[0-9]{1}:([0-9]+)/u";
+        $type = "/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u";
         preg_match_all($type, $this->steam_32, $arr, PREG_SET_ORDER);
-        if ( ! empty( $arr[0][1] ) ):
-            return (int) $arr[0][1];
+        if ( ! empty( $arr[0][2] ) ):
+            return $arr[0][1] . ':' . $arr[0][2];
         else:
             return false;
         endif;

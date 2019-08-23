@@ -36,9 +36,11 @@ if (isset($_POST['data'])) {
             $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
             if( file_exists( '../../../../../storage/cache/img/maps/' . $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0] . '.jpg') ) {
                 $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
+                $return[$i_server]['Map_image'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
                 $cache[$i_server] = $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0];
             } else {
-                $return[$i_server]['Map'] = '-';
+                $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
+                $return[$i_server]['Map_image'] = '-';
                 $cache[$i_server] = 'csgo/-';
             }
             $return[$i_server]['Players'] = $info[$i_server]['Players'];
@@ -54,6 +56,7 @@ if (isset($_POST['data'])) {
             }
             $return[$i_server]['HostName'] = 'Сервер отключен';
             $return[$i_server]['Map'] = '-';
+            $return[$i_server]['Map_image'] = '-';
             $return[$i_server]['Players'] = 0;
             $return[$i_server]['MaxPlayers'] = 0;
             $return[$i_server]['Mod'] = 'csgo';

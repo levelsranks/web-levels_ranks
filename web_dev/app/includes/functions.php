@@ -223,9 +223,16 @@ function con_steam64to32( $steamid64 ) {
             $b = ( $match[2] - $const1 - $a ) / 2;
             $steam32 = 'STEAM_1:' . $a . ':' . $b;
         }
-        return $steam32;
     }
-    return false;
+    if ( empty( $steam32 ) ) {
+        $z = bcdiv(bcsub($steamid64, '76561197960265728'), '2');
+        $y = bcmod($steamid64, '2');
+        return 'STEAM_1:' . $y . ':' . floor($z);
+    } elseif ( ! empty( $steam32 ) ) {
+        return $steam32;
+    } else {
+        return false;
+    }
 }
 
 /**

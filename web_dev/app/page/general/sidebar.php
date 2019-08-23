@@ -28,6 +28,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
         $user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
         $lastconnect = '-';
         $server_info[0]['name_servers'] = 'Неизвестно';
+        $server_info[0]['ranks_pack'] = 'default';
     }
 
     $user_rank_count = sizeof( $user_auth );
@@ -38,7 +39,7 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
     <section class="sidebar">
         <div class="user-sidebar-block">
             <div class="user-info">
-                <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid32'] . '&search=1'?>">
+                <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#login' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid'] . '&search=1'?>">
                     <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
                     <img id="<?php empty( $_SESSION['steamid'] ) ? print 0 : print $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="
                     <?php if( empty( $_SESSION['steamid'] ) ) { echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';

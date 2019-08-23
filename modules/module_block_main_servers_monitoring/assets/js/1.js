@@ -7,7 +7,7 @@ if (servers != 0) {
                 document.getElementById('server-name-' + i).innerHTML = arr_servers[i]['HostName'];
                 document.getElementById('server-connect-' + i).setAttribute("onclick", "document.location = 'steam://connect/" + arr_servers[i]['ip'] + ":" + arr_servers[i]['port'] + "'");
                 document.getElementById('server-map-' + i).innerHTML = arr_servers[i]['Map'];
-                document.getElementById('server-map-image-' + i).setAttribute("src", "./storage/cache/img/maps/"+ arr_servers[i]['Mod'] +"/" + arr_servers[i]['Map'] + ".jpg");
+                document.getElementById('server-map-image-' + i).setAttribute("src", "./storage/cache/img/maps/"+ arr_servers[i]['Mod'] +"/" + arr_servers[i]['Map_image'] + ".jpg");
                 document.getElementById('server-players-' + i).innerHTML = arr_servers[i]['Players'] + "/" + arr_servers[i]['MaxPlayers'];
                 document.getElementById('server-tablename-' + i).innerHTML = arr_servers[i]['HostName'];
                 document.getElementById('server-connect-table-' + i).setAttribute("onclick", "document.location = 'steam://connect/" + arr_servers[i]['ip'] + ":" + arr_servers[i]['port'] + "'");
