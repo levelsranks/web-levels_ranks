@@ -391,11 +391,13 @@
 - Felya#1342  ( Discord )   - 317.12 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
+- ju4ka1371   ( hlmod.ru )  - 282 RUB.
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
 - Sleep#0725  ( Discord )   - 250 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
+- uraganas#7978 ( Discord )   - 132 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
 - DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
