@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php for ($i = 0; $i < 10; $i++) {
+                    <?php for ($i = 0, $c_b = sizeof( $res_bans ); $i < $c_b; $i++) {
                         $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res_bans[$i]['authid'] ) : $res_bans[$i]['authid'] );
                         $res_bans[$i]['aid'] != '0' && $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res_bans[$i]['admin_authid'] ) : $res_bans[$i]['admin_authid'] )?><tr>
                             <th class="text-center tb-game"><img <?php $i  < '20' ? print 'src' : print 'data-src'?>="./storage/cache/img/mods/<?php echo $mod?>.png"></th>
@@ -88,7 +88,7 @@
                     </thead>
                     <tbody>
                     <?php
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0, $c_c = sizeof( $res_comms ); $i < $c_c; $i++) {
                         $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res_comms[ $i ]['authid'] ) : $res_comms[ $i ]['authid'] );
                         $res_comms[ $i ]['aid'] != '0' && $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res_comms[ $i ]['admin_authid'] ) : $res_comms[ $i ]['admin_authid'] )?><tr>
                             <th class="text-center tb-type"><?php $res_comms[ $i ]['type'] == 1 ? $General->get_icon( 'zmdi', 'mic', null ) : $General->get_icon( 'zmdi', 'comment-text', null )?></th>

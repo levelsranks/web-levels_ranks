@@ -2,120 +2,133 @@
   "_Ratio_KD": {
     "EN": "K/D Ratio:",
     "RU": "Убийств / Смертей - К/Д:",
-    "UA": "Убийств / Смертей - К/Д:"
+    "UA": "Убийств / Смертей - К/Д:",
+	"LT": "Nužydymų / Mirčių - N/M:"
   },
   "_Ratio_SH": {
     "EN": "Shoots / Hits:",
     "RU": "Попаданий / Выстрелов:",
-    "UA": "Попаданий / Выстрелов:"
+    "UA": "Попаданий / Выстрелов:",
+	"LT": "Šūvių / Pataikymų:"
   },
   "_Game_time": {
     "EN": "Playtime:",
     "RU": "Игровое время:",
-    "UA": "ігровий час:"
+    "UA": "ігровий час:",
+	"LT": "Pražaistas laikas:"
   },
    "_First_round_kills": {
     "EN": "First Blood",
     "RU": "Первых убийств",
-    "UA": "Перших вбивств"
+    "UA": "Перших вбивств",
+	"LT": "Pirmas kraujas"
   },
   "_Favorite_weapons": {
     "EN": "Favorite Weapons:",
     "RU": "Любимое оружие:",
-    "UA": "Улюблена зброя:"
+    "UA": "Улюблена зброя:",
+	"LT": "Mėgstamiausi ginklai"
   },
   "_Kill count": {
     "EN": "No̲ of Kills:",
     "RU": "Количество убийств:",
-    "UA": "Кількість вбивств:"
+    "UA": "Кількість вбивств:",
+	"LT": "Nužudymų skaičius:"
   },
   "_Matches": {
     "EN": "Matches:",
     "RU": "Матчей:",
-    "UA": "Матчів:"
+    "UA": "Матчів:",
+	"LT": "Mačų:"
   },
   "_Winning_percentage": {
     "EN": "Win Rate",
     "RU": "Побед %",
-    "UA": "Перемог %"
+    "UA": "Перемог %",
+	"LT": "Laimėjimų %"
   },
   "_Triple_Kills": {
     "EN": "Triple Kills:",
     "RU": "Трипл-киллов:",
-    "UA": "Три вбивства:"
+    "UA": "Три вбивства:",
+	"LT": "Trigubi nužudymai:"
   },
   "_Quad_kills": {
     "EN": "Quad Kills:",
     "RU": "Квадро-киллов:",
-    "UA": "Чотири вбивства:"
+    "UA": "Чотири вбивства:",
+	"LT": "Keturgubi nužudymai:"
   },
   "_Ace": {
     "EN": "Aces:",
     "RU": "Эйсов:",
-    "UA": "Ace:"
+    "UA": "Ace:",
+	"LT": "Ace:"
   },
   "_Value_rank": {
     "EN": "Total Points / Rank:",
     "RU": "Количество очков / ранг:",
-    "UA": "Кількість поінтів / звання:"
+    "UA": "Кількість поінтів / звання:",
+	"LT": "Išviso taškų / Rangas"
   },
   "_Total_winning_percentage": {
     "EN": "Winnings Percentage:",
     "RU": "Общий процент побед:",
-    "UA": "Загальні перемог %:"
+    "UA": "Загальні перемог %:",
+    "LT": "Laimėjimai procentais %:"
   },
    "_Weapon": {
     "EN": "Weapon",
     "RU": "Оружие",
     "UA": "Зброя",
-	"LT": "Weapon"
+	"LT": "Ginklas"
   },
   "_Player_profile": {
     "EN": "Player Profile",
     "RU": "Профиль игрока",
     "UA": "Сторінка гравця",
-	"LT": "Player profile"
+	"LT": "Žaidėjo profilis"
   },
   "_Penetrated_kills": {
     "EN": "Penetrated Kills",
     "RU": "Убийств прострелом",
     "UA": "Вбивств прострілом",
-	"LT": "Penetrated kills"
+	"LT": "Nužudymai per sieną"
   },
   "_Killing_without_scope": {
     "EN": "No-Scope Kills",
     "RU": "Убийств без прицела",
     "UA": "Вбивств без прицілу",
-	"LT": "Killing without scope"
+	"LT": "Nužudymai be taikiklio"
   },
   "_Kills_on_run": {
     "EN": "While Running Kills",
     "RU": "Убийств на бегу",
     "UA": "Вбивств на бігу",
-	"LT": "Kills on the run"
+	"LT": "Nužudymai bėgant"
   },
   "_Kills_flash": {
     "EN": "While Flashed Kills",
     "RU": "Убийств слепым",
     "UA": "Вбивств сліпим",
-	"LT": "Kills in flash"
+	"LT": "Nužydymai esant apakus"
   },
   "_Jump_kills": {
     "EN": "Jump Kills",
     "RU": "Убийств в прыжке",
     "UA": "Вбивств в стрибку",
-	"LT": "Jump kills"
+	"LT": "Nužudymai Ore"
   },
   "_Smoke_kills": {
     "EN": "Smoke Kills",
     "RU": "Убийств в дым",
     "UA": "Вбивств в дим",
-	"LT": "Smoke kills"
+	"LT": "Nužudymai naudojant duminę g."
   },
   "_Kills_whirl": {
     "EN": "180-360° Kills",
     "RU": "Убийств с разворота",
     "UA": "Вбивств з розвороту",
-	"LT": "Kills 180-360°"
+	"LT": "Nužudymai 180-360°"
   }
 }

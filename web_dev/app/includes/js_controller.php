@@ -48,7 +48,7 @@ if( $_POST["function"] == 'avatars' ) {
     define('IN_LR', true);
 
     // Ограничение работы стрипта.
-    set_time_limit(100);
+    set_time_limit(120);
 
     // Получение Steam WEB ключа, для доступа к Steam API.
     $web_key = ( require '../../storage/cache/sessions/options.php' )['web_key'];

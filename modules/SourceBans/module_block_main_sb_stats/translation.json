@@ -3,18 +3,18 @@
     "EN": "Total Admins",
     "RU": "Всего админ-ов.",
     "UA": "Всього адмін-ов.",
-    "LT": "Iš viso admin."
+    "LT": "Iš viso administratorių."
   },
   "_Count_bans": {
     "EN": "Total Bans",
     "RU": "Всего банов",
     "UA": "Всього банів",
-    "LT": "Total bans"
+    "LT": "Viso blokavimų"
   },
   "_Count_comms": {
     "EN": "Total Comms",
     "RU": "Всего мутов / гагов",
     "UA": "Всього мутов / гагов",
-    "LT": "Total comms"
+    "LT": "Viso tildymų (GAG/MUTE)"
   }
 }
