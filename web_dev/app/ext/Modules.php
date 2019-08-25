@@ -257,7 +257,7 @@ class Modules {
     public function check_generated_style() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! empty( $this->General->arr_general['actual_css_ver'] ) && ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
+        if ( empty( $this->General->arr_general['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
 
             file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
@@ -309,7 +309,7 @@ class Modules {
     public function check_generated_js() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! empty( $this->General->arr_general['actual_js_ver'] ) && ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
+        if ( empty( $this->General->arr_general['actual_js_ver'] ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
 
             file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
 

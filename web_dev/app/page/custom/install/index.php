@@ -148,7 +148,11 @@ if( isset( $_POST['option_save'] ) ) {
         'badge_type' => 2,
         'steam_auth' => (int) $_POST['steam_auth'],
         'secure_key' => 'this_is_key_is_default_privet_wender_secure',
-        'admin' => $steam_admin
+        'admin' => $steam_admin,
+        'actual_css_ver' => 0,
+        'actual_js_ver' => 0,
+        'only_steam_64' => 0,
+        'SB_admins_import' => 0
     ];
 
     file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
