@@ -387,8 +387,8 @@
 - Larsalex    ( hlmod.ru )  - 3000 RUB.
 - .ZΛCHΞR#1337( Discord )   - 2093.37 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
+- Felya#1342  ( Discord )   - 817.12 RUB.
 - Unity       ( hlmod.ru )  - 460 RUB.
-- Felya#1342  ( Discord )   - 317.12 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - ju4ka1371   ( hlmod.ru )  - 282 RUB.
