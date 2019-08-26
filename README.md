@@ -93,6 +93,7 @@
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
+		    'PORT' => '3306',
                     'USER' => 'Логин',
                     'PASS' => 'Пароль',
                     'DB'   => [0 => 
@@ -130,6 +131,7 @@
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
+		    'PORT' => '3306',
                     'USER' => 'Логин',
                     'PASS' => 'Пароль',
                     'DB'   => [0 => 
@@ -172,6 +174,7 @@
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
+		    'PORT' => '3306',
                     'USER' => 'Логин',
                     'PASS' => 'Пароль',
                     'DB'   => [0 => 
@@ -191,6 +194,7 @@
                     ],
                     [
                     'HOST' => 'Ваш хост 2',
+		    'PORT' => '3306',
                     'USER' => 'Логин 2',
                     'PASS' => 'Пароль 2',
                     'DB'   => [0 => 
@@ -224,6 +228,7 @@
                 [0 => 
                     [
                     'HOST' => 'Ваш хост',
+		    'PORT' => '3306',
                     'USER' => 'Логин',
                     'PASS' => 'Пароль',
                     'DB'   => [0 => 
@@ -246,6 +251,7 @@
                [0 => 
                    [
                    'HOST' => 'Хост SB / MA',
+		   'PORT' => '3306',
                    'USER' => 'Логин SB / MA',
                    'PASS' => 'Пароль SB / MA',
                    'DB'   => [0 => 
@@ -271,7 +277,7 @@
 Доступные модули:
 -----
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Мини-Статистика на главной странице</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Мини-Статистика на главной странице</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_stats.png">
@@ -282,7 +288,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Мониторинг онлайна на главной странице</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Мониторинг онлайна на главной странице</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
@@ -293,7 +299,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Топ игроков на главной странице</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Топ игроков на главной странице</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
@@ -304,7 +310,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Профили</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Профили</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_profiles.png">
@@ -315,7 +321,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Статистика игроков</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Статистика игроков</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_toppoints.png">
@@ -326,7 +332,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Распределением рангов</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Распределением рангов</summary>
 
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_rankstats.png">
@@ -337,14 +343,14 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Панель администратора</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Панель администратора</summary>
 
 - **Старница отображения**: adminpanel
 - **Информация**: Добавляет гибкое администрирование вэб интерфейсом и полезные функции.
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Страница с банами</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Страница с банами</summary>
         
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
@@ -357,7 +363,7 @@
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.103 ) - Страница с мутами</summary>
+<details><summary>LR WEB ( min. dev #0.2.114 ) - Страница с мутами</summary>
         
 <p align="center">
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_comms.png">
@@ -409,7 +415,7 @@
 
 <details><summary>dev</summary>
 
-Скелет WEB интерфейса ( dev #0.2.103 ) :
+Скелет WEB интерфейса ( dev #0.2.114 ) :
 -----
 
 ```
