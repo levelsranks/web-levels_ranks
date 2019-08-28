@@ -21,11 +21,11 @@ $General->get_default_url_section('filter', 'value', array('value', 'kills', 'ra
 // Очень важная настройка, кол-во человек на странице
 define('PLAYERS_ON_PAGE', '80');
 
-$server_group = (int) get_section( 'server_group', '0' );
+$server_group = (int) intval ( get_section( 'server_group', '0' ) );
 
 // Получаем номер страницы
 
-$page_num = (int) get_section( 'num', '1' );
+$page_num = (int) intval ( get_section( 'num', '1' ) );
 
 // Проверочка
 

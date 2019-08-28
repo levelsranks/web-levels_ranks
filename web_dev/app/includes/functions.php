@@ -194,6 +194,18 @@ function action_text_clear_before_slash( $text ) {
 }
 
 /**
+ * Проверка на дубликат файла.
+ *
+ * @param  string        $file     Ссылка на первый файл.
+ * @param  string        $file_2   Ссылка на второй файл.
+ *
+ * @return bool                    Итог проверки.
+ */
+function check_duplicate_files( $file, $file_2 ) {
+        return file_exists ( $file ) && file_exists ( $file_2 ) && filesize ( $file ) === filesize ( $file_2 ) ? true : false;
+}
+
+/**
  * Конвертация Steam ID 32 -> 64.
  *
  * @param string       $id    Steam ID игрока.
@@ -228,12 +240,14 @@ function con_steam64to32( $steamid64 ) {
             $steam32 = 'STEAM_1:' . $a . ':' . $b;
         }
     }
-    if ( empty( $steam32 ) ) {
+    if ( is_numeric ( $steamid64 ) && empty( $steam32 ) ) {
         $z = bcdiv(bcsub($steamid64, '76561197960265728'), '2');
         $y = bcmod($steamid64, '2');
         return 'STEAM_1:' . $y . ':' . floor($z);
     } elseif ( ! empty( $steam32 ) ) {
         return $steam32;
+    } elseif ( ! is_numeric( $steamid64 ) ) {
+        return false;
     } else {
         return false;
     }

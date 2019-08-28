@@ -15,7 +15,7 @@ empty( get_section( 'profile', false ) ) && header('Location: ' . $General->arr_
 use app\ext\Player;
 
 // Создаём экземпляр класса с импортом подкласса Db и указанием Steam ID игрока.
-$Player = new Player ( $General, $Db, get_section( 'profile', false ), get_section( 'server_group', '0' ) );
+$Player = new Player ( $General, $Db, get_section( 'profile', false ), (int) intval ( get_section( 'server_group', '0' ) ) );
 
 $data['global']['title'] = $General->arr_general['short_name'] . ' :: ' .  $Player->found[ get_section( 'server_group', '0' ) ]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Player') . ' :: ' .  $Player->get_name();
 $data['global']['info'] = $General->arr_general['short_name'] . " :: " .  $Player->found[ get_section( 'server_group', '0' ) ]['name_servers'] . " :: Steam ID :: " . get_section( 'profile', false ) . " :: Ранг - " . $Modules->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] ) . " :: Количество очков - " .  $Player->get_value();

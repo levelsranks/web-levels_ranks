@@ -11,7 +11,7 @@
 <div class=navbar>
     <div class=logo-area>
         <a href="javascript:void(0);" onclick="action_sidebar()" class="nav-toggle pp-nav-toggle"><i></i></a>
-        <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="storage/cache/img/global/logo.png"></a>
+        <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="<?php echo file_exists( CACHE . '/img/global/logo.png' ) ? $General->arr_general['site'] . '/storage/cache/img/global/logo.png' : copy(CACHE . '/img/global/default_logo.png', CACHE . '/img/global/logo.png') && $General->arr_general['site'] . '/storage/cache/img/global/logo.png'?>"></a>
     </div>
     <ul class="right-area">
         <li class="section">

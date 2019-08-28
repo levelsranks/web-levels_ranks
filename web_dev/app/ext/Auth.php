@@ -90,22 +90,22 @@ class Auth {
         if ( ! empty( $this->Db->db_data['LevelsRanks'] ) ):
             // С помощью цикла делаем запросы к базе данных.
             for ($d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++) {
-                $this->res_data_sidebar[$d] = ['name_servers' => $this->Db->db_data['LevelsRanks'][$d]['name'],
-                    'mod' => $this->Db->db_data['LevelsRanks'][$d]['mod'],
-                    'ranks_pack' => $this->Db->db_data['LevelsRanks'][$d]['ranks_pack'],
-                    'data_servers' => $this->Db->db_data['LevelsRanks'][$d]['Table']];
-                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][$d]['USER_ID'], $this->Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $this->Db->db_data['LevelsRanks'][$d]["Table"] . ' WHERE steam LIKE "%' . $_SESSION['steamid32_short'] . '%" LIMIT 1');
+                $this->res_data_sidebar[ $d ] = ['name_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['name'],
+                    'mod' => $this->Db->db_data['LevelsRanks'][ $d ]['mod'],
+                    'ranks_pack' => $this->Db->db_data['LevelsRanks'][ $d ]['ranks_pack'],
+                    'data_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['Table']];
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $this->Db->db_data['LevelsRanks'][ $d ]["Table"] . ' WHERE steam LIKE "%' . $_SESSION['steamid32_short'] . '%" LIMIT 1');
                 if ($this->base_info != '') {
                     $this->user_auth[] = $this->base_info;
-                    $this->server_info[] = $this->res_data_sidebar[$d];
+                    $this->server_info[] = $this->res_data_sidebar[ $d ];
                     $this->lastconnect[] = $this->base_info['lastconnect'];
                 }
             }
         endif;
-        if (!empty($this->Db->db_data['FPS'])):
+        if ( ! empty( $this->Db->db_data['FPS'] ) ):
             // С помощью цикла делаем запросы к базе данных.
-            for ($d = 1; $d <= $this->Db->table_count['FPS']; $d++) {
-                $this->res_data_sidebar[$d] = ['name_servers' => $this->Db->db_data['FPS'][$d - 1]['name'],
+            for ( $d = 1; $d <= $this->Db->table_count['FPS']; $d++ ) {
+                $this->res_data_sidebar[ $d ] = ['name_servers' => $this->Db->db_data['FPS'][$d - 1]['name'],
                     'mod' => 'csgo',
                     'ranks_id' => $this->Db->db_data['FPS'][$d - 1]['ranks_id'],
                     'ranks_pack' => $this->Db->db_data['FPS'][$d - 1]['ranks_pack']
@@ -114,7 +114,7 @@ class Auth {
                                                          fps_servers_stats.lastconnect,
                                                         ( SELECT fps_ranks.id
                                                           FROM fps_ranks 
-                                                          WHERE fps_ranks.rank_id = ' . $this->Db->db_data['FPS'][$d - 1]['ranks_id'] . ' 
+                                                          WHERE fps_ranks.rank_id = ' . $this->Db->db_data['FPS'][ $d - 1 ]['ranks_id'] . ' 
                                                           AND fps_ranks.points <= fps_servers_stats.points 
                                                           ORDER BY fps_ranks.points DESC LIMIT 1
                                                         ) AS rank
@@ -123,7 +123,7 @@ class Auth {
                                                         WHERE steam_id="' . $_SESSION['steamid'] . '" AND fps_servers_stats.server_id = ' . $d . ' LIMIT 1');
                 if ($this->base_info != '') {
                     $this->user_auth[] = $this->base_info;
-                    $this->server_info[] = $this->res_data_sidebar[$d];
+                    $this->server_info[] = $this->res_data_sidebar[ $d ];
                     $this->lastconnect[] = $this->base_info['lastconnect'];
                 }
             }
