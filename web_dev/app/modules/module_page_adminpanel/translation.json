@@ -1,0 +1,171 @@
+{
+  "_Count_admins": {
+    "EN": "Total Admins",
+    "RU": "Всего админ-ов.",
+    "UA": "Всього адмін-ов.",
+    "LT": "Iš viso administratorių."
+  },
+  "_Module_loading": {
+    "EN": "Module loading order",
+    "RU": "Порядок загрузки модулей",
+    "UA": "Порядок завантаження модулів",
+    "LT": "Module loading order"
+  },
+  "_Page": {
+    "EN": "Page",
+    "RU": "Страница",
+    "UA": "Сторінка",
+    "LT": "Page"
+  },
+  "_Options": {
+    "EN": "Options",
+    "RU": "Опции",
+    "UA": "Опції",
+    "LT": "Options"
+  },
+  "_Refresh_cache_modules": {
+    "EN": "To refresh the cache modules",
+    "RU": "Обновить кэш модулей",
+    "UA": "Оновити кеш модулів",
+    "LT": "To refresh the cache modules"
+  },
+  "_Refresh_cache_translations": {
+    "EN": "To refresh the cache of translations",
+    "RU": "Обновить кэш переводов",
+    "UA": "Оновити кеш перекладів",
+    "LT": "To refresh the cache of translations"
+  },
+  "_Update_list_modules": {
+    "EN": "To update the list of modules",
+    "RU": "Обновить список модулей",
+    "UA": "Оновити список модулів",
+    "LT": "To update the list of modules"
+  },
+  "_Chief_admin": {
+    "EN": "Chief Administrator",
+    "RU": "Гл. Администратор",
+    "UA": "Головний Адміністратор",
+    "LT": "Chief Administrator"
+  },
+  "_General_settings": {
+    "EN": "General settings",
+    "RU": "Основные настройки",
+    "UA": "Основні налаштування",
+    "LT": "General settings"
+  },
+  "_Configuring_modules": {
+    "EN": "Configuring modules",
+    "RU": "Настройка модулей",
+    "UA": "Налаштування модулів",
+    "LT": "Configuring modules"
+  },
+  "_Server_setting": {
+    "EN": "Server setting",
+    "RU": "Настройка серверов",
+    "UA": "Налаштування серверів",
+    "LT": "Server setting"
+  },
+  "_Database_settings": {
+    "EN": "Database settings",
+    "RU": "Настройка базы данных",
+    "UA": "Налаштування бази даних",
+    "LT": "Database settings"
+  },
+  "_Translation_settings": {
+    "EN": "Translation settings",
+    "RU": "Настройка переводов",
+    "UA": "Налаштування перекладів",
+    "LT": "Translation settings"
+  },
+  "_Extra_settingss": {
+    "EN": "Extra settings",
+    "RU": "Дополнительные настройки",
+    "UA": "Додаткові налаштування",
+    "LT": "Extra settings"
+  },
+  "_Full_name": {
+    "EN": "Full name",
+    "RU": "Полное название",
+    "UA": "Полное название",
+    "LT": "Full name"
+  },
+  "_Short_name": {
+    "EN": "Short name",
+    "RU": "Короткое название",
+    "UA": "Коротка назва",
+    "LT": "Short name"
+  },
+  "_Basic_information": {
+    "EN": "Basic information",
+    "RU": "Общая информация",
+    "UA": "Загальна інформація",
+    "LT": "Basic information"
+  },
+  "_Language": {
+    "EN": "Language",
+    "RU": "Язык",
+    "UA": "Мова",
+    "LT": "Language"
+  },
+  "_Chief_administrator_Steam": {
+    "EN": "Chief administrator ( Steam authorization )",
+    "RU": "Глав. администратор ( Steam авторизация )",
+    "UA": "Головний адміністратор ( Steam авторизація )",
+    "LT": "Chief administrator ( Steam authorization )"
+  },
+  "_Use_Steam_ID": {
+    "EN": "Use Steam ID 64",
+    "RU": "Использовать Steam ID 64",
+    "UA": "Використовувати Steam ID 64",
+    "LT": "Use Steam ID 64"
+  },
+  "_Import_admin_list": {
+    "EN": "Import admin. list from SB / MA ( Steam )",
+    "RU": "Импорт админ. листа из SB / MA ( Steam )",
+    "UA": "Імпорт Адмін. листа з SB / MA ( Steam )",
+    "LT": "Import admin. list from SB / MA ( Steam )"
+  },
+  "_Save": {
+    "EN": "Save",
+    "RU": "Сохранить",
+    "UA": "Зберегти",
+    "LT": "Save"
+  },
+  "_Dark_mode_default": {
+    "EN": "Dark mode ( default )",
+    "RU": "Тёмный режим ( По умолчанию )",
+    "UA": "Темний режим ( За замовчуванням )",
+    "LT": "Dark mode ( default )"
+  },
+  "_Animation_default": {
+    "EN": "Animation ( default )",
+    "RU": "Анимации ( По умолчанию )",
+    "UA": "Анімації (за замовчуванням )",
+    "LT": "Animation ( default )"
+  },
+  "_Show_avatars": {
+    "EN": "Show avatars",
+    "RU": "Показывать ли аватарки",
+    "UA": "Чи показувати аватарки",
+    "LT": "Show avatars"
+  },
+  "_Sidebar_default": {
+    "EN": "Sidebar ( default )",
+    "RU": "Сайтбар ( По умолчанию )",
+    "UA": "Сайдбар ( За замовчуванням )",
+    "LT": "Sidebar ( default )"
+  },
+  "_Round_shapes": {
+    "EN": "Do round shapes",
+    "RU": "Закруглять ли углы у форм",
+    "UA": "Чи закругляти кути у форми",
+    "LT": "Do round shapes"
+  },
+  "_All_access_rights": {
+    "EN": "All access rights",
+    "RU": "Полные права доступа",
+    "UA": "Повні права доступу",
+    "LT": "All access rights"
+  }
+}
+

@@ -34,6 +34,12 @@ define('MODULES', '../../../../app/modules/');
 // Директория с основными конфигурационными файлами.
 define('INCLUDES', '../../../../app/includes/');
 
+// Директория с CSS шаблонами.
+define('ASSETS_CSS', '../../../../storage/assets/css/');
+
+// Директория с JS библиотеками.
+define('ASSETS_JS', '../../../../storage/assets/js/');
+
 // Директория с основными кэш-файлами.
 define('SESSIONS', '../../../../storage/cache/sessions/');
 
@@ -56,25 +62,43 @@ require INCLUDES . 'functions.php';
 class_exists('PDO') || get_iframe('001','Для работы нужна поддержка PDO');
 
 // Проверка на BCMath
-extension_loaded('bcmath') == 0 && get_iframe('002','Расширение для PHP не было найдено :: BCMath');
+extension_loaded('bcmath') == 0 && get_iframe('001','Расширение для PHP не было найдено :: BCMath');
 
 // Проверка на cURL
-extension_loaded('curl') == 0 && get_iframe('007','Расширение для PHP не было найдено :: cURL');
+extension_loaded('curl') == 0 && get_iframe('001','Расширение для PHP не было найдено :: cURL');
 
 // Проверка на Zip
-extension_loaded('zip') == 0 && get_iframe('008','Расширение для PHP не было найдено :: Zip');
+extension_loaded('zip') == 0 && get_iframe('001','Расширение для PHP не было найдено :: Zip');
 
 // Проверка на GMP
-extension_loaded('gmp') == 0 && get_iframe('009','Расширение для PHP не было найдено :: GMP');
+extension_loaded('gmp') == 0 && get_iframe('001','Расширение для PHP не было найдено :: GMP');
 
 // Проверка прав доступа каталога кэша ( 0777 )
-substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '004','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
+substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
+
+// Создание папки - avatars
+! file_exists( CACHE . 'img/avatars/' ) && mkdir( CACHE . 'img/avatars/', 0777, true );
 
 // Проверка прав доступа на кэш аватарок ( 0777 )
-substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && get_iframe( '005','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/' );
+substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/' );
+
+// Создание папки - slim
+! file_exists( CACHE . 'img/avatars/slim/' ) && mkdir( CACHE . 'img/avatars/slim/', 0777, true );
 
 // Проверка прав доступа на кэш слим - аватарок ( 0777 )
-substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/slim/' ) ), -4) !== '0777' && get_iframe( '006','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/slim/' );;
+substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/slim/' ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/slim/' );
+
+// Создание папки - css
+! file_exists( ASSETS_CSS ) && mkdir( ASSETS_CSS, 0777, true );
+
+// Проверка прав доступа на ассеты - CSS ( 0777 )
+substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/css/' );
+
+// Создание папки - js
+! file_exists( ASSETS_JS ) && mkdir( ASSETS_JS, 0777, true );
+
+// Проверка прав доступа на ассеты - JS ( 0777 )
+substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/js/' );
 
 $URL = '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0];
 
@@ -122,7 +146,7 @@ if(isset($_POST['db_check'])) {
 
 // Сохранение настроек базы данных
 if( isset( $_POST['save_db'] ) ) {
-    $db = ['LevelsRanks' => [['HOST' => $_POST['host'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'name' => $_POST['servers'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
+    $db = ['LevelsRanks' => [['HOST' => $_POST['host'], 'PORT' => $_POST['port'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'name' => $_POST['servers'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
     file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
     header( 'Location: ' . get_url(2) );
 }
@@ -149,8 +173,6 @@ if( isset( $_POST['option_save'] ) ) {
         'steam_auth' => (int) $_POST['steam_auth'],
         'secure_key' => 'this_is_key_is_default_privet_wender_secure',
         'admin' => $steam_admin,
-        'actual_css_ver' => 0,
-        'actual_js_ver' => 0,
         'only_steam_64' => 0,
         'SB_admins_import' => 0
     ];
@@ -232,11 +254,12 @@ if( isset( $_POST['option_save'] ) ) {
                 </div>
                 <div class="card-container option_one">
                     <form id="db_check" enctype="multipart/form-data" method="post">
-                    <div class="input-form"><div class="input_text">Host: </div><input name="host" value="<?php echo $_POST['host']?>"></div>
+                        <div class="input-form"><div class="input_text">Host: </div><input name="host" value="<?php echo $_POST['host']?>"></div>
+                        <div class="input-form"><div class="input_text">Port: </div><input name="port" value="<?php echo empty( $_POST['port'] ) ? 3306 : $_POST['port']?>"></div>
                         <div class="input-form"><div class="input_text">User: </div><input name="user" value="<?php echo $_POST['user']?>"></div>
                         <div class="input-form"><div class="input_text">Pass: </div><input name="pass" value="<?php echo $_POST['pass']?>"></div>
                         <div class="input-form"><div class="input_text">DB: </div><input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
-                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="Пример: lvl_base" name="table" value="<?php echo $_POST['table']?>"></div>
+                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="Пример: lvl_base" name="table" value="<?php echo empty( $_POST['table'] ) ? 'lvl_base' : $_POST['table']?>"></div>
                         <div class="input-form"><div class="input_text">Название группы серверов: </div><input placeholder="Пример: Основные сервера Retakes" name="servers" value="<?php if($_POST['servers'] == ''){echo '';} else { echo $_POST['servers'];}?>"></div>
                         <div class="input-form"><div class="input_text">Мод</div>
                             <select name="game_mod">

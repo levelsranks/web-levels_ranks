@@ -39,6 +39,11 @@
                         <?php $General->get_icon( 'custom', 'lt', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_LT' )?>
                     </a>
                 </li>
+                <li>
+                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'DE' )?>'">
+                        <?php $General->get_icon( 'custom', 'de', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_DE' )?>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="section navbar-icon">

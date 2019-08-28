@@ -2,7 +2,7 @@
 <div class="col-md-6">
     <div class="card">
         <div class="card-header">
-            <h5 class="badge">Порядок загрузки модулей</h5>
+            <h5 class="badge"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Module_loading')?></h5>
             <div class="select-panel select-panel-pages badge">
                 <select onChange="window.location.href=this.value">
                     <option style="display:none" value="" disabled selected><?php echo get_section( 'module_page', 'home' )?></option>
@@ -39,22 +39,22 @@
 <div class="col-md-6">
     <div class="card">
         <div class="card-header">
-            <h5 class="badge">Опции</h5>
+            <h5 class="badge"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Options')?></h5>
         </div>
         <div class="card-container">
             <div class="btn_form">
             <form enctype="multipart/form-data" method="post">
-                <input class="btn" type="submit" name="clear_cache_modules" Value="Обновить кэш модулей">
+                <input class="btn" type="submit" name="clear_cache_modules" Value="<?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Refresh_cache_modules')?>">
             </form>
             </div>
             <div class="btn_form">
                 <form enctype="multipart/form-data" method="post">
-                    <input class="btn" type="submit" name="clear_translator_cache" Value="Обновить кэш переводов">
+                    <input class="btn" type="submit" name="clear_translator_cache" Value="<?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Refresh_cache_translations')?>">
                 </form>
             </div>
             <div class="btn_form">
             <form enctype="multipart/form-data" method="post">
-                <input class="btn" type="submit" name="clear_modules_initialization" Value="Обновить список модулей">
+                <input class="btn" type="submit" name="clear_modules_initialization" Value="<?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Update_list_modules')?>">
             </form>
             </div>
         </div>

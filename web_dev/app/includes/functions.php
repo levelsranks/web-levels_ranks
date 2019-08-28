@@ -198,13 +198,17 @@ function action_text_clear_before_slash( $text ) {
  *
  * @param string       $id    Steam ID игрока.
  *
- * @return string                    Выводит итог конвертации.
+ * @return int             Выводит итог конвертации.
  */
 function con_steam32to64( $id ) {
-    $arr =	explode(":", $id);
+    if( $id[0] == 'S'){
+        $arr =	explode(":", $id);
         if ( ! empty( $arr[2] ) ):
-            return bcadd( bcmul( (int) $arr[2], 2 ), bcadd( (int) $arr[1], '76561197960265728' ) );
+            return bcadd( bcmul( (int) $arr[2], 2 ), bcadd( (int) $arr[1], '76561197960265728' ), 0 );
         endif;
+    } else {
+        return is_numeric ( $id ) ? $id : false;
+    }
 }
 
 /**

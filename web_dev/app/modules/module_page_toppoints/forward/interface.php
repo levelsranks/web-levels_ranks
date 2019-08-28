@@ -15,17 +15,17 @@
                 <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Statistics') ?></h5>
                 <div class="select-panel select-panel-table badge">
                     <select onChange="window.location.href=this.value">
-                        <option style="display:none" value="" disabled selected><?php echo $Db->db_data['LevelsRanks'][$server_group]['name'] ?></option>
-                        <?php for ($b = 0; $b < $res_data_count; $b++) { ?>
+                        <option style="display:none" value="" disabled selected><?php echo $Db->statistics_table[$server_group]['name'] ?></option>
+                        <?php for ($b = 0; $b < $Db->table_statistics_count; $b++) { ?>
                             <option value="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>">
-                                <a href="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>"><?php echo $Db->db_data['LevelsRanks'][$b]['name'] ?></a></option>
+                                <a href="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>"><?php echo $Db->statistics_table[$b]['name'] ?></a></option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="select-panel select-panel-pages badge">
                     <select onChange="window.location.href=this.value">
                         <option style="display:none" value="" disabled selected><?php echo $page_num ?></option>
-                        <?php for ($v = 0; $v < $res_data[$server_group]['count']; $v++) { ?>
+                        <?php for ($v = 0; $v < $page_max; $v++) { ?>
                         <option value="<?php echo set_url_section(get_url(2), 'num', $v + 1) ?>">
                             <a href="<?php echo set_url_section(get_url(2), 'num', $v + 1) ?>"><?php echo $v + 1 ?></a></option>
                         <?php } ?>
@@ -47,47 +47,47 @@
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'playtime') ?>';" class="text-center a-type tb-time <?php $_SESSION['filter'] == 'playtime' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Play_time') ?></th>
                 </tr>
                 </thead>
-                <tbody><?php $sz = sizeof( $res[$server_group] );
+                <tbody><?php $sz = sizeof( $res );
                 for ($sz_i = 0; $sz_i < $sz; $sz_i++) {
-                    $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam'] )?>
+                    $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam'] )?>
                     <tr class="pointer"
-                        <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam']?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
+                        <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam']?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle"
-                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$server_group][$sz_i]['steam']);} ?>"
+                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$sz_i]['steam']);} ?>"
                             <?php if ($sz_i < '20') {
                                 echo 'src';
                             } else {
                                 echo 'data-src';
                             } ?>=
                             "
-                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[$server_group][$sz_i]['steam']), 2);
+                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[$sz_i]['steam']), 2);
                             } elseif( $General->arr_general['avatars'] == 2) {
                                 echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                             }?>">
                         </th>
                         <?php }?>
                         <th class="table-text text-left tb-name"><a
-                                <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$server_group][$sz_i]['steam'] ) : $res[$server_group][$sz_i]['steam']?>&server_group=<?php echo $server_group ?>"<?php } ?>><?php echo action_text_clear( action_text_trim($res[$server_group][$sz_i]['name'], 16) )?></a>
+                                <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam']?>&server_group=<?php echo $server_group ?>"<?php } ?>><?php echo action_text_clear( action_text_trim($res[$sz_i]['name'], 16) )?></a>
                         </th>
-                        <th class="text-center"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['value']), 0, '.', ' ') ?></th>
+                        <th class="text-center"><?php echo number_format(str_replace(";", "", $res[$sz_i]['value']), 0, '.', ' ') ?></th>
                         <th class="text-center table-text"><img
                             <?php if ($sz > 18) {
                                 echo 'src';
                             } else {
                                 echo 'data-src';
-                            } ?>="<?php echo 'storage/cache/img/ranks/' . $Db->db_data['LevelsRanks'][$server_group]['ranks_pack']  . '/';
-                            if ($res[$server_group][$sz_i]['rank'] == '') {
+                            } ?>="<?php echo 'storage/cache/img/ranks/' . $Db->statistics_table[ $server_group ]['ranks_pack']  . '/';
+                            if ($res[$sz_i]['rank'] == '') {
                                 echo '00';
                             } else {
-                                echo $res[$server_group][$sz_i]['rank'];
+                                echo $res[$sz_i]['rank'];
                             } ?>.png"></th>
-                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['kills']), 0, '.', ' ') ?></th>
-                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['deaths']), 0, '.', ' ') ?></th>
-                        <th class="text-center"><?php echo $res[$server_group][$sz_i]['kd'] ?></th>
-                        <th class="text-center tb-hs"><?php echo number_format(str_replace(";", "", $res[$server_group][$sz_i]['headshots']), 0, '.', ' ') ?></th>
-                        <th class="text-center tb-time"><?php echo round($res[$server_group][$sz_i]['playtime'] / 60 / 60) . ' Час.' ?></th>
+                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$sz_i]['kills']), 0, '.', ' ') ?></th>
+                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$sz_i]['deaths']), 0, '.', ' ') ?></th>
+                        <th class="text-center"><?php echo $res[$sz_i]['kd'] ?></th>
+                        <th class="text-center tb-hs"><?php echo ! empty( $res[$sz_i]['headshots'] ) ? number_format(str_replace( ";", "", $res[ $sz_i ]['headshots'] ), 0, '.', ' ') : 0?></th>
+                        <th class="text-center tb-time"><?php echo round($res[$sz_i]['playtime'] / 60 / 60) . ' Час.' ?></th>
                     </tr><?php } ?></tbody>
             </table>
             <div class="card-bottom">

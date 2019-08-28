@@ -23,7 +23,7 @@ set_time_limit(3);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.114');
+define('VERSION', '0.2.115');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -62,22 +62,22 @@ define('THEMES', 'storage/assets/css/themes/');
 define('RANKS_PACK', 'storage/cache/img/ranks/');
 
 // Временные константы ( Постоянные времени ) - Минута.
-define( 'MINUTE_IN_SECONDS', 60 );
+define('MINUTE_IN_SECONDS', 60);
 
 // Временные константы ( Постоянные времени ) - Час.
-define( 'HOUR_IN_SECONDS', 60 * MINUTE_IN_SECONDS );
+define('HOUR_IN_SECONDS', 3600);
 
 // Временные константы ( Постоянные времени ) - День.
-define( 'DAY_IN_SECONDS', 24 * HOUR_IN_SECONDS );
+define('DAY_IN_SECONDS', 86400);
 
 // Временные константы ( Постоянные времени ) - Неделя.
-define( 'WEEK_IN_SECONDS', 7 * DAY_IN_SECONDS );
+define('WEEK_IN_SECONDS', 604800);
 
 // Временные константы ( Постоянные времени ) - Месяц.
-define( 'MONTH_IN_SECONDS', 30 * DAY_IN_SECONDS );
+define('MONTH_IN_SECONDS', 2592000);
 
 // Временные константы ( Постоянные времени ) - Год.
-define( 'YEAR_IN_SECONDS', 365 * DAY_IN_SECONDS );
+define('YEAR_IN_SECONDS', 31536000);
 
 // Регистраниция основных функций.
 require INCLUDES . 'functions.php';
@@ -125,7 +125,7 @@ $Db             = new Db;
 $Notifications  = new Notifications ( $General, $Db, $Modules );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
-$Auth           = new Auth          ( $General );
+$Auth           = new Auth          ( $General, $Db );
 
 // Создание экземпляра графического класса.
-$Graphics       = new Graphics      ( $General, $Modules, $Db );
+$Graphics       = new Graphics      ( $General, $Modules, $Db, $Auth );

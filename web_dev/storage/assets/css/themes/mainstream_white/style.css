@@ -1259,9 +1259,14 @@ template {
     float: right;
     padding: 10px;
 }
+
 .right-area svg, .right-area img {
     margin-bottom: 2px;
     height: 15px;
+
+}.right-area .subsection svg, .right-area .subsection img {
+    margin-bottom: 2px;
+    height: 18px;
 }
 
 .navbar-icon svg, .navbar-icon img {
@@ -1309,7 +1314,7 @@ template {
 .section .subsection li {
     width: 100%;
     border-bottom: 1px solid var(--hover);
-    padding: 7px 10px;
+    padding: 4px 10px;
 }
 .section .subsection a {
     color: var(--default-text-color);

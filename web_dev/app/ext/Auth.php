@@ -12,9 +12,41 @@ namespace app\ext;
 
 class Auth {
 
-    function __construct( $General ) {
+    /**
+     * @var array
+     */
+    public    $user_auth = [];
+
+    /**
+     * @var array
+     */
+    public    $server_info = [];
+
+    /**
+     * @var array
+     */
+    public    $base_info = [];
+
+    /**
+     * @var array
+     */
+    public    $lastconnect = [];
+
+    /**
+     * @var array
+     */
+    public    $res_data_sidebar = [];
+
+    /**
+     * @var int
+     */
+    public    $user_rank_count = 0;
+
+    function __construct( $General, $Db ) {
 
         $this->General = $General;
+
+        $this->Db = $Db;
 
         $this->admins = require SESSIONS . 'admins.php';
 
@@ -30,6 +62,8 @@ class Auth {
         isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
 
         $this->_POST();
+
+        isset( $_SESSION['steamid'] ) && $this->get_authorization_sidebar_data();
     }
 
     public function _POST() {
@@ -49,5 +83,57 @@ class Auth {
             exit;
         }
 
+    }
+
+    public function get_authorization_sidebar_data() {
+
+        if ( ! empty( $this->Db->db_data['LevelsRanks'] ) ):
+            // С помощью цикла делаем запросы к базе данных.
+            for ($d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++) {
+                $this->res_data_sidebar[$d] = ['name_servers' => $this->Db->db_data['LevelsRanks'][$d]['name'],
+                    'mod' => $this->Db->db_data['LevelsRanks'][$d]['mod'],
+                    'ranks_pack' => $this->Db->db_data['LevelsRanks'][$d]['ranks_pack'],
+                    'data_servers' => $this->Db->db_data['LevelsRanks'][$d]['Table']];
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][$d]['USER_ID'], $this->Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $this->Db->db_data['LevelsRanks'][$d]["Table"] . ' WHERE steam LIKE "%' . $_SESSION['steamid32_short'] . '%" LIMIT 1');
+                if ($this->base_info != '') {
+                    $this->user_auth[] = $this->base_info;
+                    $this->server_info[] = $this->res_data_sidebar[$d];
+                    $this->lastconnect[] = $this->base_info['lastconnect'];
+                }
+            }
+        endif;
+        if (!empty($this->Db->db_data['FPS'])):
+            // С помощью цикла делаем запросы к базе данных.
+            for ($d = 1; $d <= $this->Db->table_count['FPS']; $d++) {
+                $this->res_data_sidebar[$d] = ['name_servers' => $this->Db->db_data['FPS'][$d - 1]['name'],
+                    'mod' => 'csgo',
+                    'ranks_id' => $this->Db->db_data['FPS'][$d - 1]['ranks_id'],
+                    'ranks_pack' => $this->Db->db_data['FPS'][$d - 1]['ranks_pack']
+                ];
+                $this->base_info = $this->Db->query('FPS', 0, 0, 'SELECT fps_players.nickname AS name,
+                                                         fps_servers_stats.lastconnect,
+                                                        ( SELECT fps_ranks.id
+                                                          FROM fps_ranks 
+                                                          WHERE fps_ranks.rank_id = ' . $this->Db->db_data['FPS'][$d - 1]['ranks_id'] . ' 
+                                                          AND fps_ranks.points <= fps_servers_stats.points 
+                                                          ORDER BY fps_ranks.points DESC LIMIT 1
+                                                        ) AS rank
+                                                        FROM fps_players
+                                                        INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                        WHERE steam_id="' . $_SESSION['steamid'] . '" AND fps_servers_stats.server_id = ' . $d . ' LIMIT 1');
+                if ($this->base_info != '') {
+                    $this->user_auth[] = $this->base_info;
+                    $this->server_info[] = $this->res_data_sidebar[$d];
+                    $this->lastconnect[] = $this->base_info['lastconnect'];
+                }
+            }
+        endif;
+        if ($this->user_auth[0] == '' || $this->user_auth[0] == '') {
+            $this->user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
+            $this->lastconnect = '-';
+            $this->server_info[0]['name_servers'] = 'Неизвестно';
+            $this->server_info[0]['ranks_pack'] = 'default';
+        }
+        $this->user_rank_count = sizeof($this->user_auth);
     }
 }

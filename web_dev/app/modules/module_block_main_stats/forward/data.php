@@ -24,6 +24,8 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
     // Сохраняем текущее время и прибавляем к нему 1 час.
     $data['module_block_main_stats']['time'] = time() + $Modules->array_modules['module_block_main_stats']['setting']['cache_time'];
 
+    // Проверка на подключенный мод - Levels Ranks
+    if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
     // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
     for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
         $data['module_block_main_stats']['Total_players'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
@@ -31,6 +33,15 @@ if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_bloc
         $data['module_block_main_stats']['Headshot'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
         $data['module_block_main_stats']['playtime'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(playtime) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
     }
+    endif;
+
+    // Проверка на подключенный мод - FPS
+    if ( ! empty( $Db->db_data['FPS'] ) ):
+        $data['module_block_main_stats']['Total_players'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_players LIMIT 1' )[0];
+        $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_servers_stats WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1' )[0];
+        $data['module_block_main_stats']['Headshot'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(headshots) FROM fps_weapons_stats LIMIT 1' )[0];
+        $data['module_block_main_stats']['playtime'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(playtime) FROM fps_servers_stats LIMIT 1' )[0];
+    endif;
 
     ! file_exists( MODULES_SESSIONS . 'module_block_main_stats' ) && mkdir( MODULES_SESSIONS . 'module_block_main_stats', 0777, true );
 

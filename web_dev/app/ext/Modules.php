@@ -58,6 +58,11 @@ class Modules {
     public $arr_translations = [];
 
     /**
+     * @var array
+     */
+    public $actual_library = [];
+
+    /**
      * Организация работы вэб-приложения с модулями.
      */
     function __construct( $General ) {
@@ -72,14 +77,17 @@ class Modules {
 
         // Получение списка инициализвации модулей в определенном порядке.
         $this->arr_module_init = $this->get_module_init();
+        
+        $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
+
+        // Актуальная библиотека CSS и JS файлов.
+        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
 
         // Проверка таблици стилей.
         $this->check_generated_style();
 
         // Проверка таблици стилей.
         $this->check_generated_js();
-
-        $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
         // Проверка для роутера страниц
         ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
@@ -182,7 +190,7 @@ class Modules {
      * @return string                   Выводит слово в переводе.
      */
     public function get_translate_module_phrase( $module_id, $phrase ) {
-        return $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
+        return empty( $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $module_id ][ $phrase ]['EN'] : $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
     }
 
     /**
@@ -257,8 +265,11 @@ class Modules {
     public function check_generated_style() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( empty( $this->General->arr_general['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->General->arr_general['actual_css_ver'] . '.css' ) ):
+        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) || empty( $this->actual_library['actual_css_ver'] ) ):
 
+			// Проверка на существование каталога с генерируемыми файлами
+            ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
+			
             file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
             // Лучше в будущем переработать и преобразовать в цикл, а для начала - НОРМ
@@ -282,14 +293,10 @@ class Modules {
 
             $final_css_compress = $this->action_css_compress( $files_css_compress );
 
-            $default = $this->General->arr_general;
-            $default['actual_css_ver'] = time();
+            $this->actual_library['actual_css_ver'] = time();
 
             // Обновляем options
-            file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
-
-            // Проверка на существование каталога с генерируемыми файлами
-            ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
+            file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
 
             // Очистка старых кэш файлов
             $temp_files = glob(ASSETS_CSS . 'generation/*');
@@ -299,7 +306,7 @@ class Modules {
             }
 
             // Сохраняем итоговый CSS файл.
-            file_put_contents( ASSETS_CSS . '/generation/style_generated.min.ver.' . $default['actual_css_ver'] . '.css', $final_css_compress );
+            file_put_contents( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css', $final_css_compress );
             endif;
     }
 
@@ -309,8 +316,11 @@ class Modules {
     public function check_generated_js() {
 
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( empty( $this->General->arr_general['actual_js_ver'] ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->General->arr_general['actual_js_ver'] . '.js' ) ):
+        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js' ) || empty( $this->actual_library['actual_js_ver'] ) ):
 
+			// Проверка на существование каталога с генерируемыми файлами
+            ! file_exists( ASSETS_JS . 'generation' ) && mkdir( ASSETS_JS . 'generation', 0777, true );
+			
             file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
 
             // Перебором забираем корневое название модулей.
@@ -327,14 +337,10 @@ class Modules {
 
             $final_js_compress = $this->action_js_compress( $files_js_compress );
 
-            $default = $this->General->arr_general;
-            $default['actual_js_ver'] = time();
+            $this->actual_library['actual_js_ver'] = time();
 
-            //Обновляем options
-            file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
-
-            // Проверка на существование каталога с генерируемыми файлами
-            ! file_exists( ASSETS_JS . 'generation' ) && mkdir( ASSETS_JS . 'generation', 0777, true );
+            // Обновляем options
+            file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
 
             // Очистка старых кэш файлов
             $temp_files = glob(ASSETS_JS . 'generation/*');
@@ -344,7 +350,7 @@ class Modules {
             }
 
             // Сохраняем итоговый JS файл.
-            file_put_contents( ASSETS_JS . '/generation/app_generated.min.ver.' . $default['actual_js_ver'] . '.js', $final_js_compress );
+            file_put_contents( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js', $final_js_compress );
         endif;
     }
 

@@ -8,7 +8,7 @@
  * @license GNU General Public License Version 3
  */
 
-! empty( $_SESSION['steamid32'] ) && $_SESSION['steamid32'] == $General->arr_general['admin'] && $Modules->set_sidebar_select('module_page_adminpanel', ["href" =>"?page=adminpanel", "open_new_tab" =>"0", "icon_group" =>"zmdi", "icon_category" =>"", "icon" =>"coffee", "name" =>"Панель администратора", "sidebar_directory" =>""]);
+! empty( $_SESSION['steamid32'] ) && $_SESSION['steamid32'] == $General->arr_general['admin'] && $Modules->set_sidebar_select('module_page_adminpanel', ["href" =>"?page=adminpanel", "open_new_tab" =>"0", "icon_group" =>"zmdi", "icon_category" =>"", "icon" =>"coffee", "name" =>"_Admin_panel", "sidebar_directory" =>""]);
 
 if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page'] == 'adminpanel' && $_SESSION['steamid32'] == $General->arr_general['admin'] ):
 
@@ -22,7 +22,7 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         unlink( SESSIONS . '/modules_cache.php' );
         unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
         unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
-        header("Refresh:0");
+        header( 'Location: ' . get_url(1) );
         exit();
     }
 
@@ -37,7 +37,7 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         unlink( SESSIONS . '/modules_initialization.php' );
         unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
         unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
-        header("Refresh:0");
+        header( 'Location: ' . get_url(1) );
         exit();
     }
 

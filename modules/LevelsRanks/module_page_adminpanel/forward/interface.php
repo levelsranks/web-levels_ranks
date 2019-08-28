@@ -14,27 +14,27 @@ if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) 
         <div class="user-sidebar-right-block">
             <div class="info">
                 <div class="details">
-                    <div class="admin_type">Гл. Администратор</div>
-                    <div class="admin_rights">Полные права доступа</div>
+                    <div class="admin_type"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Chief_admin')?></div>
+                    <div class="admin_rights"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_All_access_rights')?></div>
                 </div>
             </div>
         </div>
         <div class="card menu">
             <ul class="nav">
                 <li <?php get_section( 'section', 'modules' ) == 'general' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','general')?>';">
-                    <a>Основные настройки</a>
+                    <a><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_General_settings')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'modules' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','modules')?>';">
-                    <a>Настройка модулей</a>
+                    <a><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Configuring_modules')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'servers' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','servers')?>';">
-                    <a>Настройка серверов</a>
+                    <a><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Server_setting')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'db' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','db')?>';">
-                    <a>Настройка базы данных</a>
+                    <a><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Database_settings')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'translator' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','translator')?>';">
-                    <a>Настройка переводов</a>
+                    <a><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Translation_settings')?></a>
                 </li>
             </ul>
         </div>

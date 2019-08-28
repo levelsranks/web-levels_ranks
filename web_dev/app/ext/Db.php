@@ -64,6 +64,26 @@ class Db {
     public    $mod_name;
 
     /**
+     * @var int
+     */
+    public    $table_statistics_count = 0;
+
+    /**
+     * @var array
+     */
+    public    $support_statistics = ['LevelsRanks', 'FPS'];
+
+    /**
+     * @var array
+     */
+    public    $statistics_with_table_servers = ['FPS', 'HLstatsX'];
+
+    /**
+     * @var array
+     */
+    public    $statistics_table = [];
+
+    /**
      * Организация работы вэб-приложения с базой данных.
      */
     public function __construct() {
@@ -113,8 +133,11 @@ class Db {
                  * $d - Номер Базы данных.
                  */
 
+                // Проверка на поле PORT
+                $this->db[ $this->mod_name[ $m ] ][ $u ]["PORT"] = empty( $this->db[ $this->mod_name[ $m ] ][ $u ]["PORT"] ) ? 3306 : $this->db[ $this->mod_name[ $m ] ][ $u ]["PORT"];
+
                 // Сигнатура DNS.
-                $this->dns[ $this->mod_name[ $m ] ][ $u ][ $d ] = 'mysql:host=' . $this->db[ $this->mod_name[ $m ] ][ $u ]["HOST"] . ';port=3306;dbname=' . $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'] . ';charset=utf8';
+                $this->dns[ $this->mod_name[ $m ] ][ $u ][ $d ] = 'mysql:host=' . $this->db[ $this->mod_name[ $m ] ][ $u ]["HOST"] . ';port=' . $this->db[ $this->mod_name[ $m ] ][ $u ]["PORT"] . ';dbname=' . $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'] . ';charset=utf8';
 
                 // Создаём подключение по PDO для определенной базы данных.
                 $this->pdo[ $this->mod_name[ $m ] ][ $u ][ $d ] = new PDO( $this->dns[ $this->mod_name[ $m ] ][ $u ][ $d ], $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'], $this->db[ $this->mod_name[ $m ] ][ $u ]['PASS'], $this->options );
@@ -130,18 +153,46 @@ class Db {
 
                     $rank_pack = empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['ranks_pack'] ) ? false : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['ranks_pack'];
 
-                    // Создаём массив с описанием таблиц.
-                    $this->db_data[ $this->mod_name[ $m ] ][] = [
-                        'USER_ID' => $u,
-                        'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
-                        'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
-                        'DB_num' => $d,
-                        'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
-                        'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
-                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
-                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
-                        'ranks_pack' => $rank_pack
-                    ];
+                    if( in_array( $this->mod_name[ $m ], $this->statistics_with_table_servers ) ):
+                        switch ( $this->mod_name[ $m ] ) {
+                            case 'FPS':
+                                $fps_servers_data = $this->queryAll('FPS',0, 0, 'SELECT id, server_name, settings_rank_id FROM ' . $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] . 'servers' );
+                                for ( $_m = 0, $m_s = sizeof( $fps_servers_data ); $_m < $m_s; $_m++ ):
+                                    $this->db_data['FPS'][] = [
+                                        'DB_mod' => 'FPS',
+                                        'USER_ID' => $u,
+                                        'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
+                                        'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
+                                        'DB_num' => $d,
+                                        'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
+                                        'name' => $fps_servers_data[ $_m ]['server_name'],
+                                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
+                                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
+                                        'ranks_id' => $fps_servers_data[ $_m ]['settings_rank_id'],
+                                        'ranks_pack' => $rank_pack
+                                    ];
+                                    $this->statistics_table[] = [ 'name' => $fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack];
+                                endfor;
+                                break;
+                            case 'HLstatsX':
+                                break;
+                        }
+                    else:
+                        // Создаём массив с описанием таблиц.
+                        $this->db_data[ $this->mod_name[ $m ] ][] = [
+                            'DB_mod' => $this->mod_name[ $m ],
+                            'USER_ID' => $u,
+                            'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
+                            'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
+                            'DB_num' => $d,
+                            'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
+                            'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
+                            'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
+                            'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
+                            'ranks_pack' => $rank_pack
+                        ];
+                        in_array( $this->mod_name[ $m ], $this->support_statistics ) && $this->statistics_table[] = [ 'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'], 'ranks_pack' => $rank_pack];
+                    endif;
                 }
 
             }
@@ -150,6 +201,8 @@ class Db {
 
             $this->table_count[ $this->mod_name[ $m ] ] = sizeof( $this->db_data[ $this->mod_name[ $m ] ] );
         }
+
+        $this->table_statistics_count = $this->table_count['LevelsRanks'] + $this->table_count['FPS'];
     }
 
     /**

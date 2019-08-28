@@ -1,40 +1,3 @@
-<?php
-/**
- * @author Anastasia Sidak <m0st1ce.nastya@gmail.com>
- *
- * @link https://steamcommunity.com/profiles/76561198038416053
- * @link https://github.com/M0st1ce
- *
- * @license GNU General Public License Version 3
- */
-
-// Проверяем на существование сессию и при её наличии собираем информацию об игроке.
-if ( ! empty( $_SESSION['steamid'] ) ) {
-    // С помощью цикла делаем запросы к базе данных.
-    for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
-        $res_data_sidebar[$d] = ['name_servers' => $Db->db_data['LevelsRanks'][$d]['name'],
-            'mod' => $Db->db_data['LevelsRanks'][$d]['mod'],
-            'ranks_pack' => $Db->db_data['LevelsRanks'][$d]['ranks_pack'],
-            'data_servers' => $Db->db_data['LevelsRanks'][$d]['Table']];
-        $base_info = $Db->query('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $Db->db_data['LevelsRanks'][$d]["Table"] . ' where steam="' . $_SESSION['steamid32'] . '"' );
-        if ($base_info != '') {
-            $user_auth[] = $base_info;
-            $server_info[] = $res_data_sidebar[$d];
-            $lastconnect[] = $base_info['lastconnect'];
-        }
-    }
-
-    if ( $user_auth[0] == '' || $user_auth[0] == '' ) {
-        $user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
-        $lastconnect = '-';
-        $server_info[0]['name_servers'] = 'Неизвестно';
-        $server_info[0]['ranks_pack'] = 'default';
-    }
-
-    $user_rank_count = sizeof( $user_auth );
-
-}
-?>
 <aside class="main-sidebar offcanvas">
     <section class="sidebar">
         <div class="user-sidebar-block">
@@ -49,9 +12,9 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                             echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                         }}?>"></a>
                 <div class="user-details">
-                    <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print $Modules->get_translate_phrase('_Hero_without_name') : print $user_auth[0]['name']?></span>
+                    <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print $Modules->get_translate_phrase('_Hero_without_name') : print $Auth->user_auth[0]['name']?></span>
                     <?php if( ! empty( $_SESSION['steamid'] ) ):?>
-                        <span class="user_text"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($lastconnect == '-') ? print $lastconnect : print gmdate("d-m-Y", max($lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
+                        <span class="user_text"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($Auth->lastconnect == '-') ? print $Auth->lastconnect : print gmdate("d-m-Y", max($Auth->lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
                         <?php if( ! empty( $Modules->arr_user_info ) ):
                         for ( $i5 = 0, $arr_user_info_c = sizeof( $Modules->arr_user_info ); $i5 < $arr_user_info_c; ++$i5 ):?>
                         <span class="user_text"><?php echo $Modules->arr_user_info[ $i5 ]?></span>
@@ -65,12 +28,12 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
             <?php if( ! empty( $_SESSION['steamid'] ) ):?>
                 <div class="rank-info">
                     <li class="rank-mini-li"><a href="javascript:void(0);" onclick="action_treeview()" >
-                            <div class="user-rank tooltip-right" data-tooltip="<?php echo $server_info[0]['name_servers'];?>">
-                                <div class="rank_img"><img src="<?php empty( $user_auth[0]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ 0 ]['ranks_pack'] . '/' . $user_auth[0]['rank']?>.png"></div>
+                            <div class="user-rank tooltip-right" data-tooltip="<?php echo $Auth->server_info[0]['name_servers'];?>">
+                                <div class="rank_img"><img src="<?php echo empty( $Auth->user_auth[0]['rank'] ) ? $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ 0 ]['ranks_pack'] . '/00' : $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ 0 ]['ranks_pack'] . '/' . $Auth->user_auth[0]['rank']?>.png"></div>
                                 <div class="rank-details">
-                                    <?php echo $Modules->get_translate_phrase( $user_auth[0]['rank'], 'ranks_' . $server_info[ 0 ]['ranks_pack'] )?>
+                                    <?php echo $Modules->get_translate_phrase( $Auth->user_auth[0]['rank'], 'ranks_' . $Auth->server_info[ 0 ]['ranks_pack'] )?>
                                 </div>
-                                <?php if ( $user_rank_count != 1 ):?>
+                                <?php if ( $Auth->user_rank_count != 1 ):?>
                                     <div class="icon-down">
                                         <?php $General->get_icon( 'zmdi', 'chevron-down', null )?>
                                     </div>
@@ -78,11 +41,11 @@ if ( ! empty( $_SESSION['steamid'] ) ) {
                             </div>
                         </a>
                         <ul class="treeview-menu">
-                            <?php for ( $d = 1; $d < $user_rank_count; ++$d ):?>
+                            <?php for ( $d = 1; $d < $Auth->user_rank_count; ++$d ):?>
                                 <li>
-                                    <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $server_info[ $d ]['name_servers']?>">
-                                        <div class="rank_img"><img src="<?php empty( $user_auth[ $d ]['rank'] ) ? print '00' : print 'storage/cache/img/ranks/' . $server_info[ $d ]['ranks_pack'] . '/' . $user_auth[ $d ]['rank']?>.png"></div>
-                                        <div class="rank-details"><?php echo $Modules->get_translate_phrase( $user_auth[ $d ]['rank'], 'ranks_' . $server_info[ $d ]['ranks_pack'] )?></div>
+                                    <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $Auth->server_info[ $d ]['name_servers']?>">
+                                        <div class="rank_img"><img src="<?php echo empty( $Auth->user_auth[ $d ]['rank'] ) ? $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ $d ]['ranks_pack'] . '/00' : $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ $d ]['ranks_pack'] . '/' . $Auth->user_auth[ $d ]['rank']?>.png"></div>
+                                        <div class="rank-details"><?php echo $Modules->get_translate_phrase( $Auth->user_auth[ $d ]['rank'], 'ranks_' . $Auth->server_info[ $d ]['ranks_pack'] )?></div>
                                     </div>
                                 </li>
                             <?php endfor;?>

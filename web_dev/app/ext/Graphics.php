@@ -15,11 +15,13 @@ class Graphics {
     /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
      */
-    function __construct( $General, $Modules, $Db ) {
+    function __construct( $General, $Modules, $Db, $Auth ) {
 
         $Graphics = $this;
 
         $this->General = $General;
+
+        $this->Auth = $Auth;
 
         // Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы
         for ( $module_id = 0, $c = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'] ); $module_id < $c; $module_id++ ):
