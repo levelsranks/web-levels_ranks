@@ -3,169 +3,197 @@
     "EN": "Total Admins",
     "RU": "Всего админ-ов.",
     "UA": "Всього адмін-ов.",
-    "LT": "Iš viso administratorių."
+    "LT": "Iš viso administratorių.",
+	"CH": "管理员总数"
   },
   "_Module_loading": {
     "EN": "Module loading order",
     "RU": "Порядок загрузки модулей",
     "UA": "Порядок завантаження модулів",
-    "LT": "Module loading order"
+    "LT": "Module loading order",
+	"CH": "模块加载命令"
   },
   "_Page": {
     "EN": "Page",
     "RU": "Страница",
     "UA": "Сторінка",
-    "LT": "Page"
+    "LT": "Page",
+	"CH": "页"
   },
   "_Options": {
     "EN": "Options",
     "RU": "Опции",
     "UA": "Опції",
-    "LT": "Options"
+    "LT": "Options",
+	"CH": "选项"
   },
   "_Refresh_cache_modules": {
     "EN": "To refresh the cache modules",
     "RU": "Обновить кэш модулей",
     "UA": "Оновити кеш модулів",
-    "LT": "To refresh the cache modules"
+    "LT": "To refresh the cache modules",
+	"CH": "刷新模块缓存"
   },
   "_Refresh_cache_translations": {
     "EN": "To refresh the cache of translations",
     "RU": "Обновить кэш переводов",
     "UA": "Оновити кеш перекладів",
-    "LT": "To refresh the cache of translations"
+    "LT": "To refresh the cache of translations",
+	"CH": "刷新翻译缓存"
   },
   "_Update_list_modules": {
     "EN": "To update the list of modules",
     "RU": "Обновить список модулей",
     "UA": "Оновити список модулів",
-    "LT": "To update the list of modules"
+    "LT": "To update the list of modules",
+	"CH": "更新列表中的模块"
   },
   "_Chief_admin": {
     "EN": "Chief Administrator",
     "RU": "Гл. Администратор",
     "UA": "Головний Адміністратор",
-    "LT": "Chief Administrator"
+    "LT": "Chief Administrator",
+	"CH": "最高管理员"
   },
   "_General_settings": {
     "EN": "General settings",
     "RU": "Основные настройки",
     "UA": "Основні налаштування",
-    "LT": "General settings"
+    "LT": "General settings",
+	"CH": "主要设置"
   },
   "_Configuring_modules": {
     "EN": "Configuring modules",
     "RU": "Настройка модулей",
     "UA": "Налаштування модулів",
-    "LT": "Configuring modules"
+    "LT": "Configuring modules",
+	"CH": "设置模块"
   },
   "_Server_setting": {
     "EN": "Server setting",
     "RU": "Настройка серверов",
     "UA": "Налаштування серверів",
-    "LT": "Server setting"
+    "LT": "Server setting",
+	"CH": "服务器设置"
   },
   "_Database_settings": {
     "EN": "Database settings",
     "RU": "Настройка базы данных",
     "UA": "Налаштування бази даних",
-    "LT": "Database settings"
+    "LT": "Database settings",
+	"CH": "数据库设置"
   },
   "_Translation_settings": {
     "EN": "Translation settings",
     "RU": "Настройка переводов",
     "UA": "Налаштування перекладів",
-    "LT": "Translation settings"
+    "LT": "Translation settings",
+	"CH": "翻译设置"
   },
   "_Extra_settingss": {
     "EN": "Extra settings",
     "RU": "Дополнительные настройки",
     "UA": "Додаткові налаштування",
-    "LT": "Extra settings"
+    "LT": "Extra settings",
+	"CH": "额外设置"
   },
   "_Full_name": {
     "EN": "Full name",
     "RU": "Полное название",
     "UA": "Полное название",
-    "LT": "Full name"
+    "LT": "Full name",
+	"CH": "全名"
   },
   "_Short_name": {
     "EN": "Short name",
     "RU": "Короткое название",
     "UA": "Коротка назва",
-    "LT": "Short name"
+    "LT": "Short name",
+	"CH": "略称"
   },
   "_Basic_information": {
     "EN": "Basic information",
     "RU": "Общая информация",
     "UA": "Загальна інформація",
-    "LT": "Basic information"
+    "LT": "Basic information",
+	"CH": "基本信息"
   },
   "_Language": {
     "EN": "Language",
     "RU": "Язык",
     "UA": "Мова",
-    "LT": "Language"
+    "LT": "Language",
+	"CH": "语言"
   },
   "_Chief_administrator_Steam": {
     "EN": "Chief administrator ( Steam authorization )",
     "RU": "Глав. администратор ( Steam авторизация )",
     "UA": "Головний адміністратор ( Steam авторизація )",
-    "LT": "Chief administrator ( Steam authorization )"
+    "LT": "Chief administrator ( Steam authorization )",
+	"CH": "最高管理员 (Steam 验证)"
   },
   "_Use_Steam_ID": {
     "EN": "Use Steam ID 64",
     "RU": "Использовать Steam ID 64",
     "UA": "Використовувати Steam ID 64",
-    "LT": "Use Steam ID 64"
+    "LT": "Use Steam ID 64",
+	"CH": "使用Steam 64位ID"
   },
   "_Import_admin_list": {
     "EN": "Import admin. list from SB / MA ( Steam )",
     "RU": "Импорт админ. листа из SB / MA ( Steam )",
     "UA": "Імпорт Адмін. листа з SB / MA ( Steam )",
-    "LT": "Import admin. list from SB / MA ( Steam )"
+    "LT": "Import admin. list from SB / MA ( Steam )",
+	"CH": "从SB / MA ( Steam )导入管理员"
   },
   "_Save": {
     "EN": "Save",
     "RU": "Сохранить",
     "UA": "Зберегти",
-    "LT": "Save"
+    "LT": "Save",
+	"CH": "保存"
   },
   "_Dark_mode_default": {
     "EN": "Dark mode ( default )",
     "RU": "Тёмный режим ( По умолчанию )",
     "UA": "Темний режим ( За замовчуванням )",
-    "LT": "Dark mode ( default )"
+    "LT": "Dark mode ( default )",
+	"CH": "黑夜模式"
   },
   "_Animation_default": {
     "EN": "Animation ( default )",
     "RU": "Анимации ( По умолчанию )",
     "UA": "Анімації (за замовчуванням )",
-    "LT": "Animation ( default )"
+    "LT": "Animation ( default )",
+	"CH": "动画( 默认 )"
   },
   "_Show_avatars": {
     "EN": "Show avatars",
     "RU": "Показывать ли аватарки",
     "UA": "Чи показувати аватарки",
-    "LT": "Show avatars"
+    "LT": "Show avatars",
+	"CH": "显示头像"
   },
   "_Sidebar_default": {
     "EN": "Sidebar ( default )",
     "RU": "Сайтбар ( По умолчанию )",
     "UA": "Сайдбар ( За замовчуванням )",
-    "LT": "Sidebar ( default )"
+    "LT": "Sidebar ( default )",
+	"CH": "侧边栏 ( 默认 )"
   },
   "_Round_shapes": {
     "EN": "Do round shapes",
     "RU": "Закруглять ли углы у форм",
     "UA": "Чи закругляти кути у форми",
-    "LT": "Do round shapes"
+    "LT": "Do round shapes",
+	"CH": "圆边"
   },
   "_All_access_rights": {
     "EN": "All access rights",
     "RU": "Полные права доступа",
     "UA": "Повні права доступу",
-    "LT": "All access rights"
+    "LT": "All access rights",
+	"CH": "所有访问权限"
   }
 }
 
