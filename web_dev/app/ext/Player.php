@@ -114,8 +114,6 @@ class Player {
             endfor;
         endif;
 
-
-
         // Проверка на подключенный мод - FPS
         if ( ! empty( $Db->db_data['FPS'] ) ):
 
@@ -162,7 +160,7 @@ class Player {
 
         $this->top_with_player = $this->get_db_top_with_player();
 
-        if( $this->found_fix[ $this->server_group ]['DB_mod'] = 'LevelsRanks' ):
+        if( $this->found[ $this->server_group ]['DB_mod'] = 'LevelsRanks' ):
             # Плагин -> Ex_weapons
             if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_weapons' ) == 1 ):
                 $this->weapons = $this->get_db_exstats_weapons();
@@ -296,11 +294,17 @@ class Player {
     }
 
     public function get_db_top_with_player() {
-        $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
-        $size_a = sizeof( $a );
-        $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
-        $b['countdown_from'] = $this->top_position - $size_a;
-        return $b;
+        switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
+            case 'LevelsRanks':
+                $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+                $size_a = sizeof( $a );
+                $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                $b['countdown_from'] = $this->top_position - $size_a;
+                return $b;
+                break;
+            case 'FPS':
+                break;
+        }
     }
 
     private function get_db_arr_default_info() {
@@ -315,7 +319,13 @@ class Player {
     }
 
     private function get_db_top_position() {
-        return $this->Db->query( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `value` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
+        switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
+            case 'LevelsRanks':
+                return $this->Db->query( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `value` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
+                break;
+            case 'FPS':
+                break;
+        }
     }
 
     private function get_db_exstats_weapons() {
