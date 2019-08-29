@@ -3,12 +3,14 @@
     "EN": "Total Players",
     "RU": "Всего игроков",
     "UA": "Всього гравців",
-    "LT": "Iš viso žaidėjų"
+    "LT": "Iš viso žaidėjų",
+	"CH": "玩家总数"
   },
   "_Players_24_hours": {
     "EN": "Players in 24 hours",
     "RU": "Игроков за 24 часа",
     "UA": "Гравців за 24 години",
-    "LT": "Žaidėjai per 24 valandas"
+    "LT": "Žaidėjai per 24 valandas",
+	"CH": "24小时内玩家数"
   }
 }
