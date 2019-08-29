@@ -53,10 +53,10 @@ return array (
         ),
 	'_CH' =>
         array (
-            'DE' => 'Vereinfachtes Chinesisch',
-            'EN' => 'Simplified Chinese',
-            'RU' => 'Упрощенный китайский',
-            'UA' => 'Спрощена китайська',
+            'DE' => 'Verein. Chinesisch',
+            'EN' => 'Simpl. Chinese',
+            'RU' => 'Китайский',
+            'UA' => 'Китайська',
             'LT' => 'Supaprastinta kinų kalba',
 			'CH' => '简体中文',
         ),

@@ -44,6 +44,11 @@
                         <?php $General->get_icon( 'custom', 'de', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_DE' )?>
                     </a>
                 </li>
+                <li>
+                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'CH' )?>'">
+                        <?php $General->get_icon( 'custom', 'ch', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_CH' )?>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="section navbar-icon">
