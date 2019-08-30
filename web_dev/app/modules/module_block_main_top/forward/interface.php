@@ -40,11 +40,7 @@
                             <tr class="pointer" onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ) : $data_paste[ $d ][ $dd ]['steam']?>&server_group=<?php echo $d ?>';">
                                 <th class="text-center"><?php echo $dd+1 ?></th>
                                 <?php if( $General->arr_general['avatars'] != 0 ) {?>
-                                    <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] );} ?>" data-src="
-                                    <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ), 2);
-                                        } elseif( $General->arr_general['avatars'] == 2) {
-                                            echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                                        }?>"></th>
+                                    <th class="text-right"><img class="rounded-circle" id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] );} ?>" data-src="<?php echo $General->getAvatar( con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ), 2 )?>"></th>
                                 <?php }?>
                                 <th class="text-left tb-name"><a
                                             href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $data_paste[ $d ][ $dd ]['steam'] ) : $data_paste[ $d ][ $dd ]['steam']?>&server_group=<?php echo $d ?>"><?php echo action_text_clear( action_text_trim($data_paste[ $d ][ $dd ]['name'], 15) )?></a>

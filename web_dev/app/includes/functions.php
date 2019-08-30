@@ -62,37 +62,36 @@ function var_export_opt($var, $return = true) {
  * @return string|false         Выводит итоговое значение раздела.
  */
 function get_section( $section, $default ) {
-    return ! empty( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
+    return isset( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
 }
 
 /**
- * Получает и задает название подраздела из URL по умолчанию.
+ * Получить размер массива.
  *
- * @param array $arr            Название подраздела.
+ * @param  array $arr          Массив.
  *
- * @return int                  Выводит итоговое количесво элементов массива
+ * @return int                 Выводит итоговое количесво элементов массива.
  */
 function get_arr_size( $arr ) {
-    return isset ( $arr ) ? sizeof( $arr ) : 0;
+    return is_array( $arr ) ? sizeof( $arr ) : 0;
 }
 
+/**
+ * Получить URL страницы.
+ *
+ * @param  int $type          Тип URL.
+ *
+ * @return string             URL страницы.
+ */
+
 function get_url( $type ) {
-    if ( $type == 1) {
-        $URL = 'http';
-        if ( $_SERVER["HTTPS"] == "on" ) {
-            $URL .= "s";
-        }
-        $URL .= '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-        return $URL;
-    } elseif ( $type == 2 ) {
-        $URL = 'http';
-        if ( $_SERVER["HTTPS"] == "on" ) {
-            $URL .= "s";
-        }
-        $URL .= '://';
-        $URL_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-        $URL .= $_SERVER['HTTP_HOST'] . $URL_parts[0];
-        return $URL;
+    switch ( $type ) {
+        case 1:
+            return '//' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+            break;
+        case 2:
+            return '//' .$_SERVER['HTTP_HOST'] . explode( '?', $_SERVER['REQUEST_URI'], 2 )[0];
+            break;
     }
 }
 
@@ -194,6 +193,18 @@ function action_text_clear_before_slash( $text ) {
 }
 
 /**
+ * Проверка на дубликат файла.
+ *
+ * @param  string        $file     Ссылка на первый файл.
+ * @param  string        $file_2   Ссылка на второй файл.
+ *
+ * @return bool                    Итог проверки.
+ */
+function check_duplicate_files( $file, $file_2 ) {
+        return file_exists ( $file ) && file_exists ( $file_2 ) && filesize ( $file ) === filesize ( $file_2 ) ? true : false;
+}
+
+/**
  * Конвертация Steam ID 32 -> 64.
  *
  * @param string       $id    Steam ID игрока.
@@ -228,12 +239,14 @@ function con_steam64to32( $steamid64 ) {
             $steam32 = 'STEAM_1:' . $a . ':' . $b;
         }
     }
-    if ( empty( $steam32 ) ) {
+    if ( is_numeric ( $steamid64 ) && empty( $steam32 ) ) {
         $z = bcdiv(bcsub($steamid64, '76561197960265728'), '2');
         $y = bcmod($steamid64, '2');
         return 'STEAM_1:' . $y . ':' . floor($z);
     } elseif ( ! empty( $steam32 ) ) {
         return $steam32;
+    } elseif ( ! is_numeric( $steamid64 ) ) {
+        return false;
     } else {
         return false;
     }

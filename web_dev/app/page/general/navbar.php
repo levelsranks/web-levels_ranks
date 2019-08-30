@@ -11,7 +11,7 @@
 <div class=navbar>
     <div class=logo-area>
         <a href="javascript:void(0);" onclick="action_sidebar()" class="nav-toggle pp-nav-toggle"><i></i></a>
-        <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="storage/cache/img/global/logo.png"></a>
+        <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="<?php echo file_exists( CACHE . '/img/global/logo.png' ) ? $General->arr_general['site'] . '/storage/cache/img/global/logo.png' : copy(CACHE . '/img/global/default_logo.png', CACHE . '/img/global/logo.png') && $General->arr_general['site'] . '/storage/cache/img/global/logo.png'?>"></a>
     </div>
     <ul class="right-area">
         <li class="section">
@@ -42,6 +42,11 @@
                 <li>
                     <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'DE' )?>'">
                         <?php $General->get_icon( 'custom', 'de', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_DE' )?>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'CH' )?>'">
+                        <?php $General->get_icon( 'custom', 'ch', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_CH' )?>
                     </a>
                 </li>
             </ul>

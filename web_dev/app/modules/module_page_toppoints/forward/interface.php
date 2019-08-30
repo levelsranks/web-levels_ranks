@@ -55,17 +55,7 @@
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle"
-                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$sz_i]['steam']);} ?>"
-                            <?php if ($sz_i < '20') {
-                                echo 'src';
-                            } else {
-                                echo 'data-src';
-                            } ?>=
-                            "
-                            <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar(con_steam32to64($res[$sz_i]['steam']), 2);
-                            } elseif( $General->arr_general['avatars'] == 2) {
-                                echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                            }?>">
+                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$sz_i]['steam']);} ?>"<?php echo $sz_i < '20' ? 'src' : 'data-src'?>="<?php echo $General->getAvatar( con_steam32to64( $res[$sz_i]['steam'] ), 2 )?>">
                         </th>
                         <?php }?>
                         <th class="table-text text-left tb-name"><a
@@ -87,7 +77,7 @@
                         <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$sz_i]['deaths']), 0, '.', ' ') ?></th>
                         <th class="text-center"><?php echo $res[$sz_i]['kd'] ?></th>
                         <th class="text-center tb-hs"><?php echo ! empty( $res[$sz_i]['headshots'] ) ? number_format(str_replace( ";", "", $res[ $sz_i ]['headshots'] ), 0, '.', ' ') : 0?></th>
-                        <th class="text-center tb-time"><?php echo round($res[$sz_i]['playtime'] / 60 / 60) . ' Час.' ?></th>
+                        <th class="text-center tb-time"><?php echo $Modules->action_time_exchange( $res[$sz_i]['playtime'], 2 )?></th>
                     </tr><?php } ?></tbody>
             </table>
             <div class="card-bottom">

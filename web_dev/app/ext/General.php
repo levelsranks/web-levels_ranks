@@ -13,6 +13,22 @@ namespace app\ext;
 class General {
 
     /**
+     * @var array
+     */
+    public $arr_general = [];
+
+    /**
+     * @var array
+     */
+    public $server_list = [];
+
+    /**
+     * @var int
+     */
+    public $server_list_count = 0;
+
+
+    /**
      * Инициализация основных настроек.
      */
     function __construct() {
@@ -27,16 +43,14 @@ class General {
             exit;
         }
 
-        ! file_exists( SESSIONS . 'servers_list.php' ) && file_put_contents( SESSIONS . 'servers_list.php', '<?php return []; ' );
-
         // Получение списка игровых серверов.
-        $this->server_list = require SESSIONS . 'servers_list.php';
+        $this->server_list = $this->get_server_list();
 
         // Общее количество игровых серверов.
         $this->server_list_count = sizeof( $this->server_list );
 
         // Получение языка страницы.
-        $this->get_default_url_section('language', $this->arr_general['language'], array( 'RU', 'EN', 'UA', 'LT', 'DE' ) );
+        $this->get_default_url_section('language', $this->arr_general['language'], array( 'RU', 'EN', 'UA', 'LT', 'DE', 'CH' ) );
 
         // Получение информации об использовании тёмного интерфейса.
         $this->get_default_url_section('dark_mode', $this->arr_general['dark_mode'], array( true, false ) );
@@ -61,68 +75,67 @@ class General {
     /**
      * Получает определенного аватара.
      *
-     * @param string       $profile    Steam ID игрока
-     * @param int          $type       Тип/Размер аватара.
+     * @param  string      $profile    Steam ID игрока
+     * @param  int         $type       Тип/Размер аватара.
      *
      * @return string                  Выводит ссылку на аватар если он существует.
      */
     public function getAvatar( $profile, $type ) {
         $url = ( $type == 1 ) ? CACHE . 'img/avatars/' . $profile . '.jpg' : CACHE . 'img/avatars/slim/' . $profile . '.jpg';
-
-        if( $type == 1 ) {
-        if ( file_exists( $url ) ) {
-            return $url;
-        } else {
-            return 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
-        }
-        } elseif ( $type == 2 ) {
-            if ( file_exists( $url ) ) {
-                return $url;
-            } else {
-                return 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-            }
+        switch ( $type ) {
+            case 1:
+                if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
+                    return $url;
+                elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
+                    return 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
+                endif;
+                break;
+            case 2:
+                if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
+                    return $url;
+                elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
+                    return 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
+                endif;
+                break;
         }
     }
 
     /**
-     * Проверка на существование определеноого аватара
+     * Проверка на существование определеноого аватара и его актуальность.
      *
-     * @param string       $profile    Steam ID игрока
-     * @param int          $type       Тип/Размер аватара.
+     * @param  string       $profile    Steam ID игрока
+     * @param  int          $type       Тип/Размер аватара.
      *
-     * @return string                  Выводит итог проверки.
+     * @return int                      Выводит итог проверки.
      */
     public function checkAvatar( $profile, $type ) {
         $url = CACHE . 'img/avatars/' . $profile . '.jpg';
         $url_slim = CACHE . 'img/avatars/slim/' . $profile . '.jpg';
-        $cachetime = '259200';
-        if( $type == 1 ) {
-        if ( file_exists( $url ) ) {
-            $time = gmdate("d-m-Y", filemtime($url));
-            if ( time() - $cachetime <= $time ) {
-                unlink($url);
-                unlink($url_slim);
-                return 1;
-            } else {
-                return 0;
-            }
-        } else {
-            return 1;
-        }
-        } elseif( $type == 2 ) {
-
-            if ( file_exists( $url_slim ) ) {
-                $time = gmdate( "d-m-Y", filemtime( $url_slim ) );
-                if ( time() - $cachetime <= $time ) {
-                    unlink($url);
-                    unlink($url_slim);
+        switch ( $type ) {
+            case 1:
+                if ( file_exists( $url ) ):
+                    if ( time() >= filemtime( $url ) + $this->arr_general['avatars_cache_time'] ):
+                        unlink( $url ) && unlink( $url_slim );
+                        return 1;
+                    else:
+                        return 0;
+                    endif;
+                else:
                     return 1;
-                } else {
-                    return 0;
-                }
-            } else {
-                return 1;
-            }
+                endif;
+                break;
+            case 2:
+                if ( file_exists( $url_slim ) ):
+                    if ( time() >= filemtime( $url_slim ) + $this->arr_general['avatars_cache_time'] ):
+                        unlink( $url ) && unlink( $url_slim );
+                        return 1;
+                    else:
+                        return 0;
+                    endif;
+                else:
+                    return 1;
+                endif;
+                break;
         }
     }
 
@@ -132,12 +145,16 @@ class General {
      * @return array                 Массив с настройками.
      */
     public function get_default_options() {
-        if ( file_exists( SESSIONS . '/options.php' ) ) {
-            return require SESSIONS . '/options.php';
-        } else {
-            header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' );
-            exit;
-        }
+            return file_exists( SESSIONS . '/options.php' ) ? require SESSIONS . '/options.php' : header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' );
+    }
+
+    /**
+     * Получение списка серверов.
+     *
+     * @return array                 Массив со списком серверов.
+     */
+    public function get_server_list() {
+        return file_exists( SESSIONS . 'servers_list.php' ) ? require SESSIONS . 'servers_list.php' : file_put_contents( SESSIONS . 'servers_list.php', '<?php return []; ' );
     }
 
     /**
@@ -150,24 +167,22 @@ class General {
      * @return string|false         Выводит содержимое SVG файла.
      */
     function get_icon( $group, $name, $category = null ) {
-        if( $category != null ) {
-            return print '<img src="' . CACHE . 'img/icons/' . $group . '/' . $category . '/' . $name . '.svg" class=svg>';
-        } else {
-                return print '<i class="zmdi zmdi-' . $name . ' zmdi-hc-fw"></i>';
-        }
+        return print $category == null ? '<i class="zmdi zmdi-' . $name . ' zmdi-hc-fw"></i>' : '<img src="' . CACHE . 'img/icons/' . $group . '/' . $category . '/' . $name . '.svg" class=svg>';
     }
 
     /**
      * Вывод JS скрипта на проверку актуальности аватара.
      *
-     * @param string $id      Steam ID - 32.
+     * @param  string   $id      Steam ID - 32.
+     * @param  int      $type    Тип аватара.
      *
-     * @return string         Скрипт.
+     * @return string            Скрипт.
      */
-    function get_js_relevance_avatar( $id ) {
-        $pos = strpos( $id, 'S' );
-        $con = $pos === false ? $id : con_steam32to64( $id );
-        $check = ( int )$this->checkAvatar( $con, 2 );
-        $this->arr_general['avatars'] == 1 && print sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
+    function get_js_relevance_avatar( $id, $type = 2 ) {
+        if ( $this->arr_general['avatars'] == 1 ):
+            $con = $id[0] == 'S' ? con_steam32to64( $id ) : $id;
+            $check = (int) $this->checkAvatar( $con, $type );
+            echo sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
+        endif;
     }
 }

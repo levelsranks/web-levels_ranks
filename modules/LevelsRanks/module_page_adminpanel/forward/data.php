@@ -20,8 +20,8 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
             }
         }
         unlink( SESSIONS . '/modules_cache.php' );
-        unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
-        unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
+        unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
+        unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
         header( 'Location: ' . get_url(1) );
         exit();
     }
@@ -35,8 +35,8 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         }
         unlink( SESSIONS . '/modules_cache.php' );
         unlink( SESSIONS . '/modules_initialization.php' );
-        unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
-        unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
+        unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
+        unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
         header( 'Location: ' . get_url(1) );
         exit();
     }
@@ -75,8 +75,8 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
           'form_border' => $_POST['form_border']
        ];
        file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
-       unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $General->arr_general['actual_css_ver'] . '.css');
-       unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $General->arr_general['actual_js_ver'] . '.js');
+       unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
+       unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
        header( 'Location: ' . get_url(1) );
        exit;
 }
@@ -114,4 +114,7 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
         header('Location: ' . get_url(1));
         exit;
     }
+
+    // Задаём заголовок страницы.
+    $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Admin_panel') );
 endif;
