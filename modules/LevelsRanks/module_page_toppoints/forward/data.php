@@ -96,5 +96,8 @@ $page_num > $page_max && header('Location: ' . $General->arr_general['site']);
 $res == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
 ($server_group > $res_data_count-1) ? header('Location: ' . $General->arr_general['site']) : false;
 
-$data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
-$data['global']['info'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
+// Задаём заголовок страницы.
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+
+// Задаём описание страницы.
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );

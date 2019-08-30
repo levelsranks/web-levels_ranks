@@ -63,6 +63,21 @@ class Modules {
     public $actual_library = [];
 
     /**
+     * @var string
+     */
+    public $page_title = '';
+
+    /**
+     * @var string
+     */
+    public $page_description = '';
+
+    /**
+     * @var string
+     */
+    public $page_image = '';
+
+    /**
      * Организация работы вэб-приложения с модулями.
      */
     function __construct( $General ) {
@@ -109,9 +124,10 @@ class Modules {
             $result = [];
             $data_always = [];
 
-            // Перебором забираем корневое название модулей.
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
-                 $module = array_keys( $this->array_modules )[ $i ];
+
+                // Перебором забираем корневое название модуля.
+                $module = array_keys( $this->array_modules )[ $i ];
                 if (
                      $this->array_modules[ $module ]['setting']['status'] == 1
                      && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
@@ -178,7 +194,11 @@ class Modules {
      * @return string               Выводит слово в переводе.
      */
     public function get_translate_phrase( $phrase, $group = '' ) {
-        return empty ( $group ) ? $this->arr_translations[ $phrase ][ $_SESSION['language'] ] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
+        if ( empty ( $group ) ):
+            return empty ( $this->arr_translations[ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $phrase ]['EN'] : $this->arr_translations[ $phrase ][ $_SESSION['language'] ];
+        else:
+            return empty ( $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $group ][ $phrase ]['EN'] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
+        endif;
     }
 
     /**
@@ -263,25 +283,29 @@ class Modules {
      * Проверка сгенерированного стиля.
      */
     public function check_generated_style() {
-
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
         if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) || empty( $this->actual_library['actual_css_ver'] ) ):
 
-			// Проверка на существование каталога с генерируемыми файлами
+            // Проверка на существование каталога с генерируемыми файлами
             ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
-			
+
+            // Если файл с темой существует, добавить ссылку на файл в массив для компрессии.
             file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
-            // Лучше в будущем переработать и преобразовать в цикл, а для начала - НОРМ
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/animations/' . (int) $this->General->arr_general['animations'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/animations/' . (int) $this->General->arr_general['animations'] . '.css';
+            // Подсчёт количества под-стилей.
+            $css_library = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/css_library/', 1 ), array( '..', '.' ) );
 
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/badge/' . (int) $this->General->arr_general['badge_type'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/badge/' . (int) $this->General->arr_general['badge_type'] . '.css';
+            // После проверки на существование подстиля, добавление ссылки подстиля в массив для компрессии.
+            for ( $cgs = 0, $cgs_c = sizeof( $css_library ); $cgs < $cgs_c; $cgs++ ) {
+                file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css';
+            }
 
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/form_border/' . (int) $this->General->arr_general['form_border'] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/form_border/' . (int) $this->General->arr_general['form_border'] . '.css';
-
-            // Перебором забираем корневое название модулей.
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+
+                // Перебором забираем корневое название модуля.
                 $module = array_keys( $this->array_modules )[ $i ];
+
+                // Если модуль проходит проверку и имеет свою стилистику, то забираем ссылку на стиль в массив для компрессии.
                 if (
                     $this->array_modules[ $module ]['setting']['status'] == 1
                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
@@ -291,11 +315,11 @@ class Modules {
                 endif;
             endfor;
 
+            // Сжимаем все файлы из массива.
             $final_css_compress = $this->action_css_compress( $files_css_compress );
 
+            // Обновляем актуальность кэша.
             $this->actual_library['actual_css_ver'] = time();
-
-            // Обновляем options
             file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
 
             // Очистка старых кэш файлов
@@ -374,10 +398,36 @@ class Modules {
      * Добавление какого-либо текста в информационный блок авторизованного игрока в sidebar.
      *
      * @param string $text             Опции раздела.
-     *
      */
     public function set_user_info_text( $text ) {
         $this->arr_user_info[] = $text;
+    }
+
+    /**
+     * Задать заглавие страницы.
+     *
+     * @param string $text             Заголовок страницы.
+     */
+    public function set_page_title( $text ) {
+        $this->page_title = $text;
+    }
+
+    /**
+     * Задать описание страницы.
+     *
+     * @param string $text             Описание страницы.
+     */
+    public function set_page_description( $text ) {
+        $this->page_description = $text;
+    }
+
+    /**
+     * Задать изображение страницы.
+     *
+     * @param string $text             Изображение страницы.
+     */
+    public function set_page_image( $text ) {
+        $this->page_image = $text;
     }
 
     /**
@@ -421,27 +471,28 @@ class Modules {
      * Перевод времени.
      *
      * @param int $seconds          Время в секундах
+     * @param int $type             Тип вывода.
      *
      * @return string               Итог перевода.
      */
-    function action_time_exchange( $seconds ) {
-        if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 ) {
+    function action_time_exchange( $seconds, $type = 0 ) {
+        if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 && ( $type == 0 || $type == 5 ) ) {
             $month = floor($seconds / 60 / 60 / 24 / 30 );
             return $month > 1 ? $month . ' ' . $this->get_translate_phrase('_Months') : $month . ' ' . $this->get_translate_phrase('_Month');
 
-        } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 ) {
+        } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 && ( $type == 0 || $type == 4 ) ) {
             $week = floor($seconds / 60 / 60 / 24 / 7 );
             return $week > 1 ? $week . ' ' . $this->get_translate_phrase('_Weeks') : $week . ' ' . $this->get_translate_phrase('_Week');
 
-        } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 ) {
+        } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 && ( $type == 0 || $type == 3 ) ) {
             $day = floor($seconds / 60 / 60 / 24 );
             return $day > 1 ? $day . ' ' . $this->get_translate_phrase('_Days') : $day . ' ' . $this->get_translate_phrase('_Day');
 
-        } elseif ( floor($seconds / 60 / 60 ) != 0 ) {
+        } elseif ( floor($seconds / 60 / 60 ) != 0 && ( $type == 0 || $type == 2 ) ) {
             $hour = floor($seconds / 60 / 60 );
             return $hour > 1 ? $hour . ' ' . $this->get_translate_phrase('_Hour') : $hour . ' ' . $this->get_translate_phrase('_Hour');
 
-        } elseif ( floor($seconds / 60 ) != 0 ) {
+        } elseif ( floor($seconds / 60 ) != 0 && ( $type == 0 || $type == 1 ) ) {
             $min = floor($seconds / 60 );
             return $min > 1 ? floor($seconds / 60 ) . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
 

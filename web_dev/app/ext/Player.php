@@ -141,7 +141,7 @@ class Player {
                             if ( ! empty( end($this->found)['server_group'] ) ):
                                 $check_it = true;
                                 if ( empty( $_GET['server_group'] ) ):
-                                    echo $this->server_group = end( $this->found )['server_group'];
+                                    $this->server_group = end( $this->found )['server_group'];
                                 endif;
                             endif;
                         endif;

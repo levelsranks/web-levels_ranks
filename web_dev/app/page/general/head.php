@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="<?php empty( $data['global']['info'] ) ? print $General->arr_general['info'] : print $data['global']['info']?>">
-    <meta property="og:description" content="<?php empty( $data['global']['info'] ) ? print $General->arr_general['info'] : print $data['global']['info']?>">
+    <meta name="description" content="<?php echo empty( $Modules->page_description ) ? $General->arr_general['info'] : $Modules->page_description?>">
+    <meta property="og:description" content="<?php echo empty( $Modules->page_description ) ? $General->arr_general['info'] : $Modules->page_description?>">
     <meta name="author" content="https//vk.com/M0st1ce">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title><?php empty( $data['global']['title'] ) ? print $General->arr_general['full_name'] : print $data['global']['title']?></title>
-    <meta property="og:title" content="<?php empty ( $data['global']['title'] ) ? print $General->arr_general['full_name'] : print $data['global']['title']?>">
-<?php if( ! empty( $data['global']['avatar'] ) ) :?>
-    <meta property="og:image" content="<?php echo $General->arr_general['site'] . $data['global']['avatar']?>">
-    <link rel="image_src" href="<?php echo $General->arr_general['site'] . $data['global']['avatar']?>">
-    <meta name="twitter:image" content="<?php echo $General->arr_general['site'] . $data['global']['avatar']?>">
+    <title><?php echo empty( $Modules->page_title ) ? $General->arr_general['info'] : $Modules->page_title?></title>
+    <meta property="og:title" content="<?php echo empty( $Modules->page_title ) ? $General->arr_general['info'] : $Modules->page_title?>">
+<?php if( ! empty( $Modules->page_image ) ) :?>
+    <meta property="og:image" content="<?php echo $General->arr_general['site'] . $Modules->page_image?>">
+    <link rel="image_src" href="<?php echo $General->arr_general['site'] . $Modules->page_image?>">
+    <meta name="twitter:image" content="<?php echo $General->arr_general['site'] . $Modules->page_image?>">
 <?php else :?>
     <meta property="og:image" content="<?php echo $og_image = file_exists( CACHE . '/img/global/bar_logo.jpg' ) ? $General->arr_general['site'] . '/storage/cache/img/global/bar_logo.jpg' : copy(CACHE . '/img/global/default_bar_logo.jpg', CACHE . '/img/global/bar_logo.jpg') && $General->arr_general['site'] . '/storage/cache/img/global/bar_logo.jpg'?>">
     <link rel="image_src" href="<?php echo $og_image?>">

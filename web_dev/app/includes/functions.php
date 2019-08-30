@@ -62,37 +62,36 @@ function var_export_opt($var, $return = true) {
  * @return string|false         Выводит итоговое значение раздела.
  */
 function get_section( $section, $default ) {
-    return ! empty( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
+    return isset( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
 }
 
 /**
- * Получает и задает название подраздела из URL по умолчанию.
+ * Получить размер массива.
  *
- * @param array $arr            Название подраздела.
+ * @param  array $arr          Массив.
  *
- * @return int                  Выводит итоговое количесво элементов массива
+ * @return int                 Выводит итоговое количесво элементов массива.
  */
 function get_arr_size( $arr ) {
-    return isset ( $arr ) ? sizeof( $arr ) : 0;
+    return is_array( $arr ) ? sizeof( $arr ) : 0;
 }
 
+/**
+ * Получить URL страницы.
+ *
+ * @param  int $type          Тип URL.
+ *
+ * @return string             URL страницы.
+ */
+
 function get_url( $type ) {
-    if ( $type == 1) {
-        $URL = 'http';
-        if ( $_SERVER["HTTPS"] == "on" ) {
-            $URL .= "s";
-        }
-        $URL .= '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-        return $URL;
-    } elseif ( $type == 2 ) {
-        $URL = 'http';
-        if ( $_SERVER["HTTPS"] == "on" ) {
-            $URL .= "s";
-        }
-        $URL .= '://';
-        $URL_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-        $URL .= $_SERVER['HTTP_HOST'] . $URL_parts[0];
-        return $URL;
+    switch ( $type ) {
+        case 1:
+            return '//' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+            break;
+        case 2:
+            return '//' .$_SERVER['HTTP_HOST'] . explode( '?', $_SERVER['REQUEST_URI'], 2 )[0];
+            break;
     }
 }
 

@@ -4,13 +4,7 @@
             <div class="user-info">
                 <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#login' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid'] . '&search=1'?>">
                     <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
-                    <img id="<?php empty( $_SESSION['steamid'] ) ? print 0 : print $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="
-                    <?php if( empty( $_SESSION['steamid'] ) ) { echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                    } else{
-                        if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar($_SESSION['steamid'],1);
-                        } elseif( $General->arr_general['avatars'] == 2 || $General->arr_general['avatars'] == 0) {
-                            echo 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                        }}?>"></a>
+                    <img id="<?php echo empty( $_SESSION['steamid'] ) ? 0 : $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="<?php echo empty( $_SESSION['steamid'] ) ? 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' : $General->getAvatar( $_SESSION['steamid'], 1 )?>"></a>
                 <div class="user-details">
                     <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print $Modules->get_translate_phrase('_Hero_without_name') : print $Auth->user_auth[0]['name']?></span>
                     <?php if( ! empty( $_SESSION['steamid'] ) ):?>

@@ -40,12 +40,8 @@
                 <div class="profile__block">
                 <div class="user-block">
                     <div class="block">
-                    <?php $General->get_js_relevance_avatar( $Player->get_steam_32() )?>
-                    <a href="<?php $Player->found[  $Player->server_group  ]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64( $Player->get_steam_32() )?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64(  $Player->get_steam_32()  )?>"class="rounded-circle avatar" data-src="
-                           <?php if ( $General->arr_general['avatars'] == 1){ echo $General->getAvatar( con_steam32to64( $Player->get_steam_32()  ), 1);
-                           } elseif( $General->arr_general['avatars'] == 2 || $General->arr_general['avatars'] == 0) {
-                               echo 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
-                           }?>"></a>
+                    <?php $General->get_js_relevance_avatar( $Player->get_steam_32(), 1 )?>
+                    <a href="<?php $Player->found[  $Player->server_group  ]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64( $Player->get_steam_32() )?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64(  $Player->get_steam_32()  )?>"class="rounded-circle avatar" data-src="<?php echo $General->getAvatar( con_steam32to64( $Player->get_steam_32()  ), 1)?>"></a>
                     <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 17 ) )?></div>
                     <div class="country">-</div>
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">

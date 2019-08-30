@@ -32,5 +32,8 @@ $page_num_min = ($page_num - 1) * PLAYERS_ON_PAGE;
 // Запрос на получение информации о банах
 $res = $Db->queryAll('SourceBans', $Db->db_data['SourceBans'][0]['USER_ID'], $Db->db_data['SourceBans'][0]['DB_num'], "SELECT " . $Db->db_data['SourceBans'][0]['Table'] . "bans.name, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.authid, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.created, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.length, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.reason, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.type, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.ends, " . $Db->db_data['SourceBans'][0]['Table'] . "bans.RemoveType, sb_admins.user, sb_admins.aid, sb_admins.authid AS admin_authid FROM " . $Db->db_data['SourceBans'][0]['Table'] . "bans INNER JOIN sb_admins ON " . $Db->db_data['SourceBans'][0]['Table'] . "bans.aid=sb_admins.aid order by created desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
 
-$data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Bans') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
-$data['global']['info'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Bans') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
+// Задаём заголовок страницы.
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Bans') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+
+// Задаём описание страницы.
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Bans') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );

@@ -33,5 +33,8 @@ if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_r
     $Modules->set_module_cache( 'module_page_rankstats', $data['module_page_rankstats'] );
 }
 
-$data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'];
-$data['global']['info'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'];
+// Задаём заголовок страницы.
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] );
+
+// Задаём описание страницы.
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] );

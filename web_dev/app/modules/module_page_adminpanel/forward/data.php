@@ -114,4 +114,7 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
         header('Location: ' . get_url(1));
         exit;
     }
+
+    // Задаём заголовок страницы.
+    $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Admin_panel') );
 endif;
