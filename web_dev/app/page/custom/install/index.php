@@ -168,6 +168,7 @@ if( isset( $_POST['option_save'] ) ) {
         'form_border' => (int) $_POST['form_border'],
         'web_key' => $_POST['web_key'],
         'avatars' => (int) $_POST['avatars'],
+		'avatars_cache_time'=>259200,
         'icon_type' => 'SVG',
         'badge_type' => 2,
         'steam_auth' => (int) $_POST['steam_auth'],
