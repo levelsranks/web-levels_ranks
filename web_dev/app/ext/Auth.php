@@ -73,6 +73,8 @@ class Auth {
                 if($this->admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $this->admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
                     $_SESSION['steamid'] = con_steam32to64( $this->General->arr_general['admin'] );
                     $_SESSION['steamid32'] = $this->General->arr_general['admin'];
+                    preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid32'], $arr, PREG_SET_ORDER);
+                    $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
                     $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                     $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
                     header( 'Location: ' . get_url(1) . '#' );
