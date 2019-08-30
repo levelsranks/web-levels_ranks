@@ -3,126 +3,147 @@
     "EN" : "No rank",
     "RU" : "Нету ранга",
     "UA" : "Нема рангу",
-    "LT" : "Nėra rango"
+    "LT" : "Nėra rango",
+	"CH" : "无段位"
   },
   "0": {
     "EN" : "No rank",
     "RU" : "Нету ранга",
     "UA" : "Нема рангу",
-    "LT" : "Nėra rango"
+    "LT" : "Nėra rango",
+	"CH" : "无段位"
   },
   "00": {
     "EN" : "No rank",
     "RU" : "Нету ранга",
     "UA" : "Нема рангу",
-    "LT" : "Nėra rango"
+    "LT" : "Nėra rango",
+	"CH" : "无段位"
   },
   "1": {
     "EN" : "Silver 1",
     "RU" : "Серебро 1",
     "UA" : "Срібло 1",
-    "LT" :	"Silver 1"
+    "LT" :	"Silver 1",
+	"CH" : "白银 ー I"
   },
   "2": {
     "EN" : "Silver 2",
     "RU" : "Серебро 2",
     "UA" : "Срібло 2",
-    "LT" :	"Silver 2"
+    "LT" :	"Silver 2",
+	"CH" : "白银 ー II"
   },
   "3": {
     "EN" : "Silver 3",
     "RU" : "Серебро 3",
     "UA" : "Срібло 3",
-    "LT" :	"Silver 3"
+    "LT" :	"Silver 3",
+	"CH" : "白银 ー III"
   },
   "4": {
     "EN" : "Silver 4",
     "RU" : "Серебро 4",
     "UA" : "Срібло 4",
-    "LT" :	"Silver 4"
+    "LT" :	"Silver 4",
+	"CH" : "白银 ー IV"
   },
   "5": {
     "EN" : "Silver Elite",
     "RU" : "Серебро Элита",
     "UA" : "Срібло Еліта",
-    "LT" : "Silver Elite"
+    "LT" : "Silver Elite",
+	"CH" : "白银 ー 精英"
   },
   "6": {
     "EN" : "Silver Elite Master",
     "RU" : "Серебро - Великий Магистр",
     "UA" : "Срібло - Великий Магістр",
-    "LT" : "Silver Elite Master"
+    "LT" : "Silver Elite Master",
+	"CH" : "白银 ー 大师级精英"
   },
   "7": {
     "EN" : "Gold Nova 1",
     "RU" : "Золотая звезда 1",
     "UA" : "Золота зірка 1",
-    "LT" : "Gold Nova 1"
+    "LT" : "Gold Nova 1",
+	"CH" : "黄金新星 ー I"
   },
   "8": {
     "EN" : "Gold Nova 2",
     "RU" : "Золотая звезда 2",
     "UA" : "Золота зірка 2",
-    "LT" : "Gold Nova 2"
+    "LT" : "Gold Nova 2",
+	"CH" : "黄金新星 ー II"
   },
   "9": {
     "EN" : "Gold Nova 3",
     "RU" : "Золотая звезда 3",
     "UA" : "Золота зірка 3",
-    "LT" : "Gold Nova 3"
+    "LT" : "Gold Nova 3",
+	"CH" : "黄金新星 ー III"
   },
   "10": {
     "EN" : "Gold Nova Master",
     "RU" : "Золотая звезда - Магистр",
     "UA" : "Золота зірка - Магістр",
-    "LT" : "Gold Nova Master"
+    "LT" : "Gold Nova Master",
+	"CH" : "黄金新星 ー 大师级"
   },
   "11": {
     "EN" : "Master Guardian 1",
     "RU" : "Магистр-хранитель 1",
     "UA" : "Магістр-хранитель 1",
-    "LT" : "Master Guardian 1"
+    "LT" : "Master Guardian 1",
+	"CH" : "大师级守护者 ー I"
   },
   "12": {
     "EN" : "Master Guardian 2",
     "RU" : "Магистр-хранитель 2",
     "UA" : "Магістр-хранитель 2",
-    "LT" : "Master Guardian 2"
+    "LT" : "Master Guardian 2",
+	"CH" : "大师级守护者 ー II"
   },
   "13": {
     "EN" : "Master Guardian Elite",
     "RU" : "Магистр-хранитель Элита",
     "UA" : "Магістр-хранитель Еліта",
-    "LT" : "Master Guardian Elite"
+    "LT" : "Master Guardian Elite",
+	"CH" : "大师级守护者 ー 精英"
   },
   "14": {
     "EN" : "Distinguished Master Guardian",
     "RU" : "Заслуженный Магистр-хранитель",
     "UA" : "Заслужений Магістр-хранитель",
-    "LT" : "Distinguished Master Guardian"
+    "LT" : "Distinguished Master Guardian",
+	"CH" : "大师级守护者 ー 卓越"
   },
   "15": {
     "EN" : "Legendary Eagle",
     "RU" : "Легендарный Беркут",
     "UA" : "Легендарный Беркут",
-    "LT" : "Legendary Eagle"
+    "LT" : "Legendary Eagle",
+	"CH" : "传奇之鹰"
   },
   "16": {
     "EN" : "Legendary Eagle Master",
     "RU" : "Легендарный Беркут-магистр",
     "UA" : "Легендарний Беркут-магістр",
-    "LT" : "Legendary Eagle Master"
+    "LT" : "Legendary Eagle Master",
+	"CH" : "传奇之鹰 ー 大师级"
   },
   "17": {
     "EN" : "Supreme Master First Class",
     "RU" : "Великий Магистр Высшего Ранга",
     "UA" : "Великий Магістр Вищого Рангу",
-    "LT" : "Supreme Master First Class"
+    "LT" : "Supreme Master First Class",
+	"CH" : "无上之首席大师"
   },
   "18": {
     "EN" : "The Global Elite",
     "RU" : "Всемирная Элита",
     "UA" : "Всесвітня Еліта",
-    "LT" : "The Global Elite"
+    "LT" : "The Global Elite",
+	"CH" : "全球精英"
   }
 }
