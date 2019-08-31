@@ -225,3 +225,21 @@ function IsJsonString(str) {
     }
     return true;
 }
+
+$('#admin_idebar_right').click(function(){
+    if($('.sidebar-right').hasClass("unshow"))
+    {
+        $('.sidebar-right').removeClass("unshow");
+        SaveInStorage('panel_state', 'true');
+    }
+    else
+    {
+        $('.sidebar-right').addClass("unshow");
+        SaveInStorage('panel_state', 'false');
+    }
+});
+
+if(LoadFromStorage('panel_state') === 'true')
+{
+    $('.sidebar-right').removeClass("unshow");
+}else $('.sidebar-right').addClass("unshow");
