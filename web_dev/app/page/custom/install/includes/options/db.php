@@ -1,6 +1,6 @@
 <?php ! defined("IN_LR") && die()?>
 <div class="back">
-    <div class="sidebar_title">Настройка базы данных</div>
+    <div class="sidebar_title"><?php echo $options['language'] == 'EN' ? 'Database setup' : 'Настройка базы данных'?></div>
     <form enctype="multipart/form-data" method="post">
         <div class="db_left">
             <div class="input-form">
@@ -41,8 +41,8 @@
             </div>
             <div class="input-form">
                 <div class="input_text">
-                    <div class="info">Название сервера</div>
-                    <input name="NAME" value="" placeholder="НОЖИ | ПЕРЧАТКИ | АНИМЕ" required>
+                    <div class="info"><?php echo $options['language'] == 'EN' ? 'Server Name' : 'Название сервера'?></div>
+                    <input name="NAME" value="" placeholder="<?php echo $options['language'] == 'EN' ? 'KNIFE | GLOVES | ANIME' : 'НОЖИ | ПЕРЧАТКИ | АНИМЕ'?>" required>
                 </div>
             </div>
             <div class="input-form"><div class="input_text">Game mode</div>
@@ -57,12 +57,12 @@
                     <option value="0">No Steam</option>
                 </select>
             </div>
-            <div class="check"><input class='btn' name="db_check" type="submit" value="Проверить"></div>
+            <div class="check"><input class='btn' name="db_check" type="submit" value="<?php echo $options['language'] == 'EN' ? 'Check' : 'Проверить'?>"></div>
         </div>
         <div class="db_right">
                 <img src="../../../../app/page/custom/install/img/db.png">
-                <div class="sidebar_name">Данные брать из databases.cfg</div>
-                <?php if( ! empty( $db_check ) && $db_check == 1):?><div class="sidebar_name ERROR">НЕТУ ПОДКЛЮЧЕНИЯ К ВАШЕЙ БАЗЕ ИЛИ НЕТУ ТАБЛИЦЫ</div><?php endif?>
+                <div class="sidebar_name"><?php echo $options['language'] == 'EN' ? 'Take data from' : 'Данные брать из'?> databases.cfg</div>
+                <?php if( ! empty( $db_check ) && $db_check == 1):?><div class="sidebar_name ERROR"><?php echo $options['language'] == 'EN' ? 'CONNECT ERROR' : 'НЕТУ ПОДКЛЮЧЕНИЯ К ВАШЕЙ БАЗЕ ИЛИ НЕТУ ТАБЛИЦЫ'?></div><?php endif?>
         </div>
     </form>
 </div>
