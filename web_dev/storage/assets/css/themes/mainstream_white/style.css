@@ -2593,3 +2593,7 @@ pre {
 .notifications-item .text {
     font-size: 12px;
 }
+
+.unshow {
+    width: 0px !important;
+}
