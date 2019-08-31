@@ -48,7 +48,7 @@ class Auth {
 
         $this->Db = $Db;
 
-        $this->admins = require SESSIONS . 'admins.php';
+        $this->admins = $this->get_admins_list();
 
         $this->admins_count = sizeof( $this->admins );
 
@@ -64,6 +64,21 @@ class Auth {
         $this->_POST();
 
         isset( $_SESSION['steamid'] ) && $this->get_authorization_sidebar_data();
+    }
+
+    /**
+     * Получение списка администраторов.
+     *
+     * @return array                 Массив с администраторами..
+     */
+    public function get_admins_list() {
+        if ( file_exists( SESSIONS . '/admins.php' ) ):
+            return require SESSIONS . '/admins.php';
+        else:
+            file_put_contents( SESSIONS . 'admins.php', '<?php return [];' );
+            return [];
+        endif;
+
     }
 
     public function _POST() {

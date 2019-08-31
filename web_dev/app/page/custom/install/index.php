@@ -223,7 +223,7 @@ if ( isset( $_POST['check_admin_steam_net'] ) && isset( $_SESSION['admin'] ) ) {
 }
 
 if ( isset( $_POST['admin_nosteam_save'] ) ) {
-    $admin[] = ['login' => $_POST['admin_login'],'pass' => $_POST['admin_login'], 'access' => 'z'];
+    $admin[] = ['login' => $_POST['admin_login'],'pass' => $_POST['admin_pass'], 'access' => 'z'];
     $options['admin'] = '1';
     file_put_contents(SESSIONS . '/admins.php', '<?php return ' . var_export_min( $admin ) . ";\n");
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
