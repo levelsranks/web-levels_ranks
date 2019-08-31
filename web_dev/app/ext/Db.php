@@ -91,7 +91,7 @@ class Db {
         # Получение настроек с модами, пользователями, базами данных и таблицами.
         ! file_exists ( SESSIONS . '/db.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
 
-        $this->db = require SESSIONS . '/db.php';
+        $this->db = $this->get_db_options();
 
         // PDO Условия.
         $this->options = [
@@ -203,6 +203,16 @@ class Db {
         }
 
         $this->table_statistics_count = $this->table_count['LevelsRanks'] + $this->table_count['FPS'];
+    }
+
+    /**
+     * Получение настроек базы данных.
+     *
+     * @return array                 Массив с настройками.
+     */
+    private function get_db_options() {
+        $db = file_exists( SESSIONS . '/db.php' ) ? require SESSIONS . '/db.php' : header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' );
+        return empty( $db ) ? header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' ) : $db;
     }
 
     /**

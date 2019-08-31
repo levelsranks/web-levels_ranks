@@ -20,6 +20,19 @@ function file_get_contents_fix( $file ) {
 }
 
 /**
+ * Фикс функции header для криво настроенного сервера.
+ *
+ * @param  string $url      Переадрисация по URL.
+ *
+ */
+function header_fix( $url ) {
+    echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
+    echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
+    header( 'Location: ' . $url );
+    exit;
+}
+
+/**
  * Сокращение вывода var_export до одной строки.
  *
  * @param array $var        Массив данных
