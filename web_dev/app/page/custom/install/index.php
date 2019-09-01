@@ -236,9 +236,20 @@ if( isset( $_POST['db_check'] ) ) {
 
     $con = mysqli_connect($_POST['HOST'], $_POST['USER'], $_POST['PASS'], $_POST['DATABASE'], $_POST['PORT']);
 
-    $result = mysqli_query($con, 'SELECT name FROM ' . $_POST['TABLE'] . ' ORDER BY name DESC LIMIT 1');
+    if ( empty( $_POST['TABLE'] ) ):
+        if( $_POST['STATS'] == 'LevelsRanks'):
+            $db_table = 'lvl_base';
+        elseif( $_POST['STATS'] == 'FPS' ):
+            $db_table = 'fps_servers_stats';
+        endif;
+    else:
+        $db_table = $_POST['TABLE'];
+    endif;
+
+    $result = mysqli_query($con, 'SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
 
     if ( $result ) {
+
         $db_check = 2;
         $table = 'CREATE TABLE IF NOT EXISTS lr_web_notifications (
                   `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -251,7 +262,8 @@ if( isset( $_POST['db_check'] ) ) {
                   status int(11) NOT NULL,
                   date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;';
         $con->query( $table );
-        $db = ['LevelsRanks' => [['HOST' => $_POST['HOST'], 'PORT' => $_POST['PORT'], 'USER' => $_POST['USER'], 'PASS' => $_POST['PASS'], 'DB' => [['DB' => $_POST['DATABASE'], 'Prefix' => [['table' => $_POST['TABLE'], 'name' => $_POST['NAME'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
+
+        $db = [$_POST['STATS'] => [['HOST' => $_POST['HOST'], 'PORT' => $_POST['PORT'], 'USER' => $_POST['USER'], 'PASS' => $_POST['PASS'], 'DB' => [['DB' => $_POST['DATABASE'], 'Prefix' => [['table' => $db_table, 'name' => $_POST['NAME'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
         file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
         header_fix( get_url(1) );
     } else {

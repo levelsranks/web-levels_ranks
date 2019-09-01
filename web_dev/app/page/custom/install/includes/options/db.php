@@ -3,47 +3,18 @@
     <div class="sidebar_title"><?php echo $options['language'] == 'EN' ? 'Database setup' : 'Настройка базы данных'?></div>
     <form enctype="multipart/form-data" method="post">
         <div class="db_left">
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">HOST</div>
-                    <input name="HOST" value="" placeholder="133.7.22.8" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">USER</div>
-                    <input name="USER" value="" placeholder="rootyra" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">DATABASE</div>
-                    <input name="DATABASE" value="" placeholder="ocgn" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">PORT</div>
-                    <input name="PORT" value="3306" placeholder="3306" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">PASS</div>
-                    <input name="PASS" value="" placeholder="ququlolkek" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info">TABLE</div>
-                    <input name="TABLE" value="" placeholder="lvl_base" required>
-                </div>
-            </div>
-            <div class="input-form">
-                <div class="input_text">
-                    <div class="info"><?php echo $options['language'] == 'EN' ? 'Server Name' : 'Название сервера'?></div>
-                    <input name="NAME" value="" placeholder="<?php echo $options['language'] == 'EN' ? 'KNIFE | GLOVES | ANIME' : 'НОЖИ | ПЕРЧАТКИ | АНИМЕ'?>" required>
-                </div>
+            <div class="input-form"><div class="input_text">HOST</div><input name="HOST" value="<?php ! empty( $_POST['HOST'] ) && print $_POST['HOST']?>"></div>
+            <div class="input-form"><div class="input_text">USER</div><input name="USER" value="<?php ! empty( $_POST['USER'] ) && print $_POST['USER']?>"></div>
+            <div class="input-form"><div class="input_text">DATABASE</div><input name="DATABASE" value="<?php ! empty( $_POST['DATABASE'] ) && print $_POST['DATABASE']?>"></div>
+            <div class="input-form"><div class="input_text">PORT</div><input name="PORT" value="3306"></div>
+            <div class="input-form"><div class="input_text">PASS</div><input name="PASS" value="<?php ! empty( $_POST['PASS'] ) && print $_POST['PASS']?>"></div>
+            <div class="input-form"><div class="input_text">TABLE</div><input name="TABLE" value="<?php ! empty( $_POST['TABLE'] ) && print $_POST['TABLE']?>" placeholder="Если вы не меняли название таблицы, оставьте поле пустым, пожалуйста"></div>
+            <div class="input-form"><div class="input_text"><?php echo $options['language'] == 'EN' ? 'Server Name' : 'Название сервера'?></div><input name="NAME" value="<?php ! empty( $_POST['NAME'] ) && print $_POST['NAME']?>" placeholder="<?php echo $options['language'] == 'EN' ? 'KNIFE | GLOVES | ANIME' : 'НОЖИ | ПЕРЧАТКИ | АНИМЕ'?>"></div>
+            <div class="input-form"><div class="input_text">Статистика</div>
+                <select name="STATS">
+                    <option value="LevelsRanks">Levels Ranks</option>
+                    <option value="FPS">Fire Players Stats</option>
+                </select>
             </div>
             <div class="input-form"><div class="input_text">Game mode</div>
                 <select name="game_mod">
