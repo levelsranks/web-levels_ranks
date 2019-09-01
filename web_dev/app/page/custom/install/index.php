@@ -310,10 +310,10 @@ if ( empty( $options['language'] ) ) {
     require PAGE_CUSTOM . 'install/includes/options/admin_steam.php';
 } elseif ( empty( $db ) ) {
     require PAGE_CUSTOM . 'install/includes/options/db.php';
-} else {?>
-    <script type="text/javascript">window.location.href="<?php echo '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0]?>";</script>
-    <noscript><meta http-equiv="refresh" content="0;url=<?php echo '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0]?>" /></noscript>
-<?}?></div>
+} else {
+    header_fix( '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0] );
+    exit;}?>
+</div>
 </div>
 </body>
 </html>
