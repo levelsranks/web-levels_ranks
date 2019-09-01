@@ -141,6 +141,7 @@ if ( ! empty( $_POST['web_key'] ) ) {
     $data = json_decode( $url, true )['response']['players'];
     if( $data[0]['steamid'] == 76561198038416053 ) {
         $options['web_key'] = $_POST['web_key'];
+        $options['steam_only_authorization'] = 1;
         $options['steam_auth'] = 1;
         $options['only_steam_64'] = 0;
         $options['avatars'] = 1;
@@ -152,6 +153,7 @@ if ( ! empty( $_POST['web_key'] ) ) {
     }
 } elseif ( ! empty( $_POST['nope'] ) ) {
     $options['web_key'] = 1;
+    $options['steam_only_authorization'] = 0;
     $options['steam_auth'] = 0;
     $options['only_steam_64'] = 0;
     $options['avatars'] = 2;

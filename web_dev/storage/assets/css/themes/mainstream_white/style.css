@@ -2130,17 +2130,6 @@ template {
     position: fixed !important;
     width: 220px;
     z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important;
-}
-
-.sidebar-right {
-    margin-top: 56px;
-    top: 0;
-    right: 0;
-    height: 100%;
-    position: fixed !important;
-    width: 220px;
-    z-index: 2;
     background: var(--sidebar-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important;
 }

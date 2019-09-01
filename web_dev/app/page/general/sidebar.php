@@ -2,7 +2,7 @@
     <section class="sidebar">
         <div class="user-sidebar-block">
             <div class="user-info">
-                <a href="<?php empty( $_SESSION['steamid32'] ) ? print '#login' : print $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid'] . '&search=1'?>">
+                <a href="<?php echo empty( $_SESSION['steamid32'] ) ? $General->arr_general['steam_only_authorization'] == 1 ? '?auth=login' : '#login' : $General->arr_general['site'] . '?page=profiles&profile=' . $_SESSION['steamid'] . '&search=1'?>">
                     <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
                     <img id="<?php echo empty( $_SESSION['steamid'] ) ? 0 : $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="<?php echo empty( $_SESSION['steamid'] ) ? 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' : $General->getAvatar( $_SESSION['steamid'], 1 )?>"></a>
                 <div class="user-details">
@@ -15,7 +15,15 @@
                         <?php endfor;
                         endif;?>
                     <?php else:?>
-                        <span><a href="#login"><?php echo $Modules->get_translate_phrase('_Log_in')?></a></span>
+                        <span>
+                            <?php if( $General->arr_general['steam_only_authorization'] == 0 ):?>
+                            <a href="#login"><?php echo $Modules->get_translate_phrase('_Log_in')?></a>
+                            <?php else:?>
+                            <form id="log_in" enctype="multipart/form-data" method="post">
+                                <a href="?auth=login"><?php echo $Modules->get_translate_phrase('_Log_in')?></a>
+                            </form>
+                            <?php endif;?>
+                        </span>
                     <?php endif;?>
                 </div>
             </div>
@@ -82,7 +90,7 @@
         </ul>
     </section>
 </aside>
-<div class="swipe-area offcanvas"></div>
+<?php if( $General->arr_general['steam_only_authorization'] == 0 ):?>
 <div id="login" class="modal-window">
     <div>
         <div class="card">
@@ -109,3 +117,4 @@
         </div>
     </div>
 </div>
+<?php endif;?>

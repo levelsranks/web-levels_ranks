@@ -239,7 +239,8 @@ $('#admin_idebar_right').click(function(){
     }
 });
 
-if(LoadFromStorage('panel_state') === 'true')
-{
+if(LoadFromStorage('panel_state') === 'true') {
+    $('.sidebar-right').addClass("unshow");
+} else {
     $('.sidebar-right').removeClass("unshow");
-}else $('.sidebar-right').addClass("unshow");
+}

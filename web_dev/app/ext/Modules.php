@@ -494,7 +494,7 @@ class Modules {
 
         } elseif ( floor($seconds / 60 ) != 0 && ( $type == 0 || $type == 1 ) ) {
             $min = floor($seconds / 60 );
-            return $min > 1 ? floor($seconds / 60 ) . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
+            return $min > 1 ? $min . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
 
         } else {
             return $seconds . ' ' . $this->get_translate_phrase('_Second');
