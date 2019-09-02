@@ -23,7 +23,7 @@ if ( ( $data['module_block_main_top'] == '' ) || ( time() > $data['module_block_
     if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
         for ($d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):
             // Забираем массив даннхы
-            $data['module_block_main_top'][] = $Db->queryAll( 'LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'],'SELECT name,rank,steam,playtime,value,kills,deaths FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
+            $data['module_block_main_top'][] = $Db->queryAll( 'LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][$d]['DB_num'],'SELECT name, rank, steam, playtime, value, kills, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
         endfor;
     endif;
 
@@ -43,7 +43,8 @@ if ( ( $data['module_block_main_top'] == '' ) || ( time() > $data['module_block_
                                                           WHERE fps_ranks.rank_id = ' . $Db->db_data['FPS'][ $d-1 ]['ranks_id'] .' 
                                                           AND fps_ranks.points <= fps_servers_stats.points 
                                                           ORDER BY fps_ranks.points DESC LIMIT 1
-                                                        ) AS rank
+                                                        ) AS rank,
+                                                        CASE WHEN fps_servers_stats.deaths = 0 THEN fps_servers_stats.deaths = 1 END, TRUNCATE( fps_servers_stats.kills/fps_servers_stats.deaths, 2 ) AS kd
                                                         FROM fps_players
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                         WHERE fps_servers_stats.server_id = ' . $d . '

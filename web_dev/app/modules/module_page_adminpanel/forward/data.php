@@ -22,8 +22,7 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         unlink( SESSIONS . '/modules_cache.php' );
         unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
         unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
-        header( 'Location: ' . get_url(1) );
-        exit();
+        header_fix( get_url(1) );
     }
 
     if( isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
@@ -37,13 +36,12 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
         unlink( SESSIONS . '/modules_initialization.php' );
         unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
         unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
-        header( 'Location: ' . get_url(1) );
-        exit();
+        header_fix( get_url(1) );
     }
 
 if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
     unlink( SESSIONS . '/translator_cache.php' );
-    header( 'Location: ' . get_url(1) );
+    header_fix( get_url(1) );
     exit;
 }
 
@@ -54,31 +52,30 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
             'short_name' => $_POST['short_name'],
             'info' => $_POST['info'],
             'language' => $_POST['language'],
-            'steam_auth' => $_POST['steam_auth'],
+            'steam_auth' => (int) $_POST['steam_auth'],
             'web_key' => $_POST['web_key'],
             'admin' => $_POST['admin'],
             'only_steam_64' => $_POST['only_steam_64'] == 'on' ? 1 : 0,
-            'SB_admins_import' => $_POST['SB_admins_import']  == 'on' ? 1 : 0
+            'SB_admins_import' => $_POST['SB_admins_import']  == 'on' ? 1 : 0,
+            'steam_only_authorization' => $_POST['steam_only_authorization']  == 'on' ? 1 : 0
         ];
         file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
-        header( 'Location: ' . get_url(1) );
-        exit;
+        header_fix( get_url(1) );
     }
 
     if( isset( $_POST['option_two_save'] ) && IN_LR == true ) {
       $arr = require SESSIONS . 'options.php';
       $option = [
-          'dark_mode' => $_POST['dark_mode'],
-          'animations' => $_POST['animations'],
-          'avatars' => $_POST['avatars'],
-          'sidebar_open' => $_POST['sidebar_open'],
-          'form_border' => $_POST['form_border']
+          'dark_mode' => (int) $_POST['dark_mode'],
+          'animations' => (int) $_POST['animations'],
+          'avatars' => (int) $_POST['avatars'],
+          'sidebar_open' => (int) $_POST['sidebar_open'],
+          'form_border' => (int) $_POST['form_border']
        ];
        file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
        unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
        unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
-       header( 'Location: ' . get_url(1) );
-       exit;
+       header_fix( get_url(1) );
 }
 
     if(isset($_POST['data']) && IN_LR == true) {
@@ -111,8 +108,7 @@ if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
             $arr_servers[$i] = ['ip' => $ip[$i],'fakeip' => $fakeip[$i],'db' => $db[$i]];
         }
         file_put_contents( SESSIONS . 'servers_list.php', '<?php return '.var_export_min( $arr_servers, true ).";" );
-        header('Location: ' . get_url(1));
-        exit;
+        header_fix( get_url(1) );
     }
 
     // Задаём заголовок страницы.

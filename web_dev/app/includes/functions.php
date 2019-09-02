@@ -26,10 +26,13 @@ function file_get_contents_fix( $file ) {
  *
  */
 function header_fix( $url ) {
-    echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
-    echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
-    header( 'Location: ' . $url );
-    exit;
+    if ( ! headers_sent() ):
+        header( 'Location: ' . $url );
+        exit;
+    else:
+        echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
+        echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
+    endif;
 }
 
 /**

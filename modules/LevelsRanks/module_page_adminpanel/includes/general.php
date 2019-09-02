@@ -35,6 +35,10 @@
                         <input class="border-checkbox" type="checkbox" name="SB_admins_import" id="SB_admins_import" <?php $General->arr_general['SB_admins_import'] === 1 && print 'checked'?>>
                         <label class="border-checkbox-label" for="SB_admins_import"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Import_admin_list')?></label>
                 </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="steam_only_authorization" id="steam_only_authorization" <?php $General->arr_general['steam_only_authorization'] === 1 && print 'checked'?>>
+                    <label class="border-checkbox-label" for="steam_only_authorization">Авторизация исключительно по Steam</label>
+                </div>
             </form>
             <input class='btn' name="option_one_save" type="submit" form="options_one" value="<?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Save')?>">
         </div>

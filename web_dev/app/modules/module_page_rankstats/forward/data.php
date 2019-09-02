@@ -22,10 +22,20 @@ if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_r
     // Сохраняем текущее время и прибавляем к нему 1 час.
     $data['module_page_rankstats']['time'] = time() + $Modules->array_modules['module_page_rankstats']['setting']['cache_time'];
 
-    // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
-    for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
-        $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ') * 1.0) AS Percent FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' GROUP BY rank' );
-    }
+    // Проверка на подключенный мод - Levels Ranks
+    if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
+        // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
+        for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):
+            $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ') * 1.0) AS Percent FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' GROUP BY rank' );
+        endfor;
+    endif;
+
+    // Проверка на подключенный мод - FPS
+    if ( ! empty( $Db->db_data['FPS'] ) ):
+        for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
+            //
+        endfor;
+    endif;
 
     ! file_exists( MODULES_SESSIONS . 'module_page_rankstats' ) && mkdir( MODULES_SESSIONS . 'module_page_rankstats', 0777, true );
 
