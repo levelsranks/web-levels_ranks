@@ -91,11 +91,17 @@ substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/slim/' ) ), -4) !== '0777
 // Создание папки - css
 ! file_exists( ASSETS_CSS ) && mkdir( ASSETS_CSS, 0777, true );
 
+// Проверка на существование каталога с генерируемыми файлами
+! file_exists( ASSETS_CSS . 'generation/' ) && mkdir( ASSETS_CSS . 'generation/', 0777, true );
+
 // Проверка прав доступа на ассеты - CSS ( 0777 )
 substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/css/' );
 
 // Создание папки - js
 ! file_exists( ASSETS_JS ) && mkdir( ASSETS_JS, 0777, true );
+
+// Проверка на существование каталога с генерируемыми файлами
+! file_exists( ASSETS_JS . 'generation/' ) && mkdir( ASSETS_JS . 'generation/', 0777, true );
 
 // Проверка прав доступа на ассеты - JS ( 0777 )
 substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/js/' );

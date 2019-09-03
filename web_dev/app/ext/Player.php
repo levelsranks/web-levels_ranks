@@ -119,6 +119,7 @@ class Player {
 
             // Вводим переменную для работы с серверами FPS
             $f = 1;
+        
             // Поиск игрока в таблицах.
             for ( $i = 0; $i < $Db->table_count['FPS']; $i++ ):
                 if ( $Db->query( 'FPS', 0, 0, "SELECT fps_players.steam_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%" . $this->get_steam_64() . "%' AND fps_servers_stats.server_id = '" . $f++ . "' LIMIT 1" ) ):

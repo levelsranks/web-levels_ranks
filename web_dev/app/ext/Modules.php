@@ -172,7 +172,13 @@ class Modules {
      * @return array|false         Возвращает кэш модуля.
      */
     public function get_module_cache( $module ) {
-        return file_exists(MODULES_SESSIONS . $module . '/cache.php') ? require MODULES_SESSIONS . $module . '/cache.php' : false;
+        if( file_exists(MODULES_SESSIONS . $module . '/cache.php') ):
+            return require MODULES_SESSIONS . $module . '/cache.php';
+        else:
+            ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
+            file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return [];' );
+            return [];
+        endif;
     }
 
     /**
@@ -182,6 +188,7 @@ class Modules {
      * @param array $data           Массив данных.
      */
     public function set_module_cache( $module, $data ) {
+        ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
         file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return '.var_export_min( $data ).";" );
     }
 
@@ -324,7 +331,7 @@ class Modules {
 
             // Очистка старых кэш файлов
             $temp_files = glob(ASSETS_CSS . 'generation/*');
-            foreach($temp_files as $temp_file){
+            foreach( $temp_files as $temp_file ){
                 if( is_file( $temp_file ) )
                     unlink( $temp_file );
             }
@@ -367,8 +374,8 @@ class Modules {
             file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
 
             // Очистка старых кэш файлов
-            $temp_files = glob(ASSETS_JS . 'generation/*');
-            foreach($temp_files as $temp_file){
+            $temp_files = glob( ASSETS_JS . 'generation/*' );
+            foreach( $temp_files as $temp_file ) {
                 if( is_file( $temp_file ) )
                     unlink( $temp_file );
             }
