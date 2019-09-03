@@ -69,6 +69,7 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
           'dark_mode' => (int) $_POST['dark_mode'],
           'animations' => (int) $_POST['animations'],
           'avatars' => (int) $_POST['avatars'],
+          'avatars_cache_time' => (int) $_POST['avatars_cache_time'],
           'sidebar_open' => (int) $_POST['sidebar_open'],
           'form_border' => (int) $_POST['form_border']
        ];

@@ -73,6 +73,7 @@
                         <option value="0">Не показывать</option>
                     </select>
                 </div>
+                <div class="input-form"><div class="input_text">Время сохранения аватаров(Сек.)</div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']?>"></div>
                 <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Sidebar_default')?></div>
                     <select name="sidebar_open">
                         <option style="display:none" value="<?php echo (int) $General->arr_general['sidebar_open']?>"><?php $General->arr_general['sidebar_open'] == 1 ? print 'Развёрнут' : print 'Свёрнут'?></option>
