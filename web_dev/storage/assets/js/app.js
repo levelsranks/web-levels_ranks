@@ -230,12 +230,12 @@ $('#admin_idebar_right').click(function(){
     if($('.sidebar-right').hasClass("unshow"))
     {
         $('.sidebar-right').removeClass("unshow");
-        SaveInStorage('panel_state', 'true');
+        SaveInStorage('panel_state', 'false');
     }
     else
     {
         $('.sidebar-right').addClass("unshow");
-        SaveInStorage('panel_state', 'false');
+        SaveInStorage('panel_state', 'true');
     }
 });
 
