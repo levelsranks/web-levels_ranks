@@ -277,8 +277,11 @@ function con_steam64to32( $steamid64 ) {
  * @return string                 Выводит итог замены.
  */
 function LangValReplace($phares,$values=[]){
-    foreach($values as $key => $val){
-        $replace = str_replace('%' . $key . '%', $val, $phares);
+    $replace = $phares;
+    for($i=0; $i<sizeof($values);$i++){
+        foreach($values as $key => $val){
+            $replace = str_replace('%' . $key . '%', $val, $replace);
+        }
     }
     return $replace;
 }
