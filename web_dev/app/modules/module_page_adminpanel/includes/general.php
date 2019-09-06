@@ -12,10 +12,11 @@
                     <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Language')?></div>
                         <select class="select" name="language">
                             <option style="display:none" value="<?php echo $General->arr_general['language']?>"><?php echo $Modules->get_translate_phrase( '_' . $General->arr_general['language'] )?></option>
-                            <option value="RU">Русский</option>
-                            <option value="EN">Английский</option>
-                            <option value="UA">Украинский</option>
-                            <option value="LT">Литовский</option>
+                            <option value="RU"><?php echo $Modules->get_translate_phrase('_RU')?></option>
+                            <option value="EN"><?php echo $Modules->get_translate_phrase('_EN')?></option>
+                            <option value="UA"><?php echo $Modules->get_translate_phrase('_UA')?></option>
+                            <option value="LT"><?php echo $Modules->get_translate_phrase('_LT')?></option>
+							<option value="CH"><?php echo $Modules->get_translate_phrase('_CH')?></option>
                         </select>
                     </div>
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>

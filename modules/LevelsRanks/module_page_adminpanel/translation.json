@@ -18,7 +18,7 @@
     "RU": "Страница",
     "UA": "Сторінка",
     "LT": "Page",
-	"CH": "页"
+	"CH": "页面"
   },
   "_Options": {
     "EN": "Options",
@@ -102,14 +102,14 @@
     "RU": "Полное название",
     "UA": "Полное название",
     "LT": "Full name",
-	"CH": "全名"
+	"CH": "网站全名"
   },
   "_Short_name": {
     "EN": "Short name",
     "RU": "Короткое название",
     "UA": "Коротка назва",
     "LT": "Short name",
-	"CH": "略称"
+	"CH": "网站略称"
   },
   "_Basic_information": {
     "EN": "Basic information",
@@ -123,7 +123,7 @@
     "RU": "Язык",
     "UA": "Мова",
     "LT": "Language",
-	"CH": "语言"
+	"CH": "默认语言"
   },
   "_Chief_administrator_Steam": {
     "EN": "Chief administrator ( Steam authorization )",
@@ -197,19 +197,23 @@
   },
   "_Steam_access_authorization": {
     "EN": "Steam access authorization",
-    "RU": "Доступ к Steam авторизации"
+    "RU": "Доступ к Steam авторизации",
+	"CH": "Steam 权限认证"
   },
   "_Steam_only_authorization": {
     "EN": "Steam Authorization Only",
-    "RU": "Авторизация только по Steam"
+    "RU": "Авторизация только по Steam",
+	"CH": "仅使用Steam登录认证"
   },
   "_Design": {
     "EN": "Design",
-    "RU": "Дизайн"
+    "RU": "Дизайн",
+	"CH": "网页样式"
   },
   "_Configuration": {
     "EN": "Configuration",
-    "RU": "Конфигурация"
+    "RU": "Конфигурация",
+	"CH": "其他设置"
   }
 }
 
