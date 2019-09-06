@@ -96,13 +96,13 @@ class Modules {
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
         // Актуальная библиотека CSS и JS файлов.
-        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
+        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true ) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
+
+        // Проверка JA файлов.
+        $this->check_generated_js();
 
         // Проверка таблици стилей.
         $this->check_generated_style();
-
-        // Проверка таблици стилей.
-        $this->check_generated_js();
 
         // Проверка для роутера страниц
         ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
@@ -291,14 +291,16 @@ class Modules {
      */
     public function check_generated_style() {
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) || empty( $this->actual_library['actual_css_ver'] ) ):
+        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || empty( $this->actual_library['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) ):
+
+            $files_css_compress = [];
 
             // Проверка на существование каталога с генерируемыми файлами
             ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
 
             // Если файл с темой существует, добавить ссылку на файл в массив для компрессии.
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
-
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[0] = THEMES . $this->General->arr_general['theme'] .'/style.css';
+            
             // Подсчёт количества под-стилей.
             $css_library = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/css_library/', 1 ), array( '..', '.' ) );
 

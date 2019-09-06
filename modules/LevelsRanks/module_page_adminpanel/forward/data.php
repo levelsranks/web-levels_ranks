@@ -55,29 +55,12 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
             'steam_auth' => (int) $_POST['steam_auth'],
             'web_key' => $_POST['web_key'],
             'admin' => $_POST['admin'],
-            'only_steam_64' => $_POST['only_steam_64'] == 'on' ? 1 : 0,
-            'SB_admins_import' => $_POST['SB_admins_import']  == 'on' ? 1 : 0,
-            'steam_only_authorization' => $_POST['steam_only_authorization']  == 'on' ? 1 : 0
+            'avatars' => (int) $_POST['avatars'],
+            'avatars_cache_time' => (int) $_POST['avatars_cache_time']
         ];
         file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
         header_fix( get_url(1) );
     }
-
-    if( isset( $_POST['option_two_save'] ) && IN_LR == true ) {
-      $arr = require SESSIONS . 'options.php';
-      $option = [
-          'dark_mode' => (int) $_POST['dark_mode'],
-          'animations' => (int) $_POST['animations'],
-          'avatars' => (int) $_POST['avatars'],
-          'avatars_cache_time' => (int) $_POST['avatars_cache_time'],
-          'sidebar_open' => (int) $_POST['sidebar_open'],
-          'form_border' => (int) $_POST['form_border']
-       ];
-       file_put_contents( SESSIONS . 'options.php', '<?php return '.var_export_min( array_replace($arr, $option), true ).";" );
-       unlink(ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css');
-       unlink(ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js');
-       header_fix( get_url(1) );
-}
 
     if(isset($_POST['data']) && IN_LR == true) {
 
@@ -103,7 +86,7 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
     if( isset( $_POST['save_servers'] ) && IN_LR == true ) {
         $ip = $_POST['serversip'];
         $fakeip = $_POST['serversfakeip'];
-        $db = $_POST['serversdb'];
+        $db = '0';
         $count = sizeof($_POST['serversip']);
         for ($i = 0; $i < $count; $i++) {
             $arr_servers[$i] = ['ip' => $ip[$i],'fakeip' => $fakeip[$i],'db' => $db[$i]];

@@ -20,19 +20,14 @@ function file_get_contents_fix( $file ) {
 }
 
 /**
- * Фикс функции header для криво настроенного сервера.
+ * Фикс функции header для криво настроенного сервера, релоады происходят за счёт JS.
  *
  * @param  string $url      Переадрисация по URL.
  *
  */
 function header_fix( $url ) {
-    if ( ! headers_sent() ):
-        header( 'Location: ' . $url );
-        exit;
-    else:
         echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
         echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
-    endif;
 }
 
 /**
@@ -276,7 +271,7 @@ function con_steam64to32( $steamid64 ) {
  *
  * @return string                 Выводит итог замены.
  */
-function LangValReplace($phares,$values=[]){
+function LangValReplace( $phares, $values=[] ) {
     $replace = $phares;
     for($i=0; $i<sizeof($values);$i++){
         foreach($values as $key => $val){

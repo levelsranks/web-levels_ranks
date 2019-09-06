@@ -12,8 +12,8 @@ namespace app\ext;
 
 class Notifications {
 
-	public $Modules;
-	public $Db;
+    public $Modules;
+    public $Db;
 
 	function __construct( $Db, $Modules ) {
 		$this->Modules = $Modules;
