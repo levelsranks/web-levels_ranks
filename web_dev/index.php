@@ -12,7 +12,7 @@
 header('Content-Type: text/html; charset=utf-8');
 
 // Отключаем вывод ошибок.
-error_reporting(0);
+error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
@@ -23,7 +23,7 @@ set_time_limit(3);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.115');
+define('VERSION', '0.2.116');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -122,10 +122,10 @@ $Modules        = new Modules ( $General );
 $Db             = new Db;
 
 // Создание экземпляра класса уведомлений.
-$Notifications  = new Notifications ( $General, $Db, $Modules );
+$Notifications  = new Notifications ( $Db, $Modules );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
 $Auth           = new Auth          ( $General, $Db );
 
 // Создание экземпляра графического класса.
-$Graphics       = new Graphics      ( $General, $Modules, $Db, $Auth );
+$Graphics       = new Graphics      ( $General, $Modules, $Db, $Auth, $Notifications );

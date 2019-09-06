@@ -8,43 +8,71 @@
  * @license GNU General Public License Version 3
  */
 
-// Получаем кэша данного модуля.
-$data['module_block_main_stats'] = $Modules->get_module_cache('module_block_main_stats');
+switch ( empty( $Modules->array_modules['module_block_main_stats']['setting']['cache_enable'] ) ? 0 : $Modules->array_modules['module_block_main_stats']['setting']['cache_enable'] ) {
+    case 0:
+        // Проверка на подключенный мод - Levels Ranks
+        if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
 
-// Проверяем актуальность кэша.
-if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_block_main_stats']['time'] ) ) {
+            // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
+            for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):
+                $d_data[] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'],
+                    'SELECT ( SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1) AS Total_players,
+                            ( SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1) AS Players_24h,
+                            ( SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1) AS Headshot,
+                            ( SELECT sum(playtime) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1) AS playtime')[0];
+            endfor;
+        endif;
 
-    // Затираем страные данные которые могут помешать созданию кэша.
-    unset( $data['module_block_main_stats']['Total_players'] );
-    unset( $data['module_block_main_stats']['Players_24h'] );
-    unset( $data['module_block_main_stats']['Headshot'] );
-    unset( $data['module_block_main_stats']['playtime'] );
-    unset( $data['module_block_main_stats']['time'] );
+        // Проверка на подключенный мод - FPS
+        if ( ! empty( $Db->db_data['FPS'] ) ):
+            $d_data[] = $Db->queryAll('FPS', 0, 0,
+                'SELECT ( SELECT COUNT(1) FROM fps_players ) AS Total_players,
+                            ( SELECT COUNT(1) FROM fps_servers_stats WHERE lastconnect>=' . (time() - 86400) . ') AS Players_24h,
+                            ( SELECT sum(headshots) FROM fps_weapons_stats ) AS Headshot,
+                            ( SELECT sum(playtime) FROM fps_servers_stats ) AS playtime')[0];
+        endif;
+        $data['module_block_main_stats'] = empty( $d_data['Total_players'] ) ? ['Total_players' => array_sum( array_column( $d_data, 'Total_players') ), 'Players_24h' => array_sum( array_column( $d_data, 'Players_24h') ), 'Headshot' => array_sum( array_column( $d_data, 'Headshot') ), 'playtime' => array_sum( array_column( $d_data, 'playtime') )] : $d_data;
+        break;
+    case 1:
+        // Получаем кэша данного модуля.
+        $data['module_block_main_stats'] = $Modules->get_module_cache('module_block_main_stats');
 
-    // Сохраняем текущее время и прибавляем к нему 1 час.
-    $data['module_block_main_stats']['time'] = time() + $Modules->array_modules['module_block_main_stats']['setting']['cache_time'];
+        // Проверяем актуальность кэша.
+        if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_block_main_stats']['time'] ) ) {
 
-    // Проверка на подключенный мод - Levels Ranks
-    if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
-    // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
-    for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
-        $data['module_block_main_stats']['Total_players'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
-        $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1' )[0];
-        $data['module_block_main_stats']['Headshot'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
-        $data['module_block_main_stats']['playtime'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(playtime) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1' )[0];
-    }
-    endif;
+            // Затираем страные данные которые могут помешать созданию кэша.
+            unset( $data['module_block_main_stats']['Total_players'] );
+            unset( $data['module_block_main_stats']['Players_24h'] );
+            unset( $data['module_block_main_stats']['Headshot'] );
+            unset( $data['module_block_main_stats']['playtime'] );
+            unset( $data['module_block_main_stats']['time'] );
 
-    // Проверка на подключенный мод - FPS
-    if ( ! empty( $Db->db_data['FPS'] ) ):
-        $data['module_block_main_stats']['Total_players'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_players LIMIT 1' )[0];
-        $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_servers_stats WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1' )[0];
-        $data['module_block_main_stats']['Headshot'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(headshots) FROM fps_weapons_stats LIMIT 1' )[0];
-        $data['module_block_main_stats']['playtime'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(playtime) FROM fps_servers_stats LIMIT 1' )[0];
-    endif;
+            // Сохраняем текущее время и прибавляем к нему 1 час.
+            $data['module_block_main_stats']['time'] = time() + $Modules->array_modules['module_block_main_stats']['setting']['cache_time'];
 
-    ! file_exists( MODULES_SESSIONS . 'module_block_main_stats' ) && mkdir( MODULES_SESSIONS . 'module_block_main_stats', 0777, true );
+            // Проверка на подключенный мод - Levels Ranks
+            if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
+                // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
+                for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ) {
+                    $data['module_block_main_stats']['Total_players'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['Headshot'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['playtime'] += $Db->queryNum('LevelsRanks', $Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT sum(playtime) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' LIMIT 1')[0];
+                }
+            endif;
 
-    // Сохраняем новый кэш для данного модуля.
-    $Modules->set_module_cache( 'module_block_main_stats', $data['module_block_main_stats'] );
+            // Проверка на подключенный мод - FPS
+            if ( ! empty( $Db->db_data['FPS'] ) ):
+                $data['module_block_main_stats']['Total_players'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_players LIMIT 1')[0];
+                $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_servers_stats WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1')[0];
+                $data['module_block_main_stats']['Headshot'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(headshots) FROM fps_weapons_stats LIMIT 1')[0];
+                $data['module_block_main_stats']['playtime'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(playtime) FROM fps_servers_stats LIMIT 1')[0];
+            endif;
+
+            !file_exists( MODULES_SESSIONS . 'module_block_main_stats') && mkdir(MODULES_SESSIONS . 'module_block_main_stats', 0777, true );
+
+            // Сохраняем новый кэш для данного модуля.
+            $Modules->set_module_cache( 'module_block_main_stats', $data['module_block_main_stats'] );
+        }
+        break;
 }

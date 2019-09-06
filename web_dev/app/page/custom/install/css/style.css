@@ -1,0 +1,311 @@
+.badge {
+    display: inline-block;
+    padding: .35em .6em;
+    font-size: 75%;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    fill: #ffffff;
+    color: #ffffff!important;
+    background-color: var(--span-color);
+    box-shadow: var(--span-color-back) 5px 5px;
+}
+
+.badge a {
+    fill: #ffffff;
+    color: #ffffff!important;
+    transition-duration: 400ms;
+}
+
+.input-form {
+    position: relative;
+    text-align: left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.btn {
+    margin-top: 12px;
+    float: right;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-top: 0px;
+}
+
+.card {
+    margin-bottom: 17px;
+}
+
+.back {
+    width: 100%;
+    height: 100%;
+}
+
+.language_title {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+.language_left {
+    width: 50%;
+    float: left;
+    text-align: center;
+    filter: brightness(60%);
+}
+
+.language_left:hover {
+    filter: brightness(100%);
+}
+
+.language_right {
+    width: 50%;
+    float: right;
+    text-align: center;
+    filter: brightness(60%);
+}
+
+.language_right:hover {
+    filter: brightness(100%);
+}
+
+.language_right img,.language_left img {
+    width: 20vw;
+}
+
+.language_name {
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.webkey_title {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+.webkey_input {
+    text-align: center;
+    width: 40%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.webkey_input input{
+    text-align: center;
+    font-size: 1.8vw;
+    font-weight: 500;
+}
+
+.webkey_btn_check {
+    margin-top: 4%;
+    text-align: center;
+    float: none;
+}
+
+.webkey_btn_check input{
+    float: none;
+    font-size: 1.4vw;
+    font-weight: 500;
+}
+
+.webkey_btn_dont_key {
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.webkey_btn_dont_key input{
+    float: none;
+    font-size: 0.9vw;
+    font-weight: 500;
+}
+
+.sidebar_title {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 3vw;
+    font-weight: 600;
+}
+
+.sidebar_left {
+    width: 50%;
+    float: left;
+    text-align: center;
+    filter: brightness(70%);
+}
+
+.sidebar_right {
+    width: 50%;
+    float: right;
+    text-align: center;
+    filter: brightness(70%);
+}
+
+.sidebar_left img, .sidebar_right img {
+    width: 80%;
+}
+
+.sidebar_name {
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.sidebar_left:hover, .sidebar_right:hover {
+    filter: brightness(100%);
+}
+
+button[type="submit"] {
+    background: none;
+    cursor: pointer;
+    color: #F27B26;
+}
+
+.animation_mp4 video{
+    width: 20vw;
+}
+
+.admin_zone img{
+    width: 12vw;
+}
+
+.admin_zone .admin_name{
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+.admin_zone {
+    text-align: center;
+    width: 20%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin_que {
+    position: relative;
+}
+
+.admin_que input{
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+
+.admin_que .admin_yes{
+    float: left;
+}
+
+.admin_que .admin_no{
+    float: right;
+}
+
+.admin_que .admin_text {
+    font-size: 1.3vw;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.info {
+    font-size: 1.3vw;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.servers_info input{
+    font-size: 0.8vw;
+    font-weight: 400;
+}
+
+.badge_1 {
+    display: inline-block;
+    padding: .35em .6em;
+    font-size: 2vw;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    fill: #ffffff;
+    color: #ffffff!important;
+    background-color: var(--span-color);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.badge_2 {
+    display: inline-block;
+    padding: .35em .6em;
+    font-size: 2vw;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    fill: #ffffff;
+    color: #ffffff!important;
+    background-color: var(--span-color);
+    box-shadow: var(--span-color-back) 5px 5px;
+}
+
+.db_left {
+    width: 40%;
+    float: left;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.db_left .info{
+    font-size: 0.8vw;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #fff;
+}
+
+.db_left input{
+    font-size: 1vw;
+    font-weight: 500;
+    text-align: left;
+}
+
+.db_right {
+    width: 50%;
+    float: right;
+    text-align: center;
+}
+
+.db_right .ERROR{
+    color: red;
+}
+
+.db_right img{
+    width: 50%;
+}
+
+.db_left .check {
+    text-align: center;
+    float: none;
+}
+
+.db_left .check input{
+    float: none;
+}

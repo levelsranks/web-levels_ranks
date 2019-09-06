@@ -12,13 +12,11 @@ namespace app\ext;
 
 class Notifications {
 
-	private $Modules;
-	private $General;
-	private $Db;
+    public $Modules;
+    public $Db;
 
-	function __construct( $General, $Db, $Modules ) {
+	function __construct( $Db, $Modules ) {
 		$this->Modules = $Modules;
-		$this->General = $General;
 		$this->db = $Db;
 		$this->NotificationsRender();
 	}
@@ -165,4 +163,8 @@ class Notifications {
    		$param = ['steam'=> $_SESSION['steamid32']];
         return $this->db->queryAll('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "UPDATE `lr_web_notifications` SET `status` = 1 WHERE `steam` = :'$param[steam]'");
    	}
+
+    public function debuggg(){
+        echo 'ok';
+    }
 }

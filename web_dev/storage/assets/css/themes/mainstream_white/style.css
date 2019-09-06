@@ -1216,6 +1216,34 @@ template {
     text-align: left!important;
 }
 
+
+.text_on_line {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    text-align: center;
+    color: var(--default-text-color);
+}
+.text_on_line:before,
+.text_on_line:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background: var(--top-text-color);
+    z-index: -1;
+    position: relative;
+    vertical-align: middle;
+}
+.text_on_line:before {
+    right: 15px;
+    margin: 0 0 0 -100%;
+}
+.text_on_line:after {
+    left: 15px;
+    margin: 0 -100% 0 0;
+}
+
 .a-type:hover {
     background-color: var(--hover);
     cursor: pointer;
@@ -2130,17 +2158,6 @@ template {
     position: fixed !important;
     width: 220px;
     z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important;
-}
-
-.sidebar-right {
-    margin-top: 56px;
-    top: 0;
-    right: 0;
-    height: 100%;
-    position: fixed !important;
-    width: 220px;
-    z-index: 2;
     background: var(--sidebar-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important;
 }
@@ -2592,4 +2609,179 @@ pre {
 
 .notifications-item .text {
     font-size: 12px;
+}
+
+.unshow {
+    width: 0px !important;
+}
+
+#notes
+{
+    position: fixed;
+    top: 4em;
+    right: 5px;
+    cursor: default;
+    transition: height .45s ease-in-out;
+    -webkit-transition: height .45s ease-in-out;
+    pointer-events: none;
+    z-index: 1001;
+}
+#notes .note-item
+{
+    max-height: 12em;
+    border-radius: 5px;
+    opacity: 1;
+    will-change: opacity, transform;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    width: 50vw;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    z-index: 1002;
+    pointer-events: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    max-width: 20em;
+    font: inherit;
+    line-height: 1.25em;
+    color: #fff;
+    margin: 0 auto 3px auto;
+    transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    padding: .75em 1em;
+}
+@media all and (max-width: 30em)
+{
+    #notes .note-item
+    {
+        width: 75vw;
+        max-width: none;
+    }
+}
+#notes .note-item[data-show="false"]
+{
+    pointer-events: none;
+    opacity: 0 !important;
+    max-height: 0 !important;
+    margin-bottom: 0 !important;
+}
+#notes .note-item[data-type="info"]
+{
+    background-color: #375e97;
+}
+#notes .note-item[data-type="warn"]
+{
+    background-color: var(--span-color);
+    animation: shake 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    -webkit-animation: shake 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+#notes .note-item[data-type="error"]
+{
+    background-color: #fb6542;
+    animation: shake 0.54s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    -webkit-animation: shake 0.54s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+#notes .note-item[data-type="success"]
+{
+    background-color: #009d09;
+}
+#notes .note-item .note-item-text
+{
+    flex: auto;
+    -webkit-flex: auto;
+    -moz-flex: auto;
+    -ms-flex: auto;
+    padding-right: .5em;
+    max-width: calc(100% - 1.25em);
+    max-width: -webkit-calc(100% - 1.25em);
+}
+#notes .note-item .note-item-btn
+{
+    width: 0.25em;
+    height: 1.25em;
+    position: absolute;
+    right: 5px;
+    bottom: 15px;
+    cursor: pointer;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIiBmaWxsPSIjZmZmIj48cGF0aCBkPSJNMTguMyw1LjcxTDE4LjMsNS43MWMtMC4zOS0wLjM5LTEuMDItMC4zOS0xLjQxLDBMMTIsMTAuNTlMNy4xMSw1LjdjLTAuMzktMC4zOS0xLjAyLTAuMzktMS40MSwwbDAsMCBjLTAuMzksMC4zOS0wLjM5LDEuMDIsMCwxLjQxTDEwLjU5LDEyTDUuNywxNi44OWMtMC4zOSwwLjM5LTAuMzksMS4wMiwwLDEuNDFoMGMwLjM5LDAuMzksMS4wMiwwLjM5LDEuNDEsMEwxMiwxMy40MWw0Ljg5LDQuODkgYzAuMzksMC4zOSwxLjAyLDAuMzksMS40MSwwbDAsMGMwLjM5LTAuMzksMC4zOS0xLjAyLDAtMS40MUwxMy40MSwxMmw0Ljg5LTQuODlDMTguNjgsNi43MywxOC42OCw2LjA5LDE4LjMsNS43MXoiLz48L3N2Zz4=) no-repeat 0 0/contain;
+    transition: opacity .2s;
+    -webkit-transition: opacity .2s;
+}
+
+#notes .note-item .note-item-btn:hover
+{
+    opacity: .6;
+}
+
+@keyframes shake
+{
+    10%, 90%
+    {
+        transform: translate3d(-1px, 0, 0);
+        -webkit-transform: translate3d(-1px, 0, 0);
+        -ms-transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80%
+    {
+        transform: translate3d(2px, 0 0);
+        -webkit-transform: translate3d(2px, 0, 0);
+        -ms-transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70%
+    {
+        transform: translate3d(-4px, 0, 0);
+        -webkit-transform: translate3d(-4px, 0, 0);
+        -ms-transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60%
+    {
+        transform: translate3d(4px, 0, 0);
+        -webkit-transform: translate3d(4px, 0, 0);
+        -ms-transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-webkit-keyframes shake
+{
+    10%, 90%
+    {
+        -webkit-transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80%
+    {
+        -webkit-transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70%
+    {
+        -webkit-transform: translate3d(-4px, 0, 0) t;
+    }
+    40%, 60%
+    {
+        -webkit-transform: translate3d(4px, 0, 0);
+    }
 }

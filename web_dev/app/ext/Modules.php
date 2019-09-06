@@ -96,13 +96,13 @@ class Modules {
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
         // Актуальная библиотека CSS и JS файлов.
-        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
+        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true ) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
+
+        // Проверка JA файлов.
+        $this->check_generated_js();
 
         // Проверка таблици стилей.
         $this->check_generated_style();
-
-        // Проверка таблици стилей.
-        $this->check_generated_js();
 
         // Проверка для роутера страниц
         ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
@@ -172,7 +172,13 @@ class Modules {
      * @return array|false         Возвращает кэш модуля.
      */
     public function get_module_cache( $module ) {
-        return file_exists(MODULES_SESSIONS . $module . '/cache.php') ? require MODULES_SESSIONS . $module . '/cache.php' : false;
+        if( file_exists(MODULES_SESSIONS . $module . '/cache.php') ):
+            return require MODULES_SESSIONS . $module . '/cache.php';
+        else:
+            ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
+            file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return [];' );
+            return [];
+        endif;
     }
 
     /**
@@ -182,6 +188,7 @@ class Modules {
      * @param array $data           Массив данных.
      */
     public function set_module_cache( $module, $data ) {
+        ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
         file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return '.var_export_min( $data ).";" );
     }
 
@@ -284,14 +291,16 @@ class Modules {
      */
     public function check_generated_style() {
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) || empty( $this->actual_library['actual_css_ver'] ) ):
+        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || empty( $this->actual_library['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) ):
+
+            $files_css_compress = [];
 
             // Проверка на существование каталога с генерируемыми файлами
             ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
 
             // Если файл с темой существует, добавить ссылку на файл в массив для компрессии.
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
-
+            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[0] = THEMES . $this->General->arr_general['theme'] .'/style.css';
+            
             // Подсчёт количества под-стилей.
             $css_library = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/css_library/', 1 ), array( '..', '.' ) );
 
@@ -324,7 +333,7 @@ class Modules {
 
             // Очистка старых кэш файлов
             $temp_files = glob(ASSETS_CSS . 'generation/*');
-            foreach($temp_files as $temp_file){
+            foreach( $temp_files as $temp_file ){
                 if( is_file( $temp_file ) )
                     unlink( $temp_file );
             }
@@ -367,8 +376,8 @@ class Modules {
             file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
 
             // Очистка старых кэш файлов
-            $temp_files = glob(ASSETS_JS . 'generation/*');
-            foreach($temp_files as $temp_file){
+            $temp_files = glob( ASSETS_JS . 'generation/*' );
+            foreach( $temp_files as $temp_file ) {
                 if( is_file( $temp_file ) )
                     unlink( $temp_file );
             }
@@ -494,7 +503,7 @@ class Modules {
 
         } elseif ( floor($seconds / 60 ) != 0 && ( $type == 0 || $type == 1 ) ) {
             $min = floor($seconds / 60 );
-            return $min > 1 ? floor($seconds / 60 ) . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
+            return $min > 1 ? $min . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
 
         } else {
             return $seconds . ' ' . $this->get_translate_phrase('_Second');

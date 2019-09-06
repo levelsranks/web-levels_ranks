@@ -66,58 +66,78 @@
         <div class="card-header">
             <h5 class="badge">Настройки модуля: <?php echo $Modules->array_modules[ $_GET['options'] ]['title']?></h5>
         </div>
-        <div class="card-container module_block">
-            <div class="info_form info_form_left">
-                <div class="info_form_line">Автор:</div>
-                <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['author']?></div>
+        <form enctype="multipart/form-data" method="post">
+            <div class="card-container module_block">
+                <div class="info_form info_form_left">
+                    <div class="info_form_line">Автор:</div>
+                    <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['author']?></div>
+                </div>
+                <div class="info_form info_form_right">
+                    <div class="info_form_line">Мин. версия ядра:</div>
+                    <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['required']['core']?></div>
+                </div>
+                <div class="info_form info_form_left">
+                    <div class="info_form_line">Версия модуля:</div>
+                    <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['version']?></div>
+                </div>
+                <div class="info_form info_form_right">
+                    <div class="info_form_line">Мин. версия PHP:</div>
+                    <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['required']['php']?></div>
+                </div>
+                <div class="info_form">
+                    <div class="info_form_line">Описание:</div>
+                    <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['info']?></div>
+                </div>
+                <div class="input-form"><div class="input_text">Активная страница:</div><input name="module_page" value="<?php echo $Modules->array_modules[ $_GET['options'] ]['page']?>"></div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_offon" id="module_offon" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['status'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_offon">Модуль вкл. / выкл.</label>
+                </div>
+                <div class="input-form"><div class="input_text">Режим модуля</div>
+                    <select name="module_type">
+                        <option style="display:none" value="<?php echo (int) $Modules->array_modules[ $_GET['options'] ]['setting']['type']?>"><?php echo (int) $Modules->array_modules[ $_GET['options'] ]['setting']['type']?></option>
+                        <?php for ( $ia = 0, $cia = sizeof( $_cia = explode(";", $Modules->array_modules[ $_GET['options'] ]['setting']['available_types'] ) ); $ia < $cia; $ia++ ):?>
+                            <option value="<?php echo $_cia[$ia]?>"><?php echo $_cia[$ia]?></option>
+                        <?php endfor?>
+                    </select>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_interface" id="module_interface" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['interface'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_interface">Графическая часть</label>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_data" id="module_data" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_data">Пре-инициализация</label>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_data_always" id="module_data_always" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data_always'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_data_always">Вынести пре-инициализацию в основной поток</label>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_cache_enable" id="module_cache_enable" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['cache_enable'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_cache_enable">Использование кэша</label>
+                </div>
+                <div class="input-form"><div class="input_text">Время кэширования(Сек.):</div><input name="module_cache_time" value="<?php echo $Modules->array_modules[ $_GET['options'] ]['setting']['cache_time']?>"></div>
+
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_translation" id="module_translation" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['translation'] == 1 && print 'checked';?>>
+                    <label class="border-checkbox-label" for="module_translation">Собственный файл перевода</label>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_css" id="module_css" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['css'] == 1 && print 'checked'?>>
+                    <label class="border-checkbox-label" for="module_css">Собственный CSS стиль</label>
+                </div>
+                <div class="input-form">
+                    <input class="border-checkbox" type="checkbox" name="module_js" id="module_js" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['js'] == 1 && print 'checked'?>>
+                    <label class="border-checkbox-label" for="module_js">Собственная JS библиотека</label>
+                </div>
             </div>
-            <div class="info_form info_form_right">
-                <div class="info_form_line">Мин. версия ядра:</div>
-                <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['required']['core']?></div>
+            <div class="card-bottom">
+                <div class="select-panel-pages">
+                    <input class="btn" name="module_save" type="submit" value="Сохранить">
+                </div>
             </div>
-            <div class="info_form info_form_left">
-                <div class="info_form_line">Версия модуля:</div>
-                <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['version']?></div>
-            </div>
-            <div class="info_form info_form_right">
-                <div class="info_form_line">Мин. версия PHP:</div>
-                <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['required']['php']?></div>
-            </div>
-            <div class="info_form">
-                <div class="info_form_line">Описание:</div>
-                <div class="info_form_line_value"><?php echo $Modules->array_modules[ $_GET['options'] ]['info']?></div>
-            </div>
-            <div class="input-form"><div class="input_text">Активная страница:</div><input name="module_page" value="<?php echo $Modules->array_modules[ $_GET['options'] ]['page']?>"></div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_offon" id="module_offon" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['status'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_offon">Модуль вкл. / выкл.</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_interface" id="module_interface" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['interface'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_interface">Графическая часть</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_data" id="module_data" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_data">Пре-инициализация</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_sessions" id="module_sessions" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['sessions'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_sessions">Использование кэша</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_translation" id="module_translation" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['translation'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_translation">Собственный файл перевода</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_css" id="module_css" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['сss'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_css">Собственный CSS стиль</label>
-            </div>
-            <div class="input-form">
-                <input class="border-checkbox" type="checkbox" name="module_js" id="module_js" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['js'] == 1 && print 'checked';?>>
-                <label class="border-checkbox-label" for="module_js">Собственная JS библиотека</label>
-            </div>
-            <input class="btn" name="option_one_save" type="submit" form="options_one" value="Сохранить">
-        </div>
+        </form>
     </div>
 </div>
 <?php endif?>

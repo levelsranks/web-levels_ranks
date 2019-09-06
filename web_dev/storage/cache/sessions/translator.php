@@ -780,5 +780,14 @@ return array (
             'LT' => 'Admin panel',
             'DE' => 'Admin panel',
 			'CH' => '管理员面板',
+        ),
+	'_LK' =>
+        array (
+            'EN' => 'Personal Area',
+            'RU' => 'Личный кабинет',
+            'UA' => 'Особистий кабінет',
+            'LT' => 'Asmeninė sąskaita',
+            'DE' => 'Persönliches Büro',
+            'CH' => '个人账号',
         )
 );

@@ -91,43 +91,174 @@ substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/slim/' ) ), -4) !== '0777
 // Создание папки - css
 ! file_exists( ASSETS_CSS ) && mkdir( ASSETS_CSS, 0777, true );
 
+// Проверка на существование каталога с генерируемыми файлами
+! file_exists( ASSETS_CSS . 'generation/' ) && mkdir( ASSETS_CSS . 'generation/', 0777, true );
+
 // Проверка прав доступа на ассеты - CSS ( 0777 )
 substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/css/' );
 
 // Создание папки - js
 ! file_exists( ASSETS_JS ) && mkdir( ASSETS_JS, 0777, true );
 
+// Проверка на существование каталога с генерируемыми файлами
+! file_exists( ASSETS_JS . 'generation/' ) && mkdir( ASSETS_JS . 'generation/', 0777, true );
+
 // Проверка прав доступа на ассеты - JS ( 0777 )
 substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/js/' );
 
-$URL = '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0];
+// Проверка на существование файла с настройками
+! file_exists( SESSIONS . '/options.php' ) && file_put_contents( SESSIONS . '/options.php', '<?php return []; ' );
 
-! file_exists( SESSIONS . '/db.php' ) ? $eb_db = '0' : $eb_db = 1;
+// Проверка на существование файла с базой данных
+! file_exists( SESSIONS . '/db.php' ) && file_put_contents( SESSIONS . '/db.php', '<?php return []; ' );
 
-// Получение настроек базы данных
-( $eb_db == 1 ) ? $db = require SESSIONS . '/db.php' : false;
+// Создание/возобновление сессии.
+session_start();
 
-if ( $eb_db == 1 ) {
+$options = require SESSIONS . '/options.php';
 
-! file_exists( SESSIONS . '/options.php' ) ? $eb_option = '0' : $eb_option = 1;
+$db = require SESSIONS . '/db.php';
 
-( $eb_option == 1 ) ? $option = require SESSIONS . '/options.php' : false;
+// Язык
+if ( isset( $_POST['EN'] ) || isset( $_POST['RU'] ) ):
+    $options['language'] = isset( $_POST['EN'] ) ? 'EN' : 'RU';
+    file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
+    header_fix( get_url(1) );
+endif;
 
-if( $eb_option != false ) { header( 'Location: ' . $URL );die(); }
+// Информация о серверах
 
-if( $eb_db == false ) { header( 'Location: ' . $URL );die(); }
+if ( isset( $_POST['servers_info_save'] ) ) {
+    $options['short_name'] = $_POST['servers_name'];
+    $options['full_name'] = $_POST['servers_full_name'];
+    $options['info'] = $_POST['servers_info'];
+    $URL = '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0];
+    $options['site'] = substr( $URL, -1 ) == '/' ? $URL : $URL . '/';
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min( $options ) . ";\n");
+    header_fix( get_url(1) );
+}
 
+// WEB KEY API
+
+if ( ! empty( $_POST['web_key'] ) ) {
+    $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $_POST['web_key'] . '&steamids=76561198038416053' );
+    curl_setopt($result, CURLOPT_RETURNTRANSFER, 1);
+    $url = curl_exec($result);
+    $data = json_decode( $url, true )['response']['players'];
+    if( $data[0]['steamid'] == 76561198038416053 ) {
+        $options['web_key'] = $_POST['web_key'];
+        $options['steam_only_authorization'] = 1;
+        $options['steam_auth'] = 1;
+        $options['only_steam_64'] = 0;
+        $options['avatars'] = 1;
+        $options['avatars_cache_time'] = 259200;
+        file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
+        header_fix( get_url(1) );
+    } else {
+        $error = true;
+    }
+} elseif ( ! empty( $_POST['nope'] ) ) {
+    $options['web_key'] = 1;
+    $options['steam_only_authorization'] = 0;
+    $options['steam_auth'] = 0;
+    $options['only_steam_64'] = 0;
+    $options['avatars'] = 2;
+    $options['avatars_cache_time'] = 259200;
+    file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
+    header_fix( get_url(1) );
+}
+
+// Sidebar
+
+if ( isset( $_POST['sidebar_open'] ) || isset( $_POST['sidebar_close'] ) ) {
+    $options['sidebar_open'] = isset( $_POST['sidebar_open'] ) ? (int) 1 : (int) 0;
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+// Бэйджи
+
+if ( isset( $_POST['badge_type_1'] ) || isset( $_POST['badge_type_2'] ) ) {
+    $options['badge_type'] = isset( $_POST['badge_type_1'] ) ? (int) 1 : (int) 2;
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+// Form Border
+
+if ( isset( $_POST['form_border_0'] ) || isset( $_POST['form_border_1'] ) ) {
+    $options['form_border'] = isset( $_POST['form_border_1'] ) ? (int) 1 : (int) 0;
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+// animation
+
+if ( isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
+    $options['animations'] = isset( $_POST['animations_on'] ) ? (int) 1 : (int) 0;
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+// dark_mode
+
+if ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
+    $options['dark_mode'] = isset( $_POST['dark_mode_on'] ) ? (int) 1 : (int) 0;
+    $options['theme'] = 'mainstream_white';
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+// admin
+
+if ( isset( $_POST['check_admin_steam'] ) ) {
+    $_SESSION['admin'] = con_steam32to64( $_POST['admin'] );
+    $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $options['web_key'] . '&steamids=' . $_SESSION['admin'] . ' ' );
+    curl_setopt($result, CURLOPT_RETURNTRANSFER, 1);
+    $url = curl_exec($result);
+    $data = json_decode( $url, true )['response']['players'][0];
+}
+
+if ( isset( $_POST['check_admin_steam_da'] ) && isset( $_SESSION['admin'] ) ) {
+    $options['admin'] = con_steam64to32( $_SESSION['admin'] );
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
+}
+
+if ( isset( $_POST['check_admin_steam_net'] ) && isset( $_SESSION['admin'] ) ) {
+    unset( $_SESSION['admin'] );
+    header_fix( get_url(1) );
+}
+
+if ( isset( $_POST['admin_nosteam_save'] ) ) {
+    $admin[] = ['login' => $_POST['admin_login'],'pass' => $_POST['admin_pass'], 'access' => 'z'];
+    $options['admin'] = '1';
+    file_put_contents(SESSIONS . '/admins.php', '<?php return ' . var_export_min( $admin ) . ";\n");
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
+    header_fix( get_url(1) );
 }
 
 // Проверка соединения с базой данных
-if(isset($_POST['db_check'])) {
 
-    $con = mysqli_connect($_POST['host'], $_POST['user'], $_POST['pass'], $_POST['db_1']);
+if( isset( $_POST['db_check'] ) ) {
 
-    $result = mysqli_query($con, 'SELECT name FROM ' . $_POST['table'] . ' ORDER BY name DESC LIMIT 1');
+    $con = mysqli_connect($_POST['HOST'], $_POST['USER'], $_POST['PASS'], $_POST['DATABASE'], $_POST['PORT']);
+
+    if ( empty( $_POST['TABLE'] ) ):
+        if( $_POST['STATS'] == 'LevelsRanks'):
+            $db_table = 'lvl_base';
+        elseif( $_POST['STATS'] == 'FPS' ):
+            $db_table = 'fps_servers_stats';
+        endif;
+    else:
+        $db_table = $_POST['TABLE'];
+    endif;
+
+    $result = mysqli_query($con, 'SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
 
     if ( $result ) {
-        $db_check = '2';
+
+        $db_check = 2;
         $table = 'CREATE TABLE IF NOT EXISTS lr_web_notifications (
                   `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
                   steam VARCHAR(128) NOT NULL,
@@ -139,55 +270,15 @@ if(isset($_POST['db_check'])) {
                   status int(11) NOT NULL,
                   date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;';
         $con->query( $table );
+
+        $db = [$_POST['STATS'] => [['HOST' => $_POST['HOST'], 'PORT' => $_POST['PORT'], 'USER' => $_POST['USER'], 'PASS' => $_POST['PASS'], 'DB' => [['DB' => $_POST['DATABASE'], 'Prefix' => [['table' => $db_table, 'name' => $_POST['NAME'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
+        file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
+        header_fix( get_url(1) );
     } else {
-        $db_check = '1';
+        $db_check = 1;
     }
 }
-
-// Сохранение настроек базы данных
-if( isset( $_POST['save_db'] ) ) {
-    $db = ['LevelsRanks' => [['HOST' => $_POST['host'], 'PORT' => $_POST['port'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'name' => $_POST['servers'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
-    file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
-    header( 'Location: ' . get_url(2) );
-}
-
-if( isset( $_POST['option_save'] ) ) {
-
-    $steam_admin = substr( $_POST['admin'], 0, 7) === "STEAM_0" ? str_replace("STEAM_0", "STEAM_1", $_POST['admin'] ) : $_POST['admin'];
-
-    $default = [
-        'full_name' => $_POST['full_name'],
-        'short_name' => $_POST['short_name'],
-        'info' => $_POST['info'],
-        'site' => $URL,
-        'language' => $_POST['language'],
-        'theme' => 'mainstream_white',
-        'dark_mode' => (int) $_POST['dark_mode'],
-        'animations' => (int) $_POST['animations'],
-        'sidebar_open' => (int) $_POST['sidebar_open'],
-        'form_border' => (int) $_POST['form_border'],
-        'web_key' => $_POST['web_key'],
-        'avatars' => (int) $_POST['avatars'],
-		'avatars_cache_time'=>259200,
-        'icon_type' => 'SVG',
-        'badge_type' => 2,
-        'steam_auth' => (int) $_POST['steam_auth'],
-        'secure_key' => 'this_is_key_is_default_privet_wender_secure',
-        'admin' => $steam_admin,
-        'only_steam_64' => 0,
-        'SB_admins_import' => 0
-    ];
-
-    file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_opt( $default, true ).";" );
-
-    $admin = [
-            ['login' => $_POST['admin_login'], 'pass' => $_POST['admin_pass'], 'access' => 'z']
-    ];
-
-    file_put_contents( SESSIONS . '/admins.php', '<?php return '.var_export_opt( $admin, true ).";" );
-
-    header( 'Location: ' . get_url(1) );
-}?>
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -196,177 +287,40 @@ if( isset( $_POST['option_save'] ) ) {
     <title>Добро пожаловать в мастер установки LR!</title>
 </head>
 <link rel="stylesheet" href="../../../../storage/assets/css/themes/mainstream_white/style.css">
+<link rel="stylesheet" href="../../../../app/page/custom/install/css/style.css">
 <style>
     :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/dark_mode_palette.json' ) ) )?>
-</style>
-<style>
-    .badge {
-        display: inline-block;
-        padding: .35em .6em;
-        font-size: 75%;
-        font-weight: 500;
-        line-height: 1;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-        fill: #ffffff;
-        color: #ffffff!important;
-        background-color: var(--span-color);
-        box-shadow: var(--span-color-back) 5px 5px;
-    }
-
-    .badge a {
-        fill: #ffffff;
-        color: #ffffff!important;
-        transition-duration: 400ms;
-    }
-
-    .input-form {
-        position: relative;
-        text-align: left;
-        margin-top: 6px;
-        margin-bottom: 6px;
-        width: 100%;
-    }
-
-    .btn {
-        margin-top: 12px;
-        float: right;
-    }
-
-    .container-fluid {
-        width: 100%;
-        padding-top: 0px;
-    }
-
-    .card {
-        margin-bottom: 17px;
-    }
 </style>
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9">
-            <div class="card">
-                <?php if( $eb_db == '0' ) {?>
-                <div class="card-header">
-                    <h5 class="badge">Настройка базы данных - storage/cache/sessions/db.php</h5>
-                </div>
-                <div class="card-container option_one">
-                    <form id="db_check" enctype="multipart/form-data" method="post">
-                        <div class="input-form"><div class="input_text">Host: </div><input name="host" value="<?php echo $_POST['host']?>"></div>
-                        <div class="input-form"><div class="input_text">Port: </div><input name="port" value="<?php echo empty( $_POST['port'] ) ? 3306 : $_POST['port']?>"></div>
-                        <div class="input-form"><div class="input_text">User: </div><input name="user" value="<?php echo $_POST['user']?>"></div>
-                        <div class="input-form"><div class="input_text">Pass: </div><input name="pass" value="<?php echo $_POST['pass']?>"></div>
-                        <div class="input-form"><div class="input_text">DB: </div><input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
-                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="Пример: lvl_base" name="table" value="<?php echo empty( $_POST['table'] ) ? 'lvl_base' : $_POST['table']?>"></div>
-                        <div class="input-form"><div class="input_text">Название группы серверов: </div><input placeholder="Пример: Основные сервера Retakes" name="servers" value="<?php if($_POST['servers'] == ''){echo '';} else { echo $_POST['servers'];}?>"></div>
-                        <div class="input-form"><div class="input_text">Мод</div>
-                            <select name="game_mod">
-                                <option value="csgo">CS:GO</option>
-                                <option value="css">CSS</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Steam mode</div>
-                            <select name="steam_mod">
-                                <option value="1">Only Steam</option>
-                                <option value="0">No Steam</option>
-                            </select>
-                        </div>
-                    </form>
-                    <?php if ( $db_check != 2 ):?>
-                    <input class="btn" name="db_check" type="submit" form="db_check" value="Проверить">
-                    <?php endif;?>
-                    <?php if ( $db_check == 2 ):?>
-                        <input class="btn" name="save_db" type="submit" form="db_check" value="Далее">
-                    <?php endif;?>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-        <?php if( $eb_option == '0' ) {?>
-                <div class="card-header">
-                    <h5 class="badge">Основные настройки - storage/cache/sessions/options.php</h5>
-                </div>
-                <div class="card-container option_one">
-                    <form id="options" enctype="multipart/form-data" method="post">
-                        <div class="input-form"><div class="input_text">Полное название</div><input name="full_name" value=""></div>
-                        <div class="input-form"><div class="input_text">Короткое название</div><input name="short_name" value=""></div>
-                        <div class="input-form"><div class="input_text">Общая информация</div><input name="info" value=""></div>
-                        <div class="input-form"><div class="input_text">Язык</div>
-                            <select class="select" name="language">
-                                <option style="display:none" value="RU">Русский</option>
-                                <option value="RU">Русский</option>
-                                <option value="EN">Английский</option>
-                                <option value="UA">Украинский</option>
-                                <option value="LT">Литовский</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Тёмный режим по умолчанию:</div>
-                            <select name="dark_mode">
-                                <option value="1">Включен</option>
-                                <option value="0">Выключен и вообще я хорошо вижу</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Анимации по умолчанию:</div>
-                            <select name="animations">
-                                <option value="1">Включены</option>
-                                <option value="0">Лучше поменьше</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Показывать ли аватарки:</div>
-                            <select name="avatars">
-                                <option value="1">Показывать</option>
-                                <option value="2">Использовать случайные аватарки</option>
-                                <option value="0">Не показывать</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Сайтбар по умолчанию:</div>
-                            <select name="sidebar_open">
-                                <option value="1">Развёрнут</option>
-                                <option value="0">Свёрнут</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Закруглять ли края блоков:</div>
-                            <select name="form_border">
-                                <option value="1">Закруглить</option>
-                                <option value="0">Оквадратить</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Авторизация по Steam</div>
-                            <select name="steam_auth">
-                                <option style="display:none" value="1">Есть</option>
-                                <option value="1">Есть</option>
-                                <option value="0">Нету</option>
-                            </select>
-                        </div>
-                        <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value=""></div>
-                        <div class="input-form"><div class="input_text">Глав. администратор ( Steam авторизация )</div><input name="admin" value="STEAM_1:"></div>
-                        <div class="input-form"><div class="input_text">Глав. админ. логин ( No Steam авторизация ): </div><input name="admin_login" value=""></div>
-                        <div class="input-form"><div class="input_text">Глав. админ. пароль ( No Steam авторизация ): </div><input name="admin_pass" value=""></div>
-                    </form>
-                    <input class="btn" name="option_save" type="submit" form="options" value="Сохранить">
-                </div>
-            </div>
-        </div>
-        <?php } ?>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="badge">Информация</h5>
-                </div>
-                <div class="card-container">
-                    Ваша версия PHP: <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
-                    <div>Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O</div>';} ?>
-                    <?php if ( $db_check == 1 ):?>
-                        <div>Подключение к базе данных отсутствует!</div>
-                    <?php elseif ( $db_check == 2 ): ?>
-                        <div>База данных с таблицей успешно подключена!</div>
-                    <?php endif; ?>
-        </div>
-        </div>
-    </div>
+<?php
+// Проверка на язык страницы
+if ( empty( $options['language'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/language.php';
+} elseif ( empty( $options['full_name'] ) || empty( $options['short_name'] ) || empty( $options['info'] ) || empty( $options['site'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/name.php';
+} elseif ( empty( $options['web_key'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/webkey.php';
+} elseif ( empty( $options['sidebar_open'] ) && ! is_int ( $options['sidebar_open'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/sidebar.php';
+} elseif ( empty( $options['badge_type'] ) && ! is_int ( $options['badge_type'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/badge_type.php';
+} elseif ( empty( $options['form_border'] ) && ! is_int ( $options['form_border'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/form_border.php';
+} elseif ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/animations.php';
+} elseif ( empty( $options['dark_mode'] ) && ! is_int ( $options['dark_mode'] ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/dark_mode.php';
+} elseif ( empty( $options['admin'] ) && $options['web_key'] == 1 ) {
+    require PAGE_CUSTOM . 'install/includes/options/admin_no_steam.php';
+} elseif ( empty( $options['admin'] ) && $options['web_key'] !== 1 ) {
+    require PAGE_CUSTOM . 'install/includes/options/admin_steam.php';
+} elseif ( empty( $db ) ) {
+    require PAGE_CUSTOM . 'install/includes/options/db.php';
+} else {
+    header_fix( '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0] );
+    exit;}?>
 </div>
 </div>
 </body>

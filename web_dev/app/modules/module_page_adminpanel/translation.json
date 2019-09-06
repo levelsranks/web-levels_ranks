@@ -154,18 +154,18 @@
 	"CH": "保存"
   },
   "_Dark_mode_default": {
-    "EN": "Dark mode ( default )",
-    "RU": "Тёмный режим ( По умолчанию )",
-    "UA": "Темний режим ( За замовчуванням )",
-    "LT": "Dark mode ( default )",
+    "EN": "Dark mode - default",
+    "RU": "Тёмный режим - По умолчанию",
+    "UA": "Темний режим - За замовчуванням",
+    "LT": "Dark mode - default",
 	"CH": "黑夜模式"
   },
   "_Animation_default": {
-    "EN": "Animation ( default )",
-    "RU": "Анимации ( По умолчанию )",
-    "UA": "Анімації (за замовчуванням )",
-    "LT": "Animation ( default )",
-	"CH": "动画( 默认 )"
+    "EN": "Animation",
+    "RU": "Анимации",
+    "UA": "Анімації",
+    "LT": "Animation",
+	"CH": "动画"
   },
   "_Show_avatars": {
     "EN": "Show avatars",
@@ -175,10 +175,10 @@
 	"CH": "显示头像"
   },
   "_Sidebar_default": {
-    "EN": "Sidebar ( default )",
-    "RU": "Сайтбар ( По умолчанию )",
-    "UA": "Сайдбар ( За замовчуванням )",
-    "LT": "Sidebar ( default )",
+    "EN": "Open sidebar - default",
+    "RU": "Открытый сайтбар - По умолчанию",
+    "UA": "Відкритий сайдбар - За замовчуванням",
+    "LT": "Open sidebar - default",
 	"CH": "侧边栏 ( 默认 )"
   },
   "_Round_shapes": {
@@ -194,6 +194,22 @@
     "UA": "Повні права доступу",
     "LT": "All access rights",
 	"CH": "所有访问权限"
+  },
+  "_Steam_access_authorization": {
+    "EN": "Steam access authorization",
+    "RU": "Доступ к Steam авторизации"
+  },
+  "_Steam_only_authorization": {
+    "EN": "Steam Authorization Only",
+    "RU": "Авторизация только по Steam"
+  },
+  "_Design": {
+    "EN": "Design",
+    "RU": "Дизайн"
+  },
+  "_Configuration": {
+    "EN": "Configuration",
+    "RU": "Конфигурация"
   }
 }
 

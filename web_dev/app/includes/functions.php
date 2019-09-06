@@ -20,6 +20,17 @@ function file_get_contents_fix( $file ) {
 }
 
 /**
+ * Фикс функции header для криво настроенного сервера, релоады происходят за счёт JS.
+ *
+ * @param  string $url      Переадрисация по URL.
+ *
+ */
+function header_fix( $url ) {
+        echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
+        echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
+}
+
+/**
  * Сокращение вывода var_export до одной строки.
  *
  * @param array $var        Массив данных
@@ -260,9 +271,12 @@ function con_steam64to32( $steamid64 ) {
  *
  * @return string                 Выводит итог замены.
  */
-function LangValReplace($phares,$values=[]){
-    foreach($values as $key => $val){
-        $replace = str_replace('%' . $key . '%', $val, $phares);
+function LangValReplace( $phares, $values=[] ) {
+    $replace = $phares;
+    for($i=0; $i<sizeof($values);$i++){
+        foreach($values as $key => $val){
+            $replace = str_replace('%' . $key . '%', $val, $replace);
+        }
     }
     return $replace;
 }

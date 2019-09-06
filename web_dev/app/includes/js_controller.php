@@ -13,6 +13,41 @@ if( $_POST["function"] == 'options' & isset( $_POST["setup"] ) ) {
     exit;
 }
 
+if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
+    // Подключение основных функций.
+    require '../../app/includes/functions.php';
+
+    // Получение текущих настроек.
+    $options = require '../../storage/cache/sessions/options.php';
+
+    // Изменение конкретной опции.
+    $options[ $_POST["option"] ] = (int) $options[ $_POST["option"] ] == 0 ? 1 : 0;
+
+    // Проверка на доп изменения.
+    if( ! empty( $_POST["change"] ) ):
+
+        // Если в строке есть 'css' выполнить чистку кэша по CSS
+        if ( stristr( $_POST["change"], 'css') !== false ):
+
+            // Проверка папки на пустоту
+            $is_empty = sizeof( glob('../../storage/assets/css/generation/*') ) ? true : false;
+
+            // Если папка не пустая, провести очистку
+            if( $is_empty == true ):
+            $temp_files = glob( '../../storage/assets/css/generation/*' );
+            foreach( $temp_files as $temp_file ) {
+                if( is_file( $temp_file ) )
+                    unlink( $temp_file );
+            }
+            endif;
+        endif;
+    endif;
+
+    // Сохранение файла.
+    file_put_contents( '../../storage/cache/sessions/options.php', '<?php return ' . var_export_min( $options ) . ';' );
+    exit;
+}
+
 // Получение и сохранине состояния боковой панели.
 if( $_POST["function"] == 'sidebar' ) {
     // Возобновление сессии

@@ -72,6 +72,6 @@ if (isset($_POST['data'])) {
         }
     }
 
-    echo json_encode($return);
+    echo json_encode( $return, JSON_UNESCAPED_UNICODE );
     exit;
 }

@@ -91,14 +91,17 @@ class Db {
         # Получение настроек с модами, пользователями, базами данных и таблицами.
         ! file_exists ( SESSIONS . '/db.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
 
-        $this->db = require SESSIONS . '/db.php';
+        $this->db = $this->get_db_options();
 
         // PDO Условия.
         $this->options = [
-            PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT,
             PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
         ];
+
+        $this->table_count['LevelsRanks'] = 0;
+        $this->table_count['FPS'] = 0;
 
         # Подсчёт -> Количество модов.
         $this->mod_count = sizeof( $this->db );
@@ -156,8 +159,8 @@ class Db {
                     if( in_array( $this->mod_name[ $m ], $this->statistics_with_table_servers ) ):
                         switch ( $this->mod_name[ $m ] ) {
                             case 'FPS':
-                                $fps_servers_data = $this->queryAll('FPS',0, 0, 'SELECT id, server_name, settings_rank_id FROM ' . $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] . 'servers' );
-                                for ( $_m = 0, $m_s = sizeof( $fps_servers_data ); $_m < $m_s; $_m++ ):
+                                $this->fps_servers_data = $this->queryAll('FPS',0, 0, 'SELECT id, server_name, server_ip, settings_rank_id FROM fps_servers' );
+                                for ( $_m = 0, $m_s = sizeof( $this->fps_servers_data ); $_m < $m_s; $_m++ ):
                                     $this->db_data['FPS'][] = [
                                         'DB_mod' => 'FPS',
                                         'USER_ID' => $u,
@@ -165,13 +168,13 @@ class Db {
                                         'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
                                         'DB_num' => $d,
                                         'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
-                                        'name' => $fps_servers_data[ $_m ]['server_name'],
+                                        'name' => $this->fps_servers_data[ $_m ]['server_name'],
                                         'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
                                         'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
-                                        'ranks_id' => $fps_servers_data[ $_m ]['settings_rank_id'],
+                                        'ranks_id' => $this->fps_servers_data[ $_m ]['settings_rank_id'],
                                         'ranks_pack' => $rank_pack
                                     ];
-                                    $this->statistics_table[] = [ 'name' => $fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack];
+                                    $this->statistics_table[] = [ 'name' => $this->fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack];
                                 endfor;
                                 break;
                             case 'HLstatsX':
@@ -203,6 +206,16 @@ class Db {
         }
 
         $this->table_statistics_count = $this->table_count['LevelsRanks'] + $this->table_count['FPS'];
+    }
+
+    /**
+     * Получение настроек базы данных.
+     *
+     * @return array                 Массив с настройками.
+     */
+    private function get_db_options() {
+        $db = file_exists( SESSIONS . '/db.php' ) ? require SESSIONS . '/db.php' : header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' );
+        return empty( $db ) ? header( 'Location: ' . get_url(2) . '/app/page/custom/install/index.php' ) : $db;
     }
 
     /**
