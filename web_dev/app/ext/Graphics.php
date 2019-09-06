@@ -15,7 +15,7 @@ class Graphics {
     /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
      */
-    function __construct( $General, $Modules, $Db, $Auth ) {
+    function __construct( $General, $Modules, $Db, $Auth, $Notifications ) {
 
         $Graphics = $this;
 
