@@ -18,7 +18,13 @@
     <link rel="image_src" href="<?php echo $og_image?>">
     <meta name="twitter:image" content="<?php echo $og_image?>">
 <?php endif; ?>
+<?php if( empty( $General->arr_general['enable_css_cache'] ) ) :
+        for ( $style = 0, $style_s = sizeof( $Modules->css_library ); $style < $style_s; $style++ ):?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . $Modules->css_library[ $style ]?>">
+<?php   endfor;
+      else:?>
     <link rel="stylesheet" type="text/css" href="<?php echo ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css' ) ? $General->arr_general['site'] . 'storage/assets/css/themes/' . $General->arr_general['theme'] . '/style' :  $General->arr_general['site'] . 'storage/assets/css/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver']?>.css">
+<?php endif; ?>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <?php echo $Graphics->get_css_color_palette()?>
     <style>.sidebar-collapse .user-sidebar-block { <?php echo ! isset( $_SESSION['steamid32'] ) ? 'height: 59px;' : 'height: 88px;';?></style>

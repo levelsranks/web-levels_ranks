@@ -205,6 +205,8 @@ if ( isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
 if ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
     $options['dark_mode'] = isset( $_POST['dark_mode_on'] ) ? (int) 1 : (int) 0;
     $options['theme'] = 'mainstream_white';
+    $options['enable_css_cache'] = 0;
+    $options['enable_js_cache'] = 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
 }

@@ -9,15 +9,17 @@
     "php": "5.4"
   },
   "setting": {
-    "status": "1",
-    "type": "3",
+    "status": 1,
+    "type": 3,
     "available_types": "1;2;3",
     "sessions": "0",
-    "translation": "1",
-    "interface": "1",
-    "data": "0",
-    "data_always": "0",
-    "css": "1",
-    "js": "1"
+    "translation": 1,
+    "interface": 1,
+    "data": 0,
+    "data_always": 0,
+    "css": 1,
+    "js": 1,
+    "cache_enable": 0,
+    "cache_time": 0
   }
 }
