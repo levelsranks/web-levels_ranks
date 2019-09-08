@@ -52,7 +52,6 @@ if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_GET['page'] ) && $_GET['page
             'short_name' => $_POST['short_name'],
             'info' => $_POST['info'],
             'language' => $_POST['language'],
-            'steam_auth' => (int) $_POST['steam_auth'],
             'web_key' => $_POST['web_key'],
             'admin' => $_POST['admin'],
             'avatars' => (int) $_POST['avatars'],
