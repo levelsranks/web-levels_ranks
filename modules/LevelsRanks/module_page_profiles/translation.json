@@ -109,7 +109,7 @@
     "RU": "Оружие",
     "UA": "Зброя",
 	"LT": "Ginklas",
-    "CH": "武器:"
+    "CH": "武器"
   },
   "_Player_profile": {
     "DE": "Spielerprofil",
@@ -117,7 +117,7 @@
     "RU": "Профиль игрока",
     "UA": "Сторінка гравця",
 	"LT": "Žaidėjo profilis",
-    "CH": "玩家个人资料:"
+    "CH": "玩家个人资料"
   },
   "_Penetrated_kills": {
     "DE": "Durchdrungene Kills",
@@ -125,7 +125,7 @@
     "RU": "Убийств прострелом",
     "UA": "Вбивств прострілом",
 	"LT": "Nužudymai per sieną",
-    "CH": "穿透击杀:"
+    "CH": "穿透击杀"
   },
   "_Killing_without_scope": {
     "DE": "ohne Visier getötet",
@@ -133,7 +133,7 @@
     "RU": "Убийств без прицела",
     "UA": "Вбивств без прицілу",
 	"LT": "Nužudymai be taikiklio",
-    "CH": "盲狙:"
+    "CH": "盲狙"
   },
   "_Kills_on_run": {
     "DE": "Während des Laufens getötet",
@@ -141,7 +141,7 @@
     "RU": "Убийств на бегу",
     "UA": "Вбивств на бігу",
 	"LT": "Nužudymai bėgant",
-    "CH": "跑打击杀:"
+    "CH": "跑打击杀"
   },
   "_Kills_flash": {
     "DE": "Getötet durch Blendgranate",
@@ -149,7 +149,7 @@
     "RU": "Убийств слепым",
     "UA": "Вбивств сліпим",
 	"LT": "Nužydymai esant apakus",
-    "CH": "致盲击杀:"
+    "CH": "致盲击杀"
   },
   "_Jump_kills": {
     "DE": "im Sprung getötet",
@@ -157,7 +157,7 @@
     "RU": "Убийств в прыжке",
     "UA": "Вбивств в стрибку",
 	"LT": "Nužudymai Ore",
-    "CH": "空中击杀:"
+    "CH": "空中击杀"
   },
   "_Smoke_kills": {
     "DE": "Getötet durch Rauchwolke",
@@ -165,7 +165,7 @@
     "RU": "Убийств в дым",
     "UA": "Вбивств в дим",
 	"LT": "Nužudymai naudojant duminę g.",
-    "CH": "穿烟击杀:"
+    "CH": "穿烟击杀"
   },
   "_Kills_whirl": {
     "DE": "Getötet in der Drehung",
@@ -173,6 +173,46 @@
     "RU": "Убийств с разворота",
     "UA": "Вбивств з розвороту",
 	"LT": "Nužudymai 180-360°",
-    "CH": "大幅度转头击杀:"
+    "CH": "大幅度转头击杀"
+  },
+  "_Hit_inhead": {
+    "EN": "Head",
+    "RU": "В голову",
+    "CH": "头部"
+  },
+  "_Hit_inneak": {
+    "EN": "Neak",
+    "RU": "В шею",
+    "CH": "脖子"
+  },
+  "_Hit_inleftarm": {
+    "EN": "Left Arm",
+    "RU": "В левую руку",
+    "CH": "左臂"
+  },
+  "_Hit_inrightarm": {
+    "EN": "Right Arm",
+    "RU": "В правую руку",
+    "CH": "右臂"
+  },
+  "_Hit_inleftleg": {
+    "EN": "Left Leg",
+    "RU": "В левую ногу",
+    "CH": "左腿"
+  },
+  "_Hit_inrightleg": {
+    "EN": "Right Leg",
+    "RU": "В правую ногу",
+    "CH": "右腿"
+  },
+  "_Hit_inbelly": {
+    "EN": "Belly",
+    "RU": "В живот",
+    "CH": "腹部"
+  },
+  "_Hit_inchest": {
+    "EN": "Chest",
+    "RU": "В грудь",
+    "CH": "胸部"
   }
 }
