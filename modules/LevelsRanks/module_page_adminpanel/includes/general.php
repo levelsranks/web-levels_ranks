@@ -80,6 +80,9 @@
                 <label class="border-checkbox-label" for="only_steam_64"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Use_Steam_ID')?></label>
             </div>
             <div class="input-form">
+                <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Optimization')?></div>
+            </div>
+            <div class="input-form">
                 <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="enable_css_cache" id="enable_css_cache" <?php $General->arr_general['enable_css_cache'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="enable_css_cache"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Enable_css_cache')?></label>
             </div>

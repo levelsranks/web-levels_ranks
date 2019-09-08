@@ -222,6 +222,10 @@
   "_Enable_js_cache": {
     "EN": "Enable Cache - JS",
     "RU": "Включить кэш - JS"
+  },
+  "_Optimization": {
+    "EN": "Optimization",
+    "RU": "Оптимизация"
   }
 }
 
