@@ -217,11 +217,13 @@
   },
   "_Enable_css_cache": {
     "EN": "Enable Cache - CSS",
-    "RU": "Включить кэш - CSS"
+    "RU": "Включить кэш - CSS",
+	"CH": "启用缓存 - CSS"
   },
   "_Enable_js_cache": {
     "EN": "Enable Cache - JS",
-    "RU": "Включить кэш - JS"
+    "RU": "Включить кэш - JS",
+	"CH": "启用缓存 - JS"
   }
 }
 
