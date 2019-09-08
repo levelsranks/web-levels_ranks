@@ -224,6 +224,11 @@
     "EN": "Enable Cache - JS",
     "RU": "Включить кэш - JS",
 	"CH": "启用缓存 - JS"
+  },
+  "_Optimization": {
+    "EN": "Optimization",
+    "RU": "Оптимизация",
+	"CH": "优化"
   }
 }
 
