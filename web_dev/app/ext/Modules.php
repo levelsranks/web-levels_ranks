@@ -63,6 +63,16 @@ class Modules {
     public $actual_library = [];
 
     /**
+     * @var array
+     */
+    public $css_library = [];
+
+    /**
+     * @var array
+     */
+    public $js_library = [];
+
+    /**
      * @var string
      */
     public $page_title = '';
@@ -290,23 +300,16 @@ class Modules {
      * Проверка сгенерированного стиля.
      */
     public function check_generated_style() {
-        // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || empty( $this->actual_library['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) ):
+        if( empty( $this->General->arr_general['enable_css_cache'] ) ) :
 
-            $files_css_compress = [];
+            $this->css_library[] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
-            // Проверка на существование каталога с генерируемыми файлами
-            ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
-
-            // Если файл с темой существует, добавить ссылку на файл в массив для компрессии.
-            file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[0] = THEMES . $this->General->arr_general['theme'] .'/style.css';
-            
             // Подсчёт количества под-стилей.
             $css_library = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/css_library/', 1 ), array( '..', '.' ) );
 
             // После проверки на существование подстиля, добавление ссылки подстиля в массив для компрессии.
             for ( $cgs = 0, $cgs_c = sizeof( $css_library ); $cgs < $cgs_c; $cgs++ ) {
-                file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css';
+                file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css' ) && $this->css_library[] = THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css';
             }
 
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
@@ -317,30 +320,66 @@ class Modules {
                 // Если модуль проходит проверку и имеет свою стилистику, то забираем ссылку на стиль в массив для компрессии.
                 if (
                     $this->array_modules[ $module ]['setting']['status'] == 1
+                    && $this->array_modules[ $module ]['page'] == get_section( 'page', 'home' )
                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                     && $this->array_modules[ $module ]['required']['core'] <= VERSION
                 ):
-                    $this->array_modules[ $module ]['setting']['css'] == 1 && $files_css_compress[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
+                    $this->array_modules[ $module ]['setting']['css'] == 1 && $this->css_library[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
                 endif;
             endfor;
+        else:
+            // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
+            if ( ! file_exists( SESSIONS . '/actual_library.json' ) || empty( $this->actual_library['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) ):
 
-            // Сжимаем все файлы из массива.
-            $final_css_compress = $this->action_css_compress( $files_css_compress );
+                $files_css_compress = [];
 
-            // Обновляем актуальность кэша.
-            $this->actual_library['actual_css_ver'] = time();
-            file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
+                // Проверка на существование каталога с генерируемыми файлами
+                ! file_exists( ASSETS_CSS . 'generation' ) && mkdir( ASSETS_CSS . 'generation', 0777, true );
 
-            // Очистка старых кэш файлов
-            $temp_files = glob(ASSETS_CSS . 'generation/*');
-            foreach( $temp_files as $temp_file ){
-                if( is_file( $temp_file ) )
-                    unlink( $temp_file );
-            }
+                // Если файл с темой существует, добавить ссылку на файл в массив для компрессии.
+                file_exists( THEMES . $this->General->arr_general['theme'] .'/style.css' ) && $files_css_compress[0] = THEMES . $this->General->arr_general['theme'] .'/style.css';
 
-            // Сохраняем итоговый CSS файл.
-            file_put_contents( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css', $final_css_compress );
+                // Подсчёт количества под-стилей.
+                $css_library = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/css_library/', 1 ), array( '..', '.' ) );
+
+                // После проверки на существование подстиля, добавление ссылки подстиля в массив для компрессии.
+                for ( $cgs = 0, $cgs_c = sizeof( $css_library ); $cgs < $cgs_c; $cgs++ ) {
+                    file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css' ) && $files_css_compress[] = THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css';
+                }
+
+                for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+
+                    // Перебором забираем корневое название модуля.
+                    $module = array_keys( $this->array_modules )[ $i ];
+
+                    // Если модуль проходит проверку и имеет свою стилистику, то забираем ссылку на стиль в массив для компрессии.
+                    if (
+                        $this->array_modules[ $module ]['setting']['status'] == 1
+                        && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
+                        && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                    ):
+                        $this->array_modules[ $module ]['setting']['css'] == 1 && $files_css_compress[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
+                    endif;
+                endfor;
+
+                // Сжимаем все файлы из массива.
+                $final_css_compress = $this->action_css_compress( $files_css_compress );
+
+                // Обновляем актуальность кэша.
+                $this->actual_library['actual_css_ver'] = time();
+                file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
+
+                // Очистка старых кэш файлов
+                $temp_files = glob(ASSETS_CSS . 'generation/*');
+                foreach( $temp_files as $temp_file ){
+                    if( is_file( $temp_file ) )
+                        unlink( $temp_file );
+                }
+
+                // Сохраняем итоговый CSS файл.
+                file_put_contents( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css', $final_css_compress );
             endif;
+        endif;
     }
 
     /**
@@ -348,42 +387,60 @@ class Modules {
      */
     public function check_generated_js() {
 
-        // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js' ) || empty( $this->actual_library['actual_js_ver'] ) ):
+        if( empty( $this->General->arr_general['enable_js_cache'] ) ):
 
-			// Проверка на существование каталога с генерируемыми файлами
-            ! file_exists( ASSETS_JS . 'generation' ) && mkdir( ASSETS_JS . 'generation', 0777, true );
-			
-            file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
+            $this->js_library[] = ASSETS_JS . 'app.js';
 
             // Перебором забираем корневое название модулей.
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
                 $module = array_keys( $this->array_modules )[ $i ];
                 if (
                     $this->array_modules[ $module ]['setting']['status'] == 1
+                    && $this->array_modules[ $module ]['page'] == get_section( 'page', 'home' )
                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                     && $this->array_modules[ $module ]['required']['core'] <= VERSION
-                ):
-                    $this->array_modules[ $module ]['setting']['js'] == 1 && $files_js_compress[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
+                    ):
+                    $this->array_modules[ $module ]['setting']['js'] == 1 && $this->js_library[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
                 endif;
             endfor;
+        else:
+            // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
+            if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js' ) || empty( $this->actual_library['actual_js_ver'] ) ):
 
-            $final_js_compress = $this->action_js_compress( $files_js_compress );
+                // Проверка на существование каталога с генерируемыми файлами
+                ! file_exists( ASSETS_JS . 'generation' ) && mkdir( ASSETS_JS . 'generation', 0777, true );
 
-            $this->actual_library['actual_js_ver'] = time();
+                file_exists( ASSETS_JS . '/app.js' ) && $files_js_compress[] = ASSETS_JS . '/app.js';
 
-            // Обновляем options
-            file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
+                // Перебором забираем корневое название модулей.
+                for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+                    $module = array_keys( $this->array_modules )[ $i ];
+                    if (
+                        $this->array_modules[ $module ]['setting']['status'] == 1
+                        && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
+                        && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                    ):
+                        $this->array_modules[ $module ]['setting']['js'] == 1 && $files_js_compress[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
+                    endif;
+                endfor;
 
-            // Очистка старых кэш файлов
-            $temp_files = glob( ASSETS_JS . 'generation/*' );
-            foreach( $temp_files as $temp_file ) {
-                if( is_file( $temp_file ) )
-                    unlink( $temp_file );
-            }
+                $final_js_compress = $this->action_js_compress( $files_js_compress );
 
-            // Сохраняем итоговый JS файл.
-            file_put_contents( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js', $final_js_compress );
+                $this->actual_library['actual_js_ver'] = time();
+
+                // Обновляем options
+                file_put_contents( SESSIONS . '/actual_library.json', json_encode( $this->actual_library ) );
+
+                // Очистка старых кэш файлов
+                $temp_files = glob( ASSETS_JS . 'generation/*' );
+                foreach( $temp_files as $temp_file ) {
+                    if( is_file( $temp_file ) )
+                        unlink( $temp_file );
+                }
+
+                // Сохраняем итоговый JS файл.
+                file_put_contents( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js', $final_js_compress );
+            endif;
         endif;
     }
 

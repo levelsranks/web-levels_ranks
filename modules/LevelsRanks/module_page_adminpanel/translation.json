@@ -214,6 +214,14 @@
     "EN": "Configuration",
     "RU": "Конфигурация",
 	"CH": "其他设置"
+  },
+  "_Enable_css_cache": {
+    "EN": "Enable Cache - CSS",
+    "RU": "Включить кэш - CSS"
+  },
+  "_Enable_js_cache": {
+    "EN": "Enable Cache - JS",
+    "RU": "Включить кэш - JS"
   }
 }
 
