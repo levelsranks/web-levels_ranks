@@ -116,7 +116,7 @@ spl_autoload_register( function( $class ) {
 $General        = new General;
 
 // Создание экземпляра класса работающего с модулями.
-$Modules        = new Modules ( $General );
+$Modules        = new Modules       ( $General );
 
 // Создание экземпляра класса работающего с базами данных.
 $Db             = new Db;

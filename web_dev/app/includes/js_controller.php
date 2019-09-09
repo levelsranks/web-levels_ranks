@@ -8,11 +8,13 @@
  * @license GNU General Public License Version 3
  */
 
+// Получение информации о каком-либо значении по ключу массива в options.php
 if( $_POST["function"] == 'options' & isset( $_POST["setup"] ) ) {
     echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
     exit;
 }
 
+// Присвоение какого-либо значения по ключу массива в options.php
 if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
     // Подключение основных функций.
     require '../../app/includes/functions.php';

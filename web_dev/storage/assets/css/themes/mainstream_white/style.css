@@ -2612,7 +2612,7 @@ pre {
 }
 
 .unshow {
-    width: 0px !important;
+    display: none;
 }
 
 #notes

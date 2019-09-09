@@ -8,70 +8,119 @@
  * @license GNU General Public License Version 3
  */
 
+// Подключение SourceQuery.
 require(__DIR__ . '/bootstrap.php');
 
+// Импорт класса - SourceQuery.
 use xPaw\SourceQuery\SourceQuery;
 
-if (isset($_POST['data'])) {
-    $return = [];
-    $servers = $_POST['data'][0];
-    $servers_count = sizeof( $servers );
-    for ($i_ser = 0; $i_ser < $servers_count; $i_ser++) {
-        $server[] = explode(":", $servers[$i_ser]['ip']);
-        $server_fakeip[$i_ser][0] = $servers[$i_ser]['fakeip'];
-    }
-    $Query = new SourceQuery();
-    for ($i_server = 0; $i_server < $servers_count; $i_server++) {
-        try {
-            $Query->Connect($server[$i_server][0], $server[$i_server][1], 3, SourceQuery :: SOURCE);
-            $info[$i_server] = $Query->GetInfo();
-            if ( $servers[$i_ser]['fakeip'] !== '') {
-                $return[$i_server]['ip'] = $server_fakeip[$i_server][0];
-            } else {
-                $return[$i_server]['ip'] = $server[$i_server][0] . ':' . $server[$i_server][1];
-            }
-            $return[$i_server]['HostName'] = $info[$i_server]['HostName'];
-            $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
-            if( file_exists( '../../../../../storage/cache/img/maps/' . $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0] . '.jpg') ) {
-                $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
-                $return[$i_server]['Map_image'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
-                $cache[$i_server] = $info[$i_server]['ModDir'] . '/' . array_reverse(explode("/", $info[$i_server]['Map']))[0];
-            } else {
-                $return[$i_server]['Map'] = array_reverse(explode("/", $info[$i_server]['Map']))[0];
-                $return[$i_server]['Map_image'] = '-';
-                $cache[$i_server] = 'csgo/-';
-            }
-            $return[$i_server]['Players'] = $info[$i_server]['Players'];
-            $return[$i_server]['MaxPlayers'] = $info[$i_server]['MaxPlayers'];
-            $return[$i_server]['Mod'] = $info[$i_server]['ModDir'];
-        } catch (Exception $e) {
-            if ($servers[$i_ser]['fakeip'] !== '') {
-                $return[$i_server]['ip'] = $server_fakeip[$i_server][0];
-            } else {
-                $return[$i_server]['ip'] = $server[$i_server][0] . ':' . $server[$i_server][1];
-            }
-            $return[$i_server]['HostName'] = 'Сервер отключен';
-            $return[$i_server]['Map'] = '-';
-            $return[$i_server]['Map_image'] = '-';
-            $return[$i_server]['Players'] = 0;
-            $return[$i_server]['MaxPlayers'] = 0;
-            $return[$i_server]['Mod'] = 'csgo';
-            $cache[$i_server] = 'csgo/-';
-        } finally {
-            $Query->Disconnect();
-        }
-    }
+// Если входящий поток существует, начинаем работу.
+! isset( $_POST['data'] ) && die();
 
-    if( !file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) ) {
-        if( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) ) mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
-        file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export($cache, true) . ";");
-    } else {
-        if ($cache != require '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php') {
-            if( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) ) mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
-            file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export($cache, true) . ";");
-        }
-    }
+// Итоговый вывод является массивом.
+$return = [];
 
-    echo json_encode( $return, JSON_UNESCAPED_UNICODE );
-    exit;
-}
+// Итоговый кэш является массивом.
+$cache = [];
+
+// Присваиваем список серверов.
+$servers = $_POST['data'][0];
+
+// Считаем количество серверов.
+$servers_count = sizeof( $servers );
+
+// Перебираем список серверов и собираем данные в подмассивы.
+for ( $i_ser = 0; $i_ser < $servers_count; $i_ser++ ):
+    // Список основых IP | PORT.
+    $server[] = explode( ":", $servers[$i_ser]['ip'] );
+
+    // Список Fake IP:PORT.
+    $server_fakeip[] = $servers[$i_ser]['fakeip'];
+endfor;
+
+// Создние экземпляра класса - SourceQuery.
+$Query = new SourceQuery();
+
+// Перебор серверов и получение актуальной информации.
+for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
+    // Освное действие
+    try {
+        // Попытка подключения, протокол - Source.
+        $Query->Connect( $server[ $i_server ][0], $server[ $i_server ][1], 3, SourceQuery :: SOURCE );
+
+        // Присваиваем полученную информацию.
+        $info[ $i_server ] = $Query->GetInfo();
+
+        // Вывод - IP Сервера
+        $return[ $i_server ]['ip'] = empty( $server_fakeip[ $i_server ] ) ? $server[ $i_server ][0] . ':' . $server[ $i_server ][1] : $server_fakeip[ $i_server ];
+
+        // Вывод - Название сервера
+        $return[ $i_server ]['HostName'] = $info[ $i_server ]['HostName'];
+
+        // Проверка на существование изображения карты.
+        if( file_exists( '../../../../../storage/cache/img/maps/' . $info[ $i_server ]['AppID'] . '/' . array_reverse( explode( "/", $info[ $i_server ]['Map'] ) )[0] . '.jpg') ):
+            // Вывод - Название карты.
+            $return[ $i_server ]['Map'] = array_reverse(explode("/", $info[ $i_server ]['Map']))[0];
+
+            // Вывод - Изображение карты карты.
+            $return[ $i_server ]['Map_image'] = array_reverse(explode("/", $info[ $i_server ]['Map']))[0];
+
+            // Добавление в кэш ссылки на изображения текущей карты.
+            $cache[ $i_server ] = $info[ $i_server ]['AppID'] . '/' . array_reverse(explode("/", $info[ $i_server ]['Map']))[0];
+        else:
+            // Вывод - Название карты.
+            $return[ $i_server ]['Map'] = array_reverse(explode("/", $info[ $i_server ]['Map']))[0];
+
+            // Вывод - При отсутсвии изображении, заглушка.
+            $return[ $i_server ]['Map_image'] = '-';
+
+            // Добавление в кэш заглушки.
+            $cache[ $i_server ] = 'csgo/-';
+        endif;
+
+        // Вывод - Количество игроков.
+        $return[ $i_server ]['Players'] = $info[ $i_server ]['Players'];
+
+        // Вывод - Максимальное количество игроков.
+        $return[ $i_server ]['MaxPlayers'] = $info[ $i_server ]['MaxPlayers'];
+
+        // Вывод - Название мода.
+        $return[ $i_server ]['Mod'] = $info[ $i_server ]['AppID'];
+
+        // Исключение
+    } catch ( Exception $e ) {
+        // Вывод - IP Сервера
+        $return[ $i_server ]['ip'] = empty( $server_fakeip[ $i_server ] ) ? $server[ $i_server ][0] . ':' . $server[ $i_server ][1] : $server_fakeip[ $i_server ];
+
+        // Название выключенного сервера
+        $return[ $i_server ]['HostName'] = 'Сервер отключен';
+
+        // Карта выключенного сервера
+        $return[ $i_server ]['Map'] = '-';
+
+        // Название выключенного сервера
+        $return[ $i_server ]['Map_image'] = '-';
+
+        // Количество игроков выключенного сервера
+        $return[ $i_server ]['Players'] = 0;
+        $return[ $i_server ]['MaxPlayers'] = 0;
+
+        // Мод выключенного сервера
+        $return[ $i_server ]['Mod'] = '730';
+        $cache[ $i_server ] = '730/-';
+
+        // Конец действия
+    } finally {
+        $Query->Disconnect();
+    }
+endfor;
+
+// Проверка директории под кэш
+! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) && mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
+
+// Кэширование изображений с серверов для предзагрузки блоков
+( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) || $cache != require '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) && file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
+
+// Вывод
+echo json_encode( $return, JSON_UNESCAPED_UNICODE );
+exit;

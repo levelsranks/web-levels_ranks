@@ -11,7 +11,7 @@
                         <thead>
                         <tr>
                             <th class="text-center">IP:PORT</th>
-                            <th class="text-center">Визуальный IP</th>
+                            <th class="text-center">Визуальный IP:PORT</th>
                             <th class="text-center">Таблица</th>
                             <th class=""></th>
                         </tr>
