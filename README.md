@@ -4,6 +4,7 @@
 <h1 align="center">
     Levels Ranks - WEB Interface
 </h1>
+<a href="https://www.codacy.com/manual/M0st1ce/levels-ranks-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=levelsranks/levels-ranks-web&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/76c6d7faeac04277ba27d1e112f186fd"/></a>
 Пользовательский WEB интерфейс для взаимодействия с плагином статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>.
 Официальный канал поддержки в <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
