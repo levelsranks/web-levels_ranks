@@ -15,7 +15,7 @@ class Graphics {
     /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
      */
-    function __construct( $General, $Modules, $Db, $Auth ) {
+    function __construct( $General, $Modules, $Db, $Auth, $Notifications ) {
 
         $Graphics = $this;
 
@@ -26,6 +26,11 @@ class Graphics {
         // Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы
         for ( $module_id = 0, $c = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'] ); $module_id < $c; $module_id++ ):
             require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'][ $module_id ] . '/forward/data.php';
+        endfor;
+
+        // Дополнительный поток под модули, которые должны задействовать ядро на постоянной основе, а не локально.
+        for ( $module_id = 0, $c = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'] ); $module_id < $c; $module_id++ ):
+            require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'][ $module_id ] . '/forward/data_always.php';
         endfor;
 
         // Рендер блока - Head

@@ -358,6 +358,20 @@ class Db {
     }
 
     /**
+     * Возвращает ID последней вставленной строки.
+     *
+     * @param  string  $mod          Навание мода.
+     * @param  int     $user_id      Номер пользователя.
+     * @param  int     $db_id        Номер подключенной базы данных.
+     *
+     * @return int                   ID.
+     */
+
+    public function lastInsertId( $mod, $user_id = 0, $db_id = 0 ) {
+        return $this->pdo[ $mod ][ $user_id ][ $db_id ]->lastInsertId();
+    }
+
+    /**
      * "Разрыв соединения с базой данных".
      */
     public function __destruct() {

@@ -75,7 +75,7 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
             $return[ $i_server ]['Map_image'] = '-';
 
             // Добавление в кэш заглушки.
-            $cache[ $i_server ] = 'csgo/-';
+            $cache[ $i_server ] = '730/-';
         endif;
 
         // Вывод - Количество игроков.

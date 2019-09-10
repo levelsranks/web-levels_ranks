@@ -18,8 +18,8 @@
             </div>
             <div class="input-form"><div class="input_text">Game mode</div>
                 <select name="game_mod">
-                    <option value="csgo">CS:GO</option>
-                    <option value="css">CS:S</option>
+                    <option value="730">CS:GO</option>
+                    <option value="240">CS:S</option>
                 </select>
             </div>
             <div class="input-form"><div class="input_text">Steam mode</div>

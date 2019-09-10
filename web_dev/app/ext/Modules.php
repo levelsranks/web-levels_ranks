@@ -161,8 +161,8 @@ class Modules {
 
                 for ( $i2 = 0; $i2 < $data_always_size; $i2++ ):
 
-                    if ( ! in_array( $data_always[ $i2 ], $result['page'][ $this->array_modules[ $module ]['page'] ]['data'] ) ) {
-                        $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $data_always[ $i2 ];
+                    if ( ! in_array( $data_always[ $i2 ], $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'] ) ) {
+                        $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'][] = $data_always[ $i2 ];
                     }
 
                 endfor;

@@ -83,7 +83,7 @@ class Auth {
 
     public function _POST() {
         if( isset( $_POST['log_in'] ) ) {
-            $_POST['_login'] == '' && exit;
+            empty( $_POST['_login'] ) && exit;
             for ( $i = 0; $i < $this->admins_count; $i++ ) {
                 if($this->admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $this->admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
                     $_SESSION['steamid'] = con_steam32to64( $this->General->arr_general['admin'] );
