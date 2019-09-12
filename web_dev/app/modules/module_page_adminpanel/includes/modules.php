@@ -111,7 +111,7 @@
                 </div>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_data_always" id="module_data_always" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data_always'] == 1 && print 'checked';?>>
-                    <label class="border-checkbox-label" for="module_data_always">Вынести пре-инициализацию в основной поток</label>
+                    <label class="border-checkbox-label" for="module_data_always">Дополнтельная пре-инициализацию связанная с основным потоком</label>
                 </div>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_cache_enable" id="module_cache_enable" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['cache_enable'] == 1 && print 'checked';?>>

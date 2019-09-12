@@ -85,7 +85,7 @@ body {
     height: 100%;
     line-height: 1.5;
     text-align: left;
-    padding-right: 0!important;
+    padding-right: 0;
     background-color: var(--bg-color);
     background-size: cover;
     color: var(--default-text-color);
@@ -362,15 +362,15 @@ template {
  */
 
 .color-red {
-    color: #dc3545!important;
+    color: #dc3545;
 }
 
 .color-green {
-    color: #28a745!important;
+    color: #28a745;
 }
 
 .color-blue {
-    color: #17a2b8!important;
+    color: #17a2b8;
 }
 
 /*
@@ -480,7 +480,7 @@ template {
 .col-xl,
 .col-xl-auto {
     position: relative;
-    margin-top: 1rem!important;
+    margin-top: 1rem;
     width: 100%;
     padding-right: 1px;
     padding-left: 15px;
@@ -1029,7 +1029,7 @@ template {
     top: 0;
     left: 0;
     min-width: 100%;
-    position: fixed!important;
+    position: fixed;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -1052,7 +1052,7 @@ template {
 .nav-toggle:focus,
 .nav-toggle:hover {
     outline: 0;
-    border-bottom: none!important;
+    border-bottom: none;
 }
 .nav-toggle i {
     position: relative;
@@ -1098,7 +1098,7 @@ template {
     height: 55px;
     width: 44px;
     z-index: 2001;
-    border-bottom: none!important;
+    border-bottom: none;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
@@ -1194,7 +1194,7 @@ template {
 }
 
 .circle_map {
-    border-radius: 50%!important;
+    border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
     max-width: 32px;
@@ -1204,16 +1204,16 @@ template {
 }
 
 .rounded-circle {
-    border-radius: 50%!important;
+    border-radius: 50%;
 }
 .text-center {
-    text-align: center!important;
+    text-align: center;
 }
 .text-right {
-    text-align: right!important;
+    text-align: right;
 }
 .text-left {
-    text-align: left!important;
+    text-align: left;
 }
 
 
@@ -1257,8 +1257,8 @@ template {
 }
 
 .footer {
-    margin-top: 1rem!important;
-    margin-bottom: 1rem!important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     color: var(--default-text-color);
     font-size: 12px;
     font-weight: var(--font-weight-2);
@@ -2155,11 +2155,11 @@ template {
     top: 0;
     right: 0;
     height: 100%;
-    position: fixed !important;
+    position: fixed ;
     width: 220px;
     z-index: 2;
     background: var(--sidebar-color);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 }
 
 .sidebar-right .user-sidebar-right-block {
@@ -2287,7 +2287,7 @@ li {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    vertical-align: bottom !important;
+    vertical-align: bottom;
     border: 3px solid #fff
 }
 
@@ -2296,7 +2296,7 @@ li {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    vertical-align: bottom !important;
+    vertical-align: bottom;
     border: 3px solid #fff
 }
 
@@ -2418,10 +2418,10 @@ pre {
     top: 0;
     left: 0;
     height: 100%;
-    position: fixed !important;
+    position: fixed;
     width: 270px;
     z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1) !important
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1)
 }
 
 @media (max-width: 1025px) {
@@ -2454,7 +2454,7 @@ pre {
         top: 0;
         left: -12px;
         min-height: 100%;
-        position: fixed !important;
+        position: fixed;
         width: 30px;
         z-index: 2
     }
@@ -2544,7 +2544,7 @@ pre {
         top: 0;
         left: 260px;
         min-height: 100%;
-        position: fixed !important;
+        position: fixed;
         width: 27px;
         z-index: 2
     }
@@ -2595,7 +2595,7 @@ pre {
 }
 
 .main_notifications {
-    padding-left: unset !important;
+    padding-left: unset;
 }
 
 .main_notifications a {
@@ -2686,9 +2686,9 @@ pre {
 #notes .note-item[data-show="false"]
 {
     pointer-events: none;
-    opacity: 0 !important;
-    max-height: 0 !important;
-    margin-bottom: 0 !important;
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
 }
 #notes .note-item[data-type="info"]
 {
