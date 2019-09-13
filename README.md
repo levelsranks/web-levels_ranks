@@ -405,6 +405,7 @@
 - mixxed.xyz#4469 ( Discord ) - 1200 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
+- dyoma#5525  ( Discord )   - 500 RUB.
 - Unity       ( hlmod.ru )  - 460 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
