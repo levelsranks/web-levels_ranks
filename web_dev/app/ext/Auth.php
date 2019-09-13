@@ -61,7 +61,7 @@ class Auth {
         // получение информации об авторизации по Steam.
         isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
 
-        $this->_POST();
+        $this->General->arr_general['steam_only_authorization'] === 0 && $this->_POST();
 
         isset( $_SESSION['steamid'] ) && $this->get_authorization_sidebar_data();
     }
@@ -82,7 +82,7 @@ class Auth {
     }
 
     public function _POST() {
-        if( isset( $_POST['log_in'] ) ) {
+        if( isset( $_POST['log_in'] ) && ! empty( $this->admins ) ) {
             empty( $_POST['_login'] ) && exit;
             for ( $i = 0; $i < $this->admins_count; $i++ ) {
                 if($this->admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $this->admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
