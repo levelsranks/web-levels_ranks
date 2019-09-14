@@ -286,7 +286,7 @@ class Lk_module{
 				'id' 		=> $this->LkConvertGatewayId($post['gateway']),
 				'name'		=> $this->name
 			];
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_pay_service VALUES(:id, :name, '$post[shopid]', '$post[secret1]', '$post[secret1]', 1)", $params);
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_pay_service VALUES(:id, :name, '$post[shopid]', '$post[secret1]', '$post[secret2]', 1)", $params);
 			$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AddGateway'),['name'=>$this->name]), 'success');
 	}
 
