@@ -46,6 +46,11 @@ class Db {
     /**
      * @var array
      */
+    public    $mod_count;
+
+    /**
+     * @var array
+     */
     public    $user_count;
 
     /**
