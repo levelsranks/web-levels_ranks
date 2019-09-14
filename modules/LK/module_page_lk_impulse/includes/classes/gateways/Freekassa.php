@@ -33,7 +33,7 @@ class Freekassa extends Basefunction{
 		 	$BChekGateway = $this->BChekGateway('FreeKassa');
 		 	if(empty($BChekGateway))
 		 		die('Gatewqy Freekassa not Exist.');
-			$sign = md5($this->kassa[0]['shop_id'] .':'.$post['AMOUNT'].':'.$this->kassa[0]['secret_key_2'].':'.$post['MERCHANT_ORDER_ID']);
+			$sign = md5($this->kassa[0]['shop_id'] .':'.$post['AMOUNT'].':'.trim($this->kassa[0]['secret_key_2']).':'.$post['MERCHANT_ORDER_ID']);
 			if($sign != $post['SIGN']){
 				$this->LkAddLog('_NOTSIGN', ['gateway'=>'FreeKassa']);
 				die('Invalid digital signature.');

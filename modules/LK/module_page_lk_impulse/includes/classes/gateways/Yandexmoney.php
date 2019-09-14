@@ -19,8 +19,8 @@ class Yandexmoney extends Basefunction{
 		$this->decod = explode(',', $us);
 		$BChekGateway = $this->BChekGateway('YandexMoney');
 		if(empty($BChekGateway))
-			die('Gatewqy Freekassa not Exist.');
-		$hash = sha1($post['notification_type'].'&'.$post['operation_id'].'&'.$post['amount'].'&'.$post['currency'].'&'.$post['datetime'].'&'.$post['sender'].'&'.$post['codepro'].'&'.$this->kassa[0]['secret_key_2'].'&'.$post['label']);
+			die('Gatewqy YandexMoney not Exist.');
+		$hash = sha1($post['notification_type'].'&'.$post['operation_id'].'&'.$post['amount'].'&'.$post['currency'].'&'.$post['datetime'].'&'.$post['sender'].'&'.$post['codepro'].'&'.trim($this->kassa[0]['secret_key_2']).'&'.$post['label']);
 		if($post['sha1_hash'] != $hash or $post['codepro'] === true or $post['unaccepted'] === true )
 		{
 			$this->LkAddLog('_NOTSIGN', ['gateway'=>'YandexMoney']);

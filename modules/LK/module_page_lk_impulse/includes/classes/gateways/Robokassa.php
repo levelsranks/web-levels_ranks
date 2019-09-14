@@ -19,7 +19,7 @@ class Robokassa extends Basefunction{
 		 	$this->decod = explode(',', $us);
 		 	$BChekGateway = $this->BChekGateway('Robokassa');
 		 	if(empty($BChekGateway))exit;
-			$sign = strtoupper(md5($post['OutSum'].':'.$post['InvId'].':'.$this->kassa[0]['secret_key_2'].':Shp_mysign='.$post['Shp_mysign']));
+			$sign = strtoupper(md5($post['OutSum'].':'.$post['InvId'].':'.trim($this->kassa[0]['secret_key_2']).':Shp_mysign='.$post['Shp_mysign']));
 			if($sign != strtoupper($post['SignatureValue']))
 			{
 				$this->LkAddLog('_NOTSIGN', ['gateway'=>'Robokassa']);

@@ -23,7 +23,7 @@ class Unitpay extends Basefunction{
 			    $result = array('error' => array('message' => 'Gatewqy UnitPay not Exist.'));
 			    $this->hardReturnJson($result);
 			 }
-		 	if($this->getSignature($method, $params, $this->kassa[0]['secret_key_2']) != $params['signature']){
+		 	if($this->getSignature($method, $params, trim($this->kassa[0]['secret_key_2'])) != $params['signature']){
 				$this->LkAddLog('_NOTSIGN', ['gateway'=>'UnitPay']);
 				$result = array('error' => array('message' => 'Invalid digital signature.'));
 				$this->hardReturnJson($result);

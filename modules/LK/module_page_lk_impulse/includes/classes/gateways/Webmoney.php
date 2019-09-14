@@ -20,12 +20,12 @@ class Webmoney extends Basefunction{
 		 	$BChekGateway = $this->BChekGateway('WebMoney');
 		 	if(empty($BChekGateway))exit;
 		if ($post['LMI_PREREQUEST'] == 1){
-		if ($post['LMI_PAYEE_PURSE'] == $this->kassa[0]['shop_id']) echo 'YES';
+		if ($post['LMI_PAYEE_PURSE'] == trim($this->kassa[0]['shop_id'])) echo 'YES';
 		}
 	}
 
 	public function WBCheckSignature($post){
-		$key = $post['LMI_PAYEE_PURSE'].$post['LMI_PAYMENT_AMOUNT'].$post['LMI_PAYMENT_NO'].$post['LMI_MODE'].$post['LMI_SYS_INVS_NO'].$post['LMI_SYS_TRANS_NO'].$post['LMI_SYS_TRANS_DATE'].$this->kassa[0]['secret_key_2'].$post['LMI_PAYER_PURSE'].$post['LMI_PAYER_WM'];
+		$key = $post['LMI_PAYEE_PURSE'].$post['LMI_PAYMENT_AMOUNT'].$post['LMI_PAYMENT_NO'].$post['LMI_MODE'].$post['LMI_SYS_INVS_NO'].$post['LMI_SYS_TRANS_NO'].$post['LMI_SYS_TRANS_DATE'].trim($this->kassa[0]['secret_key_2']).$post['LMI_PAYER_PURSE'].$post['LMI_PAYER_WM'];
 		if (strtoupper(hash('sha256', $key)) != $post['LMI_HASH'])
 			{
 				$this->LkAddLog('_NOTSIGN', ['gateway'=>'WebMoney']);

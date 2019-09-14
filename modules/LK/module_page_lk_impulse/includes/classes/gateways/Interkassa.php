@@ -23,7 +23,7 @@ class Interkassa extends Basefunction{
 		 	$dataSet = $post;
 			unset($dataSet['ik_sign']);
 			ksort($dataSet, SORT_STRING);
-			array_push($dataSet, $this->kassa[0]['secret_key_1']);
+			array_push($dataSet, trim($this->kassa[0]['secret_key_1']));
 			$signString = implode(':', $dataSet);
 			$sign = base64_encode(md5($signString, true));
 			if($sign != $post['ik_sign']){

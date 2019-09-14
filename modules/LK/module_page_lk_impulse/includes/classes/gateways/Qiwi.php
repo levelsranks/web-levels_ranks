@@ -23,7 +23,7 @@ class Qiwi extends Basefunction{
 				die('{"error":"1"}');
 		 }
 		 $invoice_parameters = $post['bill']['amount']['currency'].'|'.$post['bill']['amount']['value'].'|'.$post['bill']['billId'].'|'.$post['bill']['siteId'].'|'.$post['bill']['status']['value'];
-		 $sign = hash_hmac('sha256', $invoice_parameters,$this->kassa[0]['secret_key_2']);
+		 $sign = hash_hmac('sha256', $invoice_parameters,trim($this->kassa[0]['secret_key_2']));
 		 if($sign == $signature){
 			 if($post['bill']['status']['value'] == 'PAID'){
 				 $BCheckPay = $this->BCheckPay('Qiwi');
