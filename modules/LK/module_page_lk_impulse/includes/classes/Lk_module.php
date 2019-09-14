@@ -284,12 +284,9 @@ class Lk_module{
 			$this->LKvalidateGatewayData($post['gateway'],$post);
 			$params = [
 				'id' 		=> $this->LkConvertGatewayId($post['gateway']),
-				'name'		=> $this->name,
-				'shopid'	=> $post['shopid'],
-				'secret1'	=> $post['secret1'],
-				'secret2'	=> $post['secret2'],
+				'name'		=> $this->name
 			];
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_pay_service VALUES(:id, :name, :shopid, :secret1, :secret2, 1)",$params);
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_pay_service VALUES(:id, :name, '$post[shopid]', '$post[secret1]', '$post[secret1]', 1)", $params);
 			$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AddGateway'),['name'=>$this->name]), 'success');
 	}
 
@@ -302,12 +299,9 @@ class Lk_module{
 		$this->LKvalidateGatewayData($post['gateway_edit'],$post);
 		$params = [
 			'id' 		=> $this->LkConvertGatewayId($post['gateway_edit']),
-			'shopid'	=> $post['shopid'],
-			'secret1'	=> $post['secret1'],
-			'secret2'	=> $post['secret2'],
 			'status'	=> $status
 		];
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_pay_service SET shop_id = :shopid, secret_key_1 = :secret1, secret_key_2 = :secret2, status = :status WHERE id = :id", $params);
+		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_pay_service SET shop_id = '$post[shopid]', secret_key_1 = '$post[secret1]', secret_key_2 = '$post[secret2]', status = :status WHERE id = :id", $params);
 		$this->message('Изменения данных в системе '.$this->name.' сохранены!', 'success');
 	}
 
