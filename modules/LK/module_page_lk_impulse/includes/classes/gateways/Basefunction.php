@@ -62,11 +62,12 @@ class Basefunction{
      * @return bool false|true      Возвращает результат проверки.
      */
 	public function BCheckPay($gateway){
+		preg_match('/:[0-9]{1}:\d+/i', $this->decod[3], $auth);
 		$params = [
 			'order' 	=> $this->decod[1],
-			'auth'		=> $this->decod[3],
+			'auth'		=> '%'.$auth[0].'%',
 		];
-		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_order = :order AND pay_auth = :auth AND pay_status = 0", $params);
+		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_order = :order AND pay_auth LIKE :auth AND pay_status = 0", $params);
 		if(empty($this->pay)){
 				$this->LkAddLog('_PayNotExist', ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'steam'=>$this->decod[3],'amount'=>$this->decod[2],'gateway' =>$gateway]);
 					return false;

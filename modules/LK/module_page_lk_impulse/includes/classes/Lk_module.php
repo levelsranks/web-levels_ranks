@@ -29,8 +29,8 @@ class Lk_module{
 
 	public function LkBalancePlayer(){
 		if(isset($_SESSION['steamid32'])){
-			$param = ['auth'=> $_SESSION['steamid32']];
-			$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth = :auth", $param);
+			$param = ['auth'=> '%'.$_SESSION['steamid32'].'%'];
+			$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth", $param);
 			$this->Modules->set_user_info_text($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Balance').': '.$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse').' <b class="material-balance">'.number_format($infoUser[0]['cash'],0,' ', ' ').'</b>');
 		}
 	}
