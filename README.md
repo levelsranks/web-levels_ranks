@@ -392,6 +392,7 @@
 - https://ocgn.ru/
 - https://wocawp.ru/stats/
 - https://stats.unity.pp.ua/
+- https://yablochko-csgo.ru/
 - http://lr.neostrike.ru/
 - http://ilitagame.ru/
 - https://gg-pro.ru/levels/
@@ -467,6 +468,7 @@
         /js                        - JS ассеты.
       /forward                     - Функциональная часть.
         /data.php                  - Пре-инициализация. Скрипт начинает свою работу до загрузки шаблона страницы.
+	/data_always.php           - Пре-инициализация. Скрипт начинает свою работу до загрузки шаблона и работает на всех страницах.
         /interface.php             - Инициализация. Скрипт начинает свою работу во время загрузки шаблона.
     /description.json - Описание модуля
     /translation.json - Если модуль имеет мультиязычность, переводы описываются в данном файле.
