@@ -53,7 +53,7 @@ function var_export_min($var, $return = true) {
 }
 
 /**
- * Вывода var_export в более оптимальном виде.
+ * Вывод var_export в более оптимальном виде.
  *
  * @param array $var        Массив данных
  * @param boolean $return   Вид вывода.
@@ -231,6 +231,39 @@ function con_steam32to64( $id ) {
     } else {
         return is_numeric ( $id ) ? $id : false;
     }
+}
+
+/**
+ * Конвертация Steam ID 3 -> 64 (int).
+ *
+ * @param string       $steamid3  Steam ID 3 игрока.
+ *
+ * @return int                    Выводит итог конвертации.
+ */
+function con_steam3to64_int( $steamid3 ) {
+    $A = $steamid3 % 2;
+    $B = intval($steamid3 / 2);
+    return "STEAM_1:" . $A . ":" . $B;
+}
+
+/**
+ * Конвертация Steam ID 3 -> 32 (int).
+ *
+ * @param string       $steamid3  Steam ID 3 игрока.
+ *
+ * @return int                    Выводит итог конвертации.
+ */
+function con_steam3to32_int( $steamid3, $else = 0 ) {
+    if( is_numeric ( $steamid3 ) ):
+        $a = $steamid3 % 2;
+        $b = intval($steamid3 / 2);
+        $c = con_steam32to64 ( 'STEAM_1:' . $a . ':' . $b );
+        return $c;
+    elseif( $else === 1 ):
+        return $steamid3[0] == 'S' ? con_steam32to64( $steamid3 ) : $steamid3;
+    else:
+        return $steamid3;
+    endif;
 }
 
 /**

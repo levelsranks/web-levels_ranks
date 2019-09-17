@@ -9,7 +9,7 @@
  */
 
 // Подключение SourceQuery.
-require(__DIR__ . '/bootstrap.php');
+require __DIR__ . '/bootstrap.php';
 
 // Импорт класса - SourceQuery.
 use xPaw\SourceQuery\SourceQuery;
