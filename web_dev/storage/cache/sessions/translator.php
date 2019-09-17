@@ -789,5 +789,10 @@ return array (
             'LT' => 'Asmeninė sąskaita',
             'DE' => 'Persönliches Büro',
             'CH' => '个人账号',
+        ),
+	'_Vips' =>
+        array (
+            'EN' => 'Vips list',
+            'RU' => 'Список випов'
         )
 );
