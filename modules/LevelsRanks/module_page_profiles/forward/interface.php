@@ -24,7 +24,7 @@
                     <div class="select-panel select-panel-table badge">
                         <select onChange="window.location.href=this.value">
                             <option style="display:none" value="" disabled selected><?php echo $Player->found[  $Player->server_group  ]['name_servers']?></option>
-                            <?php for ($b = 0, $_c = sizeof( $Player->found );$b < $_c;$b++) { if($Player->found_fix[$b] != ''){ ?>
+                            <?php for ( $b = 0, $_c = sizeof( $Player->found ); $b < $_c; $b++ ) { if( ! empty( $Player->found_fix[ $b ] ) ){ ?>
                                 <option value="<?php echo set_url_section( get_url( 2 ), 'server_group', $Player->found_fix[$b]['server_group'] )?>">
                                     <a href="<?php echo set_url_section( get_url( 2 ), 'server_group', $Player->found_fix[$b]['server_group'] )?>"><?php echo $Player->found_fix[$b]['name_servers']?></a></option>
                             <?php }} ?>
@@ -69,11 +69,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $weapon_names = array_keys( $Player->weapons );$_c = count( $Player->weapons );for ($w = 0; $w < $_c; $w++) {?>
+                        <?php $weapon_names = empty( $Player->weapons ) ? [] : array_keys( $Player->weapons ); for ( $w = 0, $_c = count( $Player->weapons ); $w < $_c; $w++ ) {?>
                             <tr>
-                                <th class="text-right"><?php $General->get_icon( 'custom', $weapon_names[$w], 'weapons' )?></th>
-                                <th class="text-left"><?php echo str_replace('_',' ',strtoupper(str_replace('weapon_','',$weapon_names[$w])))?></th>
-                                <th class="text-center"><?php echo $Player->weapons[$weapon_names[$w]] ?> kills</th>
+                                <th class="text-right"><?php $General->get_icon( 'custom', $weapon_names[ $w ], 'weapons' )?></th>
+                                <th class="text-left"><?php echo str_replace( '_', ' ', strtoupper( str_replace( 'weapon_','', $weapon_names[ $w ] ) ) )?></th>
+                                <th class="text-center"><?php echo $Player->weapons[ $weapon_names[ $w ] ] ?> kills</th>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -292,14 +292,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php for ($ti = 0; $ti < 11; $ti++) {?>
-                                <tr class="pointer <?php if( $Player->get_steam_32() == $Player->top_with_player[$ti]['steam']){echo 'table-active';}?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>';">
+                            <?php for ( $ti = 0; $ti < 11; $ti++ ):?>
+                                <tr class="pointer <?php ! empty( $Player->top_with_player[ $ti ]['steam'] ) && $Player->get_steam_32() == $Player->top_with_player[ $ti ]['steam'] && print 'table-active'?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>';">
                                     <th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
-                                    <th class="table-text"><?php echo action_text_trim($Player->top_with_player[$ti]['name'],16)?></th>
-                                    <th class="text-center"><?php echo $Player->top_with_player[$ti]['value']?></th>
+                                    <th class="table-text"><?php echo empty( $Player->top_with_player[ $ti ]['name'] ) ? 'Unnamed' : action_text_trim( $Player->top_with_player[ $ti ]['name'],16 )?></th>
+                                    <th class="text-center"><?php echo empty( $Player->top_with_player[ $ti ]['value'] ) ? 0 : $Player->top_with_player[ $ti ]['value']?></th>
                                     <th class="text-center table-text"><img src="<?php echo 'storage/cache/img/ranks/' . $Player->found[  $Player->server_group  ]['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>
                                 </tr>
-                            <?php }?>
+                            <?php endfor?>
                             </tbody>
                         </table>
                     </div>

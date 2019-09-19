@@ -26,8 +26,22 @@ function file_get_contents_fix( $file ) {
  *
  */
 function header_fix( $url ) {
-        echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
-        echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
+    echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
+    echo '<noscript><meta http-equiv="refresh" content="0;url=' . $url . '" /></noscript>';
+}
+
+/**
+ * Проверка ну переменной на пустоту с последующей заменой при отсутсвии значения.
+ *
+ * @param  int|string|array  $i      Премеренная.
+ * @param  int|string|array  $d      Значение если переменная не пустая..
+ * @param  int|string|array  $a      Значение если переменая пустая.
+ *
+ * @return int|string|array          Итог.
+ */
+function empty_check_out( $i, $d = 0, $a = 0 ) {
+    $x = empty( $d ) ? $i : $d;
+    return empty( $i ) ? $a : $x;
 }
 
 /**

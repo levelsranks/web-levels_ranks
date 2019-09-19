@@ -207,6 +207,9 @@ if ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
     $options['theme'] = 'mainstream_white';
     $options['enable_css_cache'] = 0;
     $options['enable_js_cache'] = 0;
+    $options['white_palette'] = 'original_palette';
+    $options['dark_palette'] = 'dark_mode_palette';
+    $options['background_image'] = 'null';
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
 }

@@ -88,6 +88,8 @@ body {
     padding-right: 0;
     background-color: var(--bg-color);
     background-size: cover;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
     color: var(--default-text-color);
 }
 

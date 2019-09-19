@@ -22,8 +22,13 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
     // Получение текущих настроек.
     $options = require '../../storage/cache/sessions/options.php';
 
+    if ( empty( $_POST["data"] ) || is_numeric( $_POST["data"] ) ):
+
     // Изменение конкретной опции.
     $options[ $_POST["option"] ] = (int) $options[ $_POST["option"] ] == 0 ? 1 : 0;
+    else:
+        $options[ $_POST["option"] ] = $_POST["data"];
+    endif;
 
     // Проверка на доп изменения.
     if( ! empty( $_POST["change"] ) ):
@@ -41,6 +46,22 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
                 if( is_file( $temp_file ) )
                     unlink( $temp_file );
             }
+            endif;
+        endif;
+
+        // Если в строке есть 'js' выполнить чистку кэша по CSS
+        if ( stristr( $_POST["change"], 'js') !== false ):
+
+            // Проверка папки на пустоту
+            $is_empty = sizeof( glob('../../storage/assets/js/generation/*') ) ? true : false;
+
+            // Если папка не пустая, провести очистку
+            if( $is_empty == true ):
+                $temp_files = glob( '../../storage/assets/js/generation/*' );
+                foreach( $temp_files as $temp_file ) {
+                    if( is_file( $temp_file ) )
+                        unlink( $temp_file );
+                }
             endif;
         endif;
     endif;
@@ -101,7 +122,7 @@ if( $_POST["function"] == 'avatars' ) {
     define('IN_LR', true);
 
     // Ограничение работы стрипта.
-    set_time_limit(120);
+    set_time_limit(160);
 
     // Получение Steam WEB ключа, для доступа к Steam API.
     $web_key = ( require '../../storage/cache/sessions/options.php' )['web_key'];

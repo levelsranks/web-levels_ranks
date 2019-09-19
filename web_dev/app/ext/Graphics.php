@@ -56,11 +56,21 @@ class Graphics {
      *
      * @return string         Цветовая плалитра ( CSS / ROOT )
      */
+    public function get_css_background_image() {
+        if ( ! empty( $this->General->arr_general['background_image'] ) && $this->General->arr_general['background_image'] != 'null' ) {
+            return '<style> body { background-image: url(./storage/cache/img/global/backgrounds/' . $this->General->arr_general["background_image"] . '); }</style>';
+        }
+    }
+    /**
+     * Получение и вывод цветовой палитный сайта.
+     *
+     * @return string         Цветовая плалитра ( CSS / ROOT )
+     */
     public function get_css_color_palette() {
         if ( isset ( $_SESSION['dark_mode'] ) && $_SESSION['dark_mode'] == true ) {
-            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/dark_mode_palette.json' ) ) ) .  '</style>';
+            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['dark_palette'] . '.json' ) ) ) .  '</style>';
         } else {
-            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/original_palette.json' ) ) ) .  '</style>';
+            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['white_palette'] . '.json' ) ) ) .  '</style>';
         }
     }
 }

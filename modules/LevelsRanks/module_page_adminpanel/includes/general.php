@@ -42,11 +42,41 @@
         </div>
         <div class="card-container">
             <div class="input-form">
-                <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Design')?></div>
+                <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Decor')?></div>
+            </div>
+            <?php $Background_images = array_diff( scandir( CACHE . '/img/global/backgrounds/', 1 ), array( '..', '.' ) )?>
+            <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Background_image')?></div>
+                <select class="select" name="background_image" onChange="set_options_data_select( getAttribute('name'), value )">
+                    <option style="display:none" value="<?php echo $General->arr_general['background_image'] == 'null' ? $Modules->get_translate_module_phrase( 'module_page_adminpanel','_No_image') : $General->arr_general['background_image']?>"><?php echo $General->arr_general['background_image'] == 'null' ? $Modules->get_translate_module_phrase( 'module_page_adminpanel','_No_image') : $General->arr_general['background_image']?></option>
+                    <?php for ( $i = 0, $_c = sizeof( $Background_images ); $i < $_c; $i++ ):?>
+                        <option value="<?php echo $Background_images[ $i ]?>"><?php echo $Background_images[ $i ]?></option>
+                    <?php endfor?>
+                    <option value="null"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_No_image')?></option>
+                </select>
+            </div>
+            <?php $palettes = array_diff( scandir( THEMES . $this->General->arr_general['theme'] .'/palettes/', 1 ), array( '..', '.' ) )?>
+            <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_White_color_palettes')?></div>
+                <select class="select" name="white_palette" onChange="set_options_data_select( getAttribute('name'), value )">
+                    <option style="display:none" value="<?php echo $General->arr_general['white_palette']?>"><?php echo $General->arr_general['white_palette']?></option>
+                    <?php for ( $i = 0, $_c = sizeof( $palettes ); $i < $_c; $i++ ):?>
+                        <option value="<?php echo substr( $palettes[ $i ], 0, -5 )?>"><?php echo substr( $palettes[ $i ], 0, -5 )?></option>
+                    <?php endfor?>
+                </select>
+            </div>
+            <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Dark_color_palettes')?></div>
+                <select class="select" name="dark_palette" onChange="set_options_data_select( getAttribute('name'), value )">
+                    <option style="display:none" value="<?php echo $General->arr_general['dark_palette']?>"><?php echo $General->arr_general['dark_palette']?></option>
+                    <?php for ( $i = 0; $i < $_c; $i++ ):?>
+                        <option value="<?php echo substr( $palettes[ $i ], 0, -5 )?>"><?php echo substr( $palettes[ $i ], 0, -5 )?></option>
+                    <?php endfor?>
+                </select>
             </div>
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="dark_mode" id="dark_mode" <?php $General->arr_general['dark_mode'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="dark_mode"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Dark_mode_default')?></label>
+            </div>
+            <div class="input-form">
+                <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Design')?></div>
             </div>
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'css')" class="border-checkbox" type="checkbox" name="animations" id="animations" <?php $General->arr_general['animations'] === 1 && print 'checked'?>>
@@ -83,11 +113,11 @@
                 <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Optimization')?></div>
             </div>
             <div class="input-form">
-                <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="enable_css_cache" id="enable_css_cache" <?php $General->arr_general['enable_css_cache'] === 1 && print 'checked'?>>
+                <input onclick="set_options_data(this.id,'css')" class="border-checkbox" type="checkbox" name="enable_css_cache" id="enable_css_cache" <?php $General->arr_general['enable_css_cache'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="enable_css_cache"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Enable_css_cache')?></label>
             </div>
             <div class="input-form">
-                <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="enable_js_cache" id="enable_js_cache" <?php $General->arr_general['enable_js_cache'] === 1 && print 'checked'?>>
+                <input onclick="set_options_data(this.id,'js')" class="border-checkbox" type="checkbox" name="enable_js_cache" id="enable_js_cache" <?php $General->arr_general['enable_js_cache'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="enable_js_cache"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Enable_js_cache')?></label>
             </div>
         </div>

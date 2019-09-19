@@ -145,7 +145,7 @@ class Auth {
                 }
             }
         endif;
-        if ($this->user_auth[0] == '' || $this->user_auth[0] == '') {
+        if ( empty( $this->user_auth[0] ) ) {
             $this->user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
             $this->lastconnect = '-';
             $this->server_info[0]['name_servers'] = 'Неизвестно';

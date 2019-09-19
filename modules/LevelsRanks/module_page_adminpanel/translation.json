@@ -226,6 +226,26 @@
   "_Optimization": {
     "EN": "Optimization",
     "RU": "Оптимизация"
+  },
+  "_Decor": {
+    "EN": "Decor",
+    "RU": "Оформление"
+  },
+  "_White_color_palettes": {
+    "EN": "White Сolor Palettes",
+    "RU": "Белая палитра сайта"
+  },
+  "_Dark_color_palettes": {
+    "EN": "Dark Сolor Palettes",
+    "RU": "Тёмная палитра сайта"
+  },
+  "_Background_image": {
+    "EN": "Background image",
+    "RU": "Фоновое изображение"
+  },
+  "_No_image": {
+    "EN": "No image",
+    "RU": "Без изображения"
   }
 }
 

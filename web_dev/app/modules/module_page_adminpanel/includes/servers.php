@@ -71,8 +71,7 @@
                 </div>
             </form>
         </div>
-</div>
-<div class="col-md-7">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header">
             <h5 class="badge">Настройка серверов</h5>
@@ -82,6 +81,7 @@
                     <table class="table table-hover mb-0">
                         <thead>
                         <tr>
+                            <th class="text-center">Название</th>
                             <th class="text-center">IP:PORT</th>
                             <th class="text-center">Визуальный IP:PORT</th>
                             <th class=""></th>
@@ -90,15 +90,18 @@
                         <tbody>
                         <?php for ($i_server = 0; $i_server < $General->server_list_count; $i_server++) {?>
                             <tr>
-                            <th class="text-center">
-                                <?php echo $General->server_list[$i_server]['ip']?>
-                            </th>
-                            <th class="text-center">
-                                <?php echo $General->server_list[$i_server]['fakeip']?>
-                            </th>
-                            <th class="text-center">
-                                <button class="remove_servers" onclick="delete_server(this)"><?php $General->get_icon( 'zmdi', 'close' )?></button>
-                            </th>
+                                <th class="text-center">
+                                    <?php echo $General->server_list[$i_server]['name']?>
+                                </th>
+                                <th class="text-center">
+                                    <?php echo $General->server_list[$i_server]['ip']?>
+                                </th>
+                                <th class="text-center">
+                                    <?php echo $General->server_list[$i_server]['fakeip']?>
+                                </th>
+                                <th class="text-center">
+                                    <button class="remove_servers" onclick="delete_server(this)"><?php $General->get_icon( 'zmdi', 'close' )?></button>
+                                </th>
                             </tr>
                         <?php } ?>
                         </tbody>

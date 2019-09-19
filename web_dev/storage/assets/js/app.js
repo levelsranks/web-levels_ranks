@@ -124,6 +124,67 @@ function set_options_data(data_id,change_data) {
     });
 }
 
+function set_options_data_select( name, value ) {
+    $.post( "./app/includes/js_controller.php", { function: "set", option: name, data: value } );
+    note({
+        content: 'Сохранено',
+        type: 'success',
+        time: 3
+    });
+
+    if( name == 'white_palette' ) {
+        change_palette( value );
+    } else if ( name == 'dark_palette' ) {
+        change_palette( value );
+    } else if ( name == 'background_image' ) {
+        change_background_image( value );
+    }
+}
+
+function change_background_image( value ) {
+
+    var str = '/storage/cache/img/global/backgrounds/' + value;
+
+    document.body.style.backgroundImage = 'url(' + str + ')';
+
+}
+
+function change_palette( value ) {
+
+    var theme = $.ajax({
+        type: 'POST',
+        url: "./app/includes/js_controller.php",
+        data: ({function:'options', setup:'theme'}),
+        dataType: 'text',
+        global: false,
+        async:false,
+        success: function( data ) {
+            return data;
+        }
+    }).responseText;
+
+    var str = './storage/assets/css/themes/' + theme + '/palettes/' + value + '.json';
+
+    var palette = $.ajax({
+        type: 'GET',
+        url: str.split('"').join(''),
+        success: function( data ){
+            return data;
+        },
+        dataType: 'json',
+        global: false,
+        async:false,
+        cache: true
+    }).responseText;
+
+    var obj = JSON.parse( palette );
+
+    for (var key in obj) {
+        document.documentElement.style.setProperty(key, obj[key]);
+    }
+
+}
+
 function dark_mode() {
 
     var dark_mode = $.ajax({
@@ -150,9 +211,33 @@ function dark_mode() {
         }
     }).responseText;
 
+    var dark_palette = $.ajax({
+        type: 'POST',
+        url: "./app/includes/js_controller.php",
+        data: ({function:'options', setup:'dark_palette'}),
+        dataType: 'text',
+        global: false,
+        async:false,
+        success: function( data ) {
+            return data;
+        }
+    }).responseText;
+
+    var white_palette = $.ajax({
+        type: 'POST',
+        url: "./app/includes/js_controller.php",
+        data: ({function:'options', setup:'white_palette'}),
+        dataType: 'text',
+        global: false,
+        async:false,
+        success: function( data ) {
+            return data;
+        }
+    }).responseText;
+
     if (dark_mode == 0) {
 
-        var str = './storage/assets/css/themes/' + theme + '/dark_mode_palette.json';
+        var str = './storage/assets/css/themes/' + theme + '/palettes/' + dark_palette + '.json';
 
         var palette = $.ajax({
             type: 'GET',
@@ -176,7 +261,7 @@ function dark_mode() {
 
     } else if (dark_mode == 1) {
 
-        var str = './storage/assets/css/themes/' + theme + '/original_palette.json';
+        var str = './storage/assets/css/themes/' + theme + '/palettes/' + white_palette + '.json';
 
         var palette = $.ajax({
             type: 'GET',

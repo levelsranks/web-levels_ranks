@@ -43,7 +43,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
         $data['module_block_main_top'] = $Modules->get_module_cache('module_block_main_top');
 
 // Если кэш морально устарел, то думаю его нужно обновить
-        if ( ( $data['module_block_main_top'] == '' ) || ( time() > $data['module_block_main_top']['time'] ) ) {
+        if ( ( empty( $data['module_block_main_top'] ) ) || ( time() > $data['module_block_main_top']['time'] ) ) {
 
             unset( $data['module_block_main_top'] );
 
