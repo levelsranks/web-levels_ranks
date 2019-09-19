@@ -47,48 +47,31 @@
                     <th onclick="location.href = '<?php echo set_url_section(get_url(2), 'filter', 'playtime') ?>';" class="text-center a-type tb-time <?php $_SESSION['filter'] == 'playtime' && print 'selected';?>"><?php echo $Modules->get_translate_phrase('_Play_time') ?></th>
                 </tr>
                 </thead>
-                <tbody><?php $sz = sizeof( $res );
-                for ($sz_i = 0; $sz_i < $sz; $sz_i++) {
+                <tbody><?php for ( $sz_i = 0, $sz = sizeof( $res ); $sz_i < $sz; $sz_i++ ):
                     $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam'] )?>
                     <tr class="pointer"
-                        <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam']?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
+                        <?php if ( $Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam']?>&server_group=<?php echo $server_group ?>';"<?php } ?>>
                         <th class="text-center"><?php echo ++$page_num_min ?></th>
-                        <?php if( $General->arr_general['avatars'] != 0 ) {?>
-                        <th class="text-right tb-avatar"><img class="rounded-circle"
-                                                              id="<?php if ( $General->arr_general['avatars'] == 1){ echo con_steam32to64($res[$sz_i]['steam']);} ?>"<?php echo $sz_i < '20' ? 'src' : 'data-src'?>="<?php echo $General->getAvatar( con_steam32to64( $res[$sz_i]['steam'] ), 2 )?>">
-                        </th>
-                        <?php }?>
-                        <th class="table-text text-left tb-name"><a
-                                <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam']?>&server_group=<?php echo $server_group ?>"<?php } ?>><?php echo action_text_clear( action_text_trim($res[$sz_i]['name'], 16) )?></a>
-                        </th>
-                        <th class="text-center"><?php echo number_format(str_replace(";", "", $res[$sz_i]['value']), 0, '.', ' ') ?></th>
-                        <th class="text-center table-text"><img
-                            <?php if ($sz > 18) {
-                                echo 'src';
-                            } else {
-                                echo 'data-src';
-                            } ?>="<?php echo 'storage/cache/img/ranks/' . $Db->statistics_table[ $server_group ]['ranks_pack']  . '/';
-                            if ($res[$sz_i]['rank'] == '') {
-                                echo '00';
-                            } else {
-                                echo $res[$sz_i]['rank'];
-                            } ?>.png"></th>
-                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$sz_i]['kills']), 0, '.', ' ') ?></th>
-                        <th class="text-center tb-death"><?php echo number_format(str_replace(";", "", $res[$sz_i]['deaths']), 0, '.', ' ') ?></th>
-                        <th class="text-center"><?php echo $res[$sz_i]['kd'] ?></th>
-                        <th class="text-center tb-hs"><?php echo ! empty( $res[$sz_i]['headshots'] ) ? number_format(str_replace( ";", "", $res[ $sz_i ]['headshots'] ), 0, '.', ' ') : 0?></th>
-                        <th class="text-center tb-time"><?php echo $Modules->action_time_exchange( $res[$sz_i]['playtime'], 2 )?></th>
-                    </tr><?php } ?></tbody>
+                        <?php if( ! empty( $General->arr_general['avatars'] ) ):?><th class="text-right tb-avatar"><img class="rounded-circle" id="<?php $General->arr_general['avatars'] === 1 && print con_steam32to64( $res[ $sz_i ]['steam'] )?>"<?php echo $sz_i < '20' ? 'src' : 'data-src'?>="<?php echo $General->getAvatar( con_steam32to64( $res[ $sz_i ]['steam'] ), 2 )?>"></th><?php endif?>
+                        <th class="table-text text-left tb-name"><a <?php $Modules->array_modules['module_page_profiles']['setting']['status'] === 1 && print sprintf('href="%s?page=profiles&profile=%s&server_group=%d"', $General->arr_general['site'], $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[$sz_i]['steam'] ) : $res[$sz_i]['steam'], $server_group )?>><?php echo action_text_clear( action_text_trim($res[$sz_i]['name'], 16) )?></a></th>
+                        <th class="text-center"><?php echo number_format( $res[ $sz_i ]['value'], 0, '.', ' ' ) ?></th>
+                        <th class="text-center table-text"><img <?php echo sprintf('%s="storage/cache/img/ranks/%s/%d', $sz > 18 ? 'src' :'data-src', $Db->statistics_table[ $server_group ]['ranks_pack'], empty( $res[ $sz_i ]['rank'] ) ? (int) 00 : $res[ $sz_i ]['rank'] )?>.png"></th>
+                        <th class="text-center tb-death"><?php echo number_format( (int) $res[ $sz_i ]['kills'], 0, '.', ' ' )?></th>
+                        <th class="text-center tb-death"><?php echo number_format( (int) $res[ $sz_i ]['deaths'], 0, '.', ' ' )?></th>
+                        <th class="text-center"><?php echo $res[ $sz_i ]['kd'] ?></th>
+                        <th class="text-center tb-hs"><?php echo empty( $res[ $sz_i ]['headshots'] ) ? 0 : number_format( $res[ $sz_i ]['headshots'], 0, '.', ' ' )?></th>
+                        <th class="text-center tb-time"><?php echo $Modules->action_time_exchange( $res[ $sz_i ]['playtime'], 2 )?></th>
+                    </tr><?php endfor?></tbody>
             </table>
             <div class="card-bottom">
                 <?php if( $page_max != 1):?>
                 <div class="select-panel-pages">
                     <?php endif;?>
-                    <?php if ($page_num != 1) { ?>
+                    <?php if ( $page_num != 1) { ?>
                         <a href="<?php echo set_url_section(get_url(2), 'num', $page_num - 1) ?>"><h5
                                     class="badge"><?php $General->get_icon('zmdi', 'chevron-left') ?></h5></a>
                     <?php } ?>
-                    <?php if ($page_num != $page_max) { ?>
+                    <?php if ( $page_num != $page_max) { ?>
                         <a href="<?php echo set_url_section(get_url(2), 'num', $page_num + 1) ?>"><h5
                                     class="badge"><?php $General->get_icon('zmdi', 'chevron-right') ?></h5></a>
                     <?php } ?>

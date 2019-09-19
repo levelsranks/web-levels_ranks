@@ -46,7 +46,7 @@
                     <div class="country">-</div>
                     <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                     <div class="rank"><?php echo $Modules->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] )?></div>
-                    <div class="user-stats"><?php echo $Modules->get_translate_phrase('_Player')?></div>
+                    <div class="user-stats" style="background-color:<?php echo $Player->get_profile_status()['color']?>"><?php echo $Player->get_profile_status()['text']?></div>
                     </div>
                 </div>
                 <div class="best-weapon-block">

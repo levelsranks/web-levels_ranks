@@ -8,7 +8,7 @@
      * @license GNU General Public License Version 3
      */
 ?>
-<script>servers.push(<?php echo json_encode( $General->server_list )?>);</script>
+<script>servers.push(<?php echo json_encode( action_array_keep_keys( $General->server_list, ['ip', 'fakeip'] ) )?>);</script>
 <?php $servers_cache = $Modules->get_module_cache('module_block_main_servers_monitoring');
 switch ( $Modules->array_modules['module_block_main_servers_monitoring']['setting']['type'] ) {
     case 1:?>
@@ -122,7 +122,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                             </div>
                             <input id="server-connect-<?php echo $i_server?>" onclick="" type="button" value="<?php echo $Modules->get_translate_phrase('_Connect_2')?>">
                         </div>
-                        <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php echo empty( $servers_cache ) ? '730/-' : $servers_cache[ $i_server ]?>.jpg">
+                        <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php echo empty( $servers_cache[ $i_server ] ) ? '730/-' : $servers_cache[ $i_server ]?>.jpg">
                     </div>
                 </div>
             </div>

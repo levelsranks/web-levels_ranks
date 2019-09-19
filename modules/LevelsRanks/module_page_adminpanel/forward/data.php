@@ -80,14 +80,20 @@ if(isset($_POST['data']) && IN_LR == true) {
     file_put_contents( SESSIONS . 'modules_initialization.php', '<?php return '.var_export_min( $array, true ).";" );
 }
 
-if( isset( $_POST['save_servers'] ) && IN_LR == true ) {
-    $ip = $_POST['serversip'];
-    $fakeip = $_POST['serversfakeip'];
-    $db = '0';
-    $count = sizeof($_POST['serversip']);
-    for ($i = 0; $i < $count; $i++) {
-        $arr_servers[$i] = ['ip' => $ip[$i],'fakeip' => $fakeip[$i],'db' => $db[$i]];
-    }
+if( isset( $_POST['save_server'] ) && IN_LR == true ) {
+    $server = [];
+
+    $server[0]['name'] = $_POST['server_name'];
+    $server[0]['ip'] = $_POST['server_ip_port'];
+    $server[0]['fakeip'] = $_POST['server_ip_port_fake'];
+    $server[0]['rcon'] = $_POST['server_rcon'];
+    $server[0]['server_stats'] = $_POST['server_stats'];
+    $server[0]['server_vip'] = $_POST['server_vip'];
+    $server[0]['server_sb'] = $_POST['server_sb'];
+    $server[0]['server_shop'] = $_POST['server_shop'];
+
+    empty( $General->server_list ) || ! is_array( $General->server_list ) ? $arr_servers[0] = $server[0] : $arr_servers = array_merge( $General->server_list, $server );
+
     file_put_contents( SESSIONS . 'servers_list.php', '<?php return '.var_export_min( $arr_servers, true ).";" );
     header_fix( get_url(1) );
 }

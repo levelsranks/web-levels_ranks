@@ -146,27 +146,13 @@ if ($('#nestable').length > 0) {
         })
     });
 }
-$(document).ready(function () {
-    $('#add').click(function(){
-        var str = '<tr class="server_line">'+
-            '<th class="text-center ip"><div class="input-form ">'+
-            '<input type="text" value="" name="serversip[]"/>'+
-            '</div></th>'+
-            '<th class="text-center fakeip"><div class="input-form">'+
-            '                                            <input type="text" value="" name="serversfakeip[]"/>'+
-            '                                        </div></th>'+
-            '<th class="text-center">'+
-            '<div class="input-form">'+
-            '<select class="select" name="serversdb[]">'+
-            '   <option value=""></option>'+
-            '</select>'+
-            '</div>'+
-            '</th>'+
-            '<th class="text-center"><button class="remove_servers" type="submit"><i class="zmdi zmdi-close"></i></button></th>'+
-            '</tr>';
-        $('#servers').append(str);
+
+function delete_server(element) {
+    $.post( "./app/includes/js_controller.php", { function: "delete", server: element.closest('tr').rowIndex } );
+    note({
+        content: 'Сервер удалён',
+        type: 'success',
+        time: 3
     });
-    $('body').on('click', '.remove_servers', function() {
-        $(this).closest('tr').remove();
-    });
-});
+    element.closest('tr').remove();
+}

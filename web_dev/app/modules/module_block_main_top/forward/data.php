@@ -29,12 +29,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         fps_servers_stats.kills, 
                                                         fps_servers_stats.deaths, 
                                                         fps_servers_stats.playtime,
-                                                        ( SELECT fps_ranks.id
-                                                          FROM fps_ranks 
-                                                          WHERE fps_ranks.rank_id = ' . $Db->db_data['FPS'][ $d-1 ]['ranks_id'] .' 
-                                                          AND fps_ranks.points <= fps_servers_stats.points 
-                                                          ORDER BY fps_ranks.points DESC LIMIT 1
-                                                        ) AS rank,
+                                                        fps_servers_stats.rank,
                                                         CASE WHEN fps_servers_stats.deaths = 0 THEN fps_servers_stats.deaths = 1 END, TRUNCATE( fps_servers_stats.kills/fps_servers_stats.deaths, 2 ) AS kd
                                                         FROM fps_players
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
@@ -74,12 +69,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         fps_servers_stats.kills, 
                                                         fps_servers_stats.deaths, 
                                                         fps_servers_stats.playtime,
-                                                        ( SELECT fps_ranks.id
-                                                          FROM fps_ranks 
-                                                          WHERE fps_ranks.rank_id = ' . $Db->db_data['FPS'][ $d-1 ]['ranks_id'] .' 
-                                                          AND fps_ranks.points <= fps_servers_stats.points 
-                                                          ORDER BY fps_ranks.points DESC LIMIT 1
-                                                        ) AS rank,
+                                                        fps_servers_stats.rank,
                                                         CASE WHEN fps_servers_stats.deaths = 0 THEN fps_servers_stats.deaths = 1 END, TRUNCATE( fps_servers_stats.kills/fps_servers_stats.deaths, 2 ) AS kd
                                                         FROM fps_players
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id

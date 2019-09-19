@@ -79,12 +79,7 @@ switch ( $res_data[ $server_group ]['statistics'] ) {
                                                         fps_servers_stats.deaths, 
                                                         fps_servers_stats.playtime,
                                                         TRUNCATE( fps_servers_stats.kills / fps_servers_stats.deaths, 2) AS kd,
-                                                        ( SELECT fps_ranks.id
-                                                          FROM fps_ranks 
-                                                          WHERE fps_ranks.rank_id = ' . $res_data[ $server_group ]["ranks_id"] .' 
-                                                          AND fps_ranks.points <= fps_servers_stats.points 
-                                                          ORDER BY fps_ranks.points DESC LIMIT 1
-                                                        ) AS rank
+                                                        fps_servers_stats.rank
                                                         FROM fps_players
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                         WHERE fps_servers_stats.server_id = ' . $res_data[ $server_group ]["server_id"] . ' order by ' . $_SESSION["filter"] . ' desc LIMIT ' . $page_num_min . ',' . PLAYERS_ON_PAGE . ' ');

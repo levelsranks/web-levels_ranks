@@ -38,6 +38,11 @@ class Player {
     public $weapons;
 
     /**
+     * @var int
+     */
+    public $top_weapons_count = 3;
+
+    /**
      * @var array
      */
     public $unusualkills;
@@ -61,6 +66,16 @@ class Player {
      * @var //
      */
     public $Db;
+
+    /**
+     * @var array
+     */
+    public $profile_status = [ 'text' => 'Игрок', 'color' => 'var(--span-color)', 'priority' => 0 ];
+
+    /**
+     * @var array
+     */
+    public $hits = ['Head' => 0, 'Chest' => 0, 'Belly' => 0, 'LeftArm' => 0, 'RightArm' => 0, 'LeftLeg' => 0, 'RightLeg' => 0, 'Neak' => 0];
 
     function __construct( $General, $Db, $id, $sg ) {
 
@@ -142,7 +157,7 @@ class Player {
 
         $this->found_fix = array_values( $this->found );
 
-        $this->found[ $this->server_group ] == '' && header( 'Location: ' . $this->General->arr_general['site'] ) && exit;
+        empty( $this->found[ $this->server_group ] ) && header( 'Location: ' . $this->General->arr_general['site'] ) && exit;
 
         $this->arr_default_info = $this->get_db_arr_default_info();
 
@@ -150,7 +165,7 @@ class Player {
 
         $this->top_with_player = $this->get_db_top_with_player();
 
-        if( $this->found[ $this->server_group ]['DB_mod'] == 'LevelsRanks' ):
+        if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'LevelsRanks' ):
 
             # Плагин -> Ex_weapons
             if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_weapons' ) == 1 ):
@@ -184,7 +199,7 @@ class Player {
             endif;
         endif;
 
-        if( $this->found[ $this->server_group ]['DB_mod'] == 'FPS' ):
+        if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'FPS' ):
 
             $this->weapons = $this->get_db_exstats_weapons();
 
@@ -192,9 +207,12 @@ class Player {
 
             arsort($this->weapons);
 
+            $this->weapons_count = sizeof( $this->weapons );
+
             for ( $i = 0; $i < 3; $i++ ):
-                $this->top_weapons[ $i ]['name'] = array_search( max( $this->weapons ), $this->weapons );
-                $this->top_weapons[ $i ]['kills'] = max( $this->weapons );
+                $this->weapons_count < 3 && $this->top_weapons_count = sizeof( $this->weapons );
+                $this->top_weapons[ $i ]['name'] = empty( $this->top_weapons_count ) ? 'weapon_knife' : array_search( max( $this->weapons ), $this->weapons );
+                $this->top_weapons[ $i ]['kills'] = empty( $this->top_weapons_count ) ? '-' : max( $this->weapons );
                 unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
             endfor;
 
@@ -302,22 +320,26 @@ class Player {
     }
 
     public function get_db_top_with_player() {
-        switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
-            case 'LevelsRanks':
-                $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
-                $size_a = sizeof( $a );
-                $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
-                $b['countdown_from'] = $this->top_position - $size_a;
-                return $b;
-                break;
-            case 'FPS':
-                $a = array_reverse($this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " AND '" . $this->get_value() . "' < fps_servers_stats.points ORDER BY value ASC LIMIT 5" ) );
-                $size_a = sizeof( $a );
-                $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.points <= '" . $this->get_value() . "' AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " ORDER BY value DESC LIMIT 11" ) );
-                $b['countdown_from'] = $this->top_position - $size_a;
-                return $b;
-                break;
-        }
+        if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
+            switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
+                case 'LevelsRanks':
+                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+                    $size_a = sizeof( $a );
+                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                    $b['countdown_from'] = $this->top_position - $size_a;
+                    return $b;
+                    break;
+                case 'FPS':
+                    $a = array_reverse($this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " AND '" . $this->get_value() . "' < fps_servers_stats.points ORDER BY value ASC LIMIT 5" ) );
+                    $size_a = sizeof( $a );
+                    $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.points <= '" . $this->get_value() . "' AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " ORDER BY value DESC LIMIT 11" ) );
+                    $b['countdown_from'] = $this->top_position - $size_a;
+                    return $b;
+                    break;
+            }
+        else:
+            return [];
+        endif;
     }
 
     private function get_db_arr_default_info() {
@@ -407,38 +429,56 @@ class Player {
     }
 
     public function get_hits_all() {
-        return ! empty( $this->hits ) ? (int) array_sum ( array_values ( $this->hits ) ) : 0;
+        return (int) empty( $this->hits ) ? 0 : array_sum ( array_values ( $this->hits ) );
     }
 
     public function get_hits_head() {
-        return (int) $this->hits['Head'] . '(' . action_int_percent_of_all( $this->hits['Head'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Head'] ) ? 0 : $this->hits['Head'] . '(' . action_int_percent_of_all( $this->hits['Head'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_chest() {
-        return (int) $this->hits['Chest'] . '(' . action_int_percent_of_all( $this->hits['Chest'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Chest'] ) ? 0 : $this->hits['Chest'] . '(' . action_int_percent_of_all( $this->hits['Chest'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_belly() {
-        return (int) $this->hits['Belly'] . '(' . action_int_percent_of_all( $this->hits['Belly'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Belly'] ) ? 0 : $this->hits['Belly'] . '(' . action_int_percent_of_all( $this->hits['Belly'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_leftarm() {
-        return (int) $this->hits['LeftArm'] . '(' . action_int_percent_of_all( $this->hits['LeftArm'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['LeftArm'] ) ? 0 : $this->hits['LeftArm'] . '(' . action_int_percent_of_all( $this->hits['LeftArm'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_rightarm() {
-        return (int) $this->hits['RightArm'] . '(' . action_int_percent_of_all( $this->hits['RightArm'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['RightArm'] ) ? 0 : $this->hits['RightArm'] . '(' . action_int_percent_of_all( $this->hits['RightArm'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_leftleg() {
-        return (int) $this->hits['LeftLeg'] . '(' . action_int_percent_of_all( $this->hits['LeftLeg'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['LeftLeg'] ) ? 0 : $this->hits['LeftLeg'] . '(' . action_int_percent_of_all( $this->hits['LeftLeg'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_rightleg() {
-        return (int) $this->hits['RightLeg'] . '(' . action_int_percent_of_all( $this->hits['RightLeg'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['RightLeg'] ) ? 0 : $this->hits['RightLeg'] . '(' . action_int_percent_of_all( $this->hits['RightLeg'], $this->get_hits_all() ) . '%)';
     }
 
     public function get_hits_neak() {
-        return (int) $this->hits['Neak'] . '(' . action_int_percent_of_all( $this->hits['Neak'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Neak'] ) ? 0 : $this->hits['Neak'] . '(' . action_int_percent_of_all( $this->hits['Neak'], $this->get_hits_all() ) . '%)';
+    }
+
+    /**
+     * Задать статус профиля.
+     *
+     * @param string $text           Статус.
+     */
+    public function set_profile_status( $text, $color, $priority = 0) {
+        $this->profile_status = [ 'text' => $text, 'color' => $color, 'priority' => $priority];
+    }
+
+    /**
+     * Получить статус профиля.
+     *
+     * @return array                 Массив со статусом.
+     */
+    public function get_profile_status() {
+        return $this->profile_status;
     }
 }

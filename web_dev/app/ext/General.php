@@ -47,7 +47,7 @@ class General {
         $this->server_list = $this->get_server_list();
 
         // Общее количество игровых серверов.
-        $this->server_list_count = sizeof( $this->server_list );
+        $this->server_list_count = get_arr_size( $this->server_list );
 
         // Получение языка страницы.
         $this->get_default_url_section('language', $this->arr_general['language'], array( 'RU', 'EN', 'UA', 'LT', 'DE', 'CH' ) );
@@ -115,7 +115,8 @@ class General {
             case 1:
                 if ( file_exists( $url ) ):
                     if ( time() >= filemtime( $url ) + $this->arr_general['avatars_cache_time'] ):
-                        unlink( $url ) && unlink( $url_slim );
+                        unlink( $url );
+                        file_exists( $url_slim ) && unlink( $url_slim );
                         return 1;
                     else:
                         return 0;
@@ -127,7 +128,8 @@ class General {
             case 2:
                 if ( file_exists( $url_slim ) ):
                     if ( time() >= filemtime( $url_slim ) + $this->arr_general['avatars_cache_time'] ):
-                        unlink( $url ) && unlink( $url_slim );
+                        unlink( $url_slim );
+                        file_exists( $url ) && unlink( $url );
                         return 1;
                     else:
                         return 0;

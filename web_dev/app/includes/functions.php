@@ -313,3 +313,22 @@ function LangValReplace( $phares, $values=[] ) {
     }
     return $replace;
 }
+
+/**
+ * Оставляет в массиве состоящим из нумервынных ключей определенные внутренние ключи.
+ *
+ * @param array       $array   Массив.
+ * @param array        $keys   Ключи.
+ *
+ * @return array               Итог.
+ */
+function action_array_keep_keys( $array, $keys ) {
+    $result = [];
+
+    $keys = array_flip( $keys );
+
+    for( $i = 0, $c = sizeof( $array ); $i < $c; $i++ ) {
+        $result[] = array_intersect_key( $array[ $i ], $keys );
+    }
+    return $result;
+}

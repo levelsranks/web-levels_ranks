@@ -68,7 +68,7 @@
     text-align: center;
     height: 30px;
     background: inherit;
-    color: #fff;
+    color: var(--default-text-color);
 }
 
 .remove_servers img {
@@ -407,4 +407,22 @@
 .module_setting:hover {
     opacity: 1;
     transition: all 0.3s ease;
+}
+
+.server_form > div {
+    width: 40%;
+    top: 50%;
+}
+
+.server_form .server_form_block {
+    padding-left: 18px;
+    padding-right: 34px;
+    padding-bottom: 18px;
+}
+
+.server_form ._add_server{
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
 }

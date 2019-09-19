@@ -50,6 +50,22 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
     exit;
 }
 
+// Присвоение какого-либо значения по ключу массива в options.php
+if( $_POST["function"] == 'delete' && isset( $_POST["server"] ) ) {
+    // Подключение основных функций.
+    require '../../app/includes/functions.php';
+
+    $server_id = (int) $_POST["server"] - 1;
+
+    $servers = require '../../storage/cache/sessions/servers_list.php';
+
+    unset( $servers[ $server_id ] );
+
+    // Сохранение файла.
+    file_put_contents( '../../storage/cache/sessions/servers_list.php', '<?php return ' . var_export_min( array_values ( $servers ) ) . ';' );
+    exit;
+}
+
 // Получение и сохранине состояния боковой панели.
 if( $_POST["function"] == 'sidebar' ) {
     // Возобновление сессии
@@ -104,6 +120,8 @@ if( $_POST["function"] == 'avatars' ) {
 
         $url = curl_exec($result);
 
+        curl_close( $result );
+
         // Полученные данные из запроса декодируем.
         $data = json_decode( $url, true )['response']['players'];
 
@@ -122,22 +140,36 @@ if( $_POST["function"] == 'avatars' ) {
             $cacheFile = "../../storage/cache/img/avatars/" . $data[$i]['steamid'] . ".jpg";
             $cacheFile_slim = "../../storage/cache/img/avatars/slim/" . $data[$i]['steamid'] . ".jpg";
 
+            // Номер случайной аватарки
+
+            $rand = rand(1,30);
+
             // Сохраняем/редактируем новые аватары.
 
-            $avatarfull_headers = @get_headers( $data[$i]['avatarfull'] );
+            $avatarfull = curl_init( $data[ $i ]['avatarfull'] );
+            curl_setopt( $avatarfull, CURLOPT_HEADER, 0);
+            curl_setopt( $avatarfull, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt( $avatarfull, CURLOPT_BINARYTRANSFER,1);
+            $out_avatarfull = curl_exec( $avatarfull );
+            curl_close( $avatarfull );
 
-            if( ! $avatarfull_headers || $avatarfull_headers[0] == 'HTTP/1.1 404 Not Found') {
-                file_put_contents( $cacheFile, '../../storage/cache/img/avatars_random/' . rand(1,30) . '.jpg' );
+            if( ! empty( $out_avatarfull ) ) {
+                file_put_contents( $cacheFile, $out_avatarfull );
             } else {
-                file_put_contents( $cacheFile, file_get_contents( $data[$i]['avatarfull'] ) );
+                file_put_contents( $cacheFile, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '.jpg' ) );
             }
 
-            $avatar_headers = @get_headers( $data[$i]['avatar'] );
+            $avatar = curl_init( $data[ $i ]['avatar'] );
+            curl_setopt( $avatar, CURLOPT_HEADER, 0);
+            curl_setopt( $avatar, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt( $avatar, CURLOPT_BINARYTRANSFER,1);
+            $out_avatar = curl_exec( $avatar );
+            curl_close( $avatar );
 
-            if( ! $avatar_headers || $avatar_headers[0] == 'HTTP/1.1 404 Not Found') {
-                file_put_contents( $cacheFile_slim, '../../storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' );
+            if( ! empty( $out_avatar ) ) {
+                file_put_contents( $cacheFile_slim, $out_avatar );
             } else {
-                file_put_contents( $cacheFile_slim, file_get_contents( $data[$i]['avatar'] ) );
+                file_put_contents( $cacheFile_slim, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '_xs.jpg' ) );
             }
         }
 

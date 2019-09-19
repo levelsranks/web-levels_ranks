@@ -212,9 +212,17 @@ class Modules {
      */
     public function get_translate_phrase( $phrase, $group = '' ) {
         if ( empty ( $group ) ):
-            return empty ( $this->arr_translations[ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $phrase ]['EN'] : $this->arr_translations[ $phrase ][ $_SESSION['language'] ];
+            if ( empty ( $this->arr_translations[ $phrase ][ $_SESSION['language'] ] ) ):
+                return empty( $this->arr_translations[ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $phrase ]['EN'];
+            else:
+                return $this->arr_translations[ $phrase ][ $_SESSION['language'] ];
+            endif;
         else:
-            return empty ( $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $group ][ $phrase ]['EN'] : $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
+            if ( empty ( $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ] ) ):
+                return empty( $this->arr_translations[ $group ][ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $group ][ $phrase ]['EN'];
+            else:
+                return $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
+            endif;
         endif;
     }
 
@@ -227,7 +235,11 @@ class Modules {
      * @return string                   Выводит слово в переводе.
      */
     public function get_translate_module_phrase( $module_id, $phrase ) {
-        return empty( $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ] ) ? $this->arr_translations[ $module_id ][ $phrase ]['EN'] : $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
+        if ( empty( $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ] ) ):
+            return empty( $this->arr_translations[ $module_id ][ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $module_id ][ $phrase ]['EN'];
+        else:
+            return $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
+        endif;
     }
 
     /**
@@ -238,7 +250,7 @@ class Modules {
      * @return array                    Массив переводов.
      */
     public function get_arr_translate_module( $module_id ) {
-        return $this->arr_translations[ $module_id ];
+        return empty( $this->arr_translations[ $module_id ] ) ? [] : $this->arr_translations[ $module_id ];
     }
 
     /**

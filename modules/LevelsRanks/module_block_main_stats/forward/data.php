@@ -38,14 +38,14 @@ switch ( empty( $Modules->array_modules['module_block_main_stats']['setting']['c
         $data['module_block_main_stats'] = $Modules->get_module_cache('module_block_main_stats');
 
         // Проверяем актуальность кэша.
-        if ( ( $data['module_block_main_stats'] == '' ) || ( time() > $data['module_block_main_stats']['time'] ) ) {
+        if ( ( empty( $data['module_block_main_stats'] ) ) || ( ! empty( $data['module_block_main_stats']['time'] ) && time() > $data['module_block_main_stats']['time'] ) ) {
 
             // Затираем страные данные которые могут помешать созданию кэша.
-            unset( $data['module_block_main_stats']['Total_players'] );
-            unset( $data['module_block_main_stats']['Players_24h'] );
-            unset( $data['module_block_main_stats']['Headshot'] );
-            unset( $data['module_block_main_stats']['playtime'] );
-            unset( $data['module_block_main_stats']['time'] );
+            $data['module_block_main_stats']['Total_players'] = 0;
+            $data['module_block_main_stats']['Players_24h'] = 0;
+            $data['module_block_main_stats']['Headshot'] = 0;
+            $data['module_block_main_stats']['playtime'] = 0;
+            $data['module_block_main_stats']['time'] = 0;
 
             // Сохраняем текущее время и прибавляем к нему 1 час.
             $data['module_block_main_stats']['time'] = time() + $Modules->array_modules['module_block_main_stats']['setting']['cache_time'];
