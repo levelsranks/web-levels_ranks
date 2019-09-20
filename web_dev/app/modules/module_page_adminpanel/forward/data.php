@@ -10,7 +10,7 @@
 
 ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || $_SESSION['steamid32'] != $General->arr_general['admin'] ) && die();
 
-if( isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
     for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {
         $module = array_keys( $Modules->array_modules )[ $i ];
         if ( file_exists( SESSIONS . 'modules/' . $module . '/cache.php' ) ) {
@@ -23,7 +23,7 @@ if( isset( $_POST['clear_cache_modules'] ) && IN_LR == true ) {
     header_fix( get_url(1) );
 }
 
-if( isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
     for ( $i = 0; $i < $Modules->array_modules_count; $i++ ) {
         $module = array_keys( $Modules->array_modules )[ $i ];
         if ( file_exists( SESSIONS . 'modules/' . $module . '/cache.php' ) ) {
@@ -37,13 +37,13 @@ if( isset( $_POST['clear_modules_initialization'] ) && IN_LR == true ) {
     header_fix( get_url(1) );
 }
 
-if( isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['clear_translator_cache'] ) && IN_LR == true ) {
     unlink( SESSIONS . '/translator_cache.php' );
     header_fix( get_url(1) );
     exit;
 }
 
-if( isset( $_POST['option_one_save'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['option_one_save'] ) && IN_LR == true ) {
     $arr = require SESSIONS . 'options.php';
     $option = [
         'full_name' => $_POST['full_name'],
@@ -59,7 +59,7 @@ if( isset( $_POST['option_one_save'] ) && IN_LR == true ) {
     header_fix( get_url(1) );
 }
 
-if(isset($_POST['data']) && IN_LR == true) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset($_POST['data']) && IN_LR == true) {
 
     $array = $Modules->arr_module_init;
 
@@ -80,7 +80,7 @@ if(isset($_POST['data']) && IN_LR == true) {
     file_put_contents( SESSIONS . 'modules_initialization.php', '<?php return '.var_export_min( $array, true ).";" );
 }
 
-if( isset( $_POST['save_server'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['save_server'] ) && IN_LR == true ) {
     $server = [];
 
     $server[0]['name'] = $_POST['server_name'];
@@ -98,7 +98,7 @@ if( isset( $_POST['save_server'] ) && IN_LR == true ) {
     header_fix( get_url(1) );
 }
 
-if( isset( $_POST['module_save'] ) && IN_LR == true ) {
+if( $_SESSION['steamid32'] == $General->arr_general['admin'] && isset( $_POST['module_save'] ) && IN_LR == true ) {
     $Module_data = $Modules->array_modules[ $_GET['options'] ];
 
     // А где цикл то, что за беспредел? :D

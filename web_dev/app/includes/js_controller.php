@@ -10,81 +10,112 @@
 
 // Получение информации о каком-либо значении по ключу массива в options.php
 if( $_POST["function"] == 'options' & isset( $_POST["setup"] ) ) {
-    echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
-    exit;
+    // Возобновление сессии
+    session_start();
+
+    // Получение текущих настроек.
+    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
+
+    if( $_SESSION['steamid32'] == $admin ):
+        echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
+        exit;
+    else:
+        exit;
+    endif;
+
 }
 
 // Присвоение какого-либо значения по ключу массива в options.php
 if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
-    // Подключение основных функций.
-    require '../../app/includes/functions.php';
+    // Возобновление сессии
+    session_start();
 
     // Получение текущих настроек.
-    $options = require '../../storage/cache/sessions/options.php';
+    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
 
-    if ( empty( $_POST["data"] ) || is_numeric( $_POST["data"] ) ):
+    if( $_SESSION['steamid32'] == $admin ):
+        // Подключение основных функций.
+        require '../../app/includes/functions.php';
 
-    // Изменение конкретной опции.
-    $options[ $_POST["option"] ] = (int) $options[ $_POST["option"] ] == 0 ? 1 : 0;
+        // Получение текущих настроек.
+        $options = require '../../storage/cache/sessions/options.php';
+
+        if ( empty( $_POST["data"] ) || is_numeric( $_POST["data"] ) ):
+
+            // Изменение конкретной опции.
+            $options[ $_POST["option"] ] = (int) $options[ $_POST["option"] ] == 0 ? 1 : 0;
+        else:
+            $options[ $_POST["option"] ] = $_POST["data"];
+        endif;
+
+        // Проверка на доп изменения.
+        if( ! empty( $_POST["change"] ) ):
+
+            // Если в строке есть 'css' выполнить чистку кэша по CSS
+            if ( stristr( $_POST["change"], 'css') !== false ):
+
+                // Проверка папки на пустоту
+                $is_empty = sizeof( glob('../../storage/assets/css/generation/*') ) ? true : false;
+
+                // Если папка не пустая, провести очистку
+                if( $is_empty == true ):
+                    $temp_files = glob( '../../storage/assets/css/generation/*' );
+                    foreach( $temp_files as $temp_file ) {
+                        if( is_file( $temp_file ) )
+                            unlink( $temp_file );
+                    }
+                endif;
+            endif;
+
+            // Если в строке есть 'js' выполнить чистку кэша по CSS
+            if ( stristr( $_POST["change"], 'js') !== false ):
+
+                // Проверка папки на пустоту
+                $is_empty = sizeof( glob('../../storage/assets/js/generation/*') ) ? true : false;
+
+                // Если папка не пустая, провести очистку
+                if( $is_empty == true ):
+                    $temp_files = glob( '../../storage/assets/js/generation/*' );
+                    foreach( $temp_files as $temp_file ) {
+                        if( is_file( $temp_file ) )
+                            unlink( $temp_file );
+                    }
+                endif;
+            endif;
+        endif;
+
+        // Сохранение файла.
+        file_put_contents( '../../storage/cache/sessions/options.php', '<?php return ' . var_export_min( $options ) . ';' );
+        exit;
     else:
-        $options[ $_POST["option"] ] = $_POST["data"];
+        exit;
     endif;
-
-    // Проверка на доп изменения.
-    if( ! empty( $_POST["change"] ) ):
-
-        // Если в строке есть 'css' выполнить чистку кэша по CSS
-        if ( stristr( $_POST["change"], 'css') !== false ):
-
-            // Проверка папки на пустоту
-            $is_empty = sizeof( glob('../../storage/assets/css/generation/*') ) ? true : false;
-
-            // Если папка не пустая, провести очистку
-            if( $is_empty == true ):
-            $temp_files = glob( '../../storage/assets/css/generation/*' );
-            foreach( $temp_files as $temp_file ) {
-                if( is_file( $temp_file ) )
-                    unlink( $temp_file );
-            }
-            endif;
-        endif;
-
-        // Если в строке есть 'js' выполнить чистку кэша по CSS
-        if ( stristr( $_POST["change"], 'js') !== false ):
-
-            // Проверка папки на пустоту
-            $is_empty = sizeof( glob('../../storage/assets/js/generation/*') ) ? true : false;
-
-            // Если папка не пустая, провести очистку
-            if( $is_empty == true ):
-                $temp_files = glob( '../../storage/assets/js/generation/*' );
-                foreach( $temp_files as $temp_file ) {
-                    if( is_file( $temp_file ) )
-                        unlink( $temp_file );
-                }
-            endif;
-        endif;
-    endif;
-
-    // Сохранение файла.
-    file_put_contents( '../../storage/cache/sessions/options.php', '<?php return ' . var_export_min( $options ) . ';' );
-    exit;
 }
 
 // Присвоение какого-либо значения по ключу массива в options.php
 if( $_POST["function"] == 'delete' && isset( $_POST["server"] ) ) {
-    // Подключение основных функций.
-    require '../../app/includes/functions.php';
+    // Возобновление сессии
+    session_start();
 
-    $server_id = (int) $_POST["server"] - 1;
+    // Получение текущих настроек.
+    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
 
-    $servers = require '../../storage/cache/sessions/servers_list.php';
+    if( $_SESSION['steamid32'] == $admin ):
+        // Подключение основных функций.
+        require '../../app/includes/functions.php';
 
-    unset( $servers[ $server_id ] );
+        $server_id = (int) $_POST["server"] - 1;
 
-    // Сохранение файла.
-    file_put_contents( '../../storage/cache/sessions/servers_list.php', '<?php return ' . var_export_min( array_values ( $servers ) ) . ';' );
-    exit;
+        $servers = require '../../storage/cache/sessions/servers_list.php';
+
+        unset( $servers[ $server_id ] );
+
+        // Сохранение файла.
+        file_put_contents( '../../storage/cache/sessions/servers_list.php', '<?php return ' . var_export_min( array_values ( $servers ) ) . ';' );
+        exit;
+    else:
+        exit;
+    endif;
 }
 
 // Получение и сохранине состояния боковой панели.
