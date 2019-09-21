@@ -418,12 +418,12 @@
 - Sleep#0725  ( Discord )   - 250 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
+- Nestor#9876 ( Discord )   - 150 RUB.
 - uraganas#7978 ( Discord )   - 132 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
 - DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
-- Nestor#9876 ( Discord )  - 50 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
