@@ -248,6 +248,37 @@ function con_steam32to64( $id ) {
 }
 
 /**
+ * Конвертация Steam ID 32 -> 3 (int).
+ *
+ * @param string   $steamid32  Steam ID 32 игрока.
+ *
+ * @return int                 Выводит итог конвертации.
+ */
+function con_steam32to3_int( $steamid32 ) {
+    if ( preg_match('/^STEAM_/', $steamid32 ) ) {
+        $split = explode( ':', $steamid32 );
+        return $split[2] * 2 + $split[1];
+    } else {
+        return $steamid32;
+    }
+}
+
+/**
+ * Конвертация Steam ID 64 -> 3 (int).
+ *
+ * @param string  $steamid64  Steam ID 32 игрока.
+ *
+ * @return int                Выводит итог конвертации.
+ */
+function con_steam64to3_int( $steamid64 ) {
+    if ( preg_match( '/^765/', $steamid64 ) && strlen( $steamid64 ) > 15 ) {
+        return bcsub( $steamid64, '76561197960265728' );
+    } else {
+        return $steamid64;
+    }
+}
+
+/**
  * Конвертация Steam ID 3 -> 64 (int).
  *
  * @param string       $steamid3  Steam ID 3 игрока.

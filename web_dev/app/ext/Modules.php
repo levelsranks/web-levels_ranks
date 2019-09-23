@@ -118,7 +118,7 @@ class Modules {
         ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
 
         // Получение кэшированного листа переводов.
-        $this->arr_translations = require SESSIONS . 'translator_cache.php';
+        $this->arr_translations = file_exists( SESSIONS . 'translator_cache.php' ) ? require SESSIONS . 'translator_cache.php' : [];
     }
 
     /**
