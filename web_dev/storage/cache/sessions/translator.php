@@ -793,6 +793,11 @@ return array (
 	'_Vips' =>
         array (
             'EN' => 'Vips list',
-            'RU' => 'Список випов'
+            'RU' => 'Список вип игроков'
+        ),
+    '_Banned' =>
+        array (
+            'EN' => 'Banned',
+            'RU' => 'Забанен'
         )
 );
