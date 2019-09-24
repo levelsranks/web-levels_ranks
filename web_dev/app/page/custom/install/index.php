@@ -294,7 +294,7 @@ if( isset( $_POST['db_check'] ) ) {
 <link rel="stylesheet" href="../../../../storage/assets/css/themes/mainstream_white/style.css">
 <link rel="stylesheet" href="../../../../app/page/custom/install/css/style.css">
 <style>
-    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/dark_mode_palette.json' ) ) )?>
+    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/palettes/dark_mode_palette.json' ) ) )?>
 </style>
 <body>
 <div class="container-fluid">

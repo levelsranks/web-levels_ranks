@@ -9,21 +9,25 @@
  */
 
 // Получение информации о каком-либо значении по ключу массива в options.php
-if( $_POST["function"] == 'options' & isset( $_POST["setup"] ) ) {
-    // Возобновление сессии
-    session_start();
+if( $_POST["function"] == 'options' && isset( $_POST["setup"] ) ):
 
-    // Получение текущих настроек.
-    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
+    $options =  require  '../../storage/cache/sessions/options.php';
 
-    if( $_SESSION['steamid32'] == $admin ):
+    if( $_POST["setup"] == 'web_key' ):
+        // Возобновление сессии
+        session_start();
+
+        if( $_SESSION['steamid32'] == $options['admin'] ):
+            echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
+            exit;
+        else:
+            exit;
+        endif;
+    else:
         echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
         exit;
-    else:
-        exit;
     endif;
-
-}
+endif;
 
 // Присвоение какого-либо значения по ключу массива в options.php
 if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
