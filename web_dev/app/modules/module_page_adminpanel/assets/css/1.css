@@ -426,3 +426,7 @@
     margin-top: 18px;
     margin-bottom: 18px;
 }
+
+.vip_id {
+    display: none;
+}

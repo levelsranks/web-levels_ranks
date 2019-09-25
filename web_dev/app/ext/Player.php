@@ -122,7 +122,6 @@ class Player {
                     break;
             }
 
-
             // Поиск игрока в таблицах.
             if ( ! empty( $cheking ) ):
 
@@ -349,7 +348,31 @@ class Player {
                     return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths,round_win,round_lose,shoots,hits FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
                     break;
                 case 'FPS':
-                    return $this->Db->query('FPS', 0, 0, "SELECT fps_players.steam_id AS steam, fps_players.nickname AS name, fps_servers_stats.kills, fps_servers_stats.deaths, fps_servers_stats.playtime, fps_servers_stats.round_win, fps_servers_stats.round_lose, fps_servers_stats.points AS value, fps_servers_stats.rank, SUM(fps_weapons_stats.shoots) AS shoots, SUM(fps_weapons_stats.headshots) AS headshots, SUM(fps_weapons_stats.hits_head + fps_weapons_stats.hits_body + fps_weapons_stats.hits_left_arm + fps_weapons_stats.hits_right_arm + fps_weapons_stats.hits_left_leg + fps_weapons_stats.hits_right_leg) AS hits FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id LEFT JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id WHERE fps_players.steam_id = " . $this->get_steam_64() . " AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " LIMIT 1");
+                    return $this->Db->query('FPS', 0, 0, "SELECT fps_players.steam_id AS steam,
+                                                                 fps_players.nickname AS name,
+                                                                 fps_servers_stats.kills,
+                                                                 fps_servers_stats.deaths,
+                                                                 fps_servers_stats.playtime,
+                                                                 fps_servers_stats.round_win,
+                                                                 fps_servers_stats.round_lose,
+                                                                 fps_servers_stats.points AS value,
+                                                                 fps_servers_stats.rank,
+                                                                 SUM(fps_weapons_stats.shoots) AS shoots,
+                                                                 SUM(fps_weapons_stats.headshots) AS headshots,
+                                                                 SUM(fps_weapons_stats.hits_head +
+                                                                     fps_weapons_stats.hits_neck +
+                                                                     fps_weapons_stats.hits_chest +
+                                                                     fps_weapons_stats.hits_stomach +
+                                                                     fps_weapons_stats.hits_left_arm +
+                                                                     fps_weapons_stats.hits_right_arm +
+                                                                     fps_weapons_stats.hits_left_leg +
+                                                                     fps_weapons_stats.hits_right_leg) AS hits
+                                                                 FROM fps_players
+                                                                 INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                                 LEFT JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id
+                                                                 WHERE fps_players.steam_id = " . $this->get_steam_64() . " 
+                                                                 AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " 
+                                                                 LIMIT 1");
                     break;
             }
         else:
@@ -436,7 +459,20 @@ class Player {
 
     private function get_db_fps_hits() {
         $h = [];
-        $h = $this->Db->query('FPS', 0, 0, "SELECT SUM(fps_weapons_stats.hits_head) AS Head, SUM(fps_weapons_stats.hits_body) AS Chest, SUM(fps_weapons_stats.hits_left_arm) AS LeftArm, SUM(fps_weapons_stats.hits_right_arm) AS RightArm, SUM(fps_weapons_stats.hits_left_leg) AS LeftLeg, SUM(fps_weapons_stats.hits_right_leg) AS RightLeg FROM fps_players INNER JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id = " . $this->get_steam_64() . " AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " LIMIT 1");
+        $h = $this->Db->query('FPS', 0, 0, "SELECT SUM(fps_weapons_stats.hits_head) AS Head,
+                                                   SUM(fps_weapons_stats.hits_neck) AS Neak,
+                                                   SUM(fps_weapons_stats.hits_chest) AS Chest,
+                                                   SUM(fps_weapons_stats.hits_stomach) AS Belly,
+                                                   SUM(fps_weapons_stats.hits_left_arm) AS LeftArm,
+                                                   SUM(fps_weapons_stats.hits_right_arm) AS RightArm,
+                                                   SUM(fps_weapons_stats.hits_left_leg) AS LeftLeg,
+                                                   SUM(fps_weapons_stats.hits_right_leg) AS RightLeg
+                                                   FROM fps_players
+                                                   INNER JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id
+                                                   INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                   WHERE fps_players.steam_id = " . $this->get_steam_64() . "
+                                                   AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . "
+                                                   LIMIT 1");
         return $this->hits = empty( $h ) ? [] : $h + $this->hits;
     }
 

@@ -14,7 +14,7 @@ $data['module_page_rankstats'] = $Modules->get_module_cache('module_page_ranksta
 $server_group = (int) intval ( get_section( 'server_group', '0' ) );
 
 // Проверяем актуальность кэша.
-if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_rankstats']['time'] ) ) {
+if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_page_rankstats']['time'] ) ):
 
     // Затираем страные данные которые могут помешать созданию кэша.
     unset( $data['module_page_rankstats']['data'] );
@@ -33,7 +33,7 @@ if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_r
     // Проверка на подключенный мод - FPS
     if ( ! empty( $Db->db_data['FPS'] ) ):
         for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
-            //
+            $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ') * 1.0) AS Percent FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ' GROUP BY rank' );
         endfor;
     endif;
 
@@ -41,7 +41,9 @@ if ( ( $data['module_page_rankstats'] == '' ) || ( time() > $data['module_page_r
 
     // Сохраняем новый кэш для данного модуля.
     $Modules->set_module_cache( 'module_page_rankstats', $data['module_page_rankstats'] );
-}
+endif;
+
+( $server_group > $Db->table_statistics_count - 1 || $server_group < 0 ) && header( 'Location: ' . $General->arr_general ) && exit;
 
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] );

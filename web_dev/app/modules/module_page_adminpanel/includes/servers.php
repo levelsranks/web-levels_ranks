@@ -37,12 +37,18 @@
                         </div>
                         <div class="server_form_block">
                             <div class="input-form"><div class="input_text">VIP CORE :: Таблица</div>
-                                <select name="server_vip">
+                                <select name="server_vip" onChange="$('.vip_id').css('display','block')">
                                     <option style="display:none" value="">-</option>
                                     <?php if ( ! empty( $Db->db_data['Vips'] ) ):for ( $q = 0, $c = sizeof( $Db->db_data['Vips'] ); $q < $c; $q++ ):?>
                                     <option value="<?php echo sprintf( '%s;%d;%d;%s', $Db->db_data['Vips'][ $q ]['DB_mod'], $Db->db_data['Vips'][ $q ]['USER_ID'], $Db->db_data['Vips'][ $q ]['DB_num'], $Db->db_data['Vips'][ $q ]['Table'] )?>"><?php echo $Db->db_data['Vips'][ $q ]['USER'] . ' -> ' . $Db->db_data['Vips'][ $q ]['DB'] . ' -> ' . $Db->db_data['Vips'][ $q ]['Table'] . ' ( ' . $Db->db_data['Vips'][ $q ]['name'] . ' )'?></option>
                                     <?php endfor;endif?>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="server_form_block vip_id">
+                            <div class="input-form">
+                                <div class="input_text">ID Сервера ( vip_core.cfg )</div>
+                                <input name="server_vip_id" value="0">
                             </div>
                         </div>
                         <div class="server_form_block">
@@ -61,6 +67,16 @@
                                     <option style="display:none" value="">-</option>
                                     <?php if ( ! empty( $Db->db_data['Shop'] ) ):for ( $q = 0, $c = sizeof( $Db->db_data['Shop'] ); $q < $c; $q++ ):?>
                                         <option value="<?php echo sprintf( '%s;%d;%d;%s', $Db->db_data['Shop'][ $q ]['DB_mod'], $Db->db_data['Shop'][ $q ]['USER_ID'], $Db->db_data['Shop'][ $q ]['DB_num'], $Db->db_data['Shop'][ $q ]['Table'] )?>"><?php echo $Db->db_data['Shop'][ $q ]['USER'] . ' -> ' . $Db->db_data['Shop'][ $q ]['DB'] . ' -> ' . $Db->db_data['Shop'][ $q ]['Table'] . ' ( ' . $Db->db_data['Shop'][ $q ]['name'] . ' )'?></option>
+                                    <?php endfor;endif?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="server_form_block">
+                            <div class="input-form"><div class="input_text">WarnSystem :: Таблица</div>
+                                <select name="server_warnsystem">
+                                    <option style="display:none" value="">-</option>
+                                    <?php if ( ! empty( $Db->db_data['WarnSystem'] ) ):for ( $q = 0, $c = sizeof( $Db->db_data['WarnSystem'] ); $q < $c; $q++ ):?>
+                                        <option value="<?php echo sprintf( '%s;%d;%d;%s', $Db->db_data['WarnSystem'][ $q ]['DB_mod'], $Db->db_data['WarnSystem'][ $q ]['USER_ID'], $Db->db_data['WarnSystem'][ $q ]['DB_num'], $Db->db_data['WarnSystem'][ $q ]['Table'] )?>"><?php echo $Db->db_data['WarnSystem'][ $q ]['USER'] . ' -> ' . $Db->db_data['WarnSystem'][ $q ]['DB'] . ' -> ' . $Db->db_data['WarnSystem'][ $q ]['Table'] . ' ( ' . $Db->db_data['WarnSystem'][ $q ]['name'] . ' )'?></option>
                                     <?php endfor;endif?>
                                 </select>
                             </div>

@@ -128,16 +128,12 @@ class Auth {
                     'ranks_pack' => $this->Db->db_data['FPS'][$d - 1]['ranks_pack']
                 ];
                 $this->base_info = $this->Db->query('FPS', 0, 0, 'SELECT fps_players.nickname AS name,
-                                                         fps_servers_stats.lastconnect,
-                                                        ( SELECT fps_ranks.id
-                                                          FROM fps_ranks 
-                                                          WHERE fps_ranks.rank_id = ' . $this->Db->db_data['FPS'][ $d - 1 ]['ranks_id'] . ' 
-                                                          AND fps_ranks.points <= fps_servers_stats.points 
-                                                          ORDER BY fps_ranks.points DESC LIMIT 1
-                                                        ) AS rank
-                                                        FROM fps_players
-                                                        INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
-                                                        WHERE steam_id="' . $_SESSION['steamid'] . '" AND fps_servers_stats.server_id = ' . $d . ' LIMIT 1');
+                                                                         fps_servers_stats.rank
+                                                                         FROM fps_players
+                                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                                         WHERE steam_id="' . $_SESSION['steamid'] . '"
+                                                                         AND fps_servers_stats.server_id = ' . $d . '
+                                                                         LIMIT 1');
                 if ($this->base_info != '') {
                     $this->user_auth[] = $this->base_info;
                     $this->server_info[] = $this->res_data_sidebar[ $d ];
