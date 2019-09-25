@@ -82,7 +82,7 @@ if( isset( $_POST['table_install'] ) ) {
 </head>
 <link rel="stylesheet" href="storage/assets/css/themes/mainstream_white/style.css">
 <style>
-    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/mainstream_white/dark_mode_palette.json' ) ) )?>
+    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/mainstream_white/palettes/dark_mode_palette.json' ) ) )?>
 </style>
 <style>
     .badge {

@@ -105,6 +105,10 @@ if(isset($_SESSION['steamid32']) && $_SESSION['steamid32'] == $General->arr_gene
             {
                $LK->SearchUser($_POST['search_users']);
             }
+            else  if(isset($_POST['user']))
+            {
+                $LK->LkUpdateBalance($_POST);exit;
+            }
         break;
     }
 }
@@ -119,6 +123,7 @@ if(empty($Db->db_data['lk']))
     require MODULES.'module_page_lk_impulse/includes/install.php';
     exit;
 }
+
 //Проверка в базе данных наличие таблиц.
 if(isset($Db->db_data['lk'])){
     $checkTable =  array(
@@ -140,5 +145,8 @@ if(isset($Db->db_data['lk'])){
 
 $LK->LkBalancePlayer();
 
-$data['global']['title'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
-$data['global']['info'] = $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num;
+// Задаём заголовок страницы.
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK'));
+
+// Задаём описание страницы.
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_DescPageLK'));

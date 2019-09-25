@@ -597,13 +597,13 @@ class Lk_module{
 					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'PayPal']),'error');
 					$this->LKRegPay($order,$post,'PayPal');
 					$this->message('<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_xclick">
-									  <input type="hidden" name="business" value="'.$data[0]['shop_id'].'"><input type="hidden" name="notify_url" value="'.$data[0]['secret_key_1'].'"><input type="hidden" name="item_name" value="'.$desc.'"><input type="hidden" name="item_number" value="'.$lk_sign.'">
-									  <input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="currency_code" value="EUR"><input id="punsh" type="submit" name="submit"></form>','');
+									  <input type="hidden" name="business" value="'.$data[0]['shop_id'].'"><input type="hidden" name="notify_url" value="'.$this->https().get_url(2).'?page=lk&gateway=paypal"><input type="hidden" name="item_name" value="'.$desc.'"><input type="hidden" name="item_number" value="'.$lk_sign.'">
+									  <input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="currency_code" value="'.$data[0]['secret_key_1'].'"><input id="punsh" type="submit" name="submit"></form>','');
 			case 'qiwi':
 				if(empty($data[0]['status']))
 					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'Qiwi']),'error');
 					$this->LKRegPay($order,$post,'Qiwi');
-					$this->message('<form action="https://oplata.qiwi.com/create" method="GET"><input type="hidden" name="publicKey" value="'.$data[0]['secret_key_1'].'"><input type="hidden" name="comment" value="'.$desc.'"><input type="hidden" name="account" value="'.$lk_sign.'"><input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="successUrl" value="http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"].'">
+					$this->message('<form action="https://oplata.qiwi.com/create" method="GET"><input type="hidden" name="publicKey" value="'.$data[0]['secret_key_1'].'"><input type="hidden" name="comment" value="'.$desc.'"><input type="hidden" name="account" value="'.$lk_sign.'"><input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="successUrl" value="'.$this->https().get_url(2).'">
 						<input id="punsh" type="submit" name="submit"></form>','');
 				break;			
 			

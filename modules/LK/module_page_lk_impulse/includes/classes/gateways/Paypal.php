@@ -17,7 +17,7 @@ class Paypal extends Basefunction{
     protected $req;
     protected $res;
 
-  public function step1($post = ''){
+  public function PPProcessPay($post = ''){
             $raw_post_data = file_get_contents('php://input');
             $raw_post_array = explode('&', $raw_post_data);
             $myPost = array();
@@ -58,20 +58,39 @@ class Paypal extends Basefunction{
          if (strcmp ($this->res, "VERIFIED") == 0){
           $us = $this->Decoder($post['item_number']);
           $this->decod = explode(',', $us);
-          $checkKassa = $this->checkKassa('PayPal');
-          $checkPay = $this->checkPay('PayPal');
-          if(empty($checkKassa))exit;
-          if(empty($checkPay))exit;
+          $BChekGateway = $this->BChekGateway('PayPal');
+          if(empty($BChekGateway))
+             die('Gatewqy Freekassa not Exist.');
+          $BCheckPay = $this->BCheckPay('PayPal');
+          if(empty($BCheckPay))
+              die('Pay not found');
           if($this->decod[2] != $post['mc_gross'])
-            exit($this->addLog('PayPal - Не совподает сумма : '.$this->decod[2].'/'.$post['mc_gross']));
-          $this->checkPlayer();
-          $this->checkPromo('PayPal');
-          $this->updateBalance($this->decod[3],$post['mc_gross']);
-          $this->updatePay();
-          $this->Discord('PayPal');
-          $this->addLog('PayPal - Пополнение баланса на сумму:'.$post['mc_gross'].'руб. SteamID:'.$this->decod[3].' Платеж:#'.$this->decod[1]);
+          {
+            $this->LkAddLog('_NoValidSumm', ['gateway'=>'PayPal','amount' => $this->decod[2].'/'.$post['mc_gross']]);
+            die("Amount does't match");
+          }
+          $this->BCheckPlayer();
+          $this->BCheckPromo('PayPal');
+          $this->BUpdateBalancePlayer($this->decod[3],$post['mc_gross']);
+          $this->BUpdatePay();
+          $this->BNotificationDiscord('PayPal');
+          $this->LkAddLog('_NewDonat', ['gateway'=>'PayPal','order'=>$this->decod[1], 'course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
+           $this->Notifications->SendNotification(
+               $this->General->arr_general['admin'], 
+               '_GetDonat', 
+               ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['mc_gross'],'module_translation'=>'module_page_lk_impulse'], 
+               '?page=lk&section=payments#p'.$this->decod[1], 
+               'money'
+           );
+           $this->Notifications->SendNotification( 
+              $this->decod[3], 
+              '_YouPay', 
+              ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['mc_gross'],'module_translation'=>'module_page_lk_impulse'],
+              '?page=lk&section=payments#p'.$this->decod[1], 
+              'money'
+          );
         } else if (strcmp ($this->res, "INVALID") == 0) {
-          $this->addLog('PayPal - The response from IPN was: '.$this->res);
+          $this->LkAddLog('PayPal - The response from IPN was: '.$this->res);
         }  
   }
 }

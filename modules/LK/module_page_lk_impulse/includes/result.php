@@ -15,10 +15,19 @@ use app\modules\module_page_lk_impulse\includes\classes\gateways\Qiwi;
 use app\modules\module_page_lk_impulse\includes\classes\gateways\Webmoney;
 use app\modules\module_page_lk_impulse\includes\classes\gateways\Robokassa;
 use app\modules\module_page_lk_impulse\includes\classes\gateways\Yandexmoney;
+use app\modules\module_page_lk_impulse\includes\classes\gateways\Paypal;
+//use app\modules\module_page_lk_impulse\includes\classes\gateways\Paysera;
 
 if( IN_LR != true ){ die( 'Hacking detected' ); }
 
 switch ($_GET['gateway']){
+
+	case 'paypal':
+		if(empty($_POST)){ die( 'Hacking detected' ); }
+		$Paypal = new Paypal;
+		$Paypal->PPProcessPay( $_POST );
+	break;
+
 	case 'freekassa':
 		if(empty($_POST)){ die( 'Hacking detected' ); }
 		$Freekassa = new Freekassa;

@@ -756,5 +756,29 @@
             "LT" : "Mokėjimo būdą per %name% išjungia administratorius",
             "DE" : "Die Zahlungsmethode über %name% wurde vom Administrator deaktiviert",
             "CH" : "管理员禁用通过%name%的付款方式"
+    },
+    "_BusinessAccount":{
+            "EN" : "Business Account",
+            "RU" : "Бизнес аккаунт",
+            "UA" : "Бізнес аккаунт",
+            "LT" : "Verslo sąskaita",
+            "DE" : "Geschäftskonto",
+            "CH" : "企业账户"
+    },
+    "_ISOCourse":{
+            "EN" : "Currency",
+            "RU" : "Валюта",
+            "UA" : "Валюта",
+            "LT" : "Valiuta",
+            "DE" : "Währung",
+            "CH" : "货币"
+    },
+    "_DescPageLK":{
+            "EN" : "Replenish your balance simply",
+            "RU" : "Пополняйте свой баланс просто",
+            "UA" : "Поповнюйте свій баланс просто",
+            "LT" : "Paprasčiausiai papildykite savo balansą",
+            "DE" : "Laden Sie einfach Ihr Guthaben auf",
+            "CH" : "简单地补充您的余额"
     }
 }
