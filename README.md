@@ -411,6 +411,7 @@
 - Unity       ( hlmod.ru )  - 460 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
+- L1MON#4529  ( Discord )   - 300 RUB.
 - ju4ka1371   ( hlmod.ru )  - 282 RUB.
 - Good Game Project ( gg-pro.ru ) - 250 RUB.
 - Wend4r      ( hlmod.ru )  - 250 RUB.
