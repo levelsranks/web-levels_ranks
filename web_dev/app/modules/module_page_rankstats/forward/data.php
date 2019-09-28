@@ -36,9 +36,7 @@ if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_pag
             $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ') * 1.0) AS Percent FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ' GROUP BY rank' );
         endfor;
     endif;
-
-    ! file_exists( MODULES_SESSIONS . 'module_page_rankstats' ) && mkdir( MODULES_SESSIONS . 'module_page_rankstats', 0777, true );
-
+    
     // Сохраняем новый кэш для данного модуля.
     $Modules->set_module_cache( 'module_page_rankstats', $data['module_page_rankstats'] );
 endif;
@@ -46,7 +44,7 @@ endif;
 ( $server_group > $Db->table_statistics_count - 1 || $server_group < 0 ) && header( 'Location: ' . $General->arr_general ) && exit;
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' .  $Db->statistics_table[ $server_group ]['name'] );
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->db_data['LevelsRanks'][$server_group]['name'] );
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] );

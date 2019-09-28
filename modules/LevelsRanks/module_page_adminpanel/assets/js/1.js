@@ -156,3 +156,14 @@ function delete_server(element) {
     });
     element.closest('tr').remove();
 }
+
+function action_db_delete_table(id,element) {
+    $.post( "./app/includes/js_controller.php", { function: "delete", table: element } );
+    note({
+        content: 'Таблица удалена',
+        type: 'success',
+        time: 3
+    });
+    id.closest('tr').remove();
+    $("tr." + element).remove();
+}

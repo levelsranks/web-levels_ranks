@@ -77,9 +77,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         order by `value` desc LIMIT 10' );
                 endfor;
             endif;
-
-            ! file_exists( MODULES_SESSIONS . 'module_block_main_top' ) && mkdir( MODULES_SESSIONS . 'module_block_main_top', 0777, true );
-
+            
             // Обновляем кэш
             $Modules->set_module_cache( 'module_block_main_top', $data['module_block_main_top'] );
         }

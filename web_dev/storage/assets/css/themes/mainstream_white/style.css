@@ -2165,7 +2165,7 @@ template {
 }
 
 .sidebar-right .user-sidebar-right-block {
-    background: linear-gradient(45deg,#ff6262,#ffd968);
+    background: linear-gradient(45deg,var(--sidebar-gradient-2),var(--sidebar-gradient-1));
 }
 
 .sidebar-right .info {
@@ -2281,7 +2281,7 @@ li {
 }
 
 .user-sidebar-block {
-    background: linear-gradient(45deg, #ffd968, #ff6262)
+    background: linear-gradient(45deg, var(--sidebar-gradient-1), var(--sidebar-gradient-2))
 }
 
 .user-info a img {

@@ -68,9 +68,7 @@ switch ( empty( $Modules->array_modules['module_block_main_stats']['setting']['c
                 $data['module_block_main_stats']['Headshot'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(headshots) FROM fps_weapons_stats LIMIT 1')[0];
                 $data['module_block_main_stats']['playtime'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(playtime) FROM fps_servers_stats LIMIT 1')[0];
             endif;
-
-            !file_exists( MODULES_SESSIONS . 'module_block_main_stats') && mkdir(MODULES_SESSIONS . 'module_block_main_stats', 0777, true );
-
+            
             // Сохраняем новый кэш для данного модуля.
             $Modules->set_module_cache( 'module_block_main_stats', $data['module_block_main_stats'] );
         }

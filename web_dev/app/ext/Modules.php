@@ -108,7 +108,7 @@ class Modules {
         // Актуальная библиотека CSS и JS файлов.
         $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true ) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
 
-        // Проверка JA файлов.
+        // Проверка JS файлов.
         $this->check_generated_js();
 
         // Проверка таблици стилей.
@@ -182,11 +182,11 @@ class Modules {
      * @return array|false         Возвращает кэш модуля.
      */
     public function get_module_cache( $module ) {
-        if( file_exists(MODULES_SESSIONS . $module . '/cache.php') ):
-            return require MODULES_SESSIONS . $module . '/cache.php';
+        if( file_exists(MODULES . $module . '/temp/cache.php' ) ):
+            return require MODULES . $module . '/temp/cache.php';
         else:
-            ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
-            file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return [];' );
+            ! file_exists( MODULES . $module . '/temp' ) && mkdir( MODULES . $module . '/temp', 0777, true );
+            file_put_contents( MODULES . $module . '/temp/cache.php', '<?php return [];' );
             return [];
         endif;
     }
@@ -198,8 +198,8 @@ class Modules {
      * @param array $data           Массив данных.
      */
     public function set_module_cache( $module, $data ) {
-        ! file_exists( MODULES_SESSIONS . $module ) && mkdir( MODULES_SESSIONS . $module, 0777, true );
-        file_put_contents( MODULES_SESSIONS . $module . '/cache.php', '<?php return '.var_export_min( $data ).";" );
+        ! file_exists( MODULES . $module . '/temp' ) && mkdir( MODULES . $module . '/temp', 0777, true );
+        file_put_contents( MODULES . $module . '/temp/cache.php', '<?php return '.var_export_min( $data ).";" );
     }
 
     /**

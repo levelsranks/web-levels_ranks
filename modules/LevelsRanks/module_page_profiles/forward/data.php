@@ -12,7 +12,7 @@
 empty( get_section( 'profile', false ) ) && header('Location: ' . $General->arr_general['site'] ) && exit;
 
 // Импортируем класс который будет работать со страницей игрока.
-use app\ext\Player;
+require MODULES . 'module_page_profiles/ext/Player.php';
 
 // Создаём экземпляр класса с импортом подкласса Db и указанием Steam ID игрока.
 $Player = new Player ( $General, $Db, get_section( 'profile', false ), (int) intval ( get_section( 'server_group', '0' ) ) );

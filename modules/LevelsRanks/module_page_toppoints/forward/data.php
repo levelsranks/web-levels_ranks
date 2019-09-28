@@ -24,11 +24,11 @@ define('PLAYERS_ON_PAGE', '80');
 $server_group = (int) intval ( get_section( 'server_group', '0' ) );
 
 // Получаем номер страницы
-
 $page_num = (int) intval ( get_section( 'num', '1' ) );
 
-// Проверочка
+$page_max = 0;
 
+// Проверочка
 if($page_num <= '0'){
     header('Location: ' . $General->arr_general);
     exit;
@@ -62,29 +62,35 @@ endif;
 
 $res_data_count = sizeof( $res_data );
 
+$res = [];
+
 $page_num_min = ($page_num - 1) * PLAYERS_ON_PAGE;
 
-switch ( $res_data[ $server_group ]['statistics'] ) {
-    case 'LevelsRanks':
-        $page_max = ceil($Db->queryNum( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT COUNT(*) FROM " . $res_data[ $server_group ]['data_servers'] . " ")[0] / PLAYERS_ON_PAGE );
-        $res = $Db->queryAll( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[ $server_group ]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
-        break;
-    case 'FPS':
-        $page_max = ceil($Db->queryNum( 'FPS', 0, 0, 'SELECT COUNT(*) FROM fps_servers_stats WHERE server_id = ' . $res_data[ $server_group ]["server_id"] . ' ')[0] / PLAYERS_ON_PAGE );
-        $res = $Db->queryAll( 'FPS', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'],
-                                                       'SELECT fps_players.nickname AS name,
+if( ! empty( $res_data[ $server_group ]['statistics'] ) ):
+    switch ( $res_data[ $server_group ]['statistics'] ) {
+        case 'LevelsRanks':
+            $page_max = ceil($Db->queryNum( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT COUNT(*) FROM " . $res_data[ $server_group ]['data_servers'] . " ")[0] / PLAYERS_ON_PAGE );
+            $res = $Db->queryAll( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[ $server_group ]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
+            break;
+        case 'FPS':
+            $page_max = ceil($Db->queryNum( 'FPS', 0, 0, 'SELECT COUNT(*) FROM fps_servers_stats WHERE server_id = ' . $res_data[ $server_group ]["server_id"] . ' ')[0] / PLAYERS_ON_PAGE );
+            $res = $Db->queryAll( 'FPS', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'],
+                'SELECT fps_players.nickname AS name,
+                                                        fps_players.account_id, 
                                                         fps_players.steam_id AS steam, 
                                                         fps_servers_stats.points AS value, 
                                                         fps_servers_stats.kills, 
                                                         fps_servers_stats.deaths, 
                                                         fps_servers_stats.playtime,
+                                                        ( SELECT SUM(headshots) FROM fps_weapons_stats WHERE fps_weapons_stats.account_id = fps_players.account_id AND fps_weapons_stats.server_id = ' . $res_data[ $server_group ]["server_id"] . ' )  AS headshots,
                                                         TRUNCATE( fps_servers_stats.kills / fps_servers_stats.deaths, 2) AS kd,
                                                         fps_servers_stats.rank
                                                         FROM fps_players
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                         WHERE fps_servers_stats.server_id = ' . $res_data[ $server_group ]["server_id"] . ' order by ' . $_SESSION["filter"] . ' desc LIMIT ' . $page_num_min . ',' . PLAYERS_ON_PAGE . ' ');
-        break;
-}
+            break;
+    }
+endif;
 
 $page_num > $page_max && header('Location: ' . $General->arr_general['site']);
 

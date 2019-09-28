@@ -222,7 +222,7 @@
     -webkit-animation: check linear 0.5s;
     animation: check linear 0.5s;
     opacity: 1;
-    border-color: #f37c00
+    border-color: var(--span-color);
 }
 
 .input-form .border-checkbox-label {

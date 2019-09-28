@@ -2,8 +2,8 @@
   "--bg-color": "#2b2b2b",
   "--navbar-color": "#121212",
   "--sidebar-color": "#1f1f1f",
-  "--sidebar-gradient-1": "#ffd968",
-  "--sidebar-gradient-2": "#ff6262",
+  "--sidebar-gradient-1": "#68d9ff",
+  "--sidebar-gradient-2": "#6262ff",
   "--item-color": "#fff",
   "--default-text-color": "#fff",
   "--top-text-color": "#737373",
@@ -16,8 +16,8 @@
   "--font-weight-2": "500",
   "--font-weight-3": "600",
   "--font-weight-4": "700",
-  "--span-color": "#F27B26",
-  "--span-color-addit": "#FA9546",
-  "--span-color-back": "#b34b01c9",
-  "--server-graph-rgba": "255, 117, 0, 0.9"
+  "--span-color": "#6262ff",
+  "--span-color-addit": "#96e4ff",
+  "--span-color-back": "#362e98",
+  "--server-graph-rgba": "98, 98, 255, 1"
 }

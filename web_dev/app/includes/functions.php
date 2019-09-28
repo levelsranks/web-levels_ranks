@@ -31,6 +31,14 @@ function header_fix( $url ) {
 }
 
 /**
+ * Перезапуск страницы.
+ */
+function refresh() {
+    header_fix( get_url(1) );
+    exit;
+}
+
+/**
  * Проверка ну переменной на пустоту с последующей заменой при отсутсвии значения.
  *
  * @param  int|string|array  $i      Премеренная.

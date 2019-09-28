@@ -97,7 +97,7 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
 }
 
 // Присвоение какого-либо значения по ключу массива в options.php
-if( $_POST["function"] == 'delete' && isset( $_POST["server"] ) ) {
+if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_POST["table"] ) ) ):
     // Возобновление сессии
     session_start();
 
@@ -108,6 +108,8 @@ if( $_POST["function"] == 'delete' && isset( $_POST["server"] ) ) {
         // Подключение основных функций.
         require '../../app/includes/functions.php';
 
+        if( isset( $_POST["server"] ) ):
+
         $server_id = (int) $_POST["server"] - 1;
 
         $servers = require '../../storage/cache/sessions/servers_list.php';
@@ -117,10 +119,37 @@ if( $_POST["function"] == 'delete' && isset( $_POST["server"] ) ) {
         // Сохранение файла.
         file_put_contents( '../../storage/cache/sessions/servers_list.php', '<?php return ' . var_export_min( array_values ( $servers ) ) . ';' );
         exit;
+
+        elseif( isset( $_POST["table"] ) ):
+            $db = require '../../storage/cache/sessions/db.php';
+
+            $del = explode( ";", $_POST["table"] );
+
+            if ( sizeof( $del ) > 1 ):
+                if ( sizeof( $db[ $del[0] ] ) == 1 && sizeof( $db[ $del[0] ][ $del[1] ]['DB'] ) == 1 && sizeof( $db[ $del[0] ][ $del[1] ]['DB'][ $del[2] ]['Prefix'] ) == 1 ):
+                    unset( $db[ $del[0] ] );
+                elseif( sizeof( $db[ $del[0] ][ $del[1] ]['DB'][ $del[2] ]['Prefix'] ) > 1 ):
+                    unset( $db[ $del[0] ][ $del[1] ]['DB'][ $del[2] ]['Prefix'][ $del[3] ] );
+                    rsort( $db[ $del[0] ][ $del[1] ]['DB'][ $del[2] ]['Prefix'] );
+                elseif( sizeof( $db[ $del[0] ][ $del[1] ]['DB'] ) > 1):
+                    unset( $db[ $del[0] ][ $del[1] ]['DB'][ $del[2] ] );
+                    rsort( $db[ $del[0] ][ $del[1] ]['DB'] );
+                elseif( sizeof( $db[ $del[0] ] ) > 1):
+                    unset( $db[ $del[0] ][ $del[1] ] );
+                    rsort( $db[ $del[0] ] );
+                endif;
+            else:
+                unset( $db[ $del[0] ] );
+            endif;
+
+            // Сохранение файла.
+            file_put_contents( '../../storage/cache/sessions/db.php', '<?php return ' . var_export_min( $db ) . ';' );
+            exit;
+        endif;
     else:
         exit;
     endif;
-}
+endif;
 
 // Получение и сохранине состояния боковой панели.
 if( $_POST["function"] == 'sidebar' ) {

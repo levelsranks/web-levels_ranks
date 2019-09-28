@@ -25,12 +25,14 @@ class Graphics {
         
         // Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы
         for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'] ); $module_id < $c_mi; $module_id++ ):
-            require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'][ $module_id ] . '/forward/data.php';
+            $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'][ $module_id ] . '/forward/data.php';
+            file_exists( $file ) && require $file;
         endfor;
 
         // Дополнительный поток под модули, которые должны задействовать ядро на постоянной основе, а не локально.
         for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'] ); $module_id < $c_mi; $module_id++ ):
-            require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'][ $module_id ] . '/forward/data_always.php';
+            $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'][ $module_id ] . '/forward/data_always.php';
+            file_exists( $file ) && require $file;
         endfor;
 
         // Рендер блока - Head
@@ -44,7 +46,8 @@ class Graphics {
 
         // Подгрузка данных из модулей которые относятся к интерфейсу
         for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'] ); $module_id < $c_mi; $module_id++ ):
-            require MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'][ $module_id ] . '/forward/interface.php';
+            $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'][ $module_id ] . '/forward/interface.php';
+            file_exists( $file ) && require $file;
         endfor;
 
         // Рендер блока - Footer
@@ -68,9 +71,9 @@ class Graphics {
      */
     public function get_css_color_palette() {
         if ( isset ( $_SESSION['dark_mode'] ) && $_SESSION['dark_mode'] == true ) {
-            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['dark_palette'] . '.json' ) ) ) .  '</style>';
+            return '<style> :root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['dark_palette'] . '.json' ) ) ) .  '</style>';
         } else {
-            return '<style> :root' . str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['white_palette'] . '.json' ) ) ) .  '</style>';
+            return '<style> :root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['white_palette'] . '.json' ) ) ) .  '</style>';
         }
     }
 }

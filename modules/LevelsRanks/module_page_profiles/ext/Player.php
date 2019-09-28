@@ -8,8 +8,6 @@
  * @license GNU General Public License Version 3
  */
 
-namespace app\ext;
-
 class Player {
 
     /**

@@ -44,7 +44,7 @@
 }
 
 .custom-server .data-basic .online .online2 {
-    background: rgba(255, 117, 0, 0.9);
+    background: rgba(var(--server-graph-rgba));
     background-size: 5rem 5rem;
     background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     height: 33px;
@@ -135,7 +135,7 @@
         font-weight: 400;
         font-size: .8vw;
         float: right;
-        background: #ff7500;
+        background: var(--span-color);
         color: #fff;
         border: 1px solid #fff
     }
@@ -167,7 +167,7 @@
         font-weight: 400;
         font-size: .8vw;
         float: right;
-        background: #ff7500;
+        background: var(--span-color);
         color: #fff;
         border: 1px solid #fff
     }

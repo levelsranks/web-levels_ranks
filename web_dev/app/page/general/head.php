@@ -7,8 +7,8 @@
     <meta property="og:description" content="<?php echo empty( $Modules->page_description ) ? $General->arr_general['info'] : $Modules->page_description?>">
     <meta name="author" content="https//vk.com/M0st1ce">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title><?php echo empty( $Modules->page_title ) ? $General->arr_general['info'] : $Modules->page_title?></title>
-    <meta property="og:title" content="<?php echo empty( $Modules->page_title ) ? $General->arr_general['info'] : $Modules->page_title?>">
+    <title><?php echo empty( $Modules->page_title ) ? $General->arr_general['full_name'] : $Modules->page_title?></title>
+    <meta property="og:title" content="<?php echo empty( $Modules->page_title ) ? $General->arr_general['full_name'] : $Modules->page_title?>">
 <?php if( ! empty( $Modules->page_image ) ) :?>
     <meta property="og:image" content="<?php echo $General->arr_general['site'] . $Modules->page_image?>">
     <link rel="image_src" href="<?php echo $General->arr_general['site'] . $Modules->page_image?>">
