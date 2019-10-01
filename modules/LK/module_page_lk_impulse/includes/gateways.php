@@ -1,4 +1,4 @@
-<?php if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
+<?php if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
 
 $GatewaysArrayList = [
     'freekassa'     =>'FreeKassa MULTI',

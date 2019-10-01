@@ -36,13 +36,13 @@ class Lk_module{
 	}
 
 	public function LkAllDonats(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$allDonat = $this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT SUM(all_cash) FROM lk");
 		return number_format($allDonat[0],0,' ', ' ');
 	}
 
 	public function LkAllDonatsToPayGateway($system){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$params = ['name' => $system];
 		$cashSYS = $this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT SUM(pay_summ) FROM lk_pays WHERE pay_system = :name AND pay_status = 1", $params);
 		if(empty($cashSYS)) return false;
@@ -50,13 +50,13 @@ class Lk_module{
 	}
 
 	public function LkLogs(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$alllogs = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT DISTINCT log_name FROM lk_logs");
 		return array_reverse($alllogs);
 	}
 
 	public function LkLogContent($log){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^[0-9]{2}\_[0-9]{2}\_[0-9]{4}+$/i', $log)) return [0=>['log_name'=>$log ,'log_time'=>' ','log_content'=>'_Error']];
 		$param = ['log_name' => $log];
 		$contentLog = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_logs WHERE log_name = :log_name",$param);
@@ -67,7 +67,7 @@ class Lk_module{
 	}
 
 	public function LkLogdelete($log){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^[0-9]{2}\_[0-9]{2}\_[0-9]{4}+$/i', $log))
 			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		$param = ['log_name' => $log];
@@ -105,32 +105,32 @@ class Lk_module{
 	}
 
 	public function LkPromocodes(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$allcodes = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes");
 		return $allcodes;
 	}
 
 	public function LkPromoCode($id){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$param = ['id'=>$id];
 		$code = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes WHERE id = :id",$param);
 		return $code;
 	}
 
 	public function LkDiscordData(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$DiscordData = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_discord");
 				return $DiscordData[0];
 	}
 
 	public function LkGetAllGateways(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$allGateways = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pay_service");
 		return $allGateways;
 	}
 
 	public function LkGetGateway($gateway){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$param = ['id' => $this->LkConvertGatewayId($gateway)];
 		$Gateway = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pay_service WHERE id = :id",$param);
 		return $Gateway;
@@ -183,7 +183,7 @@ class Lk_module{
 	}
 
 	public function LkAddPromocode($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['addpromo']))
 			$promo = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, rand(5,15));
 		else $promo = $post['addpromo'];
@@ -215,7 +215,7 @@ class Lk_module{
 	}
 
 	public function LkEditPromocode($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['editid']))
 			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		else if(!preg_match('/^\d+$/',$post['editid']))
@@ -251,7 +251,7 @@ class Lk_module{
 	}
 
 	public function LkDeletePromocode($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['promocode_delete']))
 			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		else if(!preg_match('/^\d+$/',$post['promocode_delete']))
@@ -265,7 +265,7 @@ class Lk_module{
 	}
 
 	public function LkAddDiscord($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['webhoock_url_offon']))
 			$auth = 0;
 		else{
@@ -279,7 +279,7 @@ class Lk_module{
 	}
 
 	public function LkAddGateway($post){
-			if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+			if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 			$this->LkExistGatewayAdd($post);
 			$this->LKvalidateGatewayData($post['gateway'],$post);
 			$params = [
@@ -291,7 +291,7 @@ class Lk_module{
 	}
 
 	public function LkEditGateway($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(isset($_POST['status']))
 				$status = 1;
 		else 	$status = 0;
@@ -306,7 +306,7 @@ class Lk_module{
 	}
 
 	public function LkDeleteGateway($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^\d+$/i', $post['gateway_delete']))
 				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'), 'error');
 		$this->LkNotExistGateway($this->LkConvertGatewayString($post['gateway_delete']));
@@ -323,7 +323,7 @@ class Lk_module{
 	}
 
 	protected function LkExistGatewayAdd($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$param =['id'=>$this->LkConvertGatewayId($post['gateway'])];
 		$gateway = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT id FROM lk_pay_service WHERE id = :id",$param);
 		if(!empty($gateway))
@@ -405,13 +405,13 @@ class Lk_module{
 	}
 
 	public function LkDelUsers(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk WHERE !cash AND all_cash = 0");
 		$this->message('Удалены все игроки с нулевым донатом','success');
 	}
 
 	public function LkUpdateBalance($post){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^STEAM_[0-9]{1,2}:[0-1]:\d+$/',$post['user']))
 			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_SteamError'),'error');
 		if(!preg_match('/^[0-9]{1,5}.[0-9]{1,2}$/', $this->WM($post['new_balance'])))
@@ -441,7 +441,7 @@ class Lk_module{
 	}
 
 	public function LkCleanLogs(){
-		if( $_SESSION['steamid32'] != $this->General->arr_general['admin'] || IN_LR != true )exit;
+		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		$mouth = date('m_Y');
 		$expromo = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk_logs WHERE log_name NOT LIKE '%$mouth%'");
 		$this->message('Логи очищены!'.$mouth,'success');

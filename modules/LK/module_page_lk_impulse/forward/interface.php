@@ -9,7 +9,7 @@
  */
 if( IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit;}
 $Gateways = $LK->LkGetGatewaysOn();
-if(isset($_SESSION['steamid32']) && $_SESSION['steamid32'] == $General->arr_general['admin']):?>
+if(isset( $_SESSION['user_admin'] )):?>
 <aside class="sidebar-right unshow">
     <section class="sidebar">
         <div class="user-sidebar-right-block">

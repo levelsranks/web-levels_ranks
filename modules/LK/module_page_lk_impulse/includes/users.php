@@ -8,7 +8,7 @@
      * @license GNU General Public License Version 3
      */
 
-if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
+if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
 ?>
     <div class="col-md-7">
         <div class="card">

@@ -9,7 +9,7 @@
  */
 
 if(IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
-if(!empty($_SESSION['steamid32']) && $_SESSION['steamid32'] == $General->arr_general['admin']):
+if(isset( $_SESSION['user_admin'] )):
     $pays = $LK->LkGetAllPays();?>
     <div class="col-md-12">
         <div class="card">
@@ -50,7 +50,7 @@ if(!empty($_SESSION['steamid32']) && $_SESSION['steamid32'] == $General->arr_gen
             </div>
         </div>
     </div>
-<?php elseif(isset($_SESSION['steamid32']) && $_SESSION['steamid32'] != $General->arr_general['admin']):
+<?php elseif(isset($_SESSION['steamid32']) && !isset( $_SESSION['user_admin'] )):
        $pays = $LK->LkGetUserPays($_SESSION['steamid32']);?>
 <div class="col-md-12">
     <div class="card">

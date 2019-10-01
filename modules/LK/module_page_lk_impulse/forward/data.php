@@ -27,7 +27,7 @@ else if(isset($_POST['steamidload']))
     $LK->LkLoadPlayerProfile($_POST['steamidload']); exit;
 }
 
-if(isset($_SESSION['steamid32']) && $_SESSION['steamid32'] == $General->arr_general['admin']  && isset($_GET['section']))
+if(isset( $_SESSION['user_admin'] )  && isset($_GET['section']))
 {
 
     switch ($_GET['section']) {
