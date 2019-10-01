@@ -67,10 +67,13 @@ class Auth {
         endif;
 
         // Работа со Steam авторизацией.
-        isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
+        isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && $_GET["auth"] == 'login' && require 'app/includes/auth/steam.php';
 
         // Работа с No-Steam авторизацией
         isset( $_POST['log_in'] ) && ! empty( $_POST['_login'] ) && ! empty( $_POST['_pass'] ) && $this->General->arr_general['steam_only_authorization'] === 0 && $this->authorization_no_steam();
+
+        // Выход пользователя из аккаунта.
+        isset( $_GET["auth"] ) && $_GET["auth"] == 'logout' && require 'app/includes/auth/steam.php';
     }
 
     /**
@@ -126,8 +129,8 @@ class Auth {
             $_SESSION['steamid32'] = con_steam32to64( $result['steamid'] );
             $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
             $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-            preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid32'], $arr, PREG_SET_ORDER);
-            $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
+            preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid'], $arr, PREG_SET_ORDER);
+            $_SESSION['steamid64_short'] = $arr[0][1] . ':' . $arr[0][2];
             $_SESSION['user_admin'] = 1;
             $_SESSION['user_group'] = $result['group'];
             $_SESSION['user_access'] = $result['access'];
@@ -144,7 +147,7 @@ class Auth {
             // Перебор всех таблиц с модом - Levels Ranks
             for ( $d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++ ):
                 // Запрос о получении информации об авторизовавшемся пользователе.
-                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid64_short']}%' LIMIT 1");
 
                 // Если Пользователь  находится в таблице, заполняем итоговый массив.
                 if ( ! empty( $this->base_info ) ):
@@ -153,10 +156,10 @@ class Auth {
 
                     // Информация о таблице.
                     $this->server_info[] = ['name_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['name'],
-                                            'mod' => $this->Db->db_data['LevelsRanks'][ $d ]['mod'],
-                                            'ranks_pack' => $this->Db->db_data['LevelsRanks'][ $d ]['ranks_pack'],
-                                            'data_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['Table']
-                                           ];
+                        'mod' => $this->Db->db_data['LevelsRanks'][ $d ]['mod'],
+                        'ranks_pack' => $this->Db->db_data['LevelsRanks'][ $d ]['ranks_pack'],
+                        'data_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['Table']
+                    ];
                 endif;
             endfor;
         endif;
@@ -180,10 +183,10 @@ class Auth {
 
                     // Информация о таблице.
                     $this->server_info[] = ['name_servers' => $this->Db->db_data['FPS'][ $d - 1 ]['name'],
-                                            'mod' => 'csgo',
-                                            'ranks_id' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_id'],
-                                            'ranks_pack' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_pack']
-                                           ];
+                        'mod' => 'csgo',
+                        'ranks_id' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_id'],
+                        'ranks_pack' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_pack']
+                    ];
                 endif;
             endfor;
         endif;
@@ -204,7 +207,7 @@ class Auth {
         $this->user_rank_count = sizeof( $this->user_auth );
 
         $datetime = [];
-        
+
         for ( $d = 0; $d < $this->user_rank_count; $d++ ):
             $datetime[] = $this->user_auth[ $d ]['lastconnect'];
         endfor;
