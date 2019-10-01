@@ -17,7 +17,7 @@ if( $_POST["function"] == 'options' && isset( $_POST["setup"] ) ):
         // Возобновление сессии
         session_start();
 
-        if( $_SESSION['steamid32'] == $options['admin'] ):
+        if( isset( $_SESSION['user_admin'] ) ):
             echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
             exit;
         else:
@@ -34,10 +34,7 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
     // Возобновление сессии
     session_start();
 
-    // Получение текущих настроек.
-    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
-
-    if( $_SESSION['steamid32'] == $admin ):
+    if( isset( $_SESSION['user_admin'] ) ):
         // Подключение основных функций.
         require '../../app/includes/functions.php';
 
@@ -101,10 +98,7 @@ if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_PO
     // Возобновление сессии
     session_start();
 
-    // Получение текущих настроек.
-    $admin = ( require '../../storage/cache/sessions/options.php' )['admin'];
-
-    if( $_SESSION['steamid32'] == $admin ):
+    if( isset( $_SESSION['user_admin'] ) ):
         // Подключение основных функций.
         require '../../app/includes/functions.php';
 

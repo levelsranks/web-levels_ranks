@@ -9,13 +9,13 @@
  */
 
 // Проверка поля 'profile' на пустоту.
-empty( get_section( 'profile', false ) ) && header('Location: ' . $General->arr_general['site'] ) && exit;
+empty( $_GET['profile'] ) && get_iframe( '009', 'Данная страница не существует' );
 
 // Импортируем класс который будет работать со страницей игрока.
 require MODULES . 'module_page_profiles/ext/Player.php';
 
 // Создаём экземпляр класса с импортом подкласса Db и указанием Steam ID игрока.
-$Player = new Player ( $General, $Db, get_section( 'profile', false ), (int) intval ( get_section( 'server_group', '0' ) ) );
+$Player = new Player ( $General, $Db, $_GET['profile'], (int) intval ( get_section( 'server_group', '0' ) ) );
 
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' .  $Player->found[ $Player->server_group ]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Player') . ' :: ' .  $Player->get_name() );

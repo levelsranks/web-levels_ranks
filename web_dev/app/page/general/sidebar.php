@@ -6,9 +6,9 @@
                     <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
                     <img id="<?php echo empty( $_SESSION['steamid'] ) ? 0 : $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="<?php echo empty( $_SESSION['steamid'] ) ? 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' : $General->getAvatar( $_SESSION['steamid'], 1 )?>"></a>
                 <div class="user-details">
-                    <span class="user_name"><?php empty( $_SESSION['steamid'] ) ? print $Modules->get_translate_phrase('_Hero_without_name') : print $Auth->user_auth[0]['name']?></span>
+                    <span class="user_name"><?php echo empty( $_SESSION['steamid'] ) ? $Modules->get_translate_phrase('_Hero_without_name') : $Auth->user_auth[0]['name']?></span>
                     <?php if( ! empty( $_SESSION['steamid'] ) ):?>
-                        <span class="user_text"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php ($Auth->lastconnect == '-') ? print $Auth->lastconnect : print gmdate("d-m-Y", max($Auth->lastconnect))?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
+                        <span class="user_text"><?php echo $Modules->get_translate_phrase('_Plays_since')?> <?php echo empty( $Auth->user_auth[0]['lastconnect'] ) ? '-' : gmdate("d-m-Y", $Auth->user_auth[0]['lastconnect_max'] )?></span><span class="_logout"><a href="<?php echo $General->arr_general['site']?>/?auth=logout"><i class="zmdi zmdi-mail-reply-all invert"></i></a></span>
                         <?php if( ! empty( $Modules->arr_user_info ) ):
                         for ( $i5 = 0, $arr_user_info_c = sizeof( $Modules->arr_user_info ); $i5 < $arr_user_info_c; ++$i5 ):?>
                         <span class="user_text"><?php echo $Modules->arr_user_info[ $i5 ]?></span>

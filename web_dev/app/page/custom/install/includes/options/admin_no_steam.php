@@ -10,6 +10,8 @@
                         <input name="admin_login" value="" placeholder="M0st1ce" required>
                         <div class="info"><?php echo $options['language'] == 'EN' ? 'Password' : 'Пароль'?></div>
                         <input name="admin_pass" value="" placeholder="*******" type="password" required>
+                        <div class="info"><?php echo $options['language'] == 'EN' ? 'Emulated Steam ID' : 'Эмулированный Steam ID'?></div>
+                        <input name="admin_steam" value="" required>
                     </div>
                 </div>
             </div>

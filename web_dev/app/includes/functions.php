@@ -265,10 +265,10 @@ function con_steam32to64( $id ) {
 function con_steam32to3_int( $steamid32 ) {
     if ( preg_match('/^STEAM_/', $steamid32 ) ) {
         $split = explode( ':', $steamid32 );
-        return $split[2] * 2 + $split[1];
-    } else {
-        return $steamid32;
+        return $split[2] << 1 | $split[1];
     }
+
+    return $steamid32;
 }
 
 /**
@@ -294,9 +294,7 @@ function con_steam64to3_int( $steamid64 ) {
  * @return int                    Выводит итог конвертации.
  */
 function con_steam3to64_int( $steamid3 ) {
-    $A = $steamid3 % 2;
-    $B = intval($steamid3 / 2);
-    return "STEAM_1:" . $A . ":" . $B;
+    return "STEAM_1:" . $steamid3 & 1 . ":" . $steamid3 >> 1;
 }
 
 /**

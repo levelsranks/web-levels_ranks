@@ -86,7 +86,7 @@
                     </div>
                 </ul>
             </li>
-       <?php endif; if( ! empty( $_SESSION['steamid32'] ) && $_SESSION['steamid32'] == $General->arr_general['admin']):?>
+       <?php endif; if( ! empty( $_SESSION['steamid32'] ) && isset( $_SESSION['user_admin'] ) ):?>
             <li class="section navbar-icon">
                 <a id="admin_idebar_right" href="javascript:void(0);" class="search">
                     <i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i>

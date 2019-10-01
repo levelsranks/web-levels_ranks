@@ -116,10 +116,10 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
 endfor;
 
 // Проверка директории под кэш
-! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring' ) && mkdir( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring', 0777, true );
+! file_exists( '../../../../../app/modules/module_block_main_servers_monitoring/temp' ) && mkdir( '../../../../../app/modules/module_block_main_servers_monitoring/temp', 0777, true );
 
 // Кэширование изображений с серверов для предзагрузки блоков
-( ! file_exists( '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) || $cache != require '../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php' ) && file_put_contents('../../../../../storage/cache/sessions/modules/module_block_main_servers_monitoring/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
+( ! file_exists( '../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php' ) || $cache != require '../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php' ) && file_put_contents('../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
 
 // Вывод
 echo json_encode( $return, JSON_UNESCAPED_UNICODE );

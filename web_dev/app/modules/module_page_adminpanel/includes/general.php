@@ -1,4 +1,4 @@
-<?php if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }?>
+<?php ! isset( $_SESSION['user_admin'] ) && get_iframe( '013','Доступ закрыт' )?>
 <div class="col-md-6">
     <div class="card">
         <div class="card-header">
@@ -20,7 +20,6 @@
                         </select>
                     </div>
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>
-                    <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Chief_administrator_Steam')?></div><input name="admin" value="<?php echo $General->arr_general['admin']?>"></div>
                 <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Show_avatars')?></div>
                     <select name="avatars">
                         <option style="display:none" value="<?php echo (int) $General->arr_general['avatars']?>"><?php if( $General->arr_general['avatars'] == 1 ) { echo 'Показывать';} elseif ( $General->arr_general['avatars'] == 2) { echo 'Использовать случайные аватарки';} else { echo 'Не показывать';}?></option>
@@ -119,6 +118,13 @@
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'js')" class="border-checkbox" type="checkbox" name="enable_js_cache" id="enable_js_cache" <?php $General->arr_general['enable_js_cache'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="enable_js_cache"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Enable_js_cache')?></label>
+            </div>
+            <div class="input-form">
+                <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Security')?></div>
+            </div>
+            <div class="input-form">
+                <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="session_check" id="session_check" <?php $General->arr_general['session_check'] === 1 && print 'checked'?>>
+                <label class="border-checkbox-label" for="session_check"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Session_check')?></label>
             </div>
         </div>
     </div>

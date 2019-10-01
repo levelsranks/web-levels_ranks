@@ -14,7 +14,7 @@
 }
 
 .row-rank .line .i {
-    background: rgba(255, 117, 0, 0.9);
+    background: rgba(var(--server-graph-rgba));
     background-size: 5rem 5rem;
     background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     height: 28px;

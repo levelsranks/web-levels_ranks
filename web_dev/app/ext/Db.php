@@ -93,9 +93,6 @@ class Db {
      */
     public function __construct() {
 
-        # Получение настроек с модами, пользователями, базами данных и таблицами.
-        ! file_exists ( SESSIONS . '/db.php' ) && header( 'Location: ' . get_url(2) . 'app/page/custom/install/index.php');
-
         $this->db = $this->get_db_options();
 
         // PDO Условия.
@@ -196,9 +193,9 @@ class Db {
                             'DB_num' => $d,
                             'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
                             'table_id' => $t,
-                            'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
-                            'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
-                            'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
+                            'name' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
+                            'mod' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
+                            'steam' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
                             'ranks_pack' => $rank_pack
                         ];
                         in_array( $this->mod_name[ $m ], $this->support_statistics ) && $this->statistics_table[] = [ 'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'], 'ranks_pack' => $rank_pack];

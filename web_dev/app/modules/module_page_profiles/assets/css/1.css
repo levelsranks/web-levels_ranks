@@ -2418,6 +2418,37 @@
         color: var(--span-color);
     }
 
+    .user-block .steam_status {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        height: 10px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: 70px;
+    }
+
+    .user-block .steam_status i{
+        font-size: 22px;
+        color:  var(--span-color);
+    }
+
+    .user-block .steam_status .check_ban {
+        width: 100%;
+        position: relative;
+        -ms-flex: 0 0 33.33333%;
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    .user-block .steam_status .check_ban a, .user-block .steam_status .check_ban i{
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+
     .user-block .country {
         font-size: 13px;
         font-weight: var(--font-weight-0);

@@ -246,6 +246,14 @@
   "_No_image": {
     "EN": "No image",
     "RU": "Без изображения"
+  },
+  "_Security": {
+    "EN": "Security",
+    "RU": "Безопасность"
+  },
+  "_Session_check": {
+    "EN": "Check PHP Sessions",
+    "RU": "Проверка PHP сессий"
   }
 }
 

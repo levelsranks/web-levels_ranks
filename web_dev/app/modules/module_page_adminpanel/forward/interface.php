@@ -8,7 +8,7 @@
  * @license GNU General Public License Version 3
  */
 
-if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }?>
+! isset( $_SESSION['user_admin'] ) && get_iframe( '013','Доступ закрыт' )?>
 <aside class="sidebar-right">
     <section class="sidebar">
         <div class="user-sidebar-right-block">

@@ -22,14 +22,8 @@ set_time_limit(3);
 // Нахожение в пространстве LR.
 define('IN_LR', true);
 
-// Директория содержащая основные блоки вэб-приложения.
-define('PAGE', '../../../../app/page/general/');
-
 // Директория содержащая дополнительные блоки вэб-приложения.
 define('PAGE_CUSTOM', '../../../../app/page/custom/');
-
-// Директория с модулями.
-define('MODULES', '../../../../app/modules/');
 
 // Директория с основными конфигурационными файлами.
 define('INCLUDES', '../../../../app/includes/');
@@ -45,15 +39,6 @@ define('SESSIONS', '../../../../storage/cache/sessions/');
 
 // Директория содержащая графические кэш-файлы.
 define('CACHE', '../../../../storage/cache/');
-
-// Директория с шаблонами "Sidebars".
-define('SIDEBARS', '../../../../storage/assets/css/sidebars/');
-
-// Директория с шаблонами "Themes".
-define('THEMES', '../../../../storage/assets/css/themes/');
-
-// Директория с изображениями рангов.
-define('RANKS_PACK', '../../../../storage/cache/img/ranks/');
 
 // Регистраниция основных функций.
 require INCLUDES . 'functions.php';
@@ -115,12 +100,24 @@ substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '
 // Создание/возобновление сессии.
 session_start();
 
+// Получение информации из конфигурационного файла.
 $options = require SESSIONS . '/options.php';
 
+// Получение информации о базе данных.
 $db = require SESSIONS . '/db.php';
 
+if ( ! empty( $db ) ):
+    $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
+    $result = $mysqli->query('SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins');
+    $row = $result->fetch_assoc();
+    $mysqli->close();
+    if( empty( $row ) ):
+        $admins = 1;
+    endif;
+endif;
+
 // Язык
-if ( isset( $_POST['EN'] ) || isset( $_POST['RU'] ) ):
+if ( empty( $options['language'] ) && isset( $_POST['EN'] ) || isset( $_POST['RU'] ) ):
     $options['language'] = isset( $_POST['EN'] ) ? 'EN' : 'RU';
     file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
     header_fix( get_url(1) );
@@ -128,7 +125,7 @@ endif;
 
 // Информация о серверах
 
-if ( isset( $_POST['servers_info_save'] ) ) {
+if ( empty( $options['short_name'] ) && empty( $options['full_name'] ) && empty( $options['info'] ) && empty( $options['site'] ) && isset( $_POST['servers_info_save'] ) ) {
     $options['short_name'] = $_POST['servers_name'];
     $options['full_name'] = $_POST['servers_full_name'];
     $options['info'] = $_POST['servers_info'];
@@ -140,7 +137,7 @@ if ( isset( $_POST['servers_info_save'] ) ) {
 
 // WEB KEY API
 
-if ( ! empty( $_POST['web_key'] ) ) {
+if ( empty( $options['web_key'] ) && ! empty( $_POST['web_key'] ) ) {
     $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $_POST['web_key'] . '&steamids=76561198038416053' );
     curl_setopt($result, CURLOPT_RETURNTRANSFER, 1);
     $url = curl_exec($result);
@@ -157,7 +154,7 @@ if ( ! empty( $_POST['web_key'] ) ) {
     } else {
         $error = true;
     }
-} elseif ( ! empty( $_POST['nope'] ) ) {
+} elseif ( empty( $options['web_key'] ) && isset( $_POST['nope'] ) ) {
     $options['web_key'] = 1;
     $options['steam_only_authorization'] = 0;
     $options['steam_auth'] = 0;
@@ -170,7 +167,7 @@ if ( ! empty( $_POST['web_key'] ) ) {
 
 // Sidebar
 
-if ( isset( $_POST['sidebar_open'] ) || isset( $_POST['sidebar_close'] ) ) {
+if ( empty( $options['sidebar_open'] ) && ! is_int ( $options['sidebar_open'] ) && isset( $_POST['sidebar_open'] ) || isset( $_POST['sidebar_close'] ) ) {
     $options['sidebar_open'] = isset( $_POST['sidebar_open'] ) ? (int) 1 : (int) 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
@@ -178,7 +175,7 @@ if ( isset( $_POST['sidebar_open'] ) || isset( $_POST['sidebar_close'] ) ) {
 
 // Бэйджи
 
-if ( isset( $_POST['badge_type_1'] ) || isset( $_POST['badge_type_2'] ) ) {
+if ( empty( $options['badge_type'] ) && ! is_int ( $options['badge_type'] ) && isset( $_POST['badge_type_1'] ) || isset( $_POST['badge_type_2'] ) ) {
     $options['badge_type'] = isset( $_POST['badge_type_1'] ) ? (int) 1 : (int) 2;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
@@ -186,7 +183,7 @@ if ( isset( $_POST['badge_type_1'] ) || isset( $_POST['badge_type_2'] ) ) {
 
 // Form Border
 
-if ( isset( $_POST['form_border_0'] ) || isset( $_POST['form_border_1'] ) ) {
+if ( empty( $options['form_border'] ) && ! is_int ( $options['form_border'] ) && isset( $_POST['form_border_0'] ) || isset( $_POST['form_border_1'] ) ) {
     $options['form_border'] = isset( $_POST['form_border_1'] ) ? (int) 1 : (int) 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
@@ -194,7 +191,7 @@ if ( isset( $_POST['form_border_0'] ) || isset( $_POST['form_border_1'] ) ) {
 
 // animation
 
-if ( isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
+if ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) && isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
     $options['animations'] = isset( $_POST['animations_on'] ) ? (int) 1 : (int) 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
@@ -202,7 +199,7 @@ if ( isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
 
 // dark_mode
 
-if ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
+if ( empty( $options['theme'] ) && isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
     $options['dark_mode'] = isset( $_POST['dark_mode_on'] ) ? (int) 1 : (int) 0;
     $options['theme'] = 'mainstream_white';
     $options['enable_css_cache'] = 0;
@@ -210,6 +207,7 @@ if ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
     $options['white_palette'] = 'original_palette';
     $options['dark_palette'] = 'dark_mode_palette';
     $options['background_image'] = 'null';
+    $options['session_check'] = 1;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
 }
@@ -224,10 +222,11 @@ if ( isset( $_POST['check_admin_steam'] ) ) {
     $data = json_decode( $url, true )['response']['players'][0];
 }
 
-if ( isset( $_POST['check_admin_steam_da'] ) && isset( $_SESSION['admin'] ) ) {
-    $options['admin'] = con_steam64to32( $_SESSION['admin'] );
-    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
-    header_fix( get_url(1) );
+if ( ! empty( $admins ) && isset( $_POST['check_admin_steam_da'] ) && isset( $_SESSION['admin'] ) ) {
+    $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
+    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$_SESSION['admin']}', '', '', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->close();
+    refresh();
 }
 
 if ( isset( $_POST['check_admin_steam_net'] ) && isset( $_SESSION['admin'] ) ) {
@@ -235,19 +234,21 @@ if ( isset( $_POST['check_admin_steam_net'] ) && isset( $_SESSION['admin'] ) ) {
     header_fix( get_url(1) );
 }
 
-if ( isset( $_POST['admin_nosteam_save'] ) ) {
-    $admin[] = ['login' => $_POST['admin_login'],'pass' => $_POST['admin_pass'], 'access' => 'z'];
-    $options['admin'] = '1';
-    file_put_contents(SESSIONS . '/admins.php', '<?php return ' . var_export_min( $admin ) . ";\n");
-    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
-    header_fix( get_url(1) );
+if ( ! empty( $admins ) && isset( $_POST['admin_nosteam_save'] ) ) {
+    $login = action_text_clear($_POST['admin_login']);
+    $pass = action_text_clear($_POST['admin_pass']);
+    $steam = action_text_clear($_POST['admin_steam']);
+    $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
+    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$steam}', '{$login}', '{$pass}', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->close();
+    refresh();
 }
 
 // Проверка соединения с базой данных
 
-if( isset( $_POST['db_check'] ) ) {
+if( empty( $db ) && isset( $_POST['db_check'] ) ) {
 
-    $con = mysqli_connect($_POST['HOST'], $_POST['USER'], $_POST['PASS'], $_POST['DATABASE'], $_POST['PORT']);
+    $mysqli = new mysqli( $_POST['HOST'], $_POST['USER'], $_POST['PASS'], $_POST['DATABASE'], $_POST['PORT'] );
 
     if ( empty( $_POST['TABLE'] ) ):
         if( $_POST['STATS'] == 'LevelsRanks'):
@@ -259,12 +260,14 @@ if( isset( $_POST['db_check'] ) ) {
         $db_table = $_POST['TABLE'];
     endif;
 
-    $result = mysqli_query($con, 'SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
+    $result = $mysqli->query('SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
+    $row = $result->fetch_assoc();
 
-    if ( $result ) {
+    if ( ! empty( $row ) ) {
 
         $db_check = 2;
-        $table = 'CREATE TABLE IF NOT EXISTS lr_web_notifications (
+
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lr_web_notifications (
                   `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
                   steam VARCHAR(128) NOT NULL,
                   text VARCHAR(256) NOT NULL,
@@ -273,10 +276,51 @@ if( isset( $_POST['db_check'] ) ) {
                   icon VARCHAR(64) NOT NULL,
                   seen int(11) NOT NULL,
                   status int(11) NOT NULL,
-                  date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;';
-        $con->query( $table );
+                  date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 
-        $db = [$_POST['STATS'] => [['HOST' => $_POST['HOST'], 'PORT' => $_POST['PORT'], 'USER' => $_POST['USER'], 'PASS' => $_POST['PASS'], 'DB' => [['DB' => $_POST['DATABASE'], 'Prefix' => [['table' => $db_table, 'name' => $_POST['NAME'], 'mod' => $_POST['game_mod'], 'ranks_pack' => 'default', 'steam' => (int) $_POST['steam_mod']]]]]]]];
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_admins (
+                  `steamid` VARCHAR(32) PRIMARY KEY, 
+                  `user` VARCHAR(32) NOT NULL,
+                  `password` VARCHAR(64) NOT NULL,
+                  `ip` VARCHAR(16) NOT NULL,
+                  `group` VARCHAR(11) NOT NULL,
+                  `flags` VARCHAR(32) NOT NULL,
+                  `access` int(3) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+
+        $db = [$_POST['STATS'] => [
+            ['HOST' => $_POST['HOST'],
+                'PORT' => $_POST['PORT'],
+                'USER' => $_POST['USER'],
+                'PASS' => $_POST['PASS'],
+                'DB' => [
+                    ['DB' => $_POST['DATABASE'],
+                        'Prefix' => [
+                            ['table' => $db_table,
+                                'name' => $_POST['NAME'],
+                                'mod' => empty($_POST['game_mod']) ? 730 : $_POST['game_mod'],
+                                'ranks_pack' => 'default',
+                                'steam' => (int) $_POST['steam_mod']
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], 'Core' => [
+            ['HOST' => $_POST['HOST'],
+                'PORT' => $_POST['PORT'],
+                'USER' => $_POST['USER'],
+                'PASS' => $_POST['PASS'],
+                'DB' => [
+                    ['DB' => $_POST['DATABASE'],
+                        'Prefix' => [
+                            ['table' => 'lvl_']
+                        ]
+                    ]
+                ]
+            ]
+        ]
+        ];
+        $mysqli->close();
         file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
         header_fix( get_url(1) );
     } else {
@@ -292,40 +336,41 @@ if( isset( $_POST['db_check'] ) ) {
     <title>Добро пожаловать в мастер установки LR!</title>
 </head>
 <link rel="stylesheet" href="../../../../storage/assets/css/themes/mainstream_white/style.css">
-<link rel="stylesheet" href="../../../../app/page/custom/install/css/style.css">
+<link rel="stylesheet" href="../../../../app/page/custom/install/assets/css/style.css">
 <style>
-    :root <?php echo str_replace( ',', ';', str_replace( '"', '', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/palettes/dark_mode_palette.json' ) ) )?>
+    :root <?php echo str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( '../../../../storage/assets/css/themes/mainstream_white/palettes/dark_mode_palette.json' ) ) )?>
 </style>
 <body>
 <div class="container-fluid">
     <div class="row">
 <?php
 // Проверка на язык страницы
-if ( empty( $options['language'] ) ) {
+if ( empty( $options['language'] ) ):
     require PAGE_CUSTOM . 'install/includes/options/language.php';
-} elseif ( empty( $options['full_name'] ) || empty( $options['short_name'] ) || empty( $options['info'] ) || empty( $options['site'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/name.php';
-} elseif ( empty( $options['web_key'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/webkey.php';
-} elseif ( empty( $options['sidebar_open'] ) && ! is_int ( $options['sidebar_open'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/sidebar.php';
-} elseif ( empty( $options['badge_type'] ) && ! is_int ( $options['badge_type'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/badge_type.php';
-} elseif ( empty( $options['form_border'] ) && ! is_int ( $options['form_border'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/form_border.php';
-} elseif ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/animations.php';
-} elseif ( empty( $options['dark_mode'] ) && ! is_int ( $options['dark_mode'] ) ) {
-    require PAGE_CUSTOM . 'install/includes/options/dark_mode.php';
-} elseif ( empty( $options['admin'] ) && $options['web_key'] == 1 ) {
-    require PAGE_CUSTOM . 'install/includes/options/admin_no_steam.php';
-} elseif ( empty( $options['admin'] ) && $options['web_key'] !== 1 ) {
-    require PAGE_CUSTOM . 'install/includes/options/admin_steam.php';
-} elseif ( empty( $db ) ) {
+elseif ( empty( $db ) ):
     require PAGE_CUSTOM . 'install/includes/options/db.php';
-} else {
+elseif ( empty( $options['web_key'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/webkey.php';
+elseif ( ! empty( $admins ) && $options['web_key'] == 1 ):
+    require PAGE_CUSTOM . 'install/includes/options/admin_no_steam.php';
+elseif ( ! empty( $admins ) && $options['web_key'] !== 1 ):
+    require PAGE_CUSTOM . 'install/includes/options/admin_steam.php';
+elseif ( empty( $options['full_name'] ) || empty( $options['short_name'] ) || empty( $options['info'] ) || empty( $options['site'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/name.php';
+elseif ( empty( $options['sidebar_open'] ) && ! is_int ( $options['sidebar_open'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/sidebar.php';
+elseif ( empty( $options['badge_type'] ) && ! is_int ( $options['badge_type'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/badge_type.php';
+elseif ( empty( $options['form_border'] ) && ! is_int ( $options['form_border'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/form_border.php';
+elseif ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/animations.php';
+elseif ( empty( $options['dark_mode'] ) && ! is_int ( $options['dark_mode'] ) ):
+    require PAGE_CUSTOM . 'install/includes/options/dark_mode.php';
+else:
     header_fix( '//' . $_SERVER["SERVER_NAME"] . explode('/app/',$_SERVER['REQUEST_URI'])[0] );
-    exit;}?>
+    die();
+endif?>
 </div>
 </div>
 </body>

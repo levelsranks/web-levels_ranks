@@ -21,18 +21,16 @@ $General->get_default_url_section('filter', 'value', array('value', 'kills', 'ra
 // Очень важная настройка, кол-во человек на странице
 define('PLAYERS_ON_PAGE', '80');
 
+$page_max = 0;
+
 $server_group = (int) intval ( get_section( 'server_group', '0' ) );
+
+$server_group >= $Db->table_statistics_count && get_iframe( '009', 'Данная страница не существует' );
 
 // Получаем номер страницы
 $page_num = (int) intval ( get_section( 'num', '1' ) );
 
-$page_max = 0;
-
-// Проверочка
-if($page_num <= '0'){
-    header('Location: ' . $General->arr_general);
-    exit;
-}
+$page_num <= 0 && get_iframe( '009', 'Данная страница не существует' );
 
 // Проверка на подключенный мод - Levels Ranks
 if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
@@ -59,8 +57,6 @@ if ( ! empty( $Db->db_data['FPS'] ) ):
             'data_servers' => $Db->db_data['FPS'][$d]['Table']];
     }
 endif;
-
-$res_data_count = sizeof( $res_data );
 
 $res = [];
 
@@ -92,13 +88,12 @@ if( ! empty( $res_data[ $server_group ]['statistics'] ) ):
     }
 endif;
 
-$page_num > $page_max && header('Location: ' . $General->arr_general['site']);
+$page_num > $page_max && get_iframe( '009', 'Данная страница не существует' );
 
 $res == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
-($server_group > $res_data_count-1) ? header('Location: ' . $General->arr_general['site']) : false;
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $res_data[$server_group]['name_servers'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );

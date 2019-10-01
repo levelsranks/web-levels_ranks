@@ -9,13 +9,13 @@
  */
 
 // Ведущая проверка.
-( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || $_SESSION['steamid32'] != $General->arr_general['admin'] ) && die();
+( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
 
 // Импортирования класса для работы с панелью администратора.
 require MODULES . 'module_page_adminpanel/ext/Admin.php';
 
 // Создаём экземпляр класса для работы с админкой
-$Admin = new Admin ( $General, $Modules, $Db );
+$Admin = new Admin ( $General, $Modules, $Auth, $Db );
 
 # Настройки модулей
 

@@ -10,10 +10,10 @@
 
 class Admin {
 
-    function __construct( $General, $Modules, $Db ) {
+    function __construct( $General, $Modules, $Auth, $Db ) {
 
         // Ведущая проверка.
-        ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || $_SESSION['steamid32'] != $General->arr_general['admin'] ) && die();
+        ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' && ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
 
         $this->General = $General;
 
@@ -23,7 +23,7 @@ class Admin {
     }
 
     /**
-     * Полностью очистить кэш вэб-приложения вклюсая кэш модулей.
+     * Полностью очистить кэш вэб-приложения включая кэш модулей.
      */
     function action_clear_all_cache() {
         // Ссылки на кэшируемые файлы.
@@ -120,7 +120,6 @@ class Admin {
             'info' => $_POST['info'],
             'language' => $_POST['language'],
             'web_key' => $_POST['web_key'],
-            'admin' => $_POST['admin'],
             'avatars' => (int) $_POST['avatars'],
             'avatars_cache_time' => (int) $_POST['avatars_cache_time']
         ];

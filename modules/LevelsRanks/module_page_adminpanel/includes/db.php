@@ -1,4 +1,4 @@
-<?php if( $_SESSION['steamid32'] != $General->arr_general['admin'] || IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
+<?php ! isset( $_SESSION['user_admin'] ) && get_iframe( '013','Доступ закрыт' );
 for ( $im = 0; $im < $Db->mod_count; $im++ ):
     for ( $im2 = 0, $c = sizeof( $Db->db_data[ $Db->mod_name[ $im ] ] ); $im2 < $c; $im2++ ):
         $db_data[] = $Db->db_data[ $Db->mod_name[ $im ] ][ $im2 ];

@@ -1,1 +1,36 @@
-{"title":"LR WEB - Bans - Мониторинг банов","info":"Интеграция SourceBans. Добавляет страницу со списком банов игроков.","author":"M0st1ce","page":"bans","version":"0.1","required":{"core":"0.2","php":"5.4"},"setting":{"status":1,"type":1,"available_types":"1","sessions":"0","translation":0,"interface":1,"data":1,"data_always":1,"css":0,"js":0,"cache_enable":0,"cache_time":0},"sidebar":[{"href":"?page=bans","open_new_tab":"0","icon_group":"zmdi","icon_category":null,"icon":"block","name":"_Bans","sidebar_directory":"_Sidebar_blocks"}]}
+{
+  "title": "LR WEB - Bans - Мониторинг банов",
+  "info": "Интеграция SourceBans. Добавляет страницу со списком банов игроков.",
+  "author": "M0st1ce",
+  "page": "bans",
+  "version": "0.1",
+  "required": {
+    "core": "0.2",
+    "php": "5.4"
+  },
+  "setting": {
+    "status": 1,
+    "type": 1,
+    "available_types": "1",
+    "sessions": "0",
+    "translation": 0,
+    "interface": 1,
+    "data": 1,
+    "data_always": 1,
+    "css": 0,
+    "js": 0,
+    "cache_enable": 0,
+    "cache_time": 0
+  },
+  "sidebar": [
+    {
+      "href": "?page=bans",
+      "open_new_tab": "0",
+      "icon_group": "zmdi",
+      "icon_category": null,
+      "icon": "block",
+      "name": "_Bans",
+      "sidebar_directory": "_Sidebar_blocks"
+    }
+  ]
+}

@@ -15,10 +15,10 @@
                 <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Statistics') ?></h5>
                 <div class="select-panel select-panel-table badge">
                     <select onChange="window.location.href=this.value">
-                        <option style="display:none" value="" disabled selected><?php echo $Db->statistics_table[$server_group]['name'] ?></option>
+                        <option style="display:none" value="" disabled selected><?php echo $Db->statistics_table[ $server_group ]['name']?></option>
                         <?php for ($b = 0; $b < $Db->table_statistics_count; $b++) { ?>
                             <option value="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>">
-                                <a href="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>"><?php echo $Db->statistics_table[$b]['name'] ?></a></option>
+                                <a href="<?php echo set_url_section(get_url(2), 'server_group', $b) ?>"><?php echo $Db->statistics_table[ $b ]['name']?></a></option>
                         <?php } ?>
                     </select>
                 </div>

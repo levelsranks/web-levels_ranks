@@ -33,120 +33,183 @@ class Auth {
     public    $lastconnect = [];
 
     /**
-     * @var array
-     */
-    public    $res_data_sidebar = [];
-
-    /**
      * @var int
      */
     public    $user_rank_count = 0;
 
-    function __construct( $General, $Db ) {
+    /**
+     * @var array
+     */
+    private   $admins = 0;
 
+    /**
+     * @var int
+     */
+    public    $admins_count = 0;
+
+    function __construct( $General, $Db ) {
+        // Импорт основного класса.
         $this->General = $General;
 
+        // Импорт класса отвечающего за работу с базой данных.
         $this->Db = $Db;
 
-        $this->admins = $this->get_admins_list();
+        // Работа с авторизованным пользователем.
+        if( isset( $_SESSION['steamid'] ) ):
+            // Проверка сессии.
+            $General->arr_general['session_check'] === 1 && $this->check_session();
 
-        $this->admins_count = sizeof( $this->admins );
+            // Проверка авторизованного пользователя.
+            ! isset( $_SESSION['user_admin'] ) && $this->check_session_admin();
 
-        if ( ! empty( $_SESSION['steamid'] ) ):
-            if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR']  ):
-                session_unset() && session_destroy() && die('Fake request');
-            endif;
+            // Получение информации о авторизованном пользователе.
+            $this->get_authorization_sidebar_data();
         endif;
 
-        // получение информации об авторизации по Steam.
+        // Работа со Steam авторизацией.
         isset( $_GET["auth"] ) && $this->General->arr_general['steam_auth'] == 1 && in_array( $_GET["auth"], array( 'login', 'logout' ) ) && require 'app/includes/auth/steam.php';
 
-        $this->General->arr_general['steam_only_authorization'] === 0 && $this->_POST();
-
-        isset( $_SESSION['steamid'] ) && $this->get_authorization_sidebar_data();
+        // Работа с No-Steam авторизацией
+        isset( $_POST['log_in'] ) && ! empty( $_POST['_login'] ) && ! empty( $_POST['_pass'] ) && $this->General->arr_general['steam_only_authorization'] === 0 && $this->authorization_no_steam();
     }
 
     /**
      * Получение списка администраторов.
      *
-     * @return array                 Массив с администраторами..
+     * @return array  Массив с администраторами.
      */
     public function get_admins_list() {
-        if ( file_exists( SESSIONS . '/admins.php' ) ):
-            return require SESSIONS . '/admins.php';
-        else:
-            file_put_contents( SESSIONS . 'admins.php', '<?php return [];' );
-            return [];
-        endif;
-
+        return $this->admins = $this->Db->queryAll( 'Core', 0, 0, 'SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins' );
     }
 
-    public function _POST() {
-        if( isset( $_POST['log_in'] ) && ! empty( $this->admins ) ) {
-            empty( $_POST['_login'] ) && exit;
-            for ( $i = 0; $i < $this->admins_count; $i++ ) {
-                if($this->admins[$i]['login'] == action_text_clear( $_POST['_login'] ) && $this->admins[$i]['pass'] == action_text_clear( $_POST['_pass'] ) ) {
-                    $_SESSION['steamid'] = con_steam32to64( $this->General->arr_general['admin'] );
-                    $_SESSION['steamid32'] = $this->General->arr_general['admin'];
-                    preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid32'], $arr, PREG_SET_ORDER);
-                    $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
-                    $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
-                    $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
-                    header( 'Location: ' . get_url(1) . '#' );
-                    exit;
-                }
-            }
-            header( 'Location: ' . get_url(1) );
-            exit;
-        }
+    /**
+     * Получение количества администраторов.
+     *
+     * @return int    Количество администрации.
+     */
+    public function get_count_admins() {
+        return $this->admins_count = sizeof( $this->admins );
+    }
 
+    /**
+     * Проверка авторизованного пользователя на принадлежность ко списку администраторов.
+     */
+    public function check_session_admin() {
+        $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins WHERE steamid={$_SESSION['steamid']} LIMIT 1" );
+        if( ! empty( $result ) ):
+            $_SESSION['user_admin'] = 1;
+            $_SESSION['user_group'] = $result['group'];
+            $_SESSION['user_access'] = $result['access'];
+            $_SESSION['user_flags'] = $result['flags'];
+        endif;
+    }
+
+    /**
+     * Проверка печенек авторизованного пользователя.
+     */
+    public function check_session() {
+        if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR'] ):
+            session_unset() && session_destroy() && refresh();
+        endif;
+    }
+
+    public function authorization_no_steam() {
+        // Параметры к запросу.
+        $params = ['user' => action_text_clear( $_POST['_login'] ), 'password' => action_text_clear( $_POST['_pass'] )];
+
+        // Запрос на проверку пользователя.
+        $result = $this->Db->query('Core', 0, 0, "SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins WHERE user = :user AND password = :password", $params );
+
+        // Сверка результата запроса.
+        if ( ! empty( $result ) ):
+            $_SESSION['steamid'] = $result['steamid'];
+            $_SESSION['steamid32'] = con_steam32to64( $result['steamid'] );
+            $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+            $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+            preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid32'], $arr, PREG_SET_ORDER);
+            $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
+            $_SESSION['user_admin'] = 1;
+            $_SESSION['user_group'] = $result['group'];
+            $_SESSION['user_access'] = $result['access'];
+            $_SESSION['user_flags'] = $result['flags'];
+        endif;
+
+        // Обновление страницы.
+        refresh();
     }
 
     public function get_authorization_sidebar_data() {
-
+        // Проверка на подключенный мод - Levels Ranks.
         if ( ! empty( $this->Db->db_data['LevelsRanks'] ) ):
-            // С помощью цикла делаем запросы к базе данных.
-            for ($d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++) {
-                $this->res_data_sidebar[ $d ] = ['name_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['name'],
-                    'mod' => $this->Db->db_data['LevelsRanks'][ $d ]['mod'],
-                    'ranks_pack' => $this->Db->db_data['LevelsRanks'][ $d ]['ranks_pack'],
-                    'data_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['Table']];
-                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT name, lastconnect, rank FROM ' . $this->Db->db_data['LevelsRanks'][ $d ]["Table"] . ' WHERE steam LIKE "%' . $_SESSION['steamid32_short'] . '%" LIMIT 1');
-                if ($this->base_info != '') {
+            // Перебор всех таблиц с модом - Levels Ranks
+            for ( $d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++ ):
+                // Запрос о получении информации об авторизовавшемся пользователе.
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
+
+                // Если Пользователь  находится в таблице, заполняем итоговый массив.
+                if ( ! empty( $this->base_info ) ):
+                    // Базовая информация о пользователе.
                     $this->user_auth[] = $this->base_info;
-                    $this->server_info[] = $this->res_data_sidebar[ $d ];
-                    $this->lastconnect[] = $this->base_info['lastconnect'];
-                }
-            }
+
+                    // Информация о таблице.
+                    $this->server_info[] = ['name_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['name'],
+                                            'mod' => $this->Db->db_data['LevelsRanks'][ $d ]['mod'],
+                                            'ranks_pack' => $this->Db->db_data['LevelsRanks'][ $d ]['ranks_pack'],
+                                            'data_servers' => $this->Db->db_data['LevelsRanks'][ $d ]['Table']
+                                           ];
+                endif;
+            endfor;
         endif;
+
+        // Проверка на подключенный мод - FPS
         if ( ! empty( $this->Db->db_data['FPS'] ) ):
-            // С помощью цикла делаем запросы к базе данных.
-            for ( $d = 1; $d <= $this->Db->table_count['FPS']; $d++ ) {
-                $this->res_data_sidebar[ $d ] = ['name_servers' => $this->Db->db_data['FPS'][$d - 1]['name'],
-                    'mod' => 'csgo',
-                    'ranks_id' => $this->Db->db_data['FPS'][$d - 1]['ranks_id'],
-                    'ranks_pack' => $this->Db->db_data['FPS'][$d - 1]['ranks_pack']
-                ];
-                $this->base_info = $this->Db->query('FPS', 0, 0, 'SELECT fps_players.nickname AS name,
-                                                                         fps_servers_stats.rank
+            // Перебор всех таблиц с модом - FPS.
+            for ( $d = 1; $d <= $this->Db->table_count['FPS']; $d++ ):
+
+                // Запрос о получении информации об авторизовавшемся пользователе.
+                $this->base_info = $this->Db->query('FPS', 0, 0, "SELECT fps_players.nickname AS name,
+                                                                         fps_servers_stats.rank,
+                                                                         fps_servers_stats.lastconnect
                                                                          FROM fps_players
                                                                          INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
-                                                                         WHERE steam_id="' . $_SESSION['steamid'] . '"
-                                                                         AND fps_servers_stats.server_id = ' . $d . '
-                                                                         LIMIT 1');
-                if ($this->base_info != '') {
+                                                                         WHERE steam_id={$_SESSION['steamid']} AND fps_servers_stats.server_id ={$d}
+                                                                         LIMIT 1");
+                if ( ! empty( $this->base_info ) ):
+                    // Базовая информация о пользователе.
                     $this->user_auth[] = $this->base_info;
-                    $this->server_info[] = $this->res_data_sidebar[ $d ];
-                    $this->lastconnect[] = $this->base_info['lastconnect'];
-                }
-            }
+
+                    // Информация о таблице.
+                    $this->server_info[] = ['name_servers' => $this->Db->db_data['FPS'][ $d - 1 ]['name'],
+                                            'mod' => 'csgo',
+                                            'ranks_id' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_id'],
+                                            'ranks_pack' => $this->Db->db_data['FPS'][ $d - 1 ]['ranks_pack']
+                                           ];
+                endif;
+            endfor;
         endif;
-        if ( empty( $this->user_auth[0] ) ) {
+
+        // При отсутствии пользователя в таблицах, собираем - массив исключение.
+        if ( empty( $this->user_auth[0] ) ):
+            // Информация о пользователе.
             $this->user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
-            $this->lastconnect = '-';
+
+            // Название сервера.
             $this->server_info[0]['name_servers'] = 'Неизвестно';
+
+            // Пак рангов.
             $this->server_info[0]['ranks_pack'] = 'default';
-        }
-        $this->user_rank_count = sizeof($this->user_auth);
+        endif;
+
+        // Считаем количество таблиц с найденым пользователем.
+        $this->user_rank_count = sizeof( $this->user_auth );
+
+        $datetime = [];
+        
+        for ( $d = 0; $d < $this->user_rank_count; $d++ ):
+            $datetime[] = $this->user_auth[ $d ]['lastconnect'];
+        endfor;
+
+        // Последнее актуальное подклчюение пользователя.
+        $this->user_auth[0]['lastconnect_max'] = max( $datetime );
     }
 }

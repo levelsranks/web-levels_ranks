@@ -90,7 +90,7 @@ class Player {
         substr( $id, 0, 5) === "STEAM" ? $this->steam_32 = $id : $this->steam_32 = con_steam64to32( $id );
 
         // Проверка на пустоту
-        empty( $this->steam_32 ) && header( 'Location: ' . $General->arr_general['site'] ) && exit();
+        empty( $this->steam_32 ) && get_iframe( '009', 'Данная страница не существует' );
 
         $check_it = false;
 
@@ -152,7 +152,7 @@ class Player {
             unset( $cheking );
         endfor;
 
-        empty( $this->found[ $this->server_group ] ) && header( 'Location: ' . $this->General->arr_general['site'] ) && exit;
+        empty( $this->found[ $this->server_group ] ) && get_iframe( '009', 'Данная страница не существует' );
 
         $this->found_fix = array_values( $this->found );
 
@@ -253,6 +253,10 @@ class Player {
         return (int) empty( $this->arr_default_info['rank'] ) ? 0 : $this->arr_default_info['rank'];
     }
 
+    public function get_lastconnect() {
+        return (int) empty( $this->arr_default_info['lastconnect'] ) ? 0 : gmdate("d-m-Y, H:m", $this->arr_default_info['lastconnect'] );
+    }
+
     public function get_kills() {
         return (int) empty( $this->arr_default_info['kills'] ) ? 0 : $this->arr_default_info['kills'];
     }
@@ -343,7 +347,7 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths,round_win,round_lose,shoots,hits FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
+                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths, round_win, round_lose, shoots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
                     break;
                 case 'FPS':
                     return $this->Db->query('FPS', 0, 0, "SELECT fps_players.steam_id AS steam,
@@ -354,6 +358,7 @@ class Player {
                                                                  fps_servers_stats.round_win,
                                                                  fps_servers_stats.round_lose,
                                                                  fps_servers_stats.points AS value,
+                                                                 fps_servers_stats.lastconnect,
                                                                  fps_servers_stats.rank,
                                                                  SUM(fps_weapons_stats.shoots) AS shoots,
                                                                  SUM(fps_weapons_stats.headshots) AS headshots,
