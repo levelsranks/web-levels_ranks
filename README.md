@@ -504,6 +504,7 @@
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - L1MON#4529  ( Discord )   - 300 RUB.
 - ju4ka1371   ( hlmod.ru )  - 282 RUB.
+- Эльдарка#7777   ( Discord )  - 277.77 RUB.
 - Good Game Project ( gg-pro.ru ) - 250 RUB.
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
@@ -538,7 +539,6 @@
   /cache        - Основной кэш.
     /img        - Кэш изображений.
     /sessions   - Кэш связанный с работой ядра.
-      /modules  - Кэш модулей.
       
 /index.php      - 'Hello World'
 ```
@@ -557,6 +557,7 @@
 /app
   /modules
     /module_block_main_stats       - Название папки = ID модуля.
+      /ext          		   - PHP Классы.
       /assets                      - Ассеты.
         /css                       - CSS ассеты.
         /js                        - JS ассеты.
@@ -564,15 +565,9 @@
         /data.php                  - Пре-инициализация. Скрипт начинает свою работу до загрузки шаблона страницы.
 	/data_always.php           - Пре-инициализация. Скрипт начинает свою работу до загрузки шаблона и работает на всех страницах.
         /interface.php             - Инициализация. Скрипт начинает свою работу во время загрузки шаблона.
+      /temp			   - Кэш файлы.
     /description.json - Описание модуля
     /translation.json - Если модуль имеет мультиязычность, переводы описываются в данном файле.
-        
-/storage
-  /cache
-    /sessions
-      /modules
-        /module_block_main_stats
-          /cache.php               - Кэш модуля.
 
 ```
 
