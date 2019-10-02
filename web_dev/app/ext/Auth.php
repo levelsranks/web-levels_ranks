@@ -13,36 +13,43 @@ namespace app\ext;
 class Auth {
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $user_auth = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $server_info = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $base_info = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $lastconnect = [];
 
     /**
+     * @since 0.2
      * @var int
      */
     public    $user_rank_count = 0;
 
     /**
+     * @since 0.2
      * @var array
      */
     private   $admins = 0;
 
     /**
+     * @since 0.2
      * @var int
      */
     public    $admins_count = 0;
@@ -88,6 +95,8 @@ class Auth {
     /**
      * Получение количества администраторов.
      *
+     * @since 0.2.120
+     *
      * @return int    Количество администрации.
      */
     public function get_count_admins() {
@@ -96,6 +105,8 @@ class Auth {
 
     /**
      * Проверка авторизованного пользователя на принадлежность ко списку администраторов.
+     *
+     * @since 0.2.120
      */
     public function check_session_admin() {
         $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins WHERE steamid={$_SESSION['steamid']} LIMIT 1" );
@@ -109,6 +120,8 @@ class Auth {
 
     /**
      * Проверка печенек авторизованного пользователя.
+     *
+     * @since 0.2.120
      */
     public function check_session() {
         if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR'] ):
@@ -116,6 +129,11 @@ class Auth {
         endif;
     }
 
+    /**
+     * Авторизация администратора по логину и паролю.
+     *
+     * @since 0.2.120
+     */
     public function authorization_no_steam() {
         // Параметры к запросу.
         $params = ['user' => action_text_clear( $_POST['_login'] ), 'password' => action_text_clear( $_POST['_pass'] )];
@@ -125,12 +143,26 @@ class Auth {
 
         // Сверка результата запроса.
         if ( ! empty( $result ) ):
+            // Пользователь. Общее значение - Steam ID 32.
             $_SESSION['steamid'] = $result['steamid'];
-            $_SESSION['steamid32'] = con_steam32to64( $result['steamid'] );
+
+            // Пользователь. Steam ID 32.
+            $_SESSION['steamid32'] = $result['steamid'];
+
+            // Пользователь. Steam ID 64.
+            $_SESSION['steamid64'] = con_steam32to64( $result['steamid'] );
+
+            // Пользователь. Заголовок User-Agent.
             $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
+
+            // Пользователь. IP.
             $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+
+            // Пользователь. Steam ID 32 ( Сокращенный ).
             preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid'], $arr, PREG_SET_ORDER);
-            $_SESSION['steamid64_short'] = $arr[0][1] . ':' . $arr[0][2];
+            $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
+
+            // Пользователь. Административная инфомация.
             $_SESSION['user_admin'] = 1;
             $_SESSION['user_group'] = $result['group'];
             $_SESSION['user_access'] = $result['access'];
@@ -141,13 +173,18 @@ class Auth {
         refresh();
     }
 
+    /**
+     * Получение информации о авторизованном пользователе для вывода данных в боковую панель.
+     *
+     * @since 0.2
+     */
     public function get_authorization_sidebar_data() {
         // Проверка на подключенный мод - Levels Ranks.
         if ( ! empty( $this->Db->db_data['LevelsRanks'] ) ):
             // Перебор всех таблиц с модом - Levels Ranks
             for ( $d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++ ):
                 // Запрос о получении информации об авторизовавшемся пользователе.
-                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid64_short']}%' LIMIT 1");
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
 
                 // Если Пользователь  находится в таблице, заполняем итоговый массив.
                 if ( ! empty( $this->base_info ) ):
