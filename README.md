@@ -509,6 +509,7 @@
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
 - Sleep#0725  ( Discord )   - 250 RUB.
+- FIVE#3136   ( Discord )   - 155 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
 - Nestor#9876 ( Discord )   - 150 RUB.
