@@ -518,6 +518,7 @@
 - DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
+- ka1jaru#1648 ( Discord )  - 72.45 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
