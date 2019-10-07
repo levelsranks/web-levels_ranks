@@ -14,82 +14,99 @@ use pdo;
 class Db {
 
     /**
+     * @since 0.2
      * @var array
      */
     private $options            = array();
 
     /**
+     * @since 0.2
      * @var array
      */
     private $db                 = array();
 
     /**
+     * @since 0.2
      * @var array
      */
     private $dns                = array();
 
     /**
+     * @since 0.2
      * @var array
      */
     protected $pdo              = array();
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $db_data          = array();
 
     /**
+     * @since 0.2
      * @var array
      */
     private   $table_count_for;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $mod_count;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $user_count;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $db_count;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $table_count;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $mod_name;
 
     /**
+     * @since 0.2
      * @var int
      */
     public    $table_statistics_count = 0;
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $support_statistics = ['LevelsRanks', 'FPS'];
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $statistics_with_table_servers = ['FPS', 'HLstatsX'];
 
     /**
+     * @since 0.2
      * @var array
      */
     public    $statistics_table = [];
 
     /**
      * Организация работы вэб-приложения с базой данных.
+     *
+     * @since 0.2
      */
     public function __construct() {
 
@@ -215,6 +232,8 @@ class Db {
     /**
      * Получение настроек базы данных.
      *
+     * @since 0.2
+     *
      * @return array                 Массив с настройками.
      */
     private function get_db_options() {
@@ -224,6 +243,8 @@ class Db {
 
     /**
      * Подготовительный подзапрос.
+     *
+     * @since 0.2
      *
      * @param  string    $mod           Навание мода.
      * @param  int       $user_id       Номер пользователя.
@@ -255,6 +276,8 @@ class Db {
     /**
      * Шаблон запроса отдающий массив с индексированными именами столбцов.
      *
+     * @since 0.2
+     *
      * @param  string  $mod           Навание мода.
      * @param  int     $user_id       Номер пользователя.
      * @param  int     $db_id         Номер подключенной базы данных.
@@ -270,6 +293,8 @@ class Db {
 
     /**
      * Шаблон запроса отдающий массив с индексированными номерами столбцов.
+     *
+     * @since 0.2
      *
      * @param  string  $mod           Навание мода.
      * @param  int     $user_id       Номер пользователя.
@@ -287,6 +312,8 @@ class Db {
     /**
      * Шаблон запроса отдающий массив со всеми строками.
      *
+     * @since 0.2
+     *
      * @param  string  $mod           Навание мода.
      * @param  int     $user_id       Номер пользователя.
      * @param  int     $db_id         Номер подключенной базы данных.
@@ -302,6 +329,8 @@ class Db {
 
     /**
      * Шаблон запроса отдающий массив стобца.
+     *
+     * @since 0.2
      *
      * @param  string  $mod           Навание мода.
      * @param  int     $user_id       Номер пользователя.
@@ -319,6 +348,8 @@ class Db {
     /**
      * Шаблон запроса отдающий данные одного стобца.
      *
+     * @since 0.2
+     *
      * @param  string  $mod           Навание мода.
      * @param  int     $user_id       Номер пользователя.
      * @param  int     $db_id         Номер подключенной базы данных.
@@ -335,6 +366,8 @@ class Db {
     /**
      * Запрос проверяющий существование столбика в той или иной таблице.
      *
+     * @since 0.2
+     *
      * @param  string  $mod          Навание мода.
      * @param  int     $user_id      Номер пользователя.
      * @param  int     $db_id        Номер подключенной базы данных.
@@ -350,6 +383,8 @@ class Db {
     /**
      * Запрос проверяющий существование таблицы в той или иной базе данных.
      *
+     * @since 0.2
+     *
      * @param  string  $mod          Навание мода.
      * @param  int     $user_id      Номер пользователя.
      * @param  int     $db_id        Номер подключенной базы данных.
@@ -364,6 +399,8 @@ class Db {
     /**
      * Возвращает ID последней вставленной строки.
      *
+     * @since 0.2
+     *
      * @param  string  $mod          Навание мода.
      * @param  int     $user_id      Номер пользователя.
      * @param  int     $db_id        Номер подключенной базы данных.
@@ -377,6 +414,8 @@ class Db {
 
     /**
      * "Разрыв соединения с базой данных".
+     *
+     * @since 0.2
      */
     public function __destruct() {
         unset( $this->dns );

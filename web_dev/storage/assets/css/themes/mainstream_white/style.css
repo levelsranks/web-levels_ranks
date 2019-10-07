@@ -386,6 +386,7 @@ template {
 
 .container-fluid {
     width: 100%;
+    max-width: 1920px;
     padding-top: 59px;
     padding-right: 30px;
     padding-left: 17px;
@@ -1265,6 +1266,7 @@ template {
     font-size: 12px;
     font-weight: var(--font-weight-2);
 }
+
 .logo-area {
     max-height: 59px;
     max-width: 270px;

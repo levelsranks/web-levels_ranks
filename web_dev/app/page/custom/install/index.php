@@ -321,7 +321,7 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
         ]
         ];
         $mysqli->close();
-        file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
+        file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export( $db, true ).";" );
         header_fix( get_url(1) );
     } else {
         $db_check = 1;

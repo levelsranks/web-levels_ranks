@@ -11,6 +11,8 @@
 /**
  * Фикс функции file_get_contents для криво настроенного SSL сертификата под Nginx.
  *
+ * @since 0.2
+ *
  * @param string $file      Путь до файла который необходимо прочитать и вывести.
  *
  * @return string|false     Выводит содержимое файла.
@@ -22,8 +24,9 @@ function file_get_contents_fix( $file ) {
 /**
  * Фикс функции header для криво настроенного сервера, релоады происходят за счёт JS.
  *
- * @param  string $url      Переадрисация по URL.
+ * @since 0.2
  *
+ * @param  string $url      Переадрисация по URL.
  */
 function header_fix( $url ) {
     echo '<script type="text/javascript">window.location.href="' . $url . '";</script>';
@@ -32,6 +35,8 @@ function header_fix( $url ) {
 
 /**
  * Перезапуск страницы.
+ *
+ * @since 0.2
  */
 function refresh() {
     header_fix( get_url(1) );
@@ -40,6 +45,8 @@ function refresh() {
 
 /**
  * Проверка ну переменной на пустоту с последующей заменой при отсутсвии значения.
+ *
+ * @since 0.2
  *
  * @param  int|string|array  $i      Премеренная.
  * @param  int|string|array  $d      Значение если переменная не пустая..
@@ -54,6 +61,8 @@ function empty_check_out( $i, $d = 0, $a = 0 ) {
 
 /**
  * Сокращение вывода var_export до одной строки.
+ *
+ * @since 0.2
  *
  * @param array $var        Массив данных
  * @param boolean $return   Вид вывода.
@@ -77,22 +86,26 @@ function var_export_min($var, $return = true) {
 /**
  * Вывод var_export в более оптимальном виде.
  *
- * @param array $var        Массив данных
- * @param boolean $return   Вид вывода.
+ * @since 0.2
  *
- * @return string           Вывод содержимого.
+ * @param   array    $var     Массив данных
+ * @param   boolean  $return  Вид вывода.
+ *
+ * @return  string            Вывод содержимого.
  */
-function var_export_opt($var, $return = true) {
+function var_export_opt( $var, $return = true ) {
         return str_replace( [ ')', 'array (', 'array(' ], [ ']', '[', '[' ], var_export( $var, $return ) );
 }
 
 /**
  * Получает и задает название подраздела из URL по умолчанию.
  *
- * @param string $section       Название подраздела.
- * @param string $default       Значние по умолчанию.
+ * @since 0.2
  *
- * @return string|false         Выводит итоговое значение раздела.
+ * @param  string $section       Название подраздела.
+ * @param  string $default       Значние по умолчанию.
+ *
+ * @return string|false          Выводит итоговое значение раздела.
  */
 function get_section( $section, $default ) {
     return isset( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
@@ -100,6 +113,8 @@ function get_section( $section, $default ) {
 
 /**
  * Получить размер массива.
+ *
+ * @since 0.2
  *
  * @param  array $arr          Массив.
  *
@@ -111,6 +126,8 @@ function get_arr_size( $arr ) {
 
 /**
  * Получить URL страницы.
+ *
+ * @since 0.2
  *
  * @param  int $type          Тип URL.
  *
@@ -130,6 +147,8 @@ function get_url( $type ) {
 
 /**
  * Меняет определенное значение подраздела на новое.
+ *
+ * @since 0.2
  *
  * @param string $url           URL для изменения.
  * @param string $command       Название подраздела.
@@ -152,6 +171,8 @@ function set_url_section( $url, $command, $change ) {
 /**
  * Открывает iframe блок, по умолчанию для страниц ошибок.
  *
+ * @since 0.2
+ *
  * @param int       $code          Код ошибки.
  * @param string    $description   Описание ошибки.
  * @param bool      $die           Прекращение работы скрипта.
@@ -166,6 +187,8 @@ function get_iframe( $code, $description, $die = true ) {
 /**
  * Сокращения входного текста до определенного количества символов.
  *
+ * @since 0.2
+ *
  * @param string        $text   Текст.
  * @param int           $max    Максимальное количество символов.
  *
@@ -178,9 +201,11 @@ function action_text_trim( $text, $max = 18 ) {
 /**
  * Очистка текста от мусора.
  *
- * @param string        $text   Текст.
+ * @since 0.2
  *
- * @return string               Очищенный текст.
+ * @param   string  $text  Текст.
+ *
+ * @return  string         Очищенный текст.
  */
 function action_text_clear( $text ) {
     return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_COMPAT,'ISO-8859-1', true ) ) ) );
@@ -189,9 +214,11 @@ function action_text_clear( $text ) {
 /**
  * Очистка текста от символов.
  *
- * @param string        $text   Текст.
+ * @since 0.2
  *
- * @return string               Очищенный текст.
+ * @param   string  $text  Текст.
+ *
+ * @return  string         Очищенный текст.
  */
 function action_text_clear_characters( $text ) {
     return preg_replace('/[^A-Za-z0-9]/', '', $text);
@@ -199,6 +226,8 @@ function action_text_clear_characters( $text ) {
 
 /**
  * Процент от числа ( Округление ).
+ *
+ * @since 0.2
  *
  * @param int        $int      Число.
  * @param int        $all      Всего.
@@ -217,6 +246,8 @@ function action_int_percent_of_all( $int, $all ) {
 /**
  * Очистка текста до последнего слэша
  *
+ * @since 0.2
+ *
  * @param string        $text   Текст.
  *
  * @return string               Текст после последнего слэша
@@ -227,6 +258,8 @@ function action_text_clear_before_slash( $text ) {
 
 /**
  * Проверка на дубликат файла.
+ *
+ * @since 0.2
  *
  * @param  string        $file     Ссылка на первый файл.
  * @param  string        $file_2   Ссылка на второй файл.
@@ -239,6 +272,8 @@ function check_duplicate_files( $file, $file_2 ) {
 
 /**
  * Конвертация Steam ID 32 -> 64.
+ *
+ * @since 0.2
  *
  * @param string       $id    Steam ID игрока.
  *
@@ -258,6 +293,8 @@ function con_steam32to64( $id ) {
 /**
  * Конвертация Steam ID 32 -> 3 (int).
  *
+ * @since 0.2
+ *
  * @param string   $steamid32  Steam ID 32 игрока.
  *
  * @return int                 Выводит итог конвертации.
@@ -274,6 +311,8 @@ function con_steam32to3_int( $steamid32 ) {
 /**
  * Конвертация Steam ID 64 -> 3 (int).
  *
+ * @since 0.2
+ *
  * @param string  $steamid64  Steam ID 32 игрока.
  *
  * @return int                Выводит итог конвертации.
@@ -289,6 +328,8 @@ function con_steam64to3_int( $steamid64 ) {
 /**
  * Конвертация Steam ID 3 -> 64 (int).
  *
+ * @since 0.2
+ *
  * @param string       $steamid3  Steam ID 3 игрока.
  *
  * @return int                    Выводит итог конвертации.
@@ -299,6 +340,8 @@ function con_steam3to64_int( $steamid3 ) {
 
 /**
  * Конвертация Steam ID 3 -> 32 (int).
+ *
+ * @since 0.2
  *
  * @param string       $steamid3  Steam ID 3 игрока.
  *
@@ -320,9 +363,11 @@ function con_steam3to32_int( $steamid3, $else = 0 ) {
 /**
  * Конвертация Steam ID 64 -> 32.
  *
- * @param string       $steamid64    Steam ID игрока.
+ * @since 0.2
  *
- * @return string                    Выводит итог конвертации.
+ * @param  string  $steamid64  Steam ID игрока.
+ *
+ * @return string              Выводит итог конвертации.
  */
 function con_steam64to32( $steamid64 ) {
     if ( preg_match( '/^(7656119)([0-9]{10})$/', $steamid64, $match ) ) {
@@ -350,6 +395,8 @@ function con_steam64to32( $steamid64 ) {
 /**
  * Замена значений перевода
  *
+ * @since 0.2
+ *
  * @param string       $phares    Текст перевода
  * @param array        $values    Значения перевода
  *
@@ -367,6 +414,8 @@ function LangValReplace( $phares, $values=[] ) {
 
 /**
  * Оставляет в массиве состоящим из нумервынных ключей определенные внутренние ключи.
+ *
+ * @since 0.2
  *
  * @param array       $array   Массив.
  * @param array        $keys   Ключи.

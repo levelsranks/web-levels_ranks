@@ -14,6 +14,8 @@ class Graphics {
 
     /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
+     *
+     * @since 0.2
      */
     function __construct( $General, $Modules, $Db, $Auth, $Notifications ) {
 
@@ -51,13 +53,15 @@ class Graphics {
         endfor;
 
         // Рендер блока - Footer
-        require PAGE . 'footer.php';
+        require PAGE . 'footer/2.php';
     }
 
     /**
-     * Получение и вывод цветовой палитный сайта.
+     * Получение фонового ихображения.
      *
-     * @return string         Цветовая плалитра ( CSS / ROOT )
+     * @since 0.2
+     *
+     * @return string  Ссылка на изображение ( CSS / Style )
      */
     public function get_css_background_image() {
         if ( ! empty( $this->General->arr_general['background_image'] ) && $this->General->arr_general['background_image'] != 'null' ) {
@@ -67,7 +71,9 @@ class Graphics {
     /**
      * Получение и вывод цветовой палитный сайта.
      *
-     * @return string         Цветовая плалитра ( CSS / ROOT )
+     * @since 0.2
+     * 
+     * @return string         Цветовая плалитра ( CSS / Style / ROOT )
      */
     public function get_css_color_palette() {
         if ( isset ( $_SESSION['dark_mode'] ) && $_SESSION['dark_mode'] == true ) {

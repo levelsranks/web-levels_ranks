@@ -13,16 +13,19 @@ namespace app\ext;
 class General {
 
     /**
+     * @since 0.2
      * @var array
      */
     public $arr_general = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $server_list = [];
 
     /**
+     * @since 0.2
      * @var int
      */
     public $server_list_count = 0;
@@ -30,6 +33,8 @@ class General {
 
     /**
      * Инициализация основных настроек.
+     *
+     * @since 0.2
      */
     function __construct() {
         // Получение настроек вэб-интерфейса.
@@ -62,6 +67,8 @@ class General {
     /**
      * Получает и задает название подраздела из URL по умолчанию, сохраняя результат по умолчанию в сессию.
      *
+     * @since 0.2
+     *
      * @param string|bool       $section       Название подраздела.
      * @param string            $default       Значние по умолчанию.
      * @param array|null        $arr_true      Белый список.
@@ -74,6 +81,8 @@ class General {
 
     /**
      * Получает определенного аватара.
+     *
+     * @since 0.2
      *
      * @param  string      $profile    Steam ID игрока
      * @param  int         $type       Тип/Размер аватара.
@@ -102,6 +111,8 @@ class General {
 
     /**
      * Проверка на существование определеноого аватара и его актуальность.
+     *
+     * @since 0.2
      *
      * @param  string       $profile    Steam ID игрока
      * @param  int          $type       Тип/Размер аватара.
@@ -144,6 +155,8 @@ class General {
     /**
      * Получение настроек по умолчанию для вэб-интерфейса.
      *
+     * @since 0.2
+     *
      * @return array                 Массив с настройками.
      */
     public function get_default_options() {
@@ -163,11 +176,13 @@ class General {
     /**
      * Получение иконок и работа с ними.
      *
-     * @param string $group         Название папки из которой будет читаться иконка.
-     * @param string $name          Название иконки.
-     * @param string $category      Дополнительное название под-категории, если она имеется. По умолчанию нету.
+     * @since 0.2
      *
-     * @return string|false         Выводит содержимое SVG файла.
+     * @param  string $group     Название папки из которой будет читаться иконка.
+     * @param  string $name      Название иконки.
+     * @param  string $category  Дополнительное название под-категории, если она имеется. По умолчанию нету.
+     *
+     * @return string|false      Выводит содержимое SVG файла.
      */
     function get_icon( $group, $name, $category = null ) {
         return print $category == null ? '<i class="zmdi zmdi-' . $name . ' zmdi-hc-fw"></i>' : '<img src="' . CACHE . 'img/icons/' . $group . '/' . $category . '/' . $name . '.svg" class=svg>';
@@ -176,6 +191,8 @@ class General {
     /**
      * Вывод JS скрипта на проверку актуальности аватара.
      *
+     * @since 0.2
+     * 
      * @param  string   $id      Steam ID - 32.
      * @param  int      $type    Тип аватара.
      *

@@ -13,82 +13,99 @@ namespace app\ext;
 class Modules {
 
     /**
+     * @since 0.2
      * @var array
      */
     public $array_modules = [];
 
     /**
+     * @since 0.2
      * @var int
      */
     public $array_modules_count = 0;
 
     /**
+     * @since 0.2
      * @var array
      */
     public $arr_module_init = [];
 
     /**
+     * @since 0.2
      * @var int
      */
     public $arr_module_init_page_count = 0;
 
     /**
+     * @since 0.2
      * @var array
      */
     public $arr_user_info = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $scan_modules = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $scan_ranks_pack = [];
 
     /**
+     * @since 0.2
      * @var int
      */
     public $array_ranks_pack_count = 0;
 
     /**
+     * @since 0.2
      * @var array
      */
     public $arr_translations = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $actual_library = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $css_library = [];
 
     /**
+     * @since 0.2
      * @var array
      */
     public $js_library = [];
 
     /**
+     * @since 0.2
      * @var string
      */
     public $page_title = '';
 
     /**
+     * @since 0.2
      * @var string
      */
     public $page_description = '';
 
     /**
+     * @since 0.2
      * @var string
      */
     public $page_image = '';
 
     /**
      * Организация работы вэб-приложения с модулями.
+     *
+     * @since 0.2
      */
     function __construct( $General ) {
 
@@ -123,6 +140,8 @@ class Modules {
 
     /**
      * Инициализация модулей.
+     *
+     * @since 0.2
      *
      * @return array         Возвращает список модулей для инициализации.
      */
@@ -177,6 +196,8 @@ class Modules {
     /**
      * Получение кэша определенного модуля.
      *
+     * @since 0.2
+     *
      * @param string $module       Корневое название модуля.
      *
      * @return array|false         Возвращает кэш модуля.
@@ -194,6 +215,8 @@ class Modules {
     /**
      * Задать кэш для определенного модуля.
      *
+     * @since 0.2
+     *
      * @param string $module        Корневое название модуля.
      * @param array $data           Массив данных.
      */
@@ -204,6 +227,8 @@ class Modules {
 
     /**
      * Получить перевод определенной фразы из общего кэша.
+     *
+     * @since 0.2
      *
      * @param string $phrase        Слово для перевода.
      * @param string $group         Подмассив.
@@ -229,6 +254,8 @@ class Modules {
     /**
      * Получить перевод определенной фразы из кэша модуля.
      *
+     * @since 0.2
+     *
      * @param string $module_id         ID модуля.
      * @param string $phrase            Слово для перевода.
      *
@@ -245,6 +272,8 @@ class Modules {
     /**
      * Получить список переводов определенного модуля.
      *
+     * @since 0.2
+     *
      * @param string $module_id         ID модуля.
      *
      * @return array                    Массив переводов.
@@ -255,6 +284,8 @@ class Modules {
 
     /**
      * Получение кэша модулей.
+     *
+     * @since 0.2
      *
      * @return array            Выводит массив с полным описанием модулей.
      */
@@ -310,6 +341,8 @@ class Modules {
 
     /**
      * Проверка сгенерированного стиля.
+     *
+     * @since 0.2
      */
     public function check_generated_style() {
         if( empty( $this->General->arr_general['enable_css_cache'] ) ) :
@@ -396,6 +429,8 @@ class Modules {
 
     /**
      * Проверка сгенерированного JavaScript.
+     *
+     * @since 0.2
      */
     public function check_generated_js() {
 
@@ -459,9 +494,10 @@ class Modules {
     /**
      * Самостоятельно добавить раздел в sidebar.
      *
+     * @since 0.2
+     *
      * @param string $module_id         ID модуля.
      * @param array $array              Опции раздела.
-     *
      */
     public function set_sidebar_select( $module_id, $array ) {
         if ( ! in_array( $module_id, $this->arr_module_init['sidebar'] ) ):
@@ -475,6 +511,8 @@ class Modules {
     /**
      * Добавление какого-либо текста в информационный блок авторизованного игрока в sidebar.
      *
+     * @since 0.2
+     *
      * @param string $text             Опции раздела.
      */
     public function set_user_info_text( $text ) {
@@ -483,6 +521,8 @@ class Modules {
 
     /**
      * Задать заглавие страницы.
+     *
+     * @since 0.2
      *
      * @param string $text             Заголовок страницы.
      */
@@ -493,6 +533,8 @@ class Modules {
     /**
      * Задать описание страницы.
      *
+     * @since 0.2
+     *
      * @param string $text             Описание страницы.
      */
     public function set_page_description( $text ) {
@@ -502,6 +544,8 @@ class Modules {
     /**
      * Задать изображение страницы.
      *
+     * @since 0.2
+     *
      * @param string $text             Изображение страницы.
      */
     public function set_page_image( $text ) {
@@ -510,6 +554,8 @@ class Modules {
 
     /**
      * Компрессирует CSS файлы
+     *
+     * @since 0.2
      *
      * @param  array   $files         Массив файлов.
      *
@@ -532,6 +578,8 @@ class Modules {
     /**
      * Компрессирует JS файлы
      *
+     * @since 0.2
+     *
      * @param  array   $files         Массив файлов.
      *
      * @return string                 Итог компрессии.
@@ -548,6 +596,8 @@ class Modules {
     /**
      * Перевод времени.
      *
+     * @since 0.2
+     * 
      * @param int $seconds          Время в секундах
      * @param int $type             Тип вывода.
      *
