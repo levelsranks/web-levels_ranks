@@ -75,13 +75,16 @@ class Paypal extends Basefunction{
           $this->BUpdatePay();
           $this->BNotificationDiscord('PayPal');
           $this->LkAddLog('_NewDonat', ['gateway'=>'PayPal','order'=>$this->decod[1], 'course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
-           $this->Notifications->SendNotification(
-               $this->General->arr_general['admin'], 
-               '_GetDonat', 
-               ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['mc_gross'],'module_translation'=>'module_page_lk_impulse'], 
-               '?page=lk&section=payments#p'.$this->decod[1], 
-               'money'
-           );
+          $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM lvl_web_admins WHERE flags = 'z' ");
+           foreach( $admins as $key ){
+             $this->Notifications->SendNotification(
+                 con_steam64to32($key['steamid']), 
+                 '_GetDonat', 
+                 ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['AMOUNT'],'module_translation'=>'module_page_lk_impulse'], 
+                 '?page=lk&section=payments#p'.$this->decod[1], 
+                 'money'
+             );
+           }
            $this->Notifications->SendNotification( 
               $this->decod[3], 
               '_YouPay', 
