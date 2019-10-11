@@ -206,6 +206,7 @@ if ( empty( $options['theme'] ) && isset( $_POST['dark_mode_on'] ) || isset( $_P
     $options['enable_js_cache'] = 0;
     $options['white_palette'] = 'original_palette';
     $options['dark_palette'] = 'dark_mode_palette';
+    $options['graphics_container'] = 'stretch';
     $options['background_image'] = 'null';
     $options['session_check'] = 1;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
@@ -287,6 +288,8 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
                   `flags` VARCHAR(32) NOT NULL,
                   `access` int(3) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_settings ( `name` VARCHAR(64) PRIMARY KEY, `value` VARCHAR(256) NOT NULL ) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+
         $db = [$_POST['STATS'] => [
             ['HOST' => $_POST['HOST'],
                 'PORT' => $_POST['PORT'],
@@ -321,7 +324,7 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
         ]
         ];
         $mysqli->close();
-        file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export( $db, true ).";" );
+        file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
         header_fix( get_url(1) );
     } else {
         $db_check = 1;

@@ -138,6 +138,12 @@ function set_options_data_select( name, value ) {
         change_palette( value );
     } else if ( name == 'background_image' ) {
         change_background_image( value );
+    } else if ( name == 'graphics_container' ) {
+       if( value == 'stretch' ) {
+           $( '.container-fluid' ).css( 'max-width', '1920px' );
+       } else if( value == 'static' ) {
+           $( '.container-fluid' ).css( 'max-width', '1400px' );
+       }
     }
 }
 
@@ -411,4 +417,15 @@ if(LoadFromStorage('panel_state') === 'true') {
     $('.sidebar-right').addClass("unshow");
 } else {
     $('.sidebar-right').removeClass("unshow");
+}
+
+function updateURL(text) {
+    if (history.pushState) {
+        var baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+        var newUrl = baseUrl + text;
+        history.pushState(null, null, newUrl);
+    }
+    else {
+        console.warn('History API не поддерживается');
+    }
 }

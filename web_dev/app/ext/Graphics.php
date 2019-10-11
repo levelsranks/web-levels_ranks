@@ -68,6 +68,24 @@ class Graphics {
             return '<style> body { background-image: url(./storage/cache/img/global/backgrounds/' . $this->General->arr_general["background_image"] . '); }</style>';
         }
     }
+
+    /**
+     * Получение фонового ихображения.
+     *
+     * @since 0.2
+     *
+     * @return string  Ссылка на изображение ( CSS / Style )
+     */
+    public function get_css_graphics_container() {
+        if ( ! empty( $this->General->arr_general['graphics_container'] ) ):
+            if ( $this->General->arr_general['graphics_container'] == 'static' ):
+                return '<style>.container-fluid{max-width:1400px}</style>';
+            elseif( $this->General->arr_general['graphics_container'] == 'stretch' ):
+                return '<style>.container-fluid{max-width:1920px}</style>';
+            endif;
+        endif;
+    }
+
     /**
      * Получение и вывод цветовой палитный сайта.
      *

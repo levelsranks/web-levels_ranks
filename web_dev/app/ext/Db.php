@@ -328,6 +328,24 @@ class Db {
     }
 
     /**
+     * Шаблон запроса отдающий массив со всеми строками, парсирование ключа.
+     *
+     * @since 0.2
+     *
+     * @param  string  $mod           Навание мода.
+     * @param  int     $user_id       Номер пользователя.
+     * @param  int     $db_id         Номер подключенной базы данных.
+     * @param  string  $sql           SQL запрос.
+     * @param  array   $params        Параметры.
+     *
+     * @return array                  Возвращает результат SQL запроса.
+     */
+    public function query_all_key_pair( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+        $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
+        return $result->fetchAll( PDO::FETCH_KEY_PAIR );
+    }
+
+    /**
      * Шаблон запроса отдающий массив стобца.
      *
      * @since 0.2

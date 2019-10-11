@@ -36,7 +36,10 @@ class General {
      *
      * @since 0.2
      */
-    function __construct() {
+    function __construct( $Db ) {
+
+        $this->Db = $Db;
+
         // Получение настроек вэб-интерфейса.
         $this->arr_general = $this->get_default_options();
 
