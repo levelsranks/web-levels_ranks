@@ -521,6 +521,7 @@
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - ka1jaru#1648 ( Discord )  - 72.45 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
+- Domikuss#3855 ( Discord ) - 24.45 RUB.
 
 Блок разработчика:
 -----
