@@ -26,10 +26,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css' ) ? $General->arr_general['site'] . 'storage/assets/css/themes/' . $General->arr_general['theme'] . '/style' :  $General->arr_general['site'] . 'storage/assets/css/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver']?>.css">
 <?php endif; ?>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <?php echo $Graphics->get_css_color_palette()?>
-    <?php echo $Graphics->get_css_background_image()?>
-    <?php echo $Graphics->get_css_graphics_container()?>
-    <style>.sidebar-collapse .user-sidebar-block { <?php echo ! isset( $_SESSION['steamid32'] ) ? 'height: 59px;' : 'height: 88px;';?></style>
+    <style>
+<?php echo $Graphics->get_css_color_palette()?>
+<?php echo $Graphics->get_css_background_image()?>
+<?php echo $Graphics->get_css_graphics_container()?>
+<?php echo $Graphics->get_css_sidebar_toggle()?>
+.sidebar-collapse .user-sidebar-block { <?php echo ! isset( $_SESSION['steamid32'] ) ? 'height: 59px;' : 'height: 88px;' . '} '?></style>
     <script>var avatar=[];var servers=[];var profile;</script>
 </head>
 <body <?php $_SESSION['sidebar_open'] == false && print 'class="sidebar-collapse"'?>>

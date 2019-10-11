@@ -52,6 +52,9 @@ extension_loaded('bcmath') == 0 && get_iframe('001','Расширение для
 // Проверка на cURL
 extension_loaded('curl') == 0 && get_iframe('001','Расширение для PHP не было найдено :: cURL');
 
+// Проверка на json
+extension_loaded('json') == 0 && get_iframe('001','Расширение для PHP не было найдено :: json');
+
 // Проверка на Zip
 extension_loaded('zip') == 0 && get_iframe('001','Расширение для PHP не было найдено :: Zip');
 
@@ -207,6 +210,8 @@ if ( empty( $options['theme'] ) && isset( $_POST['dark_mode_on'] ) || isset( $_P
     $options['white_palette'] = 'original_palette';
     $options['dark_palette'] = 'dark_mode_palette';
     $options['graphics_container'] = 'stretch';
+    $options['disable_sidebar_change'] = 0;
+    $options['disable_palettes_change'] = 0;
     $options['background_image'] = 'null';
     $options['session_check'] = 1;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");

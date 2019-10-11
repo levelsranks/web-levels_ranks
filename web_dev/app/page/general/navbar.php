@@ -10,7 +10,7 @@
 ?>
 <div class=navbar>
     <div class=logo-area>
-        <a href="javascript:void(0);" onclick="action_sidebar()" class="nav-toggle pp-nav-toggle"><i></i></a>
+        <?php if( empty( $General->arr_general['disable_sidebar_change'] ) ):?><a href="javascript:void(0);" onclick="action_sidebar()" class="nav-toggle pp-nav-toggle"><i></i></a><?php endif?>
         <a href="<?php echo $General->arr_general['site']?>"><img ondrag="return false" ondragstart="return false" src="<?php echo file_exists( CACHE . '/img/global/logo.png' ) ? $General->arr_general['site'] . '/storage/cache/img/global/logo.png' : copy(CACHE . '/img/global/default_logo.png', CACHE . '/img/global/logo.png') && $General->arr_general['site'] . '/storage/cache/img/global/logo.png'?>"></a>
     </div>
     <ul class="right-area">
@@ -51,11 +51,11 @@
                 </li>
             </ul>
         </li>
-        <li class="section navbar-icon">
+        <?php if( empty( $General->arr_general['disable_palettes_change'] ) ):?><li class="section navbar-icon">
             <a href="javascript:void(0);" onclick="dark_mode()">
                 <?php $General->get_icon( 'custom', 'moon', 'global' )?>
             </a>
-        </li>
+        </li><?php endif?>
         <li class="section">
             <a href="#" class="navbar-icon">
                 <div class="search"><?php $General->get_icon( 'zmdi', 'search' )?></div>

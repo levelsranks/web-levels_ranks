@@ -151,7 +151,7 @@ if( $_POST["function"] == 'sidebar' ) {
     session_start();
 
     // Сохраняем состояние боковой панели в сессию.
-    $_SESSION['sidebar_open'] = $_POST["setup"];
+    empty( ( require  '../../storage/cache/sessions/options.php' )['disable_sidebar_change'] ) && $_SESSION['sidebar_open'] = $_POST["setup"];
     exit;
 }
 
@@ -161,7 +161,7 @@ if( $_POST["function"] == 'dark_mode' & isset( $_POST["setup"] ) ) {
     session_start();
 
     // Сохраняем состояние боковой панели в сессию.
-    $_SESSION['dark_mode'] = $_POST["setup"];
+    empty( ( require  '../../storage/cache/sessions/options.php' )['disable_palettes_change'] ) && $_SESSION['dark_mode'] = $_POST["setup"];
     exit;
 }
 

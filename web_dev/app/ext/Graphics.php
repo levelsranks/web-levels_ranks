@@ -65,23 +65,36 @@ class Graphics {
      */
     public function get_css_background_image() {
         if ( ! empty( $this->General->arr_general['background_image'] ) && $this->General->arr_general['background_image'] != 'null' ) {
-            return '<style> body { background-image: url(./storage/cache/img/global/backgrounds/' . $this->General->arr_general["background_image"] . '); }</style>';
+            return 'body { background-image: url(./storage/cache/img/global/backgrounds/' . $this->General->arr_general["background_image"] . ')} ';
         }
     }
 
     /**
-     * Получение фонового ихображения.
+     * Вывод кнопки изменения боковой панели.
      *
      * @since 0.2
      *
-     * @return string  Ссылка на изображение ( CSS / Style )
+     * @return string Итоговый вывод.
+     */
+    public function get_css_sidebar_toggle() {
+        if ( ! empty( $this->General->arr_general['disable_sidebar_change'] ) ) {
+            return '.logo-area img {left:-8px} ';
+        }
+    }
+
+    /**
+     * Ограничение основного графического контейнера.
+     *
+     * @since 0.2
+     *
+     * @return string  Итоговый максимальный размер контейнера ( CSS / Style )
      */
     public function get_css_graphics_container() {
         if ( ! empty( $this->General->arr_general['graphics_container'] ) ):
             if ( $this->General->arr_general['graphics_container'] == 'static' ):
-                return '<style>.container-fluid{max-width:1400px}</style>';
+                return '.container-fluid{max-width:1400px} ';
             elseif( $this->General->arr_general['graphics_container'] == 'stretch' ):
-                return '<style>.container-fluid{max-width:1920px}</style>';
+                return '.container-fluid{max-width:1920px} ';
             endif;
         endif;
     }
@@ -95,9 +108,9 @@ class Graphics {
      */
     public function get_css_color_palette() {
         if ( isset ( $_SESSION['dark_mode'] ) && $_SESSION['dark_mode'] == true ) {
-            return '<style> :root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['dark_palette'] . '.json' ) ) ) .  '</style>';
+            return ':root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['dark_palette'] . '.json' ) ) ) .  ' ';
         } else {
-            return '<style> :root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['white_palette'] . '.json' ) ) ) .  '</style>';
+            return ':root' . str_replace( '"', '', str_replace( '",', ';', file_get_contents_fix ( 'storage/assets/css/themes/' . $this->General->arr_general['theme'] . '/palettes/' . $this->General->arr_general['white_palette'] . '.json' ) ) ) .  ' ';
         }
     }
 }
