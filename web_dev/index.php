@@ -37,26 +37,32 @@ define('MODULES', 'app/modules/');
 // Директория с основными конфигурационными файлами.
 define('INCLUDES', 'app/includes/');
 
-// Директория с основными кэш-файлами.
-define('SESSIONS', 'storage/cache/sessions/');
-
 // Директория содержащая графические кэш-файлы.
 define('CACHE', 'storage/cache/');
 
 // Директория с ресурсами.
 define('ASSETS', 'storage/assets/');
 
+// Директория с основными кэш-файлами.
+define('SESSIONS', CACHE . 'sessions/');
+
+// Директория содержащая логи.
+define('LOGS', CACHE . 'logs/');
+
+// Директория содержащая изображения.
+define('IMG', CACHE . 'img/');
+
 // Директория с CSS шаблонами.
-define('ASSETS_CSS', 'storage/assets/css/');
+define('ASSETS_CSS', ASSETS . 'css/');
 
 // Директория с JS библиотеками.
-define('ASSETS_JS', 'storage/assets/js/');
+define('ASSETS_JS', ASSETS . 'js/');
 
 // Директория с шаблонами "Themes".
-define('THEMES', 'storage/assets/css/themes/');
+define('THEMES', ASSETS_CSS . 'themes/');
 
 // Директория с изображениями рангов.
-define('RANKS_PACK', 'storage/cache/img/ranks/');
+define('RANKS_PACK', IMG . 'ranks/');
 
 // Временные константы ( Постоянные времени ) - Минута.
 define('MINUTE_IN_SECONDS', 60);
@@ -109,14 +115,14 @@ spl_autoload_register( function( $class ) {
     file_exists( $path ) && require $path;
 } );
 
+// Создание экземпляра класса работающего с базами данных.
+$Db             = new Db;
+
 // Создание основного экземпляра класса.
-$General        = new General;
+$General        = new General ( $Db );
 
 // Создание экземпляра класса работающего с модулями.
 $Modules        = new Modules       ( $General );
-
-// Создание экземпляра класса работающего с базами данных.
-$Db             = new Db;
 
 // Создание экземпляра класса уведомлений.
 $Notifications  = new Notifications ( $Db, $Modules );
