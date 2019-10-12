@@ -2503,7 +2503,7 @@
     }
 
     .best-weapon-block .weapons svg, .best-weapon-block .weapons img {
-        width: 4.6vw;
+        width: 4.4vw;
         max-height: 1.8vw;
         filter: invert(var(--svg));
     }

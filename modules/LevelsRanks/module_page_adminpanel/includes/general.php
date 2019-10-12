@@ -75,7 +75,18 @@
                 <label class="border-checkbox-label" for="dark_mode"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Dark_mode_default')?></label>
             </div>
             <div class="input-form">
+                <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="disable_palettes_change" id="disable_palettes_change" <?php $General->arr_general['disable_palettes_change'] === 1 && print 'checked'?>>
+                <label class="border-checkbox-label" for="disable_palettes_change"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Disable_palettes_change')?></label>
+            </div>
+            <div class="input-form">
                 <div class="text_on_line"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Design')?></div>
+            </div>
+            <div class="input-form"><div class="input_text"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Primary_graphics_container')?></div>
+                <select class="select" name="graphics_container" onChange="set_options_data_select( getAttribute('name'), value )">
+                    <option style="display:none" value="<?php echo $General->arr_general['graphics_container']?>"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_S' . substr( $General->arr_general['graphics_container'], 1 ) )?></option>
+                        <option value="stretch"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Stretch')?></option>
+                        <option value="static"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Static')?></option>
+                </select>
             </div>
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'css')" class="border-checkbox" type="checkbox" name="animations" id="animations" <?php $General->arr_general['animations'] === 1 && print 'checked'?>>
@@ -84,6 +95,10 @@
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="sidebar_open" id="sidebar_open" <?php $General->arr_general['sidebar_open'] === 1 && print 'checked'?>>
                 <label class="border-checkbox-label" for="sidebar_open"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Sidebar_default')?></label>
+            </div>
+            <div class="input-form">
+                <input onclick="set_options_data(this.id,'')" class="border-checkbox" type="checkbox" name="disable_sidebar_change" id="disable_sidebar_change" <?php $General->arr_general['disable_sidebar_change'] === 1 && print 'checked'?>>
+                <label class="border-checkbox-label" for="disable_sidebar_change"><?php echo $Modules->get_translate_module_phrase( 'module_page_adminpanel','_Disable_sidebar_change')?></label>
             </div>
             <div class="input-form">
                 <input onclick="set_options_data(this.id,'css')" class="border-checkbox" type="checkbox" name="form_border" id="form_border" <?php $General->arr_general['form_border'] === 1 && print 'checked'?>>

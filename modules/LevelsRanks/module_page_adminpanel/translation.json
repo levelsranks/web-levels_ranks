@@ -254,6 +254,26 @@
   "_Session_check": {
     "EN": "Check PHP Sessions",
     "RU": "Проверка PHP сессий"
+  },
+  "_Primary_graphics_container": {
+    "EN": "Primary Graphics Container",
+    "RU": "Основной графический контейнер"
+  },
+  "_Stretch": {
+    "EN": "Stretch / Fluid",
+    "RU": "Растягивать по ширине экрана"
+  },
+  "_Static": {
+    "EN": "Static - Max 1400px",
+    "RU": "Статика - Макс. 1400px"
+  },
+  "_Disable_sidebar_change": {
+    "EN": "Disable Sidebar Change",
+    "RU": "Запретить изменение вида боковой панели"
+  },
+  "_Disable_palettes_change": {
+    "EN": "Disable palettes change",
+    "RU": "Запретить изменение палитры сайта"
   }
 }
 
