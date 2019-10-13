@@ -148,7 +148,7 @@ if ($('#nestable').length > 0) {
 }
 
 function delete_server(element) {
-    $.post( "./app/includes/js_controller.php", { function: "delete", server: element.closest('tr').rowIndex } );
+    $.post( window.location.href, { del_server: element.closest('tr').id } );
     note({
         content: 'Сервер удалён',
         type: 'success',

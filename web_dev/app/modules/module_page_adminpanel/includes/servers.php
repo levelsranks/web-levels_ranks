@@ -81,6 +81,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="server_form_block">
+                            <div class="input-form"><div class="input_text">LK :: Таблица</div>
+                                <select name="server_lk">
+                                    <option style="display:none" value="">-</option>
+                                    <?php if ( ! empty( $Db->db_data['lk'] ) ):for ( $q = 0, $c = sizeof( $Db->db_data['lk'] ); $q < $c; $q++ ):?>
+                                        <option value="<?php echo sprintf( '%s;%d;%d;%s', $Db->db_data['lk'][ $q ]['DB_mod'], $Db->db_data['lk'][ $q ]['USER_ID'], $Db->db_data['lk'][ $q ]['DB_num'], $Db->db_data['lk'][ $q ]['Table'] )?>"><?php echo $Db->db_data['lk'][ $q ]['USER'] . ' -> ' . $Db->db_data['lk'][ $q ]['DB'] . ' -> ' . $Db->db_data['lk'][ $q ]['Table'] . ' ( ' . $Db->db_data['lk'][ $q ]['name'] . ' )'?></option>
+                                    <?php endfor;endif?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     </div>
                     <input class="btn _add_server" type="submit" name="save_server" value="Сохранить">
@@ -105,7 +115,7 @@
                         </thead>
                         <tbody>
                         <?php for ($i_server = 0; $i_server < $General->server_list_count; $i_server++) {?>
-                            <tr>
+                            <tr id="<?php echo $General->server_list[$i_server]['id']?>">
                                 <th class="text-center">
                                     <?php echo $General->server_list[$i_server]['name']?>
                                 </th>

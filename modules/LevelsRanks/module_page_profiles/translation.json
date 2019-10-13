@@ -178,5 +178,37 @@
   "_Last_connect": {
     "EN": "Last Connect",
     "RU": "Последняя игра"
+  },
+  "_Head": {
+    "EN": "Head",
+    "RU": "Голова"
+  },
+  "_Neak": {
+    "EN": "Neak",
+    "RU": "Шея"
+  },
+  "_Light_arm": {
+    "EN": "Light Arm",
+    "RU": "Левая рука"
+  },
+  "_Right_arm": {
+    "EN": "Right Arm",
+    "RU": "Правая рука"
+  },
+  "_Left_leg": {
+    "EN": "Left Leg",
+    "RU": "Левая нога"
+  },
+  "_Right_leg": {
+    "EN": "Right Leg",
+    "RU": "Правая нога"
+  },
+  "_Belly": {
+    "EN": "Belly",
+    "RU": "Живот"
+  },
+  "_Chest": {
+    "EN": "Chest",
+    "RU": "Грудь"
   }
 }

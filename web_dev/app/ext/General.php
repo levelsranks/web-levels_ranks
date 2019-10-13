@@ -173,12 +173,7 @@ class General {
      * @return array                 Массив со списком серверов.
      */
     public function get_server_list() {
-        if( file_exists( SESSIONS . '/servers_list.php' ) ):
-            return require SESSIONS . '/servers_list.php';
-        else:
-            file_put_contents( SESSIONS . 'servers_list.php', '<?php return []; ' );
-            return [];
-        endif;
+        return $this->Db->queryAll( 'Core', 0, 0,'SELECT * FROM lvl_web_servers' );
     }
 
     /**

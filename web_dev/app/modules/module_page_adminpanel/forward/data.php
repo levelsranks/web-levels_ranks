@@ -49,5 +49,8 @@ isset( $_POST['add_mods'] ) && $Admin->action_db_add_mods();
 // Нажатие на кнопку - Добавить сервер.
 isset( $_POST['save_server'] ) && $Admin->action_add_server();
 
+// Нажатие на кнопку - Удалить сервер.
+isset( $_POST['del_server'] ) && $Admin->action_del_server();
+
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Admin_panel') );

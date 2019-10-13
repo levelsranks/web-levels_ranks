@@ -136,7 +136,7 @@ class Admin {
      */
     function action_db_add_mods() {
 
-        $db = $Db->db;
+        $db = $this->Db->db;
 
         $db += [ $_POST['mod'] => [] ];
 
@@ -148,30 +148,47 @@ class Admin {
     }
 
     /**
-     * Добавление сервера в '/storage/cache/sessions/servers_list.php'.
+     * Добавление сервера
      */
     function action_add_server() {
 
-        $server = [];
+        $params = ['server_ip_port' => $_POST['server_ip_port'],
+                   'server_ip_port_fake' => $_POST['server_ip_port_fake'],
+                   'server_name' => $_POST['server_name'],
+                   'server_rcon' => $_POST['server_rcon'],
+                   'server_stats' => $_POST['server_stats'],
+                   'server_vip' => $_POST['server_vip'],
+                   'server_vip_id' => $_POST['server_vip_id'],
+                   'server_sb' => $_POST['server_sb'],
+                   'server_shop' => $_POST['server_shop'],
+                   'server_warnsystem' => $_POST['server_warnsystem'],
+                   'server_lk' => $_POST['server_lk']
+                  ];
 
-        $server[0]['name'] = $_POST['server_name'];
-        $server[0]['ip'] = $_POST['server_ip_port'];
-        $server[0]['fakeip'] = $_POST['server_ip_port_fake'];
-        $server[0]['rcon'] = $_POST['server_rcon'];
-        $server[0]['server_stats'] = $_POST['server_stats'];
-        $server[0]['server_vip'] = $_POST['server_vip'];
-        $server[0]['server_vip_id'] = empty( $_POST['server_vip_id'] ) ? 0 : $_POST['server_vip_id'];
-        $server[0]['server_sb'] = $_POST['server_sb'];
-        $server[0]['server_shop'] = $_POST['server_shop'];
-        $server[0]['server_warnsystem'] = $_POST['server_warnsystem'];
-
-        empty( $this->General->server_list ) || ! is_array( $this->General->server_list ) ? $arr_servers[0] = $server[0] : $arr_servers = array_merge( $this->General->server_list, $server );
-
-        // Обновление файла.
-        file_put_contents( SESSIONS . 'servers_list.php', '<?php return '.var_export_min( $arr_servers, true ).";" );
+        $this->Db->query( 'Core', 0, 0, "INSERT INTO lvl_web_servers VALUES (NULL,
+                                                              :server_ip_port,
+                                                              :server_ip_port_fake,
+                                                              :server_name,
+                                                              :server_rcon,
+                                                              :server_stats,
+                                                              :server_vip,
+                                                              :server_vip_id,
+                                                              :server_sb,
+                                                              :server_shop,
+                                                              :server_warnsystem,
+                                                              :server_lk);", $params );
 
         // Обновление страницы.
         refresh();
+    }
+
+    /**
+     * Удаление сервера
+     */
+    function action_del_server() {
+        $params = ['id' => $_POST['del_server']];
+
+        $this->Db->query( 'Core', 0, 0, 'DELETE FROM lvl_web_servers WHERE id = :id', $params );
     }
 
     /**

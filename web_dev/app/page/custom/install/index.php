@@ -95,7 +95,20 @@ substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( 
 substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/js/' );
 
 // Проверка на существование файла с настройками
-! file_exists( SESSIONS . '/options.php' ) && file_put_contents( SESSIONS . '/options.php', '<?php return []; ' );
+if ( ! file_exists( SESSIONS . '/options.php' ) ):
+    $options['theme'] = 'mainstream_white';
+    $options['enable_css_cache'] = 0;
+    $options['enable_js_cache'] = 0;
+    $options['white_palette'] = 'original_palette';
+    $options['dark_palette'] = 'dark_mode_palette';
+    $options['graphics_container'] = 'stretch';
+    $options['disable_sidebar_change'] = 0;
+    $options['disable_palettes_change'] = 0;
+    $options['background_image'] = 'null';
+    $options['session_check'] = 1;
+    $options['avatars_cache_time'] = 259200;
+    file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min( $options ) . ";\n");
+endif;
 
 // Проверка на существование файла с базой данных
 ! file_exists( SESSIONS . '/db.php' ) && file_put_contents( SESSIONS . '/db.php', '<?php return []; ' );
@@ -151,7 +164,6 @@ if ( empty( $options['web_key'] ) && ! empty( $_POST['web_key'] ) ) {
         $options['steam_auth'] = 1;
         $options['only_steam_64'] = 0;
         $options['avatars'] = 1;
-        $options['avatars_cache_time'] = 259200;
         file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
         header_fix( get_url(1) );
     } else {
@@ -163,7 +175,6 @@ if ( empty( $options['web_key'] ) && ! empty( $_POST['web_key'] ) ) {
     $options['steam_auth'] = 0;
     $options['only_steam_64'] = 0;
     $options['avatars'] = 2;
-    $options['avatars_cache_time'] = 259200;
     file_put_contents( SESSIONS . '/options.php', '<?php return '.var_export_min( $options ).";\n" );
     header_fix( get_url(1) );
 }
@@ -204,16 +215,6 @@ if ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) && i
 
 if ( empty( $options['theme'] ) && isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
     $options['dark_mode'] = isset( $_POST['dark_mode_on'] ) ? (int) 1 : (int) 0;
-    $options['theme'] = 'mainstream_white';
-    $options['enable_css_cache'] = 0;
-    $options['enable_js_cache'] = 0;
-    $options['white_palette'] = 'original_palette';
-    $options['dark_palette'] = 'dark_mode_palette';
-    $options['graphics_container'] = 'stretch';
-    $options['disable_sidebar_change'] = 0;
-    $options['disable_palettes_change'] = 0;
-    $options['background_image'] = 'null';
-    $options['session_check'] = 1;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
 }
@@ -292,6 +293,20 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
                   `group` VARCHAR(11) NOT NULL,
                   `flags` VARCHAR(32) NOT NULL,
                   `access` int(3) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_servers (
+                            `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+							`ip` VARCHAR(64) NOT NULL,
+                            `fakeip` VARCHAR(64) NOT NULL,
+                            `name` VARCHAR(64) NOT NULL,
+                            `rcon` VARCHAR(64) NOT NULL,
+                            `server_stats` VARCHAR(64) NOT NULL,
+                            `server_vip` VARCHAR(64) NOT NULL,
+                            `server_vip_id` INT(11) NOT NULL,
+                            `server_sb` VARCHAR(64) NOT NULL,
+                            `server_shop` VARCHAR(64) NOT NULL,
+                            `server_warnsystem` VARCHAR(64) NOT NULL,
+                            `server_lk` VARCHAR(64) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 
         $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_settings ( `name` VARCHAR(64) PRIMARY KEY, `value` VARCHAR(256) NOT NULL ) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 

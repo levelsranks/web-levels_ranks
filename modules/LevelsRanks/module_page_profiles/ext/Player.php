@@ -68,20 +68,23 @@ class Player {
     /**
      * @var array
      */
-    public $profile_status = [ 'text' => 'Игрок', 'color' => 'var(--span-color)', 'priority' => 0 ];
+    public $profile_status = [ 'text' => '', 'color' => '', 'priority' => 0 ];
 
     /**
      * @var array
      */
     public $hits = ['Head' => 0, 'Chest' => 0, 'Belly' => 0, 'LeftArm' => 0, 'RightArm' => 0, 'LeftLeg' => 0, 'RightLeg' => 0, 'Neak' => 0];
 
-    function __construct( $General, $Db, $id, $sg ) {
+    function __construct( $General, $Db, $Modules, $id, $sg ) {
 
         # Работа с базой данных.
         $this->Db = $Db;
 
         # Работа с ядром.
         $this->General = $General;
+
+        # Работа с модулями.
+        $this->Modules = $Modules;
 
         // Присвоение группы серверов.
         $this->server_group = (int) intval ( $sg );

@@ -102,19 +102,7 @@ if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_PO
         // Подключение основных функций.
         require '../../app/includes/functions.php';
 
-        if( isset( $_POST["server"] ) ):
-
-        $server_id = (int) $_POST["server"] - 1;
-
-        $servers = require '../../storage/cache/sessions/servers_list.php';
-
-        unset( $servers[ $server_id ] );
-
-        // Сохранение файла.
-        file_put_contents( '../../storage/cache/sessions/servers_list.php', '<?php return ' . var_export_min( array_values ( $servers ) ) . ';' );
-        exit;
-
-        elseif( isset( $_POST["table"] ) ):
+        if( isset( $_POST["table"] ) ):
             $db = require '../../storage/cache/sessions/db.php';
 
             $del = explode( ";", $_POST["table"] );
