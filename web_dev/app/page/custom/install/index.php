@@ -213,7 +213,7 @@ if ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) && i
 
 // dark_mode
 
-if ( empty( $options['theme'] ) && isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) {
+if ( ! is_numeric( $options['dark_mode'] ) && ( isset( $_POST['dark_mode_on'] ) || isset( $_POST['dark_mode_off'] ) ) ) {
     $options['dark_mode'] = isset( $_POST['dark_mode_on'] ) ? (int) 1 : (int) 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );

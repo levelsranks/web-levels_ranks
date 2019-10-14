@@ -14,7 +14,7 @@ empty( $Db->db_data['SourceBans'] ) && get_iframe( '012','Не найден мо
 $data['module_block_main_sb_stats'] = $Modules->get_module_cache('module_block_main_sb_stats');
 
 // Проверяем актуальность кэша.
-if ( ( $data['module_block_main_sb_stats'] == '' ) || ( time() > $data['module_block_main_sb_stats']['time'] ) ) {
+if ( ( empty( $data['module_block_main_sb_stats'] ) ) || ( ! empty( $data['module_block_main_sb_stats']['time'] ) && time() > $data['module_block_main_sb_stats']['time'] ) ) {
 
     // Затираем страные данные которые могут помешать созданию кэша.
     $data['module_block_main_sb_stats']['count_admins'] = 0;

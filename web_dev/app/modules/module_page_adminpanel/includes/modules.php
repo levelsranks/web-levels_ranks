@@ -101,36 +101,43 @@
                         <?php endfor?>
                     </select>
                 </div>
+                <?php if( array_key_exists( 'interface', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_interface" id="module_interface" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['interface'] == 1 && print 'checked';?>>
                     <label class="border-checkbox-label" for="module_interface">Графическая часть</label>
                 </div>
+                <?php endif;if( array_key_exists( 'data', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_data" id="module_data" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data'] == 1 && print 'checked';?>>
                     <label class="border-checkbox-label" for="module_data">Пре-инициализация</label>
                 </div>
+                <?php endif;if( array_key_exists( 'data_always', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_data_always" id="module_data_always" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['data_always'] == 1 && print 'checked';?>>
                     <label class="border-checkbox-label" for="module_data_always">Дополнтельная пре-инициализацию связанная с основным потоком</label>
                 </div>
+                <?php endif;if( array_key_exists( 'cache_enable', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_cache_enable" id="module_cache_enable" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['cache_enable'] == 1 && print 'checked';?>>
                     <label class="border-checkbox-label" for="module_cache_enable">Использование кэша</label>
                 </div>
                 <div class="input-form"><div class="input_text">Время кэширования(Сек.):</div><input name="module_cache_time" value="<?php echo $Modules->array_modules[ $_GET['options'] ]['setting']['cache_time']?>"></div>
-
+                <?php endif;if( array_key_exists( 'translation', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_translation" id="module_translation" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['translation'] == 1 && print 'checked';?>>
                     <label class="border-checkbox-label" for="module_translation">Собственный файл перевода</label>
                 </div>
+                <?php endif;if( array_key_exists( 'css', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_css" id="module_css" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['css'] == 1 && print 'checked'?>>
                     <label class="border-checkbox-label" for="module_css">Собственный CSS стиль</label>
                 </div>
+                <?php endif;if( array_key_exists( 'js', $Modules->array_modules[ $_GET['options'] ]['setting'] ) ):?>
                 <div class="input-form">
                     <input class="border-checkbox" type="checkbox" name="module_js" id="module_js" <?php $Modules->array_modules[ $_GET['options'] ]['setting']['js'] == 1 && print 'checked'?>>
                     <label class="border-checkbox-label" for="module_js">Собственная JS библиотека</label>
                 </div>
+                <?php endif?>
             </div>
             <div class="card-bottom">
                 <div class="select-panel-pages">

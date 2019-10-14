@@ -296,7 +296,7 @@ class Modules {
         // Проверка на существование кэша модулей и кэша переводов.
         if ( ! file_exists( SESSIONS . 'modules_cache.php' ) || ! file_exists( SESSIONS . 'translator_cache.php' ) ) {
             // Сканирование папки с модулями.
-            $this->scan_modules = array_diff( scandir( MODULES, 1 ), array( '..', '.' ) );
+            $this->scan_modules = array_diff( scandir( MODULES, 1 ), array( '..', '.', 'disabled' ) );
 
             // Сканирование папки с Паками рангов.
             $this->scan_ranks_pack = array_diff( scandir( RANKS_PACK, 1 ), array( '..', '.' ) );
@@ -314,7 +314,7 @@ class Modules {
                 $result[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents( MODULES . $this->scan_modules[ $i ] . '/description.json') , true);
 
                 // Проверка на поддержку мульти-перевода.
-                if ($result[ $this->scan_modules[ $i ] ]['setting']['translation'] == 1) {
+                if ( array_key_exists('translation', $result[ $this->scan_modules[ $i ] ]['setting'] ) && $result[ $this->scan_modules[ $i ] ]['setting']['translation'] == 1) {
                     // Получение кэша перевода модулей.
                     $result_translation[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents(MODULES . $this->scan_modules[ $i ] . '/translation.json') , true);
                 }
@@ -369,7 +369,7 @@ class Modules {
                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                     && $this->array_modules[ $module ]['required']['core'] <= VERSION
                 ):
-                    $this->array_modules[ $module ]['setting']['css'] == 1 && $this->css_library[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
+                    array_key_exists('css', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['css'] == 1 && $this->css_library[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
                 endif;
             endfor;
         else:
@@ -403,7 +403,7 @@ class Modules {
                         && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                         && $this->array_modules[ $module ]['required']['core'] <= VERSION
                     ):
-                        $this->array_modules[ $module ]['setting']['css'] == 1 && $files_css_compress[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
+                        array_key_exists('css', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['css'] == 1 && $files_css_compress[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
                     endif;
                 endfor;
 
@@ -447,7 +447,7 @@ class Modules {
                     && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                     && $this->array_modules[ $module ]['required']['core'] <= VERSION
                     ):
-                    $this->array_modules[ $module ]['setting']['js'] == 1 && $this->js_library[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
+                    array_key_exists('js', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $this->js_library[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
                 endif;
             endfor;
         else:
@@ -467,7 +467,7 @@ class Modules {
                         && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                         && $this->array_modules[ $module ]['required']['core'] <= VERSION
                     ):
-                        $this->array_modules[ $module ]['setting']['js'] == 1 && $files_js_compress[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
+                        array_key_exists('js', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $files_js_compress[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
                     endif;
                 endfor;
 

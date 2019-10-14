@@ -92,7 +92,6 @@
 </aside>
 <?php if( $General->arr_general['steam_only_authorization'] == 0 ):?>
 <div id="login" class="modal-window">
-    <div>
         <div class="card">
             <div class="card-header">
                 <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Authorization')?></h5>
@@ -115,6 +114,5 @@
                 </div>
             </form>
         </div>
-    </div>
 </div>
 <?php endif;?>

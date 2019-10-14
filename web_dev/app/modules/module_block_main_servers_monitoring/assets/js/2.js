@@ -1,5 +1,5 @@
 if (servers != 0) {
-    $.post("./app/modules/module_block_main_servers_monitoring/includes/SourceQuery/ServerJS.php", {
+    $.post("./app/modules/module_block_main_servers_monitoring/includes/ServerJS.php", {
         data: servers
     }, function (data) {
         var arr_servers = JSON.parse(data);

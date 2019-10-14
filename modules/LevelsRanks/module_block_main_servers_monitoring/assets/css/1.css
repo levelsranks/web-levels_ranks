@@ -1,25 +1,22 @@
 .custom-server {
-    background-color: var(--bg-color);
+    background-color: #141414;
     padding: 0;
     max-height: 200px
 }
 
-.custom-server img {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: all 1s ease-out;
-    opacity: 1;
-    -moz-opacity: 1;
-    filter: alpha(opacity=100)
+.custom-server:hover img {
+    transform: scale(1.03);
+    transition: all ease-in .3s;
+    opacity: 0.85;
 }
 
-.custom-server:hover img {
-    transform: scale(1.1);
-    opacity: 1;
-    -moz-opacity: 1;
-    filter: alpha(opacity=100)
+.custom-server img {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: all 1s ease-out;
+    opacity: .4
 }
 
 .card span {
@@ -33,85 +30,170 @@
 
 .custom-server .data-basic {
     position: absolute;
+    top: 19px;
     width: 100%;
-    top: 6px;
+    height: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
     z-index: 1;
     text-align: center
 }
 
-.custom-server .data-basic .back {
-    background-color: rgba(0, 0, 0, .6)
+.custom-server .data-basic .online {
+    position: absolute;
+    top:36px;
+    left: 15%;
+    font-size: 18px;
+    font-weight: 400;
+    width: 70%;
+    border-radius: 10px;
+    background-color: rgba(16, 16, 16, 0.4);
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 30px;
+    height: 33px
 }
 
-.custom-server .data-basic .back .data-name {
-    padding-top: 4px;
-    font-size: .85vw;
+.custom-server .data-basic .online .online2 {
+    background: rgba(var(--server-graph-rgba));
+    background-size: 50px 50px;
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    height: 33px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.custom-server:hover .data-basic .online .online2 {
+    background-size: 50px 50px;
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    animation: move 4s linear infinite;
+}
+
+.custom-server .data-basic .online .value {
+    font-size: 17.5px;
     font-weight: 400;
+    color: #fff;
+    margin-top: -30px
+}
+
+.custom-server .data-basic .data-name {
+    padding-top: 6px;
+    font-size: 17px;
+    font-weight: 500;
     color: #fff;
     z-index: 1;
     width: 100%
 }
 
-.custom-server .data-basic .back .data-map {
-    padding-bottom: 4px;
-    width: 100%;
-    font-size: .85vw;
-    font-weight: 400;
+.custom-server .data-basic .ip {
+    position: absolute;
+    bottom: 62px;
+    left: 6%;
+    width: 70%;
+    height: 33px;
+    z-index: 99;
+    font-size: 16px;
+    font-weight: 500;
     color: #fff
 }
 
-.custom-server .data-basic .back .data-players {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    margin-top: 10px;
-    width: 100%;
-    font-size: .85vw;
-    font-weight: 400;
-    color: #fff;
-    z-index: 1;
-    text-align: center
-}
-
-.custom-server:hover input {
-    right: 0
-}
-
-.custom-server input {
-    cursor: pointer;
+.custom-server .border_ip {
     position: absolute;
-    width: 30%;
-    white-space: nowrap;
-    text-align: center;
-    right: -30%;
-    bottom: 15px;
-    font-size: .75vw;
-    font-weight: 400;
+    border-radius: 10px;
+    background-color: rgba(16, 16, 16, 0.4);
+    bottom: 68px;
+    left: 15%;
+    width: 70%;
+    align-items: center;
+    height: 33px;
+    z-index: 98;
+}
+
+.custom-server .btn_connect {
+    position: absolute;
     color: #fff;
-    z-index: 1;
-    float: left;
-    height: 35px;
-    border: 0;
-    border-radius: 0;
-    background: #101010;
     outline: none;
-    transition: .2s linear
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: var(--span-color);
+    bottom: 68px;
+    right: 15%;
+    width: 15%;
+    white-space: nowrap;
+    align-items: center;
+    height: 33px;
+    z-index: 99;
 }
 
-.custom-server input:hover {
-    background: #262626
+.btn_connect_text {
+    margin-top:5px
 }
 
-.custom-server input:active {
-    outline: none
+@keyframes move {
+    0% { background-position: 0 0}
+    100% { background-position: 50px 50px}
 }
 
-.custom-server input:focus {
-    outline: none
+.modal-window-server {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    transition: all 0.3s;
+    pointer-events: auto;
+}
+
+.modal-window-server .card {
+    border: 1px solid var(--default-text-color);
+    border-radius: 2px;
+}
+
+.modal-window-server > div {
+    position: absolute;
+    width: 25%;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: var(--sidebar-color);
+}
+
+.btn_connect_now{
+    float: right;
+    max-width: 80px;
+    max-height: 30px;
+    margin-top: 14px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+}
+
+.server_block_scroll {
+    max-height: 400px;
+    overflow-y: scroll;
 }
 
 @media (max-width: 575.98px) {
+
+    .modal-window-server > div {
+        width: 70%;
+        top: 40%;
+    }
+
+    .modal-window-server .input-form{
+        display: none;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
     .mon-1 {
         display: none
     }
@@ -122,6 +204,16 @@
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+
+    .modal-window-server > div {
+        width: 70%;
+        top: 40%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
     .mon-1 {
         display: none
     }
@@ -132,6 +224,16 @@
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
+
+    .modal-window-server > div {
+        width: 50%;
+        top: 50%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
     .mon-1 {
         display: none
     }
@@ -142,6 +244,16 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
+
+    .modal-window-server > div {
+        width: 38%;
+        top: 50%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
     .mon-1 {
         display: none
     }
@@ -152,26 +264,9 @@
 }
 
 @media (min-width: 1200px) and (max-width: 1499.98px) {
-    .custom-server input {
-        cursor: pointer;
-        width: 14%;
-        margin-top: 16px;
-        margin-right: 15%;
-        white-space: nowrap;
-        text-align: center;
-        height: 30px;
-        outline: none;
-        font-weight: 400;
-        font-size: .8vw;
-        float: right;
-        background: #ff7500;
-        color: #fff;
-        border: 1px solid #fff
-    }
 
-    .ip {
-        margin-top: 4%;
-        font-size: 14px
+    .modal-window-server > div {
+        width: 28%;
     }
 
     .mon-1 {
@@ -184,26 +279,9 @@
 }
 
 @media (min-width: 1500px) {
-    .custom-server input {
-        cursor: pointer;
-        width: 18%;
-        margin-top: 16px;
-        margin-right: 15%;
-        white-space: nowrap;
-        text-align: center;
-        height: 30px;
-        outline: none;
-        font-weight: 400;
-        font-size: .8vw;
-        float: right;
-        background: #ff7500;
-        color: #fff;
-        border: 1px solid #fff
-    }
 
-    .ip {
-        margin-top: 2%;
-        font-size: 17px
+    .modal-window-server > div {
+        width: 28%;
     }
 
     .mon-1 {

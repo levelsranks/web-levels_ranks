@@ -12,15 +12,9 @@
     "status": 1,
     "type": 1,
     "available_types": "1",
-    "sessions": "0",
-    "translation": 0,
     "interface": 1,
     "data": 1,
-    "data_always": 1,
-    "css": 0,
-    "js": 0,
-    "cache_enable": 0,
-    "cache_time": 0
+    "data_always": 1
   },
   "sidebar": [
     {

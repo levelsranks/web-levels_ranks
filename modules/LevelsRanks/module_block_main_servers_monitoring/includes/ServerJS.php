@@ -9,7 +9,7 @@
  */
 
 // Подключение SourceQuery.
-require __DIR__ . '/bootstrap.php';
+require '../ext/SourceQuery/bootstrap.php';
 
 // Импорт класса - SourceQuery.
 use xPaw\SourceQuery\SourceQuery;
@@ -48,17 +48,20 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
         // Попытка подключения, протокол - Source.
         $Query->Connect( $server[ $i_server ][0], $server[ $i_server ][1], 3, SourceQuery :: SOURCE );
 
-        // Присваиваем полученную информацию.
+        // Присваиваем полученную информацию о сервере.
         $info[ $i_server ] = $Query->GetInfo();
+
+        // Присваиваем полученную информацию об игроках.
+        $return[ $i_server ]['players'] = $Query->GetPlayers();
 
         // Вывод - IP Сервера
         $return[ $i_server ]['ip'] = empty( $server_fakeip[ $i_server ] ) ? $server[ $i_server ][0] . ':' . $server[ $i_server ][1] : $server_fakeip[ $i_server ];
 
         // Вывод - Название сервера
-        $return[ $i_server ]['HostName'] = $info[ $i_server ]['HostName'];
+        $return[ $i_server ]['HostName'] = substr( $info[ $i_server ]['HostName'], 0, 43 ) . '..';
 
         // Проверка на существование изображения карты.
-        if( file_exists( '../../../../../storage/cache/img/maps/' . $info[ $i_server ]['AppID'] . '/' . array_reverse( explode( "/", $info[ $i_server ]['Map'] ) )[0] . '.jpg') ):
+        if( file_exists( '../../../../storage/cache/img/maps/' . $info[ $i_server ]['AppID'] . '/' . array_reverse( explode( "/", $info[ $i_server ]['Map'] ) )[0] . '.jpg') ):
             // Вывод - Название карты.
             $return[ $i_server ]['Map'] = array_reverse(explode("/", $info[ $i_server ]['Map']))[0];
 
@@ -116,10 +119,10 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
 endfor;
 
 // Проверка директории под кэш
-! file_exists( '../../../../../app/modules/module_block_main_servers_monitoring/temp' ) && mkdir( '../../../../../app/modules/module_block_main_servers_monitoring/temp', 0777, true );
+! file_exists( '../temp' ) && mkdir( '../temp', 0777, true );
 
 // Кэширование изображений с серверов для предзагрузки блоков
-( ! file_exists( '../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php' ) || $cache != require '../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php' ) && file_put_contents('../../../../../app/modules/module_block_main_servers_monitoring/temp/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
+( ! file_exists( '../temp/cache.php' ) || $cache != require '../temp/cache.php' ) && file_put_contents('../temp/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
 
 // Вывод
 echo json_encode( $return, JSON_UNESCAPED_UNICODE );

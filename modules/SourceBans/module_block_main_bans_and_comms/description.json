@@ -12,12 +12,7 @@
     "status": "1",
     "type": "1",
     "available_types": "1",
-    "sessions": "0",
-    "translation": "0",
     "interface": "1",
-    "data": "1",
-    "data_always": "0",
-    "css": "0",
-    "js": "0"
+    "data": "1"
   }
 }

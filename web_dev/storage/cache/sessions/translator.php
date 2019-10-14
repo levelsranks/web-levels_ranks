@@ -799,5 +799,10 @@ return array (
         array (
             'EN' => 'Banned',
             'RU' => 'Забанен'
+        ),
+    '_Server_Information' =>
+        array (
+            'EN' => 'Server Information',
+            'RU' => 'Информация о сервере'
         )
 );
