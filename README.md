@@ -500,6 +500,7 @@
 - Felya#1342  ( Discord )   - 817.12 RUB.
 - dyoma#5525  ( Discord )   - 500 RUB.
 - Морячок#9904  ( Discord )   - 500 RUB.
+- Xzotys#3880  ( Discord )   - 500 RUB.
 - Unity       ( hlmod.ru )  - 460 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
@@ -515,7 +516,7 @@
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
 - Nestor#9876 ( Discord )   - 150 RUB.
-- ka1jaru#1648 ( Discord )  - 136.45 RUB.
+- ka1jaru#1648 ( Discord )  - 137.45 RUB.
 - uraganas#7978 ( Discord )   - 132 RUB.
 - punisher89#7116 ( Discord )  - 104.45 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
