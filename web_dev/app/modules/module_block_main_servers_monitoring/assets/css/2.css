@@ -1,0 +1,117 @@
+@keyframes move {
+    0% { background-position: 0 0}
+    100% { background-position: 50px 50px}
+}
+
+.modal-window-server {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    transition: all 0.3s;
+    pointer-events: auto;
+}
+
+.modal-window-server .card {
+    border: 1px solid var(--default-text-color);
+    border-radius: 2px;
+}
+
+.modal-window-server > div {
+    position: absolute;
+    width: 25%;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: var(--sidebar-color);
+}
+
+.btn_connect_now{
+    float: right;
+    max-width: 80px;
+    max-height: 30px;
+    margin-top: 14px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+}
+
+.server_block_scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+@media (max-width: 575.98px) {
+
+    .modal-window-server > div {
+        width: 70%;
+        top: 40%;
+    }
+
+    .modal-window-server .input-form {
+        display: none;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .modal-window-server > div {
+        width: 70%;
+        top: 40%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+    .modal-window-server > div {
+        width: 50%;
+        top: 50%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+    .modal-window-server > div {
+        width: 38%;
+        top: 50%;
+    }
+
+    .server_block_scroll {
+        max-height: 300px;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1499.98px) {
+
+    .modal-window-server > div {
+        width: 28%;
+    }
+
+}
+
+@media (min-width: 1500px) {
+
+    .modal-window-server > div {
+        width: 28%;
+    }
+
+}

@@ -28,7 +28,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                                 </div>
                                 <div class="border_ip"></div>
                                 <div class="ip" id="server-ip-<?php echo $i_server?>"></div>
-                                <a class="btn_connect" id="<?php echo $i_server?>" onclick="get_players_data(id)" href="javascript:void(0);"><div class="btn_connect_text"><?php echo $Modules->get_translate_phrase('_Connect_2')?></div></a>
+                                <a class="btn_connect btn_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)" href="javascript:void(0);"><div class="btn_connect_text"><?php echo $Modules->get_translate_phrase('_Connect_2')?></div></a>
                             </div>
                             <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php echo empty( $servers_cache[ $i_server ] ) ? '730/-' : $servers_cache[ $i_server ]?>.jpg">
                         </div>
@@ -57,7 +57,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                             </thead>
                             <tbody>
                             <?php for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ) {?>
-                                <tr id="<?php echo $i_server?>" onclick="get_players_data(id)">
+                                <tr class="pointer str_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)">
                                     <th class="text-center"><img id="server-tablemod-<?php echo $i_server?>" src="./storage/cache/img/global/null.png"></th>
                                     <th class="text-left" id="server-tablename-<?php echo $i_server?>"></th>
                                     <th class="text-center" id="server-tableplayers-<?php echo $i_server?>"></th>
@@ -89,7 +89,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                         </thead>
                         <tbody>
                         <?php for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ) {?>
-                            <tr class="pointer" id="server-connect-table-<?php echo $i_server?>" onclick="">
+                            <tr class="pointer str_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)">
                                 <th class="text-center"><img id="server-tablemod-<?php echo $i_server?>" src="./storage/cache/img/global/null.png"></th>
                                 <th class="text-left" id="server-tablename-<?php echo $i_server?>"></th>
                                 <th class="text-center" id="server-tableplayers-<?php echo $i_server?>"></th>

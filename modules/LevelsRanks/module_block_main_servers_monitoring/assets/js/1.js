@@ -28,17 +28,23 @@ if (servers != 0) {
 
     function get_players_data(server) {
         var b = 1;
-        for (var i = 0; i < arr_servers[server]['players'].length; i++) {
-            var str = '<tr>' +
-                '<th class="text-center">' + b++ + '</th>' +
-                '<th class="text-center">' + arr_servers[server]['players'][i]['Name'] + '</th>' +
-                '<th class="text-center">' + arr_servers[server]['players'][i]['Frags'] + '</th>' +
-                '<th class="text-center">' + arr_servers[server]['players'][i]['TimeF'] + '</th>' +
-                '</tr>';
-            players_online.insertAdjacentHTML('beforeend', str);
-            var modal = document.getElementById('server-players-online');
-            document.getElementById('connect_server').setAttribute("href", "steam://connect/" + arr_servers[server]['ip']);
-            modal.style.display = "block";
+        if( arr_servers[server]['players'].length > 0 ) {
+            for (var i = 0; i < arr_servers[server]['players'].length; i++) {
+                var str = '<tr>' +
+                    '<th class="text-center">' + b++ + '</th>' +
+                    '<th class="text-center">' + arr_servers[server]['players'][i]['Name'] + '</th>' +
+                    '<th class="text-center">' + arr_servers[server]['players'][i]['Frags'] + '</th>' +
+                    '<th class="text-center">' + arr_servers[server]['players'][i]['TimeF'] + '</th>' +
+                    '</tr>';
+                players_online.insertAdjacentHTML('beforeend', str);
+                var modal = document.getElementById('server-players-online');
+                document.getElementById('connect_server').setAttribute("href", "steam://connect/" + arr_servers[server]['ip']);
+                modal.style.display = "block";
+            }
+        } else {
+            $('.btn_connect_' + server).attr("href", "steam://connect/" + arr_servers[server]['ip'] )
+            $('.str_connect_' + server).attr("onclick", "document.location = 'steam://connect/" + arr_servers[server]['ip'] + "'" )
+            location.href = 'steam://connect/' + arr_servers[server]['ip'];
         }
     }
 
