@@ -152,17 +152,17 @@ class Admin {
      */
     function action_add_server() {
 
-        $params = ['server_ip_port' => $_POST['server_ip_port'],
-                   'server_ip_port_fake' => $_POST['server_ip_port_fake'],
-                   'server_name' => $_POST['server_name'],
-                   'server_rcon' => $_POST['server_rcon'],
-                   'server_stats' => $_POST['server_stats'],
-                   'server_vip' => $_POST['server_vip'],
-                   'server_vip_id' => $_POST['server_vip_id'],
-                   'server_sb' => $_POST['server_sb'],
-                   'server_shop' => $_POST['server_shop'],
-                   'server_warnsystem' => $_POST['server_warnsystem'],
-                   'server_lk' => $_POST['server_lk']
+        $params = ['server_ip_port' => $_POST['server_ip_port'] ?? 0,
+                   'server_ip_port_fake' => $_POST['server_ip_port_fake'] ?? 0,
+                   'server_name' => $_POST['server_name'] ?? 0,
+                   'server_rcon' => $_POST['server_rcon'] ?? 0,
+                   'server_stats' => $_POST['server_stats'] ?? 0,
+                   'server_vip' => $_POST['server_vip'] ?? 0,
+                   'server_vip_id' => $_POST['server_vip_id'] ?? 0,
+                   'server_sb' => $_POST['server_sb'] ?? 0,
+                   'server_shop' => $_POST['server_shop'] ?? 0,
+                   'server_warnsystem' => $_POST['server_warnsystem'] ?? 0,
+                   'server_lk' => $_POST['server_lk'] ?? 0
                   ];
 
         $this->Db->query( 'Core', 0, 0, "INSERT INTO lvl_web_servers VALUES (NULL,
@@ -201,7 +201,7 @@ class Admin {
         // А где цикл то, что за беспредел? :D
         $Module_data['page'] = $_POST['module_page'];
         $Module_data['setting']['status'] = $_POST['module_offon'] == 'on' ? 1 : 0;
-        $Module_data['setting']['type'] = (int) $_POST['module_type'];
+        $Module_data['setting']['type'] = (int) $_POST['module_type'] ?? 0;
         $Module_data['setting']['translation'] = $_POST['module_translation'] == 'on' ? 1 : 0;
         $Module_data['setting']['interface'] = $_POST['module_interface'] == 'on' ? 1 : 0;
         $Module_data['setting']['data'] = $_POST['module_data'] == 'on' ? 1 : 0;
@@ -209,7 +209,7 @@ class Admin {
         $Module_data['setting']['css'] = $_POST['module_css'] == 'on' ? 1 : 0;
         $Module_data['setting']['js'] = $_POST['module_js'] == 'on' ? 1 : 0;
         $Module_data['setting']['cache_enable'] = $_POST['module_cache_enable'] == 'on' ? 1 : 0;
-        $Module_data['setting']['cache_time'] = (int) $_POST['module_cache_time'];
+        $Module_data['setting']['cache_time'] = (int) $_POST['module_cache_time'] ?? 0;
 
         file_put_contents( MODULES . $_GET['options'] . '/description.json', json_encode( $Module_data, JSON_UNESCAPED_UNICODE ) );
 
