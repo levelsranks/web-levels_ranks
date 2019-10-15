@@ -28,14 +28,14 @@ class Basefunction{
 	public $pay;
 	public $summ;
 	public $bonus;
-	public $Db;
+	public $db;
 	public $General;
 	public $Modules;
 	public $Notifications;
 
 	public function __construct() {
 		$this->db =  new Db;
-		$this->General = new General;
+		$this->General = new General($this->db);
 		$this->Modules = new Modules($this->General);
 		$this->Notifications = new Notifications($this->db, $this->Modules);
 	}
