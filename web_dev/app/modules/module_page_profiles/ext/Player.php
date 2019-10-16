@@ -217,6 +217,13 @@ class Player {
             endfor;
 
             $this->get_db_fps_hits();
+
+            if ( $Db->mysql_table_search( 'FPS', 0, 0, 'fps_unusualkills' ) == 1 ):
+                $this->unusualkills = $this->get_db_plugin_module_unusualkills();
+            else:
+                $this->unusualkills = false;
+            endif;
+
         endif;
     }
 
@@ -422,7 +429,25 @@ class Player {
     }
 
     private function get_db_plugin_module_unusualkills() {
+        switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
+            case 'LevelsRanks':
             return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+                break;
+            case 'FPS':
+                return $this->Db->query('FPS', 0, 0, "SELECT fps_unusualkills.op AS OP,
+                                                             fps_unusualkills.penetrated AS Penetrated,
+                                                             fps_unusualkills.no_scope AS NoScope,
+                                                             fps_unusualkills.run AS Run,
+                                                             fps_unusualkills.jump AS Jump,
+                                                             fps_unusualkills.flash AS Flash,
+                                                             fps_unusualkills.smoke AS Smoke,
+                                                             fps_unusualkills.whirl AS Whirl
+                                                             FROM fps_unusualkills
+                                                             INNER JOIN fps_players ON fps_unusualkills.account_id = fps_players.account_id
+                                                             WHERE fps_players.steam_id = '{$this->get_steam_64()}' LIMIT 1" );
+
+                break;
+        }
     }
 
     public function get_unusualkills_op() {
