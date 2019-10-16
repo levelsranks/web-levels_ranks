@@ -47,7 +47,7 @@
     font-weight: 400;
     width: 70%;
     border-radius: 10px;
-    background-color: rgba(16, 16, 16, 0.4);
+    background-color: rgba(16, 16, 16, 0.5);
     margin: 0 auto;
     margin-top: 10px;
     line-height: 30px;
@@ -100,7 +100,7 @@
 .custom-server .border_ip {
     position: absolute;
     border-radius: 10px;
-    background-color: rgba(16, 16, 16, 0.4);
+    background-color: rgba(16, 16, 16, 0.5);
     bottom: 68px;
     left: 15%;
     width: 70%;

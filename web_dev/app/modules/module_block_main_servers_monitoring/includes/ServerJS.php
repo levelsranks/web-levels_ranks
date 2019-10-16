@@ -11,6 +11,9 @@
 // Подключение SourceQuery.
 require '../ext/SourceQuery/bootstrap.php';
 
+// Подключение основных функций.
+require '../../../includes/functions.php';
+
 // Импорт класса - SourceQuery.
 use xPaw\SourceQuery\SourceQuery;
 
@@ -58,7 +61,7 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
         $return[ $i_server ]['ip'] = empty( $server_fakeip[ $i_server ] ) ? $server[ $i_server ][0] . ':' . $server[ $i_server ][1] : $server_fakeip[ $i_server ];
 
         // Вывод - Название сервера
-        $return[ $i_server ]['HostName'] = substr( $info[ $i_server ]['HostName'], 0, 43 ) . '..';
+        $return[ $i_server ]['HostName'] = substr_unicode( $info[ $i_server ]['HostName'], 0, 43 ) . '..';
 
         // Проверка на существование изображения карты.
         if( file_exists( '../../../../storage/cache/img/maps/' . $info[ $i_server ]['AppID'] . '/' . array_reverse( explode( "/", $info[ $i_server ]['Map'] ) )[0] . '.jpg') ):

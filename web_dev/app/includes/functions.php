@@ -432,3 +432,18 @@ function action_array_keep_keys( $array, $keys ) {
     }
     return $result;
 }
+
+/**
+ * Замена функции mb_substr, при отсутсвии библиотеки "mbstring".
+ *
+ * @since 0.2
+ *
+ * @param string    $str    Входная строка.
+ * @param int       $s      Количество символов с начала.
+ * @param int       $l      Количество символов с конца.
+ *
+ * @return string           Вывод.
+ */
+function substr_unicode( $str, $s, $l = null ) {
+    return join( "", array_slice( preg_split( "//u", $str, -1, PREG_SPLIT_NO_EMPTY ), $s, $l ) );
+}

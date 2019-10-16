@@ -513,6 +513,7 @@
 - Sleep#0725  ( Discord )   - 250 RUB.
 - Морковка#7277 ( Discord )  - 200 RUB.
 - FIVE#3136   ( Discord )   - 155 RUB.
+- MaZa#8322    ( Discord )  - 150 RUB.
 - ™S.E.N.A.T.O.R™♛#1466 ( Discord )  - 150 RUB.
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
