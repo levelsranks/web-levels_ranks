@@ -518,6 +518,7 @@
 - valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
 - Nestor#9876 ( Discord )   - 150 RUB.
+- d4Ck#0698 ( Discord )   - 147.67 RUB.
 - ka1jaru#1648 ( Discord )  - 137.45 RUB.
 - uraganas#7978 ( Discord )   - 132 RUB.
 - punisher89#7116 ( Discord )  - 104.45 RUB.
