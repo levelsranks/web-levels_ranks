@@ -26,7 +26,7 @@ if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_pag
     if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
         // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
         for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):
-            $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM '{$Db->db_data['LevelsRanks'][ $d ]['Table']}') * 1.0) AS Percent FROM '{$Db->db_data['LevelsRanks'][ $d ]['Table']}' GROUP BY rank" );
+            $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM {$Db->db_data['LevelsRanks'][ $d ]['Table']}) * 1.0) AS Percent FROM {$Db->db_data['LevelsRanks'][ $d ]['Table']} GROUP BY rank" );
         endfor;
     endif;
 
