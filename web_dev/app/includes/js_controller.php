@@ -193,7 +193,7 @@ if( $_POST["function"] == 'avatars' ) {
         $data = json_decode( $url, true )['response']['players'];
 
         // Подсчёт количества элементов массива.
-        $data_count = sizeof( $data );
+        $data_count = is_array( $data ) ? sizeof( $data ) : 0;
 
         // Создание цикла исходя из количества эелементов.
         for ( $i = 0; $i < $data_count; $i++ ) {

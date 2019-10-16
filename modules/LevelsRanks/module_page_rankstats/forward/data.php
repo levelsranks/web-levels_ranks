@@ -26,14 +26,14 @@ if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_pag
     if ( ! empty( $Db->db_data['LevelsRanks'] ) ):
         // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
         for ( $d = 0; $d < $Db->table_count['LevelsRanks']; $d++ ):
-            $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ') * 1.0) AS Percent FROM ' . $Db->db_data['LevelsRanks'][ $d ]['Table'] . ' GROUP BY rank' );
+            $data['module_page_rankstats']['data'][] = $Db->queryAll('LevelsRanks', $Db->db_data['LevelsRanks'][$d]['USER_ID'], $Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM '{$Db->db_data['LevelsRanks'][ $d ]['Table']}') * 1.0) AS Percent FROM '{$Db->db_data['LevelsRanks'][ $d ]['Table']}' GROUP BY rank" );
         endfor;
     endif;
 
     // Проверка на подключенный мод - FPS
     if ( ! empty( $Db->db_data['FPS'] ) ):
         for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
-            $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, 'SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ') * 1.0) AS Percent FROM fps_servers_stats WHERE fps_servers_stats.server_id = ' . $d . ' GROUP BY rank' );
+            $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, "SELECT rank, COUNT(rank) * 100.0 / ((SELECT COUNT(rank) FROM fps_servers_stats WHERE fps_servers_stats.server_id = '{$d}') * 1.0) AS Percent FROM fps_servers_stats WHERE fps_servers_stats.server_id = '{$d}' GROUP BY rank" );
         endfor;
     endif;
     
@@ -41,7 +41,10 @@ if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_pag
     $Modules->set_module_cache( 'module_page_rankstats', $data['module_page_rankstats'] );
 endif;
 
-( $server_group > $Db->table_statistics_count - 1 || $server_group < 0 ) && header( 'Location: ' . $General->arr_general ) && exit;
+if( $server_group > $Db->table_statistics_count - 1 || $server_group < 0 ):
+    header( 'Location: ' . $General->arr_general['site'] );
+    die();
+endif;
 
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' .  $Db->statistics_table[ $server_group ]['name'] );
