@@ -523,6 +523,7 @@
 - uraganas#7978 ( Discord )   - 132 RUB.
 - punisher89#7116 ( Discord )  - 104.45 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
+- HILER#3959  ( Discord )   - 100 RUB.
 - Truyn#6750  ( Discord )   - 100 RUB.
 - DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
