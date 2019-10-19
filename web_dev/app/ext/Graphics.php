@@ -13,13 +13,48 @@ namespace app\ext;
 class Graphics {
 
     /**
+     * @since 0.2
+     * @var object
+     */
+    public    $General;
+
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $Modules;
+
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $Db;
+
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $Auth;
+
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $Notifications;
+
+    /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
      *
      * @since 0.2
      */
-    function __construct( $General, $Modules, $Db, $Auth, $Notifications ) {
+    function __construct( $Translate, $General, $Modules, $Db, $Auth, $Notifications ) {
+
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
 
         $Graphics = $this;
+
+        $this->Translate = $Translate;
 
         $this->General = $General;
 

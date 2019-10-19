@@ -17,13 +17,13 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
 // Ограничиваем время выполнения скрипта.
-set_time_limit(3);
+set_time_limit(4);
 
 // Нахожение в пространстве LR.
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.122');
+define('VERSION', '0.2.123');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', 'app/page/general/');
@@ -91,6 +91,9 @@ session_start();
 // Включение буферизации.
 ob_start();
 
+// Импортирование класса отвечающего за работу с языками и переводами.
+use app\ext\Translate;
+
 // Импортирование глобального класса отвечающего за работу с базами данных.
 use app\ext\Db;
 
@@ -115,20 +118,23 @@ spl_autoload_register( function( $class ) {
     file_exists( $path ) && require $path;
 } );
 
+// Создание экземпляра класса работающего с языками и переводами.
+$Translate      = new Translate;
+
 // Создание экземпляра класса работающего с базами данных.
 $Db             = new Db;
+
+// Создание экземпляра класса уведомлений.
+$Notifications  = new Notifications ( $Translate, $Db );
 
 // Создание основного экземпляра класса.
 $General        = new General ( $Db );
 
 // Создание экземпляра класса работающего с модулями.
-$Modules        = new Modules       ( $General );
-
-// Создание экземпляра класса уведомлений.
-$Notifications  = new Notifications ( $Db, $Modules );
+$Modules        = new Modules       ( $General, $Translate, $Notifications );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
 $Auth           = new Auth          ( $General, $Db );
 
 // Создание экземпляра графического класса.
-$Graphics       = new Graphics      ( $General, $Modules, $Db, $Auth, $Notifications );
+$Graphics       = new Graphics      ( $Translate, $General, $Modules, $Db, $Auth, $Notifications );

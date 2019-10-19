@@ -54,7 +54,23 @@ class Auth {
      */
     public    $admins_count = 0;
 
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $General;
+
+    /**
+     * @since 0.2
+     * @var object
+     */
+    public    $Db;
+
     function __construct( $General, $Db ) {
+
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
         // Импорт основного класса.
         $this->General = $General;
 

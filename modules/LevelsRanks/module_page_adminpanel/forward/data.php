@@ -8,6 +8,13 @@
  * @license GNU General Public License Version 3
  */
 
+/**
+ * Хуже не было давно -
+ * Я пробиваю третье дно.
+ * Море нечем потрясти.
+ * Выживают лопасти.
+ */
+
 // Ведущая проверка.
 ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
 
@@ -53,4 +60,4 @@ isset( $_POST['save_server'] ) && $Admin->action_add_server();
 isset( $_POST['del_server'] ) && $Admin->action_del_server();
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Admin_panel') );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Admin_panel') );

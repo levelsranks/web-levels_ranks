@@ -32,6 +32,18 @@ switch ( empty( $Modules->array_modules['module_block_main_stats']['setting']['c
                             ( SELECT sum(playtime) FROM fps_servers_stats ) AS playtime')[0];
         endif;
         $data['module_block_main_stats'] = empty( $d_data['Total_players'] ) ? ['Total_players' => array_sum( array_column( $d_data, 'Total_players') ), 'Players_24h' => array_sum( array_column( $d_data, 'Players_24h') ), 'Headshot' => array_sum( array_column( $d_data, 'Headshot') ), 'playtime' => array_sum( array_column( $d_data, 'playtime') )] : $d_data;
+
+        // Проверка на подключенный мод - RankMeKento
+        if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+            for ( $d = 0; $d < $Db->table_count['RankMeKento']; $d++ ):
+                $d_data[] = $Db->queryAll('RankMeKento', $Db->db_data['RankMeKento'][ $d ]['USER_ID'], $Db->db_data['RankMeKento'][ $d ]['DB_num'],
+                    'SELECT ( SELECT COUNT(1) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1) AS Total_players,
+                            ( SELECT COUNT(1) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1) AS Players_24h,
+                            ( SELECT sum(headshots) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1) AS Headshot,
+                            ( SELECT sum(connected) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1) AS playtime')[0];
+            endfor;
+        endif;
+        $data['module_block_main_stats'] = empty( $d_data['Total_players'] ) ? ['Total_players' => array_sum( array_column( $d_data, 'Total_players') ), 'Players_24h' => array_sum( array_column( $d_data, 'Players_24h') ), 'Headshot' => array_sum( array_column( $d_data, 'Headshot') ), 'playtime' => array_sum( array_column( $d_data, 'playtime') )] : $d_data;
         break;
     case 1:
         // Получаем кэша данного модуля.
@@ -67,6 +79,17 @@ switch ( empty( $Modules->array_modules['module_block_main_stats']['setting']['c
                 $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('FPS', 0, 0, 'SELECT COUNT(1) FROM fps_servers_stats WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1')[0];
                 $data['module_block_main_stats']['Headshot'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(headshots) FROM fps_weapons_stats LIMIT 1')[0];
                 $data['module_block_main_stats']['playtime'] += $Db->queryNum('FPS', 0, 0, 'SELECT sum(playtime) FROM fps_servers_stats LIMIT 1')[0];
+            endif;
+
+            // Проверка на подключенный мод - RankMeKento
+            if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+                // Циклом подключаемся к базам данных и сохраняем информацию для нашего кэша.
+                for ( $d = 0; $d < $Db->table_count['RankMeKento']; $d++ ) {
+                    $data['module_block_main_stats']['Total_players'] += $Db->queryNum('RankMeKento', $Db->db_data['RankMeKento'][ $d ]['USER_ID'], $Db->db_data['RankMeKento'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['Players_24h'] += $Db->queryNum('RankMeKento', $Db->db_data['RankMeKento'][ $d ]['USER_ID'], $Db->db_data['RankMeKento'][ $d ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' WHERE lastconnect>=' . (time() - 86400) . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['Headshot'] += $Db->queryNum('RankMeKento', $Db->db_data['RankMeKento'][ $d ]['USER_ID'], $Db->db_data['RankMeKento'][ $d ]['DB_num'], 'SELECT sum(headshots) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1')[0];
+                    $data['module_block_main_stats']['playtime'] += $Db->queryNum('RankMeKento', $Db->db_data['RankMeKento'][ $d ]['USER_ID'], $Db->db_data['RankMeKento'][ $d ]['DB_num'], 'SELECT sum(connected) FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' LIMIT 1')[0];
+                }
             endif;
             
             // Сохраняем новый кэш для данного модуля.

@@ -7,6 +7,7 @@
                 <select name="STATS">
                     <option value="LevelsRanks">Levels Ranks</option>
                     <option value="FPS">Fire Players Stats</option>
+                    <option value="RankMeKento">RankMe Kento</option>
                 </select>
             </div>
             <div class="input-form"><div class="input_text">HOST</div><input name="HOST" value="<?php ! empty( $_POST['HOST'] ) && print $_POST['HOST']?>"></div>

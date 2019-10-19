@@ -37,6 +37,15 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         order by `value` desc LIMIT 10' );
             endfor;
         endif;
+
+        // Проверка на подключенный мод - RankMeKento
+        if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+            for ($d = 0; $d < $Db->table_count['RankMeKento']; $d++ ):
+                // Забираем массив даннхы
+                $data['module_block_main_top'][] = $Db->queryAll( 'RankMeKento', $Db->db_data['RankMeKento'][$d]['USER_ID'], $Db->db_data['RankMeKento'][$d]['DB_num'],'SELECT `name`, steam, connected AS playtime, score AS `value`, kills, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
+            endfor;
+        endif;
+
         break;
     case 1:
         // Получаем кэш
@@ -75,6 +84,14 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                         WHERE fps_servers_stats.server_id = ' . $d . '
                                                         order by `value` desc LIMIT 10' );
+                endfor;
+            endif;
+
+            // Проверка на подключенный мод - Levels Ranks
+            if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+                for ($d = 0; $d < $Db->table_count['RankMeKento']; $d++ ):
+                    // Забираем массив даннхы
+                    $data['module_block_main_top'][] = $Db->queryAll( 'RankMeKento', $Db->db_data['RankMeKento'][$d]['USER_ID'], $Db->db_data['RankMeKento'][$d]['DB_num'],'SELECT `name`, steam, connected AS playtime, score AS `value`, kills, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM ' . $Db->db_data['RankMeKento'][ $d ]['Table'] . ' order by `value` desc LIMIT 10' );
                 endfor;
             endif;
             

@@ -19,36 +19,11 @@
                 <?php $General->get_icon( 'custom', 'translate', 'global' )?>
             </a>
             <ul class="subsection">
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'RU' )?>'">
-                        <?php $General->get_icon( 'custom', 'ru', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_RU' )?>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'EN' )?>'">
-                        <?php $General->get_icon( 'custom', 'en', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_EN' )?>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'UA' )?>'">
-                        <?php $General->get_icon( 'custom', 'ua', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_UA' )?>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'LT' )?>'">
-                        <?php $General->get_icon( 'custom', 'lt', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_LT' )?>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'DE' )?>'">
-                        <?php $General->get_icon( 'custom', 'de', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_DE' )?>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', 'CH' )?>'">
-                        <?php $General->get_icon( 'custom', 'ch', 'flags' )?> <?php echo $Modules->get_translate_phrase( '_CH' )?>
-                    </a>
-                </li>
+                <?php for ( $i = 0; $i < $Translate->arr_languages_count; $i++ ): ?>
+                    <li><a href="#" onclick="location.href = '<?php echo set_url_section( get_url( 2 ), 'language', $Translate->arr_languages[ $i ] )?>'">
+                            <?php $General->get_icon( 'custom', strtolower( $Translate->arr_languages[ $i ] ), 'flags' )?> <?php echo $Translate->get_translate_phrase( '_' . $Translate->arr_languages[ $i ] )?>
+                        </a></li>
+                <?php endfor?>
             </ul>
         </li>
         <?php if( empty( $General->arr_general['disable_palettes_change'] ) ):?><li class="section navbar-icon">

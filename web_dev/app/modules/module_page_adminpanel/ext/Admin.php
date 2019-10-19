@@ -12,8 +12,11 @@ class Admin {
 
     function __construct( $General, $Modules, $Auth, $Db ) {
 
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
         // Ведущая проверка.
-        ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' && ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
+        ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
 
         $this->General = $General;
 

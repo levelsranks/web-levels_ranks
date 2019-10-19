@@ -68,6 +68,11 @@ class Player {
     /**
      * @var array
      */
+    public $check_user = [];
+
+    /**
+     * @var array
+     */
     public $profile_status = [ 'text' => '', 'color' => '', 'priority' => 0 ];
 
     /**
@@ -109,6 +114,12 @@ class Player {
             endfor;
         endif;
 
+        if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+            for ( $i = 0, $c = sizeof( $Db->db_data['RankMeKento'] ); $i < $c; $i++ ):
+                $dates[] = $Db->db_data['RankMeKento'][ $i ];
+            endfor;
+        endif;
+
         // Вводим переменную для работы с серверами FPS
         $f = 1;
 
@@ -116,15 +127,18 @@ class Player {
 
             switch ( $dates[ $i ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $cheking = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" );
                     break;
                 case 'FPS':
-                    $cheking = $Db->query( $dates[ $i ]['DB_mod'], 0, 0, "SELECT fps_players.steam_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%" . $this->get_steam_64() . "%' AND fps_servers_stats.server_id = '" . $f++ . "' LIMIT 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], 0, 0, "SELECT fps_players.steam_id, fps_players.account_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%{$this->get_steam_64()}%' AND fps_servers_stats.server_id = '" . $f++ . "' LIMIT 1" );
+                    break;
+                case 'RankMeKento':
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" );
                     break;
             }
 
             // Поиск игрока в таблицах.
-            if ( ! empty( $cheking ) ):
+            if ( ! empty( $this->check_user[ $i ] ) ):
 
                 $this->found[ $i ] = [
                     "DB_mod"        => $dates[ $i ]['DB_mod'],
@@ -152,7 +166,6 @@ class Player {
                     endif;
                 endif;
             endif;
-            unset( $cheking );
         endfor;
 
         empty( $this->found[ $this->server_group ] ) && get_iframe( '009', 'Данная страница не существует' );
@@ -216,14 +229,33 @@ class Player {
                 unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
             endfor;
 
-            $this->get_db_fps_hits();
+            $this->get_db_plugin_module_hits();
 
             if ( $Db->mysql_table_search( 'FPS', 0, 0, 'fps_unusualkills' ) == 1 ):
                 $this->unusualkills = $this->get_db_plugin_module_unusualkills();
             else:
                 $this->unusualkills = false;
             endif;
+        endif;
 
+        if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'RankMeKento' ):
+
+            $this->weapons = $this->get_db_exstats_weapons();
+
+            empty( $this->weapons ) && $this->weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
+
+            arsort($this->weapons);
+
+            $this->weapons_count = sizeof( $this->weapons );
+
+            for ( $i = 0; $i < 3; $i++ ):
+                $this->weapons_count < 3 && $this->top_weapons_count = sizeof( $this->weapons );
+                $this->top_weapons[ $i ]['name'] = empty( $this->top_weapons_count ) ? 'weapon_knife' : array_search( max( $this->weapons ), $this->weapons );
+                $this->top_weapons[ $i ]['kills'] = empty( $this->top_weapons_count ) ? '-' : max( $this->weapons );
+                unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
+            endfor;
+
+            $this->get_db_plugin_module_hits();
         endif;
     }
 
@@ -334,16 +366,39 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
-                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT name, rank, steam, value FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                    $b['countdown_from'] = $this->top_position - $size_a;
+                    return $b;
+                    break;
+                case 'RankMeKento':
+                    $a = array_reverse($this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < score ORDER BY score ASC LIMIT 5" ) );
+                    $size_a = sizeof( $a );
+                    $b = array_merge( $a, $this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `score` <= '" . $this->get_value() . "' ORDER BY score DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
                     break;
                 case 'FPS':
-                    $a = array_reverse($this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " AND '" . $this->get_value() . "' < fps_servers_stats.points ORDER BY value ASC LIMIT 5" ) );
+                    $a = array_reverse($this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name,
+                                                                                 fps_players.steam_id AS steam,
+                                                                                 fps_servers_stats.points AS value,
+                                                                                 fps_servers_stats.rank
+                                                                                 FROM fps_players
+                                                                                 INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                                                 WHERE fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
+                                                                                 AND '{$this->get_value()}' < fps_servers_stats.points
+                                                                                 ORDER BY value ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
-                    $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name, fps_players.steam_id AS steam, fps_servers_stats.points AS value, fps_servers_stats.rank FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_servers_stats.points <= '" . $this->get_value() . "' AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " ORDER BY value DESC LIMIT 11" ) );
+                    $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name,
+                                                                                    fps_players.steam_id AS steam,
+                                                                                    fps_servers_stats.points AS value,
+                                                                                    fps_servers_stats.rank
+                                                                                    FROM fps_players
+                                                                                    INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
+                                                                                    WHERE fps_servers_stats.points <= '{$this->get_value()}'
+                                                                                    AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
+                                                                                    ORDER BY value DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
                     break;
@@ -357,7 +412,10 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths, round_win, round_lose, shoots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
+                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name`, rank, steam, playtime, `value`, kills, headshots, deaths, round_win, round_lose, shoots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
+                    break;
+                case 'RankMeKento':
+                    return $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name`, steam, connected AS playtime, score AS `value`, kills, headshots, deaths, match_win AS round_win, match_lose AS round_lose, shots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
                     break;
                 case 'FPS':
                     return $this->Db->query('FPS', 0, 0, "SELECT fps_players.steam_id AS steam,
@@ -383,8 +441,8 @@ class Player {
                                                                  FROM fps_players
                                                                  INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                                  LEFT JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id
-                                                                 WHERE fps_players.steam_id = " . $this->get_steam_64() . " 
-                                                                 AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " 
+                                                                 WHERE fps_players.steam_id = '{$this->get_steam_64()}'
+                                                                 AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
                                                                  LIMIT 1");
                     break;
             }
@@ -398,6 +456,9 @@ class Player {
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
                     return $this->Db->query( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `value` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
+                    break;
+                case 'RankMeKento':
+                    return $this->Db->query( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `score` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `score` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
                     break;
                 case 'FPS':
                     return $this->Db->query( 'FPS', 0, 0, "SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `points` FROM fps_servers_stats WHERE `points` >= " . $this->get_value() . " AND server_id = " . $this->found[ $this->server_group ]['server_int'] . " ) t;")['top']+1;
@@ -417,8 +478,16 @@ class Player {
                     return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_usp, weapon_sg552, weapon_sg550, weapon_scout, weapon_galil, weapon_mp5navy, weapon_tmp, weapon_m3, weapon_p228, weapon_knife, weapon_glock, weapon_deagle, weapon_elite, weapon_fiveseven, weapon_xm1014, weapon_mac10, weapon_ump45, weapon_p90, weapon_famas, weapon_ak47, weapon_m4a1, weapon_awp, weapon_aug, weapon_ssg08, weapon_m249, weapon_g3sg1 FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 }
                 break;
+            case 'RankMeKento':
+                    return $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT knife AS weapon_knife,glock AS weapon_glock,hkp2000 AS weapon_hkp2000,usp_silencer AS weapon_usp_silencer,p250 AS weapon_p250,deagle AS weapon_deagle,elite AS weapon_elite,fiveseven AS weapon_fiveseven,tec9 AS weapon_tec9,cz75a AS weapon_cz75a,revolver AS weapon_revolver,nova AS weapon_nova,xm1014 AS weapon_xm1014,mag7 AS weapon_mag7,sawedoff AS weapon_sawedoff,bizon AS weapon_bizon,mac10 AS weapon_mac10,mp9 AS weapon_mp9,mp7 AS weapon_mp7,ump45 AS weapon_ump45,p90 AS weapon_p90,galilar AS weapon_galilar,ak47 AS weapon_ak47,scar20 AS weapon_scar20,famas AS weapon_famas,m4a1 AS weapon_m4a1,m4a1_silencer AS weapon_m4a1_silencer,aug AS weapon_aug,ssg08 AS weapon_ssg08,sg556 AS weapon_sg556,awp AS weapon_awp,g3sg1 AS weapon_g3sg1,m249 AS weapon_m249,negev AS weapon_negev,hegrenade AS weapon_hegrenade,flashbang AS weapon_flashbang,smokegrenade AS weapon_smokegrenade,inferno AS weapon_inferno,decoy AS weapon_decoy,taser AS weapon_taser FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+                break;
             case 'FPS':
-                $a = $this->Db->queryAll('FPS', 0, 0, "SELECT fps_weapons_stats.weapon, fps_weapons_stats.kills FROM fps_weapons_stats INNER JOIN fps_players ON fps_weapons_stats.account_id = fps_players.account_id INNER JOIN fps_servers_stats ON fps_weapons_stats.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id = " . $this->get_steam_64() . " AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . " ");
+                $a = $this->Db->queryAll('FPS', 0, 0, "SELECT fps_weapons_stats.weapon,
+                                                              fps_weapons_stats.kills
+                                                              FROM fps_weapons_stats
+                                                              INNER JOIN fps_servers_stats ON fps_weapons_stats.account_id = fps_servers_stats.account_id
+                                                              WHERE fps_weapons_stats.account_id = '{$this->check_user[ $this->server_group ]['account_id']}'
+                                                              AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}' ");
                 $b = [];
                 for ( $i = 0, $c = sizeof( $a ); $i < $c; $i++ ):
                     $b += [ 'weapon_' . $a[ $i ]['weapon'] => $a[ $i ]['kills'] ];
@@ -445,7 +514,6 @@ class Player {
                                                              FROM fps_unusualkills
                                                              INNER JOIN fps_players ON fps_unusualkills.account_id = fps_players.account_id
                                                              WHERE fps_players.steam_id = '{$this->get_steam_64()}' LIMIT 1" );
-
                 break;
         }
     }
@@ -483,14 +551,20 @@ class Player {
     }
 
     private function get_db_plugin_module_hits() {
-        $h = [];
-        $h = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
-        return $this->hits = empty( $h ) ? [] : $h + $this->hits;
-    }
-
-    private function get_db_fps_hits() {
-        $h = [];
-        $h = $this->Db->query('FPS', 0, 0, "SELECT SUM(fps_weapons_stats.hits_head) AS Head,
+        switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
+            case 'LevelsRanks':
+                $h = [];
+                $h = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+                return $this->hits = empty( $h ) ? [] : $h + $this->hits;
+                break;
+            case 'RankMeKento':
+                $h = [];
+                $h = $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT head AS Head, chest AS Chest, stomach AS Belly, left_arm AS LeftArm, right_arm AS RightArm, left_leg AS LeftLeg, right_leg AS RightLeg FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+                return $this->hits = empty( $h ) ? [] : $h + $this->hits;
+                break;
+            case 'FPS':
+                $h = [];
+                $h = $this->Db->query('FPS', 0, 0, "SELECT SUM(fps_weapons_stats.hits_head) AS Head,
                                                    SUM(fps_weapons_stats.hits_neck) AS Neak,
                                                    SUM(fps_weapons_stats.hits_chest) AS Chest,
                                                    SUM(fps_weapons_stats.hits_stomach) AS Belly,
@@ -498,13 +572,14 @@ class Player {
                                                    SUM(fps_weapons_stats.hits_right_arm) AS RightArm,
                                                    SUM(fps_weapons_stats.hits_left_leg) AS LeftLeg,
                                                    SUM(fps_weapons_stats.hits_right_leg) AS RightLeg
-                                                   FROM fps_players
-                                                   INNER JOIN fps_weapons_stats ON fps_players.account_id = fps_weapons_stats.account_id
-                                                   INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
-                                                   WHERE fps_players.steam_id = " . $this->get_steam_64() . "
-                                                   AND fps_servers_stats.server_id = " . $this->found[ $this->server_group ]['server_int'] . "
+                                                   FROM fps_weapons_stats
+                                                   INNER JOIN fps_servers_stats ON fps_weapons_stats.account_id = fps_servers_stats.account_id
+                                                   WHERE fps_weapons_stats.account_id = '{$this->check_user[ $this->server_group ]['account_id']}'
+                                                   AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
                                                    LIMIT 1");
-        return $this->hits = empty( $h ) ? [] : $h + $this->hits;
+                return $this->hits = empty( $h ) ? [] : $h + $this->hits;
+                break;
+        }
     }
 
     public function get_hits_all() {

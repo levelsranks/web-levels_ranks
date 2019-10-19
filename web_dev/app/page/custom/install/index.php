@@ -262,6 +262,8 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
             $db_table = 'lvl_base';
         elseif( $_POST['STATS'] == 'FPS' ):
             $db_table = 'fps_servers_stats';
+        elseif( $_POST['STATS'] == 'RankMeKento' ):
+            $db_table = 'rankme';
         endif;
     else:
         $db_table = $_POST['TABLE'];

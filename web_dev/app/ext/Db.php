@@ -89,7 +89,7 @@ class Db {
      * @since 0.2
      * @var array
      */
-    public    $support_statistics = ['LevelsRanks', 'FPS'];
+    public    $support_statistics = ['LevelsRanks', 'FPS', 'RankMeKento'];
 
     /**
      * @since 0.2
@@ -110,6 +110,9 @@ class Db {
      */
     public function __construct() {
 
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
         $this->db = $this->get_db_options();
 
         // PDO Условия.
@@ -121,6 +124,7 @@ class Db {
 
         $this->table_count['LevelsRanks'] = 0;
         $this->table_count['FPS'] = 0;
+        $this->table_count['RankMeKento'] = 0;
 
         # Подсчёт -> Количество модов.
         $this->mod_count = sizeof( $this->db );
@@ -186,15 +190,15 @@ class Db {
                                         'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
                                         'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
                                         'DB_num' => $d,
-                                        'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
+                                        'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] ?? '',
                                         'table_id' => $t,
-                                        'name' => $this->fps_servers_data[ $_m ]['server_name'],
-                                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
-                                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
+                                        'name' => $this->fps_servers_data[ $_m ]['server_name'] ?? '',
+                                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? '',
+                                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? '',
                                         'ranks_id' => $this->fps_servers_data[ $_m ]['settings_rank_id'],
-                                        'ranks_pack' => $rank_pack
+                                        'ranks_pack' => $rank_pack ?? ''
                                     ];
-                                    $this->statistics_table[] = [ 'name' => $this->fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack];
+                                    $this->statistics_table[] = [ 'DB_mod' => 'FPS', 'name' => $this->fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack ];
                                 endfor;
                                 break;
                             case 'HLstatsX':
@@ -208,14 +212,14 @@ class Db {
                             'USER' => $this->db[ $this->mod_name[ $m ] ][ $u ]['USER'],
                             'DB' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['DB'],
                             'DB_num' => $d,
-                            'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'],
+                            'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] ?? '',
                             'table_id' => $t,
-                            'name' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'],
-                            'mod' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'],
-                            'steam' => empty( $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ) ? '' : $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'],
+                            'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'] ?? '',
+                            'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? '',
+                            'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? '',
                             'ranks_pack' => $rank_pack
                         ];
-                        in_array( $this->mod_name[ $m ], $this->support_statistics ) && $this->statistics_table[] = [ 'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'], 'ranks_pack' => $rank_pack];
+                        in_array( $this->mod_name[ $m ], $this->support_statistics ) && $this->statistics_table[] = [ 'DB_mod' => $this->mod_name[ $m ], 'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'], 'ranks_pack' => $rank_pack];
                     endif;
                 }
 
@@ -226,7 +230,7 @@ class Db {
             $this->table_count[ $this->mod_name[ $m ] ] = sizeof( $this->db_data[ $this->mod_name[ $m ] ] );
         }
 
-        $this->table_statistics_count = $this->table_count['LevelsRanks'] + $this->table_count['FPS'];
+        $this->table_statistics_count = $this->table_count['LevelsRanks'] + $this->table_count['FPS'] + $this->table_count['RankMeKento'];
     }
 
     /**

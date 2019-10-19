@@ -38,6 +38,9 @@ class General {
      */
     function __construct( $Db ) {
 
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
         $this->Db = $Db;
 
         // Получение настроек вэб-интерфейса.

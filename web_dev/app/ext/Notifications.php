@@ -14,10 +14,17 @@ class Notifications {
 
     public $Modules;
     public $Db;
+    public $Translate;
 
-	function __construct( $Db, $Modules ) {
-		$this->Modules = $Modules;
-		$this->db = $Db;
+	function __construct( $Translate, $Db ) {
+
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
+		$this->Translate = $Translate;
+
+        $this->Db = $Db;
+
 		$this->NotificationsRender();
 	}
 
@@ -44,7 +51,7 @@ class Notifications {
             'url' => $url,
             'icon' => $icon,
         ];
-        $this->db->query('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "INSERT INTO `lr_web_notifications`(`steam`, `text`, `values_insert`, `url`, `icon`, `seen`, `status`) VALUES ('$param[steam]', '$param[text]', '$param[values_insert]', '$param[url]', '$param[icon]', 0, 0)");
+        $this->Db->query('Core', 0, 0, "INSERT INTO `lr_web_notifications`(`steam`, `text`, `values_insert`, `url`, `icon`, `seen`, `status`) VALUES ('{$param['steam']}', '{$param['text']}', '{$param['values_insert']}', '{$param['url']}', '{$param['icon']}', 0, 0)");
     }
     
     /**
@@ -52,7 +59,7 @@ class Notifications {
     */
 	public function NotificationsRender() {
 		//Проверка на ссессию авторизации и на POST запросы
-		if(!empty($_SESSION['steamid32']) && !empty($_POST['notific']) || !empty($_SESSION['steamid32']) && !empty($_POST['entryid']))
+		if( ! empty( $_SESSION['steamid32'] ) && ! empty( $_POST['notific'] ) || ! empty( $_SESSION['steamid32'] ) && ! empty( $_POST['entryid'] ) )
 		{
 			if(!empty($_POST['notific'])){
 				//Если POST о просмотре запроса вызываем функцию обновления уведемления просмотра
@@ -90,10 +97,10 @@ class Notifications {
 		        }
 		        //Вывод
                 if ( ! empty( $notifications ) ):
-                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Modules->get_translate_phrase('_No_Notifications'), 'notifications' => array_reverse($notifications)));
+                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Translate->get_translate_phrase('_No_Notifications'), 'notifications' => array_reverse($notifications)));
                     exit;
                 else:
-                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Modules->get_translate_phrase('_No_Notifications'), 'notifications' => null));
+                    echo json_encode(array('count' => $unread_count, 'no_notifications' => $this->Translate->get_translate_phrase('_No_Notifications'), 'notifications' => null));
                     exit;
                 endif;
 		    }
@@ -109,15 +116,15 @@ class Notifications {
     */
 	public function NotificationsEach( $view ) {
         $param = ['steam'=> $_SESSION['steamid32']];
-        $NotificationsEach = $this->db->queryAll('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "SELECT * FROM `lr_web_notifications` WHERE `status` = 0 AND `steam` = '$param[steam]' ORDER BY id DESC");
+        $NotificationsEach = $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `status` = 0 AND `steam` = '$param[steam]' ORDER BY id DESC");
         $deliver = [];
         
         foreach($NotificationsEach as $notification){
             $values = json_decode($notification['values_insert']);
             //проверка на перевод 
              if(!empty($values->module_translation)){
-            	$text = $this->Modules->get_translate_module_phrase($values->module_translation, $notification['text']);
-            }else $text = $this->Modules->get_translate_phrase($notification['text']);
+            	$text = $this->Translate->get_translate_module_phrase($values->module_translation, $notification['text']);
+            }else $text = $this->Translate->get_translate_phrase($notification['text']);
 
             if(!$values){
                 $values = [];
@@ -130,7 +137,7 @@ class Notifications {
             $deliver[] = array('id' => $notification['id'], 'text' => $text, 'seen' => $notification['seen'], 'url' => $notification['url'], 'icon' => $notification['icon']);
             //Обновлям параметра для звукового уведомления
             if($view && !$notification['seen']){
-                $this->db->query( 'LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "UPDATE `lr_web_notifications` SET `seen` = 1 WHERE `steam` = '$param[steam]'");
+                $this->Db->query( 'Core', 0, 0, "UPDATE `lr_web_notifications` SET `seen` = 1 WHERE `steam` = '$param[steam]'");
             }
         }
         return $deliver;
@@ -143,7 +150,7 @@ class Notifications {
     */
     public function NotificationUpdate($id) {
     	$param = ['steam'=> $_SESSION['steamid32'],'id'=> $id];
-       $this->db->query( 'LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "UPDATE `lr_web_notifications` SET `status` = 1 WHERE `steam` = '$param[steam]' AND `id` = $param[id]");
+        $this->Db->query( 'Core', 0, 0, "UPDATE `lr_web_notifications` SET `status` = 1 WHERE `steam` = '$param[steam]' AND `id` = $param[id]");
     }
 
     /**
@@ -152,7 +159,7 @@ class Notifications {
     */
    	public function GetAllNotifications() {
    		$param = ['steam' => $_SESSION['steamid32']];
-        return $this->db->queryAll('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "SELECT * FROM `lr_web_notifications` WHERE `steam` = '$param[steam]'  ORDER BY date DESC");
+        return $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `steam` = '$param[steam]'  ORDER BY date DESC");
    	}
 
    	/**
@@ -161,7 +168,7 @@ class Notifications {
     */
    	public function MarkAllNotifications() {
    		$param = ['steam'=> $_SESSION['steamid32']];
-        return $this->db->queryAll('LevelsRanks', $this->db->db_data['LevelsRanks'][ 0 ]['USER_ID'], $this->db->db_data['LevelsRanks'][ 0 ]['DB_num'], "UPDATE `lr_web_notifications` SET `status` = 1 WHERE `steam` = :'$param[steam]'");
+        return $this->Db->queryAll('Core', 0, 0, "UPDATE `lr_web_notifications` SET `status` = 1 WHERE `steam` = :'$param[steam]'");
    	}
 
     public function debuggg(){

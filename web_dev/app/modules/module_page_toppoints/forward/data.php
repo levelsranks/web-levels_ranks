@@ -58,6 +58,18 @@ if ( ! empty( $Db->db_data['FPS'] ) ):
     }
 endif;
 
+// Проверка на подключенный мод - RankMeKento
+if ( ! empty( $Db->db_data['RankMeKento'] ) ):
+    for ($d = 0; $d < $Db->table_count['RankMeKento']; $d++) {
+        $res_data[] = ['statistics' => 'RankMeKento',
+            'name_servers' => $Db->db_data['RankMeKento'][$d]['name'],
+            'mod' => $Db->db_data['RankMeKento'][$d]['mod'],
+            'USER_ID' => $Db->db_data['RankMeKento'][$d]['USER_ID'],
+            'data_db' => $Db->db_data['RankMeKento'][$d]['DB_num'],
+            'data_servers' => $Db->db_data['RankMeKento'][$d]['Table']];
+    }
+endif;
+
 $res = [];
 
 $page_num_min = ($page_num - 1) * PLAYERS_ON_PAGE;
@@ -85,6 +97,10 @@ if( ! empty( $res_data[ $server_group ]['statistics'] ) ):
                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                         WHERE fps_servers_stats.server_id = ' . $res_data[ $server_group ]["server_id"] . ' order by ' . $_SESSION["filter"] . ' desc LIMIT ' . $page_num_min . ',' . PLAYERS_ON_PAGE . ' ');
             break;
+        case 'RankMeKento':
+            $page_max = ceil($Db->queryNum( 'RankMeKento', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT COUNT(*) FROM " . $res_data[ $server_group ]['data_servers'] . " ")[0] / PLAYERS_ON_PAGE );
+            $res = $Db->queryAll( 'RankMeKento', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT `name`, steam, connected AS playtime, score AS `value`, kills, headshots, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[ $server_group ]['data_servers'] . " order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
+            break;
     }
 endif;
 
@@ -93,7 +109,7 @@ $page_num > $page_max && get_iframe( '009', 'Данная страница не 
 $res == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Translate->get_translate_phrase('_Page') . ' ' . $page_num );
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Modules->get_translate_phrase('_Page') . ' ' . $page_num );
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Translate->get_translate_phrase('_Page') . ' ' . $page_num );

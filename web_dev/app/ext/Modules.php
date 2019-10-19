@@ -64,12 +64,6 @@ class Modules {
      * @since 0.2
      * @var array
      */
-    public $arr_translations = [];
-
-    /**
-     * @since 0.2
-     * @var array
-     */
     public $actual_library = [];
 
     /**
@@ -103,13 +97,42 @@ class Modules {
     public $page_image = '';
 
     /**
+     * @since 0.2
+     * @var object
+     */
+    public $General;
+
+    /**
+     * @since 0.2.122
+     * @var object
+     */
+    public $Translate;
+
+    /**
+     * @since 0.2.122
+     * @var object
+     */
+    public $Notifications;
+
+    /**
      * Организация работы вэб-приложения с модулями.
+     *
+     * @param object $General
+     * @param object $Translate
+     * @param object $Notifications
      *
      * @since 0.2
      */
-    function __construct( $General ) {
+    function __construct( $General, $Translate, $Notifications ) {
+
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
 
         $this->General = $General;
+
+        $this->Translate = $Translate;
+
+        $this->Notifications = $Notifications;
 
         // Получение кэшированного списка модулей.
         $this->array_modules = $this->get_arr_modules();
@@ -122,8 +145,10 @@ class Modules {
         
         $this->arr_module_init_page_count = sizeof( $this->arr_module_init['page'] );
 
-        // Актуальная библиотека CSS и JS файлов.
-        $this->actual_library = file_exists( SESSIONS . '/actual_library.json' ) ? json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true ) : ['actual_css_ver' => 0, 'actual_js_ver' => 0];
+        // Библиотека актуальности.
+        $this->actual_library = $this->get_actual_library();
+
+        //isset( $_SESSION['user_admin'] ) && $this->check_actual_modules_list();
 
         // Проверка JS файлов.
         $this->check_generated_js();
@@ -133,9 +158,49 @@ class Modules {
 
         // Проверка для роутера страниц
         ! empty( $_GET["page"] ) && empty( $this->arr_module_init['page'][ $_GET["page"] ] ) && get_iframe( '009', 'Данная страница не существует' );
+    }
 
-        // Получение кэшированного листа переводов.
-        $this->arr_translations = file_exists( SESSIONS . 'translator_cache.php' ) ? require SESSIONS . 'translator_cache.php' : [];
+    /**
+     * Получить библиотеку актуальных данных.
+     *
+     * @since 0.2.122
+     *
+     * @return array    Актуальная информация.
+     */
+    public function get_actual_library() {
+        if( file_exists( SESSIONS . '/actual_library.json' ) ):
+            return json_decode( file_get_contents( SESSIONS . '/actual_library.json') , true );
+        else:
+            $actual = ['actual_css_ver' => 0, 'actual_js_ver' => 0, 'actual_modules_count' => 0];
+            file_put_contents( SESSIONS . '/actual_library.json', json_encode( $actual ) );
+            return $actual;
+        endif;
+    }
+
+    /**
+     * Проверка на актуальный список модулей.
+     *
+     * @since 0.2.122
+     */
+    public function check_actual_modules_list() {
+        // Сканирование папки с модулями.
+        $scan_modules = array_diff( scandir( MODULES, 1 ), array( '..', '.', 'disabled' ) );
+
+        // Подсчёт количества модулей.
+        $scan_modules_count = sizeof( $scan_modules );
+
+        if( $this->actual_library['actual_modules_count'] != $scan_modules_count ):
+            if( $scan_modules_count > $this->actual_library['actual_modules_count'] ):
+                $modules = array_values( array_diff ( $scan_modules, array_keys( $this->array_modules ) ) );
+                for ( $i = 0, $c = sizeof( $modules ); $i < $c; $i++ ):
+                    $modules_desc[ $modules[ $i ] ] = json_decode( file_get_contents( MODULES . $modules[ $i ] . '/description.json') , true);
+                endfor;
+                $final = $this->array_modules + $modules_desc;
+
+                else:
+
+            endif;
+        endif;
     }
 
     /**
@@ -148,7 +213,7 @@ class Modules {
     public function get_module_init() {
         
         // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
-        if ( !file_exists( SESSIONS . 'modules_initialization.php' ) ):
+        if ( ! file_exists( SESSIONS . 'modules_initialization.php' ) ):
 
             $result = [];
             $data_always = [];
@@ -226,63 +291,6 @@ class Modules {
     }
 
     /**
-     * Получить перевод определенной фразы из общего кэша.
-     *
-     * @since 0.2
-     *
-     * @param string $phrase        Слово для перевода.
-     * @param string $group         Подмассив.
-     *
-     * @return string               Выводит слово в переводе.
-     */
-    public function get_translate_phrase( $phrase, $group = '' ) {
-        if ( empty ( $group ) ):
-            if ( empty ( $this->arr_translations[ $phrase ][ $_SESSION['language'] ] ) ):
-                return empty( $this->arr_translations[ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $phrase ]['EN'];
-            else:
-                return $this->arr_translations[ $phrase ][ $_SESSION['language'] ];
-            endif;
-        else:
-            if ( empty ( $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ] ) ):
-                return empty( $this->arr_translations[ $group ][ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $group ][ $phrase ]['EN'];
-            else:
-                return $this->arr_translations[ $group ][ $phrase ][ $_SESSION['language'] ];
-            endif;
-        endif;
-    }
-
-    /**
-     * Получить перевод определенной фразы из кэша модуля.
-     *
-     * @since 0.2
-     *
-     * @param string $module_id         ID модуля.
-     * @param string $phrase            Слово для перевода.
-     *
-     * @return string                   Выводит слово в переводе.
-     */
-    public function get_translate_module_phrase( $module_id, $phrase ) {
-        if ( empty( $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ] ) ):
-            return empty( $this->arr_translations[ $module_id ][ $phrase ]['EN'] ) ? 'No Translation' : $this->arr_translations[ $module_id ][ $phrase ]['EN'];
-        else:
-            return $this->arr_translations[ $module_id ][ $phrase ][ $_SESSION['language'] ];
-        endif;
-    }
-
-    /**
-     * Получить список переводов определенного модуля.
-     *
-     * @since 0.2
-     *
-     * @param string $module_id         ID модуля.
-     *
-     * @return array                    Массив переводов.
-     */
-    public function get_arr_translate_module( $module_id ) {
-        return empty( $this->arr_translations[ $module_id ] ) ? [] : $this->arr_translations[ $module_id ];
-    }
-
-    /**
      * Получение кэша модулей.
      *
      * @since 0.2
@@ -291,50 +299,26 @@ class Modules {
      */
     public function get_arr_modules() {
         $result = [];
-        $result_translation = [];
 
         // Проверка на существование кэша модулей и кэша переводов.
-        if ( ! file_exists( SESSIONS . 'modules_cache.php' ) || ! file_exists( SESSIONS . 'translator_cache.php' ) ) {
+        if ( ! file_exists( SESSIONS . 'modules_cache.php' ) ) {
             // Сканирование папки с модулями.
             $this->scan_modules = array_diff( scandir( MODULES, 1 ), array( '..', '.', 'disabled' ) );
-
-            // Сканирование папки с Паками рангов.
-            $this->scan_ranks_pack = array_diff( scandir( RANKS_PACK, 1 ), array( '..', '.' ) );
 
             // Подсчёт количества модулей.
             $this->array_modules_count = sizeof( $this->scan_modules );
 
-            // Подсчёт количества паков рангов.
-            $this->array_ranks_pack_count = sizeof( $this->scan_ranks_pack );
-
             if( $this->array_modules_count != 0 ) {
-            // Цикл перебора описания модулей.
-            for ( $i = 0; $i < $this->array_modules_count; $i++ ) {
-                // Получение описания определенного модуля.
-                $result[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents( MODULES . $this->scan_modules[ $i ] . '/description.json') , true);
-
-                // Проверка на поддержку мульти-перевода.
-                if ( array_key_exists('translation', $result[ $this->scan_modules[ $i ] ]['setting'] ) && $result[ $this->scan_modules[ $i ] ]['setting']['translation'] == 1) {
-                    // Получение кэша перевода модулей.
-                    $result_translation[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents(MODULES . $this->scan_modules[ $i ] . '/translation.json') , true);
+                // Цикл перебора описания модулей.
+                for ( $i = 0; $i < $this->array_modules_count; $i++ ) {
+                    // Получение описания определенного модуля.
+                    $result[ $this->scan_modules[ $i ] ] = json_decode( file_get_contents( MODULES . $this->scan_modules[ $i ] . '/description.json') , true);
                 }
-            }
 
-            for ( $i = 0; $i < $this->array_ranks_pack_count; $i++ ):
-                $this->rank_pack[ 'ranks_' . $this->scan_ranks_pack[ $i ] ] = json_decode( file_get_contents( RANKS_PACK . $this->scan_ranks_pack[ $i ] . '/title.json' ) , true);
-            endfor;
-
-            $result_translation += $this->rank_pack;
-
-            // Объединение общего кэша мульти-перевода с кэшэм переводов модулей.
-            $result_translation += require SESSIONS . 'translator.php';
             }
 
             // Создание/редактирование кэша модулей.
             file_put_contents( SESSIONS . 'modules_cache.php', '<?php return '.var_export_min( $result ).";" );
-
-            // Создание/редактирование кэша мульти-переводов.
-            file_put_contents( SESSIONS . 'translator_cache.php', '<?php return '.var_export_min( $result_translation ).";" );
         }
         return require SESSIONS . 'modules_cache.php';
     }
@@ -606,26 +590,26 @@ class Modules {
     function action_time_exchange( $seconds, $type = 0 ) {
         if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 && ( $type == 0 || $type == 5 ) ) {
             $month = floor($seconds / 60 / 60 / 24 / 30 );
-            return $month > 1 ? $month . ' ' . $this->get_translate_phrase('_Months') : $month . ' ' . $this->get_translate_phrase('_Month');
+            return $month > 1 ? $month . ' ' . $this->Translate->get_translate_phrase('_Months') : $month . ' ' . $this->Translate->get_translate_phrase('_Month');
 
         } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 && ( $type == 0 || $type == 4 ) ) {
             $week = floor($seconds / 60 / 60 / 24 / 7 );
-            return $week > 1 ? $week . ' ' . $this->get_translate_phrase('_Weeks') : $week . ' ' . $this->get_translate_phrase('_Week');
+            return $week > 1 ? $week . ' ' . $this->Translate->get_translate_phrase('_Weeks') : $week . ' ' . $this->Translate->get_translate_phrase('_Week');
 
         } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 && ( $type == 0 || $type == 3 ) ) {
             $day = floor($seconds / 60 / 60 / 24 );
-            return $day > 1 ? $day . ' ' . $this->get_translate_phrase('_Days') : $day . ' ' . $this->get_translate_phrase('_Day');
+            return $day > 1 ? $day . ' ' . $this->Translate->get_translate_phrase('_Days') : $day . ' ' . $this->Translate->get_translate_phrase('_Day');
 
         } elseif ( floor($seconds / 60 / 60 ) != 0 && ( $type == 0 || $type == 2 ) ) {
             $hour = floor($seconds / 60 / 60 );
-            return $hour > 1 ? $hour . ' ' . $this->get_translate_phrase('_Hour') : $hour . ' ' . $this->get_translate_phrase('_Hour');
+            return $hour > 1 ? $hour . ' ' . $this->Translate->get_translate_phrase('_Hour') : $hour . ' ' . $this->Translate->get_translate_phrase('_Hour');
 
         } elseif ( floor($seconds / 60 ) != 0 && ( $type == 0 || $type == 1 ) ) {
             $min = floor($seconds / 60 );
-            return $min > 1 ? $min . ' ' . $this->get_translate_phrase('_Minute') : $min . ' ' . $this->get_translate_phrase('_Minute');
+            return $min > 1 ? $min . ' ' . $this->Translate->get_translate_phrase('_Minute') : $min . ' ' . $this->Translate->get_translate_phrase('_Minute');
 
         } else {
-            return $seconds . ' ' . $this->get_translate_phrase('_Second');
+            return $seconds . ' ' . $this->Translate->get_translate_phrase('_Second');
         }
     }
 }

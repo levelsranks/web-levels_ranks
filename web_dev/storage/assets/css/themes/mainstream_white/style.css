@@ -355,9 +355,30 @@ template {
     display: none;
 }
 
+li {
+    list-style-type: none
+}
+
+hr {
+    border: none;
+    width: 232px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 18px;
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
 [hidden] {
     display: none;
 }
+
 
 /*
  * Цветовая палитра
@@ -2213,13 +2234,6 @@ tr th a:hover .card_info_block{
     display: none
 }
 
-li {
-    list-style-type: none
-}
-
-.sidebar-menu {
-    height: 100%;
-}
 
 .sidebar-menu .sidebar-icon {
     margin-right: 0;
@@ -2256,6 +2270,7 @@ li {
 }
 
 .sidebar-menu {
+    height: 100%;
     list-style: outside none none;
     padding: 0;
     overflow-y: auto;
@@ -2401,21 +2416,7 @@ li {
     text-decoration: none
 }
 
-hr {
-    border: none;
-    width: 232px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 18px;
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-}
 
-pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
 
 .main-sidebar {
     margin-top: 56px;
