@@ -47,7 +47,7 @@
                                 <li>
                                     <div class="user-rank-more tooltip-right" data-tooltip="<?php echo $Auth->server_info[ $d ]['name_servers']?>">
                                         <div class="rank_img"><img src="<?php echo empty( $Auth->user_auth[ $d ]['rank'] ) ? $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ $d ]['ranks_pack'] . '/00' : $General->arr_general['site'] . '/storage/cache/img/ranks/' . $Auth->server_info[ $d ]['ranks_pack'] . '/' . $Auth->user_auth[ $d ]['rank']?>.png"></div>
-                                        <div class="rank-details"><?php echo $Translate->get_translate_phrase( $Auth->user_auth[ $d ]['rank'], 'ranks_' . $Auth->server_info[ $d ]['ranks_pack'] )?></div>
+                                        <div class="rank-details"><?php echo $Translate->get_translate_phrase( $Auth->user_auth[ $d ]['rank'] ?? 0, 'ranks_' . $Auth->server_info[ $d ]['ranks_pack'] )?></div>
                                     </div>
                                 </li>
                             <?php endfor;?>

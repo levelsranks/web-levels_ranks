@@ -17,6 +17,8 @@
     "css": 1,
     "js": 1,
     "cache_enable": 0,
-    "cache_time": 0
+    "cache_time": 0,
+    "data": 0,
+    "data_always": 0
   }
 }

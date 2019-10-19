@@ -47,7 +47,7 @@ if( $server_group > $Db->table_statistics_count - 1 || $server_group < 0 ):
 endif;
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' .  $Db->statistics_table[ $server_group ]['name'] );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Rank_stats') . ' :: ' .  $Db->statistics_table[ $server_group ]['name'] );
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] );
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Rank_stats') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] );

@@ -193,10 +193,10 @@ class Db {
                                         'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] ?? '',
                                         'table_id' => $t,
                                         'name' => $this->fps_servers_data[ $_m ]['server_name'] ?? '',
-                                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? '',
-                                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? '',
+                                        'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? 730,
+                                        'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? 1,
                                         'ranks_id' => $this->fps_servers_data[ $_m ]['settings_rank_id'],
-                                        'ranks_pack' => $rank_pack ?? ''
+                                        'ranks_pack' => $rank_pack ?? 'default'
                                     ];
                                     $this->statistics_table[] = [ 'DB_mod' => 'FPS', 'name' => $this->fps_servers_data[ $_m ]['server_name'], 'ranks_pack' => $rank_pack ];
                                 endfor;

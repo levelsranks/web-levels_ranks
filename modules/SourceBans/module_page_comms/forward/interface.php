@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Comms')?></h5>
+                <h5 class="badge"><?php echo $Translate->get_translate_phrase('_Comms')?></h5>
                 <div class="select-panel select-panel-pages badge"><select onChange="window.location.href=this.value">
                         <option style="display:none" value="" disabled
                                 selected><?php echo $page_num ?></option><?php for ($v = 0; $v < $page_max; $v++):?>
@@ -23,15 +23,15 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="text-center tb-game"><?php echo $Modules->get_translate_phrase('_Game') ?></th>
-                    <th class="text-center"><?php echo $Modules->get_translate_phrase('_Date') ?></th>
-                    <th class="text-center"><?php echo $Modules->get_translate_phrase('_Type') ?></th>
+                    <th class="text-center tb-game"><?php echo $Translate->get_translate_phrase('_Game') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Date') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Type') ?></th>
                     <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
-                    <th class="text-left"><?php echo $Modules->get_translate_phrase('_Player') ?></th>
+                    <th class="text-left"><?php echo $Translate->get_translate_phrase('_Player') ?></th>
                     <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
-                    <th class="text-left"><?php echo $Modules->get_translate_phrase('_Admin') ?></th>
-                    <th class="text-left"><?php echo $Modules->get_translate_phrase('_Reason') ?></th>
-                    <th class="text-center"><?php echo $Modules->get_translate_phrase('_Term') ?></th>
+                    <th class="text-left"><?php echo $Translate->get_translate_phrase('_Admin') ?></th>
+                    <th class="text-left"><?php echo $Translate->get_translate_phrase('_Reason') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Term') ?></th>
                 </tr>
                 </thead>
                 <tbody>

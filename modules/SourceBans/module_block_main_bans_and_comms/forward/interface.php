@@ -2,23 +2,23 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_List_recent_bans')?></h5>
+                <h5 class="badge"><?php echo $Translate->get_translate_phrase('_List_recent_bans')?></h5>
             </div>
             <div class=table-responsive>
                 <table class="table table-hover mb-0">
                     <thead>
                     <tr>
-                        <th class="text-center tb-game"><?php echo $Modules->get_translate_phrase('_Game') ?></th>
-                        <th class="text-center"><?php echo $Modules->get_translate_phrase('_Date') ?></th>
+                        <th class="text-center tb-game"><?php echo $Translate->get_translate_phrase('_Game') ?></th>
+                        <th class="text-center"><?php echo $Translate->get_translate_phrase('_Date') ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ):?>
                         <th class="text-right tb-avatar"></th>
                         <?php endif?>
-                        <th class="text-left"><?php echo $Modules->get_translate_phrase('_Player') ?></th>
+                        <th class="text-left"><?php echo $Translate->get_translate_phrase('_Player') ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ):?>
                         <th class="text-right tb-avatar"></th>
                         <?php endif?>
-                        <th class="text-left"><?php echo $Modules->get_translate_phrase('_Admin') ?></th>
-                        <th class="text-center"><?php echo $Modules->get_translate_phrase('_Term') ?></th>
+                        <th class="text-left"><?php echo $Translate->get_translate_phrase('_Admin') ?></th>
+                        <th class="text-center"><?php echo $Translate->get_translate_phrase('_Term') ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -61,19 +61,19 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_List_recent_mut_gags')?></h5>
+                <h5 class="badge"><?php echo $Translate->get_translate_phrase('_List_recent_mut_gags')?></h5>
             </div>
             <div class=table-responsive>
                 <table class="table table-hover mb-0">
                     <thead>
                     <tr>
-                        <th class="text-center"><?php echo $Modules->get_translate_phrase('_Type') ?></th>
-                        <th class="text-center"><?php echo $Modules->get_translate_phrase('_Date') ?></th>
+                        <th class="text-center"><?php echo $Translate->get_translate_phrase('_Type') ?></th>
+                        <th class="text-center"><?php echo $Translate->get_translate_phrase('_Date') ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
-                        <th class="text-left"><?php echo $Modules->get_translate_phrase('_Player') ?></th>
+                        <th class="text-left"><?php echo $Translate->get_translate_phrase('_Player') ?></th>
                         <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
-                        <th class="text-left"><?php echo $Modules->get_translate_phrase('_Admin') ?></th>
-                        <th class="text-center"><?php echo $Modules->get_translate_phrase('_Term') ?></th>
+                        <th class="text-left"><?php echo $Translate->get_translate_phrase('_Admin') ?></th>
+                        <th class="text-center"><?php echo $Translate->get_translate_phrase('_Term') ?></th>
                     </tr>
                     </thead>
                     <tbody>

@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_phrase('_Rank_stats') ?></h5>
+                <h5 class="badge"><?php echo $Translate->get_translate_phrase('_Rank_stats') ?></h5>
                 <div class="select-panel select-panel-table badge">
                     <select onChange="window.location.href=this.value">
                         <option style="display:none" value="" disabled selected><?php echo $Db->statistics_table[ $server_group ]['name'] ?></option>

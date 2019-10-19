@@ -227,28 +227,20 @@ class Modules {
                      && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                      && $this->array_modules[ $module ]['required']['core'] <= VERSION
                  ):
-                     $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;
-                     $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
-                     $this->array_modules[ $module ]['setting']['data_always'] == 1 && $data_always[] = $module;
-                     $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
+                     ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;
+                     ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
+                     ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $data_always[] = $module;
+                     ! empty( $this->array_modules[ $module ]['setting']['js'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
                      ! empty( $this->array_modules[ $module ]['sidebar'] ) && $result['sidebar'][] = $module;
                  endif;
             endfor;
 
-            $c_page = sizeof( $result['page'] );
-
-            $data_always_size = sizeof( $data_always );
-
             // Дополнительный перебор.
-            for ( $i = 0; $i < $c_page; $i++ ):
+            for ( $i = 0, $c_p = sizeof( $result['page'] ); $i < $c_p; $i++ ):
                 $module = array_keys( $this->array_modules )[ $i ];
 
-                for ( $i2 = 0; $i2 < $data_always_size; $i2++ ):
-
-                    if ( ! in_array( $data_always[ $i2 ], $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'] ) ) {
-                        $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'][] = $data_always[ $i2 ];
-                    }
-
+                for ( $i2 = 0, $c = sizeof( $data_always ); $i2 < $c; $i2++ ):
+                    $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'][] = $data_always[ $i2 ];
                 endfor;
             endfor;
 

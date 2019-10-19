@@ -244,6 +244,28 @@ class Auth {
             endfor;
         endif;
 
+        // Проверка на подключенный мод - RankMeKento.
+        if ( ! empty( $this->Db->db_data['RankMeKento'] ) ):
+            // Перебор всех таблиц с модом - Levels Ranks
+            for ( $d = 0; $d < $this->Db->table_count['RankMeKento']; $d++ ):
+                // Запрос о получении информации об авторизовавшемся пользователе.
+                $this->base_info = $this->Db->query('RankMeKento', $this->Db->db_data['RankMeKento'][ $d ]['USER_ID'], $this->Db->db_data['RankMeKento'][ $d ]['DB_num'], "SELECT name, lastconnect FROM {$this->Db->db_data['RankMeKento'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
+
+                // Если Пользователь  находится в таблице, заполняем итоговый массив.
+                if ( ! empty( $this->base_info ) ):
+                    // Базовая информация о пользователе.
+                    $this->user_auth[] = $this->base_info;
+
+                    // Информация о таблице.
+                    $this->server_info[] = ['name_servers' => $this->Db->db_data['RankMeKento'][ $d ]['name'],
+                        'mod' => $this->Db->db_data['RankMeKento'][ $d ]['mod'],
+                        'ranks_pack' => $this->Db->db_data['RankMeKento'][ $d ]['ranks_pack'],
+                        'data_servers' => $this->Db->db_data['RankMeKento'][ $d ]['Table']
+                    ];
+                endif;
+            endfor;
+        endif;
+
         // При отсутствии пользователя в таблицах, собираем - массив исключение.
         if ( empty( $this->user_auth[0] ) ):
             // Информация о пользователе.

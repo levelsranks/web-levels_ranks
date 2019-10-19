@@ -11,10 +11,10 @@
 empty( $Db->db_data['SourceBans'] ) && get_iframe( '012','Не найден мод - SourceBans  :: /storage/cache/sessions/db.php' );
 
 // Типа банов.
-$ban_type = [0 => '<div class="color-red">' . $Modules->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Modules->get_translate_phrase('_Unban') . '</div>',2 => '<strike>Сессия</strike>'];
+$ban_type = [0 => '<div class="color-red">' . $Translate->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Translate->get_translate_phrase('_Unban') . '</div>',2 => '<strike>Сессия</strike>'];
 
 // Типа мутов.
-$comms_type = [0 => '<div class="color-red">' . $Modules->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Modules->get_translate_phrase('_Uncomm') . '</div>',2 => '<strike>Сессия</strike>'];
+$comms_type = [0 => '<div class="color-red">' . $Translate->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Translate->get_translate_phrase('_Uncomm') . '</div>',2 => '<strike>Сессия</strike>'];
 
 // CSGO || CSS
 $mod = $Db->db_data['SourceBans'][0]['mod'];
