@@ -513,10 +513,10 @@
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
 - Sleep#0725  ( Discord )   - 250 RUB.
 - Морковка#7277 ( Discord )  - 200 RUB.
+- valerun     ( hlmod.ru )  - 185 RUB.
 - FIVE#3136   ( Discord )   - 155 RUB.
 - MaZa#8322    ( Discord )  - 150 RUB.
 - ™S.E.N.A.T.O.R™♛#1466 ( Discord )  - 150 RUB.
-- valerun     ( hlmod.ru )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
 - Nestor#9876 ( Discord )   - 150 RUB.
 - d4Ck#0698 ( Discord )   - 147.67 RUB.
