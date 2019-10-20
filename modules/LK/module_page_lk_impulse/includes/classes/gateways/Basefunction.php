@@ -21,6 +21,8 @@ use app\ext\Db;
 
 use app\ext\Notifications;
 
+use app\ext\Translate;
+
 class Basefunction{
 
 	public $kassa;
@@ -32,12 +34,14 @@ class Basefunction{
 	public $General;
 	public $Modules;
 	public $Notifications;
+	public $Translate;
 
 	public function __construct() {
 		$this->db =  new Db;
-		$this->General = new General($this->db);
-		$this->Modules = new Modules($this->General);
-		$this->Notifications = new Notifications($this->db, $this->Modules);
+        $this->Translate = new Translate;
+        $this->Notifications = new Notifications( $this->Translate, $this->db );
+		$this->General = new General( $this->db );
+		$this->Modules = new Modules( $this->General, $this->Translate, $this->Notifications );
 	}
 
 	/**
@@ -69,7 +73,7 @@ class Basefunction{
 		];
 		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_order = :order AND pay_auth LIKE :auth AND pay_status = 0", $params);
 		if(empty($this->pay)){
-				$this->LkAddLog('_PayNotExist', ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'steam'=>$this->decod[3],'amount'=>$this->decod[2],'gateway' =>$gateway]);
+				$this->LkAddLog('_PayNotExist', ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'steam'=>$this->decod[3],'amount'=>$this->decod[2],'gateway' =>$gateway]);
 					return false;
 		}else return true;
 	}
@@ -108,7 +112,7 @@ class Basefunction{
 			$this->bonus = ($this->decod[2]/100)*$promoCode[0]['percent'];
 			$this->summ = $this->bonus+$this->decod[2];
 
-			$this->LkAddLog('_SetPromo',['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'promocode'=>$this->pay[0]['pay_promo'],'amount'=>$this->bonus,'gateway' =>$gateway]);
+			$this->LkAddLog('_SetPromo',['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'promocode'=>$this->pay[0]['pay_promo'],'amount'=>$this->bonus,'gateway' =>$gateway]);
 		}
 	}
 
@@ -144,12 +148,12 @@ class Basefunction{
 						      ],
 				            "fields" => [
 				               	[
-				                    "name" => $this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
+				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
 				                    "value" => $this->decod[3],
 				                    "inline" => true
 				                ],
 				                [
-				                    "name" => $this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_Amount'),
+				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Amount'),
 				                    "value" => $this->decod[2],
 				                    "inline" => false
 				                ]
@@ -177,12 +181,12 @@ class Basefunction{
 						      ],
 				            "fields" => [
 				               	[
-				                    "name" => $this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
+				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
 				                    "value" => $this->decod[3],
 				                    "inline" => true
 				                ],
 				                [
-				                    "name" => $this->Modules->get_translate_module_phrase('module_page_lk_impulse', '_Amount'),
+				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Amount'),
 				                    "value" => $this->decod[2],
 				                    "inline" => false
 				                ]

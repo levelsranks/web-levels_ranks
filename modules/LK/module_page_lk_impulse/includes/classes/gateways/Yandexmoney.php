@@ -40,13 +40,13 @@ class Yandexmoney extends Basefunction{
 		 $this->BUpdateBalancePlayer($this->decod[3],$post['withdraw_amount']);
 		 $this->BUpdatePay();
 		 $this->BNotificationDiscord('YandexMoney');
-		 $this->LkAddLog('_NewDonat', ['gateway'=>'YandexMoney','order'=>$this->decod[1], 'course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
+		 $this->LkAddLog('_NewDonat', ['gateway'=>'YandexMoney','order'=>$this->decod[1], 'course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
 		 $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM lvl_web_admins WHERE flags = 'z' ");
 		 foreach( $admins as $key ){
 			 $this->Notifications->SendNotification(
 			 		 con_steam64to32($key['steamid']), 
 			 		 '_GetDonat', 
-			 		 ['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['AMOUNT'],'module_translation'=>'module_page_lk_impulse'], 
+			 		 ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['AMOUNT'],'module_translation'=>'module_page_lk_impulse'],
 			 		 '?page=lk&section=payments#p'.$this->decod[1], 
 			 		 'money'
 			 );
@@ -54,7 +54,7 @@ class Yandexmoney extends Basefunction{
 		 $this->Notifications->SendNotification( 
 			 	$this->decod[3], 
 			 	'_YouPay', 
-			 	['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['withdraw_amount'],'module_translation'=>'module_page_lk_impulse'],
+			 	['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['withdraw_amount'],'module_translation'=>'module_page_lk_impulse'],
 			 	'?page=lk&section=payments#p'.$this->decod[1], 
 			 	'money'
 		);

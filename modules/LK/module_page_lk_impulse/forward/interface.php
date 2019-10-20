@@ -23,19 +23,19 @@ if(isset( $_SESSION['user_admin'] )):?>
         <div class="card menu">
             <ul class="nav">
                 <li <?php $_GET['section'] == 'users' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','users')?>';">
-                    <a><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_UsersList')?></a>
+                    <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_UsersList')?></a>
                 </li>
                 <li <?php $_GET['section'] == 'gateways' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','gateways')?>';">
-                    <a><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_SettingsGateways')?></a>
+                    <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_SettingsGateways')?></a>
                 </li>
                 <li <?php $_GET['section'] == 'payments' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','payments')?>';">
-                    <a><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_PaymentsList')?></a>
+                    <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_PaymentsList')?></a>
                 </li>
                 <li <?php $_GET['section'] == 'promocodes' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','promocodes')?>';">
-                    <a><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></a>
+                    <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></a>
                 </li>
                 <li <?php $_GET['section'] == 'logs' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','logs')?>';">
-                    <a><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_Logs')?></a>
+                    <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Logs')?></a>
                 </li>
             </ul>
         </div>
@@ -55,14 +55,14 @@ if(!empty($_GET['section'] && isset($_SESSION['steamid32']))):?>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK')?></h5>
+                <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK')?></h5>
                 <div style="position: absolute;top: 15px;right: 15px;text-align: center;" id="profile"></div>
             </div>
                     <div class="col-10 col-md-8 align-center">
                         <form id="pay" data-default="true" enctype="multipart/form-data" method="post">
                         <?php if(!empty($Gateways)):
                                 if(COUNT($Gateways)>1 || $Gateways[0]['id'] == 5):?>
-                                <div class="input-form text-center"><div style="margin-bottom: 10px;" class="input_text text-left"><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway')?></div>
+                                <div class="input-form text-center"><div style="margin-bottom: 10px;" class="input_text text-left"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway')?></div>
                                 <?php foreach($Gateways as $info):?>
                                     <input type="radio" name="gatewayPay" value="<?php echo mb_strtolower($info['name_kassa'])?>" id="Gateway<?=$info['id']?>" class="gateways">
                                     <label for="Gateway<?=$info['id']?>" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($info['name_kassa'])?>.png') no-repeat;background-position: center;" class="gateways-label"></label>
@@ -82,18 +82,18 @@ if(!empty($_GET['section'] && isset($_SESSION['steamid32']))):?>
                             <div class="input-form"><div class="input_text">STEAM ID:</div><input name="steam" placeholder="STEAM_1:1:390... / 7656119803... / [U:1:1234234] / https://steamcommunity.com/profiles/... "></div>
                         <?php endif?>
                         <div class="input-form">
-                            <div class="input_text"><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_ToUpAmount')?></div>
+                            <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ToUpAmount')?></div>
                             <input name="amount">
                         </div>
                         <div class="input-form">
-                            <div class="input_text"><?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></div>
+                            <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></div>
                             <input name="promocode">
                         </div>
                         <div class="input-form" id="promoresult"></div>
                          </form>
                     </div>
                     <div class="card-bottom text-center padding-botom-20">
-                        <input class="btn" form="pay" type="submit" value="<?php echo $Modules->get_translate_module_phrase('module_page_lk_impulse','_ButtonPay')?>"></h5>
+                        <input class="btn" form="pay" type="submit" value="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ButtonPay')?>"></h5>
                     </div>
                     <br>
                     <div  style="display: none;" id="resultForm"></div>

@@ -12,7 +12,7 @@ use app\modules\module_page_lk_impulse\includes\classes\Lk_module;
 
 if( IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
 
-$LK = new Lk_module($Notifications, $General, $Modules, $Db);
+$LK = new Lk_module( $Translate, $Notifications, $General, $Modules, $Db);
 
 if(isset($_POST['steam']))
 {

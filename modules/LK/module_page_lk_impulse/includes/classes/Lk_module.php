@@ -19,9 +19,10 @@ class Lk_module{
 	public $Notifications;
 
 
-	public function __construct($Notifications, $General, $Modules, $Db) {
+	public function __construct( $Translate, $Notifications, $General, $Modules, $Db ) {
 
 		$this->Modules = $Modules;
+		$this->Translate = $Translate;
 		$this->General = $General;
 		$this->db = $Db;
 		$this->Notifications = $Notifications;
@@ -31,7 +32,7 @@ class Lk_module{
 		if(isset($_SESSION['steamid32'])){
 			$param = ['auth'=> '%'.$_SESSION['steamid32'].'%'];
 			$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth", $param);
-			$this->Modules->set_user_info_text($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Balance').': '.$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse').' <b class="material-balance">'.number_format($infoUser[0]['cash'],0,' ', ' ').'</b>');
+			$this->Modules->set_user_info_text($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Balance').': '.$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse').' <b class="material-balance">'.number_format($infoUser[0]['cash'],0,' ', ' ').'</b>');
 		}
 	}
 
@@ -69,10 +70,10 @@ class Lk_module{
 	public function LkLogdelete($log){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^[0-9]{2}\_[0-9]{2}\_[0-9]{4}+$/i', $log))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		$param = ['log_name' => $log];
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk_logs WHERE log_name = :log_name",$param);
-		$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_LogDeleted'),'success');
+		$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_LogDeleted'),'success');
 			
 	}
 
@@ -85,7 +86,7 @@ class Lk_module{
 				$logs = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_logs WHERE log_name = :log_name",$param);
 				$logFileHandle = fopen('storage/cache/sessions/'.$log.'.log', 'a');
 				foreach ($logs as $key) {
-					fwrite($logFileHandle, $key['log_name'].$key['log_time'].LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse',$key['log_content']), json_decode(str_replace('[]','',$key['log_value']), true))."\r\n");
+					fwrite($logFileHandle, $key['log_name'].$key['log_time'].LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse',$key['log_content']), json_decode(str_replace('[]','',$key['log_value']), true))."\r\n");
 				}
 				fclose($logFileHandle);
 			}else return false;
@@ -188,19 +189,19 @@ class Lk_module{
 			$promo = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, rand(5,15));
 		else $promo = $post['addpromo'];
 		if(!preg_match('/^[A-z-0-9]{5,15}$/', $promo))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ErrorNamePromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ErrorNamePromo'),'error');
 		else if(empty($post['limit']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_LimitPromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_LimitPromo'),'error');
 		else if(!preg_match('/^\d+$/', $post['limit']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_LimitField'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_LimitField'),'error');
 		else if(empty($post['bonuspecent']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EnterBonus'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EnterBonus'),'error');
 		else if(!preg_match('/^[0-9\.]+$/', $post['bonuspecent']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NotCorBonus'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NotCorBonus'),'error');
 		$param = ['code' => $promo];
 		$expromo = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT code FROM lk_promocodes WHERE code = :code", $param);
 		if(!empty($expromo))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ExistPromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ExistPromo'),'error');
 		if(empty($post['status']))
 			$auth = 0;
 		else $auth = 1;
@@ -211,34 +212,34 @@ class Lk_module{
 			'auth'=>$auth
 		];
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_promocodes(code, percent, attempts, auth1) VALUES(:code, :percent, :attempts, :auth)",$params);
-		$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AddedPromo'),['namepromo'=>$promo]),'success');
+		$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AddedPromo'),['namepromo'=>$promo]),'success');
 	}
 
 	public function LkEditPromocode($post){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['editid']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		else if(!preg_match('/^\d+$/',$post['editid']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		else if(empty($post['editpromo']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EditPromoName'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EditPromoName'),'error');
 		else if(!preg_match('/^[A-z-0-9]{5,15}$/', $post['editpromo']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ErrorNamePromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ErrorNamePromo'),'error');
 		else if(empty($post['editlimit']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_LimitPromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_LimitPromo'),'error');
 		else if(!preg_match('/^\d+$/', $post['editlimit']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_LimitField'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_LimitField'),'error');
 		else if(empty($post['editbonuspecent']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EnterBonus'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EnterBonus'),'error');
 		else if(!preg_match('/^[0-9\.]+$/', $post['editbonuspecent']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NotCorBonus'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NotCorBonus'),'error');
 		else if(empty($post['status']))
 			$auth = 0;
 		else $auth = 1;
 		$param = ['id' => $post['editid']];
 		$expromo =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT id FROM lk_promocodes WHERE id = :id",$param);
 		if(empty($expromo))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		$params = [
 			'id'=>$post['editid'],
 			'code'=>$post['editpromo'],
@@ -247,21 +248,21 @@ class Lk_module{
 			'auth'=>$auth
 		];
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_promocodes SET code=:code, percent=:percent, attempts=:attempts, auth1=:auth WHERE id=:id", $params);
-		$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EditedPromo'),['namepromo'=>$post['editpromo']]),'success');
+		$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EditedPromo'),['namepromo'=>$post['editpromo']]),'success');
 	}
 
 	public function LkDeletePromocode($post){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(empty($post['promocode_delete']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		else if(!preg_match('/^\d+$/',$post['promocode_delete']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		$param = ['id' => $post['promocode_delete']];
 		$expromo =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes WHERE id = :id",$param);
 		if(empty($expromo))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'),'error');
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk_promocodes WHERE id = :id",$param);
-		$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_DeletedPromo'),'success');
+		$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_DeletedPromo'),'success');
 	}
 
 	public function LkAddDiscord($post){
@@ -275,7 +276,7 @@ class Lk_module{
 		}
 		$param = ['url' => $post['webhoock_url'], 'auth' => $auth];
 		$allGateways = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_discord SET url=:url, auth=:auth",$param);
-		$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Saved'),'success');
+		$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Saved'),'success');
 	}
 
 	public function LkAddGateway($post){
@@ -287,7 +288,7 @@ class Lk_module{
 				'name'		=> $this->name
 			];
 			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_pay_service VALUES(:id, :name, '$post[shopid]', '$post[secret1]', '$post[secret2]', 1)", $params);
-			$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AddGateway'),['name'=>$this->name]), 'success');
+			$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AddGateway'),['name'=>$this->name]), 'success');
 	}
 
 	public function LkEditGateway($post){
@@ -308,7 +309,7 @@ class Lk_module{
 	public function LkDeleteGateway($post){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^\d+$/i', $post['gateway_delete']))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'), 'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'), 'error');
 		$this->LkNotExistGateway($this->LkConvertGatewayString($post['gateway_delete']));
 		$param =['id'=> $post['gateway_delete']];
 		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk_pay_service WHERE id = $param[id]");
@@ -319,7 +320,7 @@ class Lk_module{
 		$param =['id'=> $this->LkConvertGatewayId($gateway)];
 		$gateway = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pay_service WHERE id = :id",$param);
 		if(empty($gateway))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GetwNoExist'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GetwNoExist'),'error');
 	}
 
 	protected function LkExistGatewayAdd($post){
@@ -327,7 +328,7 @@ class Lk_module{
 		$param =['id'=>$this->LkConvertGatewayId($post['gateway'])];
 		$gateway = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT id FROM lk_pay_service WHERE id = :id",$param);
 		if(!empty($gateway))
-			$this->message($this->name.$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GetwExist'), 'error');
+			$this->message($this->name.$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GetwExist'), 'error');
 	}
 
 
@@ -335,48 +336,48 @@ class Lk_module{
 		switch ($gateway) {
 			case 'freekassa':
 				if(empty($post['shopid']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISID'), 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISID'), 'error');
 				else if(empty($post['secret1']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISEC').' #1', 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISEC').' #1', 'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISEC').' #2', 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISEC').' #2', 'error');
 				$this->name = 'FreeKassa';
 			break;
 			case 'interkassa':
 				if(empty($post['shopid']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISID'), 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISID'), 'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISEC'), 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISEC'), 'error');
 				$this->name = 'InterKassa';
 			break;
 			case 'robokassa':
 				if(empty($post['shopid']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_RSID'), 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_RSID'), 'error');
 				else if(empty($post['secret1']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_IPASS').' #1', 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_IPASS').' #1', 'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_IPASS').' #2', 'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_IPASS').' #2', 'error');
 				$this->name = 'RoboKassa';
 			break;
 			case 'unitpay':
 				if(empty($post['secret1']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_InPub'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_InPub'),'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_InSec'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_InSec'),'error');
 				$this->name = 'UnitPay';
 			break;
 			case 'yandexmoney':
 				if(empty($post['shopid']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_IPURSE'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_IPURSE'),'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISEC'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISEC'),'error');
 				$this->name = 'YandexMoney';
 			break;
 			case 'webmoney':
 				if(empty($post['shopid']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_IPURSE'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_IPURSE'),'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ISEC'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ISEC'),'error');
 				$this->name = 'WebMoney';
 			break;
 			case 'paypal':
@@ -386,13 +387,13 @@ class Lk_module{
 			break;
 			case 'qiwi':
 				if(empty($post['secret1']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_InPub'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_InPub'),'error');
 				else if(empty($post['secret2']))
-					$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_InSec'),'error');
+					$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_InSec'),'error');
 				$this->name = 'Qiwi';
 			break;
 			default:
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NINT'), 'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NINT'), 'error');
 				break;
 		}
 	}
@@ -413,7 +414,7 @@ class Lk_module{
 	public function LkUpdateBalance($post){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
 		if(!preg_match('/^STEAM_[0-9]{1,2}:[0-1]:\d+$/',$post['user']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_SteamError'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_SteamError'),'error');
 		if(!preg_match('/^[0-9]{1,5}.[0-9]{1,2}$/', $this->WM($post['new_balance'])))
 				$this->message('Целое число 10 либо с точкой 10.84!','error');
 			$new_balance = $post['new_balance']-$post['old_balance'];
@@ -428,7 +429,7 @@ class Lk_module{
 			$this->Notifications->SendNotification( 
 			 	$post['user'],
 			 	'_AdminPay', 
-			 	['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $new_balance,'module_translation'=>'module_page_lk_impulse'],
+			 	['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $new_balance,'module_translation'=>'module_page_lk_impulse'],
 			 	'?page=lk&section=payments#p'.$params['order'],
 			 	'money' );
 		}
@@ -508,24 +509,24 @@ class Lk_module{
 	*/
 	public function LkOnPayment($post){
 		if(empty($post['gatewayPay']))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway'), 'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway'), 'error');
 		$Gateway = $this->LkGetGatewayOn($post['gatewayPay']);
 		$post['steam'] = $this->LkLoadPlayerProfile($post['steam'], 2);
 		if(empty($Gateway))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatewayOnNotEzist'), 'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatewayOnNotEzist'), 'error');
 		else if(empty($post['steam']))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EnterSteam'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EnterSteam'),'error');
 		if(!preg_match('/^STEAM_[0-9]{1,2}:[0-1]:\d+$/',$post['steam']))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_SteamError'),'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_SteamError'),'error');
 		else if(empty($post['amount']))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_EnterAmount'), 'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_EnterAmount'), 'error');
 		else if(!preg_match('/^[0-9]{1,5}.[0-9]{1,2}$/', $this->WM($post['amount'])))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountError'),'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountError'),'error');
 		else if($post['amount'] < 0.01)
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountError'),'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountError'),'error');
 		else if(!empty($post['promocode'])){
 			if(!preg_match('/^[A-z-0-9]{5,15}$/',$post['promocode']))
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_Error'), 'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Error'), 'error');
 			$this->checkPromo($post['promocode'], $post['steam']);
 		}
 		$this->LkNotExistGateway($post['gatewayPay']);
@@ -540,27 +541,27 @@ class Lk_module{
 		switch ($post['gatewayPay']) {
 			case 'freekassa':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'FreeKassa']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'FreeKassa']),'error');
 				$this->LKRegPay($order,$post,'Freekassa');
 				$sign = md5($data[0]['shop_id'].':'.$post['amount'].':'.$data[0]['secret_key_1'].':'.$order);
 				$this->location('http://www.free-kassa.ru/merchant/cash.php?m='.$data[0]['shop_id'].'&oa='.$post['amount'].'&o='.$order.'&s='.$sign.'&us_sign='.$lk_sign);
 				break;
 			case 'interkassa':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'InterKassa']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'InterKassa']),'error');
 					$this->LKRegPay($order,$post,'InterKassa');
 					$this->message('<form  method="post" action="https://sci.interkassa.com/"><input name="ik_co_id" value="'.$data['shop_id'].'"><input name="ik_pm_no" value="'.$order.'"><input name="ik_x_sign" value="'.$lk_sign.'"><input name="ik_cur" value="RUB"><input name="ik_desc" value="'.$desc.'"><input name="ik_am"  value="'.$post['amount'].'"><input id="punsh" type="submit"></form>','');
 				break;
 			case 'robokassa':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'RoboKassa']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'RoboKassa']),'error');
 					$this->LKRegPay($order,$post,'RoboKassa');
 					$sign = md5($data[0]['shop_id'].':'.$post['amount'].':'.$order.':'.$data[0]['secret_key_1'].':Shp_mysign='.$lk_sign);
 					$this->message('<form action="https://merchant.roboxchange.com/Index.aspx" method=POST><input name="MrchLogin" value="'.$data[0]['shop_id'].'"><input name="OutSum" value="'.$post['amount'].'"><input name="SignatureValue" value="'.$sign.'"><input name="InvId" value="'.$order.'"><input name="Desc" value="'.$desc.'"><input name="Shp_mysign" value="'.$lk_sign.'"><input id="punsh" type="submit" ></form>','');
 				break;
 			case 'unitpay':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'UnitPay']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'UnitPay']),'error');
 					$this->LKRegPay($order,$post,'UnitPay');
 					$sign = hash('sha256', $lk_sign.'{up}RUB{up}'.$desc.'{up}'.$post['amount'].'{up}'.$data[0]['secret_key_2']);
 					$this->message('<form action="https://unitpay.ru/pay/'.$data[0]['secret_key_1'].'" method=GET><input name="sum" value="'.$post['amount'].'">
@@ -568,7 +569,7 @@ class Lk_module{
 				break;
 			case 'yandexmoney':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoney']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoney']),'error');
 					$this->LKRegPay($order,$post,'YandexMoney');
 					$this->message('<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml"> 
     				<input name="receiver" value="'.$data[0]['shop_id'].'"><input name="quickpay-form" value="shop"><input name="targets" value="'.$desc.'"> 
@@ -577,7 +578,7 @@ class Lk_module{
 				break;
 			case 'yandexmoneycard':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoneyCard']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoneyCard']),'error');
 					$this->LKRegPay($order,$post,'YandexMoneyCard');
 					$this->message('<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml"> 
     				<input name="receiver" value="'.$data[0]['shop_id'].'"><input name="quickpay-form" value="shop"><input name="targets" value="'.$desc.'"> 
@@ -586,7 +587,7 @@ class Lk_module{
 				break;
 			case 'webmoney':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'WebMoney']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'WebMoney']),'error');
 					$this->LKRegPay($order,$post,'WebMoney');
 					$this->message('<form action="https://merchant.webmoney.ru/lmi/payment.asp" method="POST">
  					<input name="lk_sign" value="'.$lk_sign.'"><input name="LMI_PAYMENT_DESC_BASE64" value="'.base64_encode($desc).'"><input name="LMI_PAYMENT_NO" value="'.$order.'">
@@ -594,14 +595,14 @@ class Lk_module{
 				break;	
 			case 'paypal':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'PayPal']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'PayPal']),'error');
 					$this->LKRegPay($order,$post,'PayPal');
 					$this->message('<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_xclick">
 									  <input type="hidden" name="business" value="'.$data[0]['shop_id'].'"><input type="hidden" name="notify_url" value="'.$this->https().get_url(2).'?page=lk&gateway=paypal"><input type="hidden" name="item_name" value="'.$desc.'"><input type="hidden" name="item_number" value="'.$lk_sign.'">
 									  <input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="currency_code" value="'.$data[0]['secret_key_1'].'"><input id="punsh" type="submit" name="submit"></form>','');
 			case 'qiwi':
 				if(empty($data[0]['status']))
-					$this->message(LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'Qiwi']),'error');
+					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'Qiwi']),'error');
 					$this->LKRegPay($order,$post,'Qiwi');
 					$this->message('<form action="https://oplata.qiwi.com/create" method="GET"><input type="hidden" name="publicKey" value="'.$data[0]['secret_key_1'].'"><input type="hidden" name="comment" value="'.$desc.'"><input type="hidden" name="account" value="'.$lk_sign.'"><input type="hidden" name="amount" value="'.$post['amount'].'"><input type="hidden" name="successUrl" value="'.$this->https().get_url(2).'">
 						<input id="punsh" type="submit" name="submit"></form>','');
@@ -618,37 +619,37 @@ class Lk_module{
 		$param = ['code' => $promo];
 		$codeInfo = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes WHERE code = :code", $param);
 		if(empty($codeInfo))
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NotFoundPromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NotFoundPromo'),'error');
 		else if($codeInfo[0]['attempts'] <= 0)
-			$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NoLimitPromo'),'error');
+			$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NoLimitPromo'),'error');
 		else if($codeInfo[0]['auth1']){
 			preg_match('/:[0-9]{1}:\d+/i', $sid, $auth);
 			$params = ['code'=>$promo,'auth' => '%'.$auth[0].'%'];
 			$userPromo = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT pay_promo FROM lk_pays WHERE pay_promo = :code AND pay_status = 1 AND pay_auth LIKE :auth", $params);
 			if($userPromo)
-				$this->message($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_YouUsePromo'),'error');
+				$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_YouUsePromo'),'error');
 		}
 	}
 
 	public function LkCalculatePromo($promo,$steam,$amount){
 		$steam = $this->LkLoadPlayerProfile($steam, 2);
 		if($amount < 0.1)exit (trim(json_encode(array(
-							'result' => '<div class="code_error">'.LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_MinAmount'),['course'=>$this->Modules->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse')]).'</div>'
+							'result' => '<div class="code_error">'.LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_MinAmount'),['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse')]).'</div>'
 						))));
 		else if(!preg_match('/^STEAM_[0-9]{1,2}:[0-1]:\d+$/',$steam))
 			exit (trim(json_encode(array(
-							'result' => $this->Modules->get_translate_module_phrase('module_page_lk_impulse','_SteamError')
+							'result' => $this->Translate->get_translate_module_phrase('module_page_lk_impulse','_SteamError')
 						))));
 		else if($amount >=10 && !empty($steam)){
 			$param = ['code' => $promo];
 			$codeInfo = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes WHERE code = :code", $param);
 			if(empty($codeInfo))
 				exit (trim(json_encode(array(
-							'result' => $this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NotFoundPromo')
+							'result' => $this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NotFoundPromo')
 						))));
 			else if($codeInfo[0]['attempts'] <= 0)
 				exit (trim(json_encode(array(
-							'result' => $this->Modules->get_translate_module_phrase('module_page_lk_impulse','_NoLimitPromo')
+							'result' => $this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NoLimitPromo')
 						))));
 			else if($codeInfo[0]['auth1']){
 				preg_match('/:[0-9]{1}:\d+/i', $steam, $auth);
@@ -656,13 +657,13 @@ class Lk_module{
 				$userPromo = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_promo = :code AND pay_status = 1 AND pay_auth LIKE :auth LIMIT 1", $params);
 				if($userPromo)
 					exit (trim(json_encode(array(
-							'result' => $this->Modules->get_translate_module_phrase('module_page_lk_impulse','_YouUsePromo')
+							'result' => $this->Translate->get_translate_module_phrase('module_page_lk_impulse','_YouUsePromo')
 						))));
 			}
 			$bonus = ($amount/100)*$codeInfo[0]['percent'];
 			$newAmount = $bonus+$amount;
 			exit (trim(json_encode(array(
-						'result' => LangValReplace($this->Modules->get_translate_module_phrase('module_page_lk_impulse','_BonusPromoUse'),
+						'result' => LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_BonusPromoUse'),
 										['newamount'=>$newAmount, 'percent'=>$codeInfo[0]['percent']])
 					))));
 
