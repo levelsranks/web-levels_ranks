@@ -780,5 +780,61 @@
             "LT" : "Paprasčiausiai papildykite savo balansą",
             "DE" : "Laden Sie einfach Ihr Guthaben auf",
             "CH" : "简单地补充您的余额"
+    },
+    "_EnterWebhoockUrl":{
+            "EN" : "Enter URL Webhook!",
+            "RU" : "Введите URL Вебхука!",
+            "UA" : "Введіть URL Вебхука!",
+            "LT" : "Įveskite URL „Webhook“!",
+            "DE" : "URL eingeben Webhook!",
+            "CH" : "输入URL Webhook！"
+    },
+    "_DataChangesGateway":{
+            "EN" : "Data changes in the %gateway% system saved!",
+            "RU" : "Изменения данных в системе %gateway% сохранены!",
+            "UA" : "Зміни даних в системі %gateway% збережені!",
+            "LT" : "Duomenų pokyčiai sistemoje %gateway% išsaugoti!",
+            "DE" : "Datenänderungen im %gateway% System gespeichert!",
+            "CH" : "%gateway%系统中的数据更改已保存！"
+    },
+    "_DeletedGateway":{
+            "EN" : "Cash desk successfully deleted!",
+            "RU" : "Касса успешно удалена!",
+            "UA" : "Каса успішно видалена!",
+            "LT" : "Kasa sėkmingai ištrinta!",
+            "DE" : "Kasse erfolgreich gelöscht!",
+            "CH" : "收银台成功删除！"
+    },
+    "_EnterPaypalAccount":{
+            "EN" : "Enter your e-mail business account in PayPal",
+            "RU" : "Введите E-mail бизнес аккаунта в системе PayPal",
+            "UA" : "Введіть E-mail бізнес аккаунта в системі PayPal",
+            "LT" : "Įveskite savo el. Pašto įmonės sąskaitą „PayPal“",
+            "DE" : "Geben Sie Ihr E-Mail-Geschäftskonto in PayPal ein",
+            "CH" : "在PayPal中输入您的电子邮件业务帐户"
+    },
+    "_UsersDelete":{
+            "EN" : "All players with zero donation removed",
+            "RU" : "Удалены все игроки с нулевым донатом",
+            "UA" : "Вилучені всі гравці з нульовим Донатом",
+            "LT" : "Visi žaidėjai, kurių aukos nulinės, pašalintos“",
+            "DE" : "Alle Spieler ohne Spende entfernt",
+            "CH" : "删除了所有零捐赠的玩家"
+    },
+    "_NewBalanceUser":{
+            "EN" : "New balance for %user% saved!",
+            "RU" : "Новый баланс для %user% сохранен!",
+            "UA" : "Новий баланс для %user% збережений!",
+            "LT" : "Išsaugotas naujas %user% balansas!",
+            "DE" : "Neuer Kontostand für %user% gespart!",
+            "CH" : "已节省%user%的新余额！"
+    },
+    "_OnPayUserDesc":{
+            "EN" : "LK MODULE - Balance replenishment for ",
+            "RU" : "LK MODULE - Пополнение баланса для ",
+            "UA" : "LK MODULE - Поповнення балансу для ",
+            "LT" : "LK MODULIS - balanso papildymas ",
+            "DE" : "LK MODUL - Guthaben auffüllen für ",
+            "CH" : "LK MODULE-的余额补充 "
     }
 }

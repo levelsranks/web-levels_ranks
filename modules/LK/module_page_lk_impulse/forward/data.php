@@ -8,7 +8,7 @@
  * @license GNU General Public License Version 3
  */
 
-use app\modules\module_page_lk_impulse\includes\classes\Lk_module;
+use app\modules\module_page_lk_impulse\ext\Lk_module;
 
 if( IN_LR != true ) { header('Location: ' . $General->arr_general['site']); exit; }
 
@@ -146,7 +146,7 @@ if(isset($Db->db_data['lk'])){
 $LK->LkBalancePlayer();
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK'));
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK'));
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Modules->get_translate_module_phrase('module_page_lk_impulse','_DescPageLK'));
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_DescPageLK'));

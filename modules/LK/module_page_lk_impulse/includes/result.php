@@ -8,14 +8,14 @@
  * @license GNU General Public License Version 3
  */
 
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Freekassa;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Interkassa;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Unitpay;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Qiwi;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Webmoney;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Robokassa;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Yandexmoney;
-use app\modules\module_page_lk_impulse\includes\classes\gateways\Paypal;
+use app\modules\module_page_lk_impulse\ext\Freekassa;
+use app\modules\module_page_lk_impulse\ext\Interkassa;
+use app\modules\module_page_lk_impulse\ext\Unitpay;
+use app\modules\module_page_lk_impulse\ext\Qiwi;
+use app\modules\module_page_lk_impulse\ext\Webmoney;
+use app\modules\module_page_lk_impulse\ext\Robokassa;
+use app\modules\module_page_lk_impulse\ext\Yandexmoney;
+use app\modules\module_page_lk_impulse\ext\Paypal;
 //use app\modules\module_page_lk_impulse\includes\classes\gateways\Paysera;
 
 if( IN_LR != true ){ die( 'Hacking detected' ); }

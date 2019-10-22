@@ -15,26 +15,26 @@ if(isset( $_SESSION['user_admin'] )):?>
         <div class="user-sidebar-right-block">
             <div class="info">
                 <div class="details">
-                    <div class="admin_type">Гл. Администратор</div>
-                    <div class="admin_rights">Полные права доступа</div>
+                    <div class="admin_type"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Chief_admin')?></div>
+                    <div class="admin_rights"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_All_access_rights')?></div>
                 </div>
             </div>
         </div>
         <div class="card menu">
             <ul class="nav">
-                <li <?php $_GET['section'] == 'users' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','users')?>';">
+                <li <?php get_section( 'section', 'gateways' ) == 'users' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','users')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_UsersList')?></a>
                 </li>
-                <li <?php $_GET['section'] == 'gateways' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','gateways')?>';">
+                <li <?php get_section( 'section', 'gateways' ) == 'gateways' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','gateways')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_SettingsGateways')?></a>
                 </li>
-                <li <?php $_GET['section'] == 'payments' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','payments')?>';">
+                <li <?php get_section( 'section', 'gateways' ) == 'payments' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','payments')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_PaymentsList')?></a>
                 </li>
-                <li <?php $_GET['section'] == 'promocodes' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','promocodes')?>';">
+                <li <?php get_section( 'section', 'gateways' ) == 'promocodes' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','promocodes')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></a>
                 </li>
-                <li <?php $_GET['section'] == 'logs' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','logs')?>';">
+                <li <?php get_section( 'section', 'gateways' ) == 'logs' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','logs')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Logs')?></a>
                 </li>
             </ul>
@@ -42,7 +42,7 @@ if(isset( $_SESSION['user_admin'] )):?>
     </section>
 </aside>
 <?php endif;
-if(!empty($_GET['section'] && isset($_SESSION['steamid32']))):?>
+if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
     <div class="row">
         <?php switch ( $_GET['section']):
             case $_GET['section']:
