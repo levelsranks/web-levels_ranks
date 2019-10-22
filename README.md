@@ -495,9 +495,9 @@
 
 - Larsalex    ( hlmod.ru )  - 3000 RUB.
 - .ZΛCHΞR#1337( Discord )   - 2093.37 RUB.
+- CEED 🐼#4061  ( Discord )   - 1488 RUB.
 - mixxed.xyz#4469 ( Discord ) - 1200 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
-- CEED 🐼#4061  ( Discord )   - 850 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
 - dyoma#5525  ( Discord )   - 500 RUB.
 - Морячок#9904  ( Discord )   - 500 RUB.
