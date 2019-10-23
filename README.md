@@ -499,6 +499,7 @@
 - mixxed.xyz#4469 ( Discord ) - 1200 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
+- MAMAC#9993  ( Discord )   - 511.05 RUB.
 - dyoma#5525  ( Discord )   - 500 RUB.
 - Морячок#9904  ( Discord )   - 500 RUB.
 - Xzotys#3880  ( Discord )   - 500 RUB.
