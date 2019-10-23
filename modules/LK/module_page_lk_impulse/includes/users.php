@@ -39,7 +39,7 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
                             if($Db->db_data['lk'][0]['mod'] == 1)
                             {
                                 $cash = 'cash';
-                                $all_cash = 'cash';
+                                $all_cash = 'all_cash';
                             }
                             else if($Db->db_data['lk'][0]['mod'] == 2)
                             {
