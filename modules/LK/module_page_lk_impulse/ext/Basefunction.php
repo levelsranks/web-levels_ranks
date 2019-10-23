@@ -84,15 +84,19 @@ class Basefunction{
 	public function BCheckPlayer(){
 		preg_match('/:[0-9]{1}:\d+/i', $this->decod[3], $auth);
 		$param = ['auth'=>'%'.$auth[0].'%'];
-		$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
 		if(empty($player)){
 			$params = [
 				'auth' 		=> $this->decod[3],
-				'name'		=> 'LR WEB - LK MODULE BY SAPSAN',
-				'cash'		=> 0,
-				'all_cash'	=> 0,
+				'name'		=> 'LR WEB - LK MODULE BY SAPSAN'
 			];
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk(auth, name, cash, all_cash) VALUES (:auth,:name,:cash,:all_cash)", $params);
+			if($this->db->db_data['lk'][0]['mod'] == 1)
+				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk(auth, name, cash, all_cash) VALUES (:auth,:name,0,0)", $params);
+			else if($this->db->db_data['lk'][0]['mod'] == 2)
+				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_system(auth, name, money, all_money) VALUES (:auth,:name,0,0)", $params);
 		}
 	}
 
@@ -218,7 +222,10 @@ class Basefunction{
 				'cash'		=> $this->summ,
 				'all_cash'	=> $summ,
 			];
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk SET cash = cash + :cash, all_cash = all_cash + :all_cash WHERE auth LIKE :auth", $params);
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk SET cash = cash + :cash, all_cash = all_cash + :all_cash WHERE auth LIKE :auth", $params);
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_system SET money = money + :cash, all_money = all_money + :all_cash WHERE auth LIKE :auth", $params);
 	}
 
 	/**

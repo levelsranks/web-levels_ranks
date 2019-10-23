@@ -30,15 +30,28 @@ class Lk_module{
 
 	public function LkBalancePlayer(){
 		if(isset($_SESSION['steamid32'])){
-			$param = ['auth'=> '%'.$_SESSION['steamid32'].'%'];
-			$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth", $param);
-			$this->Modules->set_user_info_text($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Balance').': '.$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse').' <b class="material-balance">'.number_format($infoUser[0]['cash'],0,' ', ' ').'</b>');
+			preg_match('/:[0-9]{1}:\d+/i', $_SESSION['steamid32'], $auth);
+			$param = ['auth'=> '%'.$auth[0].'%'];
+			if($this->db->db_data['lk'][0]['mod'] == 1)
+			{
+        		$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth", $param);
+        		$cash = 'cash';
+			}
+    		else if($this->db->db_data['lk'][0]['mod'] == 2)
+    		{
+        		$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT money FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
+        		$cash = 'money';
+    		}
+			$this->Modules->set_user_info_text($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_Balance').': '.$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse').' <b class="material-balance">'.number_format($infoUser[0][$cash],0,' ', ' ').'</b>');
 		}
 	}
 
 	public function LkAllDonats(){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
-		$allDonat = $this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT SUM(all_cash) FROM lk");
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$allDonat = $this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT SUM(all_cash) FROM lk");
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$allDonat = $this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT SUM(all_money) FROM lk_system");
 		return number_format($allDonat[0],0,' ', ' ');
 	}
 
@@ -151,7 +164,10 @@ class Lk_module{
 	public function LkGetUserData($user){
 		if(!preg_match('/^STEAM_[0-9]{1,2}:[0-1]:\d+$/',$user)) return false;
 		$param = ['auth' => $user];
-		$userdata = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth  = :auth",$param);
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$userdata = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth  = :auth",$param);
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$userdata = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE auth  = :auth",$param);
 		return $userdata;
 	}
 
@@ -168,12 +184,18 @@ class Lk_module{
 	}
 
 	public function LkGetAllPlayers($min, $max){
-		return $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk ORDER BY all_cash DESC LIMIT $min, $max");
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			return $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk ORDER BY all_cash DESC LIMIT $min, $max");
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			return $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system ORDER BY all_money DESC LIMIT $min, $max");
 	}
 
 	public function UsersPageMax($max){
 		$param = ['max'=>$max];
+		if($this->db->db_data['lk'][0]['mod'] == 1)
 		return ceil($this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT COUNT(*) FROM lk")[0]/$max);
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+		return ceil($this->db->queryNum('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT COUNT(*) FROM lk_system")[0]/$max);
 	}
 
 	public function LkUsagePromo($promo){
@@ -407,7 +429,10 @@ class Lk_module{
 
 	public function LkDelUsers(){
 		if( !isset( $_SESSION['user_admin'] ) || IN_LR != true )exit;
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk WHERE !cash AND all_cash = 0");
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk WHERE !cash AND all_cash = 0");
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "DELETE FROM lk_system WHERE !money AND all_money = 0");
 		$this->message($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_UsersDelete'),'success');
 	}
 
@@ -437,7 +462,10 @@ class Lk_module{
 				'auth' 		=> $post['user'],
 				'cash'		=> $post['new_balance'],
 			];
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk SET cash = $params[cash] WHERE auth = '$params[auth]'");
+		if($this->db->db_data['lk'][0]['mod'] == 1)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk SET cash = :cash WHERE auth = :auth",$params);
+		else if($this->db->db_data['lk'][0]['mod'] == 2)
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_system SET money = :cash WHERE auth = :auth",$params);
 		$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_NewBalanceUser'),['user'=>$post['user']]),'success');
 	}
 
@@ -828,9 +856,18 @@ class Lk_module{
 			$Steam = trim($this->LkLoadPlayerProfile($searchTrim, true));
 			if(empty($searchTrim))$this->message('Строка поиска пустая', 'error');
 			$param = ['search'	=> "%$searchTrim%"];
-			$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :search ORDER BY all_cash DESC LIMIT 0,20", $param);
+			if($this->db->db_data['lk'][0]['mod'] == 1)
+			{
+				$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :search ORDER BY all_cash DESC LIMIT 0,20", $param);
+					if(empty($infoUser))
+							$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE name LIKE :search ORDER BY all_cash  DESC LIMIT 0,20", $param);
+			}
+			else if($this->db->db_data['lk'][0]['mod'] == 2)
+			{
+				$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE auth LIKE :search ORDER BY all_money DESC LIMIT 0,20", $param);
 				if(empty($infoUser))
-						$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE name LIKE :search ORDER BY all_cash  DESC LIMIT 0,20", $param);
+						$infoUser = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE name LIKE :search ORDER BY all_money  DESC LIMIT 0,20", $param);
+			}
 
     		$_SESSION['search'] = $infoUser;
     		$this->location('?page=lk&section=search');

@@ -3,7 +3,7 @@
   "info": "Возможность пополнения баланса на сервере.",
   "author": "SAPSAN 隼",
   "page": "lk",
-  "version": "0.1",
+  "version": "0.4",
   "required": {
     "core":"0.2","php":"5.4"
   },

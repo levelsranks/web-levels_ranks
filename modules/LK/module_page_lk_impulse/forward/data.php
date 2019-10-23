@@ -126,8 +126,13 @@ if(empty($Db->db_data['lk']))
 
 //Проверка в базе данных наличие таблиц.
 if(isset($Db->db_data['lk'])){
+    if($Db->db_data['lk'][0]['mod'] == 1)
+        $tableLk = 'lk';
+    else if($Db->db_data['lk'][0]['mod'] == 2)
+        $tableLk = 'lk_system';
+    
     $checkTable =  array(
-        'lk',
+        $tableLk,
         'lk_discord',
         'lk_logs',
         'lk_pays',
@@ -135,7 +140,7 @@ if(isset($Db->db_data['lk'])){
         'lk_promocodes',
     );
     foreach ($checkTable as $key) {
-       if(!$Db->mysql_table_search($Db->db_data['lk'][0]['Table'], $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key))
+       if(!$Db->mysql_table_search('lk', $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key))
        {
            require MODULES.'module_page_lk_impulse/includes/install.php';
             exit;

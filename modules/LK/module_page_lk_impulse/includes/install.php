@@ -20,8 +20,13 @@ ini_set('display_startup_errors', 0);
 
 //Проверка в базе данных наличие таблиц.
 if(isset($Db->db_data['lk'])){
+    if($Db->db_data['lk'][0]['mod'] == 1)
+        $tableLk = 'lk';
+    else if($Db->db_data['lk'][0]['mod'] == 2)
+        $tableLk = 'lk_system';
+
     $checkTable =  array(
-        'lk',
+        $tableLk,
         'lk_discord',
         'lk_logs',
         'lk_pays',
@@ -29,7 +34,7 @@ if(isset($Db->db_data['lk'])){
         'lk_promocodes',
     );
     foreach ($checkTable as $key) {
-       if(!$Db->mysql_table_search($Db->db_data['lk'][0]['Table'], $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key)){
+       if(!$Db->mysql_table_search('lk', $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key)){
             $table[$key] = 1;
         }
     }
@@ -48,7 +53,7 @@ if(isset($_POST['db_check'])) {
 
 // Сохранение настроек базы данных
 if( isset( $_POST['save_db'] ) ) {
-    $dblk = ['lk' => [['HOST' => $_POST['host'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'mod' => $_POST['game_mod']]]]]]]];
+    $dblk = ['lk' => [['HOST' => $_POST['host'], 'USER' => $_POST['user'], 'PASS' => $_POST['pass'], 'DB' => [['DB' => $_POST['db_1'], 'Prefix' => [['table' => $_POST['table'], 'mod' => $_POST['lk_mod']]]]]]]];
     $Config = file_get_contents( SESSIONS . '/db.php');
     $ConfigReplace = str_replace("];", "", $Config);
     $ConfigReplacePUT = substr(var_export_opt( $dblk, true ),1);
@@ -58,8 +63,12 @@ if( isset( $_POST['save_db'] ) ) {
 
 // Установка таблиц в базу данных
 if( isset( $_POST['table_install'] ) ) {
+        if($Db->db_data['lk'][0]['mod'] == 1)
+            $tableLkCreate = "CREATE TABLE IF NOT EXISTS `lk` ( `auth` VARCHAR(64) NOT NULL , `name` VARCHAR(64) NOT NULL , `cash` FLOAT NOT NULL , `all_cash` FLOAT NOT NULL ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;";
+        else if($Db->db_data['lk'][0]['mod'] == 2)
+            $tableLkCreate = "CREATE TABLE IF NOT EXISTS `lk_system` ( `auth` VARCHAR(64) NOT NULL , `name` VARCHAR(64) NOT NULL , `money` FLOAT NOT NULL , `all_money` FLOAT NOT NULL ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;";
         $sql = array(
-          "CREATE TABLE IF NOT EXISTS `lk` ( `auth` VARCHAR(64) NOT NULL , `name` VARCHAR(64) NOT NULL , `cash` FLOAT NOT NULL , `all_cash` FLOAT NOT NULL ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;",
+          $tableLkCreate,
           "CREATE TABLE IF NOT EXISTS `lk_discord` (`url` TEXT NOT NULL , `auth` INT NOT NULL DEFAULT '0' ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;",
           "INSERT INTO `lk_discord`(`url`, `auth`) VALUES ('',0)",
           "CREATE TABLE IF NOT EXISTS `lk_logs` (`log_id` INT NOT NULL AUTO_INCREMENT , `log_name` TEXT NOT NULL , `log_value` TEXT NOT NULL , `log_time` TEXT NOT NULL , `log_content` TEXT NOT NULL , PRIMARY KEY (`log_id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;",
@@ -68,7 +77,7 @@ if( isset( $_POST['table_install'] ) ) {
           "CREATE TABLE IF NOT EXISTS `lk_promocodes` ( `id` INT NOT NULL AUTO_INCREMENT , `code` TEXT NOT NULL , `percent` FLOAT NOT NULL , `attempts` INT NOT NULL , `auth1` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;",
         );
         foreach($sql as $key){
-            $Db->query($Db->db_data['lk'][0]['Table'], $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key);
+            $Db->query('lk', $Db->db_data['lk'][0]['USER_ID'], $Db->db_data['lk'][0]['DB_num'], $key);
         }
         header("Location: ".get_url(2)."?page=lk&section=gateways");
 }
@@ -224,10 +233,10 @@ if( isset( $_POST['table_install'] ) ) {
                         <div class="input-form"><div class="input_text">Pass: </div><input name="pass" value="<?php echo $_POST['pass']?>"></div>
                         <div class="input-form"><div class="input_text">DB: </div><input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
                         <div class="input-form"><div class="input_text">Table: </div><input placeholder="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Example')?>: lk" name="table" value="<?php echo $_POST['table']?>"></div>
-                        <div class="input-form"><div class="input_text">Game mod</div>
-                            <select name="game_mod">
-                                <option value="csgo">CS:GO</option>
-                                <option value="css">CSS</option>
+                        <div class="input-form"><div class="input_text">LK mod</div>
+                            <select name="lk_mod">
+                                <option value="1">LK Impulse</option>
+                                <option value="2">LK McD4CK</option>
                             </select>
                         </div>
                     </form>

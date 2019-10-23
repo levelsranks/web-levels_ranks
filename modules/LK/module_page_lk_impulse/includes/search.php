@@ -29,7 +29,18 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($_SESSION['search'] as $key):?>
+                    <?php foreach ($_SESSION['search'] as $key):
+                        if($Db->db_data['lk'][0]['mod'] == 1)
+                            {
+                                $cash = 'cash';
+                                $all_cash = 'cash';
+                            }
+                            else if($Db->db_data['lk'][0]['mod'] == 2)
+                            {
+                                $cash = 'money';
+                                $all_cash = 'all_money';
+                            }
+                        ?>
                         <tr>
                             <?php if( $General->arr_general['avatars'] != 0 ) {?>
                                 <th class="text-right tb-avatar pointer" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $key['auth'] ?>&search=1' "<?php } ?>><img class="rounded-circle" id="<?php echo con_steam32to64($key['auth']) ?>"<?php $i  < '20' ? print 'src' : print 'data-src'?>="
@@ -41,8 +52,8 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
                             <th class="text-left pointer" <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>onclick="location.href = '<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $key['auth'] ?>&search=1' "<?php } ?>>
                                 <a <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $key['auth'] ?>&search=1"<?php } ?>><?php echo action_text_clear( action_text_trim($key['name'], 13) )?></a>
                             </th>
-                            <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_AmountCourse' )?> <?php echo $key['cash'] ?></th>
-                            <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_AmountCourse' )?> <?php echo $key['all_cash'] ?></th>
+                            <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_AmountCourse' )?> <?php echo $key[$cash] ?></th>
+                            <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_AmountCourse' )?> <?php echo $key[$all_cash] ?></th>
                             <th class="text-left"><a class="btn" href="<?php echo set_url_section(get_url(2), 'user_edit', $key['auth'])?>"><i  class='zmdi zmdi-more zmdi-hc-fw'></i></a></th>
                         </tr>
                     <?php endforeach;?>
@@ -66,7 +77,9 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
             </div>
         </div>
     </div>
-<?php if (!empty($_GET['user_edit'])): $user = $LK->LkGetUserData($_GET['user_edit']);$pays = $LK->LkGetUserPays($_GET['user_edit'])?>
+<?php if (!empty($_GET['user_edit'])): $user = $LK->LkGetUserData($_GET['user_edit']);$pays = $LK->LkGetUserPays($_GET['user_edit']);
+    if($Db->db_data['lk'][0]['mod'] == 1)$cash = 'cash';
+    else if($Db->db_data['lk'][0]['mod'] == 2)$cash = 'money';?>
 <div class="col-md-7">
     <div class="card">
         <div class="card-header">
@@ -77,8 +90,8 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
             <form id="user_edit" data-default="true" enctype="multipart/form-data" method="post">
                     <input type="hidden" name="user" value="<?php echo $_GET['user_edit']?>">
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Balance')?></div>
-                    <input type="hidden" name="old_balance" value="<?php echo $user[0]['cash']?>" >
-                    <input name="new_balance" value="<?php echo $user[0]['cash']?>" >
+                    <input type="hidden" name="old_balance" value="<?php echo $user[0][$cash]?>" >
+                    <input name="new_balance" value="<?php echo $user[0][$cash]?>" >
                 </div>
              </form>
             <input class="btn"  type="submit" form="user_edit" value="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Save')?>">
