@@ -79,15 +79,15 @@ if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
                         <?php if(isset($_SESSION['steamid32'])):?>
                              <input type="hidden" name="steam" value="<?php echo $_SESSION['steamid32']?>" >
                         <?php else:?>
-                            <div class="input-form"><div class="input_text">STEAM ID:</div><input name="steam" placeholder="STEAM_1:1:390... / 7656119803... / [U:1:1234234] / https://steamcommunity.com/profiles/... "></div>
+                            <div class="input-form"><div class="input_text">STEAM ID:</div><input name="steam" placeholder="STEAM_1:1:390... / 7656119803... / [U:1:1234234] / https://steamcommunity.com/profiles/... " value="<?php echo action_text_clear( $_GET['steam'] ) ?? ''?>"></div>
                         <?php endif?>
                         <div class="input-form">
                             <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ToUpAmount')?></div>
-                            <input name="amount">
+                            <input name="amount" value="<?php echo action_text_clear( $_GET['amount'] ) ?? ''?>">
                         </div>
                         <div class="input-form">
                             <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></div>
-                            <input name="promocode">
+                            <input name="promocode" value="<?php echo action_text_clear( $_GET['code'] ) ?? ''?>">
                         </div>
                         <div class="input-form" id="promoresult"></div>
                          </form>
