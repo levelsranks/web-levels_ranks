@@ -804,5 +804,12 @@ return array (
         array (
             'EN' => 'Server Information',
             'RU' => 'Информация о сервере'
+        ),
+    '_OpenCase' =>
+        array (
+            'EN' => 'Open Case',
+            'RU' => 'Open Case'
+            'UA' => 'Open Case'
+            'LT' => 'Open Case'
         )
 );
