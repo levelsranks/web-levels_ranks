@@ -808,8 +808,8 @@ return array (
     '_OpenCase' =>
         array (
             'EN' => 'Open Case',
-            'RU' => 'Open Case'
-            'UA' => 'Open Case'
+            'RU' => 'Open Case',
+            'UA' => 'Open Case',
             'LT' => 'Open Case'
         )
 );
