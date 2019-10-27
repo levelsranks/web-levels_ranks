@@ -11,6 +11,7 @@
     "status": 1,
     "type": 1,
     "available_types": "1",
+    "translation": 1,
     "interface": 1,
     "interface_adjacent": "afternavbar",
     "data": 1
