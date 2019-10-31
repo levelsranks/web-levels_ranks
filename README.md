@@ -523,6 +523,7 @@
 - d4Ck#0698 ( Discord )   - 147.67 RUB.
 - ka1jaru#1648 ( Discord )  - 137.45 RUB.
 - uraganas#7978 ( Discord )   - 132 RUB.
+- Domikuss#3855 ( Discord ) - 121.45 RUB.
 - punisher89#7116 ( Discord )  - 104.45 RUB.
 - SV3N#9923   ( Discord )   - 100.40 RUB.
 - HILER#3959  ( Discord )   - 100 RUB.
@@ -531,7 +532,6 @@
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
-- Domikuss#3855 ( Discord ) - 24.45 RUB.
 
 Блок разработчика:
 -----
