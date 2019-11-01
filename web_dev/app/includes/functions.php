@@ -108,7 +108,7 @@ function var_export_opt( $var, $return = true ) {
  * @return string|false          Выводит итоговое значение раздела.
  */
 function get_section( $section, $default ) {
-    return isset( $_GET[ $section ] ) ? $_GET[ $section ] : $default;
+    return isset( $_GET[ $section ] ) ? action_text_clear( $_GET[ $section ] ) : $default;
 }
 
 /**
@@ -135,12 +135,13 @@ function get_arr_size( $arr ) {
  */
 
 function get_url( $type ) {
+    $url_clear = action_text_clear( $_SERVER["REQUEST_URI"] );
     switch ( $type ) {
         case 1:
-            return '//' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+            return '//' . $_SERVER["SERVER_NAME"] . $url_clear;
             break;
         case 2:
-            return '//' .$_SERVER['HTTP_HOST'] . explode( '?', $_SERVER['REQUEST_URI'], 2 )[0];
+            return '//' .$_SERVER['HTTP_HOST'] . explode( '?', $url_clear, 2 )[0];
             break;
     }
 }
@@ -234,7 +235,7 @@ function action_text_clear_characters( $text ) {
  *
  * @return int                  Итог.
  */
-function action_int_percent_of_all( $int, $all ) {
+function action_int_percent_of_all( $int = 0, $all = 0 ) {
     if( $int == 0 || $all == 0 ) {
         $res = 0;
     } else {
@@ -267,7 +268,7 @@ function action_text_clear_before_slash( $text ) {
  * @return bool                    Итог проверки.
  */
 function check_duplicate_files( $file, $file_2 ) {
-        return file_exists ( $file ) && file_exists ( $file_2 ) && filesize ( $file ) === filesize ( $file_2 ) ? true : false;
+        return ( file_exists( $file ) && file_exists( $file_2 ) && filesize( $file ) === filesize( $file_2 ) ) ? true : false;
 }
 
 /**
@@ -335,7 +336,14 @@ function con_steam64to3_int( $steamid64 ) {
  * @return int                    Выводит итог конвертации.
  */
 function con_steam3to64_int( $steamid3 ) {
-    return "STEAM_1:" . $steamid3 & 1 . ":" . $steamid3 >> 1;
+    if( is_numeric( $steamid3 ) ):
+        $a = $steamid3 % 2;
+        $b = intval($steamid3 / 2);
+        $c = con_steam32to64 ( 'STEAM_1:' . $a . ':' . $b );
+        return $c;
+    else:
+        return '';
+    endif;
 }
 
 /**
@@ -351,8 +359,7 @@ function con_steam3to32_int( $steamid3, $else = 0 ) {
     if( is_numeric ( $steamid3 ) ):
         $a = $steamid3 % 2;
         $b = intval($steamid3 / 2);
-        $c = con_steam32to64 ( 'STEAM_1:' . $a . ':' . $b );
-        return $c;
+        return 'STEAM_1:' . $a . ':' . $b;
     elseif( $else === 1 ):
         return $steamid3[0] == 'S' ? con_steam32to64( $steamid3 ) : $steamid3;
     else:

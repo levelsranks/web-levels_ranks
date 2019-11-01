@@ -82,13 +82,16 @@ class Player {
 
     function __construct( $General, $Db, $Modules, $id, $sg ) {
 
-        # Работа с базой данных.
+        // Проверка на основную константу.
+        defined('IN_LR') != true && die();
+
+        // Работа с базой данных.
         $this->Db = $Db;
 
-        # Работа с ядром.
+        // Работа с ядром.
         $this->General = $General;
 
-        # Работа с модулями.
+        // Работа с модулями.
         $this->Modules = $Modules;
 
         // Присвоение группы серверов.
@@ -513,7 +516,8 @@ class Player {
                                                              fps_unusualkills.whirl AS Whirl
                                                              FROM fps_unusualkills
                                                              INNER JOIN fps_players ON fps_unusualkills.account_id = fps_players.account_id
-                                                             WHERE fps_players.steam_id = '{$this->get_steam_64()}' LIMIT 1" );
+                                                             WHERE fps_players.steam_id = '{$this->get_steam_64()}'
+                                                             AND fps_unusualkills.server_id = '{$this->found[ $this->server_group ]['server_int']}' LIMIT 1" );
                 break;
         }
     }

@@ -91,7 +91,7 @@ class Admin {
             $_data[] = $data[ $i2 ]['id'];
         }
 
-        $_GET['module_page'] == 'sidebar' ? $array['sidebar'] = $_data : $array['page'][ get_section( 'module_page', 'home' ) ]['interface'] = $_data;
+        get_section( 'module_page', 'home' ) == 'sidebar' ? $array['sidebar'] = $_data : $array['page'][ get_section( 'module_page', 'home' ) ]['interface'][ get_section( 'module_interface_adjacent', 'afternavbar' ) ] = $_data;
 
         file_put_contents( SESSIONS . 'modules_initialization.php', '<?php return '.var_export_min( $array, true ).";" );
     }

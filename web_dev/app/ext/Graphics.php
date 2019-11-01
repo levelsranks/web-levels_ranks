@@ -13,6 +13,12 @@ namespace app\ext;
 class Graphics {
 
     /**
+     * @since 0.2.123
+     * @var object
+     */
+    public    $Translate;
+
+    /**
      * @since 0.2
      * @var object
      */
@@ -44,6 +50,13 @@ class Graphics {
 
     /**
      * Инициализация графической составляющей вэб-интерфейса с подгрузкой модулей.
+     * 
+     * @param object $Translate
+     * @param object $General
+     * @param object $Modules
+     * @param object $Db
+     * @param object $Auth
+     * @param object $Notifications
      *
      * @since 0.2
      */
@@ -52,25 +65,28 @@ class Graphics {
         // Проверка на основную константу.
         defined('IN_LR') != true && die();
 
-        $Graphics = $this;
+        // Присвоение глобальных объектов.
+        $Graphics            = $this;
+        $this->Translate     = $Translate;
+        $this->General       = $General;
+        $this->Modules       = $Modules;
+        $this->Db            = $Db;
+        $this->Auth          = $Auth;
+        $this->Notifications = $Notifications;
 
-        $this->Translate = $Translate;
-
-        $this->General = $General;
-
-        $this->Auth = $Auth;
-        
-        // Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы
+        // Подгрузка данных из модулей которые не относятся к интерфейсу и должны быть получены до начала рендера страницы.
         for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'] ); $module_id < $c_mi; $module_id++ ):
             $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data'][ $module_id ] . '/forward/data.php';
             file_exists( $file ) && require $file;
         endfor;
 
         // Дополнительный поток под модули, которые должны задействовать ядро на постоянной основе, а не локально.
-        for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'] ); $module_id < $c_mi; $module_id++ ):
-            $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['data_always'][ $module_id ] . '/forward/data_always.php';
-            file_exists( $file ) && require $file;
-        endfor;
+        if( ! empty( $Modules->arr_module_init['data_always'] ) ):
+            for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['data_always'] ); $module_id < $c_mi; $module_id++ ):
+                $file = MODULES . $Modules->arr_module_init['data_always'][ $module_id ] . '/forward/data_always.php';
+                file_exists( $file ) && require $file;
+            endfor;
+        endif;
 
         // Рендер блока - Head
         require PAGE . 'head.php';
@@ -81,14 +97,16 @@ class Graphics {
         // Рендер блока - Navbar
         require PAGE . 'navbar.php';
 
-        // Подгрузка данных из модулей которые относятся к интерфейсу
-        for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'] ); $module_id < $c_mi; $module_id++ ):
-            $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface'][ $module_id ] . '/forward/interface.php';
-            file_exists( $file ) && require $file;
-        endfor;
+        // Подгрузка данных из модулей которые относятся к интерфейсу - afternavbar
+        if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afternavbar'] ) ):
+            for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afternavbar'] ); $module_id < $c_mi; $module_id++ ):
+                $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afternavbar'][ $module_id ] . '/forward/interface.php';
+                file_exists( $file ) && require $file;
+            endfor;
+        endif;
 
         // Рендер блока - Footer
-        require PAGE . 'footer/2.php';
+        require PAGE . 'footer/1.php';
     }
 
     /**

@@ -113,6 +113,7 @@
                     <table class="table table-hover mb-0">
                         <thead>
                         <tr>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Название</th>
                             <th class="text-center">IP:PORT</th>
                             <th class="text-center">Визуальный IP:PORT</th>
@@ -122,6 +123,9 @@
                         <tbody>
                         <?php for ($i_server = 0; $i_server < $General->server_list_count; $i_server++) {?>
                             <tr id="<?php echo $General->server_list[$i_server]['id']?>">
+                                <th class="text-center">
+                                    <?php echo $General->server_list[$i_server]['id']?>
+                                </th>
                                 <th class="text-center">
                                     <?php echo $General->server_list[$i_server]['name']?>
                                 </th>

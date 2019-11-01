@@ -17,67 +17,67 @@ class Db {
      * @since 0.2
      * @var array
      */
-    private $options            = array();
+    private  $options = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    private $db                 = array();
+    private  $db = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    private $dns                = array();
+    private  $dns = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    protected $pdo              = array();
+    protected $pdo = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    public    $db_data          = array();
+    public    $db_data = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    private   $table_count_for;
+    private   $table_count_for = [];
+
+    /**
+     * @since 0.2
+     * @var int
+     */
+    public    $mod_count = 0;
 
     /**
      * @since 0.2
      * @var array
      */
-    public    $mod_count;
+    public    $user_count = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    public    $user_count;
+    public    $db_count = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    public    $db_count;
+    public    $table_count = [];
 
     /**
      * @since 0.2
      * @var array
      */
-    public    $table_count;
-
-    /**
-     * @since 0.2
-     * @var array
-     */
-    public    $mod_name;
+    public    $mod_name = [];
 
     /**
      * @since 0.2
@@ -215,8 +215,8 @@ class Db {
                             'Table' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['table'] ?? '',
                             'table_id' => $t,
                             'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'] ?? '',
-                            'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? '',
-                            'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? '',
+                            'mod' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['mod'] ?? 730,
+                            'steam' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['steam'] ?? 1,
                             'ranks_pack' => $rank_pack
                         ];
                         in_array( $this->mod_name[ $m ], $this->support_statistics ) && $this->statistics_table[] = [ 'DB_mod' => $this->mod_name[ $m ], 'name' => $this->db[ $this->mod_name[ $m ] ][ $u ]['DB'][ $d ]['Prefix'][ $t ]['name'], 'ranks_pack' => $rank_pack];

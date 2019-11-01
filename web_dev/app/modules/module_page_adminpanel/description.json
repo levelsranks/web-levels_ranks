@@ -14,6 +14,7 @@
     "available_types": "1",
     "translation": 1,
     "interface": 1,
+    "interface_adjacent": "afternavbar",
     "data": 1,
     "data_always": 1,
     "css": 1,

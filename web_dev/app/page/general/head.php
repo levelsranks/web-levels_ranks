@@ -34,4 +34,11 @@
 .sidebar-collapse .user-sidebar-block { <?php echo ! isset( $_SESSION['steamid32'] ) ? 'height: 59px;' : 'height: 88px;' . '} '?></style>
     <script>var avatar=[];var servers=[];var profile;</script>
 </head>
+<?php // Подгрузка данных из модулей которые относятся к интерфейсу - afterhead
+if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterhead'] ) ):
+    for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterhead'] ); $module_id < $c_mi; $module_id++ ):
+        $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterhead'][ $module_id ] . '/forward/interface.php';
+        file_exists( $file ) && require $file;
+    endfor;
+endif?>
 <body <?php $_SESSION['sidebar_open'] == false && print 'class="sidebar-collapse"'?>>

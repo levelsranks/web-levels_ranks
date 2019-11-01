@@ -216,7 +216,6 @@ class Modules {
         if ( ! file_exists( SESSIONS . 'modules_initialization.php' ) ):
 
             $result = [];
-            $data_always = [];
 
             for ( $i = 0; $i < $this->array_modules_count; $i++ ):
 
@@ -227,21 +226,14 @@ class Modules {
                      && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                      && $this->array_modules[ $module ]['required']['core'] <= VERSION
                  ):
-                     ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][] = $module;
+                     if( ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 ):
+                         $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afterbody' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
+                     endif;
                      ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
-                     ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $data_always[] = $module;
+                     ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $result['data_always'][] = $module;
                      ! empty( $this->array_modules[ $module ]['setting']['js'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
                      ! empty( $this->array_modules[ $module ]['sidebar'] ) && $result['sidebar'][] = $module;
                  endif;
-            endfor;
-
-            // Дополнительный перебор.
-            for ( $i = 0, $c_p = sizeof( $result['page'] ); $i < $c_p; $i++ ):
-                $module = array_keys( $this->array_modules )[ $i ];
-
-                for ( $i2 = 0, $c = sizeof( $data_always ); $i2 < $c; $i2++ ):
-                    $result['page'][ $this->array_modules[ $module ]['page'] ]['data_always'][] = $data_always[ $i2 ];
-                endfor;
             endfor;
 
             // Сохраняем наш файл с перебором модулей.

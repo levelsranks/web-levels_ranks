@@ -6,6 +6,21 @@
 <?php   endfor;
       else:?>
     <script src="<?php echo ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js' ) ? $General->arr_general['site'] . 'storage/assets/js/app' :  $General->arr_general['site'] . 'storage/assets/js/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver']?>.js"></script>
-<?php endif; ?>
+<?php endif;
+
+// Подгрузка данных из модулей которые относятся к интерфейсу - inbodyend
+if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['inbodyend'] ) ):
+    for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['inbodyend'] ); $module_id < $c_mi; $module_id++ ):
+        $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['inbodyend'][ $module_id ] . '/forward/interface.php';
+        file_exists( $file ) && require $file;
+    endfor;
+endif?>
 </body>
+<?php // Подгрузка данных из модулей которые относятся к интерфейсу - afterbody
+if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterbody'] ) ):
+    for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterbody'] ); $module_id < $c_mi; $module_id++ ):
+        $file = MODULES . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afterbody'][ $module_id ] . '/forward/interface.php';
+        file_exists( $file ) && require $file;
+    endfor;
+endif?>
 </html>

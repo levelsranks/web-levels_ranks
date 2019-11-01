@@ -66,6 +66,14 @@ class Auth {
      */
     public    $Db;
 
+    /**
+     * Организация работы вэб-приложения с авторизацией.
+     *
+     * @param object $General
+     * @param object $Db
+     *
+     * @since 0.2
+     */
     function __construct( $General, $Db ) {
 
         // Проверка на основную константу.

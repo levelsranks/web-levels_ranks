@@ -30,9 +30,10 @@ class General {
      */
     public $server_list_count = 0;
 
-
     /**
      * Инициализация основных настроек.
+     *
+     * @param object $Db
      *
      * @since 0.2
      */
@@ -206,7 +207,7 @@ class General {
      */
     function get_js_relevance_avatar( $id, $type = 2 ) {
         if ( $this->arr_general['avatars'] == 1 ):
-            $con = $id[0] == 'S' ? con_steam32to64( $id ) : $id;
+            $con = is_numeric( $id ) ? $id : con_steam32to64( $id );
             $check = (int) $this->checkAvatar( $con, $type );
             echo sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
         endif;

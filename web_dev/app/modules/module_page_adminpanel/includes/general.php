@@ -17,7 +17,7 @@
                             <?php endfor?>
                         </select>
                     </div>
-                    <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" value="<?php echo $General->arr_general['web_key']?>"></div>
+                    <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" type="password" value="<?php echo $General->arr_general['web_key']?>"></div>
                 <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Show_avatars')?></div>
                     <select name="avatars">
                         <option style="display:none" value="<?php echo (int) $General->arr_general['avatars']?>"><?php if( $General->arr_general['avatars'] == 1 ) { echo 'Показывать';} elseif ( $General->arr_general['avatars'] == 2) { echo 'Использовать случайные аватарки';} else { echo 'Не показывать';}?></option>

@@ -180,6 +180,9 @@ if( $_POST["function"] == 'avatars' ) {
         // Присваивание к переменной полученный массив со списком Steam ID игроков.
         $avatars = $_POST['data'];
 
+        // Количество полученных аватаров.
+        $avatars_count = is_array( $avatars ) ? sizeof( $avatars ) : 0;
+
         // Генерация запроса к Steam API.
         $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $web_key . '&steamids=' . implode( ",", $avatars ) );
 
@@ -192,53 +195,71 @@ if( $_POST["function"] == 'avatars' ) {
         // Полученные данные из запроса декодируем.
         $data = json_decode( $url, true )['response']['players'];
 
-        // Подсчёт количества элементов массива.
+        // Подсчёт количества обработанных аватаров.
         $data_count = is_array( $data ) ? sizeof( $data ) : 0;
 
-        // Создание цикла исходя из количества эелементов.
-        for ( $i = 0; $i < $data_count; $i++ ) {
-            // Заполняем итоговый массив.
-            $return[] = [
-                "id" => $data[$i]['steamid'],
-                "url" => $data[$i]['steamid']
-            ];
+        if( $avatars_count <= $data_count ):
+            // Создание цикла исходя из количества эелементов.
+            for ( $i = 0; $i < $data_count; $i++ ):
+                // Заполняем итоговый массив.
+                $return[] = [
+                    "id" => $data[$i]['steamid'],
+                    "url" => $data[$i]['steamid']
+                ];
 
-            // Создаём пути под сохранение аватаров.
-            $cacheFile = "../../storage/cache/img/avatars/" . $data[$i]['steamid'] . ".jpg";
-            $cacheFile_slim = "../../storage/cache/img/avatars/slim/" . $data[$i]['steamid'] . ".jpg";
+                // Создаём пути под сохранение аватаров.
+                $cacheFile = "../../storage/cache/img/avatars/" . $data[ $i ]['steamid'] . ".jpg";
+                $cacheFile_slim = "../../storage/cache/img/avatars/slim/" . $data[ $i ]['steamid'] . ".jpg";
 
-            // Номер случайной аватарки
+                // Номер случайной аватарки
+                $rand = rand(1,30);
 
-            $rand = rand(1,30);
+                // Сохраняем/редактируем новые аватары.
+                $avatarfull = curl_init( $data[ $i ]['avatarfull'] );
+                curl_setopt( $avatarfull, CURLOPT_HEADER, 0);
+                curl_setopt( $avatarfull, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt( $avatarfull, CURLOPT_BINARYTRANSFER,1);
+                $out_avatarfull = curl_exec( $avatarfull );
+                curl_close( $avatarfull );
 
-            // Сохраняем/редактируем новые аватары.
+                if( ! empty( $out_avatarfull ) ) {
+                    file_put_contents( $cacheFile, $out_avatarfull );
+                } else {
+                    file_put_contents( $cacheFile, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '.jpg' ) );
+                }
 
-            $avatarfull = curl_init( $data[ $i ]['avatarfull'] );
-            curl_setopt( $avatarfull, CURLOPT_HEADER, 0);
-            curl_setopt( $avatarfull, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt( $avatarfull, CURLOPT_BINARYTRANSFER,1);
-            $out_avatarfull = curl_exec( $avatarfull );
-            curl_close( $avatarfull );
+                $avatar = curl_init( $data[ $i ]['avatar'] );
+                curl_setopt( $avatar, CURLOPT_HEADER, 0);
+                curl_setopt( $avatar, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt( $avatar, CURLOPT_BINARYTRANSFER,1);
+                $out_avatar = curl_exec( $avatar );
+                curl_close( $avatar );
 
-            if( ! empty( $out_avatarfull ) ) {
-                file_put_contents( $cacheFile, $out_avatarfull );
-            } else {
+                if( ! empty( $out_avatar ) ) {
+                    file_put_contents( $cacheFile_slim, $out_avatar );
+                } else {
+                    file_put_contents( $cacheFile_slim, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '_xs.jpg' ) );
+                }
+            endfor;
+        else:
+            for ( $i = 0; $i < $avatars_count; $i++ ):
+                // Номер случайной аватарки
+                $rand = rand(1,30);
+
+                // Заполняем итоговый массив.
+                $return[] = [
+                    "id" => $avatars[ $i ],
+                    "url" => $avatars[ $i ]
+                ];
+
+                // Создаём пути под сохранение аватаров.
+                $cacheFile = "../../storage/cache/img/avatars/" . $avatars[ $i ] . ".jpg";
+                $cacheFile_slim = "../../storage/cache/img/avatars/slim/" . $avatars[ $i ] . ".jpg";
+
                 file_put_contents( $cacheFile, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '.jpg' ) );
-            }
-
-            $avatar = curl_init( $data[ $i ]['avatar'] );
-            curl_setopt( $avatar, CURLOPT_HEADER, 0);
-            curl_setopt( $avatar, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt( $avatar, CURLOPT_BINARYTRANSFER,1);
-            $out_avatar = curl_exec( $avatar );
-            curl_close( $avatar );
-
-            if( ! empty( $out_avatar ) ) {
-                file_put_contents( $cacheFile_slim, $out_avatar );
-            } else {
                 file_put_contents( $cacheFile_slim, file_get_contents( '../../storage/cache/img/avatars_random/' . $rand . '_xs.jpg' ) );
-            }
-        }
+            endfor;
+        endif;
 
         // Вывод итоговых данных.
         echo json_encode( $return );

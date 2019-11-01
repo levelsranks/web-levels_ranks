@@ -1,5 +1,5 @@
 <?php ! isset( $_SESSION['user_admin'] ) && get_iframe( '013','Доступ закрыт' )?>
-<div class="col-md-6">
+<div class="col-md-8">
     <div class="card">
         <div class="card-header">
             <h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Module_loading')?></h5>
@@ -14,17 +14,35 @@
                         <a href="<?php echo set_url_section(get_url(2), 'module_page', 'sidebar') ?>">sidebar</a></option>
                 </select>
             </div>
+            <div class="select-panel select-panel-pages badge">
+                <select onChange="window.location.href=this.value">
+                    <option style="display:none" value="" disabled selected><?php echo get_section( 'module_interface_adjacent', 'afternavbar' )?></option>
+                        <option value="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afternavbar')?>"><a href="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afternavbar')?>">afternavbar</a></option>
+                        <option value="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afterhead')?>"><a href="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afterhead')?>">afterhead</a></option>
+                        <option value="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'inbodyend')?>"><a href="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'inbodyend')?>">inbodyend</a></option>
+                        <option value="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afterbody')?>"><a href="<?php echo set_url_section(get_url(2), 'module_interface_adjacent', 'afterbody')?>">afterbody</a></option>
+                </select>
+            </div>
         </div>
         <div class="card-container">
     <?php if( get_section( 'module_page', 'home' ) != '' ):?>
                 <div class="dd" id="nestable">
                     <ol class="dd-list">
                         <?php
-                        $c_m_p = ( get_section( 'module_page', 'home' ) == 'sidebar' ) ? sizeof( $Modules->arr_module_init['sidebar'] ) : sizeof( $Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ] ['interface'] );
+                        if( get_section( 'module_page', 'home' ) == 'sidebar' ):
+                            $c_m_p = sizeof( $Modules->arr_module_init['sidebar'] );
+                        else:
+                            $c_m_p = sizeof( $Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ get_section( 'module_interface_adjacent', 'afternavbar' ) ] );
+                        endif;
                         for ( $i = 0; $i < $c_m_p; $i++ ) {
-                            $data_id = ( get_section( 'module_page', 'home' ) == 'sidebar' ) ? $Modules->arr_module_init['sidebar'][ $i ] : $Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ $i ];
-                            $data_title = ( get_section( 'module_page', 'home' ) == 'sidebar' ) ? $Modules->array_modules[$Modules->arr_module_init['sidebar'][ $i ]]['title'] : $Modules->array_modules[$Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ $i ]]['title']?>
-                            <li class="dd-item" data-id="<?php echo $data_id?>">
+                            if( get_section( 'module_page', 'home' ) == 'sidebar' ):
+                                $data_id = $Modules->arr_module_init['sidebar'][ $i ];
+                                $data_title = $Modules->array_modules[$Modules->arr_module_init['sidebar'][ $i ]]['title'];
+                            else:
+                                $data_id =  $Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ get_section( 'module_interface_adjacent', 'afternavbar' ) ][ $i ];
+                                $data_title = $Modules->array_modules[$Modules->arr_module_init['page'][ get_section( 'module_page', 'home' ) ]['interface'][ get_section( 'module_interface_adjacent', 'afternavbar' ) ][ $i ]]['title'];
+                            endif?>
+                                                        <li class="dd-item" data-id="<?php echo $data_id?>">
                                 <a class="module_setting" href="<?php echo $General->arr_general['site']?>?page=adminpanel&section=modules&options=<?php echo $data_id?>"><i class="zmdi zmdi-chevron-right zmdi-hc-fw"></i></a>
                                 <div class="dd-handle"><?php echo $data_title?></div>
                             </li>
@@ -36,7 +54,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-4">
     <div class="card">
         <div class="card-header">
             <h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Options')?></h5>
