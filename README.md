@@ -531,6 +531,7 @@
 - DevBT#4750  ( Discord )   - 100 RUB.
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
+- Twenix#4347 ( Discord )   - 100 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
