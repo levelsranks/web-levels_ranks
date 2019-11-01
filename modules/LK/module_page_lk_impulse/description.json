@@ -14,6 +14,7 @@
     "sessions": 0,
     "translation": 1,
     "interface": 1,
+	"interface_adjacent": "afternavbar",
     "data": 1,
     "data_always": 0,
     "css": 1,

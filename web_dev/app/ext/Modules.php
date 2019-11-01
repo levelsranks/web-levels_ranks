@@ -227,7 +227,7 @@ class Modules {
                      && $this->array_modules[ $module ]['required']['core'] <= VERSION
                  ):
                      if( ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 ):
-                         $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afterbody' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
+                         $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
                      endif;
                      ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
                      ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $result['data_always'][] = $module;

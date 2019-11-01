@@ -12,6 +12,7 @@
     "type": 1,
     "available_types": "1",
     "interface": 1,
+    "interface_adjacent": "afternavbar",
     "data": 1
   },
   "sidebar": {
