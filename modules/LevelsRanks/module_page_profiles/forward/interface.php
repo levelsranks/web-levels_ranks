@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-12">
             <div class="header-profile">
-                    <h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Player_profile')?> :: <?php echo action_text_trim( $Player->get_name(),16 )?></h5>
+                    <h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Player_profile')?> :: <?php echo action_text_clear( action_text_trim( $Player->get_name(),16 ) )?></h5>
                     <div class="select-panel select-panel-table badge">
                         <select onChange="window.location.href=this.value">
                             <option style="display:none" value="" disabled selected><?php echo $Player->found[  $Player->server_group  ]['name_servers']?></option>
