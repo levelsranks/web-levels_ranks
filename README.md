@@ -499,6 +499,7 @@
 - mixxed.xyz#4469 ( Discord ) - 1200 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
+- Nestor#9876 ( Discord )   - 600 RUB.
 - MAMAC#9993  ( Discord )   - 511.05 RUB.
 - dyoma#5525  ( Discord )   - 500 RUB.
 - Морячок#9904  ( Discord )   - 500 RUB.
@@ -519,7 +520,6 @@
 - MaZa#8322    ( Discord )  - 150 RUB.
 - ™S.E.N.A.T.O.R™♛#1466 ( Discord )  - 150 RUB.
 - SynZilla    ( hlmod.ru )  - 150 RUB.
-- Nestor#9876 ( Discord )   - 150 RUB.
 - d4Ck#0698 ( Discord )   - 147.67 RUB.
 - ka1jaru#1648 ( Discord )  - 137.45 RUB.
 - uraganas#7978 ( Discord )   - 132 RUB.
