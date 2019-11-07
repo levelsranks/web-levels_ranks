@@ -295,7 +295,7 @@ class Player {
     }
 
     public function get_rank() {
-        return (int) empty( $this->arr_default_info['rank'] ) ? 0 : $this->arr_default_info['rank'];
+        return (int) $this->arr_default_info['rank'] ?? 0;
     }
 
     public function get_lastconnect() {

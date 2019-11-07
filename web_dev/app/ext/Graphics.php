@@ -97,6 +97,14 @@ class Graphics {
         // Рендер блока - Navbar
         require PAGE . 'navbar.php';
 
+        // Дополнительный пулл под модули, которые должны быть объявлены на каждой странице - afternavbar
+        if( ! empty( $Modules->arr_module_init['interface_always']['afternavbar'] ) ):
+            for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['interface_always']['afternavbar'] ); $module_id < $c_mi; $module_id++ ):
+                $file = MODULES . $Modules->arr_module_init['interface_always']['afternavbar'][ $module_id ]['name'] . '/forward/interface_always.php';
+                file_exists( $file ) && require $file;
+            endfor;
+        endif;
+
         // Подгрузка данных из модулей которые относятся к интерфейсу - afternavbar
         if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afternavbar'] ) ):
             for ( $module_id = 0, $c_mi = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['interface']['afternavbar'] ); $module_id < $c_mi; $module_id++ ):

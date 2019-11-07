@@ -28,7 +28,7 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                                 </div>
                                 <div class="border_ip"></div>
                                 <div class="ip" id="server-ip-<?php echo $i_server?>"></div>
-                                <a class="btn_connect btn_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)" href="javascript:void(0);"><div class="btn_connect_text"><?php echo $Translate->get_translate_phrase('_Connect_2')?></div></a>
+                                <a class="btn_connect btn_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)" href="javascript:void(0);"><i class="icon-connect zmdi zmdi-caret-right-circle zmdi-hc-fw"></i></a>
                             </div>
                             <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="./storage/cache/img/maps/<?php echo empty( $servers_cache[ $i_server ] ) ? '730/-' : $servers_cache[ $i_server ]?>.jpg">
                         </div>

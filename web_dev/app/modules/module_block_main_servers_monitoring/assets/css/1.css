@@ -121,7 +121,7 @@
     background: var(--span-color);
     bottom: 68px;
     right: 15%;
-    width: 15%;
+    width: 13%;
     white-space: nowrap;
     align-items: center;
     height: 33px;
@@ -130,6 +130,14 @@
 
 .btn_connect_text {
     margin-top:5px
+}
+
+.icon-connect {
+    margin-top: 5px;
+}
+
+.btn_connect i{
+    font-size: 22px;
 }
 
 @keyframes move {

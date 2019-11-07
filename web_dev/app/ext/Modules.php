@@ -225,16 +225,53 @@ class Modules {
                      $this->array_modules[ $module ]['setting']['status'] == 1
                      && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
                      && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                     && $this->array_modules[ $module ]['page'] != 'all'
                  ):
-                     if( ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 ):
-                         $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
-                     endif;
-                     ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
-                     ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $result['data_always'][] = $module;
-                     ! empty( $this->array_modules[ $module ]['setting']['js'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = $module;
-                     ! empty( $this->array_modules[ $module ]['sidebar'] ) && $result['sidebar'][] = $module;
+                    if( ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 ):
+                        $result['page'][ $this->array_modules[ $module ]['page'] ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
+                    endif;
+                    if( ! empty( $this->array_modules[ $module ]['setting']['interface_always'] ) && $this->array_modules[ $module ]['setting']['interface_always'] == 1 ):
+                        $result['interface_always'][ empty( $this->array_modules[ $module ]['setting']['interface_always_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_always_adjacent'] ][] = ['name' => $module ] ;
+                    endif;
+                    ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['data'][] = $module;
+                    ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $result['data_always'][] = $module;
+                    ! empty( $this->array_modules[ $module ]['setting']['js'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['js'][] = ['name' => $module, 'type' => $this->array_modules[ $module ]['setting']['type']];
+                    ! empty( $this->array_modules[ $module ]['setting']['css'] ) && $this->array_modules[ $module ]['setting']['css'] == 1 && $result['page'][ $this->array_modules[ $module ]['page'] ]['css'][] = ['name' => $module, 'type' => $this->array_modules[ $module ]['setting']['type']];
+                    ! empty( $this->array_modules[ $module ]['sidebar'] ) && $result['sidebar'][] = $module;
                  endif;
             endfor;
+
+            for ( $i2 = 0; $i2 < $c = sizeof( $result['page'] ); $i2++ ):
+
+                // Перебором забираем корневое название страницы.
+                $page = array_keys( $result['page'] )[ $i2 ];
+
+                for ( $i = 0; $i < $this->array_modules_count; $i++ ):
+
+                    // Перебором забираем корневое название модуля.
+                    $module = array_keys( $this->array_modules )[ $i ];
+
+                    if (
+                        $this->array_modules[ $module ]['setting']['status'] == 1
+                        && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
+                        && $this->array_modules[ $module ]['required']['core'] <= VERSION
+                        && $this->array_modules[ $module ]['page'] == 'all'
+                    ):
+                        if( ! empty( $this->array_modules[ $module ]['setting']['interface'] ) && $this->array_modules[ $module ]['setting']['interface'] == 1 ):
+                            $result['page'][ $page ]['interface'][ empty( $this->array_modules[ $module ]['setting']['interface_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_adjacent'] ][] = $module;
+                        endif;
+                        if( ! empty( $this->array_modules[ $module ]['setting']['interface_always'] ) && $this->array_modules[ $module ]['setting']['interface_always'] == 1 ):
+                            $result['interface_always'][ empty( $this->array_modules[ $module ]['setting']['interface_always_adjacent'] ) ? 'afternavbar' : $this->array_modules[ $module ]['setting']['interface_always_adjacent'] ][] = ['name' => $module ] ;
+                        endif;
+                        ! empty( $this->array_modules[ $module ]['setting']['data'] ) && $this->array_modules[ $module ]['setting']['data'] == 1 && $result['page'][ $page ]['data'][] = $module;
+                        ! empty( $this->array_modules[ $module ]['setting']['data_always'] ) && $this->array_modules[ $module ]['setting']['data_always'] == 1 && $result['data_always'][] = $module;
+                        ! empty( $this->array_modules[ $module ]['setting']['js'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $result['page'][ $page ]['js'][] = ['name' => $module, 'type' => $this->array_modules[ $module ]['setting']['type']];
+                        ! empty( $this->array_modules[ $module ]['setting']['css'] ) && $this->array_modules[ $module ]['setting']['css'] == 1 && $result['page'][ $page ]['css'][] = ['name' => $module, 'type' => $this->array_modules[ $module ]['setting']['type']];
+                        ! empty( $this->array_modules[ $module ]['sidebar'] ) && $result['sidebar'][] = $module;
+                    endif;
+                endfor;
+            endfor;
+
 
             // Сохраняем наш файл с перебором модулей.
             file_put_contents( SESSIONS . 'modules_initialization.php', '<?php return '.var_export_min( $result ).";\n" );
@@ -325,21 +362,6 @@ class Modules {
                 file_exists( THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css' ) && $this->css_library[] = THEMES . $this->General->arr_general['theme'] .'/css_library/' . $css_library[ $cgs ] . '/' . (int) $this->General->arr_general[ $css_library[ $cgs ] ] . '.css';
             }
 
-            for ( $i = 0; $i < $this->array_modules_count; $i++ ):
-
-                // Перебором забираем корневое название модуля.
-                $module = array_keys( $this->array_modules )[ $i ];
-
-                // Если модуль проходит проверку и имеет свою стилистику, то забираем ссылку на стиль в массив для компрессии.
-                if (
-                    $this->array_modules[ $module ]['setting']['status'] == 1
-                    && $this->array_modules[ $module ]['page'] == get_section( 'page', 'home' )
-                    && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
-                    && $this->array_modules[ $module ]['required']['core'] <= VERSION
-                ):
-                    array_key_exists('css', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['css'] == 1 && $this->css_library[] = MODULES . $module . '/assets/css/' . $this->array_modules[ $module ]['setting']['type'] . '.css';
-                endif;
-            endfor;
         else:
             // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
             if ( ! file_exists( SESSIONS . '/actual_library.json' ) || empty( $this->actual_library['actual_css_ver'] ) || ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $this->actual_library['actual_css_ver'] . '.css' ) ):
@@ -405,19 +427,6 @@ class Modules {
         if( empty( $this->General->arr_general['enable_js_cache'] ) ):
 
             $this->js_library[] = ASSETS_JS . 'app.js';
-
-            // Перебором забираем корневое название модулей.
-            for ( $i = 0; $i < $this->array_modules_count; $i++ ):
-                $module = array_keys( $this->array_modules )[ $i ];
-                if (
-                    $this->array_modules[ $module ]['setting']['status'] == 1
-                    && $this->array_modules[ $module ]['page'] == get_section( 'page', 'home' )
-                    && $this->array_modules[ $module ]['required']['php'] <= PHP_VERSION
-                    && $this->array_modules[ $module ]['required']['core'] <= VERSION
-                    ):
-                    array_key_exists('js', $this->array_modules[ $module ]['setting'] ) && $this->array_modules[ $module ]['setting']['js'] == 1 && $this->js_library[] = MODULES . $module . '/assets/js/' . $this->array_modules[ $module ]['setting']['type'] . '.js';
-                endif;
-            endfor;
         else:
             // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
             if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js' ) || empty( $this->actual_library['actual_js_ver'] ) ):
@@ -499,6 +508,17 @@ class Modules {
     }
 
     /**
+     * Получить загловок страницы.
+     *
+     * @since 0.2.124
+     *
+     * @return  string $text             Заголовок страницы.
+     */
+    public function get_page_title() {
+        return empty( $this->page_title ) ? $this->General->arr_general['full_name'] : $this->page_title;
+    }
+
+    /**
      * Задать описание страницы.
      *
      * @since 0.2
@@ -510,7 +530,18 @@ class Modules {
     }
 
     /**
-     * Задать изображение страницы.
+     * Получить описание страницы.
+     *
+     * @since 0.2.124
+     *
+     * @return  string $text             Описание страницы.
+     */
+    public function get_page_description() {
+        return empty( $this->page_description ) ? $this->General->arr_general['info'] : $this->page_description;
+    }
+
+    /**
+     * Задать ссылку на изображение страницы.
      *
      * @since 0.2
      *
@@ -518,6 +549,21 @@ class Modules {
      */
     public function set_page_image( $text ) {
         $this->page_image = $text;
+    }
+
+    /**
+     * Получить ссылку на изображение страницы.
+     *
+     * @since 0.2
+     *
+     * @return  string $text             Изображение страницы.
+     */
+    public function get_page_image() {
+        if( empty( $this->page_image ) ):
+            return file_exists( CACHE . '/img/global/bar_logo.jpg' ) ? $this->General->arr_general['site'] . 'storage/cache/img/global/bar_logo.jpg' : copy(CACHE . '/img/global/default_bar_logo.jpg', CACHE . '/img/global/bar_logo.jpg') && $this->General->arr_general['site'] . 'storage/cache/img/global/bar_logo.jpg';
+        else:
+            return $this->General->arr_general['site'] . $this->page_image;
+        endif;
     }
 
     /**
@@ -575,23 +621,18 @@ class Modules {
         if( floor($seconds / 60 / 60 / 24 / 30 ) != 0 && ( $type == 0 || $type == 5 ) ) {
             $month = floor($seconds / 60 / 60 / 24 / 30 );
             return $month > 1 ? $month . ' ' . $this->Translate->get_translate_phrase('_Months') : $month . ' ' . $this->Translate->get_translate_phrase('_Month');
-
         } elseif ( floor($seconds / 60 / 60 / 24 / 7 ) != 0 && ( $type == 0 || $type == 4 ) ) {
             $week = floor($seconds / 60 / 60 / 24 / 7 );
             return $week > 1 ? $week . ' ' . $this->Translate->get_translate_phrase('_Weeks') : $week . ' ' . $this->Translate->get_translate_phrase('_Week');
-
         } elseif ( floor($seconds / 60 / 60 / 24 ) != 0 && ( $type == 0 || $type == 3 ) ) {
             $day = floor($seconds / 60 / 60 / 24 );
             return $day > 1 ? $day . ' ' . $this->Translate->get_translate_phrase('_Days') : $day . ' ' . $this->Translate->get_translate_phrase('_Day');
-
         } elseif ( floor($seconds / 60 / 60 ) != 0 && ( $type == 0 || $type == 2 ) ) {
             $hour = floor($seconds / 60 / 60 );
             return $hour > 1 ? $hour . ' ' . $this->Translate->get_translate_phrase('_Hour') : $hour . ' ' . $this->Translate->get_translate_phrase('_Hour');
-
         } elseif ( floor($seconds / 60 ) != 0 && ( $type == 0 || $type == 1 ) ) {
             $min = floor($seconds / 60 );
             return $min > 1 ? $min . ' ' . $this->Translate->get_translate_phrase('_Minute') : $min . ' ' . $this->Translate->get_translate_phrase('_Minute');
-
         } else {
             return $seconds . ' ' . $this->Translate->get_translate_phrase('_Second');
         }

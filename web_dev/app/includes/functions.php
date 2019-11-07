@@ -222,7 +222,7 @@ function action_text_clear( $text ) {
  * @return  string         Очищенный текст.
  */
 function action_text_clear_characters( $text ) {
-    return preg_replace('/[^A-Za-z0-9]/', '', $text);
+    return preg_replace('/[^А-Яа-яA-Za-z0-9]/', '', $text);
 }
 
 /**
