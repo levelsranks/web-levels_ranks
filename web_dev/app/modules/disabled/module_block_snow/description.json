@@ -1,0 +1,16 @@
+{
+  "title": "LR WEB - Snow",
+  "info": "Просто тупо снег :D",
+  "author": "Xzotys",
+  "page": "all",
+  "version": "1.0",
+  "required": {
+    "core": "0.2",
+    "php": "5.6"
+  },
+  "setting": {
+    "status": 1,
+    "type": 1,
+    "js": 1
+  }
+}
