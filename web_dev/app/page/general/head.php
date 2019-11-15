@@ -30,6 +30,7 @@ endif;
 <?php echo $Graphics->get_css_background_image()?>
 <?php echo $Graphics->get_css_graphics_container()?>
 <?php echo $Graphics->get_css_sidebar_toggle()?>
+<?php echo $Graphics->get_css_sidebar_blur()?>
 .sidebar-collapse .user-sidebar-block { <?php echo ! isset( $_SESSION['steamid32'] ) ? 'height: 59px;' : 'height: 88px;' . '} '?></style>
     <script>var avatar=[];var servers=[];var profile;</script>
 </head>

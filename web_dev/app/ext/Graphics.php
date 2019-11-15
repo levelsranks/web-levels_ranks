@@ -144,6 +144,20 @@ class Graphics {
     }
 
     /**
+     * Вывод кнопки изменения боковой панели.
+     *
+     * @since 0.2
+     *
+     * @return string Итоговый вывод.
+     */
+    public function get_css_sidebar_blur() {
+        if ( ! empty( $this->General->arr_general['graphics.sidebar_blur'] ) ) {
+            return '.main-sidebar { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(4px);}.sidebar-menu li:hover {background-color: rgba(0, 0, 0, 0.6);} .table-active {
+    background-color: rgba(0, 0, 0, 1);}';
+        }
+    }
+
+    /**
      * Ограничение основного графического контейнера.
      *
      * @since 0.2

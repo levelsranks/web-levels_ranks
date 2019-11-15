@@ -274,6 +274,10 @@
   "_Disable_palettes_change": {
     "EN": "Disable palettes change",
     "RU": "Запретить изменение палитры сайта"
+  },
+  "_Sidebar_blur": {
+    "EN": "Enable Sidebar Blur",
+    "RU": "Включить размытие у боковой панели"
   }
 }
 
