@@ -62,7 +62,7 @@ class General {
         $this->server_list_count = get_arr_size( $this->server_list );
 
         // Получение языка страницы.
-        $this->get_default_url_section('language', $this->arr_general['language'], array( 'RU', 'EN', 'UA', 'LT', 'DE', 'CH' ) );
+        $this->get_default_url_section('language', $this->arr_general['language'], array( 'RU', 'EN', 'UA', 'LT', 'DE', 'CH','PT' ) );
 
         // Получение информации об использовании тёмного интерфейса.
         $this->get_default_url_section('dark_mode', $this->arr_general['dark_mode'], array( true, false ) );
