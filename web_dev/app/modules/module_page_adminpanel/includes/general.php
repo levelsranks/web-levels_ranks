@@ -107,6 +107,10 @@
                 <label class="border-checkbox-label" for="graphics.sidebar_blur"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Sidebar_blur')?></label>
             </div>
             <div class="input-form">
+                <input onclick="set_options_data(this.id,'css')" class="border-checkbox" type="checkbox" name="graphics.blocks_blur" id="graphics.blocks_blur" <?php $General->arr_general['graphics.blocks_blur'] === 1 && print 'checked'?>>
+                <label class="border-checkbox-label" for="graphics.blocks_blur"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Blocks_blur')?></label>
+            </div>
+            <div class="input-form">
                 <div class="text_on_line"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Configuration')?></div>
             </div>
             <div class="input-form">

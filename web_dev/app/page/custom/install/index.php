@@ -104,7 +104,8 @@ if ( ! file_exists( SESSIONS . '/options.php' ) ):
     $options['graphics_container'] = 'stretch';
     $options['disable_sidebar_change'] = 0;
     $options['disable_palettes_change'] = 0;
-    $options['sidebar_blur'] = 0;
+    $options['graphics.sidebar_blur'] = 0;
+    $options['graphics.blocks_blur'] = 0;
     $options['background_image'] = 'null';
     $options['session_check'] = 1;
     $options['avatars_cache_time'] = 259200;

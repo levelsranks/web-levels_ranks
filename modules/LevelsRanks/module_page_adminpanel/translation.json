@@ -278,6 +278,10 @@
   "_Sidebar_blur": {
     "EN": "Enable Sidebar Blur",
     "RU": "Включить размытие у боковой панели"
+  },
+  "_Blocks_blur": {
+    "EN": "Enable Blocks blur",
+    "RU": "Включить размытие у блоков"
   }
 }
 

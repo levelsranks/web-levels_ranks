@@ -144,7 +144,7 @@ class Graphics {
     }
 
     /**
-     * Вывод кнопки изменения боковой панели.
+     * Включить размытие боковой панели.
      *
      * @since 0.2
      *
@@ -152,8 +152,27 @@ class Graphics {
      */
     public function get_css_sidebar_blur() {
         if ( ! empty( $this->General->arr_general['graphics.sidebar_blur'] ) ) {
-            return '.main-sidebar { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(4px);}.sidebar-menu li:hover {background-color: rgba(0, 0, 0, 0.6);} .table-active {
-    background-color: rgba(0, 0, 0, 1);}';
+            return '.main-sidebar { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(4px)}
+                    .sidebar-menu li:hover {background-color: rgba(0, 0, 0, 0.6)}
+                    .table-active {background-color: rgba(0, 0, 0, 1)}';
+        }
+    }
+
+    /**
+     * Включить размытие всех блоков
+     *
+     * @since 0.2
+     *
+     * @return string Итоговый вывод.
+     */
+    public function get_css_blocks_blur() {
+        if ( ! empty( $this->General->arr_general['graphics.blocks_blur'] ) ) {
+            return '.card { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(7px)}
+                    .table th {border-bottom: 0px solid var(--hover)}
+                    .table-hover tbody tr:hover {background-color: rgba(0, 0, 0, 0.6)}
+                    .input-form .input_text {color: var(--default-text-color)}
+                    .input-form .border-checkbox-label {color: var(--default-text-color)}
+                    .sidebar-right {background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(7px)}';
         }
     }
 
