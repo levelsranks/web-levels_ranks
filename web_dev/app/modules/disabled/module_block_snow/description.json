@@ -11,6 +11,7 @@
   "setting": {
     "status": 1,
     "type": 1,
+	"available_types": "1;2",
     "js": 1
   }
 }
