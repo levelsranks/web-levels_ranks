@@ -209,7 +209,7 @@ function action_text_trim( $text, $max = 18 ) {
  * @return  string         Очищенный текст.
  */
 function action_text_clear( $text ) {
-    return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_COMPAT,'ISO-8859-1', true ) ) ) );
+    return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_QUOTES,'ISO-8859-1', true ) ) ) );
 }
 
 /**

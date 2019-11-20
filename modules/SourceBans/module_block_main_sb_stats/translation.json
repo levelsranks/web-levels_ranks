@@ -4,20 +4,29 @@
     "RU": "Всего админ-ов.",
     "UA": "Всього адмін-ов.",
     "LT": "Iš viso administratorių.",
-	"CH": "管理员总数"
+	"CH": "管理员总数",
+	"CRO": "Ukupno Admina",
+    "RS": "Ukupno Admina",
+	"BA": "Ukupno Admina"
   },
   "_Count_bans": {
     "EN": "Total Bans",
     "RU": "Всего банов",
     "UA": "Всього банів",
     "LT": "Viso blokavimų",
-	"CH": "封禁总数"
+	"CH": "封禁总数",
+	"CRO": "Ukupno Banova",
+    "RS": "Ukupno Banova",
+	"BA": "Ukupno Banova"
   },
   "_Count_comms": {
     "EN": "Total Comms",
     "RU": "Всего мутов / гагов",
     "UA": "Всього мутов / гагов",
     "LT": "Viso tildymų (GAG/MUTE)",
-	"CH": "语音封禁总数"
+	"CH": "语音封禁总数",
+	"CRO": "Ukupno Mutova",
+    "RS": "Ukupno Mutova",
+	"BA": "Ukupno Mutova"
   }
 }
