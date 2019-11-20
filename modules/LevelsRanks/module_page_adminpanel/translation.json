@@ -363,58 +363,66 @@
   "_No_image": {
     "EN": "No image",
     "RU": "Без изображения",
-	"CRO": "Bez slike",
+    "CRO": "Bez slike",
     "RS": "Bez slike",
-	"BA": "Bez slike"	
+    "BA": "Bez slike"	
   },
   "_Security": {
     "EN": "Security",
     "RU": "Безопасность",
-	"CRO": "Zaštita",
+    "CRO": "Zaštita",
     "RS": "Bezbednost",
-	"BA": "Bezbjednost"	
+    "BA": "Bezbjednost"	
   },
   "_Session_check": {
     "EN": "Check PHP Sessions",
     "RU": "Проверка PHP сессий",
-	"CRO": "Provjeri PHP sesiju",
+    "CRO": "Provjeri PHP sesiju",
     "RS": "Proveri PHP sesiju",
-	"BA": "Provjeri PHP sesiju"	
+    "BA": "Provjeri PHP sesiju"	
   },
   "_Primary_graphics_container": {
     "EN": "Primary Graphics Container",
     "RU": "Основной графический контейнер",
-	"CRO": "Primarna veličina",
+    "CRO": "Primarna veličina",
     "RS": "Primarna veličina",
-	"BA": "Primarna veličina"	
+    "BA": "Primarna veličina"	
   },
   "_Stretch": {
     "EN": "Stretch / Fluid",
     "RU": "Растягивать по ширине экрана",
-	"CRO": "Razvučeno / Fluid",
+    "CRO": "Razvučeno / Fluid",
     "RS": "Razvučeno / Fluid",
-	"BA": "Razvučeno / Fluid"	
+    "BA": "Razvučeno / Fluid"	
   },
   "_Static": {
     "EN": "Static - Max 1400px",
     "RU": "Статика - Макс. 1400px",
-	"CRO": "Statična - Max 1400px",
+    "CRO": "Statična - Max 1400px",
     "RS": "Statična - Max 1400px",
-	"BA": "Statična - Max 1400px"	
+    "BA": "Statična - Max 1400px"	
   },
   "_Disable_sidebar_change": {
     "EN": "Disable Sidebar Change",
     "RU": "Запретить изменение вида боковой панели",
-	"CRO": "Onemogući pomjeranje bočnog menija",
+    "CRO": "Onemogući pomjeranje bočnog menija",
     "RS": "Onemogući pomeranje sidebara",
-	"BA": "Onemogući pomjeranje sidebara"	
+    "BA": "Onemogući pomjeranje sidebara"	
   },
   "_Disable_palettes_change": {
     "EN": "Disable palettes change",
     "RU": "Запретить изменение палитры сайта",
-	"CRO": "Onemogući menjanje teme",
+	  "CRO": "Onemogući menjanje teme",
     "RS": "Onemogući menjanje teme",
-	"BA": "Onemogući menjanje teme"	
+	  "BA": "Onemogući menjanje teme"	
+  },
+  "_Sidebar_blur": {
+    "EN": "Enable Sidebar Blur",
+    "RU": "Включить размытие у боковой панели"
+  },
+  "_Blocks_blur": {
+    "EN": "Enable Blocks blur",
+    "RU": "Включить размытие у блоков"
   }
 }
 

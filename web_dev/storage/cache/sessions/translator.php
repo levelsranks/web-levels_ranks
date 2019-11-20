@@ -497,8 +497,8 @@ return array (
             'LT' => 'Login',
             'DE' => 'Login',
 			'CH' => '用户名',
-			'CRO' => 'Loguj se'
-			'RS' => 'Prijavi se'
+			'CRO' => 'Loguj se',
+			'RS' => 'Prijavi se',
 			'BA' => 'Prijavi se'
         ),
     '_Password' =>
@@ -713,7 +713,7 @@ return array (
             'RU' => 'Победы',
             'UA' => 'Перемога',
             'LT' => 'Wins',
-            'DE' => 'Gewonnen',   //VERBESSERN
+            'DE' => 'Gewonnen',
 			'CH' => '获胜',
 			'CRO' => 'Pobjede',
 			'RS' => 'Pobede',
@@ -1061,7 +1061,7 @@ return array (
 	'_Vips' =>
         array (
             'EN' => 'Vips list',
-            'RU' => 'Список вип игроков'
+            'RU' => 'Список вип игроков',
 		    'CRO' => 'Vip lista',
 		    'RS' => 'Vip lista',
 		    'BA' => 'Vip lista',
@@ -1069,7 +1069,7 @@ return array (
     '_Banned' =>
         array (
             'EN' => 'Banned',
-            'RU' => 'Забанен'
+            'RU' => 'Забанен',
 		    'CRO' => 'Banovan',
 		    'RS' => 'Banovan',
 	    	'BA' => 'Banovan',
@@ -1077,7 +1077,7 @@ return array (
     '_Server_Information' =>
         array (
             'EN' => 'Server Information',
-            'RU' => 'Информация о сервере'
+            'RU' => 'Информация о сервере',
 		    'CRO' => 'Informacije o Serveru',
 		    'RS' => 'Server Informacije',
 	    	'BA' => 'Informacije o Serveru',
@@ -1087,7 +1087,7 @@ return array (
             'EN' => 'Open Case',
             'RU' => 'Open Case',
             'UA' => 'Open Case',
-            'LT' => 'Open Case'
+            'LT' => 'Open Case',
 		    'CRO' => 'Otvoren slučaj',
 	    	'RS' => 'Otvoren slučaj',
 	    	'BA' => 'Otvoren slučaj',

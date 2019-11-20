@@ -506,6 +506,7 @@
 - Морячок#9904  ( Discord )   - 500 RUB.
 - Xzotys#3880  ( Discord )   - 500 RUB.
 - Unity       ( hlmod.ru )  - 460 RUB.
+- MotherRussia#2235    ( Discord )   - 350 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - L1MON#4529  ( Discord )   - 300 RUB.
@@ -533,6 +534,7 @@
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - Twenix#4347 ( Discord )   - 100 RUB.
+- fr4nch#3619 ( Discord )   - 50 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
