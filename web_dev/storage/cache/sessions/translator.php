@@ -710,7 +710,7 @@ return array (
             'RU' => 'Победы',
             'UA' => 'Перемога',
             'LT' => 'Wins',
-            'DE' => 'Gewonnen',   //VERBESSERN
+            'DE' => 'Gewonnen',
 			'CH' => '获胜',
 			'CRO' => 'Pobjede',
 			'RS' => 'Pobede',

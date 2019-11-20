@@ -130,13 +130,13 @@ class Player {
 
             switch ( $dates[ $i ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' AND lastconnect > 0 limit 1" );
                     break;
                 case 'FPS':
-                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], 0, 0, "SELECT fps_players.steam_id, fps_players.account_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%{$this->get_steam_64()}%' AND fps_servers_stats.server_id = '" . $f++ . "' LIMIT 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], 0, 0, "SELECT fps_players.steam_id, fps_players.account_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%{$this->get_steam_64()}%' AND fps_servers_stats.server_id = '" . $f++ . "' AND fps_servers_stats.lastconnect > 0 LIMIT 1" );
                     break;
                 case 'RankMeKento':
-                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' limit 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' AND lastconnect > 0 limit 1" );
                     break;
             }
 
