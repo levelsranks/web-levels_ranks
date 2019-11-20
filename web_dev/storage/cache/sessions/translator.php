@@ -12,10 +12,10 @@ return array (
             'RU' => 'Русский',
             'UA' => 'Русский',
             'LT' => 'Rusų',
-			'CH' => '俄语',
-			'CRO' => 'Ruski',
-			'RS' => 'Ruski',
-			'BA' => 'Ruski',
+            'CH' => '俄语',
+            'CRO' => 'Ruski',
+            'RS' => 'Ruski',
+            'BA' => 'Ruski'
 	
         ),
     '_EN' =>
@@ -25,10 +25,10 @@ return array (
             'RU' => 'Английский',
             'UA' => 'Англійська',
             'LT' => 'Anglų',
-			'CH' => '英语',
-			'CRO' => 'Engleski',
-			'RS' => 'Engleski',
-			'BA' => 'Engleski',
+            'CH' => '英语',
+            'CRO' => 'Engleski',
+            'RS' => 'Engleski',
+            'BA' => 'Engleski'
         ),
     '_UA' =>
         array (
@@ -37,10 +37,10 @@ return array (
             'RU' => 'Украинский',
             'UA' => 'Український',
             'LT' => 'Ukrainiečių',
-			'CH' => '乌克兰语',
-			'CRO' => 'Ukrajinski',
-			'RS' => 'Ukrajinski',
-			'BA' => 'Ukrajinski',
+            'CH' => '乌克兰语',
+            'CRO' => 'Ukrajinski',
+            'RS' => 'Ukrajinski',
+            'BA' => 'Ukrajinski'
         ),
     '_LT' =>
         array (
@@ -49,10 +49,10 @@ return array (
             'RU' => 'Литовский',
             'UA' => 'Литовська',
             'LT' => 'Lietuvių',
-			'CH' => '立陶宛语',
-			'CRO' => 'Litva',
-			'RS' => 'Litvanski',
-			'BA' => 'Litvanski',
+            'CH' => '立陶宛语',
+            'CRO' => 'Litva',
+            'RS' => 'Litvanski',
+            'BA' => 'Litvanski'
         ),
     '_DE' =>
         array (
@@ -61,10 +61,10 @@ return array (
             'RU' => 'Немецкий',
             'UA' => 'Німецький',
             'LT' => 'Vokiečių kalba',
-			'CH' => '德语',
-			'CRO' => 'Njemacki',
-			'RS' => 'Nemacki',
-			'BA' => 'Njemacki',
+            'CH' => '德语',
+            'CRO' => 'Njemacki',
+            'RS' => 'Nemacki',
+            'BA' => 'Njemacki'
         ),
 	'_CH' =>
         array (
@@ -73,10 +73,46 @@ return array (
             'RU' => 'Китайский',
             'UA' => 'Китайська',
             'LT' => 'Supaprastinta kinų kalba',
-			'CH' => '简体中文',
-			'CRO' => 'Kineski',
-			'RS' => 'Kineski',
-			'BA' => 'Kineski',
+            'CH' => '简体中文',
+            'CRO' => 'Kineski',
+            'RS' => 'Kineski',
+            'BA' => 'Kineski'
+        ),
+	'_RS' =>
+        array (
+            'DE' => 'Serbian',
+            'EN' => 'Serbian',
+            'RU' => 'Serbian',
+            'UA' => 'Serbian',
+            'LT' => 'Serbian',
+            'CH' => 'Serbian',
+            'CRO' => 'Srpski',
+            'RS' => 'Srpski',
+            'BA' => 'Srpski'
+        ),
+	'_CRO' =>
+        array (
+            'DE' => 'Croatian',
+            'EN' => 'Croatian',
+            'RU' => 'Croatian',
+            'UA' => 'Croatian',
+            'LT' => 'Croatian',
+            'CH' => 'Croatian',
+            'CRO' => 'Hrvatski',
+            'RS' => 'Hrvatski',
+            'BA' => 'Hrvatski'
+        ),
+	'_BA' =>
+        array (
+            'DE' => 'Bosnian',
+            'EN' => 'Bosnian',
+            'RU' => 'Bosnian',
+            'UA' => 'Bosnian',
+            'LT' => 'Bosnian',
+            'CH' => 'Bosnian',
+            'CRO' => 'Bosanski',
+            'RS' => 'Bosanski',
+            'BA' => 'Bosanski'
         ),
     '_Server' =>
         array (
@@ -85,10 +121,10 @@ return array (
             'UA' => 'Сервер',
             'LT' => 'Serveris',
             'DE' => 'Server',
-			'CH' => '服务器',
-			'CRO' => 'Server',
-			'RS' => 'Server',
-			'BA' => 'Server',
+            'CH' => '服务器',
+            'CRO' => 'Server',
+            'RS' => 'Server',
+            'BA' => 'Server'
         ),
     '_Home' =>
         array (
@@ -97,10 +133,10 @@ return array (
             'UA' => 'Головна',
             'LT' => 'Pagrindinis',
             'DE' => 'Zuhause',
-			'CH' => '主页',
-			'CRO' => 'Početna',
-			'RS' => 'Početna',
-			'BA' => 'Početna',
+            'CH' => '主页',
+            'CRO' => 'Početna',
+            'RS' => 'Početna',
+            'BA' => 'Početna'
         ),
     '_Statistics' =>
         array (
@@ -109,10 +145,10 @@ return array (
             'UA' => 'Статистика гравців',
             'LT' => 'Statistika žaidėjai',
             'DE' => 'Spieler Statistik',
-			'CH' => '玩家数据',
-			'CRO' => 'Statistika Igrača',
-			'RS' => 'Statistika Igrača',
-			'BA' => 'Statistika Igrača',
+            'CH' => '玩家数据',
+            'CRO' => 'Statistika Igrača',
+            'RS' => 'Statistika Igrača',
+            'BA' => 'Statistika Igrača'
         ),
     '_Sidebar_blocks' =>
         array (
@@ -121,10 +157,10 @@ return array (
             'UA' => 'Блокування',
             'LT' => 'Spynos',
             'DE' => 'Blockieren',
-			'CH' => '阻止中',
-			'CRO' => 'Blokirati',
-			'RS' => 'Blokirati',
-			'BA' => 'Blokirati',
+            'CH' => '阻止中',
+            'CRO' => 'Blokirati',
+            'RS' => 'Blokirati',
+            'BA' => 'Blokirati'
         ),
     '_Sidebar_servers' =>
         array (
@@ -133,10 +169,10 @@ return array (
             'UA' => 'Ігрові сервера',
             'LT' => 'Žaidimų serveriai',
             'DE' => 'Gameserver',
-			'CH' => '游戏服务器',
-			'CRO' => 'Serveri',
-			'RS' => 'Serveri',
-			'BA' => 'Serveri',
+            'CH' => '游戏服务器',
+            'CRO' => 'Serveri',
+            'RS' => 'Serveri',
+            'BA' => 'Serveri'
         ),
     '_Sidebar_social' =>
         array (
@@ -145,10 +181,10 @@ return array (
             'UA' => 'Соціальні мережі',
             'LT' => 'Socialiniai tinklai',
             'DE' => 'Soziales Netzwerk',
-			'CH' => '社交媒体',
-			'CRO' => 'Društvena mreža',
-			'RS' => 'Socijalna mreža',
-			'BA' => 'Socijalna mreža',
+            'CH' => '社交媒体',
+            'CRO' => 'Društvena mreža',
+            'RS' => 'Socijalna mreža',
+            'BA' => 'Socijalna mreža'
         ),
     '_Sidebar_statistics' =>
         array (
@@ -157,10 +193,10 @@ return array (
             'UA' => 'Статистика',
             'LT' => 'Statistika',
             'DE' => 'Statistik',
-			'CH' => '数据',
-			'CRO' => 'Statistika',
-			'RS' => 'Statistika',
-			'BA' => 'Statistika',
+            'CH' => '数据',
+            'CRO' => 'Statistika',
+            'RS' => 'Statistika',
+            'BA' => 'Statistika'
         ),
     '_Comms' =>
         array (
@@ -169,10 +205,10 @@ return array (
             'UA' => 'Перелік мутов',
             'LT' => 'List of mutts',
             'DE' => 'Stummschaltungsliste',
-			'CH' => '语音封禁列表',
-			'CRO' => 'Mute lista',
-			'RS' => 'Mute lista',
-			'BA' => 'Mute lista',
+            'CH' => '语音封禁列表',
+            'CRO' => 'Mute lista',
+            'RS' => 'Mute lista',
+            'BA' => 'Mute lista'
         ),
     '_Admins_sb' =>
         array (
@@ -181,10 +217,10 @@ return array (
             'UA' => 'Список адміністраторів',
             'LT' => 'Administratorių sąrašas',
             'DE' => 'Admin Liste',
-			'CH' => '管理员列表',
-			'CRO' => 'Admin lista',
-			'RS' => 'Spisak Administratora',
-			'BA' => 'Admin lista',
+            'CH' => '管理员列表',
+            'CRO' => 'Admin lista',
+            'RS' => 'Spisak Administratora',
+            'BA' => 'Admin lista'
         ),
     '_Rank_stats' =>
         array (
@@ -193,10 +229,10 @@ return array (
             'UA' => 'Статистика - Розподіл рангів',
             'LT' => 'Statistika - reitingų paskirstymas',
             'DE' => 'Statistiken - Rangfolgeverteilung',
-			'CH' => '数据 - 段位分布',
-			'CRO' => 'Statistika - Raspodjela rankova',
-			'RS' => 'Statistika - Raspodjela rankova',
-			'BA' => 'Statistika - Raspodjela rankova',
+            'CH' => '数据 - 段位分布',
+            'CRO' => 'Statistika - Raspodjela rankova',
+            'RS' => 'Statistika - Raspodjela rankova',
+            'BA' => 'Statistika - Raspodjela rankova'
         ),
     '_Game' =>
         array (
@@ -205,10 +241,10 @@ return array (
             'UA' => 'Гра',
             'LT' => 'Žaidimas',
             'DE' => 'Spiel',
-			'CH' => '游戏',
-			'CRO' => 'Igra',
-			'RS' => 'Igra',	
-			'BA' => 'Igra',
+            'CH' => '游戏',
+            'CRO' => 'Igra',
+            'RS' => 'Igra',	
+            'BA' => 'Igra'
         ),
     '_Bans' =>
         array (
@@ -217,10 +253,10 @@ return array (
             'UA' => 'Список банів',
             'LT' => 'Blokavimų sąrašas',
             'DE' => 'Sperrliste',
-			'CH' => '封禁列表',
-			'CRO' => 'Ban lista',
-			'RS' => 'Ban lista',
-			'BA' => 'Ban lista',
+            'CH' => '封禁列表',
+            'CRO' => 'Ban lista',
+            'RS' => 'Ban lista',
+            'BA' => 'Ban lista'
         ),
     '_Demos' =>
         array (
@@ -229,10 +265,10 @@ return array (
             'UA' => 'Архив демо-записей',
             'LT' => 'Demos List',
             'DE' => 'Demo-Archiv',
-			'CH' => 'DEMO 存档',
-			'CRO' => 'Demo lista',
-			'RS' => 'Demo lista',
-			'BA' => 'Demo lista',
+            'CH' => 'DEMO 存档',
+            'CRO' => 'Demo lista',
+            'RS' => 'Demo lista',
+            'BA' => 'Demo lista'
         ),
     '_Page' =>
         array (
@@ -241,10 +277,10 @@ return array (
             'UA' => 'Сторінка',
             'LT' => 'Puslapis',
             'DE' => 'Seite',
-			'CH' => '页面',
-			'CRO' => 'Stranica',
-			'RS' => 'Stranica',
-			'BA' => 'Stranica',
+            'CH' => '页面',
+            'CRO' => 'Stranica',
+            'RS' => 'Stranica',
+            'BA' => 'Stranica'
         ),
     '_Notifications' =>
         array (
@@ -253,10 +289,10 @@ return array (
             'UA' => 'Повідомлення',
             'LT' => 'Pranešimai',
             'DE' => 'Benachrichtigungen',
-			'CH' => '通知',
-			'CRO' => 'Obavijesti',
-			'RS' => 'Notifikacije',
-			'BA' => 'Notifikacije',
+            'CH' => '通知',
+            'CRO' => 'Obavijesti',
+            'RS' => 'Notifikacije',
+            'BA' => 'Notifikacije'
         ),
     '_No_Notifications' =>
         array (
@@ -265,10 +301,10 @@ return array (
             'UA' => 'немає нових повідомлень',
             'LT' => 'naujų pranešimų nėra',
             'DE' => 'Alles löschen',
-			'CH' => '清理所有通知',
-			'CRO' => 'Sve izbrisati',
-			'RS' => 'Sve izbrisati',
-			'BA' => 'Sve izbrisati',
+            'CH' => '清理所有通知',
+            'CRO' => 'Sve izbrisati',
+            'RS' => 'Sve izbrisati',
+            'BA' => 'Sve izbrisati'
         ),
     '_Plays_since' =>
         array (
@@ -277,10 +313,10 @@ return array (
             'UA' => 'Остання гра',
             'LT' => 'Paskutinį kartą žaista',
             'DE' => 'Zuletzt gespielt:',
-			'CH' => '最后游玩：',
-			'CRO' => 'Zadnje odigrano',
-			'RS' => 'Zadnje odigrano',
-			'BA' => 'Zadnje odigrano',
+            'CH' => '最后游玩：',
+            'CRO' => 'Zadnje odigrano',
+            'RS' => 'Zadnje odigrano',
+            'BA' => 'Zadnje odigrano'
         ),
     '_Headshot' =>
         array (
@@ -289,10 +325,10 @@ return array (
             'UA' => 'Вбивств в голову',
             'LT' => 'Pataikymai į galvą',
             'DE' => 'Kopfschuss',
-			'CH' => '爆头',
-			'CRO' => 'Ubistva u glavu',
-			'RS' => 'Headshots',
-			'BA' => 'Headshots',
+            'CH' => '爆头',
+            'CRO' => 'Ubistva u glavu',
+            'RS' => 'Headshots',
+            'BA' => 'Headshots'
         ),
     '_Connect' =>
         array (
@@ -301,10 +337,10 @@ return array (
             'UA' => 'Приєднатися',
             'LT' => 'Prisijungė',
             'DE' => 'Verbinden',
-			'CH' => '连接',
-			'CRO' => 'Spojiti se',
-			'RS' => 'Povezati se',
-			'BA' => 'Spojiti se',
+            'CH' => '连接',
+            'CRO' => 'Spojiti se',
+            'RS' => 'Povezati se',
+            'BA' => 'Spojiti se'
         ),
     '_Connect_2' =>
         array (
@@ -313,10 +349,10 @@ return array (
             'UA' => 'Играть',
             'LT' => 'Jungtis',
             'DE' => 'Beitreten',
-			'CH' => '加入',
-			'CRO' => 'Pridruži se',
-			'RS' => 'Pridruži se',
-			'BA' => 'Pridruži se',
+            'CH' => '加入',
+            'CRO' => 'Pridruži se',
+            'RS' => 'Pridruži se',
+            'BA' => 'Pridruži se'
         ),
     '_Date' =>
         array (
@@ -325,10 +361,10 @@ return array (
             'UA' => 'Дата',
             'LT' => 'Data',
             'DE' => 'Datum',
-			'CH' => '日期',
-			'CRO' => 'Datum',
-			'RS' => 'Datum',
-			'BA' => 'Datum',
+            'CH' => '日期',
+            'CRO' => 'Datum',
+            'RS' => 'Datum',
+            'BA' => 'Datum'
         ),
     '_Type' =>
         array (
@@ -337,10 +373,10 @@ return array (
             'UA' => 'Вид',
             'LT' => 'Rūšis',
             'DE' => 'Typ',
-			'CH' => '类型',
-			'CRO' => 'Vrsta',
-			'RS' => 'Vrsta',
-			'BA' => 'Vrsta',
+            'CH' => '类型',
+            'CRO' => 'Vrsta',
+            'RS' => 'Vrsta',
+            'BA' => 'Vrsta'
         ),
     '_Admin' =>
         array (
@@ -349,10 +385,10 @@ return array (
             'UA' => 'Адмін.',
             'LT' => 'Admin.',
             'DE' => 'Admin',
-			'CH' => '管理员',
-			'CRO' => 'Admin',
-			'RS' => 'Admin',
-			'BA' => 'Admin',
+            'CH' => '管理员',
+            'CRO' => 'Admin',
+            'RS' => 'Admin',
+            'BA' => 'Admin'
         ),
     '_Reason' =>
         array (
@@ -361,10 +397,10 @@ return array (
             'UA' => 'Чому',
             'LT' => 'Priežastis',
             'DE' => 'Grund',
-			'CH' => '原因',
-			'CRO' => 'Razlog',
-			'RS' => 'Razlog',
-			'BA' => 'Razlog',
+            'CH' => '原因',
+            'CRO' => 'Razlog',
+            'RS' => 'Razlog',
+            'BA' => 'Razlog'
         ),
     '_Term' =>
         array (
@@ -373,10 +409,10 @@ return array (
             'UA' => 'Термін',
             'LT' => 'Terminas',
             'DE' => 'Länge',
-			'CH' => '封禁时长',
-			'CRO' => 'Trajanje',
-			'RS' => 'Trajanje',
-			'BA' => 'Trajanje',
+            'CH' => '封禁时长',
+            'CRO' => 'Trajanje',
+            'RS' => 'Trajanje',
+            'BA' => 'Trajanje'
 		
         ),
     '_Forever' =>
@@ -386,10 +422,10 @@ return array (
             'UA' => 'Назавжди',
             'LT' => 'Amžinai',
             'DE' => 'Permanent',
-			'CH' => '永久',
-			'CRO' => 'Zauvjek',
-			'RS' => 'Zauvjek',
-			'BA' => 'Zauvjek',
+            'CH' => '永久',
+            'CRO' => 'Zauvjek',
+            'RS' => 'Zauvjek',
+            'BA' => 'Zauvjek'
         ),
     '_Unban' =>
         array (
@@ -398,10 +434,10 @@ return array (
             'UA' => 'Разбанен',
             'LT' => 'Unban',
             'DE' => 'Entsperren',
-			'CH' => '已解封',
-			'CRO' => 'Odbanovan',
-			'RS' => 'Odbanovan',
-			'BA' => 'Odbanovan',
+            'CH' => '已解封',
+            'CRO' => 'Odbanovan',
+            'RS' => 'Odbanovan',
+            'BA' => 'Odbanovan'
         ),
     '_Uncomm' =>
         array (
@@ -410,10 +446,10 @@ return array (
             'UA' => 'Размут',
             'LT' => 'Uncomm',
             'DE' => 'Nicht stumm geschaltet', //VERBESSERN
-			'CH' => '已解除语音封禁',
-			'CRO' => 'Odmutovan',
-			'RS' => 'Odmutovan',
-			'BA' => 'Odmutovan',
+            'CH' => '已解除语音封禁',
+            'CRO' => 'Odmutovan',
+            'RS' => 'Odmutovan',
+            'BA' => 'Odmutovan'
         ),
     '_Has_expired' =>
         array (
@@ -422,10 +458,10 @@ return array (
             'UA' => 'Закінчився',
             'LT' => 'Pasibaigęs',
             'DE' => 'Abgelaufen',
-			'CH' => '封禁到期',
-			'CRO' => 'Isteklo',
-			'RS' => 'Isteklo',
-			'BA' => 'Isteklo',
+            'CH' => '封禁到期',
+            'CRO' => 'Isteklo',
+            'RS' => 'Isteklo',
+            'BA' => 'Isteklo'
         ),
     '_List_recent_bans' =>
         array (
@@ -434,10 +470,10 @@ return array (
             'UA' => 'Список останніх банів',
             'LT' => 'List of recent bans',
             'DE' => 'Übersicht über die Sperrliste',
-			'CH' => '封禁列表总览',
-			'CRO' => 'Pregled Ban liste',
-			'RS' => 'Pregled Ban liste',
-			'BA' => 'Pregled Ban liste',
+            'CH' => '封禁列表总览',
+            'CRO' => 'Pregled Ban liste',
+            'RS' => 'Pregled Ban liste',
+            'BA' => 'Pregled Ban liste'
         ),
     '_List_recent_mut_gags' =>
         array (
@@ -446,10 +482,10 @@ return array (
             'UA' => 'Список останніх мутов / гагов',
             'LT' => 'List of recent mut / gags',
             'DE' => 'Übersicht über die Kommunikationsblockliste',
-			'CH' => '语音封禁列表总览',
-			'CRO' => 'Pregled Mute/Gag liste',
-			'RS' => 'Pregled Mute/Gag liste',
-			'BA' => 'Pregled Mute/Gag liste',
+            'CH' => '语音封禁列表总览',
+            'CRO' => 'Pregled Mute/Gag liste',
+            'RS' => 'Pregled Mute/Gag liste',
+            'BA' => 'Pregled Mute/Gag liste'
         ),
     '_Rank_distribution' =>
         array (
@@ -458,10 +494,10 @@ return array (
             'UA' => 'Розподіл рангів',
             'LT' => 'Rank distribution',
             'DE' => 'Rangfolgeverteilung',
-			'CH' => '段位分布',
-			'CRO' => 'Raspodjela rankova',
-			'RS' => 'Raspodela rankova',
-			'BA' => 'Raspodjela rankova',
+            'CH' => '段位分布',
+            'CRO' => 'Raspodjela rankova',
+            'RS' => 'Raspodela rankova',
+            'BA' => 'Raspodjela rankova'
         ),
     '_Hero_without_name' =>
         array (
@@ -470,9 +506,9 @@ return array (
             'UA' => 'Герой без імені',
             'LT' => 'Hero without a name',
             'DE' => 'Hallo, Fremder.',
-			'CRO' => 'Zdravo strancu',
-			'RS' => 'Pozdrav stranče',
-			'BA' => 'Pozdrav stranče',
+            'CRO' => 'Zdravo strancu',
+            'RS' => 'Pozdrav stranče',
+            'BA' => 'Pozdrav stranče'
         ),
     '_Authorization' =>
         array (
@@ -481,10 +517,10 @@ return array (
             'UA' => 'Авторизація',
             'LT' => 'Authorization',
             'DE' => 'Berechtigung',
-			'CH' => '认证',
-			'CRO' => 'Odobrenje',
-			'RS' => 'Odobrenje',
-			'BA' => 'Odobrenje',
+            'CH' => '认证',
+            'CRO' => 'Odobrenje',
+            'RS' => 'Odobrenje',
+            'BA' => 'Odobrenje'
         ),
     '_Login' =>
         array (
@@ -493,10 +529,10 @@ return array (
             'UA' => 'Логін',
             'LT' => 'Login',
             'DE' => 'Login',
-			'CH' => '用户名',
-			'CRO' => 'Loguj se',
-			'RS' => 'Prijavi se',
-			'BA' => 'Prijavi se',
+            'CH' => '用户名',
+            'CRO' => 'Loguj se',
+            'RS' => 'Prijavi se',
+            'BA' => 'Prijavi se'
         ),
     '_Password' =>
         array (
@@ -505,10 +541,10 @@ return array (
             'UA' => 'Пароль',
             'LT' => 'Password',
             'DE' => 'Passwort',
-			'CH' => '密码',
-			'CRO' => 'Lozinka',
-			'RS' => 'Šifra',
-			'BA' => 'Lozinka',
+            'CH' => '密码',
+            'CRO' => 'Lozinka',
+            'RS' => 'Šifra',
+            'BA' => 'Lozinka'
         ),
     '_Steam_login' =>
         array (
@@ -517,10 +553,10 @@ return array (
             'UA' => 'Увійти через Steam',
             'LT' => 'Sign in with Steam',
             'DE' => 'Anmelden durch Steam',
-			'CH' => '通过STEAM登录',
-			'CRO' => 'Prijava putem steama',
-			'RS' => 'Prijava putem steama',
-			'BA' => 'Prijava putem steama',
+            'CH' => '通过STEAM登录',
+            'CRO' => 'Prijava putem steama',
+            'RS' => 'Prijava putem steama',
+            'BA' => 'Prijava putem steama'
         ),
     '_Update' =>
         array (
@@ -529,10 +565,10 @@ return array (
             'UA' => 'Оновлення',
             'LT' => 'Atnaujinti',
             'DE' => 'Aktualisieren',
-			'CH' => '更新',
-			'CRO' => 'Ažuriranje',
-			'RS' => 'Apdejt',
-			'BA' => 'Apdejt',
+            'CH' => '更新',
+            'CRO' => 'Ažuriranje',
+            'RS' => 'Apdejt',
+            'BA' => 'Apdejt'
         ),
     '_Result' =>
         array (
@@ -541,10 +577,10 @@ return array (
             'UA' => 'Результат',
             'LT' => 'Rezultatas',
             'DE' => 'Ergebnis',
-			'CH' => '结果',
-			'CRO' => 'Rezultat',
-			'RS' => 'Rezultat',
-			'BA' => 'Rezultat',
+            'CH' => '结果',
+            'CRO' => 'Rezultat',
+            'RS' => 'Rezultat',
+            'BA' => 'Rezultat'
         ),
     '_Name' =>
         array (
@@ -553,10 +589,10 @@ return array (
             'UA' => 'Назва',
             'LT' => 'Vardas',
             'DE' => 'Name',
-			'CH' => '昵称',
-			'CRO' => 'Ime',
-			'RS' => 'Ime',
-			'BA' => 'Ime',
+            'CH' => '昵称',
+            'CRO' => 'Ime',
+            'RS' => 'Ime',
+            'BA' => 'Ime'
         ),
     '_Score' =>
         array (
@@ -565,12 +601,10 @@ return array (
             'UA' => 'Рахунок',
             'LT' => 'Taškai',
             'DE' => 'Punktzahl',
-			'CH' => '得分',
-			'CRO' => 'Skor',
-			'RS' => 'Skor',
-			'BA' => 'Skor',
-			
-				
+            'CH' => '得分',
+            'CRO' => 'Skor',
+            'RS' => 'Skor',
+            'BA' => 'Skor'
         ),
     '_Map' =>
         array (
@@ -579,10 +613,10 @@ return array (
             'UA' => 'Мапа',
             'LT' => 'Žemėlapis',
             'DE' => 'Karte',
-			'CH' => '地图',
-			'CRO' => 'Mapa',
-			'RS' => 'Mapa',
-			'BA' => 'Mapa',
+            'CH' => '地图',
+            'CRO' => 'Mapa',
+            'RS' => 'Mapa',
+            'BA' => 'Mapa'
         ),
     '_Online_mon' =>
         array (
@@ -591,10 +625,10 @@ return array (
             'UA' => 'Моніторинг онлайну',
             'LT' => 'Interneto stebėjimas',
             'DE' => 'Online-Überwachung',
-			'CH' => '在线监视器',
-			'CRO' => 'Online praćenje',
-			'RS' => 'Onlajn monitoring',
-			'BA' => 'Online praćenje',
+            'CH' => '在线监视器',
+            'CRO' => 'Online praćenje',
+            'RS' => 'Onlajn monitoring',
+            'BA' => 'Online praćenje'
         ),
     '_Rating' =>
         array (
@@ -603,10 +637,10 @@ return array (
             'UA' => 'Місце',
             'LT' => 'Reitingas',
             'DE' => 'Bewertung',
-			'CH' => 'Rating',
-			'CRO' => 'Ocjena',
-			'RS' => 'Rejting',
-			'BA' => 'Rejting',
+            'CH' => 'Rating',
+            'CRO' => 'Ocjena',
+            'RS' => 'Rejting',
+            'BA' => 'Rejting'
         ),
     '_Player' =>
         array (
@@ -615,10 +649,10 @@ return array (
             'UA' => 'Гравець',
             'LT' => 'Žaidėjas',
             'DE' => 'Spieler',
-			'CH' => '玩家',
-			'CRO' => 'Igrač',
-			'RS' => 'Igrač',
-			'BA' => 'Igrač',
+            'CH' => '玩家',
+            'CRO' => 'Igrač',
+            'RS' => 'Igrač',
+            'BA' => 'Igrač'
         ),
     '_Players' =>
         array (
@@ -627,10 +661,10 @@ return array (
             'UA' => 'Гравців',
             'LT' => 'Žaidėjai',
             'DE' => 'Spieler',   //VERBESSERN
-			'CH' => '玩家',
-			'CRO' => 'Igrači',
-			'RS' => 'Igrači',
-			'BA' => 'Igrači',
+            'CH' => '玩家',
+            'CRO' => 'Igrači',
+            'RS' => 'Igrači',
+            'BA' => 'Igrači'
         ),
     '_Point' =>
         array (
@@ -639,10 +673,10 @@ return array (
             'UA' => 'Поинти',
             'LT' => 'Taškai',
             'DE' => 'Punkte',
-			'CH' => '分数',
-			'CRO' => 'Bodovi',
-			'RS' => 'Poeni',
-			'BA' => 'Poeni',
+            'CH' => '分数',
+            'CRO' => 'Bodovi',
+            'RS' => 'Poeni',
+            'BA' => 'Poeni'
         ),
     '_Rank' =>
         array (
@@ -651,10 +685,10 @@ return array (
             'UA' => 'Звання',
             'LT' => 'Rangas',
             'DE' => 'Rang',
-			'CH' => '段位',
-			'CRO' => 'Rank',
-			'RS' => 'Rank',
-			'BA' => 'Rank',
+            'CH' => '段位',
+            'CRO' => 'Rank',
+            'RS' => 'Rank',
+            'BA' => 'Rank'
         ),
     '_Kills' =>
         array (
@@ -663,10 +697,10 @@ return array (
             'UA' => 'Вбивства',
             'LT' => 'Nužudymai',
             'DE' => 'Tötet',
-			'CH' => '击杀',
-			'CRO' => 'Ubistva',
-			'RS' => 'Ubistva',
-			'BA' => 'Ubistva',
+            'CH' => '击杀',
+            'CRO' => 'Ubistva',
+            'RS' => 'Ubistva',
+            'BA' => 'Ubistva'
         ),
     '_Deaths' =>
         array (
@@ -675,10 +709,10 @@ return array (
             'UA' => 'Смерті',
             'LT' => 'Mirtys',
             'DE' => 'Todesfälle',
-			'CH' => '死亡',
-			'CRO' => 'Smrti',
-			'RS' => 'Smrti',
-			'BA' => 'Smrti',
+            'CH' => '死亡',
+            'CRO' => 'Smrti',
+            'RS' => 'Smrti',
+            'BA' => 'Smrti'
         ),
     '_Play_time' =>
         array (
@@ -687,10 +721,10 @@ return array (
             'UA' => 'Час гри',
             'LT' => 'Pražaistas Laikas',
             'DE' => 'Spielzeit',
-			'CH' => '游玩时间',
-			'CRO' => 'Vrijeme igranja',
-			'RS' => 'Vreme igranja',
-			'BA' => 'Vrijeme igranja',
+            'CH' => '游玩时间',
+            'CRO' => 'Vrijeme igranja',
+            'RS' => 'Vreme igranja',
+            'BA' => 'Vrijeme igranja'
         ),
     '_Win' =>
         array (
@@ -698,11 +732,11 @@ return array (
             'RU' => 'Победа',
             'UA' => 'Перемога',
             'LT' => 'Laimėjimai',
-			'DE' => 'Gewonnen',
-			'CH' => '获胜',
-			'CRO' => 'Pobjeda',
-			'RS' => 'Pobeda',
-			'BA' => 'Pobjeda',
+            'DE' => 'Gewonnen',
+            'CH' => '获胜',
+            'CRO' => 'Pobjeda',
+            'RS' => 'Pobeda',
+            'BA' => 'Pobjeda'
         ),
     '_Wins' =>
         array (
@@ -711,10 +745,10 @@ return array (
             'UA' => 'Перемога',
             'LT' => 'Wins',
             'DE' => 'Gewonnen',
-			'CH' => '获胜',
-			'CRO' => 'Pobjede',
-			'RS' => 'Pobede',
-			'BA' => 'Pobjede',
+            'CH' => '获胜',
+            'CRO' => 'Pobjede',
+            'RS' => 'Pobede',
+            'BA' => 'Pobjede'
         ),
     '_Loss' =>
         array (
@@ -723,10 +757,10 @@ return array (
             'UA' => 'Програш',
             'LT' => 'Pralaimėjimų',
             'DE' => 'Verloren',
-			'CH' => '失败',
-			'CRO' => 'Poraz',
-			'RS' => 'Poraz',
-			'BA' => 'Poraz',
+            'CH' => '失败',
+            'CRO' => 'Poraz',
+            'RS' => 'Poraz',
+            'BA' => 'Poraz'
         ),
     '_Ratio_KD_short' =>
         array (
@@ -735,10 +769,10 @@ return array (
             'UA' => 'К/Д',
             'LT' => 'N/M',
             'DE' => 'K/D',
-			'CH' => 'K/D',
-			'CRO' => 'U/S',
-			'RS' => 'U/S',
-			'BA' => 'U/S',
+            'CH' => 'K/D',
+            'CRO' => 'U/S',
+            'RS' => 'U/S',
+            'BA' => 'U/S'
         ),
     '_Top_players' =>
         array (
@@ -747,10 +781,10 @@ return array (
             'UA' => 'Рейтинг гравців',
             'LT' => 'Žaidėjų reitingai',
             'DE' => 'Top Spieler',
-			'CH' => '顶尖玩家',
-			'CRO' => 'Top Igrači',
-			'RS' => 'Top Igrači',
-			'BA' => 'Top Igrači',
+            'CH' => '顶尖玩家',
+            'CRO' => 'Top Igrači',
+            'RS' => 'Top Igrači',
+            'BA' => 'Top Igrači'
         ),
     '_Month_january' =>
         array (
@@ -759,10 +793,10 @@ return array (
             'UA' => 'січ.',
             'LT' => 'Sau.',
             'DE' => 'Jan.',
-			'CH' => '1月.',
-			'CRO' => 'Sij.',
-			'RS' => 'Jan.',
-			'BA' => 'Jan.',
+            'CH' => '1月.',
+            'CRO' => 'Sij.',
+            'RS' => 'Jan.',
+            'BA' => 'Jan.'
         ),
     '_Month_february' =>
         array (
@@ -771,10 +805,10 @@ return array (
             'UA' => 'лют.',
             'LT' => 'Vas.',
             'DE' => 'Feb.',
-			'CH' => '2月.',
-			'CRO' => 'Velj.',
-			'RS' => 'Feb.',
-			'BA' => 'Feb.',
+            'CH' => '2月.',
+            'CRO' => 'Velj.',
+            'RS' => 'Feb.',
+            'BA' => 'Feb.'
         ),
     '_Month_march' =>
         array (
@@ -783,10 +817,10 @@ return array (
             'UA' => 'бер.',
             'LT' => 'Kov.',
             'DE' => 'Mär.',
-			'CH' => '3月.',
-			'CRO' => 'Ožu.',
-			'RS' => 'Mar.',
-			'BA' => 'Mar.',
+            'CH' => '3月.',
+            'CRO' => 'Ožu.',
+            'RS' => 'Mar.',
+            'BA' => 'Mar.'
         ),
     '_Month_april' =>
         array (
@@ -795,10 +829,10 @@ return array (
             'UA' => 'квіт.',
             'LT' => 'Bal.',
             'DE' => 'Apr.',
-			'CH' => '4月.',
-			'CRO' => 'Tra.',
-			'RS' => 'Apr.',
-			'BA' => 'Apr.',
+            'CH' => '4月.',
+            'CRO' => 'Tra.',
+            'RS' => 'Apr.',
+            'BA' => 'Apr.'
         ),
     '_Month_may' =>
         array (
@@ -807,10 +841,10 @@ return array (
             'UA' => 'Трав.',
             'LT' => 'Geg.',
             'DE' => 'Mai.',
-			'CH' => '5月.',
-			'CRO' => 'Svi.',
-			'RS' => 'Maj.',
-			'BA' => 'Maj.',
+            'CH' => '5月.',
+            'CRO' => 'Svi.',
+            'RS' => 'Maj.',
+            'BA' => 'Maj.'
         ),
     '_Month_june' =>
         array (
@@ -819,10 +853,10 @@ return array (
             'UA' => 'Чер.',
             'LT' => 'Bir.',
             'DE' => 'Jun.',
-			'CH' => '6月.',
-			'CRO' => 'Lip.',
-			'RS' => 'Jun.',
-			'BA' => 'Jun.',
+            'CH' => '6月.',
+            'CRO' => 'Lip.',
+            'RS' => 'Jun.',
+            'BA' => 'Jun.'
         ),
     '_Month_july' =>
         array (
@@ -831,10 +865,10 @@ return array (
             'UA' => 'Лип.',
             'LT' => 'Lie.',
             'DE' => 'Jul.',
-			'CH' => '7月.',
-			'CRO' => 'Srp.',
-			'RS' => 'Jul.',
-			'BA' => 'Jul.',
+            'CH' => '7月.',
+            'CRO' => 'Srp.',
+            'RS' => 'Jul.',
+            'BA' => 'Jul.'
         ),
     '_Month_august' =>
         array (
@@ -843,10 +877,10 @@ return array (
             'UA' => 'Сер.',
             'LT' => 'Rūgp.',
             'DE' => 'Aug.',
-			'CH' => '8月.',
-			'CRO' => 'Kol.',
-			'RS' => 'Aug.',
-			'BA' => 'Aug.',
+            'CH' => '8月.',
+            'CRO' => 'Kol.',
+            'RS' => 'Aug.',
+            'BA' => 'Aug.'
         ),
     '_Month_september' =>
         array (
@@ -855,10 +889,10 @@ return array (
             'UA' => 'Вер.',
             'LT' => 'Rugs.',
             'DE' => 'Sep.',
-			'CH' => '9月.',
-			'CRO' => 'Ruj.',
-			'RS' => 'Sep.',
-			'BA' => 'Sep.',
+            'CH' => '9月.',
+            'CRO' => 'Ruj.',
+            'RS' => 'Sep.',
+            'BA' => 'Sep.'
         ),
     '_Month_october' =>
         array (
@@ -867,10 +901,10 @@ return array (
             'UA' => 'Жов.',
             'LT' => 'Spa.',
             'DE' => 'Okt.',
-			'CH' => '10月.',
-			'CRO' => 'Lis.',
-			'RS' => 'Okt.',
-			'BA' => 'Okt.',
+            'CH' => '10月.',
+            'CRO' => 'Lis.',
+            'RS' => 'Okt.',
+            'BA' => 'Okt.'
         ),
     '_Month_november' =>
         array (
@@ -879,10 +913,10 @@ return array (
             'UA' => 'Лис.',
             'LT' => 'Lap.',
             'DE' => 'Nov.',
-			'CH' => '11月.',
-			'CRO' => 'Stu.',
-			'RS' => 'Nov.',
-			'BA' => 'Nov.',
+            'CH' => '11月.',
+            'CRO' => 'Stu.',
+            'RS' => 'Nov.',
+            'BA' => 'Nov.'
         ),
     '_Month_december' =>
         array (
@@ -891,10 +925,10 @@ return array (
             'UA' => 'Груд.',
             'LT' => 'Gruo.',
             'DE' => 'Dez.',
-			'CH' => '12月.',
-			'CRO' => 'Pro.',
-			'RS' => 'Dec.',
-			'BA' => 'Dec.',
+            'CH' => '12月.',
+            'CRO' => 'Pro.',
+            'RS' => 'Dec.',
+            'BA' => 'Dec.'
         ),
     '_Second' =>
         array (
@@ -903,10 +937,10 @@ return array (
             'UA' => 'Сек.',
             'LT' => 'Sek.',
             'DE' => 'Sek.',
-			'CH' => '秒.',
-			'CRO' => 'Sek.',
-			'RS' => 'Sek.',
-			'BA' => 'Sek.',
+            'CH' => '秒.',
+            'CRO' => 'Sek.',
+            'RS' => 'Sek.',
+            'BA' => 'Sek.'
         ),
     '_Minute' =>
         array (
@@ -915,10 +949,10 @@ return array (
             'UA' => 'Хвил.',
             'LT' => 'Min.',
             'DE' => 'Min',
-			'CH' => '分.',
-			'CRO' => 'Min.',
-			'RS' => 'Min.',
-			'BA' => 'Min.',
+            'CH' => '分.',
+            'CRO' => 'Min.',
+            'RS' => 'Min.',
+            'BA' => 'Min.'
         ),
     '_Hour' =>
         array (
@@ -927,10 +961,10 @@ return array (
             'UA' => 'г.',
             'LT' => 'h.',
             'DE' => 'S',
-			'CH' => '小时.',
-			'CRO' => 'h.',
-			'RS' => 'č.',
-			'BA' => 'h.',
+            'CH' => '小时.',
+            'CRO' => 'h.',
+            'RS' => 'č.',
+            'BA' => 'h.'
         ),
     '_Day' =>
         array (
@@ -939,10 +973,10 @@ return array (
             'UA' => 'День',
             'LT' => 'Diena',
             'DE' => 'Tag',
-			'CH' => '天',
-			'CRO' => 'Dan',
-			'RS' => 'Dan',
-			'BA' => 'Dan',
+            'CH' => '天',
+            'CRO' => 'Dan',
+            'RS' => 'Dan',
+            'BA' => 'Dan'
         ),
     '_Days' =>
         array (
@@ -950,12 +984,12 @@ return array (
             'RU' => 'Дн.',
             'UA' => 'Дн.',
             'LT' => 'Dien.',
-			'DE' => 'Tage',
-			'CH' => '天',
-			'CH' => '天',
-			'CRO' => 'Dani',
-			'RS' => 'Dani',
-			'BA' => 'Dani',
+            'DE' => 'Tage',
+            'CH' => '天',
+            'CH' => '天',
+            'CRO' => 'Dani',
+            'RS' => 'Dani',
+            'BA' => 'Dani'
         ),
     '_Week' =>
         array (
@@ -964,11 +998,11 @@ return array (
             'UA' => 'Тиждень',
             'LT' => 'Savaitė',
             'DE' => 'Woche',
-			'CH' => '周',
-			'CH' => '天',
-			'CRO' => 'Tjedan',
-			'RS' => 'Sedmica',
-			'BA' => 'Sedmica',
+            'CH' => '周',
+            'CH' => '天',
+            'CRO' => 'Tjedan',
+            'RS' => 'Sedmica',
+            'BA' => 'Sedmica'
         ),
     '_Weeks' =>
         array (
@@ -977,10 +1011,10 @@ return array (
             'UA' => 'Тижні',
             'LT' => 'Savaitės',
             'DE' => 'Wochen',
-			'CH' => '周',
-			'CRO' => 'Tjedana',
-			'RS' => 'Sedmice',
-			'BA' => 'Sedmice',
+            'CH' => '周',
+            'CRO' => 'Tjedana',
+            'RS' => 'Sedmice',
+            'BA' => 'Sedmice'
         ),
     '_Month' =>
         array (
@@ -989,10 +1023,10 @@ return array (
             'UA' => 'Міс.',
             'LT' => 'Mėnuo',
             'DE' => 'Monat',
-			'CH' => '个月',
-			'CRO' => 'Mjesec',
-			'RS' => 'Mesec',
-			'BA' => 'Mjesec',
+            'CH' => '个月',
+            'CRO' => 'Mjesec',
+            'RS' => 'Mesec',
+            'BA' => 'Mjesec'
         ),
     '_Months' =>
         array (
@@ -1001,10 +1035,10 @@ return array (
             'UA' => 'Міс.',
             'LT' => 'Mėn.',
             'DE' => 'Monate',
-			'CH' => '个月',
-			'CRO' => 'Mjeseci',
-			'RS' => 'Meseci',
-			'BA' => 'Mjeseci',
+            'CH' => '个月',
+            'CRO' => 'Mjeseci',
+            'RS' => 'Meseci',
+            'BA' => 'Mjeseci'
         ),
     '_Log_in' =>
         array (
@@ -1013,10 +1047,10 @@ return array (
             'UA' => 'Увійти',
             'LT' => 'Prisijungti',
             'DE' => 'Einloggen',
-			'CH' => '登入',
-			'CRO' => 'Prijava',
-			'RS' => 'Prijava',
-			'BA' => 'Prijava',
+            'CH' => '登入',
+            'CRO' => 'Prijava',
+            'RS' => 'Prijava',
+            'BA' => 'Prijava'
         ),
     '_Logout' =>
         array (
@@ -1025,10 +1059,10 @@ return array (
             'UA' => 'Вийти',
             'LT' => 'Atsijungti',
             'DE' => 'Abmelden',
-			'CH' => '登出',
-			'CRO' => 'Odjava',
-			'RS' => 'Odjava',
-			'BA' => 'Odjava',
+            'CH' => '登出',
+            'CRO' => 'Odjava',
+            'RS' => 'Odjava',
+            'BA' => 'Odjava'
         ),
     '_Admin_panel' =>
         array (
@@ -1037,10 +1071,10 @@ return array (
             'UA' => 'Панель адміністратора',
             'LT' => 'Admin panel',
             'DE' => 'Admin panel',
-			'CH' => '管理员面板',
-			'CRO' => 'Admin panel',
-			'RS' => 'Admin panel',
-			'BA' => 'Admin panel',
+            'CH' => '管理员面板',
+            'CRO' => 'Admin panel',
+            'RS' => 'Admin panel',
+            'BA' => 'Admin panel'
         ),
 	'_LK' =>
         array (
@@ -1050,33 +1084,33 @@ return array (
             'LT' => 'Asmeninė sąskaita',
             'DE' => 'Persönliches Büro',
             'CH' => '个人账号',
-		    'CRO' => 'Osobno područje',
-		    'RS' => 'Lični prostor',
-		    'BA' => 'Osobno područje',
+            'CRO' => 'Osobno područje',
+            'RS' => 'Lični prostor',
+            'BA' => 'Osobno područje'
         ),
 	'_Vips' =>
         array (
             'EN' => 'Vips list',
             'RU' => 'Список вип игроков',
-		    'CRO' => 'Vip lista',
-		    'RS' => 'Vip lista',
-		    'BA' => 'Vip lista'
+            'CRO' => 'Vip lista',
+            'RS' => 'Vip lista',
+            'BA' => 'Vip lista'
         ),
     '_Banned' =>
         array (
             'EN' => 'Banned',
             'RU' => 'Забанен',
-		    'CRO' => 'Banovan',
-		    'RS' => 'Banovan',
-	    	'BA' => 'Banovan'
+            'CRO' => 'Banovan',
+            'RS' => 'Banovan',
+            'BA' => 'Banovan'
         ),
     '_Server_Information' =>
         array (
             'EN' => 'Server Information',
             'RU' => 'Информация о сервере',
-		    'CRO' => 'Informacije o Serveru',
-		    'RS' => 'Server Informacije',
-	    	'BA' => 'Informacije o Serveru'
+            'CRO' => 'Informacije o Serveru',
+            'RS' => 'Server Informacije',
+            'BA' => 'Informacije o Serveru'
         ),
     '_OpenCase' =>
         array (
@@ -1084,8 +1118,8 @@ return array (
             'RU' => 'Open Case',
             'UA' => 'Open Case',
             'LT' => 'Open Case',
-		    'CRO' => 'Otvoren slučaj',
-	    	'RS' => 'Otvoren slučaj',
-	    	'BA' => 'Otvoren slučaj'
+            'CRO' => 'Otvoren slučaj',
+            'RS' => 'Otvoren slučaj',
+            'BA' => 'Otvoren slučaj'
         )
 );
