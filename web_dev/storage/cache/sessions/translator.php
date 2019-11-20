@@ -4,7 +4,6 @@
        * Ich will nicht mehr wissen, wie es war
        * Ich will nicht wissen, was du machst, wenn du high bist
        */
-
 return array (
     '_RU' =>
         array (
@@ -195,7 +194,6 @@ return array (
             'LT' => 'Statistika - reitingų paskirstymas',
             'DE' => 'Statistiken - Rangfolgeverteilung',
 			'CH' => '数据 - 段位分布',
-			'CH' => '段位分布',
 			'CRO' => 'Statistika - Raspodjela rankova',
 			'RS' => 'Statistika - Raspodjela rankova',
 			'BA' => 'Statistika - Raspodjela rankova',
@@ -429,7 +427,6 @@ return array (
 			'RS' => 'Isteklo',
 			'BA' => 'Isteklo',
         ),
-
     '_List_recent_bans' =>
         array (
             'EN' => 'Banlist Overview',
@@ -499,7 +496,7 @@ return array (
 			'CH' => '用户名',
 			'CRO' => 'Loguj se',
 			'RS' => 'Prijavi se',
-			'BA' => 'Prijavi se'
+			'BA' => 'Prijavi se',
         ),
     '_Password' =>
         array (
@@ -751,10 +748,9 @@ return array (
             'LT' => 'Žaidėjų reitingai',
             'DE' => 'Top Spieler',
 			'CH' => '顶尖玩家',
-			'EN' => 'Top Igrači',
-			'EN' => 'Top Igrači',
-			'EN' => 'Top Igrači',
-
+			'CRO' => 'Top Igrači',
+			'RS' => 'Top Igrači',
+			'BA' => 'Top Igrači',
         ),
     '_Month_january' =>
         array (
@@ -1064,7 +1060,7 @@ return array (
             'RU' => 'Список вип игроков',
 		    'CRO' => 'Vip lista',
 		    'RS' => 'Vip lista',
-		    'BA' => 'Vip lista',
+		    'BA' => 'Vip lista'
         ),
     '_Banned' =>
         array (
@@ -1072,7 +1068,7 @@ return array (
             'RU' => 'Забанен',
 		    'CRO' => 'Banovan',
 		    'RS' => 'Banovan',
-	    	'BA' => 'Banovan',
+	    	'BA' => 'Banovan'
         ),
     '_Server_Information' =>
         array (
@@ -1080,7 +1076,7 @@ return array (
             'RU' => 'Информация о сервере',
 		    'CRO' => 'Informacije o Serveru',
 		    'RS' => 'Server Informacije',
-	    	'BA' => 'Informacije o Serveru',
+	    	'BA' => 'Informacije o Serveru'
         ),
     '_OpenCase' =>
         array (
@@ -1090,6 +1086,6 @@ return array (
             'LT' => 'Open Case',
 		    'CRO' => 'Otvoren slučaj',
 	    	'RS' => 'Otvoren slučaj',
-	    	'BA' => 'Otvoren slučaj',
+	    	'BA' => 'Otvoren slučaj'
         )
 );
