@@ -779,7 +779,7 @@
             "DE" : "Kaution",
             "CH" : "保证金",
 	        "CRO": "Depozit",
-            "RS": Depozit"",
+            "RS": "Depozit",
         	"BA": "Depozit"
     },
     "_PaymentsList":{
