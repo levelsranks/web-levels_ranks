@@ -503,7 +503,7 @@ class Player {
     private function get_db_plugin_module_unusualkills() {
         switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
             case 'LevelsRanks':
-            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl, LastClip FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 break;
             case 'FPS':
                 return $this->Db->query('FPS', 0, 0, "SELECT fps_unusualkills.op AS OP,
@@ -513,7 +513,8 @@ class Player {
                                                              fps_unusualkills.jump AS Jump,
                                                              fps_unusualkills.flash AS Flash,
                                                              fps_unusualkills.smoke AS Smoke,
-                                                             fps_unusualkills.whirl AS Whirl
+                                                             fps_unusualkills.whirl AS Whirl,
+                                                             fps_unusualkills.last_clip AS LastClip
                                                              FROM fps_unusualkills
                                                              INNER JOIN fps_players ON fps_unusualkills.account_id = fps_players.account_id
                                                              WHERE fps_players.steam_id = '{$this->get_steam_64()}'
@@ -552,6 +553,10 @@ class Player {
 
     public function get_unusualkills_whirl() {
         return (int) $this->unusualkills['Whirl'];
+    }
+
+    public function get_unusualkills_last_clip() {
+        return (int) $this->unusualkills['LastClip'];
     }
 
     private function get_db_plugin_module_hits() {

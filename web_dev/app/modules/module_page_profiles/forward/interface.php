@@ -275,6 +275,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="unusualkills_block">
+                    <div class="block">
+                        <div class="unusualkills_score"><?php echo $Player->get_unusualkills_last_clip()?></div>
+                        <div class="unusualkills_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Kills_last_shoot')?></div>
+                        <div class="icon_block">
+                            <i class="zmdi zmdi-collection-item-1 zmdi-hc-fw"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         <?php endif;?>
     </div>
