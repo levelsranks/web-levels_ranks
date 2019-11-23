@@ -250,4 +250,4 @@ $GatewaysArrayList = [
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/themes/dark_earth.min.js"></script>
-<script type="text/javascript"><?=$LK->LKChart()?></script>
+<script type="text/javascript"><?php echo $LK->LKChart()?></script>
