@@ -516,6 +516,7 @@
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
 - Sleep#0725  ( Discord )   - 250 RUB.
+- Malenkiy Alik#1945 ( Discord )  - 200 RUB.
 - Морковка#7277 ( Discord )  - 200 RUB.
 - valerun     ( hlmod.ru )  - 185 RUB.
 - FIVE#3136   ( Discord )   - 155 RUB.
