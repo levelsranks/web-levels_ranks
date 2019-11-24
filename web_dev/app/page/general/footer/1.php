@@ -7,7 +7,7 @@
 if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['js'] ) ):
     for ( $js = 0, $js_s = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['js'] ); $js < $js_s; $js++ ):?>
         <script src="<?php echo $General->arr_general['site'] . 'app/modules/' . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['js'][ $js ]['name'] . '/assets/js/' . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['js'][ $js ]['type'] . '.js'?>"></script>
-  <?endfor;
+  <?php endfor;
 endif;
       else:?>
     <script src="<?php echo ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver'] . '.js' ) ? $General->arr_general['site'] . 'storage/assets/js/app' :  $General->arr_general['site'] . 'storage/assets/js/generation/app_generated.min.ver.' . $Modules->actual_library['actual_js_ver']?>.js"></script>

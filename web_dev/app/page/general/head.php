@@ -19,7 +19,7 @@
 if( ! empty( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'] ) ):
     for ( $css = 0, $css_s = sizeof( $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'] ); $css < $css_s; $css++ ):?>
     <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . 'app/modules/' . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'][ $css ]['name'] . '/assets/css/' . $Modules->arr_module_init['page'][ get_section( 'page', 'home' ) ]['css'][ $css ]['type'] . '.css'?>">
-  <?endfor;
+  <?php endfor;
 endif;
       else:?>
     <link rel="stylesheet" type="text/css" href="<?php echo ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css' ) ? $General->arr_general['site'] . 'storage/assets/css/themes/' . $General->arr_general['theme'] . '/style' :  $General->arr_general['site'] . 'storage/assets/css/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver']?>.css">
