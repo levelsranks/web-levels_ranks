@@ -23,10 +23,13 @@ set_time_limit(4);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.124');
+define('VERSION', '0.2.125');
 
 // Основная директория вэб-приложения.
 define('APP', 'app/');
+
+// Основная директория вэб-приложения.
+define('STORAGE', 'storage/');
 
 // Директория содержащая основные блоки вэб-приложения.
 define('PAGE', APP . 'page/general/');
@@ -41,10 +44,10 @@ define('MODULES', APP . 'modules/');
 define('INCLUDES', APP . 'includes/');
 
 // Директория содержащая графические кэш-файлы.
-define('CACHE', 'storage/cache/');
+define('CACHE', STORAGE . 'cache/');
 
 // Директория с ресурсами.
-define('ASSETS', 'storage/assets/');
+define('ASSETS', STORAGE . 'assets/');
 
 // Директория с основными кэш-файлами.
 define('SESSIONS', CACHE . 'sessions/');

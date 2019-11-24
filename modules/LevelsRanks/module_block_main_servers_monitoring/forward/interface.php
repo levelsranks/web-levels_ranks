@@ -162,12 +162,12 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
             </div>
         </div>
     </div>
-<?php break;}?>
-<div id="server-players-online" class="modal-window-server">
+<?php break;}for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ):?>
+<div id="server-players-online-<?php echo $i_server?>" class="modal-window-server">
     <div class="card">
         <div class="card-header">
             <h5 class="badge"><?php echo $Translate->get_translate_phrase('_Server_Information')?></h5>
-            <a title="Закрыть" onclick="close_modal(id)" href="javascript:void(0);" class="modal-close badge"><?php $General->get_icon( 'zmdi', 'close' )?></a>
+            <a title="Закрыть" id="<?php echo $i_server?>" onclick="close_modal(id)" href="javascript:void(0);" class="modal-close badge"><?php $General->get_icon( 'zmdi', 'close' )?></a>
         </div>
         <div class=server_block_scroll>
             <div class=table-responsive>
@@ -180,13 +180,14 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
                         <th class="text-center"><?php echo $Translate->get_translate_phrase('_Play_time')?></th>
                     </tr>
                     </thead>
-                    <tbody id="players_online">
+                    <tbody id="players_online_<?php echo $i_server?>">
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="input-form">
-            <a class="btn btn_connect_now" id="connect_server"><?php echo $Translate->get_translate_phrase('_Connect_2')?></a>
+            <a class="btn btn_connect_now" id="connect_server_<?php echo $i_server?>"><?php echo $Translate->get_translate_phrase('_Connect_2')?></a>
         </div>
     </div>
 </div>
+<?php endfor?>

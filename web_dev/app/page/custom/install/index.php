@@ -303,6 +303,7 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
 							`ip` VARCHAR(64) NOT NULL,
                             `fakeip` VARCHAR(64) NOT NULL,
                             `name` VARCHAR(64) NOT NULL,
+                            `name_custom` VARCHAR(128) NOT NULL,
                             `rcon` VARCHAR(64) NOT NULL,
                             `server_stats` VARCHAR(64) NOT NULL,
                             `server_vip` VARCHAR(64) NOT NULL,

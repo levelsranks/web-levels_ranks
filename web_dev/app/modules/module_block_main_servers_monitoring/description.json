@@ -14,7 +14,7 @@
     "available_types": "1;2;3",
     "translation": 1,
     "interface": 1,
-	"interface_adjacent": "afternavbar",
+    "interface_adjacent": "afternavbar",
     "css": 1,
     "js": 1,
     "cache_enable": 0,

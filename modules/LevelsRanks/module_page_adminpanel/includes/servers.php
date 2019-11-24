@@ -12,7 +12,8 @@
                             <h5 class="badge">Сервер</h5>
                         </div>
                         <div class="server_form_block">
-                            <div class="input-form"><div class="input_text">Название Сервера</div><input name="server_name" value=""></div>
+                            <div class="input-form"><div class="input_text">Название Сервера</div><input name="server_name_custom" value=""></div>
+                            <div class="input-form"><div class="input_text">Техническое название</div><input name="server_name" value=""></div>
                             <div class="input-form"><div class="input_text">IP:PORT Сервера</div><input name="server_ip_port" value="127.0.0.1:27015"></div>
                             <div class="input-form"><div class="input_text">IP:PORT Выводимый</div><input name="server_ip_port_fake" value="127.0.0.1:27015"></div>
                             <div class="input-form"><div class="input_text">RCON</div><input type="password" name="server_rcon" value=""></div>
