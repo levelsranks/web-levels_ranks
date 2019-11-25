@@ -1092,6 +1092,7 @@ return array (
         array (
             'EN' => 'Vips list',
             'RU' => 'Список вип игроков',
+			'UA' => 'Список віп гравців',
             'CRO' => 'Vip lista',
             'RS' => 'Vip lista',
             'BA' => 'Vip lista'
@@ -1100,6 +1101,7 @@ return array (
         array (
             'EN' => 'Banned',
             'RU' => 'Забанен',
+			'UA' => 'Забанен',
             'CRO' => 'Banovan',
             'RS' => 'Banovan',
             'BA' => 'Banovan'
@@ -1108,6 +1110,7 @@ return array (
         array (
             'EN' => 'Server Information',
             'RU' => 'Информация о сервере',
+			'RU' => 'Інформація про сервер',
             'CRO' => 'Informacije o Serveru',
             'RS' => 'Server Informacije',
             'BA' => 'Informacije o Serveru'
