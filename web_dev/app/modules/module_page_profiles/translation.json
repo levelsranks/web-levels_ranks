@@ -3,7 +3,7 @@
     "DE": "K/D Verhältnis:",
     "EN": "K/D Ratio:",
     "RU": "Убийств / Смертей - К/Д:",
-    "UA": "Убийств / Смертей - К/Д:",
+    "UA": "Вбивств / Смертей - К/Д:",
 	"LT": "Nužydymų / Mirčių - N/M:",
     "CH": "K/D 比:",
 	"CRO": "U/S Odnos",
@@ -14,7 +14,7 @@
     "DE": "Schüsse / Treffer:",
     "EN": "Shoots / Hits:",
     "RU": "Попаданий / Выстрелов:",
-    "UA": "Попаданий / Выстрелов:",
+    "UA": "Влучень / Пострілів:",
 	"LT": "Šūvių / Pataikymų:",
     "CH": "射击次数 / 击中次数:",
 	"CRO": "Pucanja / Pogodaka",
@@ -135,7 +135,7 @@
     "DE": "Gesamtprozentsatz der Gewinne:",
     "EN": "Winnings Percentage:",
     "RU": "Общий процент побед:",
-    "UA": "Загальні перемог %:",
+    "UA": "Загальний відсоток перемог:",
     "LT": "Laimėjimai procentais %:",
     "CH": "总胜率:",
 	"CRO": "Pobjednički procenat",
@@ -241,9 +241,15 @@
     "RS": "180-360° Ubistva",
 	"BA": "180-360° Ubistva"
   },
+  "_Kills_lastclip": {
+    "EN": "Last Clip Kills",
+    "RU": "Убийств последним патроном",
+    "UA": "Вбивств останнім патроном"
+  },
   "_Last_connect": {
     "EN": "Last Connect",
     "RU": "Последняя игра",
+	"UA": "Останнє підключення",
 	"CRO": "Posljednja konekcija",
     "RS": "Poslednja konekcija",
 	"BA": " Poslednja konekcija"
@@ -251,6 +257,7 @@
   "_Head": {
     "EN": "Head",
     "RU": "Голова",
+	"UA": "Голова",
 	"CRO": "Glava",
     "RS": "Glava",
 	"BA": " Glava"
@@ -258,6 +265,7 @@
   "_Neak": {
     "EN": "Neak",
     "RU": "Шея",
+	"UA": "Шия",
 	"CRO": "Vrat",
     "RS": "Vrat",
 	"BA": " Vrat"
@@ -265,6 +273,7 @@
   "_Light_arm": {
     "EN": "Light Arm",
     "RU": "Левая рука",
+	"UA": "Ліва рука",
 	"CRO": "Lijeva ruka",
     "RS": "Leva ruka",
 	"BA": " Lijeva ruka"
@@ -272,6 +281,7 @@
   "_Right_arm": {
     "EN": "Right Arm",
     "RU": "Правая рука",
+	"UA": "Права рука",
 	"CRO": "Desna Ruka",
     "RS": "Desna Ruka",
 	"BA": " Desna Ruka"
@@ -279,6 +289,7 @@
   "_Left_leg": {
     "EN": "Left Leg",
     "RU": "Левая нога",
+	"UA": "Ліва нога",
 	"CRO": "Lijeva noga",
     "RS": "Leva noga",
 	"BA": " Lijeva noga"
@@ -286,6 +297,7 @@
   "_Right_leg": {
     "EN": "Right Leg",
     "RU": "Правая нога",
+	"UA": "Права нога",
 	"CRO": "Desna noga",
     "RS": "Desna noga",
 	"BA": " Desna noga"
@@ -293,6 +305,7 @@
   "_Belly": {
     "EN": "Belly",
     "RU": "Живот",
+	"UA": "Живіт",
 	"CRO": "Trbuh",
     "RS": "Trbuh",
 	"BA": " Trbuh"
@@ -300,6 +313,7 @@
   "_Chest": {
     "EN": "Chest",
     "RU": "Грудь",
+	"UA": "Груди",
 	"CRO": "Prsa",
     "RS": "Prsa",
 	"BA": " Prsa"
