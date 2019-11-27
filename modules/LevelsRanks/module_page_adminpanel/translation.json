@@ -282,6 +282,7 @@
   "_Steam_access_authorization": {
     "EN": "Steam access authorization",
     "RU": "Доступ к Steam авторизации",
+	"UA": "Доступ до Steam авторизації",
 	"CH": "Steam 权限认证",
 	"CRO": "Steam autorizacija",
     "RS": "Stim autorizacija",
@@ -290,6 +291,7 @@
   "_Steam_only_authorization": {
     "EN": "Steam Authorization Only",
     "RU": "Авторизация только по Steam",
+	"UA": "Авторизація тільки по Steam",
 	"CH": "仅使用Steam登录认证",
 	"CRO": "Samo Steam autorizacija",
     "RS": "Samo Stim autorizacija",
@@ -298,6 +300,7 @@
   "_Design": {
     "EN": "Design",
     "RU": "Дизайн",
+	"UA": "Дизайн",
 	"CH": "网页样式",
 	"CRO": "Dizajn",
     "RS": "Dizajn",
@@ -306,6 +309,7 @@
   "_Configuration": {
     "EN": "Configuration",
     "RU": "Конфигурация",
+	"UA": "Конфігурація",
 	"CH": "其他设置",
 	"CRO": "Konfiguracija",
     "RS": "Konfiguracija",
@@ -314,6 +318,7 @@
   "_Enable_css_cache": {
     "EN": "Enable Cache - CSS",
     "RU": "Включить кэш - CSS",
+	"UA": "Включити кеш - CSS",
 	"CRO": "Omogući CSS keš",
     "RS": "Omogući CSS keš",
 	"BA": "Omogući CSS keš"
@@ -321,6 +326,7 @@
   "_Enable_js_cache": {
     "EN": "Enable Cache - JS",
     "RU": "Включить кэш - JS",
+	"UA": "Включити кеш - JS",
 	"CRO": "Omogući JS keš",
     "RS": "Omogući JS keš",
 	"BA": "Omogući JS keš"	
@@ -328,6 +334,7 @@
   "_Optimization": {
     "EN": "Optimization",
     "RU": "Оптимизация",
+	"UA": "Оптимізація",
 	"CRO": "Optimizacija",
     "RS": "Optimizacija",
 	"BA": "Optimizacija"	
@@ -335,6 +342,7 @@
   "_Decor": {
     "EN": "Decor",
     "RU": "Оформление",
+	"UA": "Оформлення",
 	"CRO": "Dekoracija",
     "RS": "Dekor",
 	"BA": "Dekoracija"	
@@ -342,6 +350,7 @@
   "_White_color_palettes": {
     "EN": "White Сolor Palettes",
     "RU": "Белая палитра сайта",
+	"UA": "Біла палітра сайту",
 	"CRO": "Svijetla tema",
     "RS": "Svetla tema",
 	"BA": "Svijetla tema"	
@@ -349,6 +358,7 @@
   "_Dark_color_palettes": {
     "EN": "Dark Сolor Palettes",
     "RU": "Тёмная палитра сайта",
+	"UA": "Темна палітра сайту",
 	"CRO": "Tamna tema",
     "RS": "Tamna tema",
 	"BA": "Tamna tema"	
@@ -356,6 +366,7 @@
   "_Background_image": {
     "EN": "Background image",
     "RU": "Фоновое изображение",
+	"UA": "Фонове зображення",
 	"CRO": "Pozadinska slika",
     "RS": "Pozadinska slika",
 	"BA": "Pozadinska slika"	
@@ -363,6 +374,7 @@
   "_No_image": {
     "EN": "No image",
     "RU": "Без изображения",
+	"UA": "Без зображення",
     "CRO": "Bez slike",
     "RS": "Bez slike",
     "BA": "Bez slike"	
@@ -370,6 +382,7 @@
   "_Security": {
     "EN": "Security",
     "RU": "Безопасность",
+	"UA": "Безпека",
     "CRO": "Zaštita",
     "RS": "Bezbednost",
     "BA": "Bezbjednost"	
@@ -377,6 +390,7 @@
   "_Session_check": {
     "EN": "Check PHP Sessions",
     "RU": "Проверка PHP сессий",
+	"UA": "Перевірка PHP сесій",
     "CRO": "Provjeri PHP sesiju",
     "RS": "Proveri PHP sesiju",
     "BA": "Provjeri PHP sesiju"	
@@ -384,6 +398,7 @@
   "_Primary_graphics_container": {
     "EN": "Primary Graphics Container",
     "RU": "Основной графический контейнер",
+	"UA": "Основний графічний контейнер",
     "CRO": "Primarna veličina",
     "RS": "Primarna veličina",
     "BA": "Primarna veličina"	
@@ -391,6 +406,7 @@
   "_Stretch": {
     "EN": "Stretch / Fluid",
     "RU": "Растягивать по ширине экрана",
+	"UA": "Розтягувати по ширині екрану",
     "CRO": "Razvučeno / Fluid",
     "RS": "Razvučeno / Fluid",
     "BA": "Razvučeno / Fluid"	
@@ -398,6 +414,7 @@
   "_Static": {
     "EN": "Static - Max 1400px",
     "RU": "Статика - Макс. 1400px",
+	"UA": "Статика - Макс. 1400px",
     "CRO": "Statična - Max 1400px",
     "RS": "Statična - Max 1400px",
     "BA": "Statična - Max 1400px"	
@@ -405,6 +422,7 @@
   "_Disable_sidebar_change": {
     "EN": "Disable Sidebar Change",
     "RU": "Запретить изменение вида боковой панели",
+	"UA": "Заборонити зміну виду бічній панелі",
     "CRO": "Onemogući pomjeranje bočnog menija",
     "RS": "Onemogući pomeranje sidebara",
     "BA": "Onemogući pomjeranje sidebara"	
@@ -412,17 +430,19 @@
   "_Disable_palettes_change": {
     "EN": "Disable palettes change",
     "RU": "Запретить изменение палитры сайта",
+	"UA": "Заборонити зміну палітри сайту",
 	  "CRO": "Onemogući menjanje teme",
     "RS": "Onemogući menjanje teme",
 	  "BA": "Onemogući menjanje teme"	
   },
   "_Sidebar_blur": {
     "EN": "Enable Sidebar Blur",
-    "RU": "Включить размытие у боковой панели"
+    "RU": "Включить размытие у боковой панели",
+	"UA": "Включити розмиття в бічній панелі"
   },
   "_Blocks_blur": {
     "EN": "Enable Blocks blur",
-    "RU": "Включить размытие у блоков"
+    "RU": "Включить размытие у блоков",
+	"UA": "Включити розмиття у блоків"
   }
 }
-
