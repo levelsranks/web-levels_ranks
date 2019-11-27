@@ -536,6 +536,7 @@
 - DismoraL    ( hlmod.ru )  - 100 RUB.
 - xXMaXimXx   ( hlmod.ru )  - 100 RUB.
 - Twenix#4347 ( Discord )   - 100 RUB.
+- LEGACY#3877 ( Discord )   - 50 RUB.
 - ARONGAMES#2063 ( Discord )   - 50 RUB.
 - fr4nch#3619 ( Discord )   - 50 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
