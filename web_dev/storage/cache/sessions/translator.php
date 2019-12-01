@@ -1110,7 +1110,7 @@ return array (
         array (
             'EN' => 'Server Information',
             'RU' => 'Информация о сервере',
-			'RU' => 'Інформація про сервер',
+			'UA' => 'Інформація про сервер',
             'CRO' => 'Informacije o Serveru',
             'RS' => 'Server Informacije',
             'BA' => 'Informacije o Serveru'
