@@ -241,7 +241,7 @@
     "RS": "180-360° Ubistva",
 	"BA": "180-360° Ubistva"
   },
-  "_Kills_lastclip": {
+  "_Kills_last_shoot": {
     "EN": "Last Clip Kills",
     "RU": "Убийств последним патроном",
     "UA": "Вбивств останнім патроном"
