@@ -507,6 +507,7 @@
 - Xzotys#3880  ( Discord )   - 500 RUB.
 - Unity       ( hlmod.ru )  - 460 RUB.
 - MotherRussia#2235    ( Discord )   - 350 RUB.
+- interes#3153    ( Discord )   - 300 RUB.
 - xek#1152    ( Discord )   - 300 RUB.
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - L1MON#4529  ( Discord )   - 300 RUB.
