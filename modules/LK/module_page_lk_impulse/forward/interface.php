@@ -65,10 +65,10 @@ if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
                                 <div class="input-form text-center"><div style="margin-bottom: 10px;" class="input_text text-left"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway')?></div>
                                 <?php foreach($Gateways as $info):?>
                                     <input type="radio" name="gatewayPay" value="<?php echo mb_strtolower($info['name_kassa'])?>" id="Gateway<?php echo $info['id']?>" class="gateways">
-                                    <label for="Gateway<?php echo $info['id']?>" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($info['name_kassa'])?>.png') no-repeat;background-position: center;" class="gateways-label"></label>
+                                    <label for="Gateway<?php echo $info['id']?>" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($info['name_kassa'])?>.svg') no-repeat;background-position: center;" class="gateways-label"></label>
                                     <?php if(mb_strtolower($info['name_kassa']) == 'yandexmoney' && empty($PCYM)):?>
                                     <input type="radio" name="gatewayPay" value="yandexmoneycard" id="Gateway99" class="gateways">
-                                    <label for="Gateway99" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/yandexmoneycard.png') no-repeat;background-position: center;" class="gateways-label"></label>
+                                    <label for="Gateway99" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/yandexmoneycard.svg') no-repeat;background-position: center;" class="gateways-label"></label>
 
                                 <?php $PCYM=1; endif; endforeach?>
                                 </div>
