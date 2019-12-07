@@ -33,12 +33,7 @@ class Player {
     /**
      * @var array
      */
-    public $weapons = [];
-
-    /**
-     * @var int
-     */
-    public $top_weapons_count = 3;
+    public $weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
 
     /**
      * @var array
@@ -61,7 +56,7 @@ class Player {
     public $found = [];
 
     /**
-     * @var //
+     * @var object
      */
     public $Db;
 
@@ -79,6 +74,16 @@ class Player {
      * @var array
      */
     public $hits = ['Head' => 0, 'Chest' => 0, 'Belly' => 0, 'LeftArm' => 0, 'RightArm' => 0, 'LeftLeg' => 0, 'RightLeg' => 0, 'Neak' => 0];
+
+    /**
+     * @var array
+     */
+    public $maps = ['de_mirage' => '-', 'de_dust2' => '-', 'de_cache' => '-', 'de_inferno' => '-', 'de_nuke' => '-', 'de_cbble' => '-', 'de_overpass' => '-', 'de_train' => '-'];
+
+    /**
+     * @var string
+     */
+    public $geo = '-';
 
     function __construct( $General, $Db, $Modules, $id, $sg ) {
 
@@ -183,20 +188,12 @@ class Player {
 
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'LevelsRanks' ):
 
-            # Плагин -> Ex_weapons
-            if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_weapons' ) == 1 ):
-                $this->weapons = $this->get_db_exstats_weapons();
-            else:
-                $this->weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
-            endif;
-
-            empty( $this->weapons ) && $this->weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
-
-            arsort($this->weapons);
+            # Плагин -> ExStats Weapons
+            $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_weapons' ) == 1 && ! empty( $result = $this->get_db_exstats_weapons() ) && ( $this->weapons = $result ) && arsort( $this->weapons );
 
             for ( $i = 0; $i < 3; $i++ ):
-                $this->top_weapons[ $i ]['name'] = array_search( max( $this->weapons ), $this->weapons );
-                $this->top_weapons[ $i ]['kills'] = max( $this->weapons );
+                $this->top_weapons[ $i ]['name'] = sizeof( $this->weapons ) ? array_search( max( $this->weapons ), $this->weapons ) : 'weapon_knife';
+                $this->top_weapons[ $i ]['kills'] = sizeof( $this->weapons ) ?  max( $this->weapons ) : '-';
                 unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
             endfor;
 
@@ -207,28 +204,30 @@ class Player {
                 $this->unusualkills = false;
             endif;
 
-            # Плагин -> ExHits
+            # Плагин -> ExStats Hits
             if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_hits' ) == 1 ):
                 $this->get_db_plugin_module_hits();
-            else:
-                $this->hits = ['Head' => 0, 'Chest' => 0, 'Belly' => 0, 'LeftArm' => 0,  'RightArm' => 0,  'LeftLeg' => 0,  'RightLeg' => 0,  'Neak' => 0];
+            endif;
+            
+            # Плагин -> ExStats Maps
+            if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_maps' ) == 1 ):
+                $this->maps = $this->get_db_plugin_module_maps();
+                arsort($this->maps);
+            endif;
+
+            # Плагин -> ExStats GeoIP
+            if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_geoip' ) == 1 ):
+                $this->geo = $this->get_db_plugin_module_geoip();
             endif;
         endif;
 
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'FPS' ):
 
-            $this->weapons = $this->get_db_exstats_weapons();
-
-            empty( $this->weapons ) && $this->weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
-
-            arsort($this->weapons);
-
-            $this->weapons_count = sizeof( $this->weapons );
+            ! empty( $result = $this->get_db_exstats_weapons() ) && ( $this->weapons = $result ) && arsort($this->weapons);
 
             for ( $i = 0; $i < 3; $i++ ):
-                $this->weapons_count < 3 && $this->top_weapons_count = sizeof( $this->weapons );
-                $this->top_weapons[ $i ]['name'] = empty( $this->top_weapons_count ) ? 'weapon_knife' : array_search( max( $this->weapons ), $this->weapons );
-                $this->top_weapons[ $i ]['kills'] = empty( $this->top_weapons_count ) ? '-' : max( $this->weapons );
+                $this->top_weapons[ $i ]['name'] = sizeof( $this->weapons ) ? array_search( max( $this->weapons ), $this->weapons ) : 'weapon_knife';
+                $this->top_weapons[ $i ]['kills'] = sizeof( $this->weapons ) ?  max( $this->weapons ) : '-';
                 unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
             endfor;
 
@@ -249,12 +248,9 @@ class Player {
 
             arsort($this->weapons);
 
-            $this->weapons_count = sizeof( $this->weapons );
-
             for ( $i = 0; $i < 3; $i++ ):
-                $this->weapons_count < 3 && $this->top_weapons_count = sizeof( $this->weapons );
-                $this->top_weapons[ $i ]['name'] = empty( $this->top_weapons_count ) ? 'weapon_knife' : array_search( max( $this->weapons ), $this->weapons );
-                $this->top_weapons[ $i ]['kills'] = empty( $this->top_weapons_count ) ? '-' : max( $this->weapons );
+                $this->top_weapons[ $i ]['name'] = sizeof( $this->weapons ) ? array_search( max( $this->weapons ), $this->weapons ) : 'weapon_knife';
+                $this->top_weapons[ $i ]['kills'] = sizeof( $this->weapons ) ?  max( $this->weapons ) : '-';
                 unset( $this->weapons[ $this->top_weapons[ $i ]['name'] ] );
             endfor;
 
@@ -354,7 +350,7 @@ class Player {
     public function get_percent_win() {
         $a = 0;
         ! empty( $this->get_round_lose() ) && $a = (float) round( 100 * $this->get_round_win() / ( $this->get_round_win() + $this->get_round_lose() ) , 1);
-        return $a . '% (' . $this->get_round_win() . '/' . $this->get_round_lose() . ')';
+        return $a . '% ( ' . $this->get_round_win() . ' / ' . $this->get_round_lose() . ' )';
     }
 
     public function get_playtime() {
@@ -475,12 +471,13 @@ class Player {
     private function get_db_exstats_weapons() {
         switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
             case 'LevelsRanks':
-                if ( $this->found[ $this->server_group ]['mod'] == 730 ) {
-                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_knife,weapon_taser,weapon_inferno,weapon_hegrenade,weapon_glock,weapon_hkp2000,weapon_tec9,weapon_usp,weapon_p250,weapon_cz75a,weapon_fiveseven,weapon_elite,weapon_revolver,weapon_deagle,weapon_negev,weapon_m249,weapon_mag7,weapon_sawedoff,weapon_nova,weapon_xm1014,weapon_bizon,weapon_mac10,weapon_ump45,weapon_mp9,weapon_mp7,weapon_p90,weapon_galilar,weapon_famas,weapon_ak47,weapon_m4a1,weapon_m4a1_silencer,weapon_aug,weapon_sg556,weapon_ssg08,weapon_awp,weapon_scar20,weapon_g3sg1,weapon_mp5sd FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
-                } elseif ( $this->found[ $this->server_group ]['mod'] == 240 || $this->found[ $this->server_group ]['mod'] == 215 ){
-                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT weapon_usp, weapon_sg552, weapon_sg550, weapon_scout, weapon_galil, weapon_mp5navy, weapon_tmp, weapon_m3, weapon_p228, weapon_knife, weapon_glock, weapon_deagle, weapon_elite, weapon_fiveseven, weapon_xm1014, weapon_mac10, weapon_ump45, weapon_p90, weapon_famas, weapon_ak47, weapon_m4a1, weapon_awp, weapon_aug, weapon_ssg08, weapon_m249, weapon_g3sg1 FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
-                }
-                break;
+                    $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT classname, kills FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%'" );
+                    $b = [];
+                    for ( $i = 0, $c = sizeof( $a ); $i < $c; $i++ ):
+                        $b += [$a[ $i ]['classname'] => $a[ $i ]['kills'] ];
+                    endfor;
+                    return $b;
+                    break;
             case 'RankMeKento':
                     return $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT knife AS weapon_knife,glock AS weapon_glock,hkp2000 AS weapon_hkp2000,usp_silencer AS weapon_usp_silencer,p250 AS weapon_p250,deagle AS weapon_deagle,elite AS weapon_elite,fiveseven AS weapon_fiveseven,tec9 AS weapon_tec9,cz75a AS weapon_cz75a,revolver AS weapon_revolver,nova AS weapon_nova,xm1014 AS weapon_xm1014,mag7 AS weapon_mag7,sawedoff AS weapon_sawedoff,bizon AS weapon_bizon,mac10 AS weapon_mac10,mp9 AS weapon_mp9,mp7 AS weapon_mp7,ump45 AS weapon_ump45,p90 AS weapon_p90,galilar AS weapon_galilar,ak47 AS weapon_ak47,scar20 AS weapon_scar20,famas AS weapon_famas,m4a1 AS weapon_m4a1,m4a1_silencer AS weapon_m4a1_silencer,aug AS weapon_aug,ssg08 AS weapon_ssg08,sg556 AS weapon_sg556,awp AS weapon_awp,g3sg1 AS weapon_g3sg1,m249 AS weapon_m249,negev AS weapon_negev,hegrenade AS weapon_hegrenade,flashbang AS weapon_flashbang,smokegrenade AS weapon_smokegrenade,inferno AS weapon_inferno,decoy AS weapon_decoy,taser AS weapon_taser FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 break;
@@ -565,68 +562,83 @@ class Player {
                 $h = [];
                 $h = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 return $this->hits = empty( $h ) ? [] : $h + $this->hits;
-                break;
+            break;
             case 'RankMeKento':
                 $h = [];
                 $h = $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT head AS Head, chest AS Chest, stomach AS Belly, left_arm AS LeftArm, right_arm AS RightArm, left_leg AS LeftLeg, right_leg AS RightLeg FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 return $this->hits = empty( $h ) ? [] : $h + $this->hits;
-                break;
+            break;
             case 'FPS':
                 $h = [];
                 $h = $this->Db->query('FPS', 0, 0, "SELECT SUM(fps_weapons_stats.hits_head) AS Head,
-                                                   SUM(fps_weapons_stats.hits_neck) AS Neak,
-                                                   SUM(fps_weapons_stats.hits_chest) AS Chest,
-                                                   SUM(fps_weapons_stats.hits_stomach) AS Belly,
-                                                   SUM(fps_weapons_stats.hits_left_arm) AS LeftArm,
-                                                   SUM(fps_weapons_stats.hits_right_arm) AS RightArm,
-                                                   SUM(fps_weapons_stats.hits_left_leg) AS LeftLeg,
-                                                   SUM(fps_weapons_stats.hits_right_leg) AS RightLeg
-                                                   FROM fps_weapons_stats
-                                                   INNER JOIN fps_servers_stats ON fps_weapons_stats.account_id = fps_servers_stats.account_id
-                                                   WHERE fps_weapons_stats.account_id = '{$this->check_user[ $this->server_group ]['account_id']}'
-                                                   AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
-                                                   LIMIT 1");
+                                                           SUM(fps_weapons_stats.hits_neck) AS Neak,
+                                                           SUM(fps_weapons_stats.hits_chest) AS Chest,
+                                                           SUM(fps_weapons_stats.hits_stomach) AS Belly,
+                                                           SUM(fps_weapons_stats.hits_left_arm) AS LeftArm,
+                                                           SUM(fps_weapons_stats.hits_right_arm) AS RightArm,
+                                                           SUM(fps_weapons_stats.hits_left_leg) AS LeftLeg,
+                                                           SUM(fps_weapons_stats.hits_right_leg) AS RightLeg
+                                                           FROM fps_weapons_stats
+                                                           INNER JOIN fps_servers_stats ON fps_weapons_stats.account_id = fps_servers_stats.account_id
+                                                           WHERE fps_weapons_stats.account_id = '{$this->check_user[ $this->server_group ]['account_id']}'
+                                                          AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
+                                                    LIMIT 1");
                 return $this->hits = empty( $h ) ? [] : $h + $this->hits;
-                break;
+            break;
         }
     }
-
+    
     public function get_hits_all() {
         return (int) empty( $this->hits ) ? 0 : array_sum ( array_values ( $this->hits ) );
     }
-
+    
     public function get_hits_head() {
-        return (int) empty( $this->hits['Head'] ) ? 0 : $this->hits['Head'] . '(' . action_int_percent_of_all( $this->hits['Head'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Head'] ) ? 0 : $this->hits['Head'] . ' (' . action_int_percent_of_all( $this->hits['Head'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_chest() {
-        return (int) empty( $this->hits['Chest'] ) ? 0 : $this->hits['Chest'] . '(' . action_int_percent_of_all( $this->hits['Chest'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Chest'] ) ? 0 : $this->hits['Chest'] . ' (' . action_int_percent_of_all( $this->hits['Chest'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_belly() {
-        return (int) empty( $this->hits['Belly'] ) ? 0 : $this->hits['Belly'] . '(' . action_int_percent_of_all( $this->hits['Belly'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Belly'] ) ? 0 : $this->hits['Belly'] . ' (' . action_int_percent_of_all( $this->hits['Belly'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_leftarm() {
-        return (int) empty( $this->hits['LeftArm'] ) ? 0 : $this->hits['LeftArm'] . '(' . action_int_percent_of_all( $this->hits['LeftArm'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['LeftArm'] ) ? 0 : $this->hits['LeftArm'] . ' (' . action_int_percent_of_all( $this->hits['LeftArm'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_rightarm() {
-        return (int) empty( $this->hits['RightArm'] ) ? 0 : $this->hits['RightArm'] . '(' . action_int_percent_of_all( $this->hits['RightArm'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['RightArm'] ) ? 0 : $this->hits['RightArm'] . ' (' . action_int_percent_of_all( $this->hits['RightArm'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_leftleg() {
-        return (int) empty( $this->hits['LeftLeg'] ) ? 0 : $this->hits['LeftLeg'] . '(' . action_int_percent_of_all( $this->hits['LeftLeg'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['LeftLeg'] ) ? 0 : $this->hits['LeftLeg'] . ' (' . action_int_percent_of_all( $this->hits['LeftLeg'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_rightleg() {
-        return (int) empty( $this->hits['RightLeg'] ) ? 0 : $this->hits['RightLeg'] . '(' . action_int_percent_of_all( $this->hits['RightLeg'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['RightLeg'] ) ? 0 : $this->hits['RightLeg'] . ' (' . action_int_percent_of_all( $this->hits['RightLeg'], $this->get_hits_all() ) . '%)';
     }
-
+    
     public function get_hits_neak() {
-        return (int) empty( $this->hits['Neak'] ) ? 0 : $this->hits['Neak'] . '(' . action_int_percent_of_all( $this->hits['Neak'], $this->get_hits_all() ) . '%)';
+        return (int) empty( $this->hits['Neak'] ) ? 0 : $this->hits['Neak'] . ' (' . action_int_percent_of_all( $this->hits['Neak'], $this->get_hits_all() ) . '%)';
+    }
+    
+    private function get_db_plugin_module_maps() {
+          $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name_map, `rounds_ct` + `rounds_t` AS rounds_win FROM " . $this->found[ $this->server_group ]['Table'] . "_maps WHERE steam LIKE '%" . $this->get_steam_32_short() . "%'" );
+          $b = [];
+          for ( $i = 0, $c = sizeof( $a ); $i < $c; $i++ ):
+                $b += [ $a[ $i ]['name_map'] => $a[ $i ]['rounds_win'] ];
+          endfor;
+          return $b;
     }
 
+    private function get_db_plugin_module_geoip() {
+        $a = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT country, city FROM " . $this->found[ $this->server_group ]['Table'] . "_geoip WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+
+        return $a['country'] . ', ' . $a['city'];
+    }
+    
     /**
      * Задать статус профиля.
      *
