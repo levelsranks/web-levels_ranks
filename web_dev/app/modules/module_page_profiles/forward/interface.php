@@ -39,7 +39,7 @@
                     <?php $General->get_js_relevance_avatar( $Player->get_steam_32(), 1 )?>
                     <a href="<?php $Player->found[  $Player->server_group  ]['steam'] == 1 && print 'https://steamcommunity.com/profiles/' . con_steam32to64( $Player->get_steam_32() )?>" target="_blank"><img id="<?php $General->arr_general['avatars'] == 1 && print con_steam32to64(  $Player->get_steam_32()  )?>"class="rounded-circle avatar" data-src="<?php echo $General->getAvatar( con_steam32to64( $Player->get_steam_32()  ), 1)?>"></a>
                     <div class="name"><?php echo action_text_clear( action_text_trim( $Player->get_name(), 17 ) )?></div>
-                    <div class="country">-</div>
+                    <div class="country"><?php echo $Player->geo; ?></div>
                     <?php if( $Player->found[ $Player->server_group ]['DB_mod'] != 'RankMeKento' ):?>
                         <img class="rank-img" src="storage/cache/img/ranks/<?php echo $Player->found[  $Player->server_group  ]['ranks_pack'] . '/' . $Player->get_rank()?>.png">
                         <div class="rank"><?php echo $Translate->get_translate_phrase( $Player->get_rank(), 'ranks_' . $Player->found[  $Player->server_group  ]['ranks_pack'] )?></div>
@@ -126,10 +126,10 @@
             <div class="best-maps">
                 <div class="block">
                     <div class="map-top">
-                        <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod']?>/de_mirage.jpg">
+                        <img src="storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod'] . '/' . array_keys( $Player->maps )[0]; ?>.jpg">
                         <div class="map-lower">
                             <div class="map-one"><span>1</span></div>
-                            <div class="map-pretty-name"><span>MIRAGE</span></div>
+                            <div class="map-pretty-name"><span><?php echo array_keys( $Player->maps )[0]; ?></span></div>
                             <div class="map-title-rounds">- <i class="icon"><?php $General->get_icon( 'custom', 'cup', 'global' )?></i></div>
                         </div>
                     </div>
@@ -144,41 +144,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <?php $maps_names = empty( $Player->maps ) ? [] : array_keys( $Player->maps ); for ( $w = 0, $_c = count( $Player->maps ); $w < $_c; $w++ ) {?>
                                 <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_dust2.png"></th>
-                                    <th class="text-left">de_dust2</th>
-                                    <th class="text-center">-</th>
+                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_<?php echo $maps_names[ $w ]; ?>.png"></th>
+                                    <th class="text-left"><?php echo $maps_names[ $w ]; ?></th>
+                                    <th class="text-center"><?php echo $Player->maps[ $maps_names[ $w ] ]; ?></th>
                                 </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_cache.png"></th>
-                                    <th class="text-left">de_cache</th>
-                                    <th class="text-center">-</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_inferno.png"></th>
-                                    <th class="text-left">de_inferno</th>
-                                    <th class="text-center">-</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_nuke.png"></th>
-                                    <th class="text-left">de_nuke</th>
-                                    <th class="text-center">-</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_cbble.png"></th>
-                                    <th class="text-left">de_cbble</th>
-                                    <th class="text-center">-</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_overpass.png"></th>
-                                    <th class="text-left">de_overpass</th>
-                                    <th class="text-center">-</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-right"><img src="./storage/cache/img/pins/maps/_de_train.png"></th>
-                                    <th class="text-left">de_train</th>
-                                    <th class="text-center">-</th>
-                                </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -280,7 +252,7 @@
                         <div class="unusualkills_score"><?php echo $Player->get_unusualkills_last_clip()?></div>
                         <div class="unusualkills_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Kills_last_shoot')?></div>
                         <div class="icon_block">
-                            <i class="zmdi zmdi-collection-item-1 zmdi-hc-fw"></i>
+                            <i class="zmdi zmdi-refresh-alt zmdi-hc-fw"></i>
                         </div>
                     </div>
                 </div>
@@ -301,8 +273,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php for ( $ti = 0; $ti < 11; $ti++ ):?>
-                            <tr class="pointer <?php ! empty( $Player->top_with_player[ $ti ]['steam'] ) && $Player->get_steam_32() == $Player->top_with_player[ $ti ]['steam'] && print 'table-active'?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>';">
+                        <?php for ( $ti = 0, $sizelist = 10 + (int) ($Player->top_position > 6); $ti < $sizelist; $ti++ ):?>
+                            <tr class="pointer<?php ! empty( $Player->top_with_player[ $ti ]['steam'] ) && $Player->get_steam_32() == $Player->top_with_player[ $ti ]['steam'] && print 'table-active'?>" onclick="location.href = '<?php echo $General->arr_general['site']?>?page=profiles&server_group=<?php echo $Player->server_group ?>&profile=<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>';">
                                 <th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
                                 <th class="table-text"><?php echo empty( $Player->top_with_player[ $ti ]['name'] ) ? 'Unnamed' : action_text_trim( $Player->top_with_player[ $ti ]['name'],16 )?></th>
                                 <th class="text-center"><?php echo empty( $Player->top_with_player[ $ti ]['value'] ) ? 0 : $Player->top_with_player[ $ti ]['value']?></th>
