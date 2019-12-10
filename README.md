@@ -49,7 +49,6 @@
   - Поддержка PHP cURL.
   - Поддержка PHP json.
   - Поддержка PHP Zip.
-- Рекомендуется:
   - MySQL 5.7 или MariaDB 10.1 и выше.
 
 Установка:
@@ -485,6 +484,7 @@
 - https://wocawp.ru/stats/
 - https://stats.unity.pp.ua/
 - https://yablochko-csgo.ru/
+- https://cp.onertm.xyz/
 - http://lr.neostrike.ru/
 - http://ilitagame.ru/
 - https://gg-pro.ru/levels/
@@ -547,7 +547,7 @@
 
 <details><summary>dev</summary>
 
-Скелет WEB интерфейса ( dev #0.2.114 ) :
+Скелет WEB интерфейса ( dev #0.2.125 ) :
 -----
 
 ```
@@ -556,14 +556,31 @@
   /includes     - Основные и дополнительные PHP функции.
   /modules      - Каталог с модулями.
   /page         - Основные заготовки и шаблоны WEB интерфейса.
+    /custom	- Кастомные страницы
+    /general	- Основные страницы
   
 /storage        - Хранилище.
   /assets       - CSS, JS, Fonts файлы.
+    /css	- Файлы стилей
+    /fonts	- Шрифты
+    /js		- JavaScript
+    /sounds	- Звуки
   /cache        - Основной кэш.
     /img        - Кэш изображений.
+      /avatars	- Аватары пользователей
+      /avatars_random	- Случайные аватарки пользователей
+      /global 	- Основые изображения
+      /hitstats - Изображения хитбоксов в профиле
+      /icons	- Иконки
+      /maps	- Превью карт
+      /mods	- Иконки игр
+      /pins	- Значки карт
+      /ranks	- Звания (ranks_pack)
     /sessions   - Кэш связанный с работой ядра.
       
-/index.php      - 'Hello World'
+/index.php      - Точка входа
+/favicon.ico	- Иконка сайта
+/.htaccess	- Права доступа
 ```
 
 Модули:
