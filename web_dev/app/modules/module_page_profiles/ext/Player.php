@@ -211,7 +211,8 @@ class Player {
             
             # Плагин -> ExStats Maps
             if ( $Db->mysql_table_search( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], $this->found[ $this->server_group ]['Table'] . '_maps' ) == 1 ):
-                $this->maps = $this->get_db_plugin_module_maps();
+                $tmp = $this->get_db_plugin_module_maps();
+                $this->maps = empty( $tmp ) ? $this->maps : $tmp;
                 arsort($this->maps);
             endif;
 
