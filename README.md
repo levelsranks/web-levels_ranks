@@ -540,6 +540,7 @@
 - LEGACY#3877 ( Discord )   - 50 RUB.
 - ARONGAMES#2063 ( Discord )   - 50 RUB.
 - fr4nch#3619 ( Discord )   - 50 RUB.
+- HolyHender#8673 ( Discord )   - 33 RUB.
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Блок разработчика:
