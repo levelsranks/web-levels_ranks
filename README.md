@@ -38,6 +38,29 @@
 640K ought to be enough for anybody
 ```
 
+Демо:
+-----
+
+- https://unitcsgo.ru/
+- https://stats.blackflash.ru/
+- http://ilitagame.ru/
+- https://ocgn.ru/
+- https://wocawp.ru/stats/
+- https://stats.unity.pp.ua/
+- https://yablochko-csgo.ru/
+- http://lr.neostrike.ru/
+- http://ilitagame.ru/
+- http://horizoncsgo.ru/
+- https://gg-pro.ru/levels/
+- http://prog-cs.ru/levelrank/
+- https://crystalx.ru/
+- http://rsb-cs.ru/
+- https://cs-pbox.su/
+- https://stats.веселаяжизнь.рф/
+- http://asgard-project.ru/
+- http://nightproject.ru/
+- https://goldenblood.ru/
+
 Требования:
 -----
 
@@ -477,29 +500,6 @@
   - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
-
-Демо:
------
-
-- https://unitcsgo.ru/
-- https://stats.blackflash.ru/
-- http://ilitagame.ru/
-- https://ocgn.ru/
-- https://wocawp.ru/stats/
-- https://stats.unity.pp.ua/
-- https://yablochko-csgo.ru/
-- http://lr.neostrike.ru/
-- http://ilitagame.ru/
-- http://horizoncsgo.ru/
-- https://gg-pro.ru/levels/
-- http://prog-cs.ru/levelrank/
-- https://crystalx.ru/
-- http://rsb-cs.ru/
-- https://cs-pbox.su/
-- https://stats.веселаяжизнь.рф/
-- http://asgard-project.ru/
-- http://nightproject.ru/
-- https://goldenblood.ru/
 
 Благодарность:
 -----
