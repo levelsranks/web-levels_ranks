@@ -144,7 +144,7 @@ class Basefunction{
 				            "type" => "content",
 				            "url" => 'http:'.$this->General->arr_general['site'],
 				            "thumbnail" => [
-				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
+				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
 				            ],
 				            "footer"=>[
 						        "text"=>$this->General->arr_general['full_name'].' '.date('d.m.Y H:i:s'),
@@ -177,7 +177,7 @@ class Basefunction{
 				            "type" => "content",
 				            "url" => 'http:'.$this->General->arr_general['site'],
 				            "thumbnail" => [
-				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
+				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
 				            ],
 				            "footer"=>[
 						        "text"=>$this->General->arr_general['full_name'].' '.date('d.m.Y H:i:s'),
@@ -202,7 +202,7 @@ class Basefunction{
 
 			}
 			$curl = curl_init($ds[0]['url']);
-			curl_setopt($cl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+			curl_setopt($curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $load);
 			curl_exec($curl);
