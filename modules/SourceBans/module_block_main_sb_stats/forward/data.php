@@ -16,23 +16,17 @@ $data['module_block_main_sb_stats'] = $Modules->get_module_cache('module_block_m
 // Проверяем актуальность кэша.
 if ( ( empty( $data['module_block_main_sb_stats'] ) ) || ( ! empty( $data['module_block_main_sb_stats']['time'] ) && time() > $data['module_block_main_sb_stats']['time'] ) ) {
 
-    // Загружаем данные и сохраняем их в кеш на указанное пользователем время (по-умолчанию, 1 час).
-    $data = $Db->queryNum(
-        'SourceBans', $Db->db_data['SourceBans'][0]['USER_ID'], $Db->db_data['SourceBans'][0]['DB_num'],
-        str_replace(
-            '{{TABLE_PREFIX}}', $Db->db_data['SourceBans'][ 0 ]['Table'],
-            "
-            SELECT
-                (SELECT COUNT(*) FROM {{TABLE_PREFIX}}_admins WHERE authid <> 'STEAM_ID_SERVER') AS admin_count,
-                (SELECT COUNT(*) FROM {{TABLE_PREFIX}}_bans) AS ban_count,
-                (SELECT COUNT(*) FROM {{TABLE_PREFIX}}_comms) AS comm_count
-            "
-        )
-    );
+    // Затираем страные данные которые могут помешать созданию кэша.
+    $data['module_block_main_sb_stats']['count_admins'] = 0;
+    $data['module_block_main_sb_stats']['count_bans'] = 0;
+    $data['module_block_main_sb_stats']['count_comms'] = 0;
+    $data['module_block_main_sb_stats']['time'] = 0;
+
+    // Сохраняем текущее время и прибавляем к нему 1 час.
     $data['module_block_main_sb_stats']['time'] = time() + $Modules->array_modules['module_block_main_sb_stats']['setting']['cache_time'];
-    $data['module_block_main_sb_stats']['count_admins'] = $data[0];
-    $data['module_block_main_sb_stats']['count_bans'] = $data[1];
-    $data['module_block_main_sb_stats']['count_comms'] = $data[2];
+    $data['module_block_main_sb_stats']['count_admins'] += $Db->queryNum('SourceBans', $Db->db_data['SourceBans'][0]['USER_ID'], $Db->db_data['SourceBans'][0]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['SourceBans'][ 0 ]['Table'] . 'admins LIMIT 1' )[0]-1;
+    $data['module_block_main_sb_stats']['count_bans'] += $Db->queryNum('SourceBans', $Db->db_data['SourceBans'][0]['USER_ID'], $Db->db_data['SourceBans'][ 0 ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['SourceBans'][ 0 ]['Table'] . 'bans LIMIT 1' )[0];
+    $data['module_block_main_sb_stats']['count_comms'] += $Db->queryNum('SourceBans', $Db->db_data['SourceBans'][0]['USER_ID'], $Db->db_data['SourceBans'][ 0 ]['DB_num'], 'SELECT COUNT(1) FROM ' . $Db->db_data['SourceBans'][ 0 ]['Table'] . 'comms LIMIT 1' )[0];
     
     // Сохраняем новый кэш для данного модуля.
     $Modules->set_module_cache( 'module_block_main_sb_stats', $data['module_block_main_sb_stats'] );
