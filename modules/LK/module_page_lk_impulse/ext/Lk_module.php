@@ -34,7 +34,7 @@ class Lk_module{
 			$param = ['auth'=> '%'.$auth[0].'%'];
 			if($this->db->db_data['lk'][0]['mod'] == 1)
 			{
-        		$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth", $param);
+        		$infoUser =$this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
         		$cash = 'cash';
 			}
     		else if($this->db->db_data['lk'][0]['mod'] == 2)
@@ -578,7 +578,7 @@ class Lk_module{
 				if(empty($data[0]['status']))
 					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'InterKassa']),'error');
 					$this->LKRegPay($order,$post,'InterKassa');
-					$this->message('<form  method="post" action="https://sci.interkassa.com/"><input name="ik_co_id" value="'.$data['shop_id'].'"><input name="ik_pm_no" value="'.$order.'"><input name="ik_x_sign" value="'.$lk_sign.'"><input name="ik_cur" value="RUB"><input name="ik_desc" value="'.$desc.'"><input name="ik_am"  value="'.$post['amount'].'"><input id="punsh" type="submit"></form>','');
+					$this->message('<form  method="post" action="https://sci.interkassa.com/"><input name="ik_co_id" value="'.$data[0]['shop_id'].'"><input name="ik_pm_no" value="'.$order.'"><input name="ik_x_sign" value="'.$lk_sign.'"><input name="ik_cur" value="'.$data[0]['secret_key_1'].'"><input name="ik_desc" value="'.$desc.'"><input name="ik_am"  value="'.$post['amount'].'"><input id="punsh" type="submit"></form>','');
 				break;
 			case 'robokassa':
 				if(empty($data[0]['status']))

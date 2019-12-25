@@ -55,7 +55,7 @@ if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK')?></h5>
+                <h5 class="badge"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK')?></h5>
                 <div style="position: absolute;top: 15px;right: 15px;text-align: center;" id="profile"></div>
             </div>
                     <div class="col-10 col-md-8 align-center">
@@ -64,11 +64,11 @@ if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
                                 if(COUNT($Gateways)>1 || $Gateways[0]['id'] == 5):?>
                                 <div class="input-form text-center"><div style="margin-bottom: 10px;" class="input_text text-left"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ChangeGateway')?></div>
                                 <?php foreach($Gateways as $info):?>
-                                    <input type="radio" name="gatewayPay" value="<?php echo mb_strtolower($info['name_kassa'])?>" id="Gateway<?php echo $info['id']?>" class="gateways">
-                                    <label for="Gateway<?php echo $info['id']?>" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($info['name_kassa'])?>.svg') no-repeat;background-position: center;" class="gateways-label"></label>
+                                    <input type="radio" name="gatewayPay" value="<?php echo mb_strtolower($info['name_kassa'])?>" id="Gateway<?=$info['id']?>" class="gateways">
+                                    <label for="Gateway<?=$info['id']?>" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($info['name_kassa'])?>.png') no-repeat;background-position: center;" class="gateways-label"></label>
                                     <?php if(mb_strtolower($info['name_kassa']) == 'yandexmoney' && empty($PCYM)):?>
                                     <input type="radio" name="gatewayPay" value="yandexmoneycard" id="Gateway99" class="gateways">
-                                    <label for="Gateway99" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/yandexmoneycard.svg') no-repeat;background-position: center;" class="gateways-label"></label>
+                                    <label for="Gateway99" style="background: url('<?php echo MODULES ?>module_page_lk_impulse/assets/gateways/yandexmoneycard.png') no-repeat;background-position: center;" class="gateways-label"></label>
 
                                 <?php $PCYM=1; endif; endforeach?>
                                 </div>
@@ -79,15 +79,15 @@ if(!empty($_GET['section']) && isset($_SESSION['steamid32'])):?>
                         <?php if(isset($_SESSION['steamid32'])):?>
                              <input type="hidden" name="steam" value="<?php echo $_SESSION['steamid32']?>" >
                         <?php else:?>
-                            <div class="input-form"><div class="input_text">STEAM ID:</div><input name="steam" placeholder="STEAM_1:1:390... / 7656119803... / [U:1:1234234] / https://steamcommunity.com/profiles/... " value="<?php echo action_text_clear( $_GET['steam'] ) ?? ''?>"></div>
+                            <div class="input-form"><div class="input_text">STEAM ID:</div><input name="steam" placeholder="STEAM_1:1:390... / 7656119803... / [U:1:1234234] / https://steamcommunity.com/profiles/... "></div>
                         <?php endif?>
                         <div class="input-form">
                             <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ToUpAmount')?></div>
-                            <input name="amount" value="<?php echo action_text_clear( $_GET['amount'] ) ?? ''?>">
+                            <input name="amount">
                         </div>
                         <div class="input-form">
                             <div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Promo')?></div>
-                            <input name="promocode" value="<?php echo action_text_clear( $_GET['code'] ) ?? ''?>">
+                            <input name="promocode">
                         </div>
                         <div class="input-form" id="promoresult"></div>
                          </form>

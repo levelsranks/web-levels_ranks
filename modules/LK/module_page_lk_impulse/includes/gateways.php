@@ -134,6 +134,13 @@ $GatewaysArrayList = [
                     <input type="hidden" name="gateway_edit" value="<?php echo $_GET['geteway_edit']?>">
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Indetificator')?></div><input name="shopid" value="<?php echo $Gateway[0]['shop_id']?>"></div>
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_SecretKey')?>:</div><input name="secret2" value="<?php echo $Gateway[0]['secret_key_2']?>"></div>
+                    <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ISOCourse')?> (<a href="https://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217</a>)</div>
+                     <select name="secret1">
+                         <option value="USD" <?php if($Gateway[0]['secret_key_1'] == 'USD')print'selected' ?>>USD</option>
+                         <option value="RUB" <?php if($Gateway[0]['secret_key_1'] == 'RUB')print'selected' ?>>RUB</option>
+                         <option value="UAH" <?php if($Gateway[0]['secret_key_1'] == 'UAH')print'selected' ?>>UAH</option>
+                     </select>
+                    </div>
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ResultUrl')?></div><div><?php echo $LK->https().get_url(2)?>?page=lk&gateway=interkassa</div></div>
                    <div class="input-form">
 		                <input class="border-checkbox" type="checkbox" name="status" id="status" <?php $Gateway[0]['status'] && print 'checked';?>>
@@ -207,6 +214,13 @@ $GatewaysArrayList = [
                     <input type="hidden" name="gateway" value="<?php echo $_GET['gateway_add']?>">
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Indetificator')?></div><input name="shopid" ></div>
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_SecretKey')?>:</div><input name="secret2" ></div>
+                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ISOCourse')?> (<a href="https://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217</a>)</div>
+                     <select name="secret1">
+                         <option value="USD">USD</option>
+                         <option value="RUB">RUB</option>
+                         <option value="UAH">UAH</option>
+                     </select>
+                    </div>
                     <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ResultUrl')?></div><div><?php echo $LK->https().get_url(2)?>?page=lk&gateway=interkassa</div></div>
                    
                 <?php break; 
@@ -250,4 +264,4 @@ $GatewaysArrayList = [
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-bundle.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
 <script src="https://cdn.anychart.com/releases/v8/themes/dark_earth.min.js"></script>
-<script type="text/javascript"><?php echo $LK->LKChart()?></script>
+<script type="text/javascript"><?=$LK->LKChart()?></script>

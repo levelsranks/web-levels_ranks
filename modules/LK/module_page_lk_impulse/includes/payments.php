@@ -36,7 +36,7 @@ if(isset( $_SESSION['user_admin'] )):
                                 <th class="text-left"><?php echo $key['pay_order']?></th>
                                 <th class="text-left"><?php echo $key['pay_auth']?></th>
                                 <th class="text-left"><?php echo $key['pay_data']?></th>
-                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.svg"></th>
+                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.png"></th>
                                 <th class="text-left"><?php echo $key['pay_summ']?></th>
                                 <th class="text-left"><?php echo $key['pay_promo']?></th>
                                 <th class="text-left"><?php echo $LK->status($key['pay_status'])?></th>
@@ -75,7 +75,7 @@ if(isset( $_SESSION['user_admin'] )):
                              <tr id="p<?php echo $key['pay_order']?>">
                                 <th class="text-left"></a><?php echo $key['pay_order']?></th>
                                 <th class="text-left"><?php echo $key['pay_data']?></th>
-                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.svg"></th>
+                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.png"></th>
                                 <th class="text-left"><?php echo $key['pay_summ']?></th>
                                 <th class="text-left"><?php echo $key['pay_promo']?></th>
                                 <th class="text-left"><?php echo $LK->status($key['pay_status'])?></th>
