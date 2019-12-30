@@ -23,7 +23,7 @@ class Interkassa extends Basefunction{
 		 	$dataSet = $post;
 			unset($dataSet['ik_sign']);
 			ksort($dataSet, SORT_STRING);
-			array_push($dataSet, trim($this->kassa[0]['secret_key_1']));
+			array_push($dataSet, trim($this->kassa[0]['secret_key_2']));
 			$signString = implode(':', $dataSet);
 			$sign = base64_encode(md5($signString, true));
 			if($sign != $post['ik_sign']){
@@ -50,7 +50,7 @@ class Interkassa extends Basefunction{
 			 $this->Notifications->SendNotification(
 			 		 con_steam64to32($key['steamid']), 
 			 		 '_GetDonat', 
-			 		 ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['AMOUNT'],'module_translation'=>'module_page_lk_impulse'],
+			 		 ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'),'amount'=> $post['ik_am'],'module_translation'=>'module_page_lk_impulse'],
 			 		 '?page=lk&section=payments#p'.$this->decod[1], 
 			 		 'money'
 			 );

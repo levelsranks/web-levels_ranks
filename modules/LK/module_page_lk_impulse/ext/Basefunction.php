@@ -133,24 +133,28 @@ class Basefunction{
 			$profile = simplexml_load_string($xml);
 			if(strlen($profile->avatarMedium) > 0)
 			{
-				$load = json_encode([
+				$json = json_encode([
     				"username" => (string)$profile->steamID,
     				"avatar_url" => (string)$profile->avatarMedium,
-					"file" => "content",
-					"embeds" => [
+					"file"=>"content",
+					"embeds" => 
+					[
 				        [	
-						"color" => hexdec( 'f5aa39' ),
 				        	"title" => $this->General->arr_general['full_name'],
 				            "type" => "content",
 				            "url" => 'http:'.$this->General->arr_general['site'],
-				            "thumbnail" => [
-				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
+				            "color" => hexdec( 'f5aa39' ),
+				            "thumbnail" =>
+				            [
+				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
 				            ],
-				            "footer"=>[
+				            "footer"=>
+				            [
 						        "text"=>$this->General->arr_general['full_name'].' '.date('d.m.Y H:i:s'),
 						        "icon_url"=> 'http:'.$this->General->arr_general['site']."storage/cache/img/global/logo.png"
 						      ],
-				            "fields" => [
+				            "fields" => 
+				            [
 				               	[
 				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
 				                    "value" => $this->decod[3],
@@ -166,24 +170,30 @@ class Basefunction{
 				    ]
 
 				]);
-			}else {
-				$load = json_encode([
+			}
+			else 
+			{
+				$json = json_encode([
     				"username" => "NO-STEAM PLAYER",
-					"file" => "content",
-					"embeds" => [
-				        [   
-					    "color" => hexdec( 'f5aa39' ),
-				            "title" => $this->General->arr_general['full_name'],
+					"file"=>"content",
+					"embeds" =>
+					[
+				        [	
+				        	"title" => $this->General->arr_general['full_name'],
 				            "type" => "content",
 				            "url" => 'http:'.$this->General->arr_general['site'],
-				            "thumbnail" => [
-				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
+				            "color" => hexdec( 'f5aa39' ),
+				            "thumbnail" =>
+				            [
+				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
 				            ],
-				            "footer"=>[
+				            "footer"=>
+				            [
 						        "text"=>$this->General->arr_general['full_name'].' '.date('d.m.Y H:i:s'),
 						        "icon_url"=> 'http:'.$this->General->arr_general['site']."/storage/cache/img/global/logo.png"
 						      ],
-				            "fields" => [
+				            "fields" =>
+				            [
 				               	[
 				                    "name" => $this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_Replenishment'),
 				                    "value" => $this->decod[3],
@@ -201,11 +211,11 @@ class Basefunction{
 				]);
 
 			}
-			$curl = curl_init($ds[0]['url']);
-			curl_setopt($curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
-			curl_setopt($curl, CURLOPT_POST, 1);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $load);
-			curl_exec($curl);
+			$cl = curl_init($ds[0]['url']);
+			curl_setopt($cl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+			curl_setopt($cl, CURLOPT_POST, 1);
+			curl_setopt($cl, CURLOPT_POSTFIELDS, $json);
+			curl_exec($cl);
 		}
 	}
 

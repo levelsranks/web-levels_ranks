@@ -3,586 +3,391 @@
             "EN" : "Personal Area",
             "RU" : "Личный Кабинет",
             "UA" : "Особистий кабінет",
-            "LT" : "Asmeninė sąskaita",
-	        "CRO": "Lična Zona",
-            "RS": "Lična Zona",
-        	"BA": "Lična Zona"
+            "LT" : "Asmeninė sąskaita"
     },
     "_ToUpAmount":{
             "EN" : "Top-up Amount:",
             "RU" : "Сумма пополнения:",
             "UA" : "Сума поповнення:",
-            "LT" : "Papildoma suma:",
-	        "CRO": "Top Donatori",
-            "RS": "Top Donatori",
-        	"BA": "Top Donatori"
+            "LT" : "Papildoma suma:"
     },
     "_Promo":{
             "EN" : "Promotional code",
             "RU" : "Промокод",
             "UA" : "Промокод",
-            "LT" : "Reklamos kodas",
-	        "CRO": "Promo kod",
-            "RS": "Promo kod",
-        	"BA": "Promo kod"
+            "LT" : "Reklamos kodas"
     },
     "_Balance":{
             "EN" : "Balance",
             "RU" : "Баланс",
             "UA" : "Баланс",
-            "LT" : "Balansas",
-	        "CRO": "Balans",
-            "RS": "Balans",
-        	"BA": "Balans"
+            "LT" : "Balansas"
     },
     "_BalanceAllTime":{
             "EN" : "For all the time",
             "RU" : "За все время",
             "UA" : "За все время",
-            "LT" : "Visą laiką",
-	        "CRO": "Za sva vremena",
-            "RS": "Za sva vremena",
-        	"BA": "Za sva vremena"
+            "LT" : "Visą laiką"
     },
     "_ButtonPay":{
             "EN" : "Top up balance",
             "RU" : "Пополнить баланс",
             "UA" : "Поповнити баланс",
-            "LT" : "Papildykite pusiausvyrą",
-	        "CRO": "Top balans",
-            "RS": "",
-        	"BA": ""
+            "LT" : "Papildykite pusiausvyrą"
     },
     "_AmountCourse":{
             "EN" : "&#36;",
             "RU" : "&#8381;",
             "UA" : "&#8372;",
-            "LT" : "&#8364;",
-	        "CRO": "",
-            "RS": "",
-        	"BA": ""
+            "LT" : "&#8364;"
     },
     "_SettingsGateways":{
             "EN" : "Payment Gateways",
             "RU" : "Платежные шлюзы",
             "UA" : "Платіжні шлюзи",
-            "LT" : "Mokėjimo šliuzai",
-	        "CRO": "Izlazi za plaćanja",
-            "RS": "Izlazi za plaćanja",
-        	"BA": "Izlazi za plaćanja"
+            "LT" : "Mokėjimo šliuzai"
     },
     "_Gateways":{
             "EN" : "Payment Gateway",
             "RU" : "Платежный шлюз",
             "UA" : "Платіжній шлюз",
-            "LT" : "Mokėjimo šliuzai",
-	        "CRO": "Izlaz za plaćanje",
-            "RS": "Izlaz za plaćanje",
-        	"BA": "Izlaz za plaćanje"
+            "LT" : "Mokėjimo šliuzai"
     },
     "_Status":{
             "EN" : "Status",
             "RU" : "Статус",
             "UA" : "Статус",
-            "LT" : "Statusas",
-	        "CRO": "Status",
-            "RS": "Status",
-        	"BA": "Status"
+            "LT" : "Statusas"
     },
     "_UsersList":{
             "EN" : "Players List",
             "RU" : "Список игроков",
             "UA" : "Список гравців",
-            "LT" : "Žaidėjų sąrašas",
-	        "CRO": "Lista Igrača",
-            "RS": "Lista Igrača",
-        	"BA": "Lista Igrača"
+            "LT" : "Žaidėjų sąrašas"
     },
     "_DiscordMessage":{
             "EN" : "Discord notifications",
             "RU" : "Уведомления Discord",
             "UA" : "Повідомлення Discord",
-            "LT" : "Pranešimai apie nesutarimus",
-	        "CRO": "Diskord notifikacija",
-            "RS": "Diskord notifikacija",
-        	"BA": "Diskord notifikacija"
+            "LT" : "Pranešimai apie nesutarimus"
     },
     "_LKInstall":{
             "EN" : "Installing the LR WEB module - Personal Area",
             "RU" : "Установка модуля LR WEB - Личный Кабинет",
             "UA" : "Установка модуля LR WEB - Особистий Кабінет",
-            "LT" : "„LR WEB“ modulio diegimas - „Mano sąskaita“",
-	        "CRO": "Instaliraj LR WEB modul - Lični Profil",
-            "RS": "Instaliraj LR WEB modul - Lični Profil",
-        	"BA": "Instaliraj LR WEB modul - Lični Profil"
+            "LT" : "„LR WEB“ modulio diegimas - „Mano sąskaita“"
     },
     "_SettingsBD":{
             "EN" : "Database setup",
             "RU" : "Настройка базы данных",
             "UA" : "Налаштування бази даних",
-            "LT" : "Duomenų bazės nustatymas",
-	        "CRO": "Podešavanje databaze",
-            "RS": "Podešavanje databaze",
-        	"BA": "Podešavanje databaze"
+            "LT" : "Duomenų bazės nustatymas"
     },
     "_LKForInstall":{
             "EN" : "For the module to work, you must have the plug-in installed and configured on the server",
             "RU" : "Для работы модуля у Вас должен быть установлен и настроен на сервере плагин",
             "UA" : "Для роботи модуля у Вас повинен бути встановлений і налаштований на сервері плагін",
-            "LT" : "Kad modulis veiktų, serveryje turite būti įdiegę ir sukonfigūravę papildinį",
-	        "CRO": "Da bi modul radio, moraš imati instaliran plugin na serveru",
-            "RS": "Da bi modul radio, moraš imati instaliran plugin na serveru",
-        	"BA": "Da bi modul radio, moraš imati instaliran plugin na serveru"
+            "LT" : "Kad modulis veiktų, serveryje turite būti įdiegę ir sukonfigūravę papildinį"
     },
     "_DBCheckBTN":{
             "EN" : "Check",
             "RU" : "Проверить",
             "UA" : "Перевірити",
-            "LT" : "Patikrinkite",
-	        "CRO": "Proveriti",
-            "RS": "Proveriti",
-        	"BA": "Proveriti"
+            "LT" : "Patikrinkite"
     },
     "_DBCheckConnect":{
             "EN" : "There is no connection to the database!",
             "RU" : "Подключение к базе данных отсутствует!",
             "UA" : "Підключення до бази даних відсутня!",
-            "LT" : "Nėra ryšio su duomenų baze!",
-	        "CRO": "Nema konekcije sa data bazom",
-            "RS": "Nema konekcije sa data bazom",
-        	"BA": "Nema konekcije sa data bazom"
+            "LT" : "Nėra ryšio su duomenų baze!"
     },
     "_DBCheckConnectSucc":{
             "EN" : "Database with table connected successfully!",
             "RU" : "База данных с таблицей успешно подключена!",
             "UA" : "База даних з таблицею успішно підключена!",
-            "LT" : "Duomenų bazė su lentele sėkmingai sujungta!",
-	        "CRO": "Baza podataka sa tabelom je povezana",
-            "RS": "Baza podataka sa tabelom je povezana",
-        	"BA": "Baza podataka sa tabelom je povezana"
+            "LT" : "Duomenų bazė su lentele sėkmingai sujungta!"
     },
     "_NextBTN":{
             "EN" : "Next",
             "RU" : "Далее",
             "UA" : "Далі",
-            "LT" : "Kitas",
-	        "CRO": "Sledeci",
-            "RS": "Dalje",
-        	"BA": "Dalje"
+            "LT" : "Kitas"
     },
     "_InstallBTN":{
             "EN" : "Install",
             "RU" : "Установить",
             "UA" : "Встановити",
-            "LT" : "Įdiekite",
-	        "CRO": "Instaliraj",
-            "RS": "Instaliraj",
-        	"BA": "Instaliraj"
+            "LT" : "Įdiekite"
     },
     "_Example":{
             "EN" : "Example",
             "RU" : "Пример",
             "UA" : "Приклад",
-            "LT" : "Pavyzdys",
-	        "CRO": "Primer",
-            "RS": "Primer",
-        	"BA": "Primer"
+            "LT" : "Pavyzdys"
     },
     "_Information":{
             "EN" : "Information",
             "RU" : "Информация",
             "UA" : "Iнформація",
-            "LT" : "Informacija",
-	        "CRO": "Informacija",
-            "RS": "Informacija",
-        	"BA": "Informacija"
+            "LT" : "Informacija"
     },
     "_Php":{
             "EN" : "Your version of PHP:",
             "RU" : "Ваша версия PHP:",
             "UA" : "Ваша версія PHP:",
-            "LT" : "Jūsų PHP versija:",
-	        "CRO": "Vasa verzija PHP",
-            "RS": "Vasa verzija PHP",
-        	"BA": "Vasa verzija PHP"
+            "LT" : "Jūsų PHP versija:"
     },
     "_PhpRecomendation":{
             "EN" : "Recommended: 7.0 - Possible galactic-scale problems :O",
             "RU" : "Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O",
             "UA" : "Рекомендується: 7.0 - Можливі проблеми галактичного масштабу :O",
-            "LT" : "Rekomenduojama: 7.0 - Galimos galaktikos masto problemos :O",
-	        "CRO": "Preporuceno: 7.0 - Moguci galactic-scale problemi :O",
-            "RS": "Preporuceno: 7.0 - Moguci galactic-scale problemi :O",
-        	"BA": "Preporuceno: 7.0 - Moguci galactic-scale problemi :O"
+            "LT" : "Rekomenduojama: 7.0 - Galimos galaktikos masto problemos :O"
     },
     "_InstallTable":{
             "EN" : "Installation of tables in the database",
             "RU" : "Установка таблиц в базу данных",
             "UA" : "Установка таблиць в базу даних",
-            "LT" : "Lentelių diegimas duomenų bazėje",
-	        "CRO": "Instaliranje tabela u data bazu",
-            "RS": "Instaliranje tabela u data bazu",
-        	"BA": "Instaliranje tabela u data bazu"
+            "LT" : "Lentelių diegimas duomenų bazėje"
     },
     "_ForWork":{
             "EN" : "For the module to work, the missing tables will be installed:",
             "RU" : "Для работы модуля будут установлены недостающие таблицы:",
             "UA" : "Для роботи модуля будуть встановлені відсутні таблиці:",
-            "LT" : "Kad modulis veiktų, bus įdiegtos trūkstamos lentelės:",
-	        "CRO": "Da bi modul radio tabele koje nedostaju bice instalirane",
-            "RS": "Da bi modul radio tabele koje nedostaju bice instalirane",
-        	"BA": "Da bi modul radio tabele koje nedostaju bice instalirane"
+            "LT" : "Kad modulis veiktų, bus įdiegtos trūkstamos lentelės:"
     },
     "_Options":{
             "EN" : "Options",
             "RU" : "Опции",
             "UA" : "Опції",
-            "LT" : "Parinktys",
-	        "CRO": "Opcije",
-            "RS": "Opcije",
-        	"BA": "Opcije"
+            "LT" : "Parinktys"
     },
     "_AddGateways":{
             "EN" : "Add Payment Gateway",
             "RU" : "Добавить платежный шлюз",
             "UA" : "Додати платіжний шлюз",
-            "LT" : "Pridėti mokėjimo šliuzą",
-	        "CRO": "Dodaj izlaz za placanje",
-            "RS": "Dodaj izlaz za placanje",
-        	"BA": "Dodaj izlaz za placanje"
+            "LT" : "Pridėti mokėjimo šliuzą"
     },
     "_AddGateway":{
             "EN" : "Payment gateway %name% added",
             "RU" : "Платежный шлюз %name% добавлен",
             "UA" : "ДПлатіжний шлюз %name% доданий",
-            "LT" : "Pridėta mokėjimų sąsaja %name%",
-	        "CRO": "Pristup placanju %name% added ",
-            "RS": "Pristup placanju %name% added ",
-        	"BA": "Pristup placanju %name% added"
+            "LT" : "Pridėta mokėjimų sąsaja %name%"
     },
     "_SetGateways":{
             "EN" : "Gateway settings",
             "RU" : "Настройки шлюза",
             "UA" : "Налаштування шлюзу",
-            "LT" : "Šliuzo nustatymai",
-	        "CRO": "Gateway podesavanje",
-            "RS": "Gateway podesavanje",
-        	"BA": "Gateway podesavanje"
+            "LT" : "Šliuzo nustatymai"
     },
     "_SecretWord":{
             "EN" : "Secret word",
             "RU" : "Секретное слово",
             "UA" : "Cекретне слово",
-            "LT" : "Slaptas žodis",
-	        "CRO": "Tajno slovo",
-            "RS": "Tajno slovo",
-        	"BA": "Tajno slovose"
+            "LT" : "Slaptas žodis"
     },
     "_SecretKey":{
             "EN" : "Secret key",
             "RU" : "Секретный ключ",
             "UA" : "Cекретний ключ",
-            "LT" : "Slaptas raktas",
-	        "CRO": "Tajni kljuc",
-            "RS": "Tajni kljuc",
-        	"BA": "Tajni kljuc"
+            "LT" : "Slaptas raktas"
     },
     "_PublicKey":{
             "EN" : "Public key",
             "RU" : "Публичный ключ",
             "UA" : "Публічний ключ",
-            "LT" : "Viešas raktas",
-	        "CRO": "Javni kljuc",
-            "RS": "Javni kljuc",
-        	"BA": "javni kljuc"
+            "LT" : "Viešas raktas"
     },
     "_SecretWord":{
             "EN" : "Secret word",
             "RU" : "Секретное слово",
             "UA" : "Cекретне слово",
-            "LT" : "Slaptas žodis",
-	        "CRO": "Tajna rec",
-            "RS": "Tajna rec",
-        	"BA": "Tajan rec"
+            "LT" : "Slaptas žodis"
     },
     "_ActGateways":{
             "EN" : "Gateway Activity",
             "RU" : "Активность шлюза",
             "UA" : "Активність шлюзу",
-            "LT" : "Vartų veikla",
-	        "CRO": "Gateway aktivnost",
-            "RS": "Gateway aktivnost",
-        	"BA": "Gateway aktivnost"
+            "LT" : "Vartų veikla"
     },
     "_Indetificator":{
             "EN" : "Store ID in the system",
             "RU" : "Индетификатор магазина в системе",
             "UA" : "Індетіфікатор магазину в системі",
-            "LT" : "Saugokite ID sistemoje",
-	        "CRO": "Sacuvaj ID u sistemu",
-            "RS": "Sacuvaj ID u sistemu",
-        	"BA": "Sacuvaj ID u sistemu"
+            "LT" : "Saugokite ID sistemoje"
     },
     "_Indetificator":{
             "EN" : "Store ID in the system",
             "RU" : "Индетификатор магазина в системе",
             "UA" : "Індетіфікатор магазину в системі",
-            "LT" : "Saugokite ID sistemoje",
-	        "CRO": "Sacuvaj ID u sistemu",
-            "RS": "Sacuvaj ID u sistemu",
-        	"BA": "Sacuvaj ID u sistemu"
+            "LT" : "Saugokite ID sistemoje"
     },
     "_Save":{
             "EN" : "Save",
             "RU" : "Сохранить",
             "UA" : "Зберегти",
-            "LT" : "Taupyti",
-	        "CRO": "Sacuvaj",
-            "RS": "Sacuvaj",
-        	"BA": "Sacuvaj"
+            "LT" : "Taupyti"
     },
     "_Purse":{
             "EN" : "Purse",
             "RU" : "Кошелек",
             "UA" : "Гаманець",
-            "LT" : "Piniginė",
-	        "CRO": "Novcanik",
-            "RS": "Novcanik",
-        	"BA": "Novcanik"
+            "LT" : "Piniginė"
     },
     "_ResultUrl":{
             "EN" : "Address to payment processor:",
             "RU" : "Адрес до обработчика платежа:",
             "UA" : "Адреса до обробника:",
-            "LT" : "Adresas tvarkytojui:",
-	        "CRO": "",
-            "RS": "",
-        	"BA": ""
+            "LT" : "Adresas tvarkytojui:"
     },
     "_ISID":{
             "EN" : "Enter store ID",
             "RU" : "Введите ID магазина",
             "UA" : "Введіть ID магазину",
-            "LT" : "įveskite parduotuvės ID",
-	        "CRO": "Unesite ID pordavnice",
-            "RS": "Unesite ID prodavnice",
-        	"BA": "Unesite ID prodavnice"
+            "LT" : "įveskite parduotuvės ID"
     },
     "_ISEC":{
             "EN" : "Enter a secret word",
             "RU" : "Введите секретное слово",
             "UA" : "Введіть секретне слово",
-            "LT" : "įveskite slaptą žodį",
-	        "CRO": "Unesite tajno slovo",
-            "RS": "Unesite tajno slovo",
-        	"BA": "Unesite tajno slovo"
+            "LT" : "įveskite slaptą žodį"
     },
     "_NINT":{
             "EN" : "This payment gateway is not integrated",
             "RU" : "Данный платежный шлюз не интегрирован",
             "UA" : "Даний платіжний шлюз не інтегрований",
-            "LT" : "Ši mokėjimo sąsaja nėra integruota",
-	        "CRO": "Ovaj pristup placanja nije integrisan",
-            "RS": "Ovaj pristup placanja nije integrisan",
-        	"BA": "Ovaj pristup placanja nije integrisan"
+            "LT" : "Ši mokėjimo sąsaja nėra integruota"
     },
     "_Password":{
             "EN" : "Password",
             "RU" : "Пароль",
             "UA" : "Пароль",
-            "LT" : "Slaptažodis",
-	        "CRO": "Sifra",
-            "RS": "Sifra",
-        	"BA": "Sifra"
+            "LT" : "Slaptažodis"
     },
     "_IPASS":{
             "EN" : "Enter password",
             "RU" : "Введите пароль",
             "UA" : "Введіть пароль",
-            "LT" : "įveskite slaptažodį",
-	        "CRO": "Unesite sifru",
-            "RS": "Unesite sifru",
-        	"BA": "Unesite sifru"
+            "LT" : "įveskite slaptažodį"
     },
     "_IPURSE":{
             "EN" : "Enter wallet number",
             "RU" : "Введите номер кошелька",
             "UA" : "Введіть номер гаманця",
-            "LT" : "Įveskite piniginės numerį",
-	        "CRO": "Unesite broj novcanika",
-            "RS": "Unesite broj novcanika",
-        	"BA": "Unesite broj novcanika"
+            "LT" : "Įveskite piniginės numerį"
     },
     "_GetwExist":{
             "EN" : " - Payment Gateway Already Installed",
             "RU" : " - Платежный шлюз уже установлен",
             "UA" : " - Платіжний шлюз вже встановлено",
-            "LT" : " - Mokėjimo šliuzas jau įdiegtas",
-	        "CRO": "Pristup placanju je vec instaliran",
-            "RS": "Pristup placanju je vec instaliran",
-        	"BA": "Pristup placanju je vec instaliran"
+            "LT" : " - Mokėjimo šliuzas jau įdiegtas"
     },
     "_GetwNoExist":{
             "EN" : "Payment gateway not found",
             "RU" : "Платежный шлюз не найден",
             "UA" : "Платіжний шлюз не найден",
-            "LT" : "Mokėjimo šliuzas nerastas",
-	        "CRO": "Pristup placanju nije pornadjen",
-            "RS": "Pristup placanju nije pornadjen",
-        	"BA": "Pristup placanju nije pornadjen"
+            "LT" : "Mokėjimo šliuzas nerastas"
     },
     "_LogNotFound":{
             "EN" : "Log not found",
             "RU" : "Лог не найден",
             "UA" : "Лог не найден",
-            "LT" : " Žurnalas nerastas",
-	        "CRO": "Log nije pronadjen",
-            "RS": "Log nije pronadjen",
-        	"BA": "Log nije pronadjen"
+            "LT" : " Žurnalas nerastas"
     },
     "_GetDonat":{
             "EN" : "New donation %course% %amount%",
             "RU" : "Новый донат %course% %amount%",
             "UA" : "Нове пожертвування %course% %amount%",
-            "LT" : "Nauja aukojimas %course% %amount%",
-	        "CRO": "Nova donacija %course% %amount%",
-            "RS": "Nova donacija %course% %amount%",
-        	"BA": "Nova donacija %course% %amount%"
+            "LT" : "Nauja aukojimas %course% %amount%"
     },
     "_NewModule":{
             "EN" : "New donation %course% %amount%",
             "RU" : "Установлен новый модуль",
             "UA" : "Нове пожертвування %course% %amount%",
-            "LT" : "Nauja aukojimas %course% %amount%",
-	        "CRO": "Nova donacija %course% %amount%",
-            "RS": "Nova donacija %course% %amount%",
-        	"BA": "Nova donacija %course% %amount%"
+            "LT" : "Nauja aukojimas %course% %amount%"
     },
     "_Foff":{
             "EN" : "%gateway% - Payment Gateway Disabled",
             "RU" : "%gateway% - Платежный шлюз отключен",
             "UA" : "%gateway% - Платіжний шлюз відключений",
-            "LT" : "%gateway% - Mokėjimo šliuzas išjungtas",
-	        "CRO": "%gateway% - Pristup placanju onemogucen",
-            "RS": "%gateway% - Pristup placanju onemogucen",
-        	"BA": "%gateway% - Pristup placanju onemogucen"
+            "LT" : "%gateway% - Mokėjimo šliuzas išjungtas"
     },
     "_SetPromo":{
             "EN" : "%gateway% - The %promocode% code was introduced, the bonus was %course% %amount%",
             "RU" : "%gateway% - Был введен прмокод  %promocode%, бонус составил %course% %amount%",
             "UA" : "%gateway% - Був введений прмокод %promocode%, Бонус склав %course% %amount%",
-            "LT" : "%gateway% - Buvo įvestas %promocode% kodas, premija buvo %course% %amount%",
-	        "CRO": "%gateway% -  %promocode% promo kod je uveden bonus je bio %course% %amount%",
-            "RS": "%gateway% -  %promocode% promo kod je uveden bonus je bio %course% %amount%",
-        	"BA": "%gateway% -  %promocode% promo kod je uveden bonus je bio %course% %amount%"
+            "LT" : "%gateway% - Buvo įvestas %promocode% kodas, premija buvo %course% %amount%"
     },
     "_DeniedIP":{
             "EN" : "%gateway% - Request from Denied IP - %ip%",
             "RU" : "%gateway% - Запрос с запрещенного IP - %ip%",
             "UA" : "%gateway% - Запит з забороненого IP - %ip%",
-            "LT" : "%gateway% - Prašymas iš IP, kuriam atsisakyta %ip%",
-	        "CRO": "%gateway% - Zahtev od odbijene IP adrese- %ip%",
-            "RS": "%gateway% - Zahtev od odbijene IP adrese- %ip%",
-        	"BA": "%gateway% - Zahtev od odbijene IP adrese- %ip%"
+            "LT" : "%gateway% - Prašymas iš IP, kuriam atsisakyta %ip%"
     },
     "_GatewayOnNotEzist":{
             "EN" : "Sorry, but it seems the administrator forgot to set up a payment gateway to accept payment",
             "RU" : "Прости, но кажется Админ забыл настроить платежный шлюз для приема оплаты",
             "UA" : "Прости, але здається Адмін забув налаштувати платіжний шлюз для прийому оплати",
-            "LT" : "Atsiprašome, bet panašu, kad administratorius pamiršo nustatyti mokėjimo šliuzą, kad galėtų priimti mokėjimą",
-	        "CRO": "Izvinite,izgleda da je admin zaboravio da postavi nacin placanja da bi prihvatio placanje",
-            "RS": "Izvinite,izgleda da je admin zaboravio da postavi nacin placanja da bi prihvatio placanje",
-        	"BA": "Izvinite,izgleda da je admin zaboravio da postavi nacin placanja da bi prihvatio placanje"
+            "LT" : "Atsiprašome, bet panašu, kad administratorius pamiršo nustatyti mokėjimo šliuzą, kad galėtų priimti mokėjimą"
     },
     "_ChangeGateway":{
             "EN" : "Select a Payment Method",
             "RU" : "Выберите способ оплаты",
             "UA" : "Виберіть спосіб оплати",
-            "LT" : "Pasirinkite mokėjimo metodą",
-	        "CRO": "Odaberite metodu placanja",
-            "RS": "Odaberite metodu placanja",
-        	"BA": "Odaberite metodu placanja"
+            "LT" : "Pasirinkite mokėjimo metodą"
     },
     "_EnterAmount":{
             "EN" : "Enter the desired recharge amount",
             "RU" : "Введите желаемую сумму пополнения",
             "UA" : "Введіть бажану суму поповнення",
-            "LT" : "Įveskite norimą papildymo kiekį",
-	        "CRO": "Unesite zeljeni iznos dopune",
-            "RS": "Unesite zeljeni iznos dopune",
-        	"BA": "Unesite zeljeni iznos dopune"
+            "LT" : "Įveskite norimą papildymo kiekį"
     },
     "_AmountError":{
             "EN" : "Invalid amount input, 10 or 10.50",
             "RU" : "Не правильный ввод суммы, 10 или 10.50",
             "UA" : "Чи не правильне введення суми, 10 або 10.50",
-            "LT" : "Neteisinga įvesta suma, 10 arba 10.50",
-	        "CRO": "Nevazeci iznos za uplatu, 10 ili 10.50",
-            "RS": "Nevazeci iznos za uplatu, 10 ili 10.50",
-        	"BA": "Nevazeci iznos za uplatu, 10 ili 10.50"
+            "LT" : "Neteisinga įvesta suma, 10 arba 10.50"
     },
     "_EnterSteam":{
             "EN" : "Enter your STEAM_ID or log in",
             "RU" : "Введите свой STEAM_ID или авторизуйтесь",
             "UA" : "Введіть свій STEAM_ID або авторизуйтесь",
-            "LT" : "Įveskite STEAM_ID arba prisijunkite",
-	        "CRO": "Unesite vas STEAM_ID ili se ulogujte",
-            "RS": "Unesite vas STEAM_ID ili se ulogujte",
-        	"BA": "Unesite vas STEAM_ID ili se ulogujte"
+            "LT" : "Įveskite STEAM_ID arba prisijunkite"
     },
     "_SteamError":{
             "EN" : "Invalid input format STEAM_ID",
             "RU" : "Не верный формат ввода STEAM_ID",
             "UA" : "Не вірний формат введення STEAM_ID",
-            "LT" : "Netinkamas įvesties formatas STEAM_ID",
-	        "CRO": "Nevazeci format unosa STEAM_ID",
-            "RS": "Nevazeci format unosa STEAM_ID",
-        	"BA": "Nevazeci format unosa STEAM_ID"
+            "LT" : "Netinkamas įvesties formatas STEAM_ID"
     },
     "_YouPay":{
             "EN" : "Deposit %course% %amount%",
             "RU" : "Пополнение  баланса на %course% %amount%",
             "UA" : "Поповнення балансу на %course% %amount%",
-            "LT" : "Užstatas %course% %amount%",
-	        "CRO": "Depozit %course% %amount%",
-            "RS": "Depozit %course% %amount%",
-        	"BA": "Depozit %course% %amount%"
+            "LT" : "Užstatas %course% %amount%"
     },
     "_ErrorNamePromo":{
             "EN" : "The promotional code must consist of Latin characters and numbers",
             "RU" : "Промокод должен состоять и латинских символов и цифр",
             "UA" : "Промокод повинен складатися і латинських символів та цифр",
-            "LT" : "Reklamos kredito kodą turi sudaryti lotyniški ženklai ir skaičiai",
-	        "CRO": "Promo kod mora da se sastoji od latinicnih slova i brojeva",
-            "RS": "Promo kod mora da se sastoji od latinicnih slova i brojeva",
-        	"BA": "Promo kod mora da se sastoji od latinicnih slova i brojeva"
+            "LT" : "Reklamos kredito kodą turi sudaryti lotyniški ženklai ir skaičiai"
     },
     "_LimitPromo":{
             "EN" : "Enter your promotional code limit",
             "RU" : "Введите лимит использования промокода",
             "UA" : "Введіть ліміт використання промокодом",
-            "LT" : "Įveskite reklamos kredito kodo limitą",
-	        "CRO": "Unestite ogranicenje promo koda",
-            "RS": "Unestite ogranicenje promo koda",
-        	"BA": "Unestite ogranicenje promo koda"
+            "LT" : "Įveskite reklamos kredito kodo limitą"
     },
     "_LimitField":{
             "EN" : "You can enter only numbers in the limit field",
             "RU" : "В поле лимит возможенн ввод только цифр",
             "UA" : "В поле ліміт возможенн введення тільки цифр",
-            "LT" : "Ribų laukelyje galite įvesti tik skaičius",
-	        "CRO": "U polje za ogranicenje mozete da uneste samo brojeve",
-            "RS": "U polje za ogranicenje mozete da uneste samo brojeve",
-        	"BA": "U polje za ogranicenje mozete da uneste samo brojeve"
+            "LT" : "Ribų laukelyje galite įvesti tik skaičius"
     },
     "_MinAmount":{
             "EN" : "Minimum deposit amount %course% 0.1",
             "RU" : "Минимальная сумма пополнения %course% 0.1",
             "UA" : "Мінімальна сума поповнення %course% 0.1",
-            "LT" : "Minimali įmokos suma 0.1 %course%",
-	        "CRO": "Minimalna suma za depozit %course% 0.1",
-            "RS": "Minimalna suma za depozit %course% 0.1",
-        	"BA": "Minimalna suma za depozit %course% 0.1"
+            "LT" : "Minimali įmokos suma 0.1 %course%"
     },
     "_SettingsPromo":{
             "EN" : "Set up promotional codes",
@@ -590,10 +395,7 @@
             "UA" : "Налаштування промокодом",
             "LT" : "Nustatykite reklamos kodus",
             "DE" : "Richten Sie Aktionscodes ein",
-            "CH" : "设置促销代码",
-	        "CRO": "Postavljanje promotivnih kodova",
-            "RS": "Postavljanje promotivnih kodova",
-        	"BA": "Postavljanje promo kodova"
+            "CH" : "设置促销代码"
     },
     "_AddPromocode":{
             "EN" : "Add promotional code",
@@ -601,10 +403,7 @@
             "UA" : "Додати промокод",
             "LT" : "Pridėkite reklamos kredito kodą",
             "DE" : "Aktionscode hinzufügen",
-            "CH" : "添加促销代码",
-	        "CRO": "Dodaj promo kod",
-            "RS": "Dodaj promo kod",
-        	"BA": "Dodaj promo kod"
+            "CH" : "添加促销代码"
     },
     "_Snap":{
             "EN" : "Snap",
@@ -612,10 +411,7 @@
             "UA" : "Привязка",
             "LT" : "Snapas",
             "DE" : "Snap",
-            "CH" : "链接",
-	        "CRO": "Snap",
-            "RS": "Snap",
-        	"BA": "Snap"
+            "CH" : "链接"
     },
     "_BonusPromo":{
             "EN" : "Bonus%",
@@ -623,10 +419,7 @@
             "UA" : "Бонусный %",
             "LT" : "Premija%",
             "DE" : "Bonus%",
-            "CH" : "奖金％",
-	        "CRO": "Bonus%",
-            "RS": "Bonus%",
-        	"BA": "Bonus%"
+            "CH" : "奖金％"
     },
     "_LimitUsePromo":{
             "EN" : "Limit",
@@ -634,10 +427,7 @@
             "UA" : "Лимит",
             "LT" : "Riboti",
             "DE" : "Limit",
-            "CH" : "极限",
-	        "CRO": "Limit",
-            "RS": "Limit",
-        	"BA": "Limit"
+            "CH" : "极限"
     },
     "_Edit":{
             "EN" : "Edit",
@@ -645,10 +435,7 @@
             "UA" : "Редагувати",
             "LT" : "Redaguoti",
             "DE" : "Bearbeiten",
-            "CH" : "编辑",
-	        "CRO": "Edituj",
-            "RS": "Edituj",
-        	"BA": "Edituj"
+            "CH" : "编辑"
     },
     "_Add":{
             "EN" : "Add",
@@ -656,10 +443,7 @@
             "UA" : "Додати",
             "LT" : "Pridėti",
             "DE" : "Hinzufügen",
-            "CH" : "添加",
-	        "CRO": "Dodaj",
-            "RS": "Dodaj",
-        	"BA": "Dodaj"
+            "CH" : "添加"
     },
     "_EditPromoName":{
             "EN" : "Enter the name of the promotional code",
@@ -667,10 +451,7 @@
             "UA" : "Введіть найменування промокодом",
             "LT" : "Įveskite reklamos kredito kodo pavadinimą",
             "DE" : "Geben Sie den Namen des Aktionscodes ein",
-            "CH" : "输入促销代码的名称",
-	        "CRO": "Unestite ime promo koda",
-            "RS": "Unestite ime promo koda",
-        	"BA": "Unestite ime promo koda"
+            "CH" : "输入促销代码的名称"
     },
     "_EditPromo":{
             "EN" : "Promotional code editing",
@@ -678,10 +459,7 @@
             "UA" : "Редагування промокодом",
             "LT" : "Reklaminio kodo redagavimas",
             "DE" : "Bearbeitung von Werbecodes",
-            "CH" : "促销代码编辑",
-	        "CRO": "Editovanje promo koda",
-            "RS": "Editovanje promo koda",
-        	"BA": "Editovanje promo koda"
+            "CH" : "促销代码编辑"
     },
     "_SnapSID":{
             "EN" : "Bind 1 promotional code to 1 SteamID",
@@ -689,10 +467,7 @@
             "UA" : "Привязать 1 промокод на 1 SteamID",
             "LT" : "Prijunkite 1 reklamos kredito kodą prie 1 SteamID",
             "DE" : "Binden Sie 1 Werbecode an 1 SteamID",
-            "CH" : "将1个促销代码绑定到1个SteamID",
-	        "CRO": "vezite 1 promo kod za 1 STEAM_ID",
-            "RS": "vezite 1 promo kod za 1 STEAM_ID",
-        	"BA": "vezite 1 promo kod za 1 STEAM_ID"
+            "CH" : "将1个促销代码绑定到1个SteamID"
     },
     "_Name":{
             "EN" : "Name",
@@ -700,10 +475,7 @@
             "UA" : "Найменування",
             "LT" : "Vardas",
             "DE" : "Name",
-            "CH" : "名",
-	        "CRO": "Ime",
-            "RS": "Ime",
-        	"BA": "Ime"
+            "CH" : "名"
     },
     "_AddPromoName":{
             "EN" : "Name of the promotional code(empty field random name)",
@@ -711,10 +483,7 @@
             "UA" : "Найменування промокодом(Пусте поле рандомноє найменування)",
             "LT" : "Reklamos kredito kodo pavadinimas(tuščias lauko atsitiktinis pavadinimas)",
             "DE" : "Name des Werbecodes(leeres Feld zufälliger Name)",
-            "CH" : "输入促销代码的名称",
-	        "CRO": "Ime promo koda (prazno polje random ime)",
-            "RS": "Ime promo koda (prazno polje random ime)",
-        	"BA": "Ime promo koda (prazno polje random ime)"
+            "CH" : "输入促销代码的名称"
     },
     "_Logs":{
             "EN" : "Logs",
@@ -722,10 +491,7 @@
             "UA" : "Логи",
             "LT" : "Rąstai",
             "DE" : "NProtokolle",
-            "CH" : "日志",
-	        "CRO": "Logovi",
-            "RS": "Logovi",
-        	"BA": "Logovi"
+            "CH" : "日志"
     },
      "_LogList":{
             "EN" : "Log list",
@@ -733,10 +499,7 @@
             "UA" : "Список логів",
             "LT" : "Žurnalų sąrašas",
             "DE" : "Protokollliste",
-            "CH" : "日志列表",
-	        "CRO": "Lista logova",
-            "RS": "Lista logova",
-        	"BA": "Lista logova"
+            "CH" : "日志列表"
     },
     "_PayNotExist":{
             "EN" : "%gateway% - Payment #%numberpay% already paid or does not exist! Payment Details: Steam '%steam%', Amount '%course% %amount%'.",
@@ -744,10 +507,7 @@
             "UA" : "%gateway% - Платіж #%numberpay% вже оплачений або не існує! Дані платежу: SteamID '%steam%', Сума '%course% %amount%'.",
             "LT" : "%gateway% - Mokėjimas #%numberpay% jau sumokėtas arba jo nėra! Mokėjimo informacija: Steam '%steam%', suma '%course% % suma%'.",
             "DE" : "%gateway% - Zahlung #%numberpay% bereits bezahlt oder existiert nicht! Zahlungsdetails: Steam '%steam%', Betrag '%course% %amount%'.",
-            "CH" : "%gateway% - 付款＃%numberpay% 已付款或不存在！付款细节：Steam “%steam%”，金额 “%course% %amount%”.",
-	        "CRO": "%gateway% - Uplata #%numberpay% vec placeno ili ne postoji! Detalji placanja: Steam '%steam%', Suma '%course% %amount%'.",
-            "RS": "gateway% - Uplata #%numberpay% vec placeno ili ne postoji! Detalji placanja: Steam '%steam%', Suma '%course% %amount%'.",
-        	"BA": "gateway% - Uplata #%numberpay% vec placeno ili ne postoji! Detalji placanja: Steam '%steam%', Suma '%course% %amount%'."
+            "CH" : "%gateway% - 付款＃%numberpay% 已付款或不存在！付款细节：Steam “%steam%”，金额 “%course% %amount%”."
     },
     "_Error":{
             "EN" : "Error",
@@ -755,10 +515,7 @@
             "UA" : "Error",
             "LT" : "Error",
             "DE" : "Error",
-            "CH" : "Error",
-	        "CRO": "Greska",
-            "RS": "Greska",
-        	"BA": "Greska"
+            "CH" : "Error"
     },
     "_Amount":{
             "EN" : "Amount",
@@ -766,10 +523,7 @@
             "UA" : "Сума",
             "LT" : "Suma",
             "DE" : "Menge",
-            "CH" : "总和",
-	        "CRO": "Suma",
-            "RS": "Suma",
-        	"BA": "Suma"
+            "CH" : "总和"
     },
     "_Replenishment":{
             "EN" : "Deposit",
@@ -777,10 +531,7 @@
             "UA" : "Поповнення",
             "LT" : "Užstatas",
             "DE" : "Kaution",
-            "CH" : "保证金",
-	        "CRO": "Depozit",
-            "RS": "Depozit",
-        	"BA": "Depozit"
+            "CH" : "保证金"
     },
     "_PaymentsList":{
             "EN" : "List of payments",
@@ -788,10 +539,7 @@
             "UA" : "Cписок платежів",
             "LT" : "Mokėjimų sąrašas",
             "DE" : "Liste der Zahlungen",
-            "CH" : "付款清单",
-	        "CRO": "Lista placanja",
-            "RS": "Lista placanja",
-        	"BA": "Lista placanja"
+            "CH" : "付款清单"
     },
     "_AdminPay":{
             "EN" : "Admin credited to you %course% %amount%",
@@ -799,10 +547,7 @@
             "UA" : "Вам нарахував адмін %course% %amount%",
             "LT" : "Admin jums buvo įskaitytas",
             "DE" : "Admin credited to you %course% %amount%",
-            "CH" : "您被认为是admin %course% %amount%",
-	        "CRO": "Admin vas je castio %course% %amount%",
-            "RS": "Admin vas je castio %course% %amount%",
-        	"BA": "Admin vas je castio %course% %amount%"
+            "CH" : "您被认为是admin %course% %amount%"
     },
     "_ClearZero":{
             "EN" : "Clear players with zero donation",
@@ -810,10 +555,7 @@
             "UA" : "Очистити гравців з нульовим Донатом",
             "LT" : "Išvalykite žaidėjus be jokios aukos",
             "DE" : "Klare Spieler ohne Spende",
-            "CH" : "清除没有捐赠的玩家",
-	        "CRO": "Obrisi igrace bez donacija",
-            "RS": "Obrisi igrace bez donacija",
-        	"BA": "Obrisi igrace bez donacija"
+            "CH" : "清除没有捐赠的玩家"
     },
     "_Date":{
             "EN" : "Date",
@@ -821,10 +563,7 @@
             "UA" : "Дата",
             "LT" : "Data",
             "DE" : "Datum",
-            "CH" : "日期",
-	        "CRO": "Datum",
-            "RS": "Datum",
-        	"BA": "Datum"
+            "CH" : "日期"
     },
     "_NotPays":{
             "EN" : "No payments",
@@ -832,10 +571,7 @@
             "UA" : "Немає платежів",
             "LT" : "Jokių mokėjimų",
             "DE" : "Keine Zahlungen",
-            "CH" : "没有付款",
-	        "CRO": "Nema uplata",
-            "RS": "Nema uplata",
-        	"BA": "Nema uplata"
+            "CH" : "没有付款"
     },
     "_Search":{
             "EN" : "Search",
@@ -843,10 +579,7 @@
             "UA" : "Пошук",
             "LT" : "Paieška",
             "DE" : "Suche",
-            "CH" : "搜索",
-	        "CRO": "Trazi",
-            "RS": "Trazi",
-        	"BA": "Trazi"
+            "CH" : "搜索"
     },
     "_LogDeleted":{
             "EN" : "Log deleted",
@@ -854,10 +587,7 @@
             "UA" : "Лог удален",
             "LT" : "Žurnalas ištrintas",
             "DE" : "Protokoll gelöscht",
-            "CH" : "记录已删除",
-	        "CRO": "LOG obrisan",
-            "RS": "LOG obrisan",
-        	"BA": "LOG obrisan"
+            "CH" : "记录已删除"
     },
     "_PromoNotUse":{
             "EN" : "No promotional code used",
@@ -865,10 +595,7 @@
             "UA" : "Промокод не використовувалася",
             "LT" : "Nebuvo naudojamas reklamos kodas",
             "DE" : "Kein Werbecode verwendet",
-            "CH" : "没有使用促销代码",
-	        "CRO": "Nema koriscenih promo kodova",
-            "RS": "Nema koriscenih promo kodova",
-        	"BA": "Nema koriscenih promo kodova"
+            "CH" : "没有使用促销代码"
     },
     "_NOTSIGN":{
             "EN" : "%gateway% - Invalid digital signature.",
@@ -876,10 +603,7 @@
             "UA" : "%gateway% - Чи не вірна цифровий підпис.",
             "LT" : "%gateway% - Neteisingas skaitmeninis parašas.",
             "DE" : "%gateway% - Ungültige digitale Signatur.",
-            "CH" : "%gateway% - 数字签名无效。",
-	        "CRO": "%gateway% - Nevazeci digitalni potpis.",
-            "RS": "%gateway% - Nevazeci digitalni potpis.",
-        	"BA": "%gateway% - Nevazeci digitalni potpis."
+            "CH" : "%gateway% - 数字签名无效。"
     },
     "_NoValidSumm":{
             "EN" : "%gateway% - The amount does not match: %amount%.",
@@ -887,10 +611,7 @@
             "UA" : "%gateway% - Чи не збігається сума: %amount%.",
             "LT" : "%gateway% - Suma nesutampa: %amount%.",
             "DE" : "%gateway% - Der Betrag stimmt nicht überein mit: %amount%.",
-            "CH" : "%gateway% - 金额不符合: %amount%.",
-	        "CRO": "%gateway% - Iznos se ne podudara: %amount%.",
-            "RS": "%gateway% - Iznos se ne podudara: %amount%.",
-        	"BA": "%gateway% - Iznos se ne podudara: %amount%."
+            "CH" : "%gateway% - 金额不符合: %amount%."
     },
     "_NewDonat":{
             "EN" : "%gateway% - Received a new donut: #%order%, amount %course% %amount%, Steam %steam%.",
@@ -898,10 +619,7 @@
             "UA" : "%gateway% - Надійшов новий Донат: #%order%, сума %course% %amount%, Steam %steam%.",
             "LT" : "%gateway% - Gauta nauja spurga: #%order%, suma %course% %amount%, Steam %steam%",
             "DE" : "%gateway% - Erhielt einen neuen Donut: #%order%, Anzahl %course% %amount%, Steam %steam%.",
-            "CH" : "%gateway% - 收到一个新的甜甜圈：#%order%，金额%course% %amount%，Steam %steam%.",
-	        "CRO": "%gateway% - Nova donacija: #%order%, amount %course% %amount%, Steam %steam%.",
-            "RS": "%gateway% - Nova donacija: #%order%, amount %course% %amount%, Steam %steam%.",
-        	"BA": "%gateway% - Nova donacija: #%order%, amount %course% %amount%, Steam %steam%."
+            "CH" : "%gateway% - 收到一个新的甜甜圈：#%order%，金额%course% %amount%，Steam %steam%."
     },
     "_InPub":{
             "EN" : "Enter public key",
@@ -909,10 +627,7 @@
             "UA" : "Введіть публічний ключ",
             "LT" : "Įveskite viešą raktą",
             "DE" : "Geben Sie den öffentlichen Schlüssel ein",
-            "CH" : "输入公钥",
-	        "CRO": "Unesite javni kljuc",
-            "RS": "Unesite javni kljuc",
-        	"BA": "Unesite javni kljuc"
+            "CH" : "输入公钥"
     },
     "_InSec":{
             "EN" : "Enter secret key",
@@ -920,10 +635,7 @@
             "UA" : "Введіть секретний ключ",
             "LT" : "įveskite slaptą raktą",
             "DE" : "Geben Sie den geheimen Schlüssel ein",
-            "CH" : "输入密钥",
-	        "CRO": "Unesite tajni kljuc",
-            "RS": "Unesite tajni kljuc",
-        	"BA": "Unesite tajni kljuc"
+            "CH" : "输入密钥"
     },
     "_SearchStatus":{
             "EN" : "Search results",
@@ -931,10 +643,7 @@
             "UA" : "Результат пошуку",
             "LT" : "Paieškos rezultatas",
             "DE" : "Suchergebnis",
-            "CH" : "搜索结果",
-	        "CRO": "Rezultati pretrage",
-            "RS": "Rezultati pretrage",
-        	"BA": "Rezultati pretrage"
+            "CH" : "搜索结果"
     },
     "_Noresult":{
             "EN" : "The search has not given any results. Refine your request and try again",
@@ -942,10 +651,7 @@
             "UA" : "Пошук не дав результатів. Уточніть Ваш запит і повторіть знову",
             "LT" : "Pagal jūsų užklausą rezultatų nebuvo. Patikslinkite savo prašymą ir bandykite dar kartą",
             "DE" : "Ihre Suche ergab keine Treffer. Verfeinern Sie Ihre Anfrage und versuchen Sie es erneut",
-            "CH" : "您的搜索未返回任何结果。优化您的要求，然后重试",
-	        "CRO": "Nema rezultata pretrage. Precizirajte vas zahtev i pokusajte ponovo",
-            "RS": "Nema rezultata pretrage. Precizirajte vas zahtev i pokusajte ponovo",
-        	"BA": "Nema rezultata pretrage. Precizirajte vas zahtev i pokusajte ponovo"
+            "CH" : "您的搜索未返回任何结果。优化您的要求，然后重试"
     },
     "_maxResult":{
             "EN" : "If you didn’t go what you were looking for, then specify your request and try again",
@@ -953,10 +659,7 @@
             "UA" : "Якщо не нешлі що шукали, то уточніть Ваш запит і повторіть знову",
             "LT" : "Jei nesiėjote to, ko ieškojote, nurodykite prašymą ir bandykite dar kartą",
             "DE" : "Wenn Sie nicht das gefunden haben, wonach Sie gesucht haben, geben Sie Ihre Anfrage an und versuchen Sie es erneut",
-            "CH" : "如果您没有找到您要找的内容，请指定您的请求并重试",
-	        "CRO": "Ako niste pronasli ono sto trazite,navedite zahtev i pokusajte ponovo",
-            "RS": "Ako niste pronasli ono sto trazite,navedite zahtev i pokusajte ponovo",
-        	"BA": "Ako niste pronasli ono sto trazite,navedite zahtev i pokusajte ponovo"
+            "CH" : "如果您没有找到您要找的内容，请指定您的请求并重试"
     },
     "_NotFoundPromo":{
             "EN" : "No promotion code found",
@@ -964,10 +667,7 @@
             "UA" : "Промокод не найден",
             "LT" : "Nerastas reklamos kodas",
             "DE" : "Kein Promotion-Code gefunden",
-            "CH" : "找不到促销代码",
-	        "CRO": "Nema pronadjenog promo koda",
-            "RS": "Nema pronadjenog promo koda",
-        	"BA": "Nema pronadjenog promo koda"
+            "CH" : "找不到促销代码"
     },
     "_NoLimitPromo":{
             "EN" : "Your promotional code has been reached",
@@ -975,10 +675,7 @@
             "UA" : "Ліміт використання промокодом вичерпаний",
             "LT" : "Jūsų reklamos kodas pasiektas",
             "DE" : "Ihr Aktionscode wurde erreicht",
-            "CH" : "您的促销代码已经到达。",
-	        "CRO": "Vas promo kod je postignut",
-            "RS": "Vas promo kod je postignut",
-        	"BA": "Vas promo kod je postignut"
+            "CH" : "您的促销代码已经到达。"
     },
     "_YouUsePromo":{
             "EN" : "You have already used this promotional code",
@@ -986,10 +683,7 @@
             "UA" : "Ви вже використовували цей промокод",
             "LT" : "Šį reklamos kredito kodą jau panaudojote",
             "DE" : "Sie haben diesen Aktionscode bereits verwendet",
-            "CH" : "您已使用此促销代码",
-	        "CRO": "Vec ste iskoristili ovaj pormo kod",
-            "RS": "Vec ste iskoristili ovaj promo kod",
-        	"BA": "Vec ste iskoristili ovaj promo kod"
+            "CH" : "您已使用此促销代码"
     },
     "_BonusPromoUse":{
             "EN" : "With the promotional code you will receive <b style='color:#f27b26'>%newamount% </b> to the balance!<br>The promotional code gives <b style='color:#f27b26'>+%percent% %</b> to the recharge amount!",
@@ -997,10 +691,7 @@
             "UA" : "З промокодом Ви отримаєте <b style='color:#f27b26'>%newamount%</b> на баланс! <br> Промокод дає <b style='color:#f27b26'>+%percent% %</b> до суми поповнення!",
             "LT" : "Su reklamos kredito kodu gausite <b style='color:#f27b26'>%newamount% </b> iki balanso!<br>reklamos kodas suteikia <b style='color:#f27b26'>+%percent% %</b> papildymo sumai!",
             "DE" : "Mit dem Aktionscode erhalten Sie <b style='color:#f27b26'>%newamount%</b> Zum Guthaben!<br>Der Aktionscode gibt <b style='color: #f27b26'>+%percent% %</b> zum Aufladebetrag!",
-            "CH" : "使用促销代码，您将收到<b style='color:#f27b26'>%newamount%</b>平衡！<br>促销代码给充值金额<b style='color:#f27b26'>+%percent% %</b>!",
-	        "CRO": "Sa promo kodom vi cete dobiti b style='color:#f27b26'>%newamount% </b> na stanje! <br> Promo kod vam daje <b style='color:#f27b26'>+%percent% %</b> na dopunu ",
-            "RS": "Sa promo kodom vi cete dobiti b style='color:#f27b26'>%newamount% </b> na stanje! <br> Promo kod vam daje <b style='color:#f27b26'>+%percent% %</b> na dopunu",
-        	"BA": "Sa promo kodom vi cete dobiti b style='color:#f27b26'>%newamount% </b> na stanje! <br> Promo kod vam daje <b style='color:#f27b26'>+%percent% %</b> na dopunu"
+            "CH" : "使用促销代码，您将收到<b style='color:#f27b26'>%newamount%</b>平衡！<br>促销代码给充值金额<b style='color:#f27b26'>+%percent% %</b>!"
     },
     "_ExistPromo":{
             "EN" : "This promotional code already exists",
@@ -1008,10 +699,7 @@
             "UA" : "Такий промокод уже існує",
             "LT" : "Šis reklaminis kodas jau yra",
             "DE" : "Dieser Promotion-Code existiert bereits",
-            "CH" : "此促销代码已存在",
-	        "CRO": "Promo kdo vec postoji",
-            "RS": "Promo kod vec postoji",
-        	"BA": "Promo kod vex postoji"
+            "CH" : "此促销代码已存在"
     },
     "_NotCorBonus":{
             "EN" : "In the bonus percentage field, you can enter only an integer value either with a period",
@@ -1019,10 +707,7 @@
             "UA" : "В поле бонусний відсоток возможенн введення тільки ціле значення або з точкою",
             "LT" : "Premijos procentų laukelyje galite įvesti tik sveikąją skaičių, nurodydami periodą",
             "DE" : "Im Feld Bonusprozentsatz können Sie entweder mit einem Punkt nur einen ganzzahligen Wert eingeben",
-            "CH" : "在奖励百分比字段中，您只能输入带有句点的整数值",
-	        "CRO": "U polje procenta bonusa mozete uneti samo celu vrednost sa tackom",
-            "RS": "U polje procenta bonusa mozete uneti samo celu vrednost sa tackom",
-        	"BA": "U polje procenta bonusa mozete uneti samo celu vrednost sa tackom"
+            "CH" : "在奖励百分比字段中，您只能输入带有句点的整数值"
     },
     "_EnterBonus":{
             "EN" : "Enter your bonus code percentage",
@@ -1030,10 +715,7 @@
             "UA" : "Введіть бонусний відсоток промокодом",
             "LT" : "Įveskite savo premijos kodo procentą",
             "DE" : "Geben Sie Ihren Bonuscode-Prozentsatz ein",
-            "CH" : "输入您的红利代码百分比",
-	        "CRO": "Unesite vas procenta za bonus kod",
-            "RS": "Unesite vas procenta za bonus kod",
-        	"BA": "Unesite vas procenta za bonus kod"
+            "CH" : "输入您的红利代码百分比"
     },
     "_AddedPromo":{
             "EN" : "Promo code %namepromo% added",
@@ -1041,10 +723,7 @@
             "UA" : "Промокод %namepromo% доданий",
             "LT" : "Pridėtas reklamos kodas %namepromo%",
             "DE" : "Promo-Code %namepromo% hinzugefügt",
-            "CH" : "促销代码%namepromo%已添加",
-	        "CRO": "Promo kod %namepromo% dodan",
-            "RS": "Promo kod %namepromo% dodan",
-        	"BA": "Promo kod %namepromo% dodan"
+            "CH" : "促销代码%namepromo%已添加"
     },
     "_EditedPromo":{
             "EN" : "%namepromo% changes saved",
@@ -1052,10 +731,7 @@
             "UA" : "Изменеия %namepromo% збережені",
             "LT" : "%namepromo% pakeitimų išsaugota",
             "DE" : "%namepromo% Änderungen gespeichert",
-            "CH" : "已保存%namepromo%更改",
-	        "CRO": "%namepromo% izmene sacuvane",
-            "RS": "%namepromo% izmene sacuvane",
-        	"BA": "%namepromo% izmene sacuvane"
+            "CH" : "已保存%namepromo%更改"
     },
     "_DeletedPromo":{
             "EN" : "Promotion code deleted",
@@ -1063,10 +739,7 @@
             "UA" : "Промокод видалений",
             "LT" : "Reklamos kredito kodas ištrintas",
             "DE" : "Aktionscode gelöscht",
-            "CH" : "促销代码已删除",
-	        "CRO": "Promo kod obrisan",
-            "RS": "Promo kod obrisan",
-        	"BA": "Promo kdo obrisan"
+            "CH" : "促销代码已删除"
     },
     "_Saved":{
             "EN" : "Saved",
@@ -1074,10 +747,7 @@
             "UA" : "збережено",
             "LT" : "Išsaugota",
             "DE" : "Gespeichert",
-            "CH" : "保存",
-	        "CRO": "Sacuvano",
-            "RS": "Sacuvano",
-        	"BA": "Sacuvano"
+            "CH" : "保存"
     },
     "_GatwayOff":{
             "EN" : "Payment method via %name% is disabled by the Administrator",
@@ -1085,10 +755,7 @@
             "UA" : "Спосіб оплати через %name% вимкнений Адміністратором",
             "LT" : "Mokėjimo būdą per %name% išjungia administratorius",
             "DE" : "Die Zahlungsmethode über %name% wurde vom Administrator deaktiviert",
-            "CH" : "管理员禁用通过%name%的付款方式",
-	        "CRO": "Metoda placanja preko %name% je onemogucenja od strane Administratora ",
-            "RS": "Metoda placanja preko %name% je onemogucenja od strane Administratora ",
-        	"BA": "Metoda placanja preko %name% je onemogucenja od strane Administratora "
+            "CH" : "管理员禁用通过%name%的付款方式"
     },
     "_BusinessAccount":{
             "EN" : "Business Account",
@@ -1096,10 +763,7 @@
             "UA" : "Бізнес аккаунт",
             "LT" : "Verslo sąskaita",
             "DE" : "Geschäftskonto",
-            "CH" : "企业账户",
-	        "CRO": "Biznis nalog",
-            "RS": "Biznis nalog",
-        	"BA": "Biznis nalog"
+            "CH" : "企业账户"
     },
     "_ISOCourse":{
             "EN" : "Currency",
@@ -1107,10 +771,7 @@
             "UA" : "Валюта",
             "LT" : "Valiuta",
             "DE" : "Währung",
-            "CH" : "货币",
-	        "CRO": "Valuta",
-            "RS": "Valuta",
-        	"BA": "Valuta"
+            "CH" : "货币"
     },
     "_DescPageLK":{
             "EN" : "Replenish your balance simply",
@@ -1118,10 +779,7 @@
             "UA" : "Поповнюйте свій баланс просто",
             "LT" : "Paprasčiausiai papildykite savo balansą",
             "DE" : "Laden Sie einfach Ihr Guthaben auf",
-            "CH" : "简单地补充您的余额",
-	        "CRO": "Jednostavno dopunite vas balans",
-            "RS": "Jednostavno dopunite vas balans",
-        	"BA": "Jednostavo dopunite vas balans"
+            "CH" : "简单地补充您的余额"
     },
     "_EnterWebhoockUrl":{
             "EN" : "Enter URL Webhook!",
@@ -1129,10 +787,7 @@
             "UA" : "Введіть URL Вебхука!",
             "LT" : "Įveskite URL „Webhook“!",
             "DE" : "URL eingeben Webhook!",
-            "CH" : "输入URL Webhook！",
-	        "CRO": "Unesite URL Webhook",
-            "RS": "Unesite URL Webhook",
-        	"BA": "Unesite URL Webhook"
+            "CH" : "输入URL Webhook！"
     },
     "_DataChangesGateway":{
             "EN" : "Data changes in the %gateway% system saved!",
@@ -1140,10 +795,7 @@
             "UA" : "Зміни даних в системі %gateway% збережені!",
             "LT" : "Duomenų pokyčiai sistemoje %gateway% išsaugoti!",
             "DE" : "Datenänderungen im %gateway% System gespeichert!",
-            "CH" : "%gateway%系统中的数据更改已保存！",
-	        "CRO": "Izmena podataka u %gateway% sistemu sacuvana",
-            "RS": "Izmena podataka u %gateway% sistemu sacuvana",
-        	"BA": "Izmena podataka u %gateway% sistemu sacuvana"
+            "CH" : "%gateway%系统中的数据更改已保存！"
     },
     "_DeletedGateway":{
             "EN" : "Cash desk successfully deleted!",
@@ -1151,10 +803,7 @@
             "UA" : "Каса успішно видалена!",
             "LT" : "Kasa sėkmingai ištrinta!",
             "DE" : "Kasse erfolgreich gelöscht!",
-            "CH" : "收银台成功删除！",
-	        "CRO": "Blagajna je uspesno izbrisana",
-            "RS": "Blagajna je uspesno izbrisana",
-        	"BA": "Blagajna je uspesno izbrisana"
+            "CH" : "收银台成功删除！"
     },
     "_EnterPaypalAccount":{
             "EN" : "Enter your e-mail business account in PayPal",
@@ -1162,10 +811,7 @@
             "UA" : "Введіть E-mail бізнес аккаунта в системі PayPal",
             "LT" : "Įveskite savo el. Pašto įmonės sąskaitą „PayPal“",
             "DE" : "Geben Sie Ihr E-Mail-Geschäftskonto in PayPal ein",
-            "CH" : "在PayPal中输入您的电子邮件业务帐户",
-	        "CRO": "Unesite vas e-mail biznis nalog za PayPal",
-            "RS": "Unesite vas e-mail biznis nalog za PayPal",
-        	"BA": "Unesite vas e-mail biznis nalog za PayPal"
+            "CH" : "在PayPal中输入您的电子邮件业务帐户"
     },
     "_UsersDelete":{
             "EN" : "All players with zero donation removed",
@@ -1173,10 +819,7 @@
             "UA" : "Вилучені всі гравці з нульовим Донатом",
             "LT" : "Visi žaidėjai, kurių aukos nulinės, pašalintos“",
             "DE" : "Alle Spieler ohne Spende entfernt",
-            "CH" : "删除了所有零捐赠的玩家",
-	        "CRO": "Svi igraci bez donacija izbrisani",
-            "RS": "Svi igraci bez donacija izbrisani",
-        	"BA": "Svi igraci bez donacija izbrisani"
+            "CH" : "删除了所有零捐赠的玩家"
     },
     "_NewBalanceUser":{
             "EN" : "New balance for %user% saved!",
@@ -1184,10 +827,7 @@
             "UA" : "Новий баланс для %user% збережений!",
             "LT" : "Išsaugotas naujas %user% balansas!",
             "DE" : "Neuer Kontostand für %user% gespart!",
-            "CH" : "已节省%user%的新余额！",
-	        "CRO": "Novi balans za %user% sacuvan",
-            "RS": "Novi balans za %user% sacuvan",
-        	"BA": "Novi balans za %user% sacuvan"
+            "CH" : "已节省%user%的新余额！"
     },
     "_OnPayUserDesc":{
             "EN" : "LK MODULE - Balance replenishment for ",
@@ -1195,9 +835,6 @@
             "UA" : "LK MODULE - Поповнення балансу для ",
             "LT" : "LK MODULIS - balanso papildymas ",
             "DE" : "LK MODUL - Guthaben auffüllen für ",
-            "CH" : "LK MODULE-的余额补充 ",
-	        "CRO": "LK MODUL - Zamena balansa za ",
-            "RS": "LK MODUL - Zamena balansa za",
-        	"BA": "LK MODUL - Zamena balansa za"
+            "CH" : "LK MODULE-的余额补充 "
     }
 }
