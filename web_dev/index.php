@@ -97,26 +97,8 @@ session_start();
 // Включение буферизации.
 ob_start();
 
-// Импортирование класса отвечающего за работу с языками и переводами.
-use app\ext\Translate;
-
-// Импортирование глобального класса отвечающего за работу с базами данных.
-use app\ext\Db;
-
-// Импортирование основного глобального класса.
-use app\ext\General;
-
-// Импортирование глобального класса отвечающего за работу с модулями.
-use app\ext\Modules;
-
-// Импортирование класса уведомлений.
-use app\ext\Notifications;
-
-// Импортирование глобального класса отвечающего за работу с авторизованными пользователями.
-use app\ext\Auth;
-
-// Импортирование графического класса.
-use app\ext\Graphics;
+// Импортирование классов.
+use app\ext\{Translate, Db, General, Modules, Notifications, Auth, Graphics};
 
 // __autoload()
 spl_autoload_register( function( $class ) {
