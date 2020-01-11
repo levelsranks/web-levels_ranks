@@ -146,7 +146,7 @@ class Basefunction{
 				            "color" => hexdec( 'f5aa39' ),
 				            "thumbnail" =>
 				            [
-				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
+				                "url" => 'http:'.$this->General->arr_general['site']."app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
 				            ],
 				            "footer"=>
 				            [
@@ -185,7 +185,7 @@ class Basefunction{
 				            "color" => hexdec( 'f5aa39' ),
 				            "thumbnail" =>
 				            [
-				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways/".mb_strtolower($kassa).".png",
+				                "url" => 'http:'.$this->General->arr_general['site']."/app/modules/module_page_lk_impulse/assets/gateways_discord/".mb_strtolower($kassa).".png",
 				            ],
 				            "footer"=>
 				            [

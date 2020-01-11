@@ -94,7 +94,7 @@
                                     <a <?php if ($Modules->array_modules['module_page_profiles']['setting']['status'] == '1'){ ?>href="<?php echo $General->arr_general['site'] ?>?page=profiles&profile=<?php echo $key['pay_auth'] ?>&search=1"<?php } ?>><?php echo action_text_clear( action_text_trim($LK->LkGetUserData($key['pay_auth'])[0]['name'], 13) )?></a>
                                 </th>
                                 <th class="text-left"><?php echo $key['pay_data'] ?></th>
-                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.png"></th>
+                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.svg"></th>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

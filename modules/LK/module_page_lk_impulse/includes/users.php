@@ -141,7 +141,7 @@ if( !isset( $_SESSION['user_admin'] ) || IN_LR != true ) { header('Location: ' .
                              <tr>
                                 <th class="text-left"><?php echo $key['pay_order']?></th>
                                 <th class="text-left"><?php echo $key['pay_data']?></th>
-                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.png"></th>
+                                <th class="text-left"><img src="app/modules/module_page_lk_impulse/assets/gateways/<?php echo mb_strtolower($key['pay_system'])?>.svg"></th>
                                 <th class="text-left"><?php echo $key['pay_summ']?></th>
                                 <th class="text-left"><?php echo $key['pay_promo']?></th>
                                 <th class="text-left"><?php echo $LK->status($key['pay_status'])?></th>
