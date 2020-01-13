@@ -68,7 +68,7 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
                 endif;
             endif;
 
-            // Если в строке есть 'js' выполнить чистку кэша по CSS
+            // Если в строке есть 'js' выполнить чистку кэша по JS
             if ( stristr( $_POST["change"], 'js') !== false ):
 
                 // Проверка папки на пустоту
