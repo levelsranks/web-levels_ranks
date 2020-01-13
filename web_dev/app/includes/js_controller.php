@@ -17,20 +17,15 @@ if( $_POST["function"] == 'options' && isset( $_POST["setup"] ) ):
         // Возобновление сессии
         session_start();
 
-        if( isset( $_SESSION['user_admin'] ) ):
-            echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
-            exit;
-        else:
-            exit;
-        endif;
+        if( isset( $_SESSION['user_admin'] ) ) echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
+        
     else:
         echo json_encode( ( require  '../../storage/cache/sessions/options.php' )[ $_POST["setup"] ] );
-        exit;
     endif;
 endif;
 
 // Присвоение какого-либо значения по ключу массива в options.php
-if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
+elseif( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
     // Возобновление сессии
     session_start();
 
@@ -87,14 +82,11 @@ if( $_POST["function"] == 'set' & isset( $_POST["option"] ) ) {
 
         // Сохранение файла.
         file_put_contents( '../../storage/cache/sessions/options.php', '<?php return ' . var_export_min( $options ) . ';' );
-        exit;
-    else:
-        exit;
     endif;
 }
 
 // Присвоение какого-либо значения по ключу массива в options.php
-if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_POST["table"] ) ) ):
+elseif( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_POST["table"] ) ) ):
     // Возобновление сессии
     session_start();
 
@@ -126,21 +118,17 @@ if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_PO
 
             // Сохранение файла.
             file_put_contents( '../../storage/cache/sessions/db.php', '<?php return ' . var_export_min( $db ) . ';' );
-            exit;
         endif;
-    else:
-        exit;
     endif;
 endif;
 
 // Получение и сохранине состояния боковой панели.
-if( $_POST["function"] == 'sidebar' ) {
+elseif( $_POST["function"] == 'sidebar' ) {
     // Возобновление сессии
     session_start();
 
     // Сохраняем состояние боковой панели в сессию.
     empty( ( require  '../../storage/cache/sessions/options.php' )['disable_sidebar_change'] ) && $_SESSION['sidebar_open'] = $_POST["setup"];
-    exit;
 }
 
 // Получение и сохранине состояния тёмного режима
@@ -150,7 +138,6 @@ if( $_POST["function"] == 'dark_mode' & isset( $_POST["setup"] ) ) {
 
     // Сохраняем состояние боковой панели в сессию.
     empty( ( require  '../../storage/cache/sessions/options.php' )['disable_palettes_change'] ) && $_SESSION['dark_mode'] = $_POST["setup"];
-    exit;
 }
 
 // Получение данных о текущем состоянии определенной сессии сесии
@@ -159,11 +146,10 @@ if( $_POST["function"] == 'sessions' & isset( $_POST["data"] ) ) {
     session_start();
 
     echo (int) $_SESSION[ $_POST["data"] ] ;
-    exit;
 }
 
 // Работа со скачиванием аватаров посредством Steam API.
-if( $_POST["function"] == 'avatars' ) {
+elseif( $_POST["function"] == 'avatars' ) {
     // Нахожение в пространстве LR.
     define('IN_LR', true);
 
@@ -263,7 +249,6 @@ if( $_POST["function"] == 'avatars' ) {
 
         // Вывод итоговых данных.
         echo json_encode( $return );
-        exit;
     }
 }
 
