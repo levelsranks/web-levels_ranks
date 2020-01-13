@@ -133,7 +133,7 @@ if( $_POST["function"] == 'delete' && ( isset( $_POST["server"] ) || isset( $_PO
     endif;
 endif;
 
-// Получение и сохранине состояния боковой панели.
+// Получение и сохранение состояния боковой панели.
 if( $_POST["function"] == 'sidebar' ) {
     // Возобновление сессии
     session_start();
@@ -143,7 +143,7 @@ if( $_POST["function"] == 'sidebar' ) {
     exit;
 }
 
-// Получение и сохранине состояния тёмного режима
+// Получение и сохранение состояния тёмного режима
 if( $_POST["function"] == 'dark_mode' & isset( $_POST["setup"] ) ) {
     // Возобновление сессии
     session_start();
@@ -153,7 +153,7 @@ if( $_POST["function"] == 'dark_mode' & isset( $_POST["setup"] ) ) {
     exit;
 }
 
-// Получение данных о текущем состоянии определенной сессии сесии
+// Получение данных о текущем состоянии определенной сессии
 if( $_POST["function"] == 'sessions' & isset( $_POST["data"] ) ) {
     // Возобновление сессии
     session_start();
