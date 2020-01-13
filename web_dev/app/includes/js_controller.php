@@ -181,7 +181,7 @@ if( $_POST["function"] == 'avatars' ) {
         $avatars = $_POST['data'];
 
         // Количество полученных аватаров.
-        $avatars_count = is_array( $avatars ) ? sizeof( $avatars ) : 0;
+        $avatars_count = get_arr_size( $avatars );
 
         // Генерация запроса к Steam API.
         $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $web_key . '&steamids=' . implode( ",", $avatars ) );
