@@ -511,6 +511,7 @@
 - Эльдарка#7777   ( Discord )  - 1055.1 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
+- Clubber#2324 ( Discord ) - 784,44 RUB.
 - Nestor#9876 ( Discord )   - 600 RUB.
 - MAMAC#9993  ( Discord )   - 511.05 RUB.
 - dyoma#5525  ( Discord )   - 500 RUB.
