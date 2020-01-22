@@ -508,6 +508,7 @@
 - .ZΛCHΞR#1337( Discord )   - 2093.37 RUB.
 - CEED 🐼#4061  ( Discord )   - 1488 RUB.
 - mixxed.xyz#4469 ( Discord ) - 1200 RUB.
+- Эльдарка#7777   ( Discord )  - 1055.1 RUB.
 - OkyHek#2441 ( Discord )   - 1000 RUB.
 - Felya#1342  ( Discord )   - 817.12 RUB.
 - Nestor#9876 ( Discord )   - 600 RUB.
@@ -522,7 +523,6 @@
 - Paranoiiik  ( hlmod.ru )  - 300 RUB.
 - L1MON#4529  ( Discord )   - 300 RUB.
 - ju4ka1371   ( hlmod.ru )  - 282 RUB.
-- Эльдарка#7777   ( Discord )  - 277.77 RUB.
 - Good Game Project ( gg-pro.ru ) - 250 RUB.
 - Wend4r      ( hlmod.ru )  - 250 RUB.
 - Rabb1t      ( hlmod.ru )  - 250 RUB.
