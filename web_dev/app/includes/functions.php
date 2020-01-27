@@ -215,7 +215,7 @@ function action_text_trim( $text, $max = 18 )
  *
  * @param string            $symbol   Входной символ.
  *
- * @return string           Количество байт.
+ * @return int           Количество байт.
  */
 function GetCharBytes($symbol)
 {
