@@ -195,20 +195,52 @@ function get_iframe( $code, $description, $die = true ) {
  *
  * @return string               Сокращенный текст.
  */
-function action_text_trim( $text, $max = 18 ) {
-    return strlen( $text ) > $max ? substr( $text, 0, $max ) . '..' : $text;
+function action_text_trim( $text, $max = 18 )
+{
+    for($i = 0, $symbols = 0, $iLen = strlen($text); $i < $iLen; $i += GetCharBytes($text[$i]), $symbols++)
+    {
+        if($symbols > $max)
+        {
+            return substr( $text, 0, $i ) . '...';
+        }
+    }
+
+    return $text;
 }
 
 /**
- * Очистка текста от мусора.
+ * Получает количество байт в символе в соответствии кодировки UTF-8.
  *
  * @since 0.2
  *
- * @param   string  $text  Текст.
+ * @param string            $symbol   Входной символ.
  *
- * @return  string         Очищенный текст.
+ * @return string           Количество байт.
  */
-function action_text_clear( $text ) {
+function GetCharBytes($symbol)
+{
+    $charnum = ord($symbol);
+
+    if($charnum & (1 << 7))
+    {
+        if($charnum & (1 << 5))
+        {
+            if($charnum & (1 << 4))
+            {
+                return 4;
+            }
+
+            return 3;
+        }
+
+        return 2;
+    }
+
+    return 1;
+}
+
+function action_text_clear($text)
+{
     return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_QUOTES,'ISO-8859-1', true ) ) ) );
 }
 
@@ -282,7 +314,7 @@ function check_duplicate_files( $file, $file_2 ) {
  */
 function con_steam32to64( $id ) {
     if( $id[0] == 'S'){
-        $arr =	explode(":", $id);
+        $arr = explode(":", $id);
         if ( ! empty( $arr[2] ) ):
             return bcadd( bcmul( (int) $arr[2], 2 ), bcadd( (int) $arr[1], '76561197960265728' ), 0 );
         endif;
