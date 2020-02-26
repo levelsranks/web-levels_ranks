@@ -1131,5 +1131,12 @@ return array (
             'RU' => 'Консоль',
             'UA' => 'Консоль',
             'LT' => 'Console'
+        ),
+    '_SP' =>
+        array (
+            'EN' => 'Shop',
+            'RU' => 'Магазин',
+            'UA' => 'Магазин',
+            'LT' => 'Parduotuvė'
         )
 );
