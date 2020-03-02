@@ -182,7 +182,27 @@ if( $_POST["function"] == 'avatars' ) {
 
         // Количество полученных аватаров.
         $avatars_count = is_array( $avatars ) ? sizeof( $avatars ) : 0;
+        
+        // Время кэша аватаров
+        $expired = time() - 86400;
+        
+        // Не получаем новые аватарки при наличии кэша
+        foreach ($avatars as $k => $avatar) {
+            
+            // Пути до каждого аватара
+            $cache = [
+                
+                // Полноразмерный аватар
+                '../../storage/cache/img/avatars/' . $avatar . '.jpg',
 
+                // Уменьшенная версия
+                '../../storage/cache/img/avatars/slim/' . $avatar . '.jpg',
+            ];
+            
+            // Кэш сущетсвует и обновлен менее суток назад - нам эта аватарка не нужна
+            if( file_exists( $cache[0] ) && filemtime( $cache[0] ) > $expired && file_exists( $cache[1] ) && filemtime( $cache[1] ) > $expired ) unset($avatars[$k]);
+        }
+        
         // Генерация запроса к Steam API.
         $result = curl_init( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $web_key . '&steamids=' . implode( ",", $avatars ) );
 
