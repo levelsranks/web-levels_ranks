@@ -44,7 +44,6 @@
 - https://unitcsgo.ru/
 - https://stats.blackflash.ru/
 - http://ilitagame.ru/
-- https://ocgn.ru/
 - https://wocawp.ru/stats/
 - https://stats.unity.pp.ua/
 - https://yablochko-csgo.ru/
@@ -59,7 +58,6 @@
 - https://stats.веселаяжизнь.рф/
 - http://asgard-project.ru/
 - http://nightproject.ru/
-- https://goldenblood.ru/
 
 Требования:
 -----
