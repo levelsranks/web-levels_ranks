@@ -93,7 +93,7 @@ class Unitpay extends Basefunction{
 
 	public function CheckIP(){
 		if(!in_array($this->getIP(),
-			array('31.186.100.49','178.132.203.105','52.29.152.23','52.19.56.234','35.196.167.40')))
+			array('31.186.100.49','178.132.203.105','52.29.152.23','52.19.56.234')))
 		{
 			$this->LkAddLog('_DeniedIP', ['gateway' =>'UnitPay', 'ip'=>$this->getIP()]);
 			$result = array('error' => array('message' => 'Invalid IP'));
