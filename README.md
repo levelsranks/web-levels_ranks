@@ -49,7 +49,6 @@
 - https://stats.unity.pp.ua/
 - https://yablochko-csgo.ru/
 - http://lr.neostrike.ru/
-- http://ilitagame.ru/
 - http://horizoncsgo.ru/
 - https://truesrv.ru/
 - https://gg-pro.ru/levels/
