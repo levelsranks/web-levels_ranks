@@ -41,8 +41,9 @@
 Демо:
 -----
 
+- https://truesrv.ru/
 - https://unitcsgo.ru/
-- https://oupro.ru/
+- https://oupro.su/
 - https://stats.blackflash.ru/
 - http://ilitagame.ru/
 - https://wocawp.ru/stats/
@@ -50,7 +51,6 @@
 - https://yablochko-csgo.ru/
 - http://lr.neostrike.ru/
 - http://horizoncsgo.ru/
-- https://truesrv.ru/
 - https://gg-pro.ru/levels/
 - http://prog-cs.ru/levelrank/
 - https://crystalx.ru/
