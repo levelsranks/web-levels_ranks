@@ -109,6 +109,7 @@ for ( $i_server = 0; $i_server < $servers_count; $i_server++ ):
 
         // Количество игроков выключенного сервера
         $return[ $i_server ]['Players'] = 0;
+        $return[ $i_server ]['players'] = 0;
         $return[ $i_server ]['MaxPlayers'] = 0;
 
         // Мод выключенного сервера
