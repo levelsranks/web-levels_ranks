@@ -15,8 +15,8 @@ return array (
             'CH' => '俄语',
             'CRO' => 'Ruski',
             'RS' => 'Ruski',
-            'BA' => 'Ruski'
-	
+            'BA' => 'Ruski',
+	        'TR' => 'Rusça'
         ),
     '_EN' =>
         array (
@@ -28,7 +28,8 @@ return array (
             'CH' => '英语',
             'CRO' => 'Engleski',
             'RS' => 'Engleski',
-            'BA' => 'Engleski'
+            'BA' => 'Engleski',
+            'TR' => 'İngilizce'
         ),
     '_UA' =>
         array (
@@ -40,7 +41,8 @@ return array (
             'CH' => '乌克兰语',
             'CRO' => 'Ukrajinski',
             'RS' => 'Ukrajinski',
-            'BA' => 'Ukrajinski'
+            'BA' => 'Ukrajinski',
+            'TR' => 'Ukraynaca'
         ),
     '_LT' =>
         array (
@@ -52,7 +54,8 @@ return array (
             'CH' => '立陶宛语',
             'CRO' => 'Litva',
             'RS' => 'Litvanski',
-            'BA' => 'Litvanski'
+            'BA' => 'Litvanski',
+            'TR' => 'Litvanca'
         ),
     '_DE' =>
         array (
@@ -64,7 +67,8 @@ return array (
             'CH' => '德语',
             'CRO' => 'Njemacki',
             'RS' => 'Nemacki',
-            'BA' => 'Njemacki'
+            'BA' => 'Njemacki',
+            'TR' => 'Almanca'
         ),
 	'_CH' =>
         array (
@@ -76,7 +80,8 @@ return array (
             'CH' => '简体中文',
             'CRO' => 'Kineski',
             'RS' => 'Kineski',
-            'BA' => 'Kineski'
+            'BA' => 'Kineski',
+            'TR' => 'Çince'
         ),
 	'_RS' =>
         array (
@@ -88,7 +93,8 @@ return array (
             'CH' => 'Serbian',
             'CRO' => 'Srpski',
             'RS' => 'Srpski',
-            'BA' => 'Srpski'
+            'BA' => 'Srpski',
+            'TR' => 'Sırpça'
         ),
 	'_CRO' =>
         array (
@@ -100,7 +106,8 @@ return array (
             'CH' => 'Croatian',
             'CRO' => 'Hrvatski',
             'RS' => 'Hrvatski',
-            'BA' => 'Hrvatski'
+            'BA' => 'Hrvatski',
+            'TR' => 'Hırvatça'
         ),
 	'_BA' =>
         array (
@@ -112,7 +119,21 @@ return array (
             'CH' => 'Bosnian',
             'CRO' => 'Bosanski',
             'RS' => 'Bosanski',
-            'BA' => 'Bosanski'
+            'BA' => 'Bosanski',
+            'TR' => 'Boşnakça'
+        ),
+    '_TR' =>
+        array (
+            'DE' => 'Türkisch',
+            'EN' => 'Turkish',
+            'RU' => 'турецкий',
+            'UA' => 'турецька',
+            'LT' => 'Turkų',
+            'CH' => '土耳其',
+            'CRO' => 'Turski',
+            'RS' => 'турски',
+            'BA' => 'Turski',
+            'TR' => 'Boşnakça'
         ),
     '_Server' =>
         array (
@@ -124,7 +145,8 @@ return array (
             'CH' => '服务器',
             'CRO' => 'Server',
             'RS' => 'Server',
-            'BA' => 'Server'
+            'BA' => 'Server',
+            'TR' => 'Sunucu'
         ),
     '_Home' =>
         array (
@@ -136,7 +158,8 @@ return array (
             'CH' => '主页',
             'CRO' => 'Početna',
             'RS' => 'Početna',
-            'BA' => 'Početna'
+            'BA' => 'Početna',
+            'TR' => 'Anasayfa'
         ),
     '_Statistics' =>
         array (
@@ -148,7 +171,8 @@ return array (
             'CH' => '玩家数据',
             'CRO' => 'Statistika Igrača',
             'RS' => 'Statistika Igrača',
-            'BA' => 'Statistika Igrača'
+            'BA' => 'Statistika Igrača',
+            'TR' => 'Oyuncu İstatistikleri'
         ),
     '_Sidebar_blocks' =>
         array (
@@ -160,7 +184,8 @@ return array (
             'CH' => '阻止中',
             'CRO' => 'Blokirati',
             'RS' => 'Blokirati',
-            'BA' => 'Blokirati'
+            'BA' => 'Blokirati',
+            'TR' => 'Engelleme'
         ),
     '_Sidebar_servers' =>
         array (
@@ -172,7 +197,8 @@ return array (
             'CH' => '游戏服务器',
             'CRO' => 'Serveri',
             'RS' => 'Serveri',
-            'BA' => 'Serveri'
+            'BA' => 'Serveri',
+            'TR' => 'Oyun Sunucuları'
         ),
     '_Sidebar_social' =>
         array (
@@ -184,7 +210,8 @@ return array (
             'CH' => '社交媒体',
             'CRO' => 'Društvena mreža',
             'RS' => 'Socijalna mreža',
-            'BA' => 'Socijalna mreža'
+            'BA' => 'Socijalna mreža',
+            'TR' => 'Sosyal Ağ'
         ),
     '_Sidebar_statistics' =>
         array (
@@ -196,7 +223,8 @@ return array (
             'CH' => '数据',
             'CRO' => 'Statistika',
             'RS' => 'Statistika',
-            'BA' => 'Statistika'
+            'BA' => 'Statistika',
+            'TR' => 'İstatistikler'
         ),
     '_Comms' =>
         array (
@@ -208,7 +236,8 @@ return array (
             'CH' => '语音封禁列表',
             'CRO' => 'Mute lista',
             'RS' => 'Mute lista',
-            'BA' => 'Mute lista'
+            'BA' => 'Mute lista',
+            'TR' => 'Mute Listesi'
         ),
     '_Admins_sb' =>
         array (
@@ -220,7 +249,8 @@ return array (
             'CH' => '管理员列表',
             'CRO' => 'Admin lista',
             'RS' => 'Spisak Administratora',
-            'BA' => 'Admin lista'
+            'BA' => 'Admin lista',
+            'TR' => 'Admin Listesi'
         ),
     '_Rank_stats' =>
         array (
@@ -232,7 +262,8 @@ return array (
             'CH' => '数据 - 段位分布',
             'CRO' => 'Statistika - Raspodjela rankova',
             'RS' => 'Statistika - Raspodjela rankova',
-            'BA' => 'Statistika - Raspodjela rankova'
+            'BA' => 'Statistika - Raspodjela rankova',
+            'TR' => 'İstatistikler - Rütbe Dağılımı'
         ),
     '_Game' =>
         array (
@@ -244,7 +275,8 @@ return array (
             'CH' => '游戏',
             'CRO' => 'Igra',
             'RS' => 'Igra',	
-            'BA' => 'Igra'
+            'BA' => 'Igra',
+            'TR' => 'Oyun'
         ),
     '_Bans' =>
         array (
@@ -256,7 +288,8 @@ return array (
             'CH' => '封禁列表',
             'CRO' => 'Ban lista',
             'RS' => 'Ban lista',
-            'BA' => 'Ban lista'
+            'BA' => 'Ban lista',
+            'TR' => 'Ban Listesi'
         ),
     '_Demos' =>
         array (
@@ -268,7 +301,8 @@ return array (
             'CH' => 'DEMO 存档',
             'CRO' => 'Demo lista',
             'RS' => 'Demo lista',
-            'BA' => 'Demo lista'
+            'BA' => 'Demo lista',
+            'TR' => 'Demo Arşivi'
         ),
     '_Page' =>
         array (
@@ -280,7 +314,8 @@ return array (
             'CH' => '页面',
             'CRO' => 'Stranica',
             'RS' => 'Stranica',
-            'BA' => 'Stranica'
+            'BA' => 'Stranica',
+            'TR' => 'Sayfa'
         ),
     '_Notifications' =>
         array (
@@ -292,7 +327,8 @@ return array (
             'CH' => '通知',
             'CRO' => 'Obavijesti',
             'RS' => 'Notifikacije',
-            'BA' => 'Notifikacije'
+            'BA' => 'Notifikacije',
+            'TR' => 'Bildirimler'
         ),
     '_No_Notifications' =>
         array (
@@ -304,7 +340,8 @@ return array (
             'CH' => '清理所有通知',
             'CRO' => 'Sve izbrisati',
             'RS' => 'Sve izbrisati',
-            'BA' => 'Sve izbrisati'
+            'BA' => 'Sve izbrisati',
+            'TR' => 'Yeni bildirim yok',
         ),
     '_Plays_since' =>
         array (
@@ -316,7 +353,8 @@ return array (
             'CH' => '最后游玩：',
             'CRO' => 'Zadnje odigrano',
             'RS' => 'Zadnje odigrano',
-            'BA' => 'Zadnje odigrano'
+            'BA' => 'Zadnje odigrano',
+            'TR' => 'Son oynanan:'
         ),
     '_Headshot' =>
         array (
@@ -328,7 +366,8 @@ return array (
             'CH' => '爆头',
             'CRO' => 'Ubistva u glavu',
             'RS' => 'Headshots',
-            'BA' => 'Headshots'
+            'BA' => 'Headshots',
+            'TR' => 'Kafadan Vuruşlar'
         ),
     '_Connect' =>
         array (
@@ -340,7 +379,8 @@ return array (
             'CH' => '连接',
             'CRO' => 'Spojiti se',
             'RS' => 'Povezati se',
-            'BA' => 'Spojiti se'
+            'BA' => 'Spojiti se',
+            'TR' => 'Bağlan'
         ),
     '_Connect_2' =>
         array (
@@ -352,7 +392,8 @@ return array (
             'CH' => '加入',
             'CRO' => 'Pridruži se',
             'RS' => 'Pridruži se',
-            'BA' => 'Pridruži se'
+            'BA' => 'Pridruži se',
+            'TR' => 'Katıl'
         ),
     '_Date' =>
         array (
@@ -364,7 +405,8 @@ return array (
             'CH' => '日期',
             'CRO' => 'Datum',
             'RS' => 'Datum',
-            'BA' => 'Datum'
+            'BA' => 'Datum',
+            'TR' => 'Tarih'
         ),
     '_Type' =>
         array (
@@ -376,7 +418,8 @@ return array (
             'CH' => '类型',
             'CRO' => 'Vrsta',
             'RS' => 'Vrsta',
-            'BA' => 'Vrsta'
+            'BA' => 'Vrsta',
+            'TR' => 'Tip'
         ),
     '_Admin' =>
         array (
@@ -388,7 +431,8 @@ return array (
             'CH' => '管理员',
             'CRO' => 'Admin',
             'RS' => 'Admin',
-            'BA' => 'Admin'
+            'BA' => 'Admin',
+            'TR' => 'Admin'
         ),
     '_Reason' =>
         array (
@@ -400,7 +444,8 @@ return array (
             'CH' => '原因',
             'CRO' => 'Razlog',
             'RS' => 'Razlog',
-            'BA' => 'Razlog'
+            'BA' => 'Razlog',
+            'TR' => 'Sebep'
         ),
     '_Term' =>
         array (
@@ -412,7 +457,8 @@ return array (
             'CH' => '封禁时长',
             'CRO' => 'Trajanje',
             'RS' => 'Trajanje',
-            'BA' => 'Trajanje'
+            'BA' => 'Trajanje',
+            'TR' => 'Süre'
 		
         ),
     '_Forever' =>
@@ -425,7 +471,8 @@ return array (
             'CH' => '永久',
             'CRO' => 'Zauvjek',
             'RS' => 'Zauvjek',
-            'BA' => 'Zauvjek'
+            'BA' => 'Zauvjek',
+            'TR' => 'Süresiz'
         ),
     '_Unban' =>
         array (
@@ -437,7 +484,8 @@ return array (
             'CH' => '已解封',
             'CRO' => 'Odbanovan',
             'RS' => 'Odbanovan',
-            'BA' => 'Odbanovan'
+            'BA' => 'Odbanovan',
+            'TR' => 'Ban Kaldırma'
         ),
     '_Uncomm' =>
         array (
@@ -449,7 +497,8 @@ return array (
             'CH' => '已解除语音封禁',
             'CRO' => 'Odmutovan',
             'RS' => 'Odmutovan',
-            'BA' => 'Odmutovan'
+            'BA' => 'Odmutovan',
+            'TR' => 'Mute Kaldırma'
         ),
     '_Has_expired' =>
         array (
@@ -461,7 +510,8 @@ return array (
             'CH' => '封禁到期',
             'CRO' => 'Isteklo',
             'RS' => 'Isteklo',
-            'BA' => 'Isteklo'
+            'BA' => 'Isteklo',
+            'TR' => 'Süresi Doldu'
         ),
     '_List_recent_bans' =>
         array (
@@ -473,7 +523,8 @@ return array (
             'CH' => '封禁列表总览',
             'CRO' => 'Pregled Ban liste',
             'RS' => 'Pregled Ban liste',
-            'BA' => 'Pregled Ban liste'
+            'BA' => 'Pregled Ban liste',
+            'TR' => 'Son Banlar'
         ),
     '_List_recent_mut_gags' =>
         array (
@@ -485,7 +536,8 @@ return array (
             'CH' => '语音封禁列表总览',
             'CRO' => 'Pregled Mute/Gag liste',
             'RS' => 'Pregled Mute/Gag liste',
-            'BA' => 'Pregled Mute/Gag liste'
+            'BA' => 'Pregled Mute/Gag liste',
+            'TR' => 'Son Mute/Gag Yiyenler'
         ),
     '_Rank_distribution' =>
         array (
@@ -497,7 +549,8 @@ return array (
             'CH' => '段位分布',
             'CRO' => 'Raspodjela rankova',
             'RS' => 'Raspodela rankova',
-            'BA' => 'Raspodjela rankova'
+            'BA' => 'Raspodjela rankova',
+            'TR' => 'Rank Dağılımı'
         ),
     '_Hero_without_name' =>
         array (
@@ -508,7 +561,8 @@ return array (
             'DE' => 'Hallo, Fremder.',
             'CRO' => 'Zdravo strancu',
             'RS' => 'Pozdrav stranče',
-            'BA' => 'Pozdrav stranče'
+            'BA' => 'Pozdrav stranče',
+            'TR' => 'Merhaba, Misafir'
         ),
     '_Authorization' =>
         array (
@@ -520,7 +574,8 @@ return array (
             'CH' => '认证',
             'CRO' => 'Odobrenje',
             'RS' => 'Odobrenje',
-            'BA' => 'Odobrenje'
+            'BA' => 'Odobrenje',
+            'TR' => 'Yetki'
         ),
     '_Login' =>
         array (
@@ -532,7 +587,8 @@ return array (
             'CH' => '用户名',
             'CRO' => 'Loguj se',
             'RS' => 'Prijavi se',
-            'BA' => 'Prijavi se'
+            'BA' => 'Prijavi se',
+            'TR' => 'Giriş'
         ),
     '_Password' =>
         array (
@@ -544,7 +600,8 @@ return array (
             'CH' => '密码',
             'CRO' => 'Lozinka',
             'RS' => 'Šifra',
-            'BA' => 'Lozinka'
+            'BA' => 'Lozinka',
+            'TR' => 'Şifre'
         ),
     '_Steam_login' =>
         array (
@@ -556,7 +613,8 @@ return array (
             'CH' => '通过STEAM登录',
             'CRO' => 'Prijava putem steama',
             'RS' => 'Prijava putem steama',
-            'BA' => 'Prijava putem steama'
+            'BA' => 'Prijava putem steama',
+            'TR' => 'Steam İle Giriş Yap'
         ),
     '_Update' =>
         array (
@@ -568,7 +626,8 @@ return array (
             'CH' => '更新',
             'CRO' => 'Ažuriranje',
             'RS' => 'Apdejt',
-            'BA' => 'Apdejt'
+            'BA' => 'Apdejt',
+            'TR' => 'Güncelleme'
         ),
     '_Result' =>
         array (
@@ -580,7 +639,8 @@ return array (
             'CH' => '结果',
             'CRO' => 'Rezultat',
             'RS' => 'Rezultat',
-            'BA' => 'Rezultat'
+            'BA' => 'Rezultat',
+            'TR' => 'Sonuç'
         ),
     '_Name' =>
         array (
@@ -592,7 +652,8 @@ return array (
             'CH' => '昵称',
             'CRO' => 'Ime',
             'RS' => 'Ime',
-            'BA' => 'Ime'
+            'BA' => 'Ime',
+            'TR' => 'İsim'
         ),
     '_Score' =>
         array (
@@ -604,7 +665,8 @@ return array (
             'CH' => '得分',
             'CRO' => 'Skor',
             'RS' => 'Skor',
-            'BA' => 'Skor'
+            'BA' => 'Skor',
+            'TR' => 'Skor'
         ),
     '_Map' =>
         array (
@@ -616,7 +678,8 @@ return array (
             'CH' => '地图',
             'CRO' => 'Mapa',
             'RS' => 'Mapa',
-            'BA' => 'Mapa'
+            'BA' => 'Mapa',
+            'TR' => 'Harita'
         ),
     '_Online_mon' =>
         array (
@@ -628,7 +691,8 @@ return array (
             'CH' => '在线监视器',
             'CRO' => 'Online praćenje',
             'RS' => 'Onlajn monitoring',
-            'BA' => 'Online praćenje'
+            'BA' => 'Online praćenje',
+            'TR' => 'Çevrimiçi İzleme'
         ),
     '_Rating' =>
         array (
@@ -640,7 +704,8 @@ return array (
             'CH' => 'Rating',
             'CRO' => 'Ocjena',
             'RS' => 'Rejting',
-            'BA' => 'Rejting'
+            'BA' => 'Rejting',
+            'TR' => 'Değerlendirme'
         ),
     '_Player' =>
         array (
@@ -652,7 +717,8 @@ return array (
             'CH' => '玩家',
             'CRO' => 'Igrač',
             'RS' => 'Igrač',
-            'BA' => 'Igrač'
+            'BA' => 'Igrač',
+            'TR' => 'Oyuncu'
         ),
     '_Players' =>
         array (
@@ -664,7 +730,8 @@ return array (
             'CH' => '玩家',
             'CRO' => 'Igrači',
             'RS' => 'Igrači',
-            'BA' => 'Igrači'
+            'BA' => 'Igrači',
+            'TR' => 'Oyuncular'
         ),
     '_Point' =>
         array (
@@ -676,7 +743,8 @@ return array (
             'CH' => '分数',
             'CRO' => 'Bodovi',
             'RS' => 'Poeni',
-            'BA' => 'Poeni'
+            'BA' => 'Poeni',
+            'TR' => 'Puan'
         ),
     '_Rank' =>
         array (
@@ -688,7 +756,8 @@ return array (
             'CH' => '段位',
             'CRO' => 'Rank',
             'RS' => 'Rank',
-            'BA' => 'Rank'
+            'BA' => 'Rank',
+            'TR' => 'Rütbe'
         ),
     '_Kills' =>
         array (
@@ -700,7 +769,8 @@ return array (
             'CH' => '击杀',
             'CRO' => 'Ubistva',
             'RS' => 'Ubistva',
-            'BA' => 'Ubistva'
+            'BA' => 'Ubistva',
+            'TR' => 'Öldürme'
         ),
     '_Deaths' =>
         array (
@@ -712,7 +782,8 @@ return array (
             'CH' => '死亡',
             'CRO' => 'Smrti',
             'RS' => 'Smrti',
-            'BA' => 'Smrti'
+            'BA' => 'Smrti',
+            'TR' => 'Ölüm'
         ),
     '_Play_time' =>
         array (
@@ -724,7 +795,8 @@ return array (
             'CH' => '游玩时间',
             'CRO' => 'Vrijeme igranja',
             'RS' => 'Vreme igranja',
-            'BA' => 'Vrijeme igranja'
+            'BA' => 'Vrijeme igranja',
+            'TR' => 'Oynama Süresi'
         ),
     '_Win' =>
         array (
@@ -736,7 +808,8 @@ return array (
             'CH' => '获胜',
             'CRO' => 'Pobjeda',
             'RS' => 'Pobeda',
-            'BA' => 'Pobjeda'
+            'BA' => 'Pobjeda',
+            'TR' => 'Kazanma'
         ),
     '_Wins' =>
         array (
@@ -748,7 +821,8 @@ return array (
             'CH' => '获胜',
             'CRO' => 'Pobjede',
             'RS' => 'Pobede',
-            'BA' => 'Pobjede'
+            'BA' => 'Pobjede',
+            'TR' => 'Kazanmalar'
         ),
     '_Loss' =>
         array (
@@ -760,7 +834,8 @@ return array (
             'CH' => '失败',
             'CRO' => 'Poraz',
             'RS' => 'Poraz',
-            'BA' => 'Poraz'
+            'BA' => 'Poraz',
+            'TR' => 'Kayıp'
         ),
     '_Ratio_KD_short' =>
         array (
@@ -772,7 +847,8 @@ return array (
             'CH' => 'K/D',
             'CRO' => 'U/S',
             'RS' => 'U/S',
-            'BA' => 'U/S'
+            'BA' => 'U/S',
+            'TR' => 'K/D'
         ),
     '_Top_players' =>
         array (
@@ -784,7 +860,8 @@ return array (
             'CH' => '顶尖玩家',
             'CRO' => 'Top Igrači',
             'RS' => 'Top Igrači',
-            'BA' => 'Top Igrači'
+            'BA' => 'Top Igrači',
+            'TR' => 'En İyi Oyuncular'
         ),
     '_Month_january' =>
         array (
@@ -796,7 +873,8 @@ return array (
             'CH' => '1月.',
             'CRO' => 'Sij.',
             'RS' => 'Jan.',
-            'BA' => 'Jan.'
+            'BA' => 'Jan.',
+            'TR' => 'Oca.'
         ),
     '_Month_february' =>
         array (
@@ -808,7 +886,8 @@ return array (
             'CH' => '2月.',
             'CRO' => 'Velj.',
             'RS' => 'Feb.',
-            'BA' => 'Feb.'
+            'BA' => 'Feb.',
+            'TR' => 'Şub.'
         ),
     '_Month_march' =>
         array (
@@ -820,7 +899,8 @@ return array (
             'CH' => '3月.',
             'CRO' => 'Ožu.',
             'RS' => 'Mar.',
-            'BA' => 'Mar.'
+            'BA' => 'Mar.',
+            'TR' => 'Mar.'
         ),
     '_Month_april' =>
         array (
@@ -832,7 +912,8 @@ return array (
             'CH' => '4月.',
             'CRO' => 'Tra.',
             'RS' => 'Apr.',
-            'BA' => 'Apr.'
+            'BA' => 'Apr.',
+            'TR' => 'Nis.'
         ),
     '_Month_may' =>
         array (
@@ -844,7 +925,8 @@ return array (
             'CH' => '5月.',
             'CRO' => 'Svi.',
             'RS' => 'Maj.',
-            'BA' => 'Maj.'
+            'BA' => 'Maj.',
+            'TR' => 'May.'
         ),
     '_Month_june' =>
         array (
@@ -856,7 +938,8 @@ return array (
             'CH' => '6月.',
             'CRO' => 'Lip.',
             'RS' => 'Jun.',
-            'BA' => 'Jun.'
+            'BA' => 'Jun.',
+            'TR' => 'Haz.'
         ),
     '_Month_july' =>
         array (
@@ -868,7 +951,8 @@ return array (
             'CH' => '7月.',
             'CRO' => 'Srp.',
             'RS' => 'Jul.',
-            'BA' => 'Jul.'
+            'BA' => 'Jul.',
+            'TR' => 'Tem.'
         ),
     '_Month_august' =>
         array (
@@ -880,7 +964,8 @@ return array (
             'CH' => '8月.',
             'CRO' => 'Kol.',
             'RS' => 'Aug.',
-            'BA' => 'Aug.'
+            'BA' => 'Aug.',
+            'TR' => 'Ağu.'
         ),
     '_Month_september' =>
         array (
@@ -892,7 +977,8 @@ return array (
             'CH' => '9月.',
             'CRO' => 'Ruj.',
             'RS' => 'Sep.',
-            'BA' => 'Sep.'
+            'BA' => 'Sep.',
+            'TR' => 'Eyl.'
         ),
     '_Month_october' =>
         array (
@@ -904,7 +990,8 @@ return array (
             'CH' => '10月.',
             'CRO' => 'Lis.',
             'RS' => 'Okt.',
-            'BA' => 'Okt.'
+            'BA' => 'Okt.',
+            'TR' => 'Eki.'
         ),
     '_Month_november' =>
         array (
@@ -916,7 +1003,8 @@ return array (
             'CH' => '11月.',
             'CRO' => 'Stu.',
             'RS' => 'Nov.',
-            'BA' => 'Nov.'
+            'BA' => 'Nov.',
+            'TR' => 'Kas.'
         ),
     '_Month_december' =>
         array (
@@ -928,7 +1016,8 @@ return array (
             'CH' => '12月.',
             'CRO' => 'Pro.',
             'RS' => 'Dec.',
-            'BA' => 'Dec.'
+            'BA' => 'Dec.',
+            'TR' => 'Ara.'
         ),
     '_Second' =>
         array (
@@ -940,7 +1029,8 @@ return array (
             'CH' => '秒.',
             'CRO' => 'Sek.',
             'RS' => 'Sek.',
-            'BA' => 'Sek.'
+            'BA' => 'Sek.',
+            'TR' => 'San.'
         ),
     '_Minute' =>
         array (
@@ -952,7 +1042,8 @@ return array (
             'CH' => '分.',
             'CRO' => 'Min.',
             'RS' => 'Min.',
-            'BA' => 'Min.'
+            'BA' => 'Min.',
+            'TR' => 'Dak.'
         ),
     '_Hour' =>
         array (
@@ -964,7 +1055,8 @@ return array (
             'CH' => '小时.',
             'CRO' => 'h.',
             'RS' => 'č.',
-            'BA' => 'h.'
+            'BA' => 'h.',
+            'TR' => 'sat.'
         ),
     '_Day' =>
         array (
@@ -976,7 +1068,8 @@ return array (
             'CH' => '天',
             'CRO' => 'Dan',
             'RS' => 'Dan',
-            'BA' => 'Dan'
+            'BA' => 'Dan',
+            'TR' => 'Gün'
         ),
     '_Days' =>
         array (
@@ -989,7 +1082,8 @@ return array (
             'CH' => '天',
             'CRO' => 'Dani',
             'RS' => 'Dani',
-            'BA' => 'Dani'
+            'BA' => 'Dani',
+            'TR' => 'Günler'
         ),
     '_Week' =>
         array (
@@ -1002,7 +1096,8 @@ return array (
             'CH' => '天',
             'CRO' => 'Tjedan',
             'RS' => 'Sedmica',
-            'BA' => 'Sedmica'
+            'BA' => 'Sedmica',
+            'TR' => 'Hafta'
         ),
     '_Weeks' =>
         array (
@@ -1014,7 +1109,8 @@ return array (
             'CH' => '周',
             'CRO' => 'Tjedana',
             'RS' => 'Sedmice',
-            'BA' => 'Sedmice'
+            'BA' => 'Sedmice',
+            'TR' => 'Haftalar'
         ),
     '_Month' =>
         array (
@@ -1026,7 +1122,8 @@ return array (
             'CH' => '个月',
             'CRO' => 'Mjesec',
             'RS' => 'Mesec',
-            'BA' => 'Mjesec'
+            'BA' => 'Mjesec',
+            'TR' => 'Ay'
         ),
     '_Months' =>
         array (
@@ -1038,7 +1135,8 @@ return array (
             'CH' => '个月',
             'CRO' => 'Mjeseci',
             'RS' => 'Meseci',
-            'BA' => 'Mjeseci'
+            'BA' => 'Mjeseci',
+            'TR' => 'Aylar'
         ),
     '_Log_in' =>
         array (
@@ -1050,7 +1148,8 @@ return array (
             'CH' => '登入',
             'CRO' => 'Prijava',
             'RS' => 'Prijava',
-            'BA' => 'Prijava'
+            'BA' => 'Prijava',
+            'TR' => 'Giriş Yap'
         ),
     '_Logout' =>
         array (
@@ -1062,7 +1161,8 @@ return array (
             'CH' => '登出',
             'CRO' => 'Odjava',
             'RS' => 'Odjava',
-            'BA' => 'Odjava'
+            'BA' => 'Odjava',
+            'TR' => 'Çıkış'
         ),
     '_Admin_panel' =>
         array (
@@ -1074,7 +1174,8 @@ return array (
             'CH' => '管理员面板',
             'CRO' => 'Admin panel',
             'RS' => 'Admin panel',
-            'BA' => 'Admin panel'
+            'BA' => 'Admin panel',
+            'TR' => 'Admin paneli'
         ),
 	'_LK' =>
         array (
@@ -1086,7 +1187,8 @@ return array (
             'CH' => '个人账号',
             'CRO' => 'Osobno područje',
             'RS' => 'Lični prostor',
-            'BA' => 'Osobno područje'
+            'BA' => 'Osobno područje',
+            'TR' => 'Hesap'
         ),
 	'_Vips' =>
         array (
@@ -1095,7 +1197,8 @@ return array (
 			'UA' => 'Список віп гравців',
             'CRO' => 'Vip lista',
             'RS' => 'Vip lista',
-            'BA' => 'Vip lista'
+            'BA' => 'Vip lista',
+            'TR' => 'VIP Listesi'
         ),
     '_Banned' =>
         array (
@@ -1104,7 +1207,8 @@ return array (
 			'UA' => 'Забанен',
             'CRO' => 'Banovan',
             'RS' => 'Banovan',
-            'BA' => 'Banovan'
+            'BA' => 'Banovan',
+            'TR' => 'Banlanmış'
         ),
     '_Server_Information' =>
         array (
@@ -1113,7 +1217,8 @@ return array (
 			'UA' => 'Інформація про сервер',
             'CRO' => 'Informacije o Serveru',
             'RS' => 'Server Informacije',
-            'BA' => 'Informacije o Serveru'
+            'BA' => 'Informacije o Serveru',
+            'TR' => 'Sunucu Bilgisi'
         ),
     '_OpenCase' =>
         array (
@@ -1123,20 +1228,23 @@ return array (
             'LT' => 'Open Case',
             'CRO' => 'Otvoren slučaj',
             'RS' => 'Otvoren slučaj',
-            'BA' => 'Otvoren slučaj'
+            'BA' => 'Otvoren slučaj',
+            'TR' => 'Açık Durum'
         ),
 		'_Console' =>
         array (
             'EN' => 'Console',
             'RU' => 'Консоль',
             'UA' => 'Консоль',
-            'LT' => 'Console'
+            'LT' => 'Console',
+            'TR' => 'Konsol'
         ),
     '_SP' =>
         array (
             'EN' => 'Shop',
             'RU' => 'Магазин',
             'UA' => 'Магазин',
-            'LT' => 'Parduotuvė'
+            'LT' => 'Parduotuvė',
+            'TR' => 'Mağaza'
         )
 );
