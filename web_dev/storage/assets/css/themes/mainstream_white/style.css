@@ -2419,7 +2419,9 @@ tr th a:hover .card_info_block{
 
 
 .main-sidebar {
+    overflow-y: auto;
     margin-top: 56px;
+    padding-bottom: 56px;
     top: 0;
     left: 0;
     height: 100%;
