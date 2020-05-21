@@ -10,7 +10,7 @@
 
 class Admin {
 
-    function __construct( $General, $Modules, $Auth, $Db ) {
+    function __construct( $General, $Modules, $Auth, $Db , $Translate) {
 
         // Проверка на основную константу.
         defined('IN_LR') != true && die();
@@ -23,6 +23,8 @@ class Admin {
         $this->Modules = $Modules;
 
         $this->Db = $Db;
+
+        $this->Translate = $Translate;
     }
 
     /**
@@ -154,24 +156,24 @@ class Admin {
         $db = require SESSIONS . '/db.php';
         
         if (!isset($_POST['mod']) || !isset($_POST['type']) || $_POST['type'] != 'table' && $_POST['type'] != 'db') 
-            return ['error' => 'Ошибка'];
+            return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error')];
 
         $mod = $_POST['mod'];
         $type = $_POST['type'];
 
         if ($type == 'db') {
 
-            if (empty($_POST['host']))          return ['error' => 'Введите хост!'];                        else $host = $_POST['host'];
-            if (empty($_POST['db_name']))       return ['error' => 'Введите название базы данных!'];        else $db_name = $_POST['db_name'];
-            if (empty($_POST['password']))      return ['error' => 'Введите пароль пользователя бд!'];      else $password = $_POST['password'];
-            if (empty($_POST['username']))      return ['error' => 'Введите имя пользователя бд!'];         else $username = $_POST['username'];
-            if (empty($_POST['port']))          return ['error' => 'Введите порт!'];                        else $port = $_POST['port'];
-            if (empty($_POST['table_name']))    return ['error' => 'Введите название таблицы!'];            else $table_name = $_POST['table_name'];
+            if (empty($_POST['host']))          return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_host')];       else $host = $_POST['host'];
+            if (empty($_POST['db_name']))       return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db')];         else $db_name = $_POST['db_name'];
+            if (empty($_POST['password']))      return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_password')];   else $password = $_POST['password'];
+            if (empty($_POST['username']))      return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_username')];   else $username = $_POST['username'];
+            if (empty($_POST['port']))          return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_port')];       else $port = $_POST['port'];
+            if (empty($_POST['table_name']))    return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')]; else $table_name = $_POST['table_name'];
             $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
             $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
             $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
             if ($mod == 'LevelsRanks' && empty($_POST['rank_pack'])) {       
-                return ['error' => 'Введите пакет рангов!'];  
+                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')];  
             }                      
             else {
                 $rank_pack = $_POST['rank_pack'];
@@ -181,27 +183,32 @@ class Admin {
             if ($mod == 'LevelsRanks') {
                 $query['DB'][0]['Prefix'][0]['ranks_pack'] = $rank_pack;
             }
+            try {
+                $dbh = new PDO("mysql:dbname={$db_name};host={$host}", $username, $password, [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION]);
+            } catch (PDOException $e) {
+                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_con_db')]; 
+            }
             if(empty($db[$mod])) {
                 $db[$mod] = [0 => $query];
                 file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                return ['success' => 'Новый мод создан!']; 
+                return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_mod_created')]; 
             } else {
                 $db[$mod][] = $query;
                 file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                return ['success' => 'Новая база данных добавлена!']; 
+                return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_db_created')]; 
             }
         }
 
         if ($type == 'table') {
-            if (empty($db[$mod]))                                                           return ['error' => 'Сначала создайте базу данных!'];
+            if (empty($db[$mod]))   return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_create_db')];
             if (empty($_POST['db_name_for_table']) || $_POST['db_name_for_table'] == '-1') {
-                return ['error' => 'Выберите базу данных!']; 
+                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_enter_db')]; 
             }
             else {
                 $db_name_for_table = $_POST['db_name_for_table'];
             }
-            if (empty($_POST['table_name']))                            return ['error' => 'Введите название таблицы!'];    else $table_name = $_POST['table_name'];
-            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack']))    return ['error' => 'Введите пакет рангов!'];        else $rank_pack = $_POST['rank_pack'];
+            if (empty($_POST['table_name']))  return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')];    else $table_name = $_POST['table_name'];
+            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack']))    return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')];        else $rank_pack = $_POST['rank_pack'];
             $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
             $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
             $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
@@ -214,12 +221,12 @@ class Admin {
                     }
                     $db[$mod][$num]['DB'][0]['Prefix'][] = $query;
                     file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                    return ['success' => 'Новая таблица добавлена!']; 
+                    return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_table_created')]; 
                 }
             }
-            return ['error' => 'Указанная база данных не найдена!'];
+            return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db_not_found')];
         }
-        return ['error' => 'Неизвестная ошибка!'];
+        return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_not_found')];
     }
 
     /**

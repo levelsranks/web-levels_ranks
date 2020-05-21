@@ -430,3 +430,35 @@
 .vip_id {
     display: none;
 }
+.wrapper_connection_option {
+    display: flex;
+}
+.wrapper_connection_option > div{
+    margin: 10px;
+    max-width: 400px;
+}
+.add_connection_label{
+    margin-top: 20px;
+}
+.wrapper-password{
+    position: relative;
+}
+.password-control{
+    cursor: pointer;
+    color: var(--span-color);
+    position: absolute;
+    right: 5px;
+    bottom: 1px;
+}
+.server_form > div{
+    transform: translate(-50%, 0) !important;
+    top: 20vh !important;
+    overflow-Y: auto !important;
+}
+.server_form {
+    z-index: 10000 !important;
+    overflow-Y: auto !important;
+}
+.con_active{
+    display: block !important;
+}

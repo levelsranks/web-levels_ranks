@@ -422,7 +422,7 @@
   "_Disable_sidebar_change": {
     "EN": "Disable Sidebar Change",
     "RU": "Запретить изменение вида боковой панели",
-	"UA": "Заборонити зміну виду бічній панелі",
+	  "UA": "Заборонити зміну виду бічній панелі",
     "CRO": "Onemogući pomjeranje bočnog menija",
     "RS": "Onemogući pomeranje sidebara",
     "BA": "Onemogući pomjeranje sidebara"	
@@ -443,6 +443,230 @@
   "_Blocks_blur": {
     "EN": "Enable Blocks blur",
     "RU": "Включить размытие у блоков",
-	"UA": "Включити розмиття у блоків"
+	  "UA": "Включити розмиття у блоків"
+  },
+  "_Add_Server": {
+    "EN": "Add Server",
+    "RU": "Добавить сервер"
+  },
+  "_Server_name": {
+    "EN": "Server name",
+    "RU": "Название сервера"
+  },
+  "_TechnoName": {
+    "EN": "Technical name",
+    "RU": "Техническое название"
+  },
+  "_Ip_Port_Server": {
+    "EN": "IP: PORT Servers",
+    "RU": "IP:PORT Сервера"
+  },
+  "_Ip_Port_View": {
+    "EN": "IP: PORT Output",
+    "RU": "IP:PORT Выводимый"
+  },
+  "_Rcon": {
+    "EN": "RCON",
+    "RU": "RCON"
+  },
+  "_Stat_Table": {
+    "EN": "Statistics :: Table",
+    "RU": "Статистика :: Таблица"
+  },
+  "_Vip_Table": {
+    "EN": "VIP CORE :: Table",
+    "RU": "VIP CORE :: Таблица"
+  },
+  "_Vip_Sid": {
+    "EN": "Enable",
+    "RU": "ID Сервера ( vip_core.cfg )"
+  },
+  "_Sb_Table": {
+    "EN": "Server ID (vip_core.cfg)",
+    "RU": "SB / MA :: Таблица"
+  },
+  "_Shop_Table": {
+    "EN": "Shop :: Table",
+    "RU": "Shop :: Таблица"
+  },
+  "_WarnSystem_Table": {
+    "EN": "WarnSystem :: Table",
+    "RU": "WarnSystem :: Таблица"
+  },
+  "_Lk_Table": {
+    "EN": "WarnSystem :: Table",
+    "RU": "LK :: Таблица"
+  },
+  "_Server_Name": {
+    "EN": "Title",
+    "RU": "Название"
+  },
+  "_View": {
+    "EN": "Visual",
+    "RU": "Визуальный"
+  },
+  "_Server": {
+    "EN": "Server",
+    "RU": "Сервер"
+  },
+  "_Add_con": {
+    "EN": "Add connection",
+    "RU": "Добавить подключение"
+  },
+  "_type_con": {
+    "EN": "Type of new connection:",
+    "RU": "Тип нового подключения:"
+  },
+  "_table_con": {
+    "EN": "Table",
+    "RU": "Таблица"
+  },
+  "_db_con": {
+    "EN": "Database",
+    "RU": "База данных"
+  },
+  "_take_db_con": {
+    "EN": "Choose a database",
+    "RU": "Выбери базу данных"
+  },
+  "_non_take_con": {
+    "EN": "Not chosen",
+    "RU": "Не выбрано"
+  },
+  "_host": {
+    "EN": "Host",
+    "RU": "Хост"
+  },
+  "_name_db": {
+    "EN": "Database Name:",
+    "RU": "Имя базы данных:"
+  },
+  "_username": {
+    "EN": "Db username:",
+    "RU": "Имя пользователя бд:"
+  },
+  "_password": {
+    "EN": "User password db:",
+    "RU": "Пароль пользователя бд:"
+  },
+  "_port": {
+    "EN": "Port:",
+    "RU": "Порт:"
+  },
+  "_table_name": {
+    "EN": "Table name:",
+    "RU": "Название таблицы:"
+  },
+  "_rank_pack": {
+    "EN": "Grade Pack:",
+    "RU": "Пакет рангов:"
+  },
+  "_add": {
+    "EN": "Add",
+    "RU": "Добавить"
+  },
+  "_mod_list": {
+    "EN": "Mods list",
+    "RU": "Список модов"
+  },
+  "_mod": {
+    "EN": "Mod",
+    "RU": "Mод"
+  },
+  "_configure": {
+    "EN": "Configurator",
+    "RU": "Конфигуратор"
+  },
+  "_connection": {
+    "EN": "Connections",
+    "RU": "Подключения"
+  },
+  "_take_mod": {
+    "EN": "Choose a mod",
+    "RU": "Выберите мод"
+  },
+  "_custom_mode": {
+    "EN": "Own mod",
+    "RU": "Свой мод"
+  },
+  "_enter_mode_name": {
+    "EN": "Enter the name of the mod:",
+    "RU": "Введите название мода:"
+  },
+  "_list_con": {
+    "EN": "General",
+    "RU": "Общий"
+  },
+  "_user": {
+    "EN": "User",
+    "RU": "Пользователь"
+  },
+  "_table_prefix": {
+    "EN": "Table | Prefix",
+    "RU": "Таблица | Префикс"
+  },
+  "_error": {
+    "EN": "Error!",
+    "RU": "Ошибка!"
+  },
+  "_error_host": {
+    "EN": "Enter host!",
+    "RU": "Введите хост!"
+  },
+  "_error_db": {
+    "EN": "Enter a database name!",
+    "RU": "Введите название базы данных!"
+  },
+  "_error_password": {
+    "EN": "Enter user password db!",
+    "RU": "Введите пароль пользователя бд!"
+  },
+  "_error_username": {
+    "EN": "Enter db username!",
+    "RU": "Введите имя пользователя бд!"
+  },
+  "_error_port": {
+    "EN": "Enter port!",
+    "RU": "Введите порт!"
+  },
+  "_error_name_table": {
+    "EN": "Enter a table name!",
+    "RU": "Введите название таблицы!"
+  },
+  "_error_rank_pack": {
+    "EN": "Enter Rank Pack!",
+    "RU": "Введите пакет рангов!"
+  },
+  "_success_db_created": {
+    "EN": "New database added!",
+    "RU": "Новая база данных добавлена!"
+  },
+  "_error_create_db": {
+    "EN": "First create a database!",
+    "RU": "Сначала создайте базу данных!"
+  },
+  "_error_enter_db": {
+    "EN": "Choose a database!",
+    "RU": "Выберите базу данных!"
+  },
+  "_success_table_created": {
+    "EN": "New table added!",
+    "RU": "Новая таблица добавлена!"
+  },
+  "_error_db_not_found": {
+    "EN": "The specified database was not found!",
+    "RU": "Указанная база данных не найдена!"
+  },
+  "_error_not_found": {
+    "EN": "Unknown error!",
+    "RU": "Неизвестная ошибка!"
+  },
+  "_success_mod_created": {
+    "EN": "New mod created!",
+    "RU": "Новый мод создан!"
+  },
+  "_error_con_db": {
+    "EN": "Error connecting to database!",
+    "RU": "Ошибка подключения к базе данных!"
   }
 }

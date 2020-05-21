@@ -243,7 +243,7 @@ function changeNameModule(){
         db_show[i].classList.add("con_active");
     }
     if (val == 'custom') {
-        document.getElementById('con_mod_name').innerHTML = 'Мод: '+document.getElementById('custom_mod_name').value;
+        document.getElementById('con_mod_name').innerHTML = 'Mod: '+document.getElementById('custom_mod_name').value;
         document.getElementById('con_mod_id').value = document.getElementById('custom_mod_name').value;
     }
 }
