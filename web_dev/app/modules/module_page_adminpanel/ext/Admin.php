@@ -16,7 +16,7 @@ class Admin {
         defined('IN_LR') != true && die();
 
         // Ведущая проверка.
-        ( empty( $_SESSION['steamid32'] ) || empty( $_GET['page'] ) || $_GET['page'] != 'adminpanel' || ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
+        ( empty( $_SESSION['steamid32'] ) || ! isset( $_SESSION['user_admin'] ) ) && get_iframe( '013','Доступ закрыт' ) && die();
 
         $this->General = $General;
 
@@ -139,15 +139,87 @@ class Admin {
      */
     function action_db_add_mods() {
 
-        $db = $this->Db->db;
+        $db = require SESSIONS . '/db.php';
 
-        $db += [ $_POST['mod'] => [] ];
-
+        $db += [ $_POST['mod'] => []];
         // Обновление файла.
-        file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_min( $db, true ).";" );
+        file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
 
         // Обновление страницы.
-        refresh();
+        header("Refresh: 0");
+    }
+
+    function action_db_add_connection() {
+
+        $db = require SESSIONS . '/db.php';
+        
+        if (!isset($_POST['mod']) || !isset($_POST['type']) || $_POST['type'] != 'table' && $_POST['type'] != 'db') 
+            return ['error' => 'Ошибка'];
+
+        $mod = $_POST['mod'];
+        $type = $_POST['type'];
+
+        if ($type == 'db') {
+
+            if (empty($_POST['host']))          return ['error' => 'Введите хост!'];                        else $host = $_POST['host'];
+            if (empty($_POST['db_name']))       return ['error' => 'Введите название базы данных!'];        else $db_name = $_POST['db_name'];
+            if (empty($_POST['password']))      return ['error' => 'Введите пароль пользователя бд!'];      else $password = $_POST['password'];
+            if (empty($_POST['username']))      return ['error' => 'Введите имя пользователя бд!'];         else $username = $_POST['username'];
+            if (empty($_POST['port']))          return ['error' => 'Введите порт!'];                        else $port = $_POST['port'];
+            if (empty($_POST['table_name']))    return ['error' => 'Введите название таблицы!'];            else $table_name = $_POST['table_name'];
+            $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
+            $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
+            $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
+            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack'])) {       
+                return ['error' => 'Введите пакет рангов!'];  
+            }                      
+            else {
+                $rank_pack = $_POST['rank_pack'];
+            }
+
+            $query = ['HOST' => $host, 'PORT' => $port, 'USER' => $username, 'PASS' => $password, 'DB' =>[0 =>['DB' => $db_name,'Prefix' =>[0 =>['table' => $table_name, 'name' => $server_name,'mod' => $game_mod,'steam' => $steam_mod]]]]];
+            if ($mod == 'LevelsRanks') {
+                $query['DB'][0]['Prefix'][0]['ranks_pack'] = $rank_pack;
+            }
+            if(empty($db[$mod])) {
+                $db[$mod] = [0 => $query];
+                file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                return ['success' => 'Новый мод создан!']; 
+            } else {
+                $db[$mod][] = $query;
+                file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                return ['success' => 'Новая база данных добавлена!']; 
+            }
+        }
+
+        if ($type == 'table') {
+            if (empty($db[$mod]))                                                           return ['error' => 'Сначала создайте базу данных!'];
+            if (empty($_POST['db_name_for_table']) || $_POST['db_name_for_table'] == '-1') {
+                return ['error' => 'Выберите базу данных!']; 
+            }
+            else {
+                $db_name_for_table = $_POST['db_name_for_table'];
+            }
+            if (empty($_POST['table_name']))                            return ['error' => 'Введите название таблицы!'];    else $table_name = $_POST['table_name'];
+            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack']))    return ['error' => 'Введите пакет рангов!'];        else $rank_pack = $_POST['rank_pack'];
+            $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
+            $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
+            $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
+            
+            foreach ($db[$mod] as $num => $connection) {
+                if ($connection['DB'][0]['DB'] == $db_name_for_table) {
+                    $query = [ 'table' => $table_name, 'name' => $server_name, 'mod' => $steam_mod, 'steam' => $game_mod];
+                    if ($mod == 'LevelsRanks') {
+                        $query['ranks_pack'] = $rank_pack;
+                    }
+                    $db[$mod][$num]['DB'][0]['Prefix'][] = $query;
+                    file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                    return ['success' => 'Новая таблица добавлена!']; 
+                }
+            }
+            return ['error' => 'Указанная база данных не найдена!'];
+        }
+        return ['error' => 'Неизвестная ошибка!'];
     }
 
     /**
