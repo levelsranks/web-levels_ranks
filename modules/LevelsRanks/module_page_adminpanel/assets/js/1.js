@@ -167,3 +167,94 @@ function action_db_delete_table(id,element) {
     id.closest('tr').remove();
     $("tr." + element).remove();
 }
+let doubleClickedCon = true;
+function addConection(){
+    if(doubleClickedCon){
+        doubleClickedCon = false;
+        $.ajax({
+            url: 'app/modules/module_page_adminpanel/includes/controller.php',
+            type: 'post',
+            data: $('#form-add-conection').serialize()+"&function=add_conection",
+            success: function(response){
+                var jsonData = JSON.parse(response);
+                if (!(typeof jsonData.success === 'undefined')){
+                    note({
+                        content: jsonData.success,
+                        type: 'success',
+                        time: 2
+                    });
+                    setTimeout(function(){window.location = window.location.href.replace(window.location.hash, '#');location.reload(true);
+                } , 2000);
+                }
+                else{
+                    setTimeout(function(){doubleClickedCon = true;} ,1000);
+                    note({
+                        content: jsonData.error,
+                        type: 'error',
+                        time: 4
+                    });
+                }
+            },
+        });
+    }
+}
+function changeConnection(mod) {
+
+    document.getElementById('con_mod_name').innerHTML = 'Мод: '+mod;
+    document.getElementById('con_mod_id').value = mod;
+    document.getElementById('add_conection_button').setAttribute("href", "#add_connect");
+    document.getElementById('custom_mod_wrapper').setAttribute("style", "display: none;");
+    document.getElementById('con_table_name').value = "";
+    document.getElementById('rank_pack_connection').setAttribute("style", "display: none;");
+    
+    if(mod == 'custom') {
+        document.getElementById('custom_mod_wrapper').setAttribute("style", "display: block;");
+    }
+    let db_hide = document.querySelectorAll('.con_active');
+    for (let i = 0; i < db_hide.length; i++) {
+        db_hide[i].classList.remove("con_active");
+    }
+    let db_show = document.querySelectorAll('.con_'+mod);
+    for (let i = 0; i < db_show.length; i++) {
+        db_show[i].classList.add("con_active");
+    }
+    if (mod == 'LevelsRanks') {
+        document.getElementById('con_table_name').value = "lvl_base";
+        document.getElementById('rank_pack_connection').setAttribute("style", "display: block;");
+    } else if (mod == 'Vips') {
+        document.getElementById('con_table_name').value = "vip_";
+    } else if (mod == 'SourceBans') {
+        document.getElementById('con_table_name').value = "sb_";
+    }
+}
+function changeConnect(value){
+    if (value == 'db') {
+        document.getElementById('db_select_con').setAttribute("style", "display: none;");
+        document.getElementById('db_option_con').setAttribute("style", "display: flex;");
+    } else {
+        document.getElementById('db_select_con').setAttribute("style", "display: block;");
+        document.getElementById('db_option_con').setAttribute("style", "display: none;");
+    }
+}
+function changeNameModule(){
+    let val = document.getElementById('mods').value;
+    let db_show = document.querySelectorAll('.con_'+document.getElementById('custom_mod_name').value);
+    for (let i = 0; i < db_show.length; i++) {
+        db_show[i].classList.add("con_active");
+    }
+    if (val == 'custom') {
+        document.getElementById('con_mod_name').innerHTML = 'Mod: '+document.getElementById('custom_mod_name').value;
+        document.getElementById('con_mod_id').value = document.getElementById('custom_mod_name').value;
+    }
+}
+function show_hide_password(target){
+    var input = document.getElementById('con_password');
+    if (input.getAttribute('type') == 'password') {
+        target.classList.add('view');
+        input.setAttribute('type', 'text');
+    } else {
+        target.classList.remove('view');
+        input.setAttribute('type', 'password');
+    }
+    return false;
+}

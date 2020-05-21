@@ -22,7 +22,7 @@
 require MODULES . 'module_page_adminpanel/ext/Admin.php';
 
 // Создаём экземпляр класса для работы с админкой
-$Admin = new Admin ( $General, $Modules, $Auth, $Db );
+$Admin = new Admin ( $General, $Modules, $Auth, $Db, $Translate );
 
 # Настройки модулей
 
@@ -50,8 +50,6 @@ isset( $_POST['option_one_save'] ) && $Admin->edit_options();
 
 // Нажатие на кнопку - Добавить мод.
 isset( $_POST['add_mods'] ) && $Admin->action_db_add_mods();
-
-# Настройка серверов
 
 // Нажатие на кнопку - Добавить сервер.
 isset( $_POST['save_server'] ) && $Admin->action_add_server();
