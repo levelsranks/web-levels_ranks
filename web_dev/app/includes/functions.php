@@ -241,7 +241,7 @@ function GetCharBytes($symbol)
 
 function action_text_clear($text)
 {
-    return stripslashes( trim( strip_tags( htmlspecialchars( $text, ENT_QUOTES,'ISO-8859-1', true ) ) ) );
+    return stripslashes( htmlspecialchars( strip_tags( trim( stripslashes( $text ) ) ), ENT_QUOTES,'ISO-8859-1', true ) );
 }
 
 /**
