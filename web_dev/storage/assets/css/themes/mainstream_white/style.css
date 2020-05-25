@@ -1689,6 +1689,29 @@ pre {
     white-space: nowrap
 }
 
+.tooltip-sidebar{
+    display: none;
+    position: absolute;
+    background: var(--default-text-color);
+    border-radius: 2px;
+    color: var(--sidebar-color);
+    padding: 7px;
+    padding-left: 10px;
+    z-index: 10000;
+}
+
+.tooltip-sidebar::after{
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    background: var(--default-text-color);
+    transform: rotate(45deg);
+    z-index: 9999;
+}
+
 [data-tooltip]:before,
 [data-tooltip]:after,
 .tooltip:before,
@@ -1740,42 +1763,9 @@ pre {
     transform:         translateX(-12px);
 }
 
-.tooltip-right:before, .tooltip-right:after {
-    bottom: 50%;
-    left: 100%
-}
 
-.sidebar-menu .tooltip-right:before, .sidebar-menu  .tooltip-right:after {
-    display: none;
-    bottom: 50%;
-    left: 100%
-}
 
-.tooltip-right:before {
-    margin-bottom: -5px;
-    margin-left: -12px;
-    border-right-color: transparent;
-    border-right-color: var(--default-text-color);
-}
 
-.tooltip-right:hover:before, .tooltip-right:hover:after, .tooltip-right:focus:before, .tooltip-right:focus:after {
-    -webkit-transform: translateX(12px);
-    -moz-transform: translateX(12px);
-    transform: translateX(12px)
-}
-
-.sidebar-menu .tooltip-right:hover:before, .sidebar-menu .tooltip-right:hover:after, .sidebar-menu  .tooltip-right:focus:before, .sidebar-menu  .tooltip-right:focus:after {
-    display: none;
-    -webkit-transform: translateX(12px);
-    -moz-transform: translateX(12px);
-    transform: translateX(12px)
-}
-
-.tooltip-left:after, .tooltip-right:after {
-    margin-left: 0;
-    margin-bottom: -16px
-
-}
 
 .tooltip-bottom:before,
 .tooltip-bottom:after {
@@ -1895,10 +1885,6 @@ pre {
         width:3px;
     }
 
-    .tooltip-right:before, .tooltip-right:after {
-        display: none;
-    }
-
     .card-header{
         margin-left: 15px;
         margin-top: 15px;
@@ -1956,10 +1942,6 @@ pre {
         width:4px;
     }
 
-    .tooltip-right:before, .tooltip-right:after {
-        display: none;
-    }
-
     .card-header{
         margin-left: 15px;
         margin-top: 15px;
@@ -2006,10 +1988,6 @@ pre {
     ::-webkit-scrollbar{
         background-color: var(--hover);
         width:4px;
-    }
-
-    .tooltip-right:before, .tooltip-right:after {
-        display: none;
     }
 
     .card-header{
@@ -2416,8 +2394,6 @@ tr th a:hover .card_info_block{
     text-decoration: none
 }
 
-
-
 .main-sidebar {
     margin-top: 56px;
     top: 0;
@@ -2426,6 +2402,8 @@ tr th a:hover .card_info_block{
     position: fixed;
     width: 270px;
     z-index: 2;
+    overflow-y:auto;
+    padding-bottom: 58px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1)
 }
 
@@ -2491,14 +2469,6 @@ tr th a:hover .card_info_block{
     .sidebar-collapse .user-rank img {
         max-width: 42px;
         max-height: 20px;
-    }
-
-    .sidebar-collapse .tooltip-right:before, .sidebar-collapse .tooltip-right:after {
-        display: block;
-    }
-
-    .sidebar-collapse .tooltip-right:hover:before, .sidebar-collapse .tooltip-right:hover:after, .sidebar-collapse .tooltip-right:focus:before, .sidebar-collapse .tooltip-right:focus:after {
-        display: block;
     }
 
     .sidebar-collapse .sidebar-menu {

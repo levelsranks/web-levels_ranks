@@ -429,3 +429,29 @@ function updateURL(text) {
         console.warn('History API не поддерживается');
     }
 }
+$(".tooltip-js").on('mouseenter', function() {
+    if ($('body').hasClass('sidebar-collapse')) {
+    data = $(this).attr("data-tooltip-js");
+    var offsetTop = $(this).offset().top + 7;
+    var offsetLeft = $(this).offset().left + $(this).width() + 10;
+    if (data.indexOf('srv-') != -1){
+        offsetTop -= 10;
+        offsetLeft += 30;
+    }
+    $('.box-button-'+data).css({
+        top: offsetTop,
+        left: offsetLeft -20,
+        opacity: 0,
+        display: 'inline-block'     
+    }).animate({opacity: 1, left: offsetLeft},500);
+    }
+});
+$(".tooltip-js").on('mouseleave', function() {
+    data = $(this).attr("data-tooltip-js");
+    $('.box-button-'+data).css({
+        opacity: 0,
+        display: 'none'
+    });
+    $('.box-button-'+data).offset({top: 0, left: 0});
+});
+
