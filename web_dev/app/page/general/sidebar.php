@@ -58,7 +58,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="tooltip-js" data-tooltip-js="home">
-                <a href="#" <?php get_section( 'page', 'home' ) == 'home' && print 'class="table-active"'?>>
+                <a href="?page=home" <?php get_section( 'page', 'home' ) == 'home' && print 'class="table-active"'?>>
                     <div class="sidebar-icon">
                         <?php $General->get_icon('zmdi', 'home', null )?>
                     </div>
