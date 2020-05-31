@@ -27,6 +27,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                 $id = $openid->identity;
                 $ptn = "/^https?:\/\/steamcommunity\.com\/openid\/id\/(7[0-9]{15,25}+)$/";
                 preg_match( $ptn, $id, $matches );
+
                 $_SESSION['steamid'] = $matches[1];
                 $_SESSION['steamid64'] = $matches[1];
                 $_SESSION['steamid32'] = con_steam64to32( $matches[1] );
@@ -34,6 +35,16 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                 $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
                 $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
                 $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+                if ( ! empty( $Db->db_data['LevelsRanks'] )):
+                    if($Db->queryNum('LevelsRanks', 0, 0, "SELECT COUNT(*) FROM " . $Db->db_data['LevelsRanks'][ 0 ]['Table'] . " WHERE steam=" . $_SESSION['steamid32'])[0] == 0):
+                        $_STEAMAPI = $General->arr_general['web_key'];
+                        $response = file_get_contents('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $_STEAMAPI . '&steamids=' . $_SESSION['steamid']); 
+                        $json = json_decode($response, true); 
+                        $Db->query('LevelsRanks', 0, 0, "INSERT INTO " . $Db->db_data['LevelsRanks'][ 0 ]['Table'] . " 
+                        (`id`, `steam`, `name`, `value`, `rank`, `kills`, `deaths`, `shoots`, `hits`, `headshots`, `assists`, `round_win`, `round_lose`, `playtime`, `lastconnect`) 
+                        VALUES (NULL, '{$_SESSION['steamid32']}', '{$json['response']['players']['0']['personaname']}', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', " . time() . ")");
+                    endif;
+                endif;
                 header('Location: ' . $this->General->arr_general['site']);
                 if ( ! headers_sent() ) {?>
                     <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
