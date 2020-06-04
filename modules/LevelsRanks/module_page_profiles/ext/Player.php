@@ -366,16 +366,16 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
-                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
                     break;
                 case 'RankMeKento':
-                    $a = array_reverse($this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE '" . $this->get_value() . "' < score ORDER BY score ASC LIMIT 5" ) );
+                    $a = array_reverse($this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND '" . $this->get_value() . "' < score ORDER BY score ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
-                    $b = array_merge( $a, $this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `score` <= '" . $this->get_value() . "' ORDER BY score DESC LIMIT 11" ) );
+                    $b = array_merge( $a, $this->Db->queryAll( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, steam, score AS `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND `score` <= '" . $this->get_value() . "' ORDER BY score DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
                     break;
@@ -388,6 +388,7 @@ class Player {
                                                                                  INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                                                  WHERE fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
                                                                                  AND '{$this->get_value()}' < fps_servers_stats.points
+                                                                                 AND `lastconnect` > 0
                                                                                  ORDER BY value ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
                     $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT fps_players.nickname AS name,
@@ -398,6 +399,7 @@ class Player {
                                                                                     INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
                                                                                     WHERE fps_servers_stats.points <= '{$this->get_value()}'
                                                                                     AND fps_servers_stats.server_id = '{$this->found[ $this->server_group ]['server_int']}'
+                                                                                    AND `lastconnect` > 0
                                                                                     ORDER BY value DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
