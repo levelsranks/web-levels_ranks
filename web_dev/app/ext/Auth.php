@@ -274,13 +274,16 @@ class Auth {
             endfor;
         endif;
 
+        // For translating hardcoded string
+        $Translate      = new \app\ext\Translate;
+        
         // При отсутствии пользователя в таблицах, собираем - массив исключение.
         if ( empty( $this->user_auth[0] ) ):
             // Информация о пользователе.
-            $this->user_auth[0] = ['name' => 'Неизвестно', 'lastconnect' => '', 'rank' => '00'];
+            $this->user_auth[0] = ['name' => $Translate->get_translate_phrase('_Unknown'), 'lastconnect' => '', 'rank' => '00'];
 
             // Название сервера.
-            $this->server_info[0]['name_servers'] = 'Неизвестно';
+            $this->server_info[0]['name_servers'] = $Translate->get_translate_phrase('_Unknown');
 
             // Пак рангов.
             $this->server_info[0]['ranks_pack'] = 'default';
