@@ -5,10 +5,10 @@
             <h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Module_loading')?></h5>
             <div class="select-panel select-panel-pages badge">
                 <select onChange="window.location.href=this.value">
-                    <option style="display:none" value="" disabled selected><?php echo get_section( 'module_page', 'home' )?></option>
+                    <option style="display:none" value="" disabled selected><?php echo get_section('module_page', 'home') == 'sidebar' ? ' ' : $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Page').':' ?> <?php echo get_section( 'module_page', 'home' )?></option>
                     <?php for ($i = 0;$i < $Modules->arr_module_init_page_count;$i++) {$id_module = array_keys( $Modules->arr_module_init['page'] )[ $i ]?>
                         <option value="<?php echo set_url_section(get_url(2), 'module_page', $id_module) ?>">
-                            <a href="<?php echo set_url_section(get_url(2), 'module_page', $id_module) ?>">Страница: <?php echo $id_module?></a></option>
+                            <a href="<?php echo set_url_section(get_url(2), 'module_page', $id_module) ?>"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Page')?>: <?php echo $id_module?></a></option>
                     <?php } ?>
                     <option value="<?php echo set_url_section(get_url(2), 'module_page', 'sidebar') ?>">
                         <a href="<?php echo set_url_section(get_url(2), 'module_page', 'sidebar') ?>">sidebar</a></option>
