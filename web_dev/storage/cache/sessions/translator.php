@@ -1246,5 +1246,13 @@ return array (
             'UA' => 'Магазин',
             'LT' => 'Parduotuvė',
             'TR' => 'Mağaza'
+        ),
+    '_Unknown' =>
+        array (
+            'EN' => 'Unknown',
+            'RU' => 'Неизвестно',
+            'UA' => 'Неізвестноi',
+            'LT' => 'Nežinoma',
+            'TR' => 'Bilinmeyen'
         )
 );
