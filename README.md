@@ -44,6 +44,7 @@
 - https://truesrv.ru/
 - https://unitcsgo.ru/
 - https://oupro.su/
+- https://nokill.ru/
 - https://stats.blackflash.ru/
 - http://ilitagame.ru/
 - https://wocawp.ru/stats/
