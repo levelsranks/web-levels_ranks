@@ -307,4 +307,70 @@ class Admin {
 
         $this->action_clear_all_cache();
     }
+
+    /**
+     * Вывод графика посещения сайта.
+     */
+    function charts_attendance()
+    {
+        $_Attendance = $this->Db->queryAll( 'Core', 0, 0, 'SELECT * FROM lr_web_attendance ORDER BY id DESC LIMIT 12' );
+
+        if($_Attendance)
+        {
+            foreach ($_Attendance as $key)
+            {
+                $_Year = explode('.', $key['date']);
+                $_Vist_date[] = preg_replace(
+                    [
+                        '/01.'.$_Year[1].'/',
+                        '/02.'.$_Year[1].'/',
+                        '/03.'.$_Year[1].'/',
+                        '/04.'.$_Year[1].'/',
+                        '/05.'.$_Year[1].'/',
+                        '/06.'.$_Year[1].'/',
+                        '/07.'.$_Year[1].'/',
+                        '/08.'.$_Year[1].'/',
+                        '/09.'.$_Year[1].'/',
+                        '/10.'.$_Year[1].'/',
+                        '/11.'.$_Year[1].'/',
+                        '/12.'.$_Year[1].'/'
+                    ],
+                    [
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Jan') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Feb') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Mar') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Apr') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_May') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Jun') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Jul') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Aug') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Sep') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Oct') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Nov') . ' '.$_Year[1].'"',
+                        '"' . $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_Dec') . ' '.$_Year[1].'"',
+                    ],
+
+                    $key['date']
+                );
+
+                $_Visits[] = $key['visits'];
+            }
+
+            $_Attendance_All = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT SUM(visits) FROM lr_web_attendance' );
+
+            $_Param['date'] = '%'.date('Y').'%';
+            $_Attendance_Year = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT SUM(visits) FROM lr_web_attendance WHERE date LIKE :date', $_Param );
+
+            $_Online = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT COUNT(user) FROM lr_web_online');
+
+            return $_Return = [
+                'Date'          =>  implode(',', array_reverse($_Vist_date)),
+                'Visits'        =>  implode(',', array_reverse($_Visits)),
+                'Visits_All'    =>  $_Attendance_All,
+                'Visits_Year'   =>  $_Attendance_Year,
+                'Online'        =>  $_Online
+            ];
+        }
+        
+    }
 }

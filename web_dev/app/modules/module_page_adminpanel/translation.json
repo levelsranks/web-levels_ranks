@@ -668,5 +668,76 @@
   "_error_con_db": {
     "EN": "Error connecting to database!",
     "RU": "Ошибка подключения к базе данных!"
+  },
+  "_Admin_stats":{
+    "EN": "Statistics",
+    "RU":"Статистика",
+    "UA":"Статистика",
+    "LT":"Statistika",
+    "TR":"İstatistik"
+  },
+  "_Visits":{
+    "EN": "Visits",
+    "RU": "Посещения"
+  },
+  "_Online":{
+    "EN": "Online now:",
+    "RU": "Сейчас онлайн:"
+  },
+  "_Total":{
+    "EN": "Total:",
+    "RU": "Всего переходов:"
+  },
+  "_For":{
+    "EN": "For",
+    "RU": "За"
+  },
+  "_Jan":{
+    "EN": "January",
+    "RU": "Январь"
+  },
+  "_Feb":{
+    "EN": "February",
+    "RU": "Февраль"
+  },
+  "_Mar":{
+    "EN": "March",
+    "RU": "Март"
+  },
+  "_Apr":{
+    "EN": "April",
+    "RU": "Апрель"
+  },
+  "_May":{
+    "EN": "May",
+    "RU": "Май"
+  },
+  "_Jun":{
+    "EN": "June",
+    "RU": "Июнь"
+  },
+  "_Jul":{
+    "EN": "July",
+    "RU": "Июль"
+  },
+  "_Aug":{
+    "EN": "August",
+    "RU": "Август"
+  },
+  "_Sep":{
+    "EN": "September",
+    "RU": "Сентябрь"
+  },
+  "_Oct":{
+    "EN": "October",
+    "RU": "Октябрь"
+  },
+  "_Nov":{
+    "EN": "November",
+    "RU": "Ноябрь"
+  },
+  "_Dec":{
+    "EN": "December",
+    "RU": "Декабрь"
   }
 }

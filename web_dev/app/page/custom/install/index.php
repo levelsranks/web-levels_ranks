@@ -278,16 +278,27 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
 
         $db_check = 2;
 
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lr_web_attendance (
+                 `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+                 `date` VARCHAR(10) NOT NULL,
+                 `visits` INT(11) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+
+        $mysqli->query('CREATE TABLE IF NOT EXISTS lr_web_online (
+                 `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+                 `user` VARCHAR(128) NOT NULL,
+                 `ip` VARCHAR(128) NOT NULL,
+                 `time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+
         $mysqli->query('CREATE TABLE IF NOT EXISTS lr_web_notifications (
                   `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-                  steam VARCHAR(128) NOT NULL,
-                  text VARCHAR(256) NOT NULL,
-                  values_insert VARCHAR(512) NOT NULL,
-                  url VARCHAR(128) NOT NULL,
-                  icon VARCHAR(64) NOT NULL,
-                  seen int(11) NOT NULL,
-                  status int(11) NOT NULL,
-                  date TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+                  `steam` VARCHAR(128) NOT NULL,
+                  `text` VARCHAR(256) NOT NULL,
+                  `values_insert` VARCHAR(512) NOT NULL,
+                  `url` VARCHAR(128) NOT NULL,
+                  `icon` VARCHAR(64) NOT NULL,
+                  `seen` INT(11) NOT NULL,
+                  `status` INT(11) NOT NULL,
+                  `date` TIMESTAMP NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 
         $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_admins (
                   `steamid` VARCHAR(32) PRIMARY KEY, 
@@ -296,7 +307,7 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
                   `ip` VARCHAR(16) NOT NULL,
                   `group` VARCHAR(11) NOT NULL,
                   `flags` VARCHAR(32) NOT NULL,
-                  `access` int(3) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
+                  `access` INT(3) NOT NULL) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;');
 
         $mysqli->query('CREATE TABLE IF NOT EXISTS lvl_web_servers (
                             `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 

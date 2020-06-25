@@ -69,6 +69,7 @@ class General {
 
         // Получение информации о состоянии сайт-бара.
         $this->get_default_url_section('sidebar_open', $this->arr_general['sidebar_open'], array( true, false ) );
+
     }
 
     /**
@@ -211,5 +212,60 @@ class General {
             $check = (int) $this->checkAvatar( $con, $type );
             echo sprintf('<script>CheckAvatar = %1$d; if (CheckAvatar == 1) { avatar.push("%2$s"); }</script>', $check, $con );
         endif;
+    }
+
+
+    /**
+    * Счетчик посещений
+    */
+    public function online_stats()
+    {
+        if(isset($_SESSION['steamid32']))
+            $User = $_SESSION['steamid32'];
+        else $User = 'guest';
+
+
+        $param['ip'] = $_SERVER['REMOTE_ADDR'];
+        $Online = $this->Db->queryOneColumn( 'Core', 0, 0, "SELECT user FROM lr_web_online WHERE ip = :ip", $param );
+
+        if(empty($Online))
+        {
+            $params = [
+                'user'  => $User,
+                'ip'    => $_SERVER['REMOTE_ADDR']
+            ];
+            $this->Db->query('Core', 0, 0, "INSERT INTO lr_web_online(id, user, ip, time) VALUES (NULL, :user, :ip, NOW())", $params );
+        }
+        else
+        {
+            if($Online != $User)
+            {
+                $params = [
+                    'user'  => $User,
+                    'ip'    => $_SERVER['REMOTE_ADDR']
+                ];
+                $this->Db->query('Core', 0, 0, 'UPDATE lr_web_online SET time = NOW(), user = :user WHERE ip = :ip', $params );
+            }
+            else
+            {
+                $this->Db->query('Core', 0, 0, "UPDATE lr_web_online SET time = NOW() WHERE  ip = :ip", $param );
+            }
+        }
+
+        $this->Db->query('Core', 0, 0, "DELETE FROM lr_web_online WHERE time < SUBTIME(NOW(), '0 0:05:0')" );
+
+        $_Param['date'] = date('m.Y');
+
+        $_Attendance_ID = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT id FROM lr_web_attendance WHERE date = :date', $_Param );
+
+        if($_Attendance_ID)
+        {   
+            $_ParamU['id'] = $_Attendance_ID;
+            $this->Db->query( 'Core', 0, 0, "UPDATE lr_web_attendance SET visits = visits + 1 WHERE id = :id", $_ParamU );
+        }
+        else 
+        {
+            $this->Db->query( 'Core', 0, 0, "INSERT INTO lr_web_attendance(id, date, visits) VALUES (NULL, :date, 1)", $_Param );
+        }
     }
 }

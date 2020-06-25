@@ -23,7 +23,7 @@ set_time_limit(4);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.130');
+define('VERSION', '0.2.131');
 
 // Основная директория вэб-приложения.
 define('APP', 'app/');
@@ -137,10 +137,13 @@ $Notifications  = new Notifications ( $Translate, $Db );
 $General        = new General ( $Db );
 
 // Создание экземпляра класса работающего с модулями.
-$Modules        = new Modules       ( $General, $Translate, $Notifications );
+$Modules        = new Modules ( $General, $Translate, $Notifications );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
-$Auth           = new Auth          ( $General, $Db );
+$Auth           = new Auth ( $General, $Db );
 
 // Создание экземпляра графического класса.
-$Graphics       = new Graphics      ( $Translate, $General, $Modules, $Db, $Auth, $Notifications );
+$Graphics       = new Graphics ( $Translate, $General, $Modules, $Db, $Auth, $Notifications );
+
+// Запуск счетчика переходов(поситителей)
+empty($_GET['page']) || $_GET['page'] == 'home' ? $General->online_stats() : NULL;
