@@ -668,5 +668,144 @@
   "_error_con_db": {
     "EN": "Error connecting to database!",
     "RU": "Ошибка подключения к базе данных!"
+  },
+  "_Admin_stats":{
+    "EN": "Statistics",
+    "RU":"Статистика",
+    "UA":"Статистика",
+    "LT":"Statistika",
+    "TR":"İstatistik"
+  },
+  "_Visits":{
+    "EN": "Visits",
+    "RU": "Посещения"
+  },
+  "_Online":{
+    "EN": "Online now:",
+    "RU": "Сейчас онлайн:"
+  },
+  "_Total":{
+    "EN": "Total:",
+    "RU": "Всего переходов:"
+  },
+  "_For":{
+    "EN": "For",
+    "RU": "За"
+  },
+  "_Jan":{
+    "EN": "January",
+    "RU": "Январь"
+  },
+  "_Feb":{
+    "EN": "February",
+    "RU": "Февраль"
+  },
+  "_Mar":{
+    "EN": "March",
+    "RU": "Март"
+  },
+  "_Apr":{
+    "EN": "April",
+    "RU": "Апрель"
+  },
+  "_May":{
+    "EN": "May",
+    "RU": "Май"
+  },
+  "_Jun":{
+    "EN": "June",
+    "RU": "Июнь"
+  },
+  "_Jul":{
+    "EN": "July",
+    "RU": "Июль"
+  },
+  "_Aug":{
+    "EN": "August",
+    "RU": "Август"
+  },
+  "_Sep":{
+    "EN": "September",
+    "RU": "Сентябрь"
+  },
+  "_Oct":{
+    "EN": "October",
+    "RU": "Октябрь"
+  },
+  "_Nov":{
+    "EN": "November",
+    "RU": "Ноябрь"
+  },
+  "_Dec":{
+    "EN": "December",
+    "RU": "Декабрь"
+  },
+  "_Mset":{
+    "EN": "Module settings:",
+    "RU": "Настройки модуля:"
+  },
+  "_MAuth":{
+    "EN": "Author:",
+    "RU": "Автор:"
+  },
+  "_MKer":{
+    "EN": "Min kernel version:",
+    "RU": "Мин. версия ядра:"
+  },
+  "_MVer":{
+    "EN": "Module Version:",
+    "RU": "Версия модуля:"
+  },
+  "_MPHP":{
+    "EN": "Min PHP version:",
+    "RU": "Мин. версия PHP:"
+  },
+  "_MDesc":{
+    "EN": "Description:",
+    "RU": "Описание:"
+  },
+  "_MActive":{
+    "EN": "Active page:",
+    "RU": "Активная страница:"
+  },
+  "_MOnoff":{
+    "EN": "Module on / off",
+    "RU": "Модуль вкл. / выкл."
+  },
+  "_MMode":{
+    "EN": "Module mode:",
+    "RU": "Режим модуля:"
+  },
+  "_MInterface":{
+    "EN": "The grafical part:",
+    "RU": "Графическая часть:"
+  },
+  "_MI":{
+    "EN": "Pre-initialization:",
+    "RU": "Пре-инициализация:"
+  },
+  "_MAP":{
+    "EN": "Additional pre-initialization associated with the main thread:",
+    "RU": "Дополнительная пре-инициализацию связанная с основным потоком:"
+  },
+  "_MCache":{
+    "EN": "Cache usage:",
+    "RU": "Использование кэша:"
+  },
+  "_MCT":{
+    "EN": "Cache Time (Sec.):",
+    "RU": "Время кэширования(Сек.):"
+  },
+  "_MTR":{
+    "EN": "Own translation file:",
+    "RU": "Собственный файл перевода:"
+  },
+  "_MCSS":{
+    "EN": "Native CSS style:",
+    "RU": "Собственный CSS стиль:"
+  },
+  "_MJS":{
+    "EN": "Own JS library:",
+    "RU": "Собственная JS библиотека:"
   }
 }
