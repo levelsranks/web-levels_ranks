@@ -190,6 +190,7 @@ return array (
     '_Statistics' =>
         array (
             'EN' => 'Players Statistics',
+			'BR' => 'Estatísticas dos Players',
             'RU' => 'Статистика игроков',
             'UA' => 'Статистика гравців',
             'LT' => 'Statistika žaidėjai',
@@ -243,6 +244,7 @@ return array (
     '_Sidebar_statistics' =>
         array (
             'EN' => 'Statistics',
+			'BR' => 'Estatisticas',
             'RU' => 'Статистика',
             'UA' => 'Статистика',
             'LT' => 'Statistika',
@@ -269,6 +271,7 @@ return array (
     '_Admins_sb' =>
         array (
             'EN' => 'Admin List',
+			'BR' => 'Lista de Administradores',
             'RU' => 'Список администраторов',
             'UA' => 'Список адміністраторів',
             'LT' => 'Administratorių sąrašas',
@@ -282,6 +285,7 @@ return array (
     '_Rank_stats' =>
         array (
             'EN' => 'Statistics - Rank Distribution',
+			'BR' => 'Estatísticas - Distribuição de Rank',
             'RU' => 'Статистика - Распределение рангов',
             'UA' => 'Статистика - Розподіл рангів',
             'LT' => 'Statistika - reitingų paskirstymas',
@@ -295,6 +299,7 @@ return array (
     '_Game' =>
         array (
             'EN' => 'Game',
+			'BR' => 'Game',
             'RU' => 'Игра',
             'UA' => 'Гра',
             'LT' => 'Žaidimas',
@@ -431,6 +436,7 @@ return array (
     '_Date' =>
         array (
             'EN' => 'Date',
+			'BR' => 'Date',
             'RU' => 'Дата',
             'UA' => 'Дата',
             'LT' => 'Data',
@@ -457,6 +463,7 @@ return array (
     '_Admin' =>
         array (
             'EN' => 'Admin',
+			'BR' => 'Administradores',
             'RU' => 'Админ.',
             'UA' => 'Адмін.',
             'LT' => 'Admin.',
@@ -575,6 +582,7 @@ return array (
     '_Rank_distribution' =>
         array (
             'EN' => 'Rank Distribution',
+			'BR' => 'Distribuição de Rank',
             'RU' => 'Распределение рангов',
             'UA' => 'Розподіл рангів',
             'LT' => 'Rank distribution',
@@ -588,6 +596,7 @@ return array (
     '_Hero_without_name' =>
         array (
             'EN' => 'Hello, Stranger',
+			'BR' => 'Olá, Visitante',
             'RU' => 'Герой без имени',
             'UA' => 'Герой без імені',
             'LT' => 'Hero without a name',
@@ -718,6 +727,7 @@ return array (
     '_Online_mon' =>
         array (
             'EN' => 'Online Monitoring',
+			'BR' => 'Monitoramento Online',
             'RU' => 'Мониторинг онлайна',
             'UA' => 'Моніторинг онлайну',
             'LT' => 'Interneto stebėjimas',
@@ -1231,7 +1241,7 @@ return array (
         ),
 	'_Vips' =>
         array (
-            'EN' => 'Vips list',
+            'EN' => 'Vips List',
             'RU' => 'Список вип игроков',
 			'UA' => 'Список віп гравців',
             'CRO' => 'Vip lista',
@@ -1252,6 +1262,7 @@ return array (
     '_Server_Information' =>
         array (
             'EN' => 'Server Information',
+			'BR' => 'Informação do Servidor',
             'RU' => 'Информация о сервере',
 			'UA' => 'Інформація про сервер',
             'CRO' => 'Informacije o Serveru',
@@ -1289,6 +1300,7 @@ return array (
     '_Unknown' =>
         array (
             'EN' => 'Unknown',
+			'BR' => 'Desconhecido',
             'RU' => 'Неизвестно',
             'UA' => 'Неізвестноi',
             'LT' => 'Nežinoma',
