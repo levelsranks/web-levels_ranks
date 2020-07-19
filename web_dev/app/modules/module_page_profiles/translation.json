@@ -24,6 +24,7 @@
   "_Game_time": {
     "DE": "Spielzeit",
     "EN": "Playtime:",
+	"BR": "Tempo de Jogo:",
     "RU": "Игровое время:",
     "UA": "ігровий час:",
 	"LT": "Pražaistas laikas:",
@@ -111,7 +112,7 @@
   },
   "_Ace": {
     "DE": "Ace",
-    "EN": "Aces:",
+    "EN": "Ace:",
     "RU": "Эйсов:",
     "UA": "Ace:",
 	"LT": "Ace:",
@@ -123,6 +124,7 @@
   "_Value_rank": {
     "DE": "Gesamtpunktzahl / Rang:",
     "EN": "Total Points / Rank:",
+	"BR": "Total de Pontos / Rank:",
     "RU": "Количество очков / ранг:",
     "UA": "Кількість поінтів / звання:",
 	"LT": "Išviso taškų / Rangas",
@@ -248,6 +250,7 @@
   },
   "_Last_connect": {
     "EN": "Last Connect",
+	"BR": "Última Conexão:",
     "RU": "Последняя игра",
 	"UA": "Останнє підключення",
 	"CRO": "Posljednja konekcija",

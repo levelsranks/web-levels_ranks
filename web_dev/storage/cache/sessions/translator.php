@@ -229,6 +229,7 @@ return array (
     '_Sidebar_social' =>
         array (
             'EN' => 'Social Networks',
+			'BR' => 'Redes Sociais',
             'RU' => 'Социальные сети',
             'UA' => 'Соціальні мережі',
             'LT' => 'Socialiniai tinklai',
@@ -346,6 +347,7 @@ return array (
     '_Notifications' =>
         array (
             'EN' => 'Notifications',
+			'BR' => 'Notificações',
             'RU' => 'Уведомления',
             'UA' => 'Повідомлення',
             'LT' => 'Pranešimai',
@@ -359,6 +361,7 @@ return array (
     '_No_Notifications' =>
         array (
             'EN' => 'All Clear',
+			'BR' => 'Limpo',
             'RU' => 'нет новых уведомлений',
             'UA' => 'немає нових повідомлень',
             'LT' => 'naujų pranešimų nėra',
@@ -372,6 +375,7 @@ return array (
     '_Plays_since' =>
         array (
             'EN' => 'Played Last:',
+			'BR' => 'Visto última vez:',
             'RU' => 'Последняя игра:',
             'UA' => 'Остання гра',
             'LT' => 'Paskutinį kartą žaista',
@@ -384,7 +388,8 @@ return array (
         ),
     '_Headshot' =>
         array (
-            'EN' => 'Headshots',
+            'EN' => 'HeadShots',
+			'BR' => 'HeadShots',
             'RU' => 'Убийств в голову',
             'UA' => 'Вбивств в голову',
             'LT' => 'Pataikymai į galvą',
@@ -398,6 +403,7 @@ return array (
     '_Connect' =>
         array (
             'EN' => 'Connect',
+			'BR' => 'Conectar',
             'RU' => 'Присоединиться',
             'UA' => 'Приєднатися',
             'LT' => 'Prisijungė',
@@ -411,6 +417,7 @@ return array (
     '_Connect_2' =>
         array (
             'EN' => 'Join',
+			'BR' => 'Junte-se',
             'RU' => 'Играть',
             'UA' => 'Играть',
             'LT' => 'Jungtis',
@@ -697,6 +704,7 @@ return array (
     '_Map' =>
         array (
             'EN' => 'Map',
+			'BR' => 'Mapa',
             'RU' => 'Карта',
             'UA' => 'Мапа',
             'LT' => 'Žemėlapis',
@@ -762,6 +770,7 @@ return array (
     '_Point' =>
         array (
             'EN' => 'Points',
+			'EN' => 'Pontos',
             'RU' => 'Очки',
             'UA' => 'Поінти',
             'LT' => 'Taškai',
@@ -814,6 +823,7 @@ return array (
     '_Play_time' =>
         array (
             'EN' => 'Playtime',
+			'BR' => 'Tempo de Jogo',
             'RU' => 'Время игры',
             'UA' => 'Час гри',
             'LT' => 'Pražaistas Laikas',
