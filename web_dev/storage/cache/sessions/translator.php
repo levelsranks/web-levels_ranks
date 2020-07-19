@@ -9,6 +9,7 @@ return array (
         array (
             'DE' => 'Russisch',
             'EN' => 'Russian',
+			'BR' => 'Russian',
             'RU' => 'Русский',
             'UA' => 'Русский',
             'LT' => 'Rusų',
@@ -22,6 +23,7 @@ return array (
         array (
             'DE' => 'Englisch',
             'EN' => 'English',
+			'BR' => 'English',
             'RU' => 'Английский',
             'UA' => 'Англійська',
             'LT' => 'Anglų',
@@ -31,10 +33,25 @@ return array (
             'BA' => 'Engleski',
             'TR' => 'İngilizce'
         ),
+	'_BR' =>
+        array (
+            'DE' => 'Brazil',
+            'EN' => 'Brazil',
+			'BR' => 'Brazil',
+            'RU' => 'Brazil',
+            'UA' => 'Brazil',
+            'LT' => 'Brazil',
+            'CH' => 'Brazil',
+            'CRO' => 'Brazil',
+            'RS' => 'Brazil',
+            'BA' => 'Brazil',
+            'TR' => 'Brazil'
+        ),
     '_UA' =>
         array (
             'DE' => 'Ukraine',
             'EN' => 'Ukrainian',
+			'BR' => 'Ukrainian',
             'RU' => 'Украинский',
             'UA' => 'Український',
             'LT' => 'Ukrainiečių',
@@ -48,6 +65,7 @@ return array (
         array (
             'DE' => 'Lithuania',
             'EN' => 'Lithuanian',
+			'BR' => 'Lithuanian',
             'RU' => 'Литовский',
             'UA' => 'Литовська',
             'LT' => 'Lietuvių',
@@ -61,6 +79,7 @@ return array (
         array (
             'DE' => 'Deutsch',
             'EN' => 'Deutsch',
+			'BR' => 'Deutsch',
             'RU' => 'Немецкий',
             'UA' => 'Німецький',
             'LT' => 'Vokiečių kalba',
@@ -74,6 +93,7 @@ return array (
         array (
             'DE' => 'Verein. Chinesisch',
             'EN' => 'Simpl. Chinese',
+			'BR' => 'Simpl. Chinese',
             'RU' => 'Китайский',
             'UA' => 'Китайська',
             'LT' => 'Supaprastinta kinų kalba',
@@ -87,6 +107,7 @@ return array (
         array (
             'DE' => 'Serbian',
             'EN' => 'Serbian',
+			'BR' => 'Serbian',
             'RU' => 'Serbian',
             'UA' => 'Serbian',
             'LT' => 'Serbian',
@@ -100,6 +121,7 @@ return array (
         array (
             'DE' => 'Croatian',
             'EN' => 'Croatian',
+			'BR' => 'Croatian',
             'RU' => 'Croatian',
             'UA' => 'Croatian',
             'LT' => 'Croatian',
@@ -113,6 +135,7 @@ return array (
         array (
             'DE' => 'Bosnian',
             'EN' => 'Bosnian',
+			'BR' => 'Bosnian',
             'RU' => 'Bosnian',
             'UA' => 'Bosnian',
             'LT' => 'Bosnian',
@@ -126,6 +149,7 @@ return array (
         array (
             'DE' => 'Türkisch',
             'EN' => 'Turkish',
+			'BR' => 'Turkish',
             'RU' => 'турецкий',
             'UA' => 'турецька',
             'LT' => 'Turkų',
@@ -138,6 +162,7 @@ return array (
     '_Server' =>
         array (
             'EN' => 'Server',
+			'BR' => 'Servidores',
             'RU' => 'Сервер',
             'UA' => 'Сервер',
             'LT' => 'Serveris',
@@ -151,6 +176,7 @@ return array (
     '_Home' =>
         array (
             'EN' => 'Home',
+			'BR' => 'Página Inicial',
             'RU' => 'Главная',
             'UA' => 'Головна',
             'LT' => 'Pagrindinis',
@@ -541,7 +567,7 @@ return array (
         ),
     '_Rank_distribution' =>
         array (
-            'EN' => 'Rank distribution',
+            'EN' => 'Rank Distribution',
             'RU' => 'Распределение рангов',
             'UA' => 'Розподіл рангів',
             'LT' => 'Rank distribution',
@@ -1141,6 +1167,7 @@ return array (
     '_Log_in' =>
         array (
             'EN' => 'Log in',
+			'BR' => 'Login',
             'RU' => 'Войти',
             'UA' => 'Увійти',
             'LT' => 'Prisijungti',
@@ -1154,6 +1181,7 @@ return array (
     '_Logout' =>
         array (
             'EN' => 'Log out',
+			'BR' => 'Logout',
             'RU' => 'Выйти',
             'UA' => 'Вийти',
             'LT' => 'Atsijungti',
@@ -1166,15 +1194,16 @@ return array (
         ),
     '_Admin_panel' =>
         array (
-            'EN' => 'Admin panel',
+            'EN' => 'Admin Panel',
+			'BR' => 'Painel Administrativo',
             'RU' => 'Панель администратора',
             'UA' => 'Панель адміністратора',
-            'LT' => 'Admin panel',
-            'DE' => 'Admin panel',
+            'LT' => 'Admin Panel',
+            'DE' => 'Admin Panel',
             'CH' => '管理员面板',
-            'CRO' => 'Admin panel',
-            'RS' => 'Admin panel',
-            'BA' => 'Admin panel',
+            'CRO' => 'Admin Panel',
+            'RS' => 'Admin Panel',
+            'BA' => 'Admin Panel',
             'TR' => 'Admin paneli'
         ),
 	'_LK' =>
