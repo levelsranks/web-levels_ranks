@@ -9,6 +9,7 @@ return array (
         array (
             'DE' => 'Russisch',
             'EN' => 'Russian',
+			'BR' => 'Russian',
             'RU' => 'Русский',
             'UA' => 'Русский',
             'LT' => 'Rusų',
@@ -22,6 +23,7 @@ return array (
         array (
             'DE' => 'Englisch',
             'EN' => 'English',
+			'BR' => 'English',
             'RU' => 'Английский',
             'UA' => 'Англійська',
             'LT' => 'Anglų',
@@ -31,10 +33,25 @@ return array (
             'BA' => 'Engleski',
             'TR' => 'İngilizce'
         ),
+	'_BR' =>
+        array (
+            'DE' => 'Brazil',
+            'EN' => 'Brazil',
+			'BR' => 'Brazil',
+            'RU' => 'Brazil',
+            'UA' => 'Brazil',
+            'LT' => 'Brazil',
+            'CH' => 'Brazil',
+            'CRO' => 'Brazil',
+            'RS' => 'Brazil',
+            'BA' => 'Brazil',
+            'TR' => 'Brazil'
+        ),
     '_UA' =>
         array (
             'DE' => 'Ukraine',
             'EN' => 'Ukrainian',
+			'BR' => 'Ukrainian',
             'RU' => 'Украинский',
             'UA' => 'Український',
             'LT' => 'Ukrainiečių',
@@ -48,6 +65,7 @@ return array (
         array (
             'DE' => 'Lithuania',
             'EN' => 'Lithuanian',
+			'BR' => 'Lithuanian',
             'RU' => 'Литовский',
             'UA' => 'Литовська',
             'LT' => 'Lietuvių',
@@ -61,6 +79,7 @@ return array (
         array (
             'DE' => 'Deutsch',
             'EN' => 'Deutsch',
+			'BR' => 'Deutsch',
             'RU' => 'Немецкий',
             'UA' => 'Німецький',
             'LT' => 'Vokiečių kalba',
@@ -74,6 +93,7 @@ return array (
         array (
             'DE' => 'Verein. Chinesisch',
             'EN' => 'Simpl. Chinese',
+			'BR' => 'Simpl. Chinese',
             'RU' => 'Китайский',
             'UA' => 'Китайська',
             'LT' => 'Supaprastinta kinų kalba',
@@ -87,6 +107,7 @@ return array (
         array (
             'DE' => 'Serbian',
             'EN' => 'Serbian',
+			'BR' => 'Serbian',
             'RU' => 'Serbian',
             'UA' => 'Serbian',
             'LT' => 'Serbian',
@@ -100,6 +121,7 @@ return array (
         array (
             'DE' => 'Croatian',
             'EN' => 'Croatian',
+			'BR' => 'Croatian',
             'RU' => 'Croatian',
             'UA' => 'Croatian',
             'LT' => 'Croatian',
@@ -113,6 +135,7 @@ return array (
         array (
             'DE' => 'Bosnian',
             'EN' => 'Bosnian',
+			'BR' => 'Bosnian',
             'RU' => 'Bosnian',
             'UA' => 'Bosnian',
             'LT' => 'Bosnian',
@@ -126,6 +149,7 @@ return array (
         array (
             'DE' => 'Türkisch',
             'EN' => 'Turkish',
+			'BR' => 'Turkish',
             'RU' => 'турецкий',
             'UA' => 'турецька',
             'LT' => 'Turkų',
@@ -138,6 +162,7 @@ return array (
     '_Server' =>
         array (
             'EN' => 'Server',
+			'BR' => 'Servidores',
             'RU' => 'Сервер',
             'UA' => 'Сервер',
             'LT' => 'Serveris',
@@ -151,6 +176,7 @@ return array (
     '_Home' =>
         array (
             'EN' => 'Home',
+			'BR' => 'Página Inicial',
             'RU' => 'Главная',
             'UA' => 'Головна',
             'LT' => 'Pagrindinis',
@@ -164,6 +190,7 @@ return array (
     '_Statistics' =>
         array (
             'EN' => 'Players Statistics',
+			'BR' => 'Estatísticas dos Players',
             'RU' => 'Статистика игроков',
             'UA' => 'Статистика гравців',
             'LT' => 'Statistika žaidėjai',
@@ -203,6 +230,7 @@ return array (
     '_Sidebar_social' =>
         array (
             'EN' => 'Social Networks',
+			'BR' => 'Redes Sociais',
             'RU' => 'Социальные сети',
             'UA' => 'Соціальні мережі',
             'LT' => 'Socialiniai tinklai',
@@ -216,6 +244,7 @@ return array (
     '_Sidebar_statistics' =>
         array (
             'EN' => 'Statistics',
+			'BR' => 'Estatisticas',
             'RU' => 'Статистика',
             'UA' => 'Статистика',
             'LT' => 'Statistika',
@@ -242,6 +271,7 @@ return array (
     '_Admins_sb' =>
         array (
             'EN' => 'Admin List',
+			'BR' => 'Lista de Administradores',
             'RU' => 'Список администраторов',
             'UA' => 'Список адміністраторів',
             'LT' => 'Administratorių sąrašas',
@@ -255,6 +285,7 @@ return array (
     '_Rank_stats' =>
         array (
             'EN' => 'Statistics - Rank Distribution',
+			'BR' => 'Estatísticas - Distribuição de Rank',
             'RU' => 'Статистика - Распределение рангов',
             'UA' => 'Статистика - Розподіл рангів',
             'LT' => 'Statistika - reitingų paskirstymas',
@@ -268,6 +299,7 @@ return array (
     '_Game' =>
         array (
             'EN' => 'Game',
+			'BR' => 'Game',
             'RU' => 'Игра',
             'UA' => 'Гра',
             'LT' => 'Žaidimas',
@@ -320,6 +352,7 @@ return array (
     '_Notifications' =>
         array (
             'EN' => 'Notifications',
+			'BR' => 'Notificações',
             'RU' => 'Уведомления',
             'UA' => 'Повідомлення',
             'LT' => 'Pranešimai',
@@ -333,6 +366,7 @@ return array (
     '_No_Notifications' =>
         array (
             'EN' => 'All Clear',
+			'BR' => 'Limpo',
             'RU' => 'нет новых уведомлений',
             'UA' => 'немає нових повідомлень',
             'LT' => 'naujų pranešimų nėra',
@@ -346,6 +380,7 @@ return array (
     '_Plays_since' =>
         array (
             'EN' => 'Played Last:',
+			'BR' => 'Visto última vez:',
             'RU' => 'Последняя игра:',
             'UA' => 'Остання гра',
             'LT' => 'Paskutinį kartą žaista',
@@ -358,7 +393,8 @@ return array (
         ),
     '_Headshot' =>
         array (
-            'EN' => 'Headshots',
+            'EN' => 'HeadShots',
+			'BR' => 'HeadShots',
             'RU' => 'Убийств в голову',
             'UA' => 'Вбивств в голову',
             'LT' => 'Pataikymai į galvą',
@@ -372,6 +408,7 @@ return array (
     '_Connect' =>
         array (
             'EN' => 'Connect',
+			'BR' => 'Conectar',
             'RU' => 'Присоединиться',
             'UA' => 'Приєднатися',
             'LT' => 'Prisijungė',
@@ -385,6 +422,7 @@ return array (
     '_Connect_2' =>
         array (
             'EN' => 'Join',
+			'BR' => 'Junte-se',
             'RU' => 'Играть',
             'UA' => 'Играть',
             'LT' => 'Jungtis',
@@ -398,6 +436,7 @@ return array (
     '_Date' =>
         array (
             'EN' => 'Date',
+			'BR' => 'Date',
             'RU' => 'Дата',
             'UA' => 'Дата',
             'LT' => 'Data',
@@ -424,6 +463,7 @@ return array (
     '_Admin' =>
         array (
             'EN' => 'Admin',
+			'BR' => 'Administradores',
             'RU' => 'Админ.',
             'UA' => 'Адмін.',
             'LT' => 'Admin.',
@@ -541,7 +581,8 @@ return array (
         ),
     '_Rank_distribution' =>
         array (
-            'EN' => 'Rank distribution',
+            'EN' => 'Rank Distribution',
+			'BR' => 'Distribuição de Rank',
             'RU' => 'Распределение рангов',
             'UA' => 'Розподіл рангів',
             'LT' => 'Rank distribution',
@@ -555,6 +596,7 @@ return array (
     '_Hero_without_name' =>
         array (
             'EN' => 'Hello, Stranger',
+			'BR' => 'Olá, Visitante',
             'RU' => 'Герой без имени',
             'UA' => 'Герой без імені',
             'LT' => 'Hero without a name',
@@ -671,6 +713,7 @@ return array (
     '_Map' =>
         array (
             'EN' => 'Map',
+			'BR' => 'Mapa',
             'RU' => 'Карта',
             'UA' => 'Мапа',
             'LT' => 'Žemėlapis',
@@ -684,6 +727,7 @@ return array (
     '_Online_mon' =>
         array (
             'EN' => 'Online Monitoring',
+			'BR' => 'Monitoramento Online',
             'RU' => 'Мониторинг онлайна',
             'UA' => 'Моніторинг онлайну',
             'LT' => 'Interneto stebėjimas',
@@ -736,6 +780,7 @@ return array (
     '_Point' =>
         array (
             'EN' => 'Points',
+			'EN' => 'Pontos',
             'RU' => 'Очки',
             'UA' => 'Поінти',
             'LT' => 'Taškai',
@@ -788,6 +833,7 @@ return array (
     '_Play_time' =>
         array (
             'EN' => 'Playtime',
+			'BR' => 'Tempo de Jogo',
             'RU' => 'Время игры',
             'UA' => 'Час гри',
             'LT' => 'Pražaistas Laikas',
@@ -1141,6 +1187,7 @@ return array (
     '_Log_in' =>
         array (
             'EN' => 'Log in',
+			'BR' => 'Login',
             'RU' => 'Войти',
             'UA' => 'Увійти',
             'LT' => 'Prisijungti',
@@ -1154,6 +1201,7 @@ return array (
     '_Logout' =>
         array (
             'EN' => 'Log out',
+			'BR' => 'Logout',
             'RU' => 'Выйти',
             'UA' => 'Вийти',
             'LT' => 'Atsijungti',
@@ -1166,15 +1214,16 @@ return array (
         ),
     '_Admin_panel' =>
         array (
-            'EN' => 'Admin panel',
+            'EN' => 'Admin Panel',
+			'BR' => 'Painel Administrativo',
             'RU' => 'Панель администратора',
             'UA' => 'Панель адміністратора',
-            'LT' => 'Admin panel',
-            'DE' => 'Admin panel',
+            'LT' => 'Admin Panel',
+            'DE' => 'Admin Panel',
             'CH' => '管理员面板',
-            'CRO' => 'Admin panel',
-            'RS' => 'Admin panel',
-            'BA' => 'Admin panel',
+            'CRO' => 'Admin Panel',
+            'RS' => 'Admin Panel',
+            'BA' => 'Admin Panel',
             'TR' => 'Admin paneli'
         ),
 	'_LK' =>
@@ -1192,7 +1241,7 @@ return array (
         ),
 	'_Vips' =>
         array (
-            'EN' => 'Vips list',
+            'EN' => 'Vips List',
             'RU' => 'Список вип игроков',
 			'UA' => 'Список віп гравців',
             'CRO' => 'Vip lista',
@@ -1213,6 +1262,7 @@ return array (
     '_Server_Information' =>
         array (
             'EN' => 'Server Information',
+			'BR' => 'Informação do Servidor',
             'RU' => 'Информация о сервере',
 			'UA' => 'Інформація про сервер',
             'CRO' => 'Informacije o Serveru',
@@ -1250,6 +1300,7 @@ return array (
     '_Unknown' =>
         array (
             'EN' => 'Unknown',
+			'BR' => 'Desconhecido',
             'RU' => 'Неизвестно',
             'UA' => 'Неізвестноi',
             'LT' => 'Nežinoma',
