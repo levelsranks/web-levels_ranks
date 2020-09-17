@@ -21,9 +21,9 @@
                 <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Show_avatars')?></div>
                     <select name="avatars">
                         <option style="display:none" value="<?php echo (int) $General->arr_general['avatars']?>"><?php if( $General->arr_general['avatars'] == 1 ) { echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_1');} elseif ( $General->arr_general['avatars'] == 2) { echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_2');} else { echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_0');}?></option>
-                        <option value="1"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_1'); ?></option>
-                        <option value="2"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_2'); ?></option>
-                        <option value="0"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_0'); ?></option>
+                        <option value="1"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_1'); ?></option>
+                        <option value="2"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_2'); ?></option>
+                        <option value="0"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_0'); ?></option>
                     </select>
                 </div>
                 <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_avatars_cache_time')?></div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']; ?>"></div>
