@@ -563,7 +563,7 @@
   "_db_con": {
     "EN": "Database",
     "RU": "База данных",
-	"UA": "База данных"
+	"UA": "База даних"
   },
   "_take_db_con": {
     "EN": "Choose a database",
