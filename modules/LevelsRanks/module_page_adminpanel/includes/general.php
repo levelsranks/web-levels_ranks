@@ -26,7 +26,7 @@
                         <option value="0"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel', '_Value_Status_0'); ?></option>
                     </select>
                 </div>
-                <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_avatars_cache_time')?></div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']?>"></div>
+                <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_avatars_cache_time')?></div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']; ?>"></div>
             </form>
             <input class='btn' name="option_one_save" type="submit" form="options_one" value="<?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Save')?>">
         </div>
