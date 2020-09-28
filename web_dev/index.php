@@ -23,7 +23,7 @@ set_time_limit(4);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.133');
+define('VERSION', '0.2.134');
 
 // Основная директория вэб-приложения.
 define('APP', 'app/');
