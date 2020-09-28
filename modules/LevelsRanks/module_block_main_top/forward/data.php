@@ -23,17 +23,17 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
             for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
                 // Забираем массив даннхы
                 $data['module_block_main_top'][] = $Db->queryAll( 'FPS', 0, 0,
-                    'SELECT `fps_players.nickname` AS `name`,
-                                                        `fps_players.steam_id` AS `steam`, 
-                                                        `fps_servers_stats.points` AS `value`, 
-                                                        `fps_servers_stats.kills`, 
-                                                        `fps_servers_stats.deaths`, 
-                                                        `fps_servers_stats.playtime`,
-                                                        `fps_servers_stats.rank`,
-                                                        CASE WHEN `fps_servers_stats.deaths` = 0 THEN `fps_servers_stats.deaths` = 1 END, TRUNCATE( fps_servers_stats.kills/fps_servers_stats.deaths, 2 ) AS kd
+                    'SELECT `fps_players`.`nickname` AS `name`,
+                                                        `fps_players`.`steam_id` AS `steam`, 
+                                                        `fps_servers_stats`.`points` AS `value`, 
+                                                        `fps_servers_stats`.`kills`, 
+                                                        `fps_servers_stats`.`deaths`, 
+                                                        `fps_servers_stats`.`playtime`,
+                                                        `fps_servers_stats`.`rank`,
+                                                        CASE WHEN `fps_servers_stats`.`deaths` = 0 THEN `fps_servers_stats`.`deaths` = 1 END, TRUNCATE( `fps_servers_stats`.`kills`/`fps_servers_stats`.`deaths`, 2 ) AS `kd`
                                                         FROM `fps_players`
-                                                        INNER JOIN `fps_servers_stats` ON `fps_players.account_id` = `fps_servers_stats.account_id`
-                                                        WHERE `fps_servers_stats.server_id` = ' . $d . ' AND `fps_servers_stats.lastconnect` > 0
+                                                        INNER JOIN `fps_servers_stats` ON `fps_players`.`account_id` = `fps_servers_stats`.`account_id`
+                                                        WHERE `fps_servers_stats`.`server_id` = ' . $d . ' AND `fps_servers_stats`.`lastconnect` > 0
                                                         order by `value` desc LIMIT 10' );
             endfor;
         endif;
@@ -72,17 +72,17 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                 for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
                     // Забираем массив даннхы
                     $data['module_block_main_top'][] = $Db->queryAll( 'FPS', 0, 0,
-                        'SELECT fps_players.nickname AS name,
-                                                        fps_players.steam_id AS steam, 
-                                                        fps_servers_stats.points AS value, 
-                                                        fps_servers_stats.kills, 
-                                                        fps_servers_stats.deaths, 
-                                                        fps_servers_stats.playtime,
-                                                        fps_servers_stats.rank,
-                                                        CASE WHEN fps_servers_stats.deaths = 0 THEN fps_servers_stats.deaths = 1 END, TRUNCATE( fps_servers_stats.kills/fps_servers_stats.deaths, 2 ) AS kd
-                                                        FROM fps_players
-                                                        INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
-                                                        WHERE fps_servers_stats.server_id = ' . $d . ' AND fps_servers_stats.lastconnect > 0
+                        'SELECT fps_players.nickname AS `name`,
+                                                        `fps_players`.`steam_id` AS `steam`, 
+                                                        `fps_servers_stats`.`points` AS `value`, 
+                                                        `fps_servers_stats`.`kills`, 
+                                                        `fps_servers_stats`.`deaths`, 
+                                                        `fps_servers_stats`.`playtime`,
+                                                        `fps_servers_stats`.`rank`,
+                                                        CASE WHEN `fps_servers_stats`.`deaths` = 0 THEN `fps_servers_stats`.`deaths` = 1 END, TRUNCATE( `fps_servers_stats`.`kills`/`fps_servers_stats`.`deaths`, 2 ) AS `kd`
+                                                        FROM `fps_players`
+                                                        INNER JOIN `fps_servers_stats` ON `fps_players`.`account_id` = `fps_servers_stats`.`account_id`
+                                                        WHERE `fps_servers_stats`.`server_id` = ' . $d . ' AND `fps_servers_stats`.`lastconnect` > 0
                                                         order by `value` desc LIMIT 10' );
                 endfor;
             endif;
@@ -91,7 +91,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
             if ( ! empty( $Db->db_data['RankMeKento'] ) ):
                 for ($d = 0; $d < $Db->table_count['RankMeKento']; $d++ ):
                     // Забираем массив даннхы
-                    $data['module_block_main_top'][] = $Db->queryAll( 'RankMeKento', $Db->db_data['RankMeKento'][$d]['USER_ID'], $Db->db_data['RankMeKento'][$d]['DB_num'],'SELECT `name`, `steam`, `connected` AS `playtime`, `score` AS `value`, `kills`, `deaths`, CASE WHEN `deaths` = 0 THEN `deaths` = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM `' . $Db->db_data['RankMeKento'][ $d ]['Table'] . '` WHERE lastconnect > 0 order by `value` desc LIMIT 10' );
+                    $data['module_block_main_top'][] = $Db->queryAll( 'RankMeKento', $Db->db_data['RankMeKento'][$d]['USER_ID'], $Db->db_data['RankMeKento'][$d]['DB_num'],'SELECT `name`, `steam`, `connected` AS `playtime`, `score` AS `value`, `kills`, `deaths`, CASE WHEN `deaths` = 0 THEN `deaths` = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM `' . $Db->db_data['RankMeKento'][ $d ]['Table'] . '` WHERE `lastconnect` > 0 order by `value` desc LIMIT 10' );
                 endfor;
             endif;
             
