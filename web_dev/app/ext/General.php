@@ -98,18 +98,20 @@ class General {
      * @return string                  Выводит ссылку на аватар если он существует.
      */
     public function getAvatar( $profile, $type ) {
-        $url = ( $type == 1 ) ? CACHE . 'img/avatars/' . $profile . '.jpg' : CACHE . 'img/avatars/slim/' . $profile . '.jpg';
+        $url = CACHE . 'img/avatars/' . $profile . '.json';
         switch ( $type ) {
             case 1:
                 if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
-                    return $url;
+                    $file = json_decode(file_get_contents($url), true);
+                    return $file['avatar'];
                 elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
                     return 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
                 endif;
                 break;
             case 2:
                 if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
-                    return $url;
+                    $file = json_decode(file_get_contents($url), true);
+                    return $file['slim'];
                 elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
                     return 'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
                 endif;
@@ -128,35 +130,37 @@ class General {
      * @return int                      Выводит итог проверки.
      */
     public function checkAvatar( $profile, $type ) {
-        $url = CACHE . 'img/avatars/' . $profile . '.jpg';
-        $url_slim = CACHE . 'img/avatars/slim/' . $profile . '.jpg';
-        switch ( $type ) {
-            case 1:
-                if ( file_exists( $url ) ):
-                    if ( time() >= filemtime( $url ) + $this->arr_general['avatars_cache_time'] ):
-                        unlink( $url );
-                        file_exists( $url_slim ) && unlink( $url_slim );
-                        return 1;
-                    else:
-                        return 0;
-                    endif;
-                else:
+        $url = CACHE . 'img/avatars/' . $profile . '.json';
+        if( $type == 1 ) {
+            if ( file_exists( $url ) ):
+                if ( time() >= filemtime( $url ) + $this->arr_general['avatars_cache_time'] ):
+                    unlink( $url );
                     return 1;
-                endif;
-                break;
-            case 2:
-                if ( file_exists( $url_slim ) ):
-                    if ( time() >= filemtime( $url_slim ) + $this->arr_general['avatars_cache_time'] ):
-                        unlink( $url_slim );
-                        file_exists( $url ) && unlink( $url );
-                        return 1;
-                    else:
-                        return 0;
-                    endif;
                 else:
-                    return 1;
+                    return 0;
                 endif;
-                break;
+            else:
+                return 1;
+            endif;
+        }
+    }
+
+    /**
+     * Получение никнейма игрока.
+     *
+     * @since 0.2
+     *
+     * @param  string       $profile    Steam ID игрока
+     *
+     * @return string                   Выводит итог проверки.
+     */
+    public function checkName( $profile ) {
+        $url = CACHE . 'img/avatars/' . $profile . '.json';
+        if ( file_exists( $url ) ) {
+            $file = json_decode(file_get_contents($url), true);
+            return $file['name'];
+        } else {
+            return false;
         }
     }
 
@@ -206,7 +210,7 @@ class General {
      *
      * @return string            Скрипт.
      */
-    function get_js_relevance_avatar( $id, $type = 2 ) {
+    function get_js_relevance_avatar( $id, $type = 1 ) {
         if ( $this->arr_general['avatars'] == 1 ):
             $con = is_numeric( $id ) ? $id : con_steam32to64( $id );
             $check = (int) $this->checkAvatar( $con, $type );

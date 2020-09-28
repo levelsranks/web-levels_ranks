@@ -76,8 +76,13 @@
 }(document);
 
 if (avatar != 0) {
-    $.post("./app/includes/js_controller.php", {function: 'avatars', data: avatar}, function (e) {
-        for (var i = 0; i < avatar.length; i++) document.getElementById(avatar[i]).setAttribute("src", "storage/cache/img/avatars/" + avatar[i] + ".jpg")
+    $.post("./app/includes/js_controller.php", {
+        function: 'avatars', 
+        data: avatar
+    }, function (e) {
+        for (var i = 0; i < avatar.length; i++) {
+            document.getElementById(avatar[i]).setAttribute("src", e);
+        }
     })
 };
 

@@ -14,24 +14,26 @@ if (servers != 0) {
                 document.getElementById('server-tableplayers-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
 
                 var b = 1;
-                if( data[i]['players'].length > 0 ) {
-                    console.log(data[i]['players']);
-                    for (var i2 = 0; i2 < data[i]['players'].length; i2++) {
-                        var str = '<tr>' +
-                            '<th class="text-center">' + b++ + '</th>' +
-                            '<th class="text-center">' + data[i]['players'][i2]['Name'] + '</th>' +
-                            '<th class="text-center">' + data[i]['players'][i2]['Frags'] + '</th>' +
-                            '<th class="text-center">' + data[i]['players'][i2]['TimeF'] + '</th>' +
-                            '</tr>';
-                        po = document.getElementById('players_online_' + i);
-                        po.insertAdjacentHTML('beforeend', str);
+                if( data[i]['players']) {
+                    if( data[i]['players'].length > 0 ) {
+                        console.log(data[i]['players']);
+                        for (var i2 = 0; i2 < data[i]['players'].length; i2++) {
+                            var str = '<tr>' +
+                                '<th class="text-center">' + b++ + '</th>' +
+                                '<th class="text-center">' + data[i]['players'][i2]['Name'] + '</th>' +
+                                '<th class="text-center">' + data[i]['players'][i2]['Frags'] + '</th>' +
+                                '<th class="text-center">' + data[i]['players'][i2]['TimeF'] + '</th>' +
+                                '</tr>';
+                            po = document.getElementById('players_online_' + i);
+                            po.insertAdjacentHTML('beforeend', str);
+                        }
+                        var modal = document.getElementById('server-players-online-' + i );
+                        document.getElementById('connect_server_' + i).setAttribute("href", "steam://connect/" + data[i]['ip'] );
+                    } else {
+                        $('.btn_connect_' + i).prop("onclick", null).off("click");
+                        $('.btn_connect_' + i).attr("href", "steam://connect/" + data[i]['ip'] )
+                        $('.str_connect_' + i).attr("onclick", "document.location = 'steam://connect/" + data[i]['ip'] + "'" )
                     }
-                    var modal = document.getElementById('server-players-online-' + i );
-                    document.getElementById('connect_server_' + i).setAttribute("href", "steam://connect/" + data[i]['ip'] );
-                } else {
-                    $('.btn_connect_' + i).prop("onclick", null).off("click");
-                    $('.btn_connect_' + i).attr("href", "steam://connect/" + data[i]['ip'] )
-                    $('.str_connect_' + i).attr("onclick", "document.location = 'steam://connect/" + data[i]['ip'] + "'" )
                 }
             }
         }
