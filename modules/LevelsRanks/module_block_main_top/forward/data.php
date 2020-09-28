@@ -23,9 +23,9 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
             for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
                 // Забираем массив даннхы
                 $data['module_block_main_top'][] = $Db->queryAll( 'FPS', 0, 0,
-                    'SELECT `fps_players`.`nickname` AS name,
-                                                        `fps_players`.`steam_id` AS steam, 
-                                                        `fps_servers_stats`.`points` AS value, 
+                    'SELECT `fps_players`.`nickname` AS `name`,
+                                                        `fps_players`.`steam_id` AS `steam`, 
+                                                        `fps_servers_stats`.`points` AS `value`, 
                                                         `fps_servers_stats`.`kills`, 
                                                         `fps_servers_stats`.`deaths`, 
                                                         `fps_servers_stats`.`playtime`,
@@ -72,7 +72,7 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                 for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
                     // Забираем массив даннхы
                     $data['module_block_main_top'][] = $Db->queryAll( 'FPS', 0, 0,
-                        'SELECT `fps_players`.`nickname` AS name,
+                        'SELECT `fps_players`.`nickname` AS `name`,
                                                         `fps_players`.`steam_id` AS `steam`, 
                                                         `fps_servers_stats`.`points` AS `value`, 
                                                         `fps_servers_stats`.`kills`, 
