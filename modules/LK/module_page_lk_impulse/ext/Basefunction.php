@@ -52,7 +52,7 @@ class Basefunction{
      */
 	public function BChekGateway($gateway){
 		$param = ['id' => $this->decod[0]];
-		$this->kassa = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pay_service WHERE id = :id", $param);
+		$this->kassa = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_pay_service` WHERE `id` = :id", $param);
 		if(empty($this->kassa[0]['status'])){
 			$this->LkAddLog('_Foff', ['gateway' =>$gateway]);
 				return false;
@@ -71,7 +71,7 @@ class Basefunction{
 			'order' 	=> $this->decod[1],
 			'auth'		=> '%'.$auth[0].'%',
 		];
-		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_order = :order AND pay_auth LIKE :auth AND pay_status = 0", $params);
+		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_pays` WHERE `pay_order` = :order AND `pay_auth` LIKE :auth AND `pay_status` = 0", $params);
 		if(empty($this->pay)){
 				$this->LkAddLog('_PayNotExist', ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'steam'=>$this->decod[3],'amount'=>$this->decod[2],'gateway' =>$gateway]);
 					return false;
@@ -85,7 +85,7 @@ class Basefunction{
 		preg_match('/:[0-9]{1}:\d+/i', $this->decod[3], $auth);
 		$param = ['auth'=>'%'.$auth[0].'%'];
 		if($this->db->db_data['lk'][0]['mod'] == 1)
-			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk` WHERE auth LIKE :auth LIMIT 1", $param);
 		else if($this->db->db_data['lk'][0]['mod'] == 2)
 			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
 		if(empty($player)){

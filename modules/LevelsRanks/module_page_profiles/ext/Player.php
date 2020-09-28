@@ -135,7 +135,7 @@ class Player {
 
             switch ( $dates[ $i ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT steam FROM " . $dates[ $i ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' AND lastconnect > 0 limit 1" );
+                    $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], $dates[ $i ]['USER_ID'], $dates[ $i ]['DB_num'], "SELECT `steam` FROM `" . $dates[ $i ]['Table'] . "` WHERE `steam` LIKE '%" . $this->get_steam_32_short() . "%' AND `lastconnect` > 0 limit 1" );
                     break;
                 case 'FPS':
                     $this->check_user[] = $Db->query( $dates[ $i ]['DB_mod'], 0, 0, "SELECT fps_players.steam_id, fps_players.account_id FROM fps_players INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id WHERE fps_players.steam_id LIKE '%{$this->get_steam_64()}%' AND fps_servers_stats.server_id = '" . $f++ . "' AND fps_servers_stats.lastconnect > 0 LIMIT 1" );
@@ -366,9 +366,9 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND '" . $this->get_value() . "' < value ORDER BY value ASC LIMIT 5" ) );
+                    $a = array_reverse($this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, `rank`, `steam`, `value` FROM `" . $this->found[ $this->server_group ]['Table'] . "` WHERE `lastconnect` > 0 AND '" . $this->get_value() . "' < `value` ORDER BY `value` ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
-                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, rank, steam, `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `lastconnect` > 0 AND value <= '" . $this->get_value() . "' ORDER BY value DESC LIMIT 11" ) );
+                    $b = array_merge( $a, $this->Db->queryAll( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT `name`, `rank`, `steam`, `value` FROM `" . $this->found[ $this->server_group ]['Table'] . "` WHERE `lastconnect` > 0 AND `value` <= '" . $this->get_value() . "' ORDER BY `value` DESC LIMIT 11" ) );
                     $b['countdown_from'] = $this->top_position - $size_a;
                     return $b;
                     break;
@@ -414,7 +414,7 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name`, rank, steam, playtime, `value`, kills, headshots, deaths, round_win, round_lose, shoots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
+                    return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name`, `rank`, `steam`, `playtime`, `value`, `kills`, `headshots`, `deaths`, `round_win`, `round_lose`, `shoots`, `hits`, `lastconnect` FROM `" . $this->found[ $this->server_group ]['Table'] . "` WHERE `steam` LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
                     break;
                 case 'RankMeKento':
                     return $this->Db->query('RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name`, steam, connected AS playtime, score AS `value`, kills, headshots, deaths, match_win AS round_win, match_lose AS round_lose, shots, hits, lastconnect FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1");
@@ -457,7 +457,7 @@ class Player {
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) ):
             switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
                 case 'LevelsRanks':
-                    return $this->Db->query( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `value` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `value` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
+                    return $this->Db->query( 'LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `value` FROM `" . $this->found[ $this->server_group ]['Table'] . "` WHERE `value` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
                     break;
                 case 'RankMeKento':
                     return $this->Db->query( 'RankMeKento', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'],"SELECT COUNT(1) AS `top` FROM (SELECT DISTINCT `score` FROM " . $this->found[ $this->server_group ]['Table'] . " WHERE `score` >= " . $this->get_value() . " AND `lastconnect` > 0) t;")['top'];
@@ -474,7 +474,7 @@ class Player {
     private function get_db_exstats_weapons() {
         switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
             case 'LevelsRanks':
-                    $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT classname, kills FROM " . $this->found[ $this->server_group ]['Table'] . "_weapons WHERE steam LIKE '%" . $this->get_steam_32_short() . "%'" );
+                    $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `classname`, `kills` FROM `" . $this->found[ $this->server_group ]['Table'] . "_weapons` WHERE `steam` LIKE '%" . $this->get_steam_32_short() . "%'" );
                     $b = [];
                     for ( $i = 0, $c = sizeof( $a ); $i < $c; $i++ ):
                         $b += [$a[ $i ]['classname'] => $a[ $i ]['kills'] ];
@@ -503,7 +503,7 @@ class Player {
     private function get_db_plugin_module_unusualkills() {
         switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
             case 'LevelsRanks':
-            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT OP, Penetrated, NoScope, Run, Jump, Flash, Smoke, Whirl, LastClip FROM " . $this->found[ $this->server_group ]['Table'] . "_unusualkills WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+            return $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `OP`, `Penetrated`, `NoScope`, `Run`, `Jump`, `Flash`, `Smoke`, `Whirl`, `LastClip` FROM `" . $this->found[ $this->server_group ]['Table'] . "_unusualkills` WHERE `SteamID` LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 break;
             case 'FPS':
                 return $this->Db->query('FPS', 0, 0, "SELECT fps_unusualkills.op AS OP,
@@ -563,7 +563,7 @@ class Player {
         switch ( $this->found[ $this->server_group ]['DB_mod'] ) {
             case 'LevelsRanks':
                 $h = [];
-                $h = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT Head, Chest, Belly, LeftArm, RightArm, LeftLeg, RightLeg, Neak FROM " . $this->found[ $this->server_group ]['Table'] . "_hits WHERE SteamID LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+                $h = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `Head`, `Chest`, `Belly`, `LeftArm`, `RightArm`, `LeftLeg`, `RightLeg`, `Neak` FROM `" . $this->found[ $this->server_group ]['Table'] . "_hits` WHERE `SteamID` LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
                 return $this->hits = empty( $h ) ? [] : $h + $this->hits;
             break;
             case 'RankMeKento':
@@ -628,7 +628,7 @@ class Player {
     }
     
     private function get_db_plugin_module_maps() {
-          $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT name_map, `rounds_ct` + `rounds_t` AS rounds_win FROM " . $this->found[ $this->server_group ]['Table'] . "_maps WHERE steam LIKE '%" . $this->get_steam_32_short() . "%'" );
+          $a = $this->Db->queryAll('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `name_map`, `rounds_ct` + `rounds_t` AS rounds_win FROM `" . $this->found[ $this->server_group ]['Table'] . "_maps` WHERE `steam` LIKE '%" . $this->get_steam_32_short() . "%'" );
           $b = [];
           for ( $i = 0, $c = sizeof( $a ); $i < $c; $i++ ):
                 $b += [ $a[ $i ]['name_map'] => $a[ $i ]['rounds_win'] ];
@@ -637,7 +637,7 @@ class Player {
     }
 
     private function get_db_plugin_module_geoip() {
-        $a = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT country, city FROM " . $this->found[ $this->server_group ]['Table'] . "_geoip WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
+        $a = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT `country`, `city` FROM `" . $this->found[ $this->server_group ]['Table'] . "_geoip` WHERE `steam` LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
 
         return $a['country'] . ', ' . $a['city'];
     }

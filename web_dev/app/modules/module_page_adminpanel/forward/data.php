@@ -57,7 +57,5 @@ isset( $_POST['save_server'] ) && $Admin->action_add_server();
 // Нажатие на кнопку - Удалить сервер.
 isset( $_POST['del_server'] ) && $Admin->action_del_server();
 
-!empty($_GET['section']) && $_GET['section'] == 'stats' ? $Chart_Visits =  $Admin->charts_attendance() : NULL;
-
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Admin_panel') );

@@ -271,7 +271,7 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
         $db_table = $_POST['TABLE'];
     endif;
 
-    $result = $mysqli->query('SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
+    $result = $mysqli->query('SELECT `kills` FROM ' . $db_table . ' ORDER BY `kills` DESC LIMIT 1');
     $row = $result->fetch_assoc();
 
     if ( ! empty( $row ) ) {

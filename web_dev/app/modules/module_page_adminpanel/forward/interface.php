@@ -21,9 +21,6 @@
         </div>
         <div class="card menu">
             <ul class="nav">
-                <li <?php get_section( 'section', 'modules' ) == 'stats' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','stats')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Admin_stats')?></a>
-                </li>
                 <li <?php get_section( 'section', 'modules' ) == 'general' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','general')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_General_settings')?></a>
                 </li>
@@ -57,11 +54,8 @@
         case 'db':
             require MODULES . 'module_page_adminpanel' . '/includes/db.php';
             break;
-        case 'translator':
+            case 'translator':
             require MODULES . 'module_page_adminpanel' . '/includes/translator.php';
-            break;
-         case 'stats':
-            require MODULES . 'module_page_adminpanel' . '/includes/stats.php';
             break;
     }?>
 </div>

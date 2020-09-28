@@ -77,8 +77,8 @@ $page_num_min = ($page_num - 1) * PLAYERS_ON_PAGE;
 if( ! empty( $res_data[ $server_group ]['statistics'] ) ):
     switch ( $res_data[ $server_group ]['statistics'] ) {
         case 'LevelsRanks':
-            $page_max = ceil($Db->queryNum( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT COUNT(*) FROM " . $res_data[ $server_group ]['data_servers'] . " WHERE lastconnect > 0")[0] / PLAYERS_ON_PAGE );
-            $res = $Db->queryAll( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT name, rank, steam, playtime, value, kills, headshots, deaths, CASE WHEN deaths = 0 THEN deaths = 1 END, TRUNCATE( kills/deaths, 2 ) AS kd FROM " . $res_data[ $server_group ]['data_servers'] . " WHERE lastconnect > 0 order by " . $_SESSION['filter'] . " desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
+            $page_max = ceil($Db->queryNum( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT COUNT(*) FROM `" . $res_data[ $server_group ]['data_servers'] . "` WHERE `lastconnect` > 0")[0] / PLAYERS_ON_PAGE );
+            $res = $Db->queryAll( 'LevelsRanks', $res_data[ $server_group ]['USER_ID'], $res_data[ $server_group ]['data_db'], "SELECT `name`, `rank`, `steam`, `playtime`, `value`, `kills`, `headshots`, `deaths`, CASE WHEN `deaths` = 0 THEN `deaths` = 1 END, TRUNCATE( `kills`/`deaths`, 2 ) AS `kd` FROM `" . $res_data[ $server_group ]['data_servers'] . "` WHERE `lastconnect` > 0 order by `" . $_SESSION['filter'] . "` desc LIMIT " . $page_num_min . "," . PLAYERS_ON_PAGE . " ");
             break;
         case 'FPS':
             $page_max = ceil($Db->queryNum( 'FPS', 0, 0, 'SELECT COUNT(*) FROM fps_servers_stats WHERE server_id = ' . $res_data[ $server_group ]["server_id"] . ' AND lastconnect > 0 ')[0] / PLAYERS_ON_PAGE );
