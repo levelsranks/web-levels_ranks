@@ -20,13 +20,13 @@
                     <div class="input-form"><div class="input_text">Steam WEB KEY</div><input name="web_key" type="password" value="<?php echo $General->arr_general['web_key']?>"></div>
                 <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Show_avatars')?></div>
                     <select name="avatars">
-                        <option style="display:none" value="<?php echo (int) $General->arr_general['avatars']?>"><?php if( $General->arr_general['avatars'] == 1 ) { echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_1');} elseif ( $General->arr_general['avatars'] == 2) { echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_2');} else { echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_0');}?></option>
-                        <option value="1"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_1'); ?></option>
-                        <option value="2"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_2'); ?></option>
-                        <option value="0"><?php echo $Translate->get_translate_module_phrase('module_page_adminpanel','_Value_Status_0'); ?></option>
+                        <option style="display:none" value="<?php echo (int) $General->arr_general['avatars']?>"><?php if( $General->arr_general['avatars'] == 1 ) { echo 'Показывать';} elseif ( $General->arr_general['avatars'] == 2) { echo 'Использовать случайные аватарки';} else { echo 'Не показывать';}?></option>
+                        <option value="1">Показывать</option>
+                        <option value="2">Использовать случайные аватарки</option>
+                        <option value="0">Не показывать</option>
                     </select>
                 </div>
-                <div class="input-form"><div class="input_text"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_avatars_cache_time')?></div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']; ?>"></div>
+                <div class="input-form"><div class="input_text">Время сохранения аватаров(Сек.)</div><input name="avatars_cache_time" value="<?php echo $General->arr_general['avatars_cache_time']?>"></div>
             </form>
             <input class='btn' name="option_one_save" type="submit" form="options_one" value="<?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Save')?>">
         </div>
