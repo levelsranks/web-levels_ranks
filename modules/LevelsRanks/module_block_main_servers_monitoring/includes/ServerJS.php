@@ -7,6 +7,13 @@
  *
  * @license GNU General Public License Version 3
  */
+ 
+define('CACHE_TIME', 15);
+if( file_exists( '../temp/data.json' ) ) { // Читаем из кеша
+	if ( time() < filemtime( '../temp/data.json' ) + CACHE_TIME ) {
+		die( file_get_contents('../temp/data.json') );
+	}
+}
 
 // Подключение SourceQuery.
 require '../ext/SourceQuery/bootstrap.php';
@@ -127,6 +134,11 @@ endfor;
 
 // Кэширование изображений с серверов для предзагрузки блоков
 ( ! file_exists( '../temp/cache.php' ) || $cache != require '../temp/cache.php' ) && file_put_contents('../temp/cache.php', '<?php return ' . var_export( $cache, true) . ";" );
+
+// Кеш можно повесть и на крон /влом писать коннекты к базе..
+if( ! file_exists( '../temp/data.json' ) || time() >= filemtime( '../temp/data.json' ) + CACHE_TIME && file_exists( '../temp' ) ) { // Пишем данные в кеш
+	file_put_contents('../temp/data.json', json_encode( $return, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ));
+}
 
 // Вывод
 echo json_encode( $return, JSON_UNESCAPED_UNICODE );
