@@ -33,6 +33,11 @@ class Player {
     /**
      * @var array
      */
+    public $msettings;
+
+    /**
+     * @var array
+     */
     public $weapons = ['weapon_knife' => '-','weapon_knife_m9_bayonet' => '-','weapon_knife_butterfly' => '-','weapon_knife_falchion' => '-','weapon_knife_def' => '-','weapon_knife_flip' => '-','weapon_knife_gut' => '-','weapon_knife_push' => '-','weapon_knife_t' => '-','weapon_knife_tactical' => '-'];
 
     /**
@@ -256,6 +261,45 @@ class Player {
 
             $this->get_db_plugin_module_hits();
         endif;
+
+        $this->msettings = [
+            'OP' => [
+                'phrase' => '_First_round_kills',
+                'icon' => 'fire',
+            ],
+            'Penetrated' => [
+                'phrase' => '_Penetrated_kills',
+                'icon' => 'format-valign-top',
+            ],
+            'NoScope' => [
+                'phrase' => '_Killing_without_scope',
+                'icon' => 'circle-o',
+            ],
+            'Run' => [
+                'phrase' => '_Kills_on_run',
+                'icon' => 'run',
+            ],
+            'Flash' => [
+                'phrase' => '_Kills_flash',
+                'icon' => 'eye-off',
+            ],
+            'Jump' => [
+                'phrase' => '_Jump_kills',
+                'icon' => 'star-outline',
+            ],
+            'Smoke' => [
+                'phrase' => '_Smoke_kills',
+                'icon' => 'mood-bad',
+            ],
+            'Whirl' => [
+                'phrase' => '_Kills_whirl',
+                'icon' => 'replay',
+            ],
+            'LastClip' => [
+                'phrase' => '_Kills_last_shoot',
+                'icon' => 'repeat-one',
+            ]
+        ];
     }
 
     public function get_value() {

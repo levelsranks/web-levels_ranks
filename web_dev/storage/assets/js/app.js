@@ -80,8 +80,9 @@ if (avatar != 0) {
         function: 'avatars', 
         data: avatar
     }, function (e) {
+        var jsonData = $.parseJSON(e);
         for (var i = 0; i < avatar.length; i++) {
-            document.getElementById(avatar[i]).setAttribute("src", e);
+            document.getElementById(avatar[i]).setAttribute("src", jsonData[i]);
         }
     })
 };

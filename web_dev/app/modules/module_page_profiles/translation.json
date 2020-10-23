@@ -21,6 +21,28 @@
     "RS": "Pucanja / Pogodaka",
 	"BA": "Pucanja / Pogodaka"
   },
+  "unusualkills_phrases": {
+      "OP": "_First_round_kills",
+      "Penetrated": "_Penetrated_kills",
+      "NoScope": "_Killing_without_scope",
+      "Run": "_Kills_on_run",
+      "Jump": "_Jump_kills",
+      "Flash": "_Kills_flash",
+      "Smoke": "_Smoke_kills",
+      "Whirl": "_Kills_whirl",
+      "LastClip": "_Kills_last_shoot"
+  },
+  "unusualkills_icons": {
+      "OP": "fire",
+      "Penetrated": "play-for-work",
+      "NoScope": "circle-o",
+      "Run": "run",
+      "Jump": "eye-off",
+      "Flash": "row-right-top",
+      "Smoke": "cloud-outline-alt",
+      "Whirl": "refresh-alt",
+      "LastClip": "repeat-one"
+  },
   "_Game_time": {
     "DE": "Spielzeit",
     "EN": "Playtime:",
