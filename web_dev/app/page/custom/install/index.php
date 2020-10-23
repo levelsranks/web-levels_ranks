@@ -272,9 +272,10 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
     endif;
 
     $result = $mysqli->query('SELECT kills FROM ' . $db_table . ' ORDER BY kills DESC LIMIT 1');
+    if($result === false)
+        get_iframe('404', 'Необходимые таблицы не найдены!');
+        
     $row = $result->fetch_assoc();
-
-    if ( ! empty( $row ) ) {
 
         $db_check = 2;
 
@@ -362,9 +363,6 @@ if( empty( $db ) && isset( $_POST['db_check'] ) ) {
         $mysqli->close();
         file_put_contents( SESSIONS . '/db.php', '<?php return '.var_export_opt( $db, true ).";" );
         header_fix( get_url(1) );
-    } else {
-        $db_check = 1;
-    }
 }
 ?>
 <!doctype html>

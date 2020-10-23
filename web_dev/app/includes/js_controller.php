@@ -225,9 +225,12 @@ if( $_POST["function"] == 'avatars' ) {
 
                 if( ! empty( $data[ $i ]['avatarfull'] ) ) {
                     file_put_contents( $cacheFile, json_encode($json) );
-                    echo $data[ $i ]['avatarfull'];
+                    $res[] = $data[ $i ]['avatarfull'];
+                } else {
+                    $res[] = '../../storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
                 }
             endfor;
+            echo json_encode($res);
         endif;
         exit;
     }

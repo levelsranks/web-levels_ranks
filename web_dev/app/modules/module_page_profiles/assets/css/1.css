@@ -3,6 +3,19 @@
     padding: .35rem;
 }
 
+.unusualkills_percent {
+    position: absolute;
+    top: 45%;
+    left: 17px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 100%;
+    font-weight: var(--font-weight-3);
+    color: var(--span-color);
+    opacity: .3;
+}
+
 .weapon-table th img {
     max-width: 54px;
     max-height: 21px;
