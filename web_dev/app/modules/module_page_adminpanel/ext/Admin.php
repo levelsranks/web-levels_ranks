@@ -7,6 +7,7 @@
  *
  * @license GNU General Public License Version 3
  */
+namespace app\modules\module_page_adminpanel\ext;
 
 class Admin {
 
