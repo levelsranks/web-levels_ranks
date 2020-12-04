@@ -9,7 +9,10 @@
  */
 namespace app\modules\module_page_adminpanel\ext;
 
-class Admin {
+use mysqli;
+
+class Admin
+{
 
     function __construct( $General, $Modules, $Auth, $Db , $Translate) {
 
@@ -152,82 +155,110 @@ class Admin {
         header("Refresh: 0");
     }
 
-    function action_db_add_connection() {
+    function action_db_add_connection()
+    {
 
         $db = require SESSIONS . '/db.php';
         
-        if (!isset($_POST['mod']) || !isset($_POST['type']) || $_POST['type'] != 'table' && $_POST['type'] != 'db') 
-            return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error')];
 
-        $mod = $_POST['mod'];
-        $type = $_POST['type'];
+        if($_POST['function'] == 'add_conection')
+        {
+            if (!isset($_POST['mod']) || !isset($_POST['type']) || $_POST['type'] != 'table' && $_POST['type'] != 'db') 
+                return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error')]));
 
-        if ($type == 'db') {
+            $mod = $_POST['mod'];
+            $type = $_POST['type'];
 
-            if (empty($_POST['host']))          return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_host')];       else $host = $_POST['host'];
-            if (empty($_POST['db_name']))       return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db')];         else $db_name = $_POST['db_name'];
-            if (empty($_POST['password']))      return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_password')];   else $password = $_POST['password'];
-            if (empty($_POST['username']))      return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_username')];   else $username = $_POST['username'];
-            if (empty($_POST['port']))          return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_port')];       else $port = $_POST['port'];
-            if (empty($_POST['table_name']))    return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')]; else $table_name = $_POST['table_name'];
-            $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
-            $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
-            $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
-            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack'])) {       
-                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')];  
-            }                      
-            else {
-                $rank_pack = $_POST['rank_pack'];
-            }
+            if ($type == 'db') 
+            {
 
-            $query = ['HOST' => $host, 'PORT' => $port, 'USER' => $username, 'PASS' => $password, 'DB' =>[0 =>['DB' => $db_name,'Prefix' =>[0 =>['table' => $table_name, 'name' => $server_name,'mod' => $game_mod,'steam' => $steam_mod]]]]];
-            if ($mod == 'LevelsRanks') {
-                $query['DB'][0]['Prefix'][0]['ranks_pack'] = $rank_pack;
-            }
-            try {
-                $dbh = new PDO("mysql:dbname={$db_name};host={$host}", $username, $password, [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION]);
-            } catch (PDOException $e) {
-                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_con_db')]; 
-            }
-            if(empty($db[$mod])) {
-                $db[$mod] = [0 => $query];
-                file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_mod_created')]; 
-            } else {
-                $db[$mod][] = $query;
-                file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_db_created')]; 
-            }
-        }
+                if (empty($_POST['host']))          return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_host')]));       else $host = $_POST['host'];
+                if (empty($_POST['db_name']))       return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db')]));         else $db_name = $_POST['db_name'];
+                if (empty($_POST['password']))      return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_password')]));   else $password = $_POST['password'];
+                if (empty($_POST['username']))      return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_username')]));   else $username = $_POST['username'];
+                if (empty($_POST['port']))          return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_port')]));       else $port = $_POST['port'];
+                if (empty($_POST['table_name']))    return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')])); else $table_name = $_POST['table_name'];
+                $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
+                $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
+                $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
+                if ($mod == 'LevelsRanks' && empty($_POST['rank_pack'])) 
+                {       
+                    return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')]));  
+                }                      
+                else $rank_pack = $_POST['rank_pack'];
 
-        if ($type == 'table') {
-            if (empty($db[$mod]))   return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_create_db')];
-            if (empty($_POST['db_name_for_table']) || $_POST['db_name_for_table'] == '-1') {
-                return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_enter_db')]; 
-            }
-            else {
-                $db_name_for_table = $_POST['db_name_for_table'];
-            }
-            if (empty($_POST['table_name']))  return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')];    else $table_name = $_POST['table_name'];
-            if ($mod == 'LevelsRanks' && empty($_POST['rank_pack']))    return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')];        else $rank_pack = $_POST['rank_pack'];
-            $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
-            $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
-            $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
-            
-            foreach ($db[$mod] as $num => $connection) {
-                if ($connection['DB'][0]['DB'] == $db_name_for_table) {
-                    $query = [ 'table' => $table_name, 'name' => $server_name, 'mod' => $steam_mod, 'steam' => $game_mod];
-                    if ($mod == 'LevelsRanks') {
-                        $query['ranks_pack'] = $rank_pack;
-                    }
-                    $db[$mod][$num]['DB'][0]['Prefix'][] = $query;
+                $query = ['HOST' => $host, 'PORT' => $port, 'USER' => $username, 'PASS' => $password, 'DB' =>[0 =>['DB' => $db_name,'Prefix' =>[0 =>['table' => $table_name, 'name' => $server_name,'mod' => $game_mod,'steam' => $steam_mod]]]]];
+                if ($mod == 'LevelsRanks') {
+                    $query['DB'][0]['Prefix'][0]['ranks_pack'] = $rank_pack;
+                }
+
+                $mysqli = new mysqli( $host, $username, $password, $db_name, $port );
+
+                if($mysqli->connect_error)
+                    return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_con_db')]));
+
+                $mysqli->close();
+                
+                if(empty($db[$mod])) 
+                {
+                    $db[$mod] = [0 => $query];
                     file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
-                    return ['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_table_created')]; 
+                    return exit(json_encode(['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_mod_created')])); 
+                } 
+                else 
+                {
+                    $db[$mod][] = $query;
+                    file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                    return exit(json_encode(['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_db_created')])); 
                 }
             }
-            return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db_not_found')];
+
+            if ($type == 'table')
+            {
+                if (empty($db[$mod])) return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_create_db')]));
+
+                if (empty($_POST['db_name_for_table']) || $_POST['db_name_for_table'] == '-1')
+                {
+                    return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_enter_db')])); 
+                }
+                else $db_name_for_table = $_POST['db_name_for_table'];
+
+                if (empty($_POST['table_name']))  return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_name_table')]));	else $table_name = $_POST['table_name'];
+                if ($mod == 'LevelsRanks' && empty($_POST['rank_pack'])) return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_rank_pack')]));	else $rank_pack = $_POST['rank_pack'];
+                $server_name = empty($_POST['server_name']) ? '' : $_POST['server_name'];
+                $steam_mod = empty($_POST['steam_mod']) ? '1' : $_POST['steam_mod'];
+                $game_mod = empty($_POST['game_mod']) ? '730' : $_POST['game_mod'];
+                
+                foreach ($db[$mod] as $num => $connection)
+                {
+                    if ($connection['DB'][0]['DB'] == $db_name_for_table)
+                    {
+                        $query = [ 'table' => $table_name, 'name' => $server_name, 'mod' => $steam_mod, 'steam' => $game_mod];
+                        if ($mod == 'LevelsRanks')
+                        {
+                            $query['ranks_pack'] = $rank_pack;
+                        }
+
+                        $db[$mod][$num]['DB'][0]['Prefix'][] = $query;
+                        file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                        return exit(json_encode(['success' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_success_table_created')])); 
+                    }
+                }
+                return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_db_not_found')]));
+            }
         }
-        return ['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_not_found')];
+
+        if($_POST['function'] == 'delete')
+        {
+            if(!empty($db[$_POST['table']])) 
+            {
+                unset($db[$_POST['table']]);
+                file_put_contents( SESSIONS . 'db.php', '<?php return '.var_export_opt( $db, true ).";" );
+                return; 
+            } 
+        }
+
+        return exit(json_encode(['error' => $this->Translate->get_translate_module_phrase( 'module_page_adminpanel','_error_not_found')]));
     }
 
     /**

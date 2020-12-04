@@ -147,6 +147,8 @@ if ($('#nestable').length > 0) {
     });
 }
 
+
+
 function delete_server(element) {
     $.post( window.location.href, { del_server: element.closest('tr').id } );
     note({
@@ -158,7 +160,7 @@ function delete_server(element) {
 }
 
 function action_db_delete_table(id,element) {
-    $.post( "./app/includes/js_controller.php", { function: "delete", table: element } );
+    $.post( window.location.href, { function: "delete", table: element } );
     note({
         content: 'Таблица удалена',
         type: 'success',
@@ -172,7 +174,7 @@ function addConection(){
     if(doubleClickedCon){
         doubleClickedCon = false;
         $.ajax({
-            url: 'app/modules/module_page_adminpanel/includes/controller.php',
+            url: window.location.href,
             type: 'post',
             data: $('#form-add-conection').serialize()+"&function=add_conection",
             success: function(response){
@@ -225,7 +227,16 @@ function changeConnection(mod) {
         document.getElementById('con_table_name').value = "vip_";
     } else if (mod == 'SourceBans') {
         document.getElementById('con_table_name').value = "sb_";
+    } else if (mod == 'lk'){
+        select = document.querySelector('select[name="game_mod"]');
+        document.getElementById('con_table_name').value = "lk";
+        select[0].value = 1;
+        select[0].textContent  = 'LK Impulse';
+        select[1].value = 2;
+        select[1].textContent  = 'LK D4ck';
+        console.log(select);
     }
+
 }
 function changeConnect(value){
     if (value == 'db') {

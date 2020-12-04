@@ -57,6 +57,9 @@ isset( $_POST['save_server'] ) && $Admin->action_add_server();
 // Нажатие на кнопку - Удалить сервер.
 isset( $_POST['del_server'] ) && $Admin->action_del_server();
 
+// Нажатие на кнопку - Добавить DB.
+isset( $_POST['function'] ) && $Admin->action_db_add_connection();
+
 !empty($_GET['section']) && $_GET['section'] == 'stats' ? $Chart_Visits =  $Admin->charts_attendance() : NULL;
 
 // Задаём заголовок страницы.
