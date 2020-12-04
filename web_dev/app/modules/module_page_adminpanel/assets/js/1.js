@@ -208,6 +208,11 @@ function changeConnection(mod) {
     document.getElementById('custom_mod_wrapper').setAttribute("style", "display: none;");
     document.getElementById('con_table_name').value = "";
     document.getElementById('rank_pack_connection').setAttribute("style", "display: none;");
+    var select = document.querySelector('select[name="game_mod"]');
+    select[0].value = 730;
+    select[0].textContent  = 'CS:GO';
+    select[1].value = 240;
+    select[1].textContent  = 'CS:S';
     
     if(mod == 'custom') {
         document.getElementById('custom_mod_wrapper').setAttribute("style", "display: block;");
@@ -228,13 +233,11 @@ function changeConnection(mod) {
     } else if (mod == 'SourceBans') {
         document.getElementById('con_table_name').value = "sb_";
     } else if (mod == 'lk'){
-        select = document.querySelector('select[name="game_mod"]');
         document.getElementById('con_table_name').value = "lk";
         select[0].value = 1;
         select[0].textContent  = 'LK Impulse';
         select[1].value = 2;
         select[1].textContent  = 'LK D4ck';
-        console.log(select);
     }
 
 }
