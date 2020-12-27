@@ -1305,5 +1305,11 @@ return array (
             'UA' => 'Неізвестноi',
             'LT' => 'Nežinoma',
             'TR' => 'Bilinmeyen'
+        ),
+    '_Download' =>
+        array (
+            'EN' => 'Download match demo',
+            'RU' => 'Скачать демо матча',
+            'UA' => 'Завантажити демо матчу',
         )
 );
