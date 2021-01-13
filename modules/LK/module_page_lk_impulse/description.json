@@ -5,7 +5,8 @@
   "page": "lk",
   "version": "0.4",
   "required": {
-    "core":"0.2","php":"5.4"
+    "core":"0.2",
+	"php":"5.4"
   },
   "setting": {
     "status": 1,

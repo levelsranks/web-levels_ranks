@@ -1,11 +1,12 @@
 {
   "title": "LR WEB | All - Social Networks",
-  "info": "Adds social media to Sidebar :D",
+  "info": "Adds social media to sidebar.",
   "author": "M0st1ce",
   "page": "home",
   "version": "1",
   "required": {
-    "core":"0.2","php":"5.4"
+    "core":"0.2",
+	"php":"5.4"
   },
   "setting": {
     "status": 1,
