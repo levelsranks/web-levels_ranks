@@ -21,9 +21,32 @@
     "RS": "Pucanja / Pogodaka",
 	"BA": "Pucanja / Pogodaka"
   },
+  "unusualkills_phrases": {
+      "OP": "_First_round_kills",
+      "Penetrated": "_Penetrated_kills",
+      "NoScope": "_Killing_without_scope",
+      "Run": "_Kills_on_run",
+      "Jump": "_Jump_kills",
+      "Flash": "_Kills_flash",
+      "Smoke": "_Smoke_kills",
+      "Whirl": "_Kills_whirl",
+      "LastClip": "_Kills_last_shoot"
+  },
+  "unusualkills_icons": {
+      "OP": "fire",
+      "Penetrated": "play-for-work",
+      "NoScope": "circle-o",
+      "Run": "run",
+      "Jump": "eye-off",
+      "Flash": "row-right-top",
+      "Smoke": "cloud-outline-alt",
+      "Whirl": "refresh-alt",
+      "LastClip": "repeat-one"
+  },
   "_Game_time": {
     "DE": "Spielzeit",
     "EN": "Playtime:",
+	"BR": "Tempo de Jogo:",
     "RU": "Игровое время:",
     "UA": "ігровий час:",
 	"LT": "Pražaistas laikas:",
@@ -111,7 +134,7 @@
   },
   "_Ace": {
     "DE": "Ace",
-    "EN": "Aces:",
+    "EN": "Ace:",
     "RU": "Эйсов:",
     "UA": "Ace:",
 	"LT": "Ace:",
@@ -123,6 +146,7 @@
   "_Value_rank": {
     "DE": "Gesamtpunktzahl / Rang:",
     "EN": "Total Points / Rank:",
+	"BR": "Total de Pontos / Rank:",
     "RU": "Количество очков / ранг:",
     "UA": "Кількість поінтів / звання:",
 	"LT": "Išviso taškų / Rangas",
@@ -248,11 +272,12 @@
   },
   "_Last_connect": {
     "EN": "Last Connect",
+	"BR": "Última Conexão:",
     "RU": "Последняя игра",
 	"UA": "Останнє підключення",
 	"CRO": "Posljednja konekcija",
     "RS": "Poslednja konekcija",
-	"BA": " Poslednja konekcija"
+	"BA": "Poslednja konekcija"
   },
   "_Head": {
     "EN": "Head",
@@ -260,7 +285,7 @@
 	"UA": "Голова",
 	"CRO": "Glava",
     "RS": "Glava",
-	"BA": " Glava"
+	"BA": "Glava"
   },
   "_Neak": {
     "EN": "Neak",
@@ -268,7 +293,7 @@
 	"UA": "Шия",
 	"CRO": "Vrat",
     "RS": "Vrat",
-	"BA": " Vrat"
+	"BA": "Vrat"
   },
   "_Light_arm": {
     "EN": "Light Arm",
@@ -276,7 +301,7 @@
 	"UA": "Ліва рука",
 	"CRO": "Lijeva ruka",
     "RS": "Leva ruka",
-	"BA": " Lijeva ruka"
+	"BA": "Lijeva ruka"
   },
   "_Right_arm": {
     "EN": "Right Arm",
@@ -284,7 +309,7 @@
 	"UA": "Права рука",
 	"CRO": "Desna Ruka",
     "RS": "Desna Ruka",
-	"BA": " Desna Ruka"
+	"BA": "Desna Ruka"
   },
   "_Left_leg": {
     "EN": "Left Leg",
@@ -292,7 +317,7 @@
 	"UA": "Ліва нога",
 	"CRO": "Lijeva noga",
     "RS": "Leva noga",
-	"BA": " Lijeva noga"
+	"BA": "Lijeva noga"
   },
   "_Right_leg": {
     "EN": "Right Leg",
@@ -300,7 +325,7 @@
 	"UA": "Права нога",
 	"CRO": "Desna noga",
     "RS": "Desna noga",
-	"BA": " Desna noga"
+	"BA": "Desna noga"
   },
   "_Belly": {
     "EN": "Belly",
@@ -308,7 +333,7 @@
 	"UA": "Живіт",
 	"CRO": "Trbuh",
     "RS": "Trbuh",
-	"BA": " Trbuh"
+	"BA": "Trbuh"
   },
   "_Chest": {
     "EN": "Chest",
@@ -316,6 +341,6 @@
 	"UA": "Груди",
 	"CRO": "Prsa",
     "RS": "Prsa",
-	"BA": " Prsa"
+	"BA": "Prsa"
   }
 }
