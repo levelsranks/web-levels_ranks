@@ -83,7 +83,7 @@ Installation:
 - Go to your website with the extracted Levels Ranks WEB and go through the installation process.
 - Profit!
 
-Detailed database setup:
+Detailed Database Setup:
 -----
 
 File and directory:
@@ -399,7 +399,7 @@ Example. SourceBans or Material Admin iteration:
 
 </details>
 
-Available modules:
+Available Modules:
 -----
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Mini Statistics on the home page</summary>
@@ -419,9 +419,9 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
 </p>
 
-- **Старница отображения**: Главная
-- **Информация**: Добавляет мониторинг онлайна серверов с возможностью подключения.
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: Home
+- **Info**: Adds online monitoring of servers with connectivity.
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Top players on the homepage</summary>
@@ -430,9 +430,9 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
 </p>
 
-- **Старница отображения**: Главная
-- **Информация**: Добавляет блоки с "топ 10" каждой подключенной таблице Levels Ranks.
-- **Скачать:** Доступен в базовом пакете модулей.
+- ** Display Page**: Home
+- ** Info**: Adds "top 10" blocks to each connected Levels Ranks table.
+- ** Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Profiles</summary>
@@ -441,9 +441,9 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_profiles.png">
 </p>
 
-- **Старница отображения**: profiles
-- **Информация**: Добавляет страницы игроков с их личной статистикой.
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: profiles
+- **Info**: Adds player pages with their personal statistics.
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Player Stats</summary>
@@ -452,9 +452,9 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_toppoints.png">
 </p>
 
-- **Старница отображения**: toppoints
-- **Информация**: Добавляет страницу со статистикой всех игроков игроков.
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: toppoints
+- **Info**: Adds a page with statistics of all players players.
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Distribution of Ranks</summary>
@@ -463,16 +463,16 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_rankstats.png">
 </p>
 
-- **Старница отображения**: rankstats
-- **Информация**: Добавляет страницу с распределением рангов на серверах.
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: rankstats
+- **Information**: Adds a page with the distribution of ranks on servers.
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Admin Panel</summary>
 
-- **Старница отображения**: adminpanel
-- **Информация**: Добавляет гибкое администрирование вэб интерфейсом и полезные функции.
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: adminpanel
+- **Info**: Adds flexible administration to the web interface and useful features.
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Bans Page</summary>
@@ -481,11 +481,11 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
 </p>
 
-- **Старница отображения**: bans
-- **Информация**: 
-  - Интеграция с SB / MA.
-  - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: bans
+- **Information**:
+  - Integration with SB / MA.
+  - It is necessary to add a new "SourceBans" mod to db.php and describe the connection. Specify the table name with a prefix, for example: "sb_".
+- **Download:** Available in the base module package.
 </details>
 
 <details><summary>LR WEB ( min. dev #0.2.114 ) - Mutes Page</summary>
@@ -494,11 +494,11 @@ Available modules:
         <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_comms.png">
 </p>
 
-- **Старница отображения**: comms
-- **Информация**: 
-  - Интеграция с SB / MA.
-  - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
-- **Скачать:** Доступен в базовом пакете модулей.
+- **Display Page**: comms
+- **Information**:
+  - Integration with SB / MA.
+  - It is necessary to add a new "SourceBans" mod to db.php and describe the connection. Specify the table name with a prefix, for example: "sb_".
+- **Download:** Available in the base module package.
 </details>
 
 Thanks:
@@ -579,15 +579,15 @@ Developer Block:
 /index.php      - 'Hello World'
 ```
 
-Модули:
+Modules:
 -----
 
-Каталог с модулями:
+Directory with modules:
 ```
 /app/modules
 ```
 
-Что представляет из себя модуль ( На примере **module_block_main_stats** ):
+What is a module (For example **module_block_main_stats**):
 
 ```
 /app
