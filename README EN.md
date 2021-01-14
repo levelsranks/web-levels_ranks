@@ -76,10 +76,10 @@ Requirements
 - **Recommended**
   - MySQL 5.7 or MariaDB 10.1 and higher.
 
-Installation:
+Installation
 -----
 
-- Download stable (Recommended) or dev release of Levels Ranks WEB.
+- Download **stable *(recommended)*** or dev release of Levels Ranks WEB.
 - Extract files from archive and move them to any directory on your domain or subdomain.
 - Go to your website with the extracted Levels Ranks WEB and go through the installation process.
 - Profit!
@@ -321,7 +321,7 @@ File and directory:
 ```
 </details>
 
-<details><summary>If the module needs to be connected to another **"mod" (SB / MA example)**</summary>
+<details><summary>If the module needs to be connected to another **mod (SB / MA example)**</summary>
 
 Use the connection pattern from the module description.
 Example. SourceBans or Material Admin iteration:
@@ -499,7 +499,7 @@ Available Modules
 Thanks
 -----
 
-- pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
+- pedrotski#1184 (Discord, ghostcapgaming.com) - 3 803 RUB.
 - Larsalex    (hlmod.ru)  - 3000 RUB.
 - .ZΛCHΞR#1337(Discord)   - 2093.37 RUB.
 - CEED 🐼#4061  (Discord)   - 1488 RUB.
