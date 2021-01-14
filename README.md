@@ -43,20 +43,20 @@
 - https://oupro.su/
 - https://nokill.ru/
 - https://stats.blackflash.ru/
-- http://ilitagame.ru/
+- https://ilitagame.ru/
 - https://wocawp.ru/stats/
 - https://stats.unity.pp.ua/
 - https://yablochko-csgo.ru/
-- http://lr.neostrike.ru/
-- http://horizoncsgo.ru/
+- https://lr.neostrike.ru/
+- https://horizoncsgo.ru/
 - https://gg-pro.ru/levels/
-- http://prog-cs.ru/levelrank/
+- https://prog-cs.ru/levelrank/
 - https://crystalx.ru/
-- http://rsb-cs.ru/
+- https://rsb-cs.ru/
 - https://cs-pbox.su/
 - https://stats.веселаяжизнь.рф/
-- http://asgard-project.ru/
-- http://nightproject.ru/
+- https://asgard-project.ru/
+- https://nightproject.ru/
 
 Требования:
 
@@ -88,6 +88,7 @@
 /storage/cache/sessions/db.php
 ```
 <details><summary>Основной шаблон</summary>
+
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -134,6 +135,7 @@
 </details>
 
 <details><summary>Если вы используете две и более таблиц в одной базе данных</summary>
+
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
