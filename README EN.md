@@ -1,5 +1,5 @@
 <p align="center">
-        <img height="250px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/logo.png">
+	<img height="250px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/logo.png">
 </p>
 <h1 align="center">
     Levels Ranks - WEB Interface
@@ -8,39 +8,36 @@
 <a href="https://php.net/" rel="nofollow"><img src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" alt="PHP" data-canonical-src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" style="max-width:100%;"></a></p>
 
 -----
-
 User WEB interface for interacting with statistics plugins <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>, <a href="https://hlmod.com/resources/fire-players-stats.1232/">Fire Players Stats</a> and <a href="https://forums.alliedmods.net/showthread.php?t=290063">RankMe Kento Edition</a>.
 Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
 -----
 <p align="center">
-        <img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/just_themes.png">
+	<img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/just_themes.png">
 </p>
 <p align="center">
-        <img height="560px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/interface.png">
+	<img height="560px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/interface.png">
 </p>
 <p align="center">
-        <img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/full_adaptation.png">
+	<img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/full_adaptation.png">
 </p>
 <p align="center">
-        <img height="880px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/profile.png">
+	<img height="880px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/profile.png">
 </p>
 <p align="center">
-        <img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/multi_lingual.png">
+	<img height="43px"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/multi_lingual.png">
 </p>
 <p align="center">
-        <img width="720"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/flags.png">
+	<img width="720"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/flags.png">
 </p>
 
 -----
-
 ```
 640K ought to be enough for anybody
 ```
-
 Demo:
------
 
+-----
 - https://truesrv.ru/
 - https://unitcsgo.ru/
 - https://oupro.su/
@@ -62,8 +59,8 @@ Demo:
 - http://nightproject.ru/
 
 Requirements:
------
 
+-----
 - Required:
   - PHP 7.0 and higher.
   - PHP PDO support.
@@ -76,24 +73,21 @@ Requirements:
   - MySQL 5.7 or MariaDB 10.1 and higher.
 
 Installation:
------
 
+-----
 - Download stable (Recommended) or dev release of Levels Ranks WEB.
 - Extract files from archive and move them to any directory on your domain or subdomain.
 - Go to your website with the extracted Levels Ranks WEB and go through the installation process.
 - Profit!
 
 Detailed Database Setup:
+
 -----
-
 File and directory:
-
 ```
 /storage/cache/sessions/db.php
 ```
-
 <details><summary>Main Template</summary>
-
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -106,8 +100,8 @@ File and directory:
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -140,7 +134,6 @@ File and directory:
 </details>
 
 <details><summary>If you are using two or more tables in one database</summary>
-
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -154,15 +147,15 @@ File and directory:
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
                                                   ],
                                                   [
-                                                  'table' => 'Название таблицы 2 ( lvl_base_2 )',
-                                                  'name'  => 'Название ( Основной MM сервер )',
+                                                  'table' => 'Название таблицы 2 (lvl_base_2)',
+                                                  'name'  => 'Название (Основной MM сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -192,7 +185,6 @@ File and directory:
                 ],
 ];
 ```
-
 </details>
 
 <details><summary>If you use two or more databases from under one user</summary>
@@ -210,8 +202,8 @@ File and directory:
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -222,8 +214,8 @@ File and directory:
                                   'DB'     => 'Имя второй базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Новый MM сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Новый MM сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -253,7 +245,6 @@ File and directory:
                 ],
 ];
 ```
-
 </details>
 
 <details><summary>If you are using two or more users with different databases</summary>
@@ -271,8 +262,8 @@ File and directory:
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -291,8 +282,8 @@ File and directory:
                                   'DB'     => 'Имя базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -322,14 +313,12 @@ File and directory:
                 ],
 ];
 ```
-
 </details>
 
-<details><summary>If the module needs to be connected to another "mod" (SB/MA example)</summary>
+<details><summary>If the module needs to be connected to another **"mod" (SB / MA example)**</summary>
 
 Use the connection pattern from the module description.
 Example. SourceBans or Material Admin iteration:
-
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -343,8 +332,8 @@ Example. SourceBans or Material Admin iteration:
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
                                                   'mod' => '730 / 240 / 215',
 												  'ranks_pack' => 'default',
                                                   'steam' => '1 / 0'
@@ -396,16 +385,15 @@ Example. SourceBans or Material Admin iteration:
                ],
 ];
 ```
-
 </details>
 
 Available Modules:
------
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Mini Statistics on the home page</summary>
+-----
+<details><summary>LR WEB (min. dev #0.2.114) - Mini Statistics on the home page</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_stats.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_stats.png">
 </p>
 
 - **Display page**: Home
@@ -413,10 +401,10 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Online monitoring on the main page</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Online monitoring on the main page</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
 </p>
 
 - **Display Page**: Home
@@ -424,10 +412,10 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Top players on the homepage</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Top players on the homepage</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
 </p>
 
 - ** Display Page**: Home
@@ -435,10 +423,10 @@ Available Modules:
 - ** Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Profiles</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Profiles</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_profiles.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_profiles.png">
 </p>
 
 - **Display Page**: profiles
@@ -446,10 +434,10 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Player Stats</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Player Stats</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_toppoints.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_toppoints.png">
 </p>
 
 - **Display Page**: toppoints
@@ -457,10 +445,10 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Distribution of Ranks</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Distribution of Ranks</summary>
 
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_rankstats.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_rankstats.png">
 </p>
 
 - **Display Page**: rankstats
@@ -468,17 +456,17 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Admin Panel</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Admin Panel</summary>
 
 - **Display Page**: adminpanel
 - **Info**: Adds flexible administration to the web interface and useful features.
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Bans Page</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Bans Page</summary>
         
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
 </p>
 
 - **Display Page**: bans
@@ -488,10 +476,10 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-<details><summary>LR WEB ( min. dev #0.2.114 ) - Mutes Page</summary>
+<details><summary>LR WEB (min. dev #0.2.114) - Mutes Page</summary>
         
 <p align="center">
-        <img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_comms.png">
+	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_comms.png">
 </p>
 
 - **Display Page**: comms
@@ -502,8 +490,8 @@ Available Modules:
 </details>
 
 Thanks:
------
 
+-----
 - pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
 - Larsalex    ( hlmod.ru )  - 3000 RUB.
 - .ZΛCHΞR#1337( Discord )   - 2093.37 RUB.
@@ -556,13 +544,13 @@ Thanks:
 - Мировой     ( hlmod.ru )  - 29 RUB.
 
 Developer Block:
------
 
+-----
 <details><summary>dev</summary>
 
-Скелет WEB интерфейса ( dev #0.2.114 ) :
------
+Скелет WEB интерфейса (dev #0.2.114):
 
+-----
 ```
 /app            - Ядро.
   /ext          - PHP Классы.
@@ -578,17 +566,14 @@ Developer Block:
       
 /index.php      - 'Hello World'
 ```
-
 Modules:
------
 
+-----
 Directory with modules:
 ```
 /app/modules
 ```
-
-What is a module (For example **module_block_main_stats**):
-
+What is a module **(For example `module_block_main_stats`)**:
 ```
 /app
   /modules
@@ -606,11 +591,9 @@ What is a module (For example **module_block_main_stats**):
     /translation.json - Если модуль имеет мультиязычность, переводы описываются в данном файле.
 
 ```
-
 </details>
 
 -----
-
 <p align="right">
-        <img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png">
+	<img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png">
 </p>
