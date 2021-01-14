@@ -493,55 +493,55 @@
 
 -----
 - pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
-- Larsalex    ( hlmod.ru )  - 3000 RUB.
-- .ZΛCHΞR#1337( Discord )   - 2093.37 RUB.
-- CEED 🐼#4061  ( Discord )   - 1488 RUB.
-- mixxed.xyz#4469 ( Discord ) - 1200 RUB.
-- Эльдарка#7777   ( Discord )  - 1055.1 RUB.
-- OkyHek#2441 ( Discord )   - 1000 RUB.
-- Felya#1342  ( Discord )   - 817.12 RUB.
-- Clubber#2324 ( Discord ) - 784,44 RUB.
-- Nestor#9876 ( Discord )   - 600 RUB.
-- MAMAC#9993  ( Discord )   - 511.05 RUB.
-- dyoma#5525  ( Discord )   - 500 RUB.
-- Морячок#9904  ( Discord )   - 500 RUB.
-- Xzotys#3880  ( Discord )   - 500 RUB.
-- Unity       ( hlmod.ru )  - 460 RUB.
-- MotherRussia#2235    ( Discord )   - 350 RUB.
-- interes#3153    ( Discord )   - 300 RUB.
-- xek#1152    ( Discord )   - 300 RUB.
-- Paranoiiik  ( hlmod.ru )  - 300 RUB.
-- L1MON#4529  ( Discord )   - 300 RUB.
-- ju4ka1371   ( hlmod.ru )  - 282 RUB.
+- Larsalex    (hlmod.ru)  - 3000 RUB.
+- .ZΛCHΞR#1337(Discord)   - 2093.37 RUB.
+- CEED 🐼#4061  (Discord)   - 1488 RUB.
+- mixxed.xyz#4469 (Discord) - 1200 RUB.
+- Эльдарка#7777   (Discord)  - 1055.1 RUB.
+- OkyHek#2441 (Discord)   - 1000 RUB.
+- Felya#1342  (Discord)   - 817.12 RUB.
+- Clubber#2324 (Discord) - 784,44 RUB.
+- Nestor#9876 (Discord)   - 600 RUB.
+- MAMAC#9993  (Discord)   - 511.05 RUB.
+- dyoma#5525  (Discord)   - 500 RUB.
+- Морячок#9904  (Discord)   - 500 RUB.
+- Xzotys#3880  (Discord)   - 500 RUB.
+- Unity       (hlmod.ru)  - 460 RUB.
+- MotherRussia#2235    (Discord)   - 350 RUB.
+- interes#3153    (Discord)   - 300 RUB.
+- xek#1152    (Discord)   - 300 RUB.
+- Paranoiiik  (hlmod.ru)  - 300 RUB.
+- L1MON#4529  (Discord)   - 300 RUB.
+- ju4ka1371   (hlmod.ru)  - 282 RUB.
 - Good Game Project ( gg-pro.ru ) - 250 RUB.
-- Wend4r      ( hlmod.ru )  - 250 RUB.
-- Rabb1t      ( hlmod.ru )  - 250 RUB.
-- Sleep#0725  ( Discord )   - 250 RUB.
-- ERROR404#9842 ( Discord )  - 200 RUB.
-- Malenkiy Alik#1945 ( Discord )  - 200 RUB.
-- Морковка#7277 ( Discord )  - 200 RUB.
-- valerun     ( hlmod.ru )  - 185 RUB.
-- FIVE#3136   ( Discord )   - 155 RUB.
-- MaZa#8322    ( Discord )  - 150 RUB.
-- ™S.E.N.A.T.O.R™♛#1466 ( Discord )  - 150 RUB.
-- SynZilla    ( hlmod.ru )  - 150 RUB.
-- d4Ck#0698 ( Discord )   - 147.67 RUB.
-- ka1jaru#1648 ( Discord )  - 137.45 RUB.
-- uraganas#7978 ( Discord )   - 132 RUB.
-- Domikuss#3855 ( Discord ) - 121.45 RUB.
-- punisher89#7116 ( Discord )  - 104.45 RUB.
-- SV3N#9923   ( Discord )   - 100.40 RUB.
-- HILER#3959  ( Discord )   - 100 RUB.
-- Truyn#6750  ( Discord )   - 100 RUB.
-- DevBT#4750  ( Discord )   - 100 RUB.
-- DismoraL    ( hlmod.ru )  - 100 RUB.
-- xXMaXimXx   ( hlmod.ru )  - 100 RUB.
-- Twenix#4347 ( Discord )   - 100 RUB.
-- LEGACY#3877 ( Discord )   - 50 RUB.
-- ARONGAMES#2063 ( Discord )   - 50 RUB.
-- fr4nch#3619 ( Discord )   - 50 RUB.
-- HolyHender#8673 ( Discord )   - 33 RUB.
-- Мировой     ( hlmod.ru )  - 29 RUB.
+- Wend4r      (hlmod.ru)  - 250 RUB.
+- Rabb1t      (hlmod.ru)  - 250 RUB.
+- Sleep#0725  (Discord)   - 250 RUB.
+- ERROR404#9842 (Discord)  - 200 RUB.
+- Malenkiy Alik#1945 (Discord)  - 200 RUB.
+- Морковка#7277 (Discord)  - 200 RUB.
+- valerun     (hlmod.ru)  - 185 RUB.
+- FIVE#3136   (Discord)   - 155 RUB.
+- MaZa#8322    (Discord)  - 150 RUB.
+- ™S.E.N.A.T.O.R™♛#1466 (Discord)  - 150 RUB.
+- SynZilla    (hlmod.ru)  - 150 RUB.
+- d4Ck#0698 (Discord)   - 147.67 RUB.
+- ka1jaru#1648 (Discord)  - 137.45 RUB.
+- uraganas#7978 (Discord)   - 132 RUB.
+- Domikuss#3855 (Discord) - 121.45 RUB.
+- punisher89#7116 (Discord)  - 104.45 RUB.
+- SV3N#9923   (Discord)   - 100.40 RUB.
+- HILER#3959  (Discord)   - 100 RUB.
+- Truyn#6750  (Discord)   - 100 RUB.
+- DevBT#4750  (Discord)   - 100 RUB.
+- DismoraL    (hlmod.ru)  - 100 RUB.
+- xXMaXimXx   (hlmod.ru)  - 100 RUB.
+- Twenix#4347 (Discord)   - 100 RUB.
+- LEGACY#3877 (Discord)   - 50 RUB.
+- ARONGAMES#2063 (Discord)   - 50 RUB.
+- fr4nch#3619 (Discord)   - 50 RUB.
+- HolyHender#8673 (Discord)   - 33 RUB.
+- Мировой     (hlmod.ru)  - 29 RUB.
 
 Блок разработчика:
 
