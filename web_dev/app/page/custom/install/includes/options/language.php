@@ -1,6 +1,6 @@
 <?php ! defined("IN_LR") && die()?>
 <div class="back">
-    <div class="language_title">Select the language</div>
+    <div class="language_title">Select the Language</div>
     <form enctype="multipart/form-data" method="post">
     <div class="language_left">
         <button type="submit" name="EN">

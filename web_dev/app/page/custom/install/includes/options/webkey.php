@@ -1,12 +1,12 @@
 <?php ! defined("IN_LR") && die()?>
 <div class="back">
-    <div class="webkey_title">STEAM WEB API KEY</div>
+    <div class="webkey_title">Steam Web API Key</div>
     <form enctype="multipart/form-data" method="post">
         <div class="webkey_form">
             <div class="webkey_input">
                 <div class="input-form">
                     <div class="input_text">
-                        <input name="web_key" value="<?php ! empty( $error ) && $error == true && print 'WEB API KEY - ERROR'?>" placeholder="WEB API KEY">
+                        <input name="web_key" value="<?php ! empty( $error ) && $error == true && print 'Web API Key - Error'?>" placeholder="Web API Key">
                     </div>
                 </div>
             </div>

@@ -484,6 +484,7 @@ return array (
     '_Reason' =>
         array (
             'EN' => 'Reason',
+			'BR' => 'Motivo',
             'RU' => 'Причина',
             'UA' => 'Чому',
             'LT' => 'Priežastis',
@@ -497,6 +498,7 @@ return array (
     '_Term' =>
         array (
             'EN' => 'Length',
+			'BR' => 'Tempo',
             'RU' => 'Срок',
             'UA' => 'Термін',
             'LT' => 'Terminas',
@@ -511,6 +513,7 @@ return array (
     '_Forever' =>
         array (
             'EN' => 'Permanent',
+			'BR' => 'Permanente',
             'RU' => 'Навсегда',
             'UA' => 'Назавжди',
             'LT' => 'Amžinai',
@@ -524,6 +527,7 @@ return array (
     '_Unban' =>
         array (
             'EN' => 'Unbaned',
+			'BR' => 'Unbaned',
             'RU' => 'Разбанен',
             'UA' => 'Разбанен',
             'LT' => 'Unban',
@@ -537,6 +541,7 @@ return array (
     '_Uncomm' =>
         array (
             'EN' => 'Unmuted',
+			'BR' => 'Unmuted',
             'RU' => 'Размут',
             'UA' => 'Размут',
             'LT' => 'Uncomm',
@@ -550,6 +555,7 @@ return array (
     '_Has_expired' =>
         array (
             'EN' => 'Expired',
+			'BR' => 'Expired',
             'RU' => 'Истёк',
             'UA' => 'Закінчився',
             'LT' => 'Pasibaigęs',

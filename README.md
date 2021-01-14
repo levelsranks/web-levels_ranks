@@ -42,25 +42,51 @@
 
 Демо
 -----
-- https://truesrv.ru/
-- https://unitcsgo.ru/
-- https://oupro.su/
-- https://nokill.ru/
-- https://stats.blackflash.ru/
-- https://ilitagame.ru/
-- https://wocawp.ru/stats/
-- https://stats.unity.pp.ua/
+
+- https://warfal.ru/
+- https://cybercs.ru/
+- https://nsproject.site/
+- https://war-cccr.ru/
+- https://provincial-project.ru/
+- https://foges.info/
 - https://yablochko-csgo.ru/
+- https://hellstar.fun/
+- https://ttsserv.ru/
+- https://lr.nightproject.ru/
+- https://nokill.ru/
+- https://unitcsgo.ru/
 - https://lr.neostrike.ru/
-- https://horizoncsgo.ru/
 - https://gg-pro.ru/levels/
-- https://prog-cs.ru/levelrank/
 - https://crystalx.ru/
+- https://krivbass.xyz/
+- https://blackpublic.ru/
+- https://ice-css.ru/
+- https://csepsilon.ru/
+- https://oneraven13.ru/
+- https://horizoncsgo.ru/
+- https://dobavogonka.ru/stats/?page=lk
+- https://grandlandcsgo.cssold.ru/
+- https://russia.myarena.site/
+- https://progaming.ba/csgo/stats/
+- https://grandlandcsgo.cssold.ru/
+- https://desperateproject.space/
 - https://rsb-cs.ru/
-- https://cs-pbox.su/
-- https://stats.веселаяжизнь.рф/
-- https://asgard-project.ru/
-- https://nightproject.ru/
+- https://ezstars.myarena.site/?page=home
+- https://sanders-cs.ru/
+- https://torgaming.xyz/
+- https://suicideserver.xyz/
+- https://weallplay.eu/stats/web_dev/
+- https://ilitagame.ru/
+- https://czar-serv.ru/
+- https://ilitagame.ru/
+- https://gabepub.hl2.su/
+- https://lvl.tkofficial.ru/
+- https://wocawp.ru/stats/
+- https://bberryproject.ru/lr/
+- https://sanders-cs.ru/
+- https://elustic.ru/
+- https://malldova.ru/
+- https://hask-gaming.ru/
 
 Требования
 -----
