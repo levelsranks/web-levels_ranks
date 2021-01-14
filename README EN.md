@@ -493,8 +493,8 @@ Available Modules:
 </details>
 
 Thanks:
-
 -----
+
 - pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
 - Larsalex    (hlmod.ru)  - 3000 RUB.
 - .ZΛCHΞR#1337(Discord)   - 2093.37 RUB.
