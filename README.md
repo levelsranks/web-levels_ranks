@@ -190,6 +190,7 @@
 </details>
 
 <details><summary>Если вы используете две и более базы данных из под одного пользователя</summary>
+
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -249,6 +250,7 @@
 </details>
 
 <details><summary>Если вы используете двух и более пользователей с разными базами данных</summary>
+
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
@@ -319,6 +321,7 @@
 
 Используйте шаблон подключения из описания модуля.
 Пример. Интерация SourceBans или Material Admin:
+
 ```
 <?php return ['LevelsRanks' => 
                 [0 => 
