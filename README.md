@@ -10,6 +10,7 @@
 -----
 
 Пользовательский WEB интерфейс для взаимодействия с плагинами статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>, <a href="https://hlmod.ru/resources/fire-players-stats.1232/">Fire Players Stats</a> и <a href="https://forums.alliedmods.net/showthread.php?t=290063">RankMe Kento Edition</a>.
+
 Официальный канал поддержки в <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
 -----

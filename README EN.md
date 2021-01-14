@@ -10,6 +10,7 @@
 -----
 
 User WEB interface for interacting with statistics plugins <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>, <a href="https://hlmod.com/resources/fire-players-stats.1232/">Fire Players Stats</a> and <a href="https://forums.alliedmods.net/showthread.php?t=290063">RankMe Kento Edition</a>.
+
 Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
 -----
