@@ -464,7 +464,7 @@ Available Modules:
 </details>
 
 <details><summary>LR WEB (min. dev #0.2.114) - Bans Page</summary>
-        
+
 <p align="center">
 	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_page_bans.png">
 </p>
