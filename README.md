@@ -6,12 +6,12 @@
 </h1>
 <p><a href="https://www.codacy.com/manual/M0st1ce/levels-ranks-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=levelsranks/levels-ranks-web&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/76c6d7faeac04277ba27d1e112f186fd"/></a>
 <a href="https://php.net/" rel="nofollow"><img src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" alt="PHP" data-canonical-src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" style="max-width:100%;"></a></p>
-
 -----
+
 Пользовательский WEB интерфейс для взаимодействия с плагинами статистики <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>, <a href="https://hlmod.ru/resources/fire-players-stats.1232/">Fire Players Stats</a> и <a href="https://forums.alliedmods.net/showthread.php?t=290063">RankMe Kento Edition</a>.
 Официальный канал поддержки в <a href="https://discord.gg/Mbjnh3h">Discord</a>.
-
 -----
+
 <p align="center">
 	<img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/just_themes.png">
 </p>
@@ -30,13 +30,13 @@
 <p align="center">
 	<img width="720"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/flags.png">
 </p>
-
 -----
+
 ```
 640K ought to be enough for anybody
 ```
-Демо:
 
+Демо:
 -----
 - https://truesrv.ru/
 - https://unitcsgo.ru/
@@ -59,9 +59,9 @@
 - https://nightproject.ru/
 
 Требования:
-
 -----
-- Обязательно:
+
+- **Обязательно**
   - PHP 7.0 и выше.
   - Поддержка PHP PDO.
   - Поддержка PHP GMP.
@@ -69,12 +69,12 @@
   - Поддержка PHP cURL.
   - Поддержка PHP json.
   - Поддержка PHP Zip.
-- Рекомендуется:
+- **Рекомендуется**
   - MySQL 5.7 или MariaDB 10.1 и выше.
 
 Установка:
-
 -----
+
 - Скачать **stable *(Рекомендуется)*** или dev релиз Levels Ranks WEB.
 - Извлечь файлы из архива и переместить их в любой каталог на вашем домене или субдомене.
 - Перейти на ваш сайт с извлеченной Levels Ranks WEB и пройти процесс установки.
@@ -392,8 +392,8 @@
 </details>
 
 Доступные модули:
-
 -----
+
 <details><summary>LR WEB (min. dev #0.2.114) - Мини-Статистика на главной странице</summary>
 
 <p align="center">
@@ -494,8 +494,8 @@
 </details>
 
 Благодарность:
-
 -----
+
 - pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
 - Larsalex    (hlmod.ru)  - 3000 RUB.
 - .ZΛCHΞR#1337(Discord)   - 2093.37 RUB.
@@ -548,13 +548,13 @@
 - Мировой     (hlmod.ru)  - 29 RUB.
 
 Блок разработчика:
-
 -----
+
 <details><summary>dev</summary>
 
 Скелет WEB интерфейса (dev #0.2.114):
-
 -----
+
 ```
 /app            - Ядро.
   /ext          - PHP Классы.
@@ -571,8 +571,8 @@
 /index.php      - 'Hello World'
 ```
 Модули:
-
 -----
+
 Каталог с модулями:
 ```
 /app/modules
@@ -596,8 +596,8 @@
 
 ```
 </details>
-
 -----
+
 <p align="right">
 	<img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png">
 </p>

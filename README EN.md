@@ -6,12 +6,12 @@
 </h1>
 <p><a href="https://www.codacy.com/manual/M0st1ce/levels-ranks-web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=levelsranks/levels-ranks-web&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/76c6d7faeac04277ba27d1e112f186fd"/></a>
 <a href="https://php.net/" rel="nofollow"><img src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" alt="PHP" data-canonical-src="https://img.shields.io/badge/PHP-%3E%3D7.0-blue" style="max-width:100%;"></a></p>
-
 -----
+
 User WEB interface for interacting with statistics plugins <a href="https://github.com/levelsranks/levels-ranks-core">Levels Ranks</a>, <a href="https://hlmod.com/resources/fire-players-stats.1232/">Fire Players Stats</a> and <a href="https://forums.alliedmods.net/showthread.php?t=290063">RankMe Kento Edition</a>.
 Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
-
 -----
+
 <p align="center">
 	<img height="43px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/just_themes.png">
 </p>
@@ -30,14 +30,15 @@ Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 <p align="center">
 	<img width="720"src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/flags.png">
 </p>
-
 -----
+
 ```
 640K ought to be enough for anybody
 ```
-Demo:
 
+Demo:
 -----
+
 - https://truesrv.ru/
 - https://unitcsgo.ru/
 - https://oupro.su/
@@ -59,9 +60,9 @@ Demo:
 - https://nightproject.ru/
 
 Requirements:
-
 -----
-- Required:
+
+- **Required**
   - PHP 7.0 and higher.
   - PHP PDO support.
   - PHP GMP support.
@@ -69,20 +70,20 @@ Requirements:
   - PHP cURL support.
   - PHP json support.
   - PHP Zip support.
-- Recommended:
+- **Recommended**
   - MySQL 5.7 or MariaDB 10.1 and higher.
 
 Installation:
-
 -----
+
 - Download stable (Recommended) or dev release of Levels Ranks WEB.
 - Extract files from archive and move them to any directory on your domain or subdomain.
 - Go to your website with the extracted Levels Ranks WEB and go through the installation process.
 - Profit!
 
 Detailed Database Setup:
-
 -----
+
 File and directory:
 ```
 /storage/cache/sessions/db.php
@@ -391,8 +392,8 @@ Example. SourceBans or Material Admin iteration:
 </details>
 
 Available Modules:
-
 -----
+
 <details><summary>LR WEB (min. dev #0.2.114) - Mini Statistics on the home page</summary>
 
 <p align="center">
@@ -547,13 +548,13 @@ Thanks:
 - Мировой     (hlmod.ru)  - 29 RUB.
 
 Developer Block:
-
 -----
+
 <details><summary>dev</summary>
 
 Скелет WEB интерфейса (dev #0.2.114):
-
 -----
+
 ```
 /app            - Ядро.
   /ext          - PHP Классы.
@@ -570,8 +571,8 @@ Developer Block:
 /index.php      - 'Hello World'
 ```
 Modules:
-
 -----
+
 Directory with modules:
 ```
 /app/modules
@@ -595,8 +596,8 @@ What is a module **(For example `module_block_main_stats`)**:
 
 ```
 </details>
-
 -----
+
 <p align="right">
 	<img height="75px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/authors.png">
 </p>
