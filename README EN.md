@@ -39,7 +39,7 @@ Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 640K ought to be enough for anybody
 ```
 
-Demo:
+Demo
 -----
 
 - https://truesrv.ru/
@@ -62,7 +62,7 @@ Demo:
 - https://asgard-project.ru/
 - https://nightproject.ru/
 
-Requirements:
+Requirements
 -----
 
 - **Required**
@@ -84,7 +84,7 @@ Installation:
 - Go to your website with the extracted Levels Ranks WEB and go through the installation process.
 - Profit!
 
-Detailed Database Setup:
+Detailed Database Setup
 -----
 
 File and directory:
@@ -394,7 +394,7 @@ Example. SourceBans or Material Admin iteration:
 ```
 </details>
 
-Available Modules:
+Available Modules
 -----
 
 <details><summary>LR WEB (min. dev #0.2.114) - Mini Statistics on the home page</summary>
@@ -496,7 +496,7 @@ Available Modules:
 - **Download:** Available in the base module package.
 </details>
 
-Thanks:
+Thanks
 -----
 
 - pedrotski#1184 ( Discord, ghostcapgaming.com ) - 3 803 RUB.
@@ -550,7 +550,7 @@ Thanks:
 - HolyHender#8673 (Discord)   - 33 RUB.
 - Мировой     (hlmod.ru)  - 29 RUB.
 
-Developer Block:
+Developer Block
 -----
 
 <details><summary>dev</summary>
@@ -573,7 +573,7 @@ Developer Block:
       
 /index.php      - 'Hello World'
 ```
-Modules:
+Modules
 -----
 
 Directory with modules:
