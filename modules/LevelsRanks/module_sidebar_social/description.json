@@ -1,6 +1,6 @@
 {
   "title": "LR WEB | All - Social Networks",
-  "info": "Adds social media to sidebar.",
+  "info": "Adds social media to sidebar",
   "author": "M0st1ce",
   "page": "home",
   "version": "1",
@@ -25,6 +25,15 @@
       "sidebar_directory": "_Sidebar_social"
     },
     "1": {
+      "href": "https://discord.gg/",
+      "open_new_tab": "1",
+      "icon_group": "custom",
+      "icon_category": "socials",
+      "icon": "discord",
+      "name": "Discord",
+      "sidebar_directory": "_Sidebar_social"
+    },
+	"2": {
       "href": "https://vk.com/",
       "open_new_tab": "1",
       "icon_group": "zmdi",
@@ -33,14 +42,5 @@
       "name": "Группа Вконтакте",
       "sidebar_directory": "_Sidebar_social"
     },
-    "2": {
-      "href": "https://discord.gg/",
-      "open_new_tab": "1",
-      "icon_group": "custom",
-      "icon_category": "socials",
-      "icon": "discord",
-      "name": "Discord",
-      "sidebar_directory": "_Sidebar_social"
-    }
   }
 }

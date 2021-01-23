@@ -6,7 +6,7 @@
             "LT" : "Asmeninė sąskaita"
     },
     "_ToUpAmount":{
-            "EN" : "Top-up Amount:",
+            "EN" : "TOP Up Amount:",
             "RU" : "Сумма пополнения:",
             "UA" : "Сума поповнення:",
             "LT" : "Papildoma suma:"
@@ -30,7 +30,7 @@
             "LT" : "Visą laiką"
     },
     "_ButtonPay":{
-            "EN" : "Top up balance",
+            "EN" : "TOP Up Balance",
             "RU" : "Пополнить баланс",
             "UA" : "Поповнити баланс",
             "LT" : "Papildykite pusiausvyrą"
