@@ -583,7 +583,7 @@ Developer Block
 
 <details><summary>dev</summary>
 
-Скелет WEB интерфейса (dev #0.2.114):
+WEB Interface Skeleton (dev #0.2.114):
 -----
 
 ```
