@@ -349,7 +349,7 @@ File and directory:
 ```
 </details>
 
-<details><summary>If the module needs to be connected to another **mod (SB/MA example)**</summary>
+<details><summary>If the module needs to be connected to another <b>"mod" (SB/MA example)</b></summary>
 
 Use the connection pattern from the module description.
 Example. SourceBans or Material Admin iteration:
