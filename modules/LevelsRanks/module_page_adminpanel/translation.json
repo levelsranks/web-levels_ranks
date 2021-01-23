@@ -226,9 +226,9 @@
     "UA": "Імпорт Адмін. листа з SB/MA (Steam)",
     "LT": "Import Admin. List from SB/MA (Steam)",
 	"CH": "从SB/MA (Steam)导入管理员",
-	"CRO": "Importuj Admin Listu sa SB/MA",
-    "RS": "Importuj Admin Listu sa SB/MA",
-	"BA": "Importuj Admin Listu sa SB/MA"	
+	"CRO": "Importuj Admin Listu sa SB/MA (Steam)",
+    "RS": "Importuj Admin Listu sa SB/MA (Steam)",
+	"BA": "Importuj Admin Listu sa SB/MA (Steam)"	
   },
   "_Save": {
     "EN": "Save",
@@ -326,6 +326,7 @@
   },
   "_Steam_access_authorization": {
     "EN": "Steam Access Authorization",
+	"BR": "Autorização de Acesso Steam",
     "RU": "Доступ к Steam авторизации",
 	"UA": "Доступ до Steam авторизації",
 	"CH": "Steam 权限认证",
@@ -335,6 +336,7 @@
   },
   "_Steam_only_authorization": {
     "EN": "Steam Authorization Only",
+	"BR": "Apenas Autorização da Steam",
     "RU": "Авторизация только по Steam",
 	"UA": "Авторизація тільки по Steam",
 	"CH": "仅使用Steam登录认证",
@@ -353,6 +355,7 @@
   },
   "_Configuration": {
     "EN": "Configuration",
+	"BR": "Configuração",
     "RU": "Конфигурация",
 	"UA": "Конфігурація",
 	"CH": "其他设置",
@@ -473,7 +476,7 @@
     "BA": "Onemogući pomjeranje sidebara"	
   },
   "_Disable_palettes_change": {
-    "EN": "Disable palettes change",
+    "EN": "Disable Palettes Change",
     "RU": "Запретить изменение палитры сайта",
 	"UA": "Заборонити зміну палітри сайту",
 	"CRO": "Onemogući menjanje teme",
@@ -486,7 +489,7 @@
 	"UA": "Включити розмиття в бічній панелі"
   },
   "_Blocks_blur": {
-    "EN": "Enable Blocks blur",
+    "EN": "Enable Blocks Blur",
     "RU": "Включить размытие у блоков",
 	"UA": "Включити розмиття у блоків"
   },
@@ -497,21 +500,23 @@
   },
   "_Server_name": {
     "EN": "Server Name",
+	"BR": "Nome do Servidor",
     "RU": "Название сервера",
 	"UA": "Назва сервера"
   },
   "_TechnoName": {
-    "EN": "Technical name",
+    "EN": "Technical Name",
+	"BR": "Nome Técnico",
     "RU": "Техническое название",
 	"UA": "технічне назву"
   },
   "_Ip_Port_Server": {
-    "EN": "IP: PORT Servers",
+    "EN": "IP:PORT Servers",
     "RU": "IP:PORT Сервера",
 	"UA": "IP:PORT Сервер"
   },
   "_Ip_Port_View": {
-    "EN": "IP: PORT Output",
+    "EN": "IP:PORT Output",
     "RU": "IP:PORT Выводимый",
 	"UA": "IP:PORT Виведений"
   },
@@ -536,7 +541,7 @@
 	"UA": "ID Сервера (vip_core.cfg))"
   },
   "_Sb_Table": {
-    "EN": "Server ID (vip_core.cfg)",
+    "EN": "SB/MA :: Table",
     "RU": "SB/MA :: Таблица",
 	"UA": "SB/MA :: Таблиця"
   },
@@ -551,7 +556,7 @@
 	"UA": "WarnSystem :: Таблиця"
   },
   "_Lk_Table": {
-    "EN": "WarnSystem :: Table",
+    "EN": "LK :: Table",
     "RU": "LK :: Таблица",
 	"UA": "LK :: Таблиця"
   },
@@ -597,6 +602,7 @@
   },
   "_non_take_con": {
     "EN": "Not chosen",
+	"BR": "Não escolhido",
     "RU": "Не выбрано",
 	"UA": "Не обрано"
   },
@@ -641,7 +647,8 @@
 	"UA": "Додати"
   },
   "_mod_list": {
-    "EN": "Mods Çist",
+    "EN": "Mods List",
+	"BR": "Lista de Mods",
     "RU": "Список модов",
 	"UA": "Список модів"
   },
@@ -652,11 +659,13 @@
   },
   "_configure": {
     "EN": "Configurator",
+	"BR": "Configurator",
     "RU": "Конфигуратор",
 	"UA": "Конфігуратор"
   },
   "_connection": {
     "EN": "Connections",
+	"BR": "Conexões",
     "RU": "Подключения",
 	"UA": "Підключення"
   },
@@ -677,6 +686,7 @@
   },
   "_list_con": {
     "EN": "General",
+	"BR": "Geral",
     "RU": "Общий",
 	"UA": "Загальний"
   },
@@ -692,6 +702,7 @@
   },
   "_error": {
     "EN": "Error!",
+	"BR": "Error!",
     "RU": "Ошибка!",
 	"UA": "Помилка!"
   },
@@ -772,6 +783,7 @@
   },
   "_Admin_stats":{
     "EN": "Statistics",
+	"BR": "Estatisticas",
     "RU":"Статистика",
     "UA":"Статистика",
     "LT":"Statistika",
@@ -802,106 +814,127 @@
   },
   "_Jan":{
     "EN": "January",
+	"BR": "Janeiro",
     "RU": "Январь",
 	"UA": "Січень"
   },
   "_Feb":{
     "EN": "February",
+	"BR": "Fevereiro",
     "RU": "Февраль",
 	"UA": "Лютий"
   },
   "_Mar":{
     "EN": "March",
+	"BR": "Março",
     "RU": "Март",
 	"UA": "Березень"
   },
   "_Apr":{
     "EN": "April",
+	"BR": "Abril",
     "RU": "Апрель",
 	"UA": "Квітень"
   },
   "_May":{
     "EN": "May",
+	"BR": "Maio",
     "RU": "Май",
 	"UA": "Травень"
   },
   "_Jun":{
     "EN": "June",
+	"BR": "Junho",
     "RU": "Июнь",
 	"UA": "Червень"
   },
   "_Jul":{
     "EN": "July",
+	"BR": "Julho",
     "RU": "Июль",
 	"UA": "Липень"
   },
   "_Aug":{
     "EN": "August",
+	"BR": "Agosto",
     "RU": "Август",
 	"UA": "Серпень"
   },
   "_Sep":{
     "EN": "September",
+	"BR": "Setembro",
     "RU": "Сентябрь",
 	"UA": "Вересень"
   },
   "_Oct":{
     "EN": "October",
+	"bR": "Outubro",
     "RU": "Октябрь",
 	"UA": "Жовтень"
   },
   "_Nov":{
     "EN": "November",
+	"EN": "Novembro",
     "RU": "Ноябрь",
 	"UA": "Листопад"
   },
   "_Dec":{
     "EN": "December",
+	"BR": "Dezembro",
     "RU": "Декабрь",
 	"UA": "Грудень"
   },
   "_Mset":{
     "EN": "Module Settings:",
+	"BR": "Configurações do Módulo:",
     "RU": "Настройки модуля:",
 	"UA": "Налаштування модуля:"
   },
   "_MAuth":{
     "EN": "Author:",
+	"BR": "Autor:",
     "RU": "Автор:",
 	"UA": "Автор:"
   },
   "_MKer":{
     "EN": "Min Kernel Version:",
+	"BR": "Versão Mínima do Kernel:",
     "RU": "Мин. версия ядра:",
 	"UA": "Мін. версія ядра:"
   },
   "_MVer":{
     "EN": "Module Version:",
+	"BR": "Versão do Módulo:",
     "RU": "Версия модуля:",
 	"UA": "Версія модуля:"
   },
   "_MPHP":{
-    "EN": "Min PHP version:",
+    "EN": "Min PHP Version:",
+	"BR": "Versão Mínima do PHP:",
     "RU": "Мин. версия PHP:",
 	"UA": "Мін. версія PHP:"
   },
   "_MDesc":{
     "EN": "Description:",
+	"BR": "Descrição:",
     "RU": "Описание:",
 	"UA": "Опис:"
   },
   "_MActive":{
     "EN": "Active Page:",
+	"BR": "Página Ativa:",
     "RU": "Активная страница:",
 	"UA": "Активна сторінка:"
   },
   "_MOnoff":{
     "EN": "Module ON/OFF",
+	"BR": "Módulo ON/OFF",
     "RU": "Модуль вкл./выкл.",
 	"UA": "Модуль вкл./Викл."
   },
   "_MMode":{
     "EN": "Module Mode:",
+	"BR": "Modo Módulo:",
     "RU": "Режим модуля:",
 	"UA": "Режим модуля:"
   },
