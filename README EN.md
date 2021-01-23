@@ -13,6 +13,8 @@ User WEB interface for interacting with statistics plugins <a href="https://gith
 
 Official support channel at <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
+[README RU](#READEME.md) | [README EN](#READEME EN.md)
+
 -----
 
 <p align="center">

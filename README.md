@@ -13,6 +13,8 @@
 
 Официальный канал поддержки в <a href="https://discord.gg/Mbjnh3h">Discord</a>.
 
+[README RU](#READEME.md) | [README EN](#READEME EN.md)
+
 -----
 
 <p align="center">
