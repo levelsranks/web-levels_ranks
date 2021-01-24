@@ -44,18 +44,18 @@
 -----
 
 - https://warfal.ru/
-- https://cybercs.ru/
+- http://cybercs.ru/
 - https://nsproject.site/
 - https://war-cccr.ru/
 - https://provincial-project.ru/
 - https://foges.info/
 - https://yablochko-csgo.ru/
-- https://hellstar.fun/
+- http://hellstar.fun/
 - https://ttsserv.ru/
 - https://lr.nightproject.ru/
 - https://nokill.ru/
 - https://unitcsgo.ru/
-- https://lr.neostrike.ru/
+- http://lr.neostrike.ru/
 - https://gg-pro.ru/levels/
 - https://crystalx.ru/
 - https://krivbass.xyz/
@@ -69,24 +69,24 @@
 - https://russia.myarena.site/
 - https://progaming.ba/csgo/stats/
 - https://grandlandcsgo.cssold.ru/
-- https://desperateproject.space/
+- http://desperateproject.space/
 - https://rsb-cs.ru/
 - https://ezstars.myarena.site/?page=home
 - https://sanders-cs.ru/
 - https://torgaming.xyz/
 - https://suicideserver.xyz/
-- https://weallplay.eu/stats/web_dev/
+- https://www.weallplay.eu/stats/web_dev/
 - https://ilitagame.ru/
 - https://czar-serv.ru/
 - https://ilitagame.ru/
 - https://gabepub.hl2.su/
-- https://lvl.tkofficial.ru/
+- http://lvl.tkofficial.ru/
 - https://wocawp.ru/stats/
 - https://bberryproject.ru/lr/
 - https://sanders-cs.ru/
 - https://elustic.ru/
-- https://malldova.ru/
-- https://hask-gaming.ru/
+- http://malldova.ru/
+- http://hask-gaming.ru/
 
 Требования
 -----
@@ -133,9 +133,9 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Основной AWP сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                   ],
                                                ],
                                   ],
@@ -181,16 +181,16 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Основной AWP сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                   ],
                                                   [
                                                   'table' => 'Название таблицы 2 (lvl_base_2)',
                                                   'name'  => 'Название (Основной MM сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                   ],
                                               ],
                                   ],
@@ -236,9 +236,9 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Основной AWP сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                    ],
                                                ],
                                   ],
@@ -248,9 +248,9 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Новый MM сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                   ]
                                               ],
                                   ],
@@ -296,9 +296,9 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Основной AWP сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                    ],
                                                ],
                                   ],
@@ -316,9 +316,9 @@
                                                   [
                                                   'table' => 'Название таблицы (lvl_base)',
                                                   'name'  => 'Название (Основной AWP сервер)',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                    ],
                                                ],
                                   ],
@@ -365,11 +365,11 @@
                                   'DB'     => 'Имя основной базы данных',
                                   'Prefix' => [0 => 
                                                   [
-                                                  'table' => 'Название таблицы ( lvl_base )',
-                                                  'name'  => 'Название ( Основной AWP сервер )',
-                                                  'mod' => '730 / 240 / 215',
+                                                  'table' => 'Название таблицы (lvl_base)',
+                                                  'name'  => 'Название (Основной AWP сервер)',
+                                                  'mod' => '730/240/215',
 												  'ranks_pack' => 'default',
-                                                  'steam' => '1 / 0'
+                                                  'steam' => '1/0'
                                                   ],
                                               ],
                                   ],
@@ -397,19 +397,19 @@
 		'SourceBans' => 
                 [0 => 
                    [
-                   'HOST' => 'Хост SB / MA',
+                   'HOST' => 'Хост SB/MA',
 		   'PORT' => '3306',
-                   'USER' => 'Логин SB / MA',
-                   'PASS' => 'Пароль SB / MA',
+                   'USER' => 'Логин SB/MA',
+                   'PASS' => 'Пароль SB/MA',
                    'DB'   => [0 => 
                                  [
-                                 'DB'     => 'Имя базы данных SB / MA',
+                                 'DB'     => 'Имя базы данных SB/MA',
                                  'Prefix' => [0 => 
                                                  [
                                                  'table' => 'sb_',
                                                  'name'  => 'SourceBans',
-                                                 'mod' => '730 / 240 / 215',
-                                                 'steam' => '1 / 0'
+                                                 'mod' => '730/240/215',
+                                                 'steam' => '1/0'
                                                  ],
                                              ],
                                  ],
@@ -505,7 +505,7 @@
 
 - **Старница отображения**: bans
 - **Информация**: 
-  - Интеграция с SB / MA.
+  - Интеграция с SB/MA.
   - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
@@ -518,7 +518,7 @@
 
 - **Старница отображения**: comms
 - **Информация**: 
-  - Интеграция с SB / MA.
+  - Интеграция с SB/MA.
   - Необходимо добавить в db.php новый мод "SourceBans" и описать подключение. Название таблицы указать префиксом, пример: "sb_".
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
