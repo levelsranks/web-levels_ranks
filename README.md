@@ -430,7 +430,7 @@
 	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_stats.png">
 </p>
 
-- **Старница отображения**: Главная
+- **Старница отображения**: home
 - **Информация**: Добавляет три мини блока с описанием количества игроков, игроков которые заходили за последние 24 часа и количестве убийств в голову.
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
@@ -441,7 +441,7 @@
 	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_servers_monitoring_type_3.png">
 </p>
 
-- **Старница отображения**: Главная
+- **Старница отображения**: home
 - **Информация**: Добавляет мониторинг онлайна серверов с возможностью подключения.
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
@@ -452,7 +452,7 @@
 	<img src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/modules/module_block_main_top.png">
 </p>
 
-- **Старница отображения**: Главная
+- **Старница отображения**: home
 - **Информация**: Добавляет блоки с "топ 10" каждой подключенной таблице Levels Ranks.
 - **Скачать:** Доступен в базовом пакете модулей.
 </details>
