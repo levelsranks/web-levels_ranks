@@ -44,18 +44,18 @@
 -----
 
 - https://warfal.ru/
-- https://cybercs.ru/
+- http://cybercs.ru/
 - https://nsproject.site/
 - https://war-cccr.ru/
 - https://provincial-project.ru/
 - https://foges.info/
 - https://yablochko-csgo.ru/
-- https://hellstar.fun/
+- http://hellstar.fun/
 - https://ttsserv.ru/
 - https://lr.nightproject.ru/
 - https://nokill.ru/
 - https://unitcsgo.ru/
-- https://lr.neostrike.ru/
+- http://lr.neostrike.ru/
 - https://gg-pro.ru/levels/
 - https://crystalx.ru/
 - https://krivbass.xyz/
@@ -69,7 +69,7 @@
 - https://russia.myarena.site/
 - https://progaming.ba/csgo/stats/
 - https://grandlandcsgo.cssold.ru/
-- https://desperateproject.space/
+- http://desperateproject.space/
 - https://rsb-cs.ru/
 - https://ezstars.myarena.site/?page=home
 - https://sanders-cs.ru/
@@ -80,13 +80,13 @@
 - https://czar-serv.ru/
 - https://ilitagame.ru/
 - https://gabepub.hl2.su/
-- https://lvl.tkofficial.ru/
+- http://lvl.tkofficial.ru/
 - https://wocawp.ru/stats/
 - https://bberryproject.ru/lr/
 - https://sanders-cs.ru/
 - https://elustic.ru/
-- https://malldova.ru/
-- https://hask-gaming.ru/
+- http://malldova.ru/
+- http://hask-gaming.ru/
 
 Требования
 -----
