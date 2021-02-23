@@ -11,13 +11,13 @@
 if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try {
-        $openid = new LightOpenID( 'http:' . $this->General->arr_general['site'] );
+        $openid = new LightOpenID( 'https:' . $this->General->arr_general['site'] );
         if ( ! $openid->mode ) {
             $openid->identity = 'https://steamcommunity.com/openid';
             header( 'Location: ' . $openid->authUrl() );
             if ( ! headers_sent() ) {?>
                 <script type="text/javascript">window.location.href="<?php echo $openid->authUrl() ?>";</script>
-                <noscript><meta http-equiv="refresh" content="0;url=<?php echo $openid->authUrl() ?>" /></noscript>
+                <noscript><meta https-equiv="refresh" content="0;url=<?php echo $openid->authUrl() ?>" /></noscript>
                 <?php exit;
             }
         } elseif ( $openid->mode == 'cancel' ) {
@@ -38,7 +38,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                 if ( ! empty( $Db->db_data['LevelsRanks'] )):
                     if($Db->queryNum('LevelsRanks', 0, 0, "SELECT COUNT(*) FROM " . $Db->db_data['LevelsRanks'][ 0 ]['Table'] . " WHERE steam=" . $_SESSION['steamid32'])[0] == 0):
                         $_STEAMAPI = $General->arr_general['web_key'];
-                        $response = file_get_contents('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $_STEAMAPI . '&steamids=' . $_SESSION['steamid']); 
+                        $response = file_get_contents('https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $_STEAMAPI . '&steamids=' . $_SESSION['steamid']); 
                         $json = json_decode($response, true); 
                         $Db->query('LevelsRanks', 0, 0, "INSERT INTO " . $Db->db_data['LevelsRanks'][ 0 ]['Table'] . " 
                         (`id`, `steam`, `name`, `value`, `rank`, `kills`, `deaths`, `shoots`, `hits`, `headshots`, `assists`, `round_win`, `round_lose`, `playtime`, `lastconnect`) 
@@ -48,7 +48,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                 header('Location: ' . $this->General->arr_general['site']);
                 if ( ! headers_sent() ) {?>
                     <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
-                    <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
+                    <noscript><meta https-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
                     <?php exit;
                 }
             }
@@ -62,7 +62,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'logout' ) {
     header('Location: ' . $this->General->arr_general['site']);
     if ( ! headers_sent() ) {?>
         <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
-        <noscript><meta http-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
+        <noscript><meta https-equiv="refresh" content="0;url=<?php echo $this->General->arr_general['site'] ?>" /></noscript>
         <?php exit;
     }
 }
