@@ -1,0 +1,30 @@
+{
+  "title": "LR WEB - admins - Вывод администрации",
+  "info": "Интеграция SourceBans. Выводи список администраторов.",
+  "author": "M0st1ce",
+  "page": "admins",
+  "version": "0.1",
+  "required": {
+    "core":"0.2","php":"5.4"
+  },
+  "setting": {
+    "status": 1,
+    "type": 1,
+    "available_types": "1",
+    "interface": 1,
+    "interface_adjacent": "afternavbar",
+    "data": 1,
+    "data_always": 1
+  },
+  "sidebar":
+  {
+    "0": {
+      "href": "?page=admins",
+      "open_new_tab": "0",
+      "icon_group": "zmdi",
+      "icon_category": null,
+      "icon": "accounts-list",
+      "name": "_Admins_sb",
+      "sidebar_directory": "_Sidebar_blocks"
+    }}
+}

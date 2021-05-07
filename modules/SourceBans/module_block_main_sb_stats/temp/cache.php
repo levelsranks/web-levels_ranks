@@ -1,1 +1,0 @@
-<?php return ['count_admins'=>37,'count_bans'=>3966,'count_comms'=>4321,'time'=>1571523719];

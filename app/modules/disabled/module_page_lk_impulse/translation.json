@@ -1,0 +1,840 @@
+{
+    "_LK":{
+            "EN" : "Personal Area",
+            "RU" : "Личный Кабинет",
+            "UA" : "Особистий кабінет",
+            "LT" : "Asmeninė sąskaita"
+    },
+    "_ToUpAmount":{
+            "EN" : "Top-up Amount:",
+            "RU" : "Сумма пополнения:",
+            "UA" : "Сума поповнення:",
+            "LT" : "Papildoma suma:"
+    },
+    "_Promo":{
+            "EN" : "Promotional code",
+            "RU" : "Промокод",
+            "UA" : "Промокод",
+            "LT" : "Reklamos kodas"
+    },
+    "_Balance":{
+            "EN" : "Balance",
+            "RU" : "Баланс",
+            "UA" : "Баланс",
+            "LT" : "Balansas"
+    },
+    "_BalanceAllTime":{
+            "EN" : "For all the time",
+            "RU" : "За все время",
+            "UA" : "За все время",
+            "LT" : "Visą laiką"
+    },
+    "_ButtonPay":{
+            "EN" : "Top up balance",
+            "RU" : "Пополнить баланс",
+            "UA" : "Поповнити баланс",
+            "LT" : "Papildykite pusiausvyrą"
+    },
+    "_AmountCourse":{
+            "EN" : "&#36;",
+            "RU" : "&#8381;",
+            "UA" : "&#8372;",
+            "LT" : "&#8364;"
+    },
+    "_SettingsGateways":{
+            "EN" : "Payment Gateways",
+            "RU" : "Платежные шлюзы",
+            "UA" : "Платіжні шлюзи",
+            "LT" : "Mokėjimo šliuzai"
+    },
+    "_Gateways":{
+            "EN" : "Payment Gateway",
+            "RU" : "Платежный шлюз",
+            "UA" : "Платіжній шлюз",
+            "LT" : "Mokėjimo šliuzai"
+    },
+    "_Status":{
+            "EN" : "Status",
+            "RU" : "Статус",
+            "UA" : "Статус",
+            "LT" : "Statusas"
+    },
+    "_UsersList":{
+            "EN" : "Players List",
+            "RU" : "Список игроков",
+            "UA" : "Список гравців",
+            "LT" : "Žaidėjų sąrašas"
+    },
+    "_DiscordMessage":{
+            "EN" : "Discord notifications",
+            "RU" : "Уведомления Discord",
+            "UA" : "Повідомлення Discord",
+            "LT" : "Pranešimai apie nesutarimus"
+    },
+    "_LKInstall":{
+            "EN" : "Installing the LR WEB module - Personal Area",
+            "RU" : "Установка модуля LR WEB - Личный Кабинет",
+            "UA" : "Установка модуля LR WEB - Особистий Кабінет",
+            "LT" : "„LR WEB“ modulio diegimas - „Mano sąskaita“"
+    },
+    "_SettingsBD":{
+            "EN" : "Database setup",
+            "RU" : "Настройка базы данных",
+            "UA" : "Налаштування бази даних",
+            "LT" : "Duomenų bazės nustatymas"
+    },
+    "_LKForInstall":{
+            "EN" : "For the module to work, you must have the plug-in installed and configured on the server",
+            "RU" : "Для работы модуля у Вас должен быть установлен и настроен на сервере плагин",
+            "UA" : "Для роботи модуля у Вас повинен бути встановлений і налаштований на сервері плагін",
+            "LT" : "Kad modulis veiktų, serveryje turite būti įdiegę ir sukonfigūravę papildinį"
+    },
+    "_DBCheckBTN":{
+            "EN" : "Check",
+            "RU" : "Проверить",
+            "UA" : "Перевірити",
+            "LT" : "Patikrinkite"
+    },
+    "_DBCheckConnect":{
+            "EN" : "There is no connection to the database!",
+            "RU" : "Подключение к базе данных отсутствует!",
+            "UA" : "Підключення до бази даних відсутня!",
+            "LT" : "Nėra ryšio su duomenų baze!"
+    },
+    "_DBCheckConnectSucc":{
+            "EN" : "Database with table connected successfully!",
+            "RU" : "База данных с таблицей успешно подключена!",
+            "UA" : "База даних з таблицею успішно підключена!",
+            "LT" : "Duomenų bazė su lentele sėkmingai sujungta!"
+    },
+    "_NextBTN":{
+            "EN" : "Next",
+            "RU" : "Далее",
+            "UA" : "Далі",
+            "LT" : "Kitas"
+    },
+    "_InstallBTN":{
+            "EN" : "Install",
+            "RU" : "Установить",
+            "UA" : "Встановити",
+            "LT" : "Įdiekite"
+    },
+    "_Example":{
+            "EN" : "Example",
+            "RU" : "Пример",
+            "UA" : "Приклад",
+            "LT" : "Pavyzdys"
+    },
+    "_Information":{
+            "EN" : "Information",
+            "RU" : "Информация",
+            "UA" : "Iнформація",
+            "LT" : "Informacija"
+    },
+    "_Php":{
+            "EN" : "Your version of PHP:",
+            "RU" : "Ваша версия PHP:",
+            "UA" : "Ваша версія PHP:",
+            "LT" : "Jūsų PHP versija:"
+    },
+    "_PhpRecomendation":{
+            "EN" : "Recommended: 7.0 - Possible galactic-scale problems :O",
+            "RU" : "Рекомендуется: 7.0 - Возможны проблемы галактического масштаба :O",
+            "UA" : "Рекомендується: 7.0 - Можливі проблеми галактичного масштабу :O",
+            "LT" : "Rekomenduojama: 7.0 - Galimos galaktikos masto problemos :O"
+    },
+    "_InstallTable":{
+            "EN" : "Installation of tables in the database",
+            "RU" : "Установка таблиц в базу данных",
+            "UA" : "Установка таблиць в базу даних",
+            "LT" : "Lentelių diegimas duomenų bazėje"
+    },
+    "_ForWork":{
+            "EN" : "For the module to work, the missing tables will be installed:",
+            "RU" : "Для работы модуля будут установлены недостающие таблицы:",
+            "UA" : "Для роботи модуля будуть встановлені відсутні таблиці:",
+            "LT" : "Kad modulis veiktų, bus įdiegtos trūkstamos lentelės:"
+    },
+    "_Options":{
+            "EN" : "Options",
+            "RU" : "Опции",
+            "UA" : "Опції",
+            "LT" : "Parinktys"
+    },
+    "_AddGateways":{
+            "EN" : "Add Payment Gateway",
+            "RU" : "Добавить платежный шлюз",
+            "UA" : "Додати платіжний шлюз",
+            "LT" : "Pridėti mokėjimo šliuzą"
+    },
+    "_AddGateway":{
+            "EN" : "Payment gateway %name% added",
+            "RU" : "Платежный шлюз %name% добавлен",
+            "UA" : "ДПлатіжний шлюз %name% доданий",
+            "LT" : "Pridėta mokėjimų sąsaja %name%"
+    },
+    "_SetGateways":{
+            "EN" : "Gateway settings",
+            "RU" : "Настройки шлюза",
+            "UA" : "Налаштування шлюзу",
+            "LT" : "Šliuzo nustatymai"
+    },
+    "_SecretWord":{
+            "EN" : "Secret word",
+            "RU" : "Секретное слово",
+            "UA" : "Cекретне слово",
+            "LT" : "Slaptas žodis"
+    },
+    "_SecretKey":{
+            "EN" : "Secret key",
+            "RU" : "Секретный ключ",
+            "UA" : "Cекретний ключ",
+            "LT" : "Slaptas raktas"
+    },
+    "_PublicKey":{
+            "EN" : "Public key",
+            "RU" : "Публичный ключ",
+            "UA" : "Публічний ключ",
+            "LT" : "Viešas raktas"
+    },
+    "_SecretWord":{
+            "EN" : "Secret word",
+            "RU" : "Секретное слово",
+            "UA" : "Cекретне слово",
+            "LT" : "Slaptas žodis"
+    },
+    "_ActGateways":{
+            "EN" : "Gateway Activity",
+            "RU" : "Активность шлюза",
+            "UA" : "Активність шлюзу",
+            "LT" : "Vartų veikla"
+    },
+    "_Indetificator":{
+            "EN" : "Store ID in the system",
+            "RU" : "Индетификатор магазина в системе",
+            "UA" : "Індетіфікатор магазину в системі",
+            "LT" : "Saugokite ID sistemoje"
+    },
+    "_Indetificator":{
+            "EN" : "Store ID in the system",
+            "RU" : "Индетификатор магазина в системе",
+            "UA" : "Індетіфікатор магазину в системі",
+            "LT" : "Saugokite ID sistemoje"
+    },
+    "_Save":{
+            "EN" : "Save",
+            "RU" : "Сохранить",
+            "UA" : "Зберегти",
+            "LT" : "Taupyti"
+    },
+    "_Purse":{
+            "EN" : "Purse",
+            "RU" : "Кошелек",
+            "UA" : "Гаманець",
+            "LT" : "Piniginė"
+    },
+    "_ResultUrl":{
+            "EN" : "Address to payment processor:",
+            "RU" : "Адрес до обработчика платежа:",
+            "UA" : "Адреса до обробника:",
+            "LT" : "Adresas tvarkytojui:"
+    },
+    "_ISID":{
+            "EN" : "Enter store ID",
+            "RU" : "Введите ID магазина",
+            "UA" : "Введіть ID магазину",
+            "LT" : "įveskite parduotuvės ID"
+    },
+    "_ISEC":{
+            "EN" : "Enter a secret word",
+            "RU" : "Введите секретное слово",
+            "UA" : "Введіть секретне слово",
+            "LT" : "įveskite slaptą žodį"
+    },
+    "_NINT":{
+            "EN" : "This payment gateway is not integrated",
+            "RU" : "Данный платежный шлюз не интегрирован",
+            "UA" : "Даний платіжний шлюз не інтегрований",
+            "LT" : "Ši mokėjimo sąsaja nėra integruota"
+    },
+    "_Password":{
+            "EN" : "Password",
+            "RU" : "Пароль",
+            "UA" : "Пароль",
+            "LT" : "Slaptažodis"
+    },
+    "_IPASS":{
+            "EN" : "Enter password",
+            "RU" : "Введите пароль",
+            "UA" : "Введіть пароль",
+            "LT" : "įveskite slaptažodį"
+    },
+    "_IPURSE":{
+            "EN" : "Enter wallet number",
+            "RU" : "Введите номер кошелька",
+            "UA" : "Введіть номер гаманця",
+            "LT" : "Įveskite piniginės numerį"
+    },
+    "_GetwExist":{
+            "EN" : " - Payment Gateway Already Installed",
+            "RU" : " - Платежный шлюз уже установлен",
+            "UA" : " - Платіжний шлюз вже встановлено",
+            "LT" : " - Mokėjimo šliuzas jau įdiegtas"
+    },
+    "_GetwNoExist":{
+            "EN" : "Payment gateway not found",
+            "RU" : "Платежный шлюз не найден",
+            "UA" : "Платіжний шлюз не найден",
+            "LT" : "Mokėjimo šliuzas nerastas"
+    },
+    "_LogNotFound":{
+            "EN" : "Log not found",
+            "RU" : "Лог не найден",
+            "UA" : "Лог не найден",
+            "LT" : " Žurnalas nerastas"
+    },
+    "_GetDonat":{
+            "EN" : "New donation %course% %amount%",
+            "RU" : "Новый донат %course% %amount%",
+            "UA" : "Нове пожертвування %course% %amount%",
+            "LT" : "Nauja aukojimas %course% %amount%"
+    },
+    "_NewModule":{
+            "EN" : "New donation %course% %amount%",
+            "RU" : "Установлен новый модуль",
+            "UA" : "Нове пожертвування %course% %amount%",
+            "LT" : "Nauja aukojimas %course% %amount%"
+    },
+    "_Foff":{
+            "EN" : "%gateway% - Payment Gateway Disabled",
+            "RU" : "%gateway% - Платежный шлюз отключен",
+            "UA" : "%gateway% - Платіжний шлюз відключений",
+            "LT" : "%gateway% - Mokėjimo šliuzas išjungtas"
+    },
+    "_SetPromo":{
+            "EN" : "%gateway% - The %promocode% code was introduced, the bonus was %course% %amount%",
+            "RU" : "%gateway% - Был введен прмокод  %promocode%, бонус составил %course% %amount%",
+            "UA" : "%gateway% - Був введений прмокод %promocode%, Бонус склав %course% %amount%",
+            "LT" : "%gateway% - Buvo įvestas %promocode% kodas, premija buvo %course% %amount%"
+    },
+    "_DeniedIP":{
+            "EN" : "%gateway% - Request from Denied IP - %ip%",
+            "RU" : "%gateway% - Запрос с запрещенного IP - %ip%",
+            "UA" : "%gateway% - Запит з забороненого IP - %ip%",
+            "LT" : "%gateway% - Prašymas iš IP, kuriam atsisakyta %ip%"
+    },
+    "_GatewayOnNotEzist":{
+            "EN" : "Sorry, but it seems the administrator forgot to set up a payment gateway to accept payment",
+            "RU" : "Прости, но кажется Админ забыл настроить платежный шлюз для приема оплаты",
+            "UA" : "Прости, але здається Адмін забув налаштувати платіжний шлюз для прийому оплати",
+            "LT" : "Atsiprašome, bet panašu, kad administratorius pamiršo nustatyti mokėjimo šliuzą, kad galėtų priimti mokėjimą"
+    },
+    "_ChangeGateway":{
+            "EN" : "Select a Payment Method",
+            "RU" : "Выберите способ оплаты",
+            "UA" : "Виберіть спосіб оплати",
+            "LT" : "Pasirinkite mokėjimo metodą"
+    },
+    "_EnterAmount":{
+            "EN" : "Enter the desired recharge amount",
+            "RU" : "Введите желаемую сумму пополнения",
+            "UA" : "Введіть бажану суму поповнення",
+            "LT" : "Įveskite norimą papildymo kiekį"
+    },
+    "_AmountError":{
+            "EN" : "Invalid amount input, 10 or 10.50",
+            "RU" : "Не правильный ввод суммы, 10 или 10.50",
+            "UA" : "Чи не правильне введення суми, 10 або 10.50",
+            "LT" : "Neteisinga įvesta suma, 10 arba 10.50"
+    },
+    "_EnterSteam":{
+            "EN" : "Enter your STEAM_ID or log in",
+            "RU" : "Введите свой STEAM_ID или авторизуйтесь",
+            "UA" : "Введіть свій STEAM_ID або авторизуйтесь",
+            "LT" : "Įveskite STEAM_ID arba prisijunkite"
+    },
+    "_SteamError":{
+            "EN" : "Invalid input format STEAM_ID",
+            "RU" : "Не верный формат ввода STEAM_ID",
+            "UA" : "Не вірний формат введення STEAM_ID",
+            "LT" : "Netinkamas įvesties formatas STEAM_ID"
+    },
+    "_YouPay":{
+            "EN" : "Deposit %course% %amount%",
+            "RU" : "Пополнение  баланса на %course% %amount%",
+            "UA" : "Поповнення балансу на %course% %amount%",
+            "LT" : "Užstatas %course% %amount%"
+    },
+    "_ErrorNamePromo":{
+            "EN" : "The promotional code must consist of Latin characters and numbers",
+            "RU" : "Промокод должен состоять и латинских символов и цифр",
+            "UA" : "Промокод повинен складатися і латинських символів та цифр",
+            "LT" : "Reklamos kredito kodą turi sudaryti lotyniški ženklai ir skaičiai"
+    },
+    "_LimitPromo":{
+            "EN" : "Enter your promotional code limit",
+            "RU" : "Введите лимит использования промокода",
+            "UA" : "Введіть ліміт використання промокодом",
+            "LT" : "Įveskite reklamos kredito kodo limitą"
+    },
+    "_LimitField":{
+            "EN" : "You can enter only numbers in the limit field",
+            "RU" : "В поле лимит возможенн ввод только цифр",
+            "UA" : "В поле ліміт возможенн введення тільки цифр",
+            "LT" : "Ribų laukelyje galite įvesti tik skaičius"
+    },
+    "_MinAmount":{
+            "EN" : "Minimum deposit amount %course% 0.1",
+            "RU" : "Минимальная сумма пополнения %course% 0.1",
+            "UA" : "Мінімальна сума поповнення %course% 0.1",
+            "LT" : "Minimali įmokos suma 0.1 %course%"
+    },
+    "_SettingsPromo":{
+            "EN" : "Set up promotional codes",
+            "RU" : "Настройка промокодов",
+            "UA" : "Налаштування промокодом",
+            "LT" : "Nustatykite reklamos kodus",
+            "DE" : "Richten Sie Aktionscodes ein",
+            "CH" : "设置促销代码"
+    },
+    "_AddPromocode":{
+            "EN" : "Add promotional code",
+            "RU" : "Добавить промокод",
+            "UA" : "Додати промокод",
+            "LT" : "Pridėkite reklamos kredito kodą",
+            "DE" : "Aktionscode hinzufügen",
+            "CH" : "添加促销代码"
+    },
+    "_Snap":{
+            "EN" : "Snap",
+            "RU" : "Привязка",
+            "UA" : "Привязка",
+            "LT" : "Snapas",
+            "DE" : "Snap",
+            "CH" : "链接"
+    },
+    "_BonusPromo":{
+            "EN" : "Bonus%",
+            "RU" : "Бонусный %",
+            "UA" : "Бонусный %",
+            "LT" : "Premija%",
+            "DE" : "Bonus%",
+            "CH" : "奖金％"
+    },
+    "_LimitUsePromo":{
+            "EN" : "Limit",
+            "RU" : "Лимит",
+            "UA" : "Лимит",
+            "LT" : "Riboti",
+            "DE" : "Limit",
+            "CH" : "极限"
+    },
+    "_Edit":{
+            "EN" : "Edit",
+            "RU" : "Редактировать",
+            "UA" : "Редагувати",
+            "LT" : "Redaguoti",
+            "DE" : "Bearbeiten",
+            "CH" : "编辑"
+    },
+    "_Add":{
+            "EN" : "Add",
+            "RU" : "Добавить",
+            "UA" : "Додати",
+            "LT" : "Pridėti",
+            "DE" : "Hinzufügen",
+            "CH" : "添加"
+    },
+    "_EditPromoName":{
+            "EN" : "Enter the name of the promotional code",
+            "RU" : "Введите наименование промокода",
+            "UA" : "Введіть найменування промокодом",
+            "LT" : "Įveskite reklamos kredito kodo pavadinimą",
+            "DE" : "Geben Sie den Namen des Aktionscodes ein",
+            "CH" : "输入促销代码的名称"
+    },
+    "_EditPromo":{
+            "EN" : "Promotional code editing",
+            "RU" : "Редактирование промокода",
+            "UA" : "Редагування промокодом",
+            "LT" : "Reklaminio kodo redagavimas",
+            "DE" : "Bearbeitung von Werbecodes",
+            "CH" : "促销代码编辑"
+    },
+    "_SnapSID":{
+            "EN" : "Bind 1 promotional code to 1 SteamID",
+            "RU" : "Привязать 1 промокод на 1 SteamID",
+            "UA" : "Привязать 1 промокод на 1 SteamID",
+            "LT" : "Prijunkite 1 reklamos kredito kodą prie 1 SteamID",
+            "DE" : "Binden Sie 1 Werbecode an 1 SteamID",
+            "CH" : "将1个促销代码绑定到1个SteamID"
+    },
+    "_Name":{
+            "EN" : "Name",
+            "RU" : "Наименованеие",
+            "UA" : "Найменування",
+            "LT" : "Vardas",
+            "DE" : "Name",
+            "CH" : "名"
+    },
+    "_AddPromoName":{
+            "EN" : "Name of the promotional code(empty field random name)",
+            "RU" : "Наименование Промокода(пустое поле рандомное наименование )",
+            "UA" : "Найменування промокодом(Пусте поле рандомноє найменування)",
+            "LT" : "Reklamos kredito kodo pavadinimas(tuščias lauko atsitiktinis pavadinimas)",
+            "DE" : "Name des Werbecodes(leeres Feld zufälliger Name)",
+            "CH" : "输入促销代码的名称"
+    },
+    "_Logs":{
+            "EN" : "Logs",
+            "RU" : "Логи",
+            "UA" : "Логи",
+            "LT" : "Rąstai",
+            "DE" : "NProtokolle",
+            "CH" : "日志"
+    },
+     "_LogList":{
+            "EN" : "Log list",
+            "RU" : "Список логов",
+            "UA" : "Список логів",
+            "LT" : "Žurnalų sąrašas",
+            "DE" : "Protokollliste",
+            "CH" : "日志列表"
+    },
+    "_PayNotExist":{
+            "EN" : "%gateway% - Payment #%numberpay% already paid or does not exist! Payment Details: Steam '%steam%', Amount '%course% %amount%'.",
+            "RU" : "%gateway% - Платеж #%numberpay% уже оплачен или не существует! Данные платежа: Steam '%steam%', Сумма '%course% %amount%'.",
+            "UA" : "%gateway% - Платіж #%numberpay% вже оплачений або не існує! Дані платежу: SteamID '%steam%', Сума '%course% %amount%'.",
+            "LT" : "%gateway% - Mokėjimas #%numberpay% jau sumokėtas arba jo nėra! Mokėjimo informacija: Steam '%steam%', suma '%course% % suma%'.",
+            "DE" : "%gateway% - Zahlung #%numberpay% bereits bezahlt oder existiert nicht! Zahlungsdetails: Steam '%steam%', Betrag '%course% %amount%'.",
+            "CH" : "%gateway% - 付款＃%numberpay% 已付款或不存在！付款细节：Steam “%steam%”，金额 “%course% %amount%”."
+    },
+    "_Error":{
+            "EN" : "Error",
+            "RU" : "Ошибка",
+            "UA" : "Error",
+            "LT" : "Error",
+            "DE" : "Error",
+            "CH" : "Error"
+    },
+    "_Amount":{
+            "EN" : "Amount",
+            "RU" : "Сумма",
+            "UA" : "Сума",
+            "LT" : "Suma",
+            "DE" : "Menge",
+            "CH" : "总和"
+    },
+    "_Replenishment":{
+            "EN" : "Deposit",
+            "RU" : "Пополнение",
+            "UA" : "Поповнення",
+            "LT" : "Užstatas",
+            "DE" : "Kaution",
+            "CH" : "保证金"
+    },
+    "_PaymentsList":{
+            "EN" : "List of payments",
+            "RU" : "Список платежей",
+            "UA" : "Cписок платежів",
+            "LT" : "Mokėjimų sąrašas",
+            "DE" : "Liste der Zahlungen",
+            "CH" : "付款清单"
+    },
+    "_AdminPay":{
+            "EN" : "Admin credited to you %course% %amount%",
+            "RU" : "Вам начислил админ %course% %amount%",
+            "UA" : "Вам нарахував адмін %course% %amount%",
+            "LT" : "Admin jums buvo įskaitytas",
+            "DE" : "Admin credited to you %course% %amount%",
+            "CH" : "您被认为是admin %course% %amount%"
+    },
+    "_ClearZero":{
+            "EN" : "Clear players with zero donation",
+            "RU" : "Отчистить игроков с нулевым донатом",
+            "UA" : "Очистити гравців з нульовим Донатом",
+            "LT" : "Išvalykite žaidėjus be jokios aukos",
+            "DE" : "Klare Spieler ohne Spende",
+            "CH" : "清除没有捐赠的玩家"
+    },
+    "_Date":{
+            "EN" : "Date",
+            "RU" : "Дата",
+            "UA" : "Дата",
+            "LT" : "Data",
+            "DE" : "Datum",
+            "CH" : "日期"
+    },
+    "_NotPays":{
+            "EN" : "No payments",
+            "RU" : "Нет платежей",
+            "UA" : "Немає платежів",
+            "LT" : "Jokių mokėjimų",
+            "DE" : "Keine Zahlungen",
+            "CH" : "没有付款"
+    },
+    "_Search":{
+            "EN" : "Search",
+            "RU" : "Поиск",
+            "UA" : "Пошук",
+            "LT" : "Paieška",
+            "DE" : "Suche",
+            "CH" : "搜索"
+    },
+    "_LogDeleted":{
+            "EN" : "Log deleted",
+            "RU" : "Лог удален",
+            "UA" : "Лог удален",
+            "LT" : "Žurnalas ištrintas",
+            "DE" : "Protokoll gelöscht",
+            "CH" : "记录已删除"
+    },
+    "_PromoNotUse":{
+            "EN" : "No promotional code used",
+            "RU" : "Промокод не использовался",
+            "UA" : "Промокод не використовувалася",
+            "LT" : "Nebuvo naudojamas reklamos kodas",
+            "DE" : "Kein Werbecode verwendet",
+            "CH" : "没有使用促销代码"
+    },
+    "_NOTSIGN":{
+            "EN" : "%gateway% - Invalid digital signature.",
+            "RU" : "%gateway% - Не верная цифровая подпись.",
+            "UA" : "%gateway% - Чи не вірна цифровий підпис.",
+            "LT" : "%gateway% - Neteisingas skaitmeninis parašas.",
+            "DE" : "%gateway% - Ungültige digitale Signatur.",
+            "CH" : "%gateway% - 数字签名无效。"
+    },
+    "_NoValidSumm":{
+            "EN" : "%gateway% - The amount does not match: %amount%.",
+            "RU" : "%gateway% - Не совпадает сумма: %amount%.",
+            "UA" : "%gateway% - Чи не збігається сума: %amount%.",
+            "LT" : "%gateway% - Suma nesutampa: %amount%.",
+            "DE" : "%gateway% - Der Betrag stimmt nicht überein mit: %amount%.",
+            "CH" : "%gateway% - 金额不符合: %amount%."
+    },
+    "_NewDonat":{
+            "EN" : "%gateway% - Received a new donut: #%order%, amount %course% %amount%, Steam %steam%.",
+            "RU" : "%gateway% - Поступил новый донат: #%order%, сумма %course% %amount%, Steam %steam%.",
+            "UA" : "%gateway% - Надійшов новий Донат: #%order%, сума %course% %amount%, Steam %steam%.",
+            "LT" : "%gateway% - Gauta nauja spurga: #%order%, suma %course% %amount%, Steam %steam%",
+            "DE" : "%gateway% - Erhielt einen neuen Donut: #%order%, Anzahl %course% %amount%, Steam %steam%.",
+            "CH" : "%gateway% - 收到一个新的甜甜圈：#%order%，金额%course% %amount%，Steam %steam%."
+    },
+    "_InPub":{
+            "EN" : "Enter public key",
+            "RU" : "Введите публичный ключ.",
+            "UA" : "Введіть публічний ключ",
+            "LT" : "Įveskite viešą raktą",
+            "DE" : "Geben Sie den öffentlichen Schlüssel ein",
+            "CH" : "输入公钥"
+    },
+    "_InSec":{
+            "EN" : "Enter secret key",
+            "RU" : "Введите секретный ключ.",
+            "UA" : "Введіть секретний ключ",
+            "LT" : "įveskite slaptą raktą",
+            "DE" : "Geben Sie den geheimen Schlüssel ein",
+            "CH" : "输入密钥"
+    },
+    "_SearchStatus":{
+            "EN" : "Search results",
+            "RU" : "Результат поиска",
+            "UA" : "Результат пошуку",
+            "LT" : "Paieškos rezultatas",
+            "DE" : "Suchergebnis",
+            "CH" : "搜索结果"
+    },
+    "_Noresult":{
+            "EN" : "The search has not given any results. Refine your request and try again",
+            "RU" : "Поиск не дал результатов. Уточните Ваш запрос и повторите снова",
+            "UA" : "Пошук не дав результатів. Уточніть Ваш запит і повторіть знову",
+            "LT" : "Pagal jūsų užklausą rezultatų nebuvo. Patikslinkite savo prašymą ir bandykite dar kartą",
+            "DE" : "Ihre Suche ergab keine Treffer. Verfeinern Sie Ihre Anfrage und versuchen Sie es erneut",
+            "CH" : "您的搜索未返回任何结果。优化您的要求，然后重试"
+    },
+    "_maxResult":{
+            "EN" : "If you didn’t go what you were looking for, then specify your request and try again",
+            "RU" : "Если не нешли что искали, то уточните Ваш запрос и повторите снова",
+            "UA" : "Якщо не нешлі що шукали, то уточніть Ваш запит і повторіть знову",
+            "LT" : "Jei nesiėjote to, ko ieškojote, nurodykite prašymą ir bandykite dar kartą",
+            "DE" : "Wenn Sie nicht das gefunden haben, wonach Sie gesucht haben, geben Sie Ihre Anfrage an und versuchen Sie es erneut",
+            "CH" : "如果您没有找到您要找的内容，请指定您的请求并重试"
+    },
+    "_NotFoundPromo":{
+            "EN" : "No promotion code found",
+            "RU" : "Промокод не найден",
+            "UA" : "Промокод не найден",
+            "LT" : "Nerastas reklamos kodas",
+            "DE" : "Kein Promotion-Code gefunden",
+            "CH" : "找不到促销代码"
+    },
+    "_NoLimitPromo":{
+            "EN" : "Your promotional code has been reached",
+            "RU" : "Лимит использования промокода исчерпан",
+            "UA" : "Ліміт використання промокодом вичерпаний",
+            "LT" : "Jūsų reklamos kodas pasiektas",
+            "DE" : "Ihr Aktionscode wurde erreicht",
+            "CH" : "您的促销代码已经到达。"
+    },
+    "_YouUsePromo":{
+            "EN" : "You have already used this promotional code",
+            "RU" : "Вы уже использовали этот промокод",
+            "UA" : "Ви вже використовували цей промокод",
+            "LT" : "Šį reklamos kredito kodą jau panaudojote",
+            "DE" : "Sie haben diesen Aktionscode bereits verwendet",
+            "CH" : "您已使用此促销代码"
+    },
+    "_BonusPromoUse":{
+            "EN" : "With the promotional code you will receive <b style='color:#f27b26'>%newamount% </b> to the balance!<br>The promotional code gives <b style='color:#f27b26'>+%percent% %</b> to the recharge amount!",
+            "RU" : "С промокодом Вы получите <b style='color:#f27b26'>%newamount%</b> на баланс!<br>Промокод дает <b style='color:#f27b26'>+%percent% %</b> к сумме пополнения!",
+            "UA" : "З промокодом Ви отримаєте <b style='color:#f27b26'>%newamount%</b> на баланс! <br> Промокод дає <b style='color:#f27b26'>+%percent% %</b> до суми поповнення!",
+            "LT" : "Su reklamos kredito kodu gausite <b style='color:#f27b26'>%newamount% </b> iki balanso!<br>reklamos kodas suteikia <b style='color:#f27b26'>+%percent% %</b> papildymo sumai!",
+            "DE" : "Mit dem Aktionscode erhalten Sie <b style='color:#f27b26'>%newamount%</b> Zum Guthaben!<br>Der Aktionscode gibt <b style='color: #f27b26'>+%percent% %</b> zum Aufladebetrag!",
+            "CH" : "使用促销代码，您将收到<b style='color:#f27b26'>%newamount%</b>平衡！<br>促销代码给充值金额<b style='color:#f27b26'>+%percent% %</b>!"
+    },
+    "_ExistPromo":{
+            "EN" : "This promotional code already exists",
+            "RU" : "Такой промокод уже существует",
+            "UA" : "Такий промокод уже існує",
+            "LT" : "Šis reklaminis kodas jau yra",
+            "DE" : "Dieser Promotion-Code existiert bereits",
+            "CH" : "此促销代码已存在"
+    },
+    "_NotCorBonus":{
+            "EN" : "In the bonus percentage field, you can enter only an integer value either with a period",
+            "RU" : "В поле бонусный процент возможенн ввод только целое значение либо с точкой",
+            "UA" : "В поле бонусний відсоток возможенн введення тільки ціле значення або з точкою",
+            "LT" : "Premijos procentų laukelyje galite įvesti tik sveikąją skaičių, nurodydami periodą",
+            "DE" : "Im Feld Bonusprozentsatz können Sie entweder mit einem Punkt nur einen ganzzahligen Wert eingeben",
+            "CH" : "在奖励百分比字段中，您只能输入带有句点的整数值"
+    },
+    "_EnterBonus":{
+            "EN" : "Enter your bonus code percentage",
+            "RU" : "Введите бонусный процент промокода",
+            "UA" : "Введіть бонусний відсоток промокодом",
+            "LT" : "Įveskite savo premijos kodo procentą",
+            "DE" : "Geben Sie Ihren Bonuscode-Prozentsatz ein",
+            "CH" : "输入您的红利代码百分比"
+    },
+    "_AddedPromo":{
+            "EN" : "Promo code %namepromo% added",
+            "RU" : "Промокод %namepromo% добавлен",
+            "UA" : "Промокод %namepromo% доданий",
+            "LT" : "Pridėtas reklamos kodas %namepromo%",
+            "DE" : "Promo-Code %namepromo% hinzugefügt",
+            "CH" : "促销代码%namepromo%已添加"
+    },
+    "_EditedPromo":{
+            "EN" : "%namepromo% changes saved",
+            "RU" : "Изменеия %namepromo% сохранены",
+            "UA" : "Изменеия %namepromo% збережені",
+            "LT" : "%namepromo% pakeitimų išsaugota",
+            "DE" : "%namepromo% Änderungen gespeichert",
+            "CH" : "已保存%namepromo%更改"
+    },
+    "_DeletedPromo":{
+            "EN" : "Promotion code deleted",
+            "RU" : "Промокод удален",
+            "UA" : "Промокод видалений",
+            "LT" : "Reklamos kredito kodas ištrintas",
+            "DE" : "Aktionscode gelöscht",
+            "CH" : "促销代码已删除"
+    },
+    "_Saved":{
+            "EN" : "Saved",
+            "RU" : "Сохранено",
+            "UA" : "збережено",
+            "LT" : "Išsaugota",
+            "DE" : "Gespeichert",
+            "CH" : "保存"
+    },
+    "_GatwayOff":{
+            "EN" : "Payment method via %name% is disabled by the Administrator",
+            "RU" : "Способ оплаты через %name% выключен Администратором",
+            "UA" : "Спосіб оплати через %name% вимкнений Адміністратором",
+            "LT" : "Mokėjimo būdą per %name% išjungia administratorius",
+            "DE" : "Die Zahlungsmethode über %name% wurde vom Administrator deaktiviert",
+            "CH" : "管理员禁用通过%name%的付款方式"
+    },
+    "_BusinessAccount":{
+            "EN" : "Business Account",
+            "RU" : "Бизнес аккаунт",
+            "UA" : "Бізнес аккаунт",
+            "LT" : "Verslo sąskaita",
+            "DE" : "Geschäftskonto",
+            "CH" : "企业账户"
+    },
+    "_ISOCourse":{
+            "EN" : "Currency",
+            "RU" : "Валюта",
+            "UA" : "Валюта",
+            "LT" : "Valiuta",
+            "DE" : "Währung",
+            "CH" : "货币"
+    },
+    "_DescPageLK":{
+            "EN" : "Replenish your balance simply",
+            "RU" : "Пополняйте свой баланс просто",
+            "UA" : "Поповнюйте свій баланс просто",
+            "LT" : "Paprasčiausiai papildykite savo balansą",
+            "DE" : "Laden Sie einfach Ihr Guthaben auf",
+            "CH" : "简单地补充您的余额"
+    },
+    "_EnterWebhoockUrl":{
+            "EN" : "Enter URL Webhook!",
+            "RU" : "Введите URL Вебхука!",
+            "UA" : "Введіть URL Вебхука!",
+            "LT" : "Įveskite URL „Webhook“!",
+            "DE" : "URL eingeben Webhook!",
+            "CH" : "输入URL Webhook！"
+    },
+    "_DataChangesGateway":{
+            "EN" : "Data changes in the %gateway% system saved!",
+            "RU" : "Изменения данных в системе %gateway% сохранены!",
+            "UA" : "Зміни даних в системі %gateway% збережені!",
+            "LT" : "Duomenų pokyčiai sistemoje %gateway% išsaugoti!",
+            "DE" : "Datenänderungen im %gateway% System gespeichert!",
+            "CH" : "%gateway%系统中的数据更改已保存！"
+    },
+    "_DeletedGateway":{
+            "EN" : "Cash desk successfully deleted!",
+            "RU" : "Касса успешно удалена!",
+            "UA" : "Каса успішно видалена!",
+            "LT" : "Kasa sėkmingai ištrinta!",
+            "DE" : "Kasse erfolgreich gelöscht!",
+            "CH" : "收银台成功删除！"
+    },
+    "_EnterPaypalAccount":{
+            "EN" : "Enter your e-mail business account in PayPal",
+            "RU" : "Введите E-mail бизнес аккаунта в системе PayPal",
+            "UA" : "Введіть E-mail бізнес аккаунта в системі PayPal",
+            "LT" : "Įveskite savo el. Pašto įmonės sąskaitą „PayPal“",
+            "DE" : "Geben Sie Ihr E-Mail-Geschäftskonto in PayPal ein",
+            "CH" : "在PayPal中输入您的电子邮件业务帐户"
+    },
+    "_UsersDelete":{
+            "EN" : "All players with zero donation removed",
+            "RU" : "Удалены все игроки с нулевым донатом",
+            "UA" : "Вилучені всі гравці з нульовим Донатом",
+            "LT" : "Visi žaidėjai, kurių aukos nulinės, pašalintos“",
+            "DE" : "Alle Spieler ohne Spende entfernt",
+            "CH" : "删除了所有零捐赠的玩家"
+    },
+    "_NewBalanceUser":{
+            "EN" : "New balance for %user% saved!",
+            "RU" : "Новый баланс для %user% сохранен!",
+            "UA" : "Новий баланс для %user% збережений!",
+            "LT" : "Išsaugotas naujas %user% balansas!",
+            "DE" : "Neuer Kontostand für %user% gespart!",
+            "CH" : "已节省%user%的新余额！"
+    },
+    "_OnPayUserDesc":{
+            "EN" : "LK MODULE - Balance replenishment for ",
+            "RU" : "LK MODULE - Пополнение баланса для ",
+            "UA" : "LK MODULE - Поповнення балансу для ",
+            "LT" : "LK MODULIS - balanso papildymas ",
+            "DE" : "LK MODUL - Guthaben auffüllen für ",
+            "CH" : "LK MODULE-的余额补充 "
+    }
+}

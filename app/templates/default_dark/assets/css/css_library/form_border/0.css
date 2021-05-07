@@ -1,0 +1,14 @@
+.badge {
+    border: 0px solid transparent;
+    border-radius: 0px;
+}
+
+.card {
+    border: 0px solid transparent;
+    border-radius: 0px;
+}
+
+.tooltip-left:after, .tooltip-right:after, .tooltip-top:after {
+    border: 0px solid transparent;
+    border-radius: 0px;
+}
