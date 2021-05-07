@@ -1,0 +1,23 @@
+{
+  "--bg-color": "#ededed",
+  "--navbar-color": "#ffffff",
+  "--sidebar-color": "#fdfdfd",
+  "--sidebar-gradient-1": "#ffd968",
+  "--sidebar-gradient-2": "#ff6262",
+  "--item-color": "#111",
+  "--default-text-color": "#111",
+  "--top-text-color": "#737373",
+  "--default-text-color-invert": "#fff",
+  "--hover": "#f3f3f3",
+  "--table-line": "#CDCBCB",
+  "--svg": "0",
+  "--font-weight-0": "500",
+  "--font-weight-1": "500",
+  "--font-weight-2": "500",
+  "--font-weight-3": "600",
+  "--font-weight-4": "700",
+  "--span-color": "#ef7826",
+  "--span-color-addit": "#f38e46",
+  "--span-color-back": "#b34b01c9",
+  "--server-graph-rgba": "255, 117, 0, 0.9"
+}

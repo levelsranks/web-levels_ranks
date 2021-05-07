@@ -1,0 +1,21 @@
+{
+  "title": "LR WEB - Home - Top Players",
+  "info": "Top 10 for homepage",
+  "author": "M0st1ce",
+  "page": "home",
+  "version": "0.1",
+  "required": {
+    "core": "0.2",
+    "php": "5.4"
+  },
+  "setting": {
+    "status": 1,
+    "type": 1,
+    "available_types": "1",
+    "interface": 1,
+    "interface_adjacent": "afternavbar",
+    "data": 1,
+    "cache_enable": 0,
+    "cache_time": 3600
+  }
+}

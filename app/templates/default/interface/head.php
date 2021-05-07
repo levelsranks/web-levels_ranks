@@ -1,1 +1,0 @@
-<body <?php $_SESSION['sidebar_open'] == false && print 'class="sidebar-collapse"'?>>

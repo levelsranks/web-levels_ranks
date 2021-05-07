@@ -1,0 +1,223 @@
+.custom-server {
+    background-color: #141414;
+    padding: 0;
+    max-height: 200px
+}
+
+.custom-server img {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: all 1s ease-out;
+    opacity: .4
+}
+
+.card span {
+    position: absolute;
+    overflow: hidden;
+    right: -19px;
+    bottom: -16px;
+    height: 135px;
+    width: calc(100% + 35px)
+}
+
+.custom-server .data-basic {
+    position: absolute;
+    top: 19px;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 1;
+    text-align: center
+}
+
+.custom-server .data-basic .online {
+    font-size: 18px;
+    font-weight: 400;
+    width: 70%;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 30px;
+    height: 35px
+}
+
+.custom-server .data-basic .online .online2 {
+    background: rgba(var(--server-graph-rgba));
+    background-size: 5rem 5rem;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    height: 33px;
+    max-width: 100%
+}
+
+.custom-server .data-basic .online .value {
+    font-size: 17.5px;
+    font-weight: 400;
+    color: #fff;
+    margin-top: -30px
+}
+
+.custom-server .data-basic .data-name {
+    padding-top: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+    z-index: 1;
+    width: 100%
+}
+
+.custom-server .data-basic .ip {
+    font-weight: 500;
+    color: #fff
+}
+
+.custom-server .border_ip {
+    border: 1px solid #fff;
+    margin-top: 16px;
+    margin-left: 15%;
+    width: 46%;
+    float: left;
+    align-items: center;
+    height: 35px
+}
+
+
+@keyframes move {
+    0% { background-position: 0 0}
+    100% { background-position: 50px 50px}
+}
+
+.modal-window-server {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    transition: all 0.3s;
+    pointer-events: auto;
+}
+
+.modal-window-server .card {
+    border: 1px solid var(--default-text-color);
+    border-radius: 2px;
+}
+
+.modal-window-server > div {
+    position: absolute;
+    width: 25%;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: var(--sidebar-color);
+}
+
+.btn_connect_now{
+    float: right;
+    max-width: 80px;
+    max-height: 30px;
+    margin-top: 14px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+}
+
+.server_block_scroll {
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+.custom-server .btn_connect {
+    cursor: pointer;
+    width: 20%;
+    margin-top: 16px;
+    margin-right: 15%;
+    white-space: nowrap;
+    text-align: center;
+    height: 35px;
+    outline: none;
+    font-weight: 400;
+    font-size: 15px;
+    float: right;
+    background: var(--span-color);
+    color: #fff;
+    border: 1px solid #fff
+}
+
+.btn_connect_text {
+    margin-top:5px
+}
+
+@media (max-width: 575.98px) {
+    .mon-1 {
+        display: none
+    }
+
+    .mon-2 {
+        display: block
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .mon-1 {
+        display: none
+    }
+
+    .mon-2 {
+        display: block
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .mon-1 {
+        display: none
+    }
+
+    .mon-2 {
+        display: block
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .mon-1 {
+        display: none
+    }
+
+    .mon-2 {
+        display: block
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1499.98px) {
+    .ip {
+        margin-top: 4%;
+        font-size: 14px
+    }
+
+    .mon-1 {
+        display: block
+    }
+
+    .mon-2 {
+        display: none
+    }
+}
+
+@media (min-width: 1500px) {
+
+    .ip {
+        margin-top: 2%;
+        font-size: 17px
+    }
+
+    .mon-1 {
+        display: block
+    }
+
+    .mon-2 {
+        display: none
+    }
+}
