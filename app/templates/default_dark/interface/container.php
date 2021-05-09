@@ -46,7 +46,7 @@
                 <?php endif;
                  if(!empty($Modules->array_modules[ 'module_sidebar_social' ]['sidebar'])): for($i = 0; $i < sizeof($Modules->array_modules[ 'module_sidebar_social' ]['sidebar']); $i++): ?>
                 <li class="section">
-                    <a href="<?php echo $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['href'] ?>" class="navbar-icon">
+                    <a href="<?php echo $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['href'] ?>" class="navbar-icon" <?php ( $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][ $i ]['open_new_tab'] == true ) ? print 'target="_blank"' : false?>>
                         <?php $General->get_icon( $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon_group'], empty($Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon_category']) ? $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon'] : $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon'], empty($Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon_category']) ? '' : $Modules->array_modules[ 'module_sidebar_social' ]['sidebar'][$i]['icon_category'] )?>
                     </a>
                 </li>

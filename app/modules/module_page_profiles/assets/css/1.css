@@ -1298,7 +1298,7 @@
         margin-top: 10px;
         font-size: 80%;
         font-weight: var(--font-weight-0);
-        margin-bottom: 30px
+        margin-bottom: 10px;
     }
 
     .user-block .user-stats {
@@ -2477,7 +2477,7 @@
         margin-top: 10px;
         font-size: 80%;
         font-weight: var(--font-weight-0);
-        margin-bottom: 30px
+        margin-bottom: 15px;
     }
 
     .user-block .user-stats {
