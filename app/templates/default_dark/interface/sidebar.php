@@ -4,7 +4,7 @@
         <div class="user-sidebar-block">
             <?php if(!empty($_SESSION['steamid'])): ?>
                 <div class="user-info">
-                    <a href="<?php echo empty( $_SESSION['steamid32'] ) ? $General->arr_general['steam_only_authorization'] == 1 ? '?auth=login' : '#login' : $General->arr_general['site'] . 'profiles/' . $_SESSION['steamid'] . '/0/1/'?>">
+                    <a href="<?php echo empty( $_SESSION['steamid32'] ) ? $General->arr_general['steam_only_authorization'] == 1 ? '?auth=login' : '#login' : $General->arr_general['site'] . 'profiles/' . $_SESSION['steamid'] . '/0/?search=1/'?>">
                         <?php ! empty( $_SESSION['steamid32'] ) && $General->get_js_relevance_avatar( $_SESSION['steamid32'] )?>
                         <img id="<?php echo empty( $_SESSION['steamid'] ) ? 0 : $_SESSION['steamid']?>" ondrag="return false" ondragstart="return false" src="<?php echo empty( $_SESSION['steamid'] ) ? $General->arr_general['site'].  'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg' : $General->getAvatar( $_SESSION['steamid64'], 1 )?>"></a>
                     <div class="user-details">
@@ -84,8 +84,9 @@
     </section>
 </aside>
 <!-- Tooltip Block -->
-<div class="tooltip-sidebar box-button-srv-0" style=""><?php echo $Translate->get_translate_phrase( $Auth->user_auth[0]['rank'], 'ranks_' . $Auth->server_info[ 0 ]['ranks_pack'] )?></div>
-<?php for ( $d = 1; $d < $Auth->user_rank_count; ++$d ):?>
+<?php if( isset( $Auth->user_auth ) ): ?>
+    <div class="tooltip-sidebar box-button-srv-0" style=""><?php echo $Translate->get_translate_phrase( $Auth->user_auth[0]['rank'], 'ranks_' . $Auth->server_info[ 0 ]['ranks_pack'] )?></div>
+<?php endif; for ( $d = 1; $d < $Auth->user_rank_count; ++$d ):?>
     <div class="tooltip-sidebar box-button-srv-treeview-<?php echo $d?>"><?php echo $Translate->get_translate_phrase( $Auth->user_auth[$d]['rank'], 'ranks_' . $Auth->server_info[ 0 ]['ranks_pack'] )?></div>
 <?php endfor;?>
 <div class="tooltip-sidebar box-button-home"><?php echo $Translate->get_translate_phrase('_Home')?></div>
