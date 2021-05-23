@@ -47,7 +47,7 @@ if(isset( $_POST['my'] ) && $_POST['my'] == 'yes')
     {
         $haha = new ServerInfo( $servers[ $i_ser ]["ip"] );
         $returncheck = $haha->SI_Get();
-        if( empty( $returncheck->info ) )
+        if( empty( $returncheck["info"] ) )
         {
             $ipport = explode(":", $servers[ $i_ser ]["ip"]);
             $return[]["info"] = [

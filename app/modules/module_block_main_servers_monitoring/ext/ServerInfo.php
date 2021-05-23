@@ -132,7 +132,7 @@ class ServerInfo
     else
         $_Server['Map_image'] = 'storage/cache/img/maps/' . $_Server['Appid'] . '/-.jpg';
 
-    return (object) $_Server;
+    return (array) $_Server;
   }
 
   protected function SI_Get_Server_Players()
@@ -185,11 +185,11 @@ class ServerInfo
 
   /*
   * return server info 
-  *	Get_Info return object 
+  *	Get_Info return array 
   * Get_Players return array [Id, Name, Score, Time (Unixtime)]
   */
   public function SI_Get()
   {
-  	return (object) $_Server_Info = [ "info" => $this->SI_Get_Server_Info(), "players" => $this->SI_Get_Server_Players() ];
+  	return (array) $_Server_Info = [ "info" => $this->SI_Get_Server_Info(), "players" => $this->SI_Get_Server_Players() ];
   }
 }
