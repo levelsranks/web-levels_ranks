@@ -1,7 +1,7 @@
 if (servers != 0) {
     $.ajax({
         type: 'POST',
-        url: domain+"/app/modules/module_block_main_servers_monitoring/includes/js_controller.php",
+        url: domain+"app/modules/module_block_main_servers_monitoring/includes/js_controller.php",
         data: ({data: servers}),
         dataType: 'json',
         global: false,
@@ -10,7 +10,7 @@ if (servers != 0) {
             for (var i = 0; i < data.length; i++) {
                 document.getElementById('server-tablename-' + i).innerHTML = data[i]['HostName'];
                 document.getElementById('server-tablemap-' + i).innerHTML = data[i]['Map'];
-                document.getElementById('server-tablemod-' + i).setAttribute("src", domain+"/storage/cache/img/mods/" + data[i]['Mod'] + ".png");
+                document.getElementById('server-tablemod-' + i).setAttribute("src", "./storage/cache/img/mods/" + data[i]['Mod'] + ".png");
                 document.getElementById('server-tableplayers-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
 
                 var b = 1;

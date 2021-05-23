@@ -162,7 +162,47 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
             </div>
         </div>
     </div>
-<?php break;}for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ):?>
+<?php break;
+case 4: ?>
+<?php if ( $General->server_list_count != 1 ):?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card plug text-center">
+                <div class="inline">Общий онлайн <font id="min_players">0</font>/<font id="max_players">0</font></div>
+            </div>
+        </div>
+    </div>
+<?php endif;?>
+<div class="row">
+    <?php if ( $General->server_list_count == 1 ):?>
+        <div class="col-md-4 show_her"><div class="card plug"></div></div>
+    <?php endif;?>
+    <?php for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ):?>
+        <div class="col-md-2 <?php if($General->server_list_count <= 6) echo 'widthall' ?>">
+            <div class=card>
+                <div class=custom-server>
+                    <div class="data-basic">
+                        <div class="data-map" id="server-map-<?php echo $i_server ?>">-</div>
+                        <div class="data-image"><img id="server-image-<?php echo $i_server ?>" alt=""></div>
+                        <div class="data-name" id="server-name-<?php echo $i_server?>">-</div>
+                        <div class="online">
+                            <div id="online_gr-<?php echo $i_server?>" class="online2" style="width:0%"></div>
+                            <div class="value" id="server-players-<?php echo $i_server?>"></div>
+                        </div>
+                        <div class="border_ip"></div>
+                        <div class="ip" id="server-ip-<?php echo $i_server?>"></div>
+                        <a class="connect_blya btn_connect_<?php echo $i_server?>" id="<?php echo $i_server?>" onclick="get_players_data(id)" href="javascript:void(0);"><?php echo $Translate->get_translate_phrase('_Connect_2')?></a>
+                    </div>
+                    <img ondrag="return false" ondragstart="return false" id="server-map-image-<?php echo $i_server?>" src="<?php echo $General->arr_general['site'] ?>storage/cache/img/maps/730/-.jpg">
+                </div>
+            </div>
+        </div>
+    <?php endfor;?>
+    <?php if ( $General->server_list_count == 1 ):?>
+        <div class="col-md-4 show_her"><div class="card plug"></div></div>
+    <?php endif;?>
+</div>
+<?php break; }for ( $i_server = 0; $i_server < $General->server_list_count; $i_server++ ):?>
 <div id="server-players-online-<?php echo $i_server?>" class="modal-window-server">
     <div class="card">
         <div class="card-header">

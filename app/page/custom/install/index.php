@@ -74,6 +74,7 @@ if ( ! file_exists( SESSIONS . '/options.php' ) ):
     $options['graphics.sidebar_blur'] = 0;
     $options['graphics.blocks_blur'] = 0;
     $options['background_image'] = 'null';
+    $options['auth_cock'] = 0;
     $options['session_check'] = 1;
     $options['avatars_cache_time'] = 259200;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min( $options ) . ";\n");
@@ -173,7 +174,6 @@ if ( empty( $options['form_border'] ) && ! is_int ( $options['form_border'] ) &&
 
 if ( empty( $options['animations'] ) && ! is_int ( $options['animations'] ) && isset( $_POST['animations_on'] ) || isset( $_POST['animations_off'] ) ) {
     $options['animations'] = isset( $_POST['animations_on'] ) ? (int) 1 : (int) 0;
-    $options['auth_cock'] = 0;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min($options) . ";\n");
     header_fix( get_url(1) );
 }

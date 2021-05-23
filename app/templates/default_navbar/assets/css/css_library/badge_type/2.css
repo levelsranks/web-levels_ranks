@@ -1,0 +1,21 @@
+.badge {
+    display: inline-block;
+    padding: .35em .6em;
+    font-size: 75%;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    fill: #ffffff;
+    color: #ffffff;
+    background-color: var(--span-color);
+    box-shadow: var(--span-color-back) 5px 5px;
+}
+
+.badge a {
+    fill: #ffffff;
+    color: #ffffff;
+    transition-duration: 400ms;
+}

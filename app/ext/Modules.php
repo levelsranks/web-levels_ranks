@@ -740,6 +740,8 @@ class Modules {
         if( empty( $this->General->arr_general['enable_js_cache'] ) ):
 
             $this->js_library[] = ASSETS_JS . 'app.js';
+
+            $this->js_library[] = TEMPLATES . $this->General->arr_general['theme'] .'/assets/js/app.js';
         else:
             // При отсутствии списока модулей для дальнейшей инициализации, выполняется создание данного списка.
             if ( ! file_exists( SESSIONS . '/actual_library.json' ) || ! file_exists( ASSETS_JS . '/generation/app_generated.min.ver.' . $this->actual_library['actual_js_ver'] . '.js' ) || empty( $this->actual_library['actual_js_ver'] ) ):
@@ -951,5 +953,31 @@ class Modules {
         } else {
             return $seconds . ' ' . $this->Translate->get_translate_phrase('_Second');
         }
+    }
+
+    /**
+     * Получение баланса игрока
+     * 
+     * @return int|bool
+     */
+    public function get_balance()
+    {
+        if(isset($_SESSION['steamid32']) && $this->route != 'lk' && isset($this->General->Db->db_data['lk']))
+        {
+            preg_match('/:[0-9]{1}:\d+/i', $_SESSION['steamid32'], $auth);
+            $param = ['auth'=> '%'.$auth[0].'%'];
+            if($this->General->Db->db_data['lk'][0]['mod'] == 1)
+            {
+                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+                $cash = 'cash';
+            }
+            else if($this->General->Db->db_data['lk'][0]['mod'] == 2)
+            {
+                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT money FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
+                $cash = 'money';
+            }
+            return number_format($infoUser[0][$cash],0,' ', ' ');
+        }
+        return false;
     }
 }
