@@ -244,7 +244,6 @@ class General {
     /**
      * Получает IP клиента с поддержкой CDN.
      * Поддерживает: CloudFlare - (другие CDN по запросу).
-
      *
      * @return string            IP.
      */
