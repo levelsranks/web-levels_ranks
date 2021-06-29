@@ -27,10 +27,12 @@
  */
 namespace app\modules\module_page_lk_impulse\ext;
 
+use app\modules\module_page_lk_impulse\ext\Basefunction;
+
 /**
  * Contains static methods for most used scenarios.
  */
-class WebToPay {
+class WebToPay extends Basefunction {
 
     /**
      * WebToPay Library version.
@@ -289,15 +291,17 @@ class WebToPay {
      * @param string $msg
      * @param string $logfile
      */
-    protected static function log($type, $msg, $logfile) {
+    protected function log($type, $msg, $logfile) {
         $fp = @fopen($logfile, 'a');
         if (!$fp) {
             return;
         }
 
+        $client_ip = $this->General->get_client_ip_cdn();
+        
         $logline = array(
             $type,
-            isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '-',
+            isset($client_ip) ? $client_ip : '-',
             date('[Y-m-d H:i:s O]'),
             'v' . self::VERSION . ':',
             $msg
