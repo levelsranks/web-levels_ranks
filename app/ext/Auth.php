@@ -174,7 +174,7 @@ class Auth {
      * @since 0.2.120
      */
     public function check_session() {
-        if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR'] ):
+        if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $this->General->get_client_ip_cdn() ):
             session_unset() && session_destroy() && refresh();
         endif;
     }
@@ -206,7 +206,7 @@ class Auth {
             $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
 
             // Пользователь. IP.
-            $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+            $_SESSION['REMOTE_ADDR'] = $this->General->get_client_ip_cdn();
 
             // Пользователь. Steam ID 32 ( Сокращенный ).
             preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid'], $arr, PREG_SET_ORDER);
