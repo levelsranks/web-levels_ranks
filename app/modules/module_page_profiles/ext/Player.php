@@ -687,10 +687,7 @@ class Player {
     private function get_db_plugin_module_geoip() {
         $a = $this->Db->query('LevelsRanks', $this->found[ $this->server_group ]['USER_ID'], $this->found[ $this->server_group ]['DB'], "SELECT country, city FROM " . $this->found[ $this->server_group ]['Table'] . "_geoip WHERE steam LIKE '%" . $this->get_steam_32_short() . "%' LIMIT 1" );
 
-        if (isset($a['country']) && isset($a['city']))
-            return $a['country'] . ', ' . $a['city'];
-        else
-            return;
+        return ( isset ( $a['country'] ) && isset ( $a['city'] ) ) ? $a['country'] . ', ' . $a['city'] : null;
     }
     
     /**
