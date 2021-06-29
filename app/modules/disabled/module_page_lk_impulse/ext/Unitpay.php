@@ -104,6 +104,6 @@ class Unitpay extends Basefunction{
 
 	protected function getIP(){
 			if(isset($_SERVER['HTTP_X_REAL_IP'])) return $_SERVER['HTTP_X_REAL_IP'];
-			return $_SERVER['REMOTE_ADDR'];
+			return $this->General->get_client_ip_cdn();
 	}
 }
