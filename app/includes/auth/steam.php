@@ -34,7 +34,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                 preg_match_all("/[0-9a-zA-Z_]{7}:([0-9]{1}):([0-9]+)/u", $_SESSION['steamid32'], $arr, PREG_SET_ORDER);
                 $_SESSION['steamid32_short'] = $arr[0][1] . ':' . $arr[0][2];
                 $_SESSION['USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
-                $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+                $_SESSION['REMOTE_ADDR'] = $this->General->get_client_ip_cdn();
                 if ( ! empty( $Db->db_data['LevelsRanks'] )):
                     if($Db->queryNum('LevelsRanks', 0, 0, "SELECT COUNT(*) FROM " . $Db->db_data['LevelsRanks'][ 0 ]['Table'] . " WHERE steam=" . $_SESSION['steamid32'])[0] == 0):
                         $_STEAMAPI = $General->arr_general['web_key'];

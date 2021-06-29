@@ -241,6 +241,16 @@ class General {
         endif;
     }
 
+    /**
+     * Получает IP клиента с поддержкой CDN.
+     * Поддерживает: CloudFlare - (другие CDN по запросу).
+     *
+     * @return string            IP.
+     */
+    public function get_client_ip_cdn()
+    {
+        return isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR'];
+    }
 
     /**
     * Счетчик посещений
@@ -251,15 +261,16 @@ class General {
             $User = $_SESSION['steamid32'];
         else $User = 'guest';
 
+        $client_ip = $this->get_client_ip_cdn();
 
-        $param['ip'] = $_SERVER['REMOTE_ADDR'];
+        $param['ip'] = $client_ip;
         $Online = $this->Db->queryOneColumn( 'Core', 0, 0, "SELECT user FROM lr_web_online WHERE ip = :ip", $param );
 
         if(empty($Online))
         {
             $params = [
                 'user'  => $User,
-                'ip'    => $_SERVER['REMOTE_ADDR']
+                'ip'    => $client_ip
             ];
             $this->Db->query('Core', 0, 0, "INSERT INTO lr_web_online(id, user, ip, time) VALUES (NULL, :user, :ip, NOW())", $params );
         }
@@ -269,7 +280,7 @@ class General {
             {
                 $params = [
                     'user'  => $User,
-                    'ip'    => $_SERVER['REMOTE_ADDR']
+                    'ip'    => $client_ip
                 ];
                 $this->Db->query('Core', 0, 0, 'UPDATE lr_web_online SET time = NOW(), user = :user WHERE ip = :ip', $params );
             }
