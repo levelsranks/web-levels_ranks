@@ -5,7 +5,8 @@
 	"CRO": "Top Donatori",
     "RS": "Top Donatori",
 	"BA": "Top Donatori"
-  }, "_Amount": {
+  },
+  "_Amount": {
     "EN": "Amount",
     "RU": "Сумма",
 	"CRO": "Suma",
