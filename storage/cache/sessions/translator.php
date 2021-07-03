@@ -516,7 +516,7 @@ return array (
         ),
     '_Unban' =>
         array (
-            'EN' => 'Unbaned',
+            'EN' => 'Unbanned',
             'RU' => 'Разбанен',
             'UA' => 'Разбанен',
             'LT' => 'Unban',
