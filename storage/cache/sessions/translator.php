@@ -217,6 +217,7 @@ return array (
     '_Sidebar_servers' =>
         array (
             'EN' => 'Game Servers',
+			'BR' => 'Game Servers',
             'RU' => 'Игровые сервера',
             'UA' => 'Ігрові сервера',
             'LT' => 'Žaidimų serveriai',
@@ -258,6 +259,7 @@ return array (
     '_Comms' =>
         array (
             'EN' => 'Mute List',
+			'BR' => 'Lista de Mute',
             'RU' => 'Список мутов',
             'UA' => 'Перелік мутов',
             'LT' => 'List of mutts',
@@ -313,6 +315,7 @@ return array (
     '_Bans' =>
         array (
             'EN' => 'Ban List',
+			'BR' => 'Lista de Ban',
             'RU' => 'Список банов',
             'UA' => 'Список банів',
             'LT' => 'Blokavimų sąrašas',
@@ -326,6 +329,7 @@ return array (
     '_Demos' =>
         array (
             'EN' => 'Demo Archive',
+			'BR' => 'Arquivo Demo',
             'RU' => 'Архив демо-записей',
             'UA' => 'Архив демо-записей',
             'LT' => 'Demos List',
@@ -477,6 +481,7 @@ return array (
     '_Reason' =>
         array (
             'EN' => 'Reason',
+			'BR' => 'Motivo',
             'RU' => 'Причина',
             'UA' => 'Чому',
             'LT' => 'Priežastis',
@@ -504,6 +509,7 @@ return array (
     '_Forever' =>
         array (
             'EN' => 'Permanent',
+			'BR' => 'Permanente',
             'RU' => 'Навсегда',
             'UA' => 'Назавжди',
             'LT' => 'Amžinai',
@@ -517,6 +523,7 @@ return array (
     '_Unban' =>
         array (
             'EN' => 'Unbanned',
+			'BR' => 'Unbanned',
             'RU' => 'Разбанен',
             'UA' => 'Разбанен',
             'LT' => 'Unban',
@@ -530,6 +537,7 @@ return array (
     '_Uncomm' =>
         array (
             'EN' => 'Unmuted',
+			'BR' => 'Unmuted',
             'RU' => 'Размут',
             'UA' => 'Размут',
             'LT' => 'Uncomm',
@@ -780,6 +788,7 @@ return array (
     '_Point' =>
         array (
             'EN' => 'Points',
+			'BR' => 'Pontos',
             'RU' => 'Очки',
             'UA' => 'Поінти',
             'LT' => 'Taškai',
@@ -924,6 +933,7 @@ return array (
     '_Month_february' =>
         array (
             'EN' => 'Feb.',
+			'BR' => 'Fev.',
             'RU' => 'Фев.',
             'UA' => 'лют.',
             'LT' => 'Vas.',
@@ -950,6 +960,7 @@ return array (
     '_Month_april' =>
         array (
             'EN' => 'Apr.',
+			'BR' => 'Abr.',
             'RU' => 'Апр.',
             'UA' => 'квіт.',
             'LT' => 'Bal.',
@@ -963,6 +974,7 @@ return array (
     '_Month_may' =>
         array (
             'EN' => 'May.',
+			'BR' => 'Mai.',
             'RU' => 'Май,',
             'UA' => 'Трав.',
             'LT' => 'Geg.',
@@ -1002,6 +1014,7 @@ return array (
     '_Month_august' =>
         array (
             'EN' => 'Aug.',
+			'BR' => 'Ago.',
             'RU' => 'Авг.',
             'UA' => 'Сер.',
             'LT' => 'Rūgp.',
@@ -1015,6 +1028,7 @@ return array (
     '_Month_september' =>
         array (
             'EN' => 'Sep.',
+			'BR' => 'Set.',
             'RU' => 'Сен.',
             'UA' => 'Вер.',
             'LT' => 'Rugs.',
@@ -1028,6 +1042,7 @@ return array (
     '_Month_october' =>
         array (
             'EN' => 'Oct.',
+			'BR' => 'Out.',
             'RU' => 'Окт.',
             'UA' => 'Жов.',
             'LT' => 'Spa.',
@@ -1054,6 +1069,7 @@ return array (
     '_Month_december' =>
         array (
             'EN' => 'Dec.',
+			'BR' => 'Dez.',
             'RU' => 'Дек.',
             'UA' => 'Груд.',
             'LT' => 'Gruo.',
@@ -1067,6 +1083,7 @@ return array (
     '_Second' =>
         array (
             'EN' => 'Sec.',
+			'BR' => 'Seg.',
             'RU' => 'Сек.',
             'UA' => 'Сек.',
             'LT' => 'Sek.',
@@ -1106,6 +1123,7 @@ return array (
     '_Day' =>
         array (
             'EN' => 'Day',
+			'BR' => 'Dia',
             'RU' => 'День',
             'UA' => 'День',
             'LT' => 'Diena',
@@ -1119,6 +1137,7 @@ return array (
     '_Days' =>
         array (
             'EN' => 'Days',
+			'BR' => 'Dias',
             'RU' => 'Дн.',
             'UA' => 'Дн.',
             'LT' => 'Dien.',
@@ -1240,7 +1259,8 @@ return array (
         ),
 	'_Vips' =>
         array (
-            'EN' => 'Vips List',
+            'EN' => 'VIPS List',
+			'BR' => 'Lista de VIPS',
             'RU' => 'Список вип игроков',
 			'UA' => 'Список віп гравців',
             'CRO' => 'Vip lista',
