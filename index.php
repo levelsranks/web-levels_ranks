@@ -7,7 +7,6 @@
  *
  * @license GNU General Public License Version 3
  */
-
 // Задаём основную кодировку страницы.
 header('Content-Type: text/html; charset=utf-8');
 
@@ -128,19 +127,19 @@ spl_autoload_register( function( $class ) {
 } );
 
 // Создание экземпляра класса работающего с языками и переводами.
-$Translate      = new Translate;
+$Translate = new Translate;
 
 // Создание экземпляра класса работающего с базами данных.
-$Db             = new Db;
+$Db = new Db;
 
 // Создание экземпляра класса уведомлений.
-$Notifications  = new Notifications ( $Translate, $Db );
+$Notifications = new Notifications ( $Translate, $Db );
 
 // Создание основного экземпляра класса.
-$General        = new General ( $Db );
+$General = new General ( $Db );
 
 // Импортирование класса с роутингом
-$Router         = new AltoRouter;
+$Router = new AltoRouter;
 
 empty( $General->arr_general['site'] ) && $General->arr_general['site'] = '//' . preg_replace('/^(https?:)?(\/\/)?(www\.)?/', '', $_SERVER['HTTP_REFERER']);
 
@@ -148,13 +147,13 @@ empty( $General->arr_general['site'] ) && $General->arr_general['site'] = '//' .
 $Router->setBasePath( parse_url($General->arr_general['site'], PHP_URL_PATH));
 
 // Создание экземпляра класса работающего с модулями.
-$Modules        = new Modules ( $General, $Translate, $Notifications, $Router );
+$Modules = new Modules ( $General, $Translate, $Notifications, $Router );
 
 // Создание экземпляра класса работающего с авторизацией пользователей.
-$Auth           = new Auth ( $General, $Db );
+$Auth = new Auth ( $General, $Db );
 
 // Создание экземпляра графического класса.
-$Graphics       = new Graphics ( $Translate, $General, $Modules, $Db, $Auth, $Notifications, $Router );
+$Graphics = new Graphics ( $Translate, $General, $Modules, $Db, $Auth, $Notifications, $Router );
 
 // Запуск счетчика переходов(поситителей)
 $General->online_stats();
