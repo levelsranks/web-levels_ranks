@@ -541,7 +541,7 @@ return array (
             'RU' => 'Размут',
             'UA' => 'Размут',
             'LT' => 'Uncomm',
-            'DE' => 'Nicht stumm geschaltet', //VERBESSERN
+            'DE' => 'Nicht stumm geschaltet',
             'CH' => '已解除语音封禁',
             'CRO' => 'Odmutovan',
             'RS' => 'Odmutovan',
@@ -617,6 +617,7 @@ return array (
     '_Authorization' =>
         array (
             'EN' => 'Authorization',
+			'BR' => 'Autorização',
             'RU' => 'Авторизация',
             'UA' => 'Авторизація',
             'LT' => 'Authorization',
@@ -656,6 +657,7 @@ return array (
     '_Steam_login' =>
         array (
             'EN' => 'Sign In through Steam',
+			'BR' => 'Faça login pela Steam',
             'RU' => 'Войти через Steam',
             'UA' => 'Увійти через Steam',
             'LT' => 'Sign in with Steam',
@@ -669,6 +671,7 @@ return array (
     '_Update' =>
         array (
             'EN' => 'Update',
+			'BR' => 'Atualizar',
             'RU' => 'Обновление',
             'UA' => 'Оновлення',
             'LT' => 'Atnaujinti',
@@ -682,6 +685,7 @@ return array (
     '_Result' =>
         array (
             'EN' => 'Result',
+			'BR' => 'Resultado',
             'RU' => 'Результат',
             'UA' => 'Результат',
             'LT' => 'Rezultatas',
@@ -778,7 +782,7 @@ return array (
             'RU' => 'Игроков',
             'UA' => 'Гравців',
             'LT' => 'Žaidėjai',
-            'DE' => 'Spieler',   //VERBESSERN
+            'DE' => 'Spieler',
             'CH' => '玩家',
             'CRO' => 'Igrači',
             'RS' => 'Igrači',
@@ -1152,6 +1156,7 @@ return array (
     '_Week' =>
         array (
             'EN' => 'Week',
+			'BR' => 'Semana',
             'RU' => 'Неделя',
             'UA' => 'Тиждень',
             'LT' => 'Savaitė',
@@ -1166,6 +1171,7 @@ return array (
     '_Weeks' =>
         array (
             'EN' => 'Weeks',
+			'BR' => 'Semanas',
             'RU' => 'Недели',
             'UA' => 'Тижні',
             'LT' => 'Savaitės',
@@ -1179,6 +1185,7 @@ return array (
     '_Month' =>
         array (
             'EN' => 'Month',
+			'BR' => 'Mês',
             'RU' => 'Мес.',
             'UA' => 'Міс.',
             'LT' => 'Mėnuo',
@@ -1192,6 +1199,7 @@ return array (
     '_Months' =>
         array (
             'EN' => 'Months',
+			'BR' => 'Meses',
             'RU' => 'Мес.',
             'UA' => 'Міс.',
             'LT' => 'Mėn.',
@@ -1247,6 +1255,7 @@ return array (
 	'_LK' =>
         array (
             'EN' => 'Personal Area',
+			'BR' => 'Área Pessoal',
             'RU' => 'Личный кабинет',
             'UA' => 'Особистий кабінет',
             'LT' => 'Asmeninė sąskaita',
@@ -1271,6 +1280,7 @@ return array (
     '_Banned' =>
         array (
             'EN' => 'Banned',
+			'BR' => 'Banido',
             'RU' => 'Забанен',
 			'UA' => 'Забанен',
             'CRO' => 'Banovan',
@@ -1303,6 +1313,7 @@ return array (
 		'_Console' =>
         array (
             'EN' => 'Console',
+			'BR' => 'Console',
             'RU' => 'Консоль',
             'UA' => 'Консоль',
             'LT' => 'Console',
