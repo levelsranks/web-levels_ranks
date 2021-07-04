@@ -1,6 +1,7 @@
 {
   "_Count_admins": {
     "EN": "Total Admins",
+	"BR": "Total de Administradores",
     "RU": "Всего админ-ов.",
     "UA": "Всього адмін-ов.",
     "LT": "Iš viso administratorių.",
@@ -21,6 +22,7 @@
   },
   "_Page": {
     "EN": "Page",
+	"BR": "Página",
     "RU": "Страница",
     "UA": "Сторінка",
     "LT": "Page",
@@ -31,6 +33,7 @@
   },
   "_Options": {
     "EN": "Options",
+	"BR": "Opções",
     "RU": "Опции",
     "UA": "Опції",
     "LT": "Options",
@@ -41,6 +44,7 @@
   },
   "_Refresh_cache_modules": {
     "EN": "To refresh the cache modules",
+	"BR": "Atualizar cache de módulos",
     "RU": "Обновить кэш модулей",
     "UA": "Оновити кеш модулів",
     "LT": "To refresh the cache modules",
@@ -51,6 +55,7 @@
   },
   "_Refresh_cache_translations": {
     "EN": "To refresh the cache of translations",
+	"BR": "Atualizar cache de traduções",
     "RU": "Обновить кэш переводов",
     "UA": "Оновити кеш перекладів",
     "LT": "To refresh the cache of translations",
@@ -61,6 +66,7 @@
   },
   "_Update_list_modules": {
     "EN": "To update the list of modules",
+	"BR": "Atualizar lista de módulos",
     "RU": "Обновить список модулей",
     "UA": "Оновити список модулів",
     "LT": "To update the list of modules",
@@ -71,6 +77,7 @@
   },
   "_Chief_admin": {
     "EN": "Chief Administrator",
+	"BR": "Administrador Chefe",
     "RU": "Гл. Администратор",
     "UA": "Головний Адміністратор",
     "LT": "Chief Administrator",
@@ -181,11 +188,11 @@
 	"BA": "Jezik"	
   },
   "_Chief_administrator_Steam": {
-    "EN": "Chief Administrator ( Steam Authorization )",
+    "EN": "Chief Administrator (Steam Authorization)",
 	"BR": "Administrador Chefe (Autorização Steam)",
-    "RU": "Глав. администратор ( Steam авторизация )",
-    "UA": "Головний адміністратор ( Steam авторизація )",
-    "LT": "Chief administrator ( Steam authorization )",
+    "RU": "Глав. администратор (Steam авторизация)",
+    "UA": "Головний адміністратор (Steam авторизація)",
+    "LT": "Chief administrator (Steam authorization)",
 	"CH": "最高管理员 (Steam 验证)",
 	"CRO": "Glavni Administrator (Stim autorizacija)",
     "RS": "Glavni Administrator (Stim autorizacija)",
@@ -193,6 +200,7 @@
   },
   "_Use_Steam_ID": {
     "EN": "Use Steam ID 64",
+	"BR": "Use Steam ID 64",
     "RU": "Использовать Steam ID 64",
     "UA": "Використовувати Steam ID 64",
     "LT": "Use Steam ID 64",
@@ -202,17 +210,19 @@
 	"BA": "Koristi STEAM ID 64"	
   },
   "_Import_admin_list": {
-    "EN": "Import Admin. List from SB / MA ( Steam )",
-    "RU": "Импорт админ. листа из SB / MA ( Steam )",
-    "UA": "Імпорт Адмін. листа з SB / MA ( Steam )",
-    "LT": "Import admin. list from SB / MA ( Steam )",
-	"CH": "从SB / MA ( Steam )导入管理员",
-	"CRO": "Importuj admin listu sa SB",
-    "RS": "Importuj admin listu sa SB",
-	"BA": "Importuj admin listu sa SB"	
+    "EN": "Import Admin List from SB/MA (Steam)",
+	"BR": "Importar Lista de Admin do SB/MA (Steam)",
+    "RU": "Импорт админ листа из SB/MA (Steam)",
+    "UA": "Імпорт Адмін листа з SB/MA (Steam)",
+    "LT": "Import admin list from SB/MA (Steam)",
+	"CH": "从SB/MA (Steam)导入管理员",
+	"CRO": "Importuj admin listu sa SB/MA",
+    "RS": "Importuj admin listu sa SB/MA",
+	"BA": "Importuj admin listu sa SB/MA"	
   },
   "_Save": {
     "EN": "Save",
+	"BR": "Salvar",
     "RU": "Сохранить",
     "UA": "Зберегти",
     "LT": "Save",
@@ -242,7 +252,7 @@
 	"BA": "Animacije"	
   },
   "_Show_avatars": {
-    "EN": "Show avatars",
+    "EN": "Show Avatars",
     "RU": "Показывать ли аватарки",
     "UA": "Чи показувати аватарки",
     "LT": "Show avatars",
@@ -252,7 +262,7 @@
 	"BA": "Prikaži avatare"	
   },
   "_Sidebar_default": {
-    "EN": "Open sidebar - default",
+    "EN": "Open Sidebar - Default",
     "RU": "Открытый сайтбар - По умолчанию",
     "UA": "Відкритий сайдбар - За замовчуванням",
     "LT": "Open sidebar - default",
@@ -282,7 +292,8 @@
 	"BA": "Svi pristupi"	
   },
   "_Steam_access_authorization": {
-    "EN": "Steam access authorization",
+    "EN": "Steam Access Authorization",
+	"BR": "Autorização Acesso Steam",
     "RU": "Доступ к Steam авторизации",
 	"UA": "Доступ до Steam авторизації",
 	"CH": "Steam 权限认证",
@@ -292,6 +303,7 @@
   },
   "_Steam_only_authorization": {
     "EN": "Steam Authorization Only",
+	"BR": "Apenas Autorização Steam",
     "RU": "Авторизация только по Steam",
 	"UA": "Авторизація тільки по Steam",
 	"CH": "仅使用Steam登录认证",
@@ -366,7 +378,7 @@
 	"BA": "Tamna tema"	
   },
   "_Background_image": {
-    "EN": "Background image",
+    "EN": "Background Image",
     "RU": "Фоновое изображение",
 	"UA": "Фонове зображення",
 	"CRO": "Pozadinska slika",
@@ -415,8 +427,8 @@
   },
   "_Static": {
     "EN": "Static - Max 1400px",
-    "RU": "Статика - Макс. 1400px",
-	"UA": "Статика - Макс. 1400px",
+    "RU": "Статика - Макс 1400px",
+	"UA": "Статика - Макс 1400px",
     "CRO": "Statična - Max 1400px",
     "RS": "Statična - Max 1400px",
     "BA": "Statična - Max 1400px"	
@@ -430,7 +442,7 @@
     "BA": "Onemogući pomjeranje sidebara"	
   },
   "_Disable_palettes_change": {
-    "EN": "Disable palettes change",
+    "EN": "Disable Palettes Change",
     "RU": "Запретить изменение палитры сайта",
 	"UA": "Заборонити зміну палітри сайту",
 	"CRO": "Onemogući menjanje teme",
@@ -443,7 +455,7 @@
 	"UA": "Включити розмиття в бічній панелі"
   },
   "_Blocks_blur": {
-    "EN": "Enable Blocks blur",
+    "EN": "Enable Blocks Blur",
     "RU": "Включить размытие у блоков",
 	"UA": "Включити розмиття у блоків"
   },
@@ -481,11 +493,11 @@
   },
   "_Vip_Sid": {
     "EN": "Enable",
-    "RU": "ID Сервера ( vip_core.cfg )"
+    "RU": "ID Сервера (vip_core.cfg)"
   },
   "_Sb_Table": {
     "EN": "Server ID (vip_core.cfg)",
-    "RU": "SB / MA :: Таблица"
+    "RU": "SB/MA :: Таблица"
   },
   "_Shop_Table": {
     "EN": "Shop :: Table",
@@ -528,7 +540,7 @@
     "RU": "База данных"
   },
   "_take_db_con": {
-    "EN": "Choose a database",
+    "EN": "Choose Database",
     "RU": "Выбери базу данных"
   },
   "_non_take_con": {
@@ -584,7 +596,7 @@
     "RU": "Подключения"
   },
   "_take_mod": {
-    "EN": "Choose a Mod",
+    "EN": "Choose Mod",
     "RU": "Выберите мод"
   },
   "_custom_mode": {
@@ -620,11 +632,11 @@
     "RU": "Введите название базы данных!"
   },
   "_error_password": {
-    "EN": "Enter user password db!",
+    "EN": "Enter user password DB!",
     "RU": "Введите пароль пользователя бд!"
   },
   "_error_username": {
-    "EN": "Enter db username!",
+    "EN": "Enter DB username!",
     "RU": "Введите имя пользователя бд!"
   },
   "_error_port": {
@@ -673,6 +685,7 @@
   },
   "_Admin_stats":{
     "EN": "Statistics",
+	"BR": "Estatisticas",
     "RU":"Статистика",
     "UA":"Статистика",
     "LT":"Statistika",
@@ -771,11 +784,11 @@
     "RU": "Активная страница:"
   },
   "_MOnoff":{
-    "EN": "Module On / Off",
-    "RU": "Модуль вкл. / выкл."
+    "EN": "Module On/Off",
+    "RU": "Модуль вкл/выкл"
   },
   "_MMode":{
-    "EN": "Module mode:",
+    "EN": "Module Mode:",
     "RU": "Режим модуля:"
   },
   "_MInterface":{
