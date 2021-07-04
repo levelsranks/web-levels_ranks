@@ -1,6 +1,7 @@
 {
   "_Top_donations": {
     "EN": "Top Donations",
+	"BR": "Top Doações",
     "RU": "Топ донатеров",
 	"CRO": "Top Donatori",
     "RS": "Top Donatori",
@@ -8,6 +9,7 @@
   },
   "_Amount": {
     "EN": "Amount",
+	"BR": "Amount",
     "RU": "Сумма",
 	"CRO": "Suma",
     "RS": "Suma",

@@ -69,6 +69,7 @@
   "_Favorite_weapons": {
     "DE": "Lieblingswaffen:",
     "EN": "Favorite Weapons:",
+	"BR": "Armas Favoritas:",
     "RU": "Любимое оружие:",
     "UA": "Улюблена зброя:",
 	"LT": "Mėgstamiausi ginklai",
@@ -79,7 +80,8 @@
   },
   "_Kill count": {
     "DE": "Die Anzahl der Kills:",
-    "EN": "No̲ of Kills:",
+    "EN": "Nº of Kills:",
+	"BR": "Nº de Kills:",
     "RU": "Количество убийств:",
     "UA": "Кількість вбивств:",
 	"LT": "Nužudymų skaičius:",
@@ -91,6 +93,7 @@
   "_Matches": {
     "DE": "Spiele:",
     "EN": "Matches:",
+	"BR": "Matches:",
     "RU": "Матчей:",
     "UA": "Матчів:",
 	"LT": "Mačų:",
@@ -180,6 +183,7 @@
   "_Player_profile": {
     "DE": "Spielerprofil",
     "EN": "Player Profile",
+	"BR": "Perfil do Player",
     "RU": "Профиль игрока",
     "UA": "Сторінка гравця",
 	"LT": "Žaidėjo profilis",
@@ -256,7 +260,7 @@
   },
   "_Kills_whirl": {
     "DE": "Getötet in der Drehung",
-    "EN": "180-360° Kills",
+    "EN": "180º-360º Kills",
     "RU": "Убийств с разворота",
     "UA": "Вбивств з розвороту",
 	"LT": "Nužudymai 180-360°",
