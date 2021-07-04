@@ -88,6 +88,7 @@
   },
   "_General_settings": {
     "EN": "General Settings",
+	"BR": "Configurações Gerais",
     "RU": "Основные настройки",
     "UA": "Основні налаштування",
     "LT": "General settings",
@@ -98,6 +99,7 @@
   },
   "_Configuring_modules": {
     "EN": "Configuring Modules",
+	"BR": "Configurando Módulos",
     "RU": "Настройка модулей",
     "UA": "Налаштування модулів",
     "LT": "Configuring modules",
@@ -107,7 +109,8 @@
 	"BA": "Konfiguriši module"	
   },
   "_Server_setting": {
-    "EN": "Server Setting",
+    "EN": "Servers Settings",
+	"BR": "Configuração dos Servidores",
     "RU": "Настройка серверов",
     "UA": "Налаштування серверів",
     "LT": "Server setting",
@@ -118,6 +121,7 @@
   },
   "_Database_settings": {
     "EN": "Database Settings",
+	"BR": "Configuração dos Banco de Dados",
     "RU": "Настройка базы данных",
     "UA": "Налаштування бази даних",
     "LT": "Database settings",
@@ -128,6 +132,7 @@
   },
   "_Translation_settings": {
     "EN": "Translation Settings",
+	"BR": "Configurações de Tradução",
     "RU": "Настройка переводов",
     "UA": "Налаштування перекладів",
     "LT": "Translation settings",
@@ -138,9 +143,10 @@
   },
   "_Extra_settingss": {
     "EN": "Extra Settings",
+	"BR": "Configurações Extras",
     "RU": "Дополнительные настройки",
     "UA": "Додаткові налаштування",
-    "LT": "Extra settings",
+    "LT": "Extra Settings",
 	"CH": "额外设置",
 	"CRO": "Extra postavke",
     "RS": "Extra podešavanja",
@@ -148,6 +154,7 @@
   },
   "_Full_name": {
     "EN": "Full Name",
+	"BR": "Nome Completo",
     "RU": "Полное название",
     "UA": "Полное название",
     "LT": "Full name",
@@ -158,6 +165,7 @@
   },
   "_Short_name": {
     "EN": "Short Name",
+	"BR": "Nome Curto",
     "RU": "Короткое название",
     "UA": "Коротка назва",
     "LT": "Short name",
@@ -168,6 +176,7 @@
   },
   "_Basic_information": {
     "EN": "Basic Information",
+	"BR": "Informação Básica",
     "RU": "Общая информация",
     "UA": "Загальна інформація",
     "LT": "Basic information",
@@ -253,6 +262,7 @@
   },
   "_Show_avatars": {
     "EN": "Show Avatars",
+	"BR": "Mostrar Avatares",
     "RU": "Показывать ли аватарки",
     "UA": "Чи показувати аватарки",
     "LT": "Show avatars",
@@ -283,6 +293,7 @@
   },
   "_All_access_rights": {
     "EN": "All access rights",
+	"BR": "Todos os direitos de acesso",
     "RU": "Полные права доступа",
     "UA": "Повні права доступу",
     "LT": "All access rights",
@@ -322,6 +333,7 @@
   },
   "_Configuration": {
     "EN": "Configuration",
+	"BR": "Configuração",
     "RU": "Конфигурация",
 	"UA": "Конфігурація",
 	"CH": "其他设置",
@@ -331,6 +343,7 @@
   },
   "_Enable_css_cache": {
     "EN": "Enable Cache - CSS",
+	"BR": "Habilitar Cache - CSS",
     "RU": "Включить кэш - CSS",
 	"UA": "Включити кеш - CSS",
 	"CRO": "Omogući CSS keš",
@@ -339,6 +352,7 @@
   },
   "_Enable_js_cache": {
     "EN": "Enable Cache - JS",
+	"BR": "Habilitar Cache - JS",
     "RU": "Включить кэш - JS",
 	"UA": "Включити кеш - JS",
 	"CRO": "Omogući JS keš",
@@ -347,6 +361,7 @@
   },
   "_Optimization": {
     "EN": "Optimization",
+	"BR": "Otimização",
     "RU": "Оптимизация",
 	"UA": "Оптимізація",
 	"CRO": "Optimizacija",
@@ -379,6 +394,7 @@
   },
   "_Background_image": {
     "EN": "Background Image",
+	"BR": "Imagem de Fundo",
     "RU": "Фоновое изображение",
 	"UA": "Фонове зображення",
 	"CRO": "Pozadinska slika",
@@ -418,12 +434,12 @@
     "BA": "Primarna veličina"	
   },
   "_Stretch": {
-    "EN": "Stretch / Fluid",
+    "EN": "Stretch/Fluid",
     "RU": "Растягивать по ширине экрана",
 	"UA": "Розтягувати по ширині екрану",
-    "CRO": "Razvučeno / Fluid",
-    "RS": "Razvučeno / Fluid",
-    "BA": "Razvučeno / Fluid"	
+    "CRO": "Razvučeno/Fluid",
+    "RS": "Razvučeno/Fluid",
+    "BA": "Razvučeno/Fluid"	
   },
   "_Static": {
     "EN": "Static - Max 1400px",
@@ -461,6 +477,7 @@
   },
   "_Add_Server": {
     "EN": "Add Server",
+	"BR": "Add Servidor",
     "RU": "Добавить сервер"
   },
   "_Server_name": {
@@ -472,7 +489,7 @@
     "RU": "Техническое название"
   },
   "_Ip_Port_Server": {
-    "EN": "IP:PORT Servers",
+    "EN": "IP:PORT Server",
     "RU": "IP:PORT Сервера"
   },
   "_Ip_Port_View": {
