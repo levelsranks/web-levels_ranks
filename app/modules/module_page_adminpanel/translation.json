@@ -11,7 +11,8 @@
 	"BA": "Ukupno Admina"	
   },
   "_Module_loading": {
-    "EN": "Module loading order",
+    "EN": "Modules loading order",
+	"BR": "Ordem de carregamento dos módulos",
     "RU": "Порядок загрузки модулей",
     "UA": "Порядок завантаження модулів",
     "LT": "Module loading order",
@@ -242,6 +243,7 @@
   },
   "_Dark_mode_default": {
     "EN": "Dark Mode - Default",
+	"BR": "Modo Escuro - Padrão",
     "RU": "Тёмный режим - По умолчанию",
     "UA": "Темний режим - За замовчуванням",
     "LT": "Dark mode - default",
@@ -252,6 +254,7 @@
   },
   "_Animation_default": {
     "EN": "Animation",
+	"BR": "Animação",
     "RU": "Анимации",
     "UA": "Анімації",
     "LT": "Animation",
@@ -273,6 +276,7 @@
   },
   "_Sidebar_default": {
     "EN": "Open Sidebar - Default",
+	"BR": "Abrir Sidebar - Padrão",
     "RU": "Открытый сайтбар - По умолчанию",
     "UA": "Відкритий сайдбар - За замовчуванням",
     "LT": "Open sidebar - default",
@@ -283,6 +287,7 @@
   },
   "_Round_shapes": {
     "EN": "Do round shapes",
+	"BR": "Faça formas redondas",
     "RU": "Закруглять ли углы у форм",
     "UA": "Чи закругляти кути у форми",
     "LT": "Do round shapes",
@@ -324,6 +329,7 @@
   },
   "_Design": {
     "EN": "Design",
+	"BR": "Design",
     "RU": "Дизайн",
 	"UA": "Дизайн",
 	"CH": "网页样式",
@@ -370,6 +376,7 @@
   },
   "_Decor": {
     "EN": "Decor",
+	"BR": "Decor",
     "RU": "Оформление",
 	"UA": "Оформлення",
 	"CRO": "Dekoracija",
@@ -403,6 +410,7 @@
   },
   "_No_image": {
     "EN": "No image",
+	"BR": "Sem imagem",
     "RU": "Без изображения",
 	"UA": "Без зображення",
     "CRO": "Bez slike",
@@ -411,6 +419,7 @@
   },
   "_Security": {
     "EN": "Security",
+	"BR": "Segurança",
     "RU": "Безопасность",
 	"UA": "Безпека",
     "CRO": "Zaštita",
@@ -435,6 +444,7 @@
   },
   "_Stretch": {
     "EN": "Stretch/Fluid",
+	"BR": "Stretch/Fluid",
     "RU": "Растягивать по ширине экрана",
 	"UA": "Розтягувати по ширині екрану",
     "CRO": "Razvučeno/Fluid",
@@ -509,23 +519,28 @@
     "RU": "VIP CORE :: Таблица"
   },
   "_Vip_Sid": {
-    "EN": "Enable",
+    "EN": "Server ID (vipc_core.cfg)",
+	"BR": "Server ID (vipc_core.cfg)",
     "RU": "ID Сервера (vip_core.cfg)"
   },
   "_Sb_Table": {
-    "EN": "Server ID (vip_core.cfg)",
+    "EN": "SB/MA :: Table",
+	"BR": "SB/MA :: Tabela",
     "RU": "SB/MA :: Таблица"
   },
   "_Shop_Table": {
     "EN": "Shop :: Table",
+	"BR": "Shop :: Tabela",
     "RU": "Shop :: Таблица"
   },
   "_WarnSystem_Table": {
     "EN": "WarnSystem :: Table",
+	"BR": "WarnSystem :: Tabela",
     "RU": "WarnSystem :: Таблица"
   },
   "_Lk_Table": {
-    "EN": "WarnSystem :: Table",
+    "EN": "LK :: Table",
+	"BR": "LK :: Tabela",
     "RU": "LK :: Таблица"
   },
   "_Server_Name": {
@@ -703,17 +718,19 @@
   "_Admin_stats":{
     "EN": "Statistics",
 	"BR": "Estatisticas",
-    "RU":"Статистика",
-    "UA":"Статистика",
-    "LT":"Statistika",
-    "TR":"İstatistik"
+    "RU": "Статистика",
+    "UA": "Статистика",
+    "LT": "Statistika",
+    "TR": "İstatistik"
   },
   "_Visits":{
     "EN": "Visits",
+	"BR": "Visitas",
     "RU": "Посещения"
   },
   "_Online":{
     "EN": "Online now:",
+	"BR": "Online agora:",
     "RU": "Сейчас онлайн:"
   },
   "_Total":{
@@ -726,62 +743,75 @@
   },
   "_Jan":{
     "EN": "January",
+	"BR": "Janeiro",
     "RU": "Январь"
   },
   "_Feb":{
     "EN": "February",
+	"BR": "Fevereiro",
     "RU": "Февраль"
   },
   "_Mar":{
     "EN": "March",
-    "RU": "Март"
+    "BR": "Março",
+	"RU": "Март"
   },
   "_Apr":{
     "EN": "April",
+	"BR": "Abril",
     "RU": "Апрель"
   },
   "_May":{
     "EN": "May",
+	"BR": "Maio",
     "RU": "Май"
   },
   "_Jun":{
     "EN": "June",
+	"BR": "Junho",
     "RU": "Июнь"
   },
   "_Jul":{
     "EN": "July",
+	"BR": "Julho",
     "RU": "Июль"
   },
   "_Aug":{
     "EN": "August",
+	"BR": "Agosto",
     "RU": "Август"
   },
   "_Sep":{
     "EN": "September",
+	"BR": "Setembro",
     "RU": "Сентябрь"
   },
   "_Oct":{
     "EN": "October",
+	"BR": "Outubro",
     "RU": "Октябрь"
   },
   "_Nov":{
     "EN": "November",
+	"BR": "Novembro",
     "RU": "Ноябрь"
   },
   "_Dec":{
     "EN": "December",
+	"BR": "Dezembro",
     "RU": "Декабрь"
   },
   "_Mset":{
-    "EN": "Module settings:",
+    "EN": "Module Settings:",
     "RU": "Настройки модуля:"
   },
   "_MAuth":{
     "EN": "Author:",
+	"BR": "Autor:",
     "RU": "Автор:"
   },
   "_MKer":{
-    "EN": "Min kernel version:",
+    "EN": "Min Kernel Version:",
     "RU": "Мин. версия ядра:"
   },
   "_MVer":{
@@ -789,15 +819,15 @@
     "RU": "Версия модуля:"
   },
   "_MPHP":{
-    "EN": "Min PHP version:",
-    "RU": "Мин. версия PHP:"
+    "EN": "Min PHP Version:",
+    "RU": "Мин версия PHP:"
   },
   "_MDesc":{
     "EN": "Description:",
     "RU": "Описание:"
   },
   "_MActive":{
-    "EN": "Active page:",
+    "EN": "Active Page:",
     "RU": "Активная страница:"
   },
   "_MOnoff":{
@@ -809,11 +839,11 @@
     "RU": "Режим модуля:"
   },
   "_MInterface":{
-    "EN": "The grafical part:",
+    "EN": "The Grafical Part:",
     "RU": "Графическая часть:"
   },
   "_MI":{
-    "EN": "Pre-initialization:",
+    "EN": "Pre-Initialization:",
     "RU": "Пре-инициализация:"
   },
   "_MAP":{
@@ -821,11 +851,11 @@
     "RU": "Дополнительная пре-инициализацию связанная с основным потоком:"
   },
   "_MCache":{
-    "EN": "Cache usage:",
+    "EN": "Cache Usage:",
     "RU": "Использование кэша:"
   },
   "_MCT":{
-    "EN": "Cache Time (Sec.):",
+    "EN": "Cache Time (Sec):",
     "RU": "Время кэширования(Сек.):"
   },
   "_MTR":{
@@ -833,11 +863,11 @@
     "RU": "Собственный файл перевода:"
   },
   "_MCSS":{
-    "EN": "Native CSS style:",
+    "EN": "Native CSS Style:",
     "RU": "Собственный CSS стиль:"
   },
   "_MJS":{
-    "EN": "Own JS library:",
+    "EN": "Own JS Library:",
     "RU": "Собственная JS библиотека:"
   },
   "_Cockie":{
@@ -845,7 +875,7 @@
     "RU": "Сохранение данных в куки (НЕ БЕЗОПАСНО)"
   },
   "_Template":{
-    "EN": "Choose template",
+    "EN": "Choose Template",
     "RU": "Выберете шаблон"
   }
 }
