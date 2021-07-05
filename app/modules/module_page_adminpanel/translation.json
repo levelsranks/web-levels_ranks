@@ -805,8 +805,8 @@
     "EN": "Module Settings:",
     "RU": "Настройки модуля:"
   },
-  "_MAuth":{
-    "EN": "Author:",
+  "_MAuth":  {
+	"EN": "Author:",
 	"BR": "Autor:",
     "RU": "Автор:"
   },
