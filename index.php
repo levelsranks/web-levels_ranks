@@ -143,7 +143,7 @@ $Router = new AltoRouter;
 
 empty( $General->arr_general['site'] ) && $General->arr_general['site'] = '//' . preg_replace('/^(https?:)?(\/\/)?(www\.)?/', '', $_SERVER['HTTP_REFERER']);
 
-//Добавление корневого роута
+// Добавление корневого роута
 $Router->setBasePath( parse_url($General->arr_general['site'], PHP_URL_PATH));
 
 // Создание экземпляра класса работающего с модулями.
