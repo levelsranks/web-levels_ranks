@@ -22,7 +22,7 @@
                     </a>
                     <ul class="subsection translation">
                         <?php for ( $i = 0; $i < $Translate->arr_languages_count; $i++ ): ?>
-                            <li><a href="#" onclick="location.href = '<?php echo $General->arr_general['site'] . $Modules->route . '/?language='. $Translate->arr_languages[ $i ] ?>'">
+                            <li><a href="#" onclick="location.href = '<?php echo $General->arr_general['site'] . '/?language='. $Translate->arr_languages[ $i ] ?>'">
                                     <?php $General->get_icon( 'custom', strtolower( $Translate->arr_languages[ $i ] ), 'flags' )?> <?php echo $Translate->get_translate_phrase( '_' . $Translate->arr_languages[ $i ] )?>
                                 </a>
 							</li>

@@ -83,7 +83,7 @@
 		</div>
 		<div class="profile__block">
 			<div class="short-stats-block">
-				<div class="block">
+				<div class="block" style="padding: 18px;">
 					<div class="left-stats-block">
 						<ul>
 							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Total_winning_percentage')?></li>
@@ -103,20 +103,6 @@
 							<li><span><?php echo $Player->get_percent_headshots()?></span></li>
 							<li><span><?php echo $Player->get_lastconnect()?></span></li>
 						</ul>
-					</div>
-					<div class="skull-block">
-						<div class="left-skull-block">
-							<div class="skull"></div>
-							<div class="info"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Triple_Kills')?> <span></span>-</div>
-						</div>
-						<div class="center-skull-block">
-							<div class="skull"></div>
-							<div class="info"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Quad_kills')?> <span></span>-</div>
-						</div>
-						<div class="right-skull-block">
-							<div class="skull"></div>
-							<div class="info"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Ace')?> <span></span>-</div>
-						</div>
 					</div>
 				</div>
 			</div>

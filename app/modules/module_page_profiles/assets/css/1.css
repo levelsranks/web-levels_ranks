@@ -205,10 +205,8 @@
 
     .short-stats-block {
         margin-top: 6px;
-        height: 264px;
+        height: 100%;
         width: 100%;
-        padding: 18px;
-        background-color: var(--sidebar-color);
         text-align: center;
         border: 0px solid transparent;
         border-radius: 4px;
@@ -779,7 +777,7 @@
 
     .short-stats-block {
         margin-top: 6px;
-        height: 264px;
+        height: 100%;
         width: 100%;
         padding: 18px;
         background-color: var(--sidebar-color);
@@ -1298,7 +1296,7 @@
         margin-top: 10px;
         font-size: 80%;
         font-weight: var(--font-weight-0);
-        margin-bottom: 10px;
+        margin-bottom: 30px
     }
 
     .user-block .user-stats {
@@ -1353,7 +1351,7 @@
 
     .short-stats-block {
         margin-top: 6px;
-        height: 264px;
+        height: 100%;
         width: 100%;
         padding: 18px;
         background-color: var(--sidebar-color);
@@ -1927,7 +1925,7 @@
 
     .short-stats-block {
         margin-top: 6px;
-        height: 264px;
+        height: 100%;
         width: 100%;
         padding: 18px;
         background-color: var(--sidebar-color);
@@ -2477,7 +2475,7 @@
         margin-top: 10px;
         font-size: 80%;
         font-weight: var(--font-weight-0);
-        margin-bottom: 15px;
+        margin-bottom: 30px
     }
 
     .user-block .user-stats {
@@ -2532,7 +2530,7 @@
 
     .short-stats-block {
         margin-top: 6px;
-        height: 264px;
+        height: 100%;
         width: 100%;
         padding: 18px;
         background-color: var(--sidebar-color);

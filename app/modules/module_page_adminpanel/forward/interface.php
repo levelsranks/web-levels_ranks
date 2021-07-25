@@ -36,9 +36,10 @@
                 <li <?php get_section( 'section', 'modules' ) == 'db' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','db')?>';">
                     <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Database_settings')?></a>
                 </li>
-                <li <?php get_section( 'section', 'modules' ) == 'web' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','web')?>';">
+                <!--
+                <li <?php //get_section( 'section', 'modules' ) == 'web' && print 'class="table-active"'?> onclick="location.href = '<?php //echo set_url_section(get_url( 2 ),'section','web')?>';">
                     <a>Настройка шаблона</a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </section>

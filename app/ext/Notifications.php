@@ -25,7 +25,8 @@ class Notifications {
 
         $this->Db = $Db;
 
-        $this->NotificationDelete();
+        // Чет оно шизу ловит
+        //$this->NotificationDelete();
 
 		$this->NotificationsRender();
 	}

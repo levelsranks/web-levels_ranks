@@ -181,7 +181,7 @@ class Graphics {
      */
     public function get_css_blocks_blur() {
         if ( ! empty( $this->General->arr_general['graphics.blocks_blur'] ) ) {
-            return '.card, .navbar { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(7px)}
+            return '.card, .navbar, .block { background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(7px)}
                     .table th {border-bottom: 0px solid var(--hover)}
                     .table-hover tbody tr:hover {background-color: rgba(0, 0, 0, 0.6)}
                     .input-form .input_text {color: var(--default-text-color)}

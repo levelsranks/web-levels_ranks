@@ -1304,5 +1304,45 @@ return array (
             'UA' => 'Неізвестноi',
             'LT' => 'Nežinoma',
             'TR' => 'Bilinmeyen'
-        )
+        ),
+    '_CountOnline' =>
+        array (
+            'EN' => 'Count online',
+            'RU' => 'Общий онлайн',
+            'UA' => 'Загальний онлайн',
+            'LT' => 'Žaidėjų skaičius',
+            'TR' => 'Oyuncu sayısı'
+        ),
+    '_ModuleAdded' =>
+        array (
+            'EN' => 'The module was added successfully',
+            'RU' => 'Был успешно добавлен модуль',
+            'UA' => 'Був успішно доданий модуль',
+            'LT' => 'Modulis sėkmingai pridėtas',
+            'TR' => 'Modül başarıyla eklendi'
+        ),
+    '_ModuleDeleted' =>
+        array (
+            'EN' => 'The module was removed successfully',
+            'RU' => 'Был успешно удален модуль',
+            'UA' => 'Був успішно видалений модуль',
+            'LT' => 'Modulis sėkmingai pašalintas',
+            'TR' => 'Modül başarıyla kaldırıldı'
+        ),
+    '_TemplateAdded' =>
+        array (
+            'EN' => 'The template was added successfully',
+            'RU' => 'Был успешно добавлен шаблон',
+            'UA' => 'Був успішно доданий шаблон',
+            'LT' => 'Šablonas sėkmingai pridėtas',
+            'TR' => 'Şablon başarıyla eklendi'
+        ),
+    '_TemplateDeleted' =>
+        array (
+            'EN' => 'Template was deleted successfully',
+            'RU' => 'Был успешно удален шаблон',
+            'UA' => 'Був успішно видалений шаблон',
+            'LT' => 'Šablonas sėkmingai ištrintas',
+            'TR' => 'Şablon başarıyla silindi'
+        ),
 );

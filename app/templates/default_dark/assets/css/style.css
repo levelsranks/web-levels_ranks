@@ -176,12 +176,11 @@
     max-width: 190px;
     max-height: 40px;
 }
-.right-area {
-}
 .right-area ul {
     padding-left: 20px;
 }
 .right-area li {
+    position: relative;
     float: right;
     padding: 0 7px;
 }
@@ -218,7 +217,7 @@
     right: 10px;
     top: 50px;
     border-radius: 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 20%);
     background: var(--sidebar-color);
     list-style: none;
     -webkit-transition: all 0.25s;
@@ -228,13 +227,12 @@
     text-align: left;
     margin: 0;
     opacity: 0;
-    z-index: 1000;
     padding: 0;
 }
 .section:hover .subsection,
 .sh:hover .subsection {
     opacity: 1;
-    top: 100%;
+    top: 2.7rem;
     visibility: visible;
 }
 .section .subsection li {
@@ -497,7 +495,6 @@
     word-wrap: break-word;
 }
 .sidebar-right {
-    margin-top: 56px;
     top: 0;
     right: 0;
     height: 100%;
@@ -1046,14 +1043,10 @@ tr th a:hover .card_info_block{
 #notes {
     z-index: 10000000;
 }
-.subsection.translation
-{
-    right: 7rem;
-    width: min-content;
-}
 .sidebar-right {
     transition: .3s;
     transform: translate(0px, 0px);
+    z-index: 9999;
 }
 .unshow {
     transition: .3s;

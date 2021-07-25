@@ -197,7 +197,10 @@ class Modules {
         //Добавление новых роутов
         $this->AddRoutes();
 
-        $this->route = ($Router->match()['target'] ?? $Router->SearchRoute());
+        // Тупо сохраняем пока
+        $match = $Router->match()['target'] ?? $Router->SearchRoute();
+
+        $this->route = ( strpos( $match, "?language=" ) !== false ) ? "home" : $match;
 
         $basename = parse_url($General->arr_general['site'], PHP_URL_PATH);
 
@@ -331,7 +334,7 @@ class Modules {
                 }
                 else
                 {
-                    $note[] = ['text' => 'Шаблон '.$val.' был успешно удален!', 'status' => 'error'];
+                    $note[] = ['text' => $this->Translate->get_translate_phrase("_TemplateDeleted") . " {$val}", 'status' => 'error'];
                 }
             }
 
@@ -342,7 +345,7 @@ class Modules {
                 if(array_keys($this->arr_templates)[$search] != $val)
                 {
                     $templates[] = $val;
-                    $note[] = ['text' => 'Шаблон '.$val.' был успешно добавлен!'];
+                    $note[] = ['text' => $this->Translate->get_translate_phrase("_TemplateAdded") . " {$val}"];
                 }
             }
 
@@ -388,7 +391,7 @@ class Modules {
                 }
                 else
                 {
-                    $note[] = ['text' => 'Модуль '.$val.' был успешно удален!', 'status' => 'error'];
+                    $note[] = ['text' => $this->Translate->get_translate_phrase("_ModuleDeleted") . " {$val}", 'status' => 'error'];
                 }
             }
 
@@ -399,7 +402,7 @@ class Modules {
                 if(array_keys($this->array_modules)[$search] != $val)
                 {
                     $modules[] = $val;
-                    $note[] = ['text' => 'Модуль '.$val.' был успешно добавлен!'];
+                    $note[] = ['text' => $this->Translate->get_translate_phrase("_ModuleAdded") . " {$val}"];
                 }
             }
             
@@ -472,7 +475,10 @@ class Modules {
             file_put_contents( SESSIONS . 'modules_cache.php', '<?php return '.var_export_min( $modules_desc ).";" );
 
             // Удаление, чтобы не мешал
-            unlink( SESSIONS . '/actual_library.json' );
+            unlink( SESSIONS . 'actual_library.json' );
+
+            // Удаляем так же переводы, а то че они, нахер пусть уходят
+            unlink( SESSIONS . 'translator_cache.php' );
 
             // Высылает уведомления админам 
             if(!empty($note) && isset($_SESSION['user_admin']))

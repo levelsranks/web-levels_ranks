@@ -164,11 +164,11 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
     </div>
 <?php break;
 case 4: ?>
-<?php if ( $General->server_list_count != 1 ):?>
+<?php if ( $General->server_list_count > 1 ):?>
     <div class="row">
         <div class="col-md-12">
             <div class="card plug text-center">
-                <div class="inline">Общий онлайн <font id="min_players">0</font>/<font id="max_players">0</font></div>
+                <div class="inline"><?=$Translate->get_translate_phrase("_CountOnline"); ?> <font id="min_players">0</font>/<font id="max_players">0</font></div>
             </div>
         </div>
     </div>
