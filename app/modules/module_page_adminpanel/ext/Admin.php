@@ -106,6 +106,14 @@ class Admin
         return $result;
     }
 
+    function arr_k_last($array) {
+        if (!is_array($array) || empty($array)) {
+            return NULL;
+        }
+        
+        return array_keys($array)[count($array)-1];
+    }
+
     /**
      * Очистить порядок загрузки модулей.
      */
@@ -144,7 +152,7 @@ class Admin
                 if($cache['sidebar'][$search] == $val)
                     $res[$search] = $val;
                 else
-                    $res[array_key_last($result['sidebar'])] = $val;
+                    $res[$this->arr_k_last($result['sidebar'])] = $val;
             }
             foreach ($result['page']['home']['interface']['afternavbar'] as $key => $val)
             {
@@ -152,7 +160,7 @@ class Admin
                 if($cache['page']['home']['interface']['afternavbar'][$search] == $val)
                     $restwo[$search] = $val;
                 else
-                    $restwo[array_key_last($result['page']['home']['interface']['afternavbar'])] = $val;
+                    $restwo[$this->arr_k_last($result['page']['home']['interface']['afternavbar'])] = $val;
             }
             
             //Сортировка массивов по ключам
