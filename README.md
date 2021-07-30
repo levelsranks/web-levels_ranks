@@ -38,12 +38,6 @@
 640K ought to be enough for anybody
 ```
 
-Демо:
------
-
-- https://unitcsgo.ru/
-- https://wocawp.ru/stats/
-
 Требования:
 -----
 
