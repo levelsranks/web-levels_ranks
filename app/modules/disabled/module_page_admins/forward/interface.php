@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                 <?php for ( $i = 0, $sz = sizeof( $res ); $i < $sz; $i++ ): $General->get_js_relevance_avatar( $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[ $i ]['authid'] ) : $res[ $i ]['authid'] )?>
-                    <tr class="pointer" onclick="location.href = '<?php echo sprintf('%sprofiles/%s/0', $General->arr_general['site'], $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[ $i ]['authid'] ) : $res[ $i ]['authid'] )?>';">
+                    <tr class="pointer" onclick="location.href = '<?php echo sprintf('%sprofiles/%s/0/?search=1', $General->arr_general['site'], $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $res[ $i ]['authid'] ) : $res[ $i ]['authid'] )?>';">
                     <?php if( $General->arr_general['avatars'] != 0 ) {?>
                         <th class="text-right tb-avatar"><img class="rounded-circle" id="<?php echo con_steam32to64( $res[ $i ]['authid'] ) ?>"<?php echo $i  < '20' ? 'src' : 'data-src'?>="<?php echo $General->getAvatar( con_steam32to64( $res[ $i ]['authid'] ), 2 )?>"></th>
                     <?php } ?>
