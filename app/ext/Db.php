@@ -360,7 +360,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function query( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function query( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
         if($result)
             return $result->fetch( PDO::FETCH_ASSOC );
@@ -379,7 +379,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryNum( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function queryNum( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
 
         if($result)
@@ -399,7 +399,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryAll( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function queryAll( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
 
         if($result)
@@ -419,7 +419,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function query_all_key_pair( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function query_all_key_pair( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
 
         if($result)
@@ -439,7 +439,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryColumn( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function queryColumn( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
 
         if($result)
@@ -459,7 +459,7 @@ class Db {
      *
      * @return array                  Возвращает результат SQL запроса.
      */
-    public function queryOneColumn( $mod, $user_id = 0, $db_id = 0, $sql, $params = [] ) {
+    public function queryOneColumn( $mod, $user_id = 0, $db_id = 0, $sql = null, $params = [] ) {
         $result = $this->inquiry( $mod, $user_id, $db_id, $sql, $params );
 
         if($result)
@@ -479,7 +479,7 @@ class Db {
      *
      * @return int                   Возвращает результат проверки.
      */
-    public function mysql_column_search( $mod, $user_id = 0, $db_id = 0, $tablename, $column ) {
+    public function mysql_column_search( $mod, $user_id = 0, $db_id = 0, $tablename = null, $column = null ) {
         //Проверка на существования БД, и подключение если его нет
         if(!isset($this->pdo[ $mod ][ $user_id ][ $db_id ]))
             $this->get_new_connect($mod, $user_id, $db_id);
@@ -499,7 +499,7 @@ class Db {
      *
      * @return int                   Возвращает результат проверки.
      */
-    public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename ) {
+    public function mysql_table_search( $mod, $user_id = 0, $db_id = 0, $tablename = null ) {
         //Проверка на существования БД, и подключение если его нет
         if(!isset($this->pdo[ $mod ][ $user_id ][ $db_id ]))
             $this->get_new_connect($mod, $user_id, $db_id);
