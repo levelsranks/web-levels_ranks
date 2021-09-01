@@ -34,10 +34,10 @@
                 <form enctype="multipart/form-data" method="post">
                 <div class="search_form">
                     <div class="input-form">
-                        <label>Поиск</label>
+                        <label>Search</label>
                         <input type="text" value="" name="_steam_id" placeholder="STEAM_1:1:390... / 7656119803..." >
                     </div>
-                    <input class="btn no_steam" name="btn_search" type="submit" value="Найти">
+                    <input class="btn no_steam" name="btn_search" type="submit" value="Find">
                 </div>
                 </form>
             </ul>
