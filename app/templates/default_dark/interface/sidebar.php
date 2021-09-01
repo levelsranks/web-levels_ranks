@@ -35,7 +35,7 @@
                     <a href="?auth=login" class="auth-steam-sidebar"><i class="zmdi zmdi-steam-square"></i></a>
                 <?php endif; ?>
                 <?php if( $General->arr_general['steam_only_authorization'] == 0 ):?>
-                    <span class="user_or">Или</span>
+                    <span class="user_or">Or</span>
                     <a class="login_in" href="#login"><?php echo $Translate->get_translate_phrase('_Log_in')?></a>
             <?php endif; endif; ?>
         </div>
