@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - Comms - Список мутов/гагов",
-  "info": "Интеграция SourceBans. Добавляет страницу со списком мутов и гагов игроков.",
+  "title": "LR WEB | SourceBans Comms - List of Mutes & Gags",
+  "info": "SourceBans Integration. Adds a page with a list of player mutes and gags",
   "author": "M0st1ce",
   "page": "comms",
   "version": "0.1",

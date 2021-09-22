@@ -1,24 +1,28 @@
 {
     "_LK":{
             "EN" : "Personal Area",
+			"BR" : "Área Pessoal",
             "RU" : "Личный Кабинет",
             "UA" : "Особистий кабінет",
             "LT" : "Asmeninė sąskaita"
     },
     "_ToUpAmount":{
             "EN" : "Top-up Amount:",
+			"BR" : "Top-up Amount:",
             "RU" : "Сумма пополнения:",
             "UA" : "Сума поповнення:",
             "LT" : "Papildoma suma:"
     },
     "_Promo":{
-            "EN" : "Promotional code",
+            "EN" : "Promotional Code",
+			"BR" : "Código Promocional",
             "RU" : "Промокод",
             "UA" : "Промокод",
             "LT" : "Reklamos kodas"
     },
     "_Balance":{
             "EN" : "Balance",
+			"BR" : "Balance",
             "RU" : "Баланс",
             "UA" : "Баланс",
             "LT" : "Balansas"
@@ -43,12 +47,14 @@
     },
     "_SettingsGateways":{
             "EN" : "Payment Gateways",
+			"BR" : "Gateways de Pagamento",
             "RU" : "Платежные шлюзы",
             "UA" : "Платіжні шлюзи",
             "LT" : "Mokėjimo šliuzai"
     },
     "_Gateways":{
             "EN" : "Payment Gateway",
+			"BR" : "Gateway de Pagamento",
             "RU" : "Платежный шлюз",
             "UA" : "Платіжній шлюз",
             "LT" : "Mokėjimo šliuzai"
@@ -61,12 +67,14 @@
     },
     "_UsersList":{
             "EN" : "Players List",
+			"BR" : "Lista de Players",
             "RU" : "Список игроков",
             "UA" : "Список гравців",
             "LT" : "Žaidėjų sąrašas"
     },
     "_DiscordMessage":{
-            "EN" : "Discord notifications",
+            "EN" : "Discord Notifications",
+			"BR" : "Notificações Discord",
             "RU" : "Уведомления Discord",
             "UA" : "Повідомлення Discord",
             "LT" : "Pranešimai apie nesutarimus"
@@ -78,7 +86,7 @@
             "LT" : "„LR WEB“ modulio diegimas - „Mano sąskaita“"
     },
     "_SettingsBD":{
-            "EN" : "Database setup",
+            "EN" : "Database Setup",
             "RU" : "Настройка базы данных",
             "UA" : "Налаштування бази даних",
             "LT" : "Duomenų bazės nustatymas"

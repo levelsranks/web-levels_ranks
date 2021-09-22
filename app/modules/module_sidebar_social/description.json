@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - All - Social Networks",
-  "info": "Adds social media to Sidebar :D",
+  "title": "LR WEB | All - Social Media Networks",
+  "info": "Adds social media networks to Sidebar :D",
   "author": "M0st1ce",
   "page": "home",
   "version": "1",
@@ -20,7 +20,7 @@
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "steam-square",
-      "name": "Steam",
+      "name": "Steam Group",
       "sidebar_directory": "_Sidebar_social"
     },
     "1": {
@@ -29,7 +29,7 @@
       "icon_group": "zmdi",
       "icon_category": "",
       "icon": "vk",
-      "name": "Группа Вконтакте",
+      "name": "Vkontakte Community",
       "sidebar_directory": "_Sidebar_social"
     },
     "2": {

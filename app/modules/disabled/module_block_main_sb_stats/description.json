@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - Home - Мини-Статистика по SB / MA",
-  "info": "Добавляет блоки с информацией:<br> - Общее количество администраторов<br> - Количество банов<br> - Количество мутов/гагов",
+  "title": "LR WEB | Home - Mini-Statistics on SB/MA",
+  "info": "Adds blocks with information:<br>- Total number of admins;<br>- Number of bans;<br> - Number of mutes/gags;",
   "author": "M0st1ce",
   "page": "home",
   "version": "0.1",

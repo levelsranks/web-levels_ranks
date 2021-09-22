@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - admins - Вывод администрации",
-  "info": "Интеграция SourceBans. Выводи список администраторов.",
+  "title": "LR WEB | SourceBans Admins - List Admins",
+  "info": "SourceBans Integration. List Admins",
   "author": "M0st1ce",
   "page": "admins",
   "version": "0.1",

@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - Bans - Мониторинг банов",
-  "info": "Интеграция SourceBans. Добавляет страницу со списком банов игроков.",
+  "title": "LR WEB | SourceBans Bans - List of Bans",
+  "info": "SourceBans Integration. Adds a page with a list of player bans",
   "author": "M0st1ce",
   "page": "bans",
   "version": "0.1",
