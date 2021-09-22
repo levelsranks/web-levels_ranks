@@ -106,7 +106,7 @@ endif;
 
 $page_num > $page_max && get_iframe( '009', 'Данная страница не существует' );
 
-$res == [] && header('Location: ' . $General->arr_general['site'] . '?page=toppoints&server_group=' . $server_group);
+$res == [] && get_iframe( '404', 'Игроки в базе данных не найдены' );
 
 // Задаём заголовок страницы.
 $Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_phrase('_Statistics') . ' :: ' . $Db->statistics_table[ $server_group ]['name'] . ' :: ' . $Translate->get_translate_phrase('_Page') . ' ' . $page_num );
