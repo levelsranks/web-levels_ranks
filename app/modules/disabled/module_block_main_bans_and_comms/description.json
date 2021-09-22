@@ -1,6 +1,6 @@
 {
-  "title": "LR WEB - Home - Вывод последних банов и мутов",
-  "info": "Выводит последние 10 банов и мутов отдельными блоками на главной странице. Без кэша с актуальной информацией.",
+  "title": "LR WEB | Home - Displays the latest Bans & Mutes",
+  "info": "Displays the last 10 bans and mutes in separate blocks on the main page. No cache with up-to-date information",
   "author": "M0st1ce",
   "page": "home",
   "version": "0.1",
