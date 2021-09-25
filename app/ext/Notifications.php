@@ -119,7 +119,7 @@ class Notifications {
     */
 	public function NotificationsEach( $view ) {
         $param = ['steam'=> $_SESSION['steamid32']];
-        $NotificationsEach = $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `status` = 0 AND `steam` = '$param[steam]' ORDER BY id DESC");
+        $NotificationsEach = $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `status` = 0 AND `steam` = '$param[steam]' ORDER BY `id` DESC");
         $deliver = [];
         
         foreach($NotificationsEach as $notification){
@@ -169,7 +169,7 @@ class Notifications {
     */
    	public function GetAllNotifications() {
    		$param = ['steam' => $_SESSION['steamid32']];
-        return $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `steam` = '$param[steam]'  ORDER BY date DESC");
+        return $this->Db->queryAll('Core', 0, 0, "SELECT * FROM `lr_web_notifications` WHERE `steam` = '$param[steam]'  ORDER BY `date` DESC");
    	}
 
    	/**

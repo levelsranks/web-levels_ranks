@@ -974,12 +974,12 @@ class Modules {
             $param = ['auth'=> '%'.$auth[0].'%'];
             if($this->General->Db->db_data['lk'][0]['mod'] == 1)
             {
-                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT cash FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT `cash` FROM `lk` WHERE `auth` LIKE :auth LIMIT 1", $param);
                 $cash = 'cash';
             }
             else if($this->General->Db->db_data['lk'][0]['mod'] == 2)
             {
-                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT money FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
+                $infoUser =$this->General->Db->queryAll('lk', $this->General->Db->db_data['lk'][0]['USER_ID'], $this->General->Db->db_data['lk'][0]['DB_num'], "SELECT `money` FROM `lk_system` WHERE `auth` LIKE :auth LIMIT 1", $param);
                 $cash = 'money';
             }
             return number_format($infoUser[0][$cash],0,' ', ' ');
