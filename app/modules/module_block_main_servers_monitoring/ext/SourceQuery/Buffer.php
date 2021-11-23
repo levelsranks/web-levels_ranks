@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @author Pavel Djundik <sourcequery@xpaw.me>
+	 * @author Pavel Djundik
 	 *
 	 * @link https://xpaw.me
 	 * @link https://github.com/xPaw/PHP-Source-Query
@@ -25,29 +25,21 @@
 	{
 		/**
 		 * Buffer
-		 * 
-		 * @var string
 		 */
-		private $Buffer;
+		private $Buffer = '';
 		
 		/**
 		 * Buffer length
-		 * 
-		 * @var int
 		 */
-		private $Length;
+		private $Length = 0;
 		
 		/**
 		 * Current position in buffer
-		 * 
-		 * @var int
 		 */
-		private $Position;
+		private $Position = 0;
 		
 		/**
 		 * Sets buffer
-		 *
-		 * @param string $Buffer Buffer
 		 */
 		public function Set( $Buffer )
 		{
@@ -70,8 +62,6 @@
 		 * Gets data from buffer
 		 *
 		 * @param int $Length Bytes to read
-		 *
-		 * @return string
 		 */
 		public function Get( $Length = -1 )
 		{
@@ -100,8 +90,6 @@
 		
 		/**
 		 * Get byte from buffer
-		 *
-		 * @return int
 		 */
 		public function GetByte( )
 		{
@@ -110,8 +98,6 @@
 		
 		/**
 		 * Get short from buffer
-		 *
-		 * @return int
 		 */
 		public function GetShort( )
 		{
@@ -122,13 +108,11 @@
 			
 			$Data = UnPack( 'v', $this->Get( 2 ) );
 			
-			return $Data[ 1 ];
+			return (int)$Data[ 1 ];
 		}
 		
 		/**
 		 * Get long from buffer
-		 *
-		 * @return int
 		 */
 		public function GetLong( )
 		{
@@ -139,13 +123,11 @@
 			
 			$Data = UnPack( 'l', $this->Get( 4 ) );
 			
-			return $Data[ 1 ];
+			return (int)$Data[ 1 ];
 		}
 		
 		/**
 		 * Get float from buffer
-		 *
-		 * @return float
 		 */
 		public function GetFloat( )
 		{
@@ -156,13 +138,11 @@
 			
 			$Data = UnPack( 'f', $this->Get( 4 ) );
 			
-			return $Data[ 1 ];
+			return (float)$Data[ 1 ];
 		}
 		
 		/**
 		 * Get unsigned long from buffer
-		 *
-		 * @return int
 		 */
 		public function GetUnsignedLong( )
 		{
@@ -173,13 +153,11 @@
 			
 			$Data = UnPack( 'V', $this->Get( 4 ) );
 			
-			return $Data[ 1 ];
+			return (int)$Data[ 1 ];
 		}
 		
 		/**
 		 * Read one string from buffer ending with null byte
-		 *
-		 * @return string
 		 */
 		public function GetString( )
 		{

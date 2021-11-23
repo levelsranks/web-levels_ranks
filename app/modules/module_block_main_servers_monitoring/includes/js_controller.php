@@ -11,64 +11,64 @@
 // Если входящий поток существует, начинаем работу.
 ! isset( $_POST['data'] ) && die();
 
-if(isset( $_POST['my'] ) && $_POST['my'] == 'yes')
-{
-    // Итоговый вывод является массивом.
-    $return = [];
+// if(isset( $_POST['my'] ) && $_POST['my'] == 'yes')
+// {
+//     // Итоговый вывод является массивом.
+//     $return = [];
 
-    //Время в минутах, сколько будет храниться кеш
-    $cachetime = 2;
+//     //Время в минутах, сколько будет храниться кеш
+//     $cachetime = 0;
 
-    // Итоговый кэш является массивом.
-    $cache = [];
+//     // Итоговый кэш является массивом.
+//     $cache = [];
 
-    if(file_exists('../temp/cache.php'))
-    {
-        $zalupa = require '../temp/cache.php';
-        if((time() - filectime('../temp/cache.php')  - ($cachetime*60)) < 0 && !empty($zalupa))
-        {
-            echo json_encode($zalupa);
-            exit();
-        }
-    }
+//     if(file_exists('../temp/cache.php'))
+//     {
+//         $zalupa = require '../temp/cache.php';
+//         if((time() - filectime('../temp/cache.php')  - ($cachetime*60)) < 0 && !empty($zalupa))
+//         {
+//             echo json_encode($zalupa);
+//             exit();
+//         }
+//     }
 
-    // Присваиваем список серверов.
-    $servers = $_POST['data'][0];
+//     // Присваиваем список серверов.
+//     $servers = $_POST['data'][0];
 
-    // Считаем количество серверов.
-    $servers_count = sizeof( $servers );
+//     // Считаем количество серверов.
+//     $servers_count = sizeof( $servers );
 
-    $options = require '../../../../storage/cache/sessions/options.php';
+//     $options = require '../../../../storage/cache/sessions/options.php';
 
-    require '../ext/ServerInfo.php';
+//     require '../ext/ServerInfo.php';
 
-    // Перебираем список серверов и собираем данные в подмассивы.
-    for ( $i_ser = 0; $i_ser < $servers_count; $i_ser++ )
-    {
-        $haha = new ServerInfo( $servers[ $i_ser ]["ip"] );
-        $returncheck = $haha->SI_Get();
-        if( empty( $returncheck["info"] ) )
-        {
-            $ipport = explode(":", $servers[ $i_ser ]["ip"]);
-            $return[]["info"] = [
-                'Map_image' => 'storage/cache/img/maps/730/-.jpg',
-                'Port' => $ipport[1] ?? "27015",
-                'Ip' => $ipport[0] ?? "228.228.228",
-                'Map' => "-",
-                'Appid' => 730,
-                'Playersmax' => 0,
-                'Players' => 0,
-                'Name' => "Сервер выключен"
-            ];
-        }
-        else $return[] = $returncheck;
-    }
+//     // Перебираем список серверов и собираем данные в подмассивы.
+//     for ( $i_ser = 0; $i_ser < $servers_count; $i_ser++ )
+//     {
+//         $haha = new ServerInfo( $servers[ $i_ser ]["ip"] );
+//         $returncheck = $haha->SI_Get();
+//         if( empty( $returncheck["info"] ) )
+//         {
+//             $ipport = explode(":", $servers[ $i_ser ]["ip"]);
+//             $return[]["info"] = [
+//                 'Map_image' => 'storage/cache/img/maps/730/-.jpg',
+//                 'Port' => $ipport[1] ?? "27015",
+//                 'Ip' => $ipport[0] ?? "228.228.228",
+//                 'Map' => "-",
+//                 'Appid' => 730,
+//                 'Playersmax' => 0,
+//                 'Players' => 0,
+//                 'Name' => "Сервер выключен"
+//             ];
+//         }
+//         else $return[] = $returncheck;
+//     }
 
-    ( ! file_exists( '../temp/cache.php' ) || $return != require '../temp/cache.php' ) && file_put_contents('../temp/cache.php', '<?php return ' . var_export( $return, true) . ";" );
+//     ( ! file_exists( '../temp/cache.php' ) || $return != require '../temp/cache.php' ) && file_put_contents('../temp/cache.php', '<?php return ' . var_export( $return, true) . ";" );
 
-    echo json_encode($return);
-    exit;
-}
+//     echo json_encode($return);
+//     exit;
+// }
 
 // Подключение SourceQuery.
 require '../ext/SourceQuery/bootstrap.php';

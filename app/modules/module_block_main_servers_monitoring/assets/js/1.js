@@ -9,7 +9,7 @@ if (servers != 0) {
         success: function( data ) {
             for (var i = 0; i < data.length; i++) {
                 document.getElementById('server-name-' + i).innerHTML = data[i]['HostName'];
-                document.getElementById('server-map-image-' + i).setAttribute("src", "./storage/cache/img/maps/"+ data[i]['Mod'] +"/" + data[i]['Map_image'] + ".jpg");
+                document.getElementById('server-map-image-' + i).setAttribute("src", domain+"storage/cache/img/maps/"+ data[i]['Mod'] +"/" + data[i]['Map_image'] + ".jpg");
                 document.getElementById('server-players-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
                 document.getElementById('online_gr-' + i).setAttribute("style", "width:" + 100*data[i]['Players']/data[i]['MaxPlayers'] + "%");
                 document.getElementById('server-ip-' + i).innerHTML = data[i]['ip'];
@@ -21,7 +21,6 @@ if (servers != 0) {
                 var b = 1;
                 if(data[i]['players']) {
                     if( data[i]['players'].length > 0 ) {
-                        console.log(data[i]['players']);
                         for (var i2 = 0; i2 < data[i]['players'].length; i2++) {
                             var str = '<tr>' +
                                 '<th class="text-center">' + b++ + '</th>' +

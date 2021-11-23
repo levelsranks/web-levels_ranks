@@ -12,11 +12,14 @@
 class ServerInfo
 {
   CONST NB      = "\x00";
-
+  const A2S_INFO      = 0x54;
+  const S2A_CHALLENGE = 0x41;
   private $IP;
   private $PORT;
   private $SOCKET;
   private $BUFER;
+
+  private $Challenge = "";
 
   function __construct( $_IP_PORT, $_TIMEOUT = 5 )
   {
@@ -63,19 +66,34 @@ class ServerInfo
     return $_STR;
   }
 
+  protected function Write( $Header, $String = '' )
+  {
+    $Command = Pack( 'ccccca*', 0xFF, 0xFF, 0xFF, 0xFF, $Header, $String );
+    $Length  = StrLen( $Command );
+    
+    return $Length === FWrite( $this->SOCKET, $Command, $Length );
+  }
+
+  protected function Read( $Length = 1400 )
+  {
+    $this->BUFER = fread( $this->SOCKET, $Length );
+    return $this->BUFER;
+  }
+
   protected function SI_Get_Server_Info()
   {
-    fwrite( $this->SOCKET, "\xFF\xFF\xFF\xFF\x54Source Engine Query" . ServerInfo::NB);
+    $this->Write("\xFF\xFF\xFF\xFF\x54\x53\x6F\x75\x72\x63\x65\x20\x45\x6E\x67\x69\x6E\x65\x20\x51\x75\x65\x72\x79\x00");
 
-    $this->BUFER = fread( $this->SOCKET, 4096 ); 
+    $this->Write("\xFF\xFF\xFF\xFFTSource Engine Query\x00");
+    $header = $this->SI_BYTE(1);
 
-    if( !$this->BUFER ) return false;
-
-    $_Header = $this->SI_BYTE( 4 );
-
-    $_Responce_Type  = $this->SI_BYTE( 1 );
-
-    switch ( $_Responce_Type )
+    if ($header == 0x41)
+    {
+        $this->Write("\xFF\xFF\xFF\xFFTSource Engine Query\x00" . $this->SI_BYTE(4));
+        $header = $this->SI_BYTE(1);
+    }
+    
+    switch ( $header )
     {
       case "I":
         $_Server['Ip']          = $this->IP;
@@ -190,6 +208,6 @@ class ServerInfo
   */
   public function SI_Get()
   {
-  	return (array) $_Server_Info = [ "info" => $this->SI_Get_Server_Info(), "players" => $this->SI_Get_Server_Players() ];
+  	return (array) [ "info" => $this->SI_Get_Server_Info(), "players" => $this->SI_Get_Server_Players() ];
   }
 }

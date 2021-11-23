@@ -2,7 +2,7 @@
 	/**
 	 * This class provides the public interface to the PHP-Source-Query library.
 	 *
-	 * @author Pavel Djundik <sourcequery@xpaw.me>
+	 * @author Pavel Djundik
 	 *
 	 * @link https://xpaw.me
 	 * @link https://github.com/xPaw/PHP-Source-Query
@@ -12,6 +12,7 @@
 
 	namespace xPaw\SourceQuery;
 
+	use xPaw\SourceQuery\Exception\AuthenticationException;
 	use xPaw\SourceQuery\Exception\InvalidArgumentException;
 	use xPaw\SourceQuery\Exception\InvalidPacketException;
 	use xPaw\SourceQuery\Exception\SocketException;
@@ -21,6 +22,7 @@
 	 *
 	 * @package xPaw\SourceQuery
 	 *
+	 * @uses xPaw\SourceQuery\Exception\AuthenticationException
 	 * @uses xPaw\SourceQuery\Exception\InvalidArgumentException
 	 * @uses xPaw\SourceQuery\Exception\InvalidPacketException
 	 * @uses xPaw\SourceQuery\Exception\SocketException
@@ -68,39 +70,31 @@
 		/**
 		 * Points to rcon class
 		 * 
-		 * @var SourceRcon
+		 * @var SourceRcon|GoldSourceRcon|null
 		 */
 		private $Rcon;
 		
 		/**
 		 * Points to socket class
-		 * 
-		 * @var Socket
 		 */
 		private $Socket;
 		
 		/**
 		 * True if connection is open, false if not
-		 * 
-		 * @var bool
 		 */
-		private $Connected;
+		private $Connected = false;
 		
 		/**
 		 * Contains challenge
-		 * 
-		 * @var string
 		 */
-		private $Challenge;
+		private $Challenge = '';
 		
 		/**
 		 * Use old method for getting challenge number
-		 * 
-		 * @var bool
 		 */
-		private $UseOldGetChallengeMethod;
+		private $UseOldGetChallengeMethod = false;
 		
-		public function __construct( BaseSocket $Socket = null )
+		public function __construct( $Socket = null )
 		{
 			$this->Socket = $Socket ?: new Socket( );
 		}
@@ -125,12 +119,12 @@
 		{
 			$this->Disconnect( );
 			
-			if( !is_int( $Timeout ) || $Timeout < 0 )
+			if( $Timeout < 0 )
 			{
-				throw new InvalidArgumentException( 'Timeout must be an integer.', InvalidArgumentException::TIMEOUT_NOT_INTEGER );
+				throw new InvalidArgumentException( 'Timeout must be a positive integer.', InvalidArgumentException::TIMEOUT_NOT_INTEGER );
 			}
 			
-			$this->Socket->Open( $Address, (int)$Port, $Timeout, (int)$Engine );
+			$this->Socket->Open( $Address, $Port, $Timeout, $Engine );
 			
 			$this->Connected = true;
 		}
@@ -157,7 +151,7 @@
 		public function Disconnect( )
 		{
 			$this->Connected = false;
-			$this->Challenge = 0;
+			$this->Challenge = '';
 			
 			$this->Socket->Close( );
 			
@@ -206,11 +200,28 @@
 				throw new SocketException( 'Not connected.', SocketException::NOT_CONNECTED );
 			}
 			
-			$this->Socket->Write( self::A2S_INFO, "Source Engine Query\0" );
+			if( $this->Challenge )
+			{
+				$this->Socket->Write( self::A2S_INFO, "Source Engine Query\0" . $this->Challenge );
+			}
+			else
+			{
+				$this->Socket->Write( self::A2S_INFO, "Source Engine Query\0" );
+			}
+
 			$Buffer = $this->Socket->Read( );
-			
 			$Type = $Buffer->GetByte( );
+			$Server = [];
 			
+			if( $Type === self::S2A_CHALLENGE )
+			{
+				$this->Challenge = $Buffer->Get( 4 );
+
+				$this->Socket->Write( self::A2S_INFO, "Source Engine Query\0" . $this->Challenge );
+				$Buffer = $this->Socket->Read( );
+				$Type = $Buffer->GetByte( );
+			}
+
 			// Old GoldSource protocol, HLTV still uses it
 			if( $Type === self::S2A_INFO_OLD && $this->Socket->Engine === self::GOLDSOURCE )
 			{
@@ -235,6 +246,7 @@
 				
 				if( $Server[ 'IsMod' ] )
 				{
+					$Mod = [];
 					$Mod[ 'Url' ]        = $Buffer->GetString( );
 					$Mod[ 'Download' ]   = $Buffer->GetString( );
 					$Buffer->Get( 1 ); // NULL byte
@@ -242,15 +254,11 @@
 					$Mod[ 'Size' ]       = $Buffer->GetLong( );
 					$Mod[ 'ServerSide' ] = $Buffer->GetByte( ) === 1;
 					$Mod[ 'CustomDLL' ]  = $Buffer->GetByte( ) === 1;
+					$Server[ 'Mod' ] = $Mod;
 				}
 				
 				$Server[ 'Secure' ]   = $Buffer->GetByte( ) === 1;
 				$Server[ 'Bots' ]     = $Buffer->GetByte( );
-				
-				if( isset( $Mod ) )
-				{
-					$Server[ 'Mod' ] = $Mod;
-				}
 				
 				return $Server;
 			}
@@ -289,13 +297,13 @@
 			{
 				$Server[ 'ExtraDataFlags' ] = $Flags = $Buffer->GetByte( );
 				
-				// The server's game port
+				// S2A_EXTRA_DATA_HAS_GAME_PORT - Next 2 bytes include the game port.
 				if( $Flags & 0x80 )
 				{
 					$Server[ 'GamePort' ] = $Buffer->GetShort( );
 				}
 				
-				// The server's steamid
+				// S2A_EXTRA_DATA_HAS_STEAMID - Next 8 bytes are the steamID
 				// Want to play around with this?
 				// You can use https://github.com/xPaw/SteamID.php
 				if( $Flags & 0x10 )
@@ -327,20 +335,20 @@
 					unset( $SteamIDLower, $SteamIDInstance, $SteamID );
 				}
 				
-				// The spectator port and then the spectator server name
+				// S2A_EXTRA_DATA_HAS_SPECTATOR_DATA - Next 2 bytes include the spectator port, then the spectator server name.
 				if( $Flags & 0x40 )
 				{
 					$Server[ 'SpecPort' ] = $Buffer->GetShort( );
 					$Server[ 'SpecName' ] = $Buffer->GetString( );
 				}
 				
-				// The game tag data string for the server
+				// S2A_EXTRA_DATA_HAS_GAMETAG_DATA - Next bytes are the game tag string
 				if( $Flags & 0x20 )
 				{
 					$Server[ 'GameTags' ] = $Buffer->GetString( );
 				}
 				
-				// GameID -- alternative to AppID?
+				// S2A_EXTRA_DATA_GAMEID - Next 8 bytes are the gameID of the server
 				if( $Flags & 0x01 )
 				{
 					$Server[ 'GameID' ] = $Buffer->GetUnsignedLong( ) | ( $Buffer->GetUnsignedLong( ) << 32 ); 
@@ -389,6 +397,7 @@
 			
 			while( $Count-- > 0 && $Buffer->Remaining( ) > 0 )
 			{
+				$Player = [];
 				$Player[ 'Id' ]    = $Buffer->GetByte( ); // PlayerID, is it just always 0?
 				$Player[ 'Name' ]  = $Buffer->GetString( );
 				$Player[ 'Frags' ] = $Buffer->GetLong( );
@@ -447,9 +456,6 @@
 		
 		/**
 		 * Get challenge (used for players/rules packets)
-		 *
-		 * @param $Header
-		 * @param $ExpectedResult
 		 *
 		 * @throws InvalidPacketException
 		 */
@@ -524,6 +530,10 @@
 					$this->Rcon = new SourceRcon( $this->Socket );
 					
 					break;
+				}
+				default:
+				{
+					throw new SocketException( 'Unknown engine.', SocketException::INVALID_ENGINE );
 				}
 			}
 			

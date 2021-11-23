@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @author Pavel Djundik <sourcequery@xpaw.me>
+	 * @author Pavel Djundik
 	 *
 	 * @link https://xpaw.me
 	 * @link https://github.com/xPaw/PHP-Source-Query
@@ -17,4 +17,5 @@
 		const COULD_NOT_CREATE_SOCKET = 1;
 		const NOT_CONNECTED = 2;
 		const CONNECTION_FAILED = 3;
+		const INVALID_ENGINE = 3;
 	}

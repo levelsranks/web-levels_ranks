@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @author Pavel Djundik <sourcequery@xpaw.me>
+	 * @author Pavel Djundik
 	 *
 	 * @link https://xpaw.me
 	 * @link https://github.com/xPaw/PHP-Source-Query
@@ -13,6 +13,7 @@
 	namespace xPaw\SourceQuery;
 	
 	use xPaw\SourceQuery\Exception\AuthenticationException;
+	use xPaw\SourceQuery\Exception\InvalidPacketException;
 
 	/**
 	 * Class GoldSourceRcon
@@ -20,19 +21,19 @@
 	 * @package xPaw\SourceQuery
 	 *
 	 * @uses xPaw\SourceQuery\Exception\AuthenticationException
+	 * @uses xPaw\SourceQuery\Exception\InvalidPacketException
 	 */
 	class GoldSourceRcon
 	{
 		/**
 		 * Points to socket class
 		 * 
-		 * @var Socket
+		 * @var BaseSocket
 		 */
 		private $Socket;
 		
-		private $RconPassword;
-		private $RconRequestId;
-		private $RconChallenge;
+		private $RconPassword = '';
+		private $RconChallenge = '';
 		
 		public function __construct( $Socket )
 		{
@@ -41,9 +42,8 @@
 		
 		public function Close( )
 		{
-			$this->RconChallenge = 0;
-			$this->RconRequestId = 0;
-			$this->RconPassword  = 0;
+			$this->RconChallenge = '';
+			$this->RconPassword  = '';
 		}
 		
 		public function Open( )
@@ -62,7 +62,7 @@
 		/**
 		 * @param int $Length
 		 * @throws AuthenticationException
-		 * @return bool
+		 * @return Buffer
 		 */
 		public function Read( $Length = 1400 )
 		{
