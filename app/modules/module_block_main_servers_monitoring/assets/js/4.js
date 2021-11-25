@@ -28,9 +28,9 @@ if (servers != 0) {
                         for (var i2 = 0; i2 < players.length; i2++) {
                             var str = '<tr>' +
                                 '<th class="text-center">' + b++ + '</th>' +
-                                '<th class="text-center">' + players[i2]['HostName'] + '</th>' +
-                                '<th class="text-center">' + players[i2]['Score'] + '</th>' +
-                                '<th class="text-center">' + players[i2]['Time'] + '</th>' +
+                                '<th class="text-center">' + players[i2]['Name'] + '</th>' +
+                                '<th class="text-center">' + players[i2]['Frags'] + '</th>' +
+                                '<th class="text-center">' + players[i2]['TimeF'] + '</th>' +
                                 '</tr>';
                             po = document.getElementById('players_online_' + i);
                             po.insertAdjacentHTML('beforeend', str);
