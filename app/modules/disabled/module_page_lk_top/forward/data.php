@@ -11,9 +11,9 @@
 $res = [];
 
 if( ! empty( $Db->db_data['lk'][0]['mod'] ) && $Db->db_data['lk'][0]['mod'] == 2 ):
-    $res = $Db->queryAll( 'lk', 0, 0, "SELECT auth, `name`, all_money AS all_cash FROM lk_system WHERE all_money > 1 order by all_money desc");
+    $res = $Db->queryAll( 'lk', 0, 0, "SELECT `auth`, `name`, `all_money` AS `all_cash` FROM `lk_system` WHERE `all_money` > 1 order by `all_money` desc");
 else:
-    $res = $Db->queryAll( 'lk', 0, 0, "SELECT auth, `name`, all_cash FROM lk WHERE all_cash > 1 order by all_cash desc");
+    $res = $Db->queryAll( 'lk', 0, 0, "SELECT `auth`, `name`, `all_cash` FROM `lk` WHERE `all_cash` > 1 order by `all_cash` desc");
 endif;
 
 $res == [] && header('Location: ' . $General->arr_general['site']);

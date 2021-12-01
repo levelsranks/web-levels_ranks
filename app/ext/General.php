@@ -205,7 +205,7 @@ class General {
      * @return array                 Массив со списком серверов.
      */
     public function get_server_list() {
-        return $this->Db->queryAll( 'Core', 0, 0,'SELECT * FROM lvl_web_servers' );
+        return $this->Db->queryAll( 'Core', 0, 0,'SELECT * FROM `lvl_web_servers`' );
     }
 
     /**
@@ -264,7 +264,7 @@ class General {
         $client_ip = $this->get_client_ip_cdn();
 
         $param['ip'] = $client_ip;
-        $Online = $this->Db->queryOneColumn( 'Core', 0, 0, "SELECT user FROM lr_web_online WHERE ip = :ip", $param );
+        $Online = $this->Db->queryOneColumn( 'Core', 0, 0, "SELECT `user` FROM `lr_web_online` WHERE `ip` = :ip", $param );
 
         if(empty($Online))
         {
@@ -272,7 +272,7 @@ class General {
                 'user'  => $User,
                 'ip'    => $client_ip
             ];
-            $this->Db->query('Core', 0, 0, "INSERT INTO lr_web_online(id, user, ip, time) VALUES (NULL, :user, :ip, NOW())", $params );
+            $this->Db->query('Core', 0, 0, "INSERT INTO `lr_web_online`(`id`, `user`, `ip`, `time`) VALUES (NULL, :user, :ip, NOW())", $params );
         }
         else
         {
@@ -282,28 +282,28 @@ class General {
                     'user'  => $User,
                     'ip'    => $client_ip
                 ];
-                $this->Db->query('Core', 0, 0, 'UPDATE lr_web_online SET time = NOW(), user = :user WHERE ip = :ip', $params );
+                $this->Db->query('Core', 0, 0, 'UPDATE `lr_web_online` SET `time` = NOW(), `user` = :user WHERE `ip` = :ip', $params );
             }
             else
             {
-                $this->Db->query('Core', 0, 0, "UPDATE lr_web_online SET time = NOW() WHERE  ip = :ip", $param );
+                $this->Db->query('Core', 0, 0, "UPDATE `lr_web_online` SET `time` = NOW() WHERE  `ip` = :ip", $param );
             }
         }
 
-        $this->Db->query('Core', 0, 0, "DELETE FROM lr_web_online WHERE time < SUBTIME(NOW(), '0 0:05:0')" );
+        $this->Db->query('Core', 0, 0, "DELETE FROM `lr_web_online` WHERE `time` < SUBTIME(NOW(), '0 0:05:0')" );
 
         $_Param['date'] = date('m.Y');
 
-        $_Attendance_ID = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT id FROM lr_web_attendance WHERE date = :date', $_Param );
+        $_Attendance_ID = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT `id` FROM `lr_web_attendance` WHERE `date` = :date', $_Param );
 
         if($_Attendance_ID)
         {   
             $_ParamU['id'] = $_Attendance_ID;
-            $this->Db->query( 'Core', 0, 0, "UPDATE lr_web_attendance SET visits = visits + 1 WHERE id = :id", $_ParamU );
+            $this->Db->query( 'Core', 0, 0, "UPDATE `lr_web_attendance` SET `visits` = `visits` + 1 WHERE `id` = :id", $_ParamU );
         }
         else 
         {
-            $this->Db->query( 'Core', 0, 0, "INSERT INTO lr_web_attendance(id, date, visits) VALUES (NULL, :date, 1)", $_Param );
+            $this->Db->query( 'Core', 0, 0, "INSERT INTO `lr_web_attendance`(`id`, `date`, `visits`) VALUES (NULL, :date, 1)", $_Param );
         }
     }
 }

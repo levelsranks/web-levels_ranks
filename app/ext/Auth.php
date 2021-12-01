@@ -139,7 +139,7 @@ class Auth {
      * @return array  Массив с администраторами.
      */
     public function get_admins_list() {
-        return $this->admins = $this->Db->queryAll( 'Core', 0, 0, 'SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins' );
+        return $this->admins = $this->Db->queryAll( 'Core', 0, 0, 'SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins`' );
     }
 
     /**
@@ -159,7 +159,7 @@ class Auth {
      * @since 0.2.120
      */
     public function check_session_admin() {
-        $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins WHERE steamid={$_SESSION['steamid']} LIMIT 1" );
+        $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins` WHERE `steamid`={$_SESSION['steamid']} LIMIT 1" );
         if( ! empty( $result ) ):
             $_SESSION['user_admin'] = 1;
             $_SESSION['user_group'] = $result['group'];
@@ -189,7 +189,7 @@ class Auth {
         $params = ['user' => action_text_clear( $_POST['_login'] ), 'password' => action_text_clear( $_POST['_pass'] )];
 
         // Запрос на проверку пользователя.
-        $result = $this->Db->query('Core', 0, 0, "SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins WHERE user = :user AND password = :password", $params );
+        $result = $this->Db->query('Core', 0, 0, "SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins` WHERE `user` = :user AND `password` = :password", $params );
 
         // Сверка результата запроса.
         if ( ! empty( $result ) ):
@@ -234,7 +234,7 @@ class Auth {
             // Перебор всех таблиц с модом - Levels Ranks
             for ( $d = 0; $d < $this->Db->table_count['LevelsRanks']; $d++ ):
                 // Запрос о получении информации об авторизовавшемся пользователе.
-                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT name, lastconnect, rank FROM {$this->Db->db_data['LevelsRanks'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
+                $this->base_info = $this->Db->query('LevelsRanks', $this->Db->db_data['LevelsRanks'][ $d ]['USER_ID'], $this->Db->db_data['LevelsRanks'][ $d ]['DB_num'], "SELECT `name`, `lastconnect`, `rank` FROM `{$this->Db->db_data['LevelsRanks'][ $d ]["Table"]}` WHERE `steam` LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
 
                 // Если Пользователь  находится в таблице, заполняем итоговый массив.
                 if ( ! empty( $this->base_info ) ):
@@ -257,12 +257,12 @@ class Auth {
             for ( $d = 1; $d <= $this->Db->table_count['FPS']; $d++ ):
 
                 // Запрос о получении информации об авторизовавшемся пользователе.
-                $this->base_info = $this->Db->query('FPS', 0, 0, "SELECT fps_players.nickname AS name,
-                                                                         fps_servers_stats.rank,
-                                                                         fps_servers_stats.lastconnect
-                                                                         FROM fps_players
-                                                                         INNER JOIN fps_servers_stats ON fps_players.account_id = fps_servers_stats.account_id
-                                                                         WHERE steam_id={$_SESSION['steamid']} AND fps_servers_stats.server_id ={$d}
+                $this->base_info = $this->Db->query('FPS', 0, 0, "SELECT `fps_players`.`nickname` AS `name`,
+                                                                         `fps_servers_stats`.`rank`,
+                                                                         `fps_servers_stats`.`lastconnect`
+                                                                         FROM `fps_players`
+                                                                         INNER JOIN `fps_servers_stats` ON `fps_players`.`account_id` = `fps_servers_stats`.`account_id`
+                                                                         WHERE `steam_id`={$_SESSION['steamid']} AND `fps_servers_stats`.`server_id` ={$d}
                                                                          LIMIT 1");
                 if ( ! empty( $this->base_info ) ):
                     // Базовая информация о пользователе.
@@ -283,7 +283,7 @@ class Auth {
             // Перебор всех таблиц с модом - Levels Ranks
             for ( $d = 0; $d < $this->Db->table_count['RankMeKento']; $d++ ):
                 // Запрос о получении информации об авторизовавшемся пользователе.
-                $this->base_info = $this->Db->query('RankMeKento', $this->Db->db_data['RankMeKento'][ $d ]['USER_ID'], $this->Db->db_data['RankMeKento'][ $d ]['DB_num'], "SELECT name, lastconnect FROM {$this->Db->db_data['RankMeKento'][ $d ]["Table"]} WHERE steam LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
+                $this->base_info = $this->Db->query('RankMeKento', $this->Db->db_data['RankMeKento'][ $d ]['USER_ID'], $this->Db->db_data['RankMeKento'][ $d ]['DB_num'], "SELECT `name`, `lastconnect` FROM `{$this->Db->db_data['RankMeKento'][ $d ]["Table"]}` WHERE `steam` LIKE '%{$_SESSION['steamid32_short']}%' LIMIT 1");
 
                 // Если Пользователь  находится в таблице, заполняем итоговый массив.
                 if ( ! empty( $this->base_info ) ):

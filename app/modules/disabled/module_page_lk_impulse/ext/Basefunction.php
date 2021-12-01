@@ -57,7 +57,7 @@ class Basefunction{
      */
 	public function BChekGateway($gateway){
 		$param = ['id' => $this->decod[0]];
-		$this->kassa = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pay_service WHERE id = :id", $param);
+		$this->kassa = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_pay_service` WHERE `id` = :id", $param);
 		if(empty($this->kassa[0]['status'])){
 			$this->LkAddLog('_Foff', ['gateway' =>$gateway]);
 				return false;
@@ -76,7 +76,7 @@ class Basefunction{
 			'order' 	=> $this->decod[1],
 			'auth'		=> '%'.$auth[0].'%',
 		];
-		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_pays WHERE pay_order = :order AND pay_auth LIKE :auth AND pay_status = 0", $params);
+		$this->pay = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_pays` WHERE `pay_order` = :order AND `pay_auth` LIKE :auth AND `pay_status` = 0", $params);
 		if(empty($this->pay)){
 				$this->LkAddLog('_PayNotExist', ['course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse', '_AmountCourse'),'numberpay' => $this->decod[1], 'steam'=>$this->decod[3],'amount'=>$this->decod[2],'gateway' =>$gateway]);
 					return false;
@@ -90,18 +90,18 @@ class Basefunction{
 		preg_match('/:[0-9]{1}:\d+/i', $this->decod[3], $auth);
 		$param = ['auth'=>'%'.$auth[0].'%'];
 		if($this->db->db_data['lk'][0]['mod'] == 1)
-			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk WHERE auth LIKE :auth LIMIT 1", $param);
+			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk` WHERE `auth` LIKE :auth LIMIT 1", $param);
 		else if($this->db->db_data['lk'][0]['mod'] == 2)
-			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_system WHERE auth LIKE :auth LIMIT 1", $param);
+			$player = $this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_system` WHERE `auth` LIKE :auth LIMIT 1", $param);
 		if(empty($player)){
 			$params = [
 				'auth' 		=> $this->decod[3],
 				'name'		=> 'LR WEB - LK MODULE BY SAPSAN'
 			];
 			if($this->db->db_data['lk'][0]['mod'] == 1)
-				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk(auth, name, cash, all_cash) VALUES (:auth,:name,0,0)", $params);
+				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO `lk`(`auth`, `name`, `cash`, `all_cash`) VALUES (:auth,:name,0,0)", $params);
 			else if($this->db->db_data['lk'][0]['mod'] == 2)
-				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_system(auth, name, money, all_money) VALUES (:auth,:name,0,0)", $params);
+				$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO `lk_system`(`auth`, `name`, `money`, `all_money`) VALUES (:auth,:name,0,0)", $params);
 		}
 	}
 
@@ -112,12 +112,12 @@ class Basefunction{
      */
 	public function BCheckPromo($gateway){
 		$param = ['code' => $this->pay[0]['pay_promo']];
-		$promoCode = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_promocodes WHERE code = :code",$param);
+		$promoCode = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_promocodes` WHERE `code` = :code",$param);
 		if(empty($promoCode)){
 			$this->summ = $this->decod[2];
 		}
 		else{
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_promocodes SET attempts = attempts - 1 WHERE code = :code",$param);
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE `lk_promocodes` SET `attempts` = `attempts` - 1 WHERE `code` = :code",$param);
 			$this->bonus = ($this->decod[2]/100)*$promoCode[0]['percent'];
 			$this->summ = $this->bonus+$this->decod[2];
 
@@ -131,7 +131,7 @@ class Basefunction{
      * @param string $kassa         Навание платежного шлюза.
      */
 	public function BNotificationDiscord($kassa){
-		$ds = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM lk_discord");
+		$ds = $this->db->queryAll('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "SELECT * FROM `lk_discord`");
 		if(!empty($ds[0]['auth'])){
 			$steam64 = con_steam32to64($this->decod[3]);
 			$xml = file_get_contents('https://steamcommunity.com/profiles/'.$steam64.'/?xml=1');
@@ -239,9 +239,9 @@ class Basefunction{
 				'all_cash'	=> $summ,
 			];
 		if($this->db->db_data['lk'][0]['mod'] == 1)
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk SET cash = cash + :cash, all_cash = all_cash + :all_cash WHERE auth LIKE :auth", $params);
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE `lk` SET `cash` = `cash` + :cash, `all_cash` = `all_cash` + :all_cash WHERE `auth` LIKE :auth", $params);
 		else if($this->db->db_data['lk'][0]['mod'] == 2)
-			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_system SET money = money + :cash, all_money = all_money + :all_cash WHERE auth LIKE :auth", $params);
+			$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE `lk_system` SET `money` = `money` + :cash, `all_money` = `all_money` + :all_cash WHERE `auth` LIKE :auth", $params);
 	}
 
 	/**
@@ -252,7 +252,7 @@ class Basefunction{
 				'auth' 		=> $this->decod[3],
 				'order'		=> $this->decod[1],
 			];
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE lk_pays SET pay_status = 1 WHERE pay_auth = :auth AND pay_order = :order", $params);
+		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "UPDATE `lk_pays` SET `pay_status` = 1 WHERE `pay_auth` = :auth AND `pay_order` = :order", $params);
 	}
 	
 	/**
@@ -279,6 +279,6 @@ class Basefunction{
 			'log_time'		=> date('_H:i:s: '),
 			'log_content'	=> $act
 		];
-		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO lk_logs(log_name, log_value, log_time, log_content) VALUES (:log_name,:log_value,:log_time,:log_content)",$params);
+		$this->db->query('lk', $this->db->db_data['lk'][0]['USER_ID'], $this->db->db_data['lk'][0]['DB_num'], "INSERT INTO `lk_logs`(`log_name`, `log_value`, `log_time`, `log_content`) VALUES (:log_name,:log_value,:log_time,:log_content)",$params);
 	}
 }
