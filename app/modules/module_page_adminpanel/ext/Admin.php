@@ -374,7 +374,7 @@ class Admin
                    'server_lk' => $_POST['server_lk'] ?? 0
                   ];
 
-        $this->Db->query( 'Core', 0, 0, "INSERT INTO lvl_web_servers VALUES (NULL,
+        $this->Db->query( 'Core', 0, 0, "INSERT INTO `lvl_web_servers` VALUES (NULL,
                                                               :server_ip_port,
                                                               :server_ip_port_fake,
                                                               :server_name,
@@ -398,7 +398,7 @@ class Admin
     function action_del_server() {
         $params = ['id' => $_POST['del_server']];
 
-        $this->Db->query( 'Core', 0, 0, 'DELETE FROM lvl_web_servers WHERE id = :id', $params );
+        $this->Db->query( 'Core', 0, 0, 'DELETE FROM `lvl_web_servers` WHERE `id` = :id', $params );
     }
 
     /**
@@ -439,7 +439,7 @@ class Admin
      */
     function charts_attendance()
     {
-        $_Attendance = $this->Db->queryAll( 'Core', 0, 0, 'SELECT * FROM lr_web_attendance ORDER BY id DESC LIMIT 12' );
+        $_Attendance = $this->Db->queryAll( 'Core', 0, 0, 'SELECT * FROM `lr_web_attendance` ORDER BY `id` DESC LIMIT 12' );
 
         if($_Attendance)
         {
@@ -482,12 +482,12 @@ class Admin
                 $_Visits[] = $key['visits'];
             }
 
-            $_Attendance_All = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT SUM(visits) FROM lr_web_attendance' );
+            $_Attendance_All = $this->Db->queryOneColumn( 'Core', 0, 0, 'SELECT SUM(`visits`) FROM `lr_web_attendance`' );
 
             $_Param['date'] = '%'.date('Y').'%';
-            $_Attendance_Year = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT SUM(visits) FROM lr_web_attendance WHERE date LIKE :date', $_Param );
+            $_Attendance_Year = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT SUM(`visits`) FROM `lr_web_attendance` WHERE `date` LIKE :date', $_Param );
 
-            $_Online = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT COUNT(user) FROM lr_web_online');
+            $_Online = $this->Db->queryOneColumn('Core', 0, 0, 'SELECT COUNT(`user`) FROM `lr_web_online`');
 
             return $_Return = [
                 'Date'          =>  implode(',', array_reverse($_Vist_date)),

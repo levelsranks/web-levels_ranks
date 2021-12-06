@@ -91,7 +91,7 @@ $db = require SESSIONS . '/db.php';
 
 if ( ! empty( $db ) ):
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $result = $mysqli->query('SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins');
+    $result = $mysqli->query('SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins`');
     $row = $result->fetch_assoc();
     $mysqli->close();
     if( empty( $row ) ):
@@ -198,7 +198,7 @@ if ( isset( $_POST['check_admin_steam'] ) ) {
 
 if ( ! empty( $admins ) && isset( $_POST['check_admin_steam_da'] ) && isset( $_SESSION['admin'] ) ) {
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$_SESSION['admin']}', '', '', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->query("INSERT INTO `lvl_web_admins` (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$_SESSION['admin']}', '', '', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
     $mysqli->close();
     refresh();
 }
@@ -221,7 +221,7 @@ if ( ! empty( $admins ) && isset( $_POST['admin_nosteam_save'] ) ) {
         $steam = $_POST['admin_steam'];
 
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$steam}', '{$login}', '{$pass}', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->query("INSERT INTO `lvl_web_admins` (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$steam}', '{$login}', '{$pass}', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
     $mysqli->close();
     refresh();
 }
