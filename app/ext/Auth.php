@@ -130,7 +130,7 @@ class Auth {
     private function auth_cookie()
     {
         $_SESSION = $_COOKIE['session'];
-        refresh();
+        header("Location: ".$this->General->arr_general['site']);
     }
 
     /**
@@ -175,7 +175,7 @@ class Auth {
      */
     public function check_session() {
         if ( $_SESSION['USER_AGENT'] != $_SERVER['HTTP_USER_AGENT'] || $_SESSION['REMOTE_ADDR'] != $this->General->get_client_ip_cdn() ):
-            session_unset() && session_destroy() && refresh();
+            session_unset() && session_destroy() && header("Location: ".$this->General->arr_general['site']);
         endif;
     }
 
@@ -220,7 +220,7 @@ class Auth {
         endif;
 
         // Обновление страницы.
-        refresh();
+        header("Location: ".$this->General->arr_general['site']);
     }
 
     /**
