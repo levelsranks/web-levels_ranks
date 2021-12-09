@@ -12,7 +12,6 @@
     <meta property="og:image" content="<?php echo $Modules->get_page_image()?>">
     <link rel="image_src" href="<?php echo $Modules->get_page_image()?>">
     <meta name="twitter:image" content="<?php echo $Modules->get_page_image()?>">
-    <base rel="canonical" href="<?=$General->arr_general['site']?>">
 <?php if( empty( $General->arr_general['enable_css_cache'] ) ) : ?>
         <?php for ( $style = 0, $style_s = sizeof( $Modules->css_library ); $style < $style_s; $style++ ):?>
     <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . $Modules->css_library[ $style ]?>">
