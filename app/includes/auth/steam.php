@@ -39,7 +39,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                     "steamid32"         => $steam32,
                     "steamid32_short"   => substr( $steam32, 8 ),
                     "USER_AGENT"        => $_SERVER['HTTP_USER_AGENT'],
-                    "REMOTE_ADDR"       => $_SERVER['REMOTE_ADDR']
+                    "REMOTE_ADDR"       => $this->General->get_client_ip_cdn()
                 ];
 
                 if( ! empty( $Db->db_data['LevelsRanks'] ) )
