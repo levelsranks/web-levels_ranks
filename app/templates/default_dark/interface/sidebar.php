@@ -31,7 +31,7 @@
                 </div>
             <?php else: ?>
                 <?php if( $General->arr_general['steam_auth'] == 1 ):?>
-                    <a class="auth-btn" href="?auth=login"><i class="zmdi zmdi-steam-square"></i> SIGN IN WITH STEAM</a>
+                    <a class="auth-btn" href="?auth=login"><i class="zmdi zmdi-steam-square"></i><?php echo $Translate->get_translate_phrase('_Steam_login')?></a>
                     <a href="?auth=login" class="auth-steam-sidebar"><i class="zmdi zmdi-steam-square"></i></a>
                 <?php endif; ?>
                 <?php if( $General->arr_general['steam_only_authorization'] == 0 ):?>
