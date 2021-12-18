@@ -1045,11 +1045,19 @@ tr th a:hover .card_info_block{
 }
 .sidebar-right {
     transition: .3s;
-    transform: translate(0px, 0px);
+    transform: translate(0px, 72px);
     z-index: 9999;
+    -webkit-transform: translate(0px, 72px);
+    -moz-transform: translate(0px, 72px);
+    -ms-transform: translate(0px, 72px);
+    -o-transform: translate(0px, 72px);
 }
 .unshow {
     transition: .3s;
-    transform: translate(220px, 0px) !important;
+    transform: translate(220px, 72px) !important;
     display: block;
+    -webkit-transform: translate(220px, 72px) !important;
+    -moz-transform: translate(220px, 72px) !important;
+    -ms-transform: translate(220px, 72px) !important;
+    -o-transform: translate(220px, 72px) !important;
 }
