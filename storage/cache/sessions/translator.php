@@ -1376,4 +1376,11 @@ return array (
             'LT' => 'Šablonas sėkmingai ištrintas',
             'TR' => 'Şablon başarıyla silindi'
         ),
+        // idk why
+    '_Download' =>
+        array (
+            'EN' => 'Download match demo',
+            'RU' => 'Скачать демо матча',
+            'UA' => 'Завантажити демо матчу',
+        )
 );

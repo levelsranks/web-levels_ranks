@@ -22,7 +22,7 @@ set_time_limit(4);
 define('IN_LR', true);
 
 // Версия LR WEB.
-define('VERSION', '0.2.24');
+define('VERSION', '0.2.25');
 
 // Основная директория вэб-приложения.
 define('APP', 'app/');
@@ -120,11 +120,17 @@ use app\ext\Graphics;
 //Использование роутера страницы
 use app\ext\AltoRouter;
 
+use app\ext\ErrorsHandler;
+
 // __autoload()
 spl_autoload_register( function( $class ) {
     $path = str_replace( '\\', '/', $class . '.php' );
     file_exists( $path ) && require $path;
 } );
+
+$ErrorsHandler  = new ErrorsHandler;
+
+$ErrorsHandler->setErrors();
 
 // Создание экземпляра класса работающего с языками и переводами.
 $Translate = new Translate;

@@ -12,7 +12,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try 
     {
-        $openid = new LightOpenID( 'http:' . $this->General->arr_general['site'] );
+        $openid = new LightOpenID( empty( $_SERVER['HTTPS'] ) ? 'http:' : "https:" . $this->General->arr_general['site'] );
         if ( ! $openid->mode ) 
         {
             $openid->identity = 'https://steamcommunity.com/openid';
@@ -50,7 +50,7 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
 
                         if( empty( $test = $Pdox->table("")->where("steam", $steam32)->get() ) )
                         {
-                            $nick = json_decode( file_get_contents( 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $this->General->arr_general['web_key'] . '&steamids=' . $matches[1] ), true ); 
+                            $nick = json_decode( file_get_contents( 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $this->General->arr_general['web_key'] . '&steamids=' . $matches[1] ), true ); 
 
                             $insert_data = [
                                 "steam" => $steam32,

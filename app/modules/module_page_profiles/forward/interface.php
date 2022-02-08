@@ -180,36 +180,38 @@
 		</div>
 	<?php endif; ?> 
     </div>
-	<div class="right-block">
-		<div class="profile__block">
-			<div class="top">
-				<div class="block">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th class="text-center"><?php echo $Translate->get_translate_phrase('_Rating')?></th>
-								<th class=""><?php echo $Translate->get_translate_phrase('_Player')?></th>
-								<th class="text-center"><?php echo $Translate->get_translate_phrase('_Point')?></th>
-								<?php if( $Player->found[ $Player->server_group ]['DB_mod'] != 'RankMeKento' ):?>
-								<th class="text-center"><?php echo $Translate->get_translate_phrase('_Rank')?></th>
-								<?php endif?>
-							</tr>
-						</thead>
-						<tbody>
-							<?php for ( $ti = 0, $sizelist = 10 + (int) ($Player->top_position > 6); $ti < $sizelist; $ti++ ):?>
-							<tr class="pointer<?php ! empty( $Player->top_with_player[ $ti ]['steam'] ) && $Player->get_steam_32() == $Player->top_with_player[ $ti ]['steam'] && print 'table-active'?>" onclick="location.href = '<?php echo $General->arr_general['site']?>profiles/<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>/<?php echo $Player->server_group ?>/';">
-								<th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
-								<th class="table-text"><?php echo empty( $Player->top_with_player[ $ti ]['name'] ) ? 'Unnamed' : action_text_trim( $Player->top_with_player[ $ti ]['name'],16 )?></th>
-								<th class="text-center"><?php echo empty( $Player->top_with_player[ $ti ]['value'] ) ? 0 : $Player->top_with_player[ $ti ]['value']?></th>
-								<?php if( $Player->found[ $Player->server_group ]['DB_mod'] != 'RankMeKento' ):?>
-								<th class="text-center table-text"><img src="<?php echo $General->arr_general['site'].'storage/cache/img/ranks/' . $Player->found[  $Player->server_group  ]['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>
-								<?php endif?>
-							</tr>
-							<?php endfor?>
-						</tbody>
-					</table>
+	<?php if( !empty( $Player->top_with_player ) ): ?>
+		<div class="right-block">
+			<div class="profile__block">
+				<div class="top">
+					<div class="block">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th class="text-center"><?php echo $Translate->get_translate_phrase('_Rating')?></th>
+									<th class=""><?php echo $Translate->get_translate_phrase('_Player')?></th>
+									<th class="text-center"><?php echo $Translate->get_translate_phrase('_Point')?></th>
+									<?php if( $Player->found[ $Player->server_group ]['DB_mod'] != 'RankMeKento' ):?>
+									<th class="text-center"><?php echo $Translate->get_translate_phrase('_Rank')?></th>
+									<?php endif?>
+								</tr>
+							</thead>
+							<tbody>
+								<?php for ( $ti = 0, $sizelist = 10 + (int) ($Player->top_position > 6); $ti < $sizelist; $ti++ ): if( empty( $Player->top_with_player[ $ti ] ) ) continue; ?>
+								<tr class="pointer<?php ! empty( $Player->top_with_player[ $ti ]['steam'] ) && $Player->get_steam_32() == $Player->top_with_player[ $ti ]['steam'] && print 'table-active'?>" onclick="location.href = '<?php echo $General->arr_general['site']?>profiles/<?php print $General->arr_general['only_steam_64'] === 1 ? con_steam32to64( $Player->top_with_player[$ti]['steam'] ) : $Player->top_with_player[$ti]['steam']?>/<?php echo $Player->server_group ?>/';">
+									<th class="text-center"><?php echo $Player->top_with_player['countdown_from']++?></th>
+									<th class="table-text"><?php echo empty( $Player->top_with_player[ $ti ]['name'] ) ? $General->checkName( $Player->top_with_player[ $ti ]['steam'] ) : action_text_trim( $Player->top_with_player[ $ti ]['name'],16 )?></th>
+									<th class="text-center"><?php echo empty( $Player->top_with_player[ $ti ]['value'] ) ? 0 : $Player->top_with_player[ $ti ]['value']?></th>
+									<?php if( $Player->found[ $Player->server_group ]['DB_mod'] != 'RankMeKento' ):?>
+									<th class="text-center table-text"><img src="<?php echo $General->arr_general['site'].'storage/cache/img/ranks/' . $Player->found[  $Player->server_group  ]['ranks_pack'] . '/'; empty( $Player->top_with_player[$ti]['rank'] ) ? print 0 : print $Player->top_with_player[$ti]['rank'];?>.png"></th>
+									<?php endif?>
+								</tr>
+								<?php endfor?>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	<?php endif; ?>
 </div>

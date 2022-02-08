@@ -19,31 +19,31 @@ set_time_limit(3);
 (!empty($_GET['code']) && !empty($_GET['description'])) && exit(require PAGE_CUSTOM . '/error/index.php');
 
 // Проверка на PDO
-class_exists('PDO') || get_iframe('001','Для работы нужна поддержка PDO');
+class_exists('PDO') || get_iframe('001','Need support to work PDO');
 
 // Проверка на BCMath
-extension_loaded('bcmath') == 0 && get_iframe('001','Расширение для PHP не было найдено :: BCMath');
+extension_loaded('bcmath') == 0 && get_iframe('001','PHP extension not found :: BCMath');
 
 // Проверка на cURL
-extension_loaded('curl') == 0 && get_iframe('001','Расширение для PHP не было найдено :: cURL');
+extension_loaded('curl') == 0 && get_iframe('001','PHP extension not found :: cURL');
 
 // Проверка на json
-extension_loaded('json') == 0 && get_iframe('001','Расширение для PHP не было найдено :: json');
+extension_loaded('json') == 0 && get_iframe('001','PHP extension not found :: json');
 
 // Проверка на Zip
-extension_loaded('zip') == 0 && get_iframe('001','Расширение для PHP не было найдено :: Zip');
+extension_loaded('zip') == 0 && get_iframe('001','PHP extension not found :: Zip');
 
 // Проверка на GMP
-extension_loaded('gmp') == 0 && get_iframe('001','Расширение для PHP не было найдено :: GMP');
+extension_loaded('gmp') == 0 && get_iframe('001','PHP extension not found :: GMP');
 
 // Проверка прав доступа каталога кэша ( 0777 )
-substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/cache/sessions/' );
+substr( sprintf( '%o', fileperms( SESSIONS ) ), -4) !== '0777' && get_iframe( '002','777 permissions not set on the directory :: /storage/cache/sessions/' );
 
 // Создание папки - avatars
 ! file_exists( CACHE . 'img/avatars/' ) && mkdir( CACHE . 'img/avatars/', 0777, true );
 
 // Проверка прав доступа на кэш аватарок ( 0777 )
-substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/cache/img/avatars/' );
+substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && get_iframe( '002','777 permissions not set on the directory :: /storage/cache/img/avatars/' );
 
 // Создание папки - css
 ! file_exists( ASSETS_CSS ) && mkdir( ASSETS_CSS, 0777, true );
@@ -52,7 +52,7 @@ substr( sprintf( '%o', fileperms( CACHE . 'img/avatars/' ) ), -4) !== '0777' && 
 ! file_exists( ASSETS_CSS . 'generation/' ) && mkdir( ASSETS_CSS . 'generation/', 0777, true );
 
 // Проверка прав доступа на ассеты - CSS ( 0777 )
-substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/css/' );
+substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( '002','777 permissions not set on the directory :: /storage/assets/css/' );
 
 // Создание папки - js
 ! file_exists( ASSETS_JS ) && mkdir( ASSETS_JS, 0777, true );
@@ -61,7 +61,7 @@ substr( sprintf( '%o', fileperms( ASSETS_CSS ) ), -4) !== '0777' && get_iframe( 
 ! file_exists( ASSETS_JS . 'generation/' ) && mkdir( ASSETS_JS . 'generation/', 0777, true );
 
 // Проверка прав доступа на ассеты - JS ( 0777 )
-substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','Не установлены права доступа 777 на директорию :: /storage/assets/js/' );
+substr( sprintf( '%o', fileperms( ASSETS_JS ) ), -4) !== '0777' && get_iframe( '002','777 permissions not set on the directory :: /storage/assets/js/' );
 
 // Проверка на существование файла с настройками
 if ( ! file_exists( SESSIONS . '/options.php' ) ):
@@ -91,7 +91,7 @@ $db = require SESSIONS . '/db.php';
 
 if ( ! empty( $db ) ):
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $result = $mysqli->query('SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins`');
+    $result = $mysqli->query('SELECT `steamid`, `group`, `flags`, `access` FROM lvl_web_admins');
     $row = $result->fetch_assoc();
     $mysqli->close();
     if( empty( $row ) ):
@@ -198,7 +198,7 @@ if ( isset( $_POST['check_admin_steam'] ) ) {
 
 if ( ! empty( $admins ) && isset( $_POST['check_admin_steam_da'] ) && isset( $_SESSION['admin'] ) ) {
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $mysqli->query("INSERT INTO `lvl_web_admins` (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$_SESSION['admin']}', '', '', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$_SESSION['admin']}', '', '', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
     $mysqli->close();
     refresh();
 }
@@ -221,7 +221,7 @@ if ( ! empty( $admins ) && isset( $_POST['admin_nosteam_save'] ) ) {
         $steam = $_POST['admin_steam'];
 
     $mysqli = new mysqli( $db['Core'][0]['HOST'], $db['Core'][0]['USER'], $db['Core'][0]['PASS'], $db['Core'][0]['DB'][0]['DB'], $db['Core'][0]['PORT'] );
-    $mysqli->query("INSERT INTO `lvl_web_admins` (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$steam}', '{$login}', '{$pass}', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
+    $mysqli->query("INSERT INTO lvl_web_admins (steamid, `user`, `password`, `ip`, `group`, `flags`, `access`) VALUES ( '{$steam}', '{$login}', '{$pass}', '{$_SERVER['REMOTE_ADDR']}', '1', 'z', '100' )");
     $mysqli->close();
     refresh();
 }

@@ -250,6 +250,10 @@ class Player {
             else:
                 $this->unusualkills = false;
             endif;
+
+            if ( $Db->mysql_table_search( 'FPS', 0, 0, 'fps_maps' ) == 1 ):
+                $this->maps = $this->get_db_maps_fps();
+            endif;
         endif;
 
         if( ! empty( $this->found[ $this->server_group ]['DB_mod'] ) && $this->found[ $this->server_group ]['DB_mod'] == 'RankMeKento' ):
@@ -437,7 +441,7 @@ class Player {
                                                                                  FROM `fps_players`
                                                                                  INNER JOIN `fps_servers_stats` ON `fps_players`.`account_id` = `fps_servers_stats`.`account_id`
                                                                                  WHERE `fps_servers_stats`.`server_id` = '{$this->found[ $this->server_group ]['server_int']}'
-                                                                                 AND '{$this->get_value()}' < `fps_servers_stats`.`points`
+                                                                                 AND `fps_servers_stats`.`points` > '{$this->get_value()}'
                                                                                  ORDER BY `value` ASC LIMIT 5" ) );
                     $size_a = sizeof( $a );
                     $b = array_merge( $a, $this->Db->queryAll( 'FPS', 0, 0, "SELECT `fps_players`.`nickname` AS `name`,
@@ -682,6 +686,19 @@ class Player {
                 $b += [ $a[ $i ]['name_map'] => $a[ $i ]['rounds_win'] ];
           endfor;
           return $b;
+    }
+
+    private function get_db_maps_fps()
+    {
+        $maps = $this->Db->queryAll("FPS", 0, 0, "
+        SELECT `name_map`, `rounds_ct` + `rounds_t` AS `rounds_win` FROM `fps_maps` 
+        WHERE `account_id` LIKE '%" . (con_steam64to3_int($this->get_steam_64())) . "%' AND `fps_maps`.`server_id` = '{$this->found[ $this->server_group ]['server_int']}'");
+        
+        $all = [];
+        for ( $i = 0, $c = sizeof( $maps ); $i < $c; $i++ )
+            $all += [ $maps[ $i ]['name_map'] => $maps[ $i ]['rounds_win'] ];
+
+        return $all;
     }
 
     private function get_db_plugin_module_geoip() {

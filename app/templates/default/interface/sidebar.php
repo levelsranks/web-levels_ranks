@@ -58,7 +58,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="tooltip-js" data-tooltip-js="home">
-                <a href="<?php echo $General->arr_general['site'] ?>home/" <?php $Modules->route == 'home' && print 'class="table-active"'?>>
+                <a href="<?php echo $General->arr_general['site'] ?>" <?php $Modules->route == 'home' && print 'class="table-active"'?>>
                     <div class="sidebar-icon">
                         <?php $General->get_icon('zmdi', 'home', null )?>
                     </div>
