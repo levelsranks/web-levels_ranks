@@ -16,10 +16,8 @@ class Freekassa extends Basefunction{
 
 	public function FKCheckIP(){
 		if(!in_array($this->getIP(), array(
-						'136.243.38.147','136.243.38.147', 
-						'136.243.38.149', '136.243.38.150', 
-						'136.243.38.151', '136.243.38.189', 
-						'88.198.88.98',	'136.243.38.108',
+						'168.119.157.136', '168.119.60.227', 
+						'138.201.88.124', '178.154.197.79',
 
 					))){
 				$this->LkAddLog('_DeniedIP', ['gateway' =>'FreeKassa', 'ip'=>$this->getIP()]);
@@ -53,7 +51,7 @@ class Freekassa extends Basefunction{
 		 $this->BUpdatePay();
 		 $this->BNotificationDiscord('FreeKassa');
 		 $this->LkAddLog('_NewDonat', ['gateway'=>'FreeKassa','order'=>$this->decod[1], 'course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
-		 $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM `lvl_web_admins` WHERE `flags` = 'z' ");
+		 $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM lvl_web_admins WHERE flags = 'z' ");
 		 foreach( $admins as $key ){
 			 $this->Notifications->SendNotification(
 			 		 con_steam64to32($key['steamid']), 

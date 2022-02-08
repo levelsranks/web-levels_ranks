@@ -41,7 +41,7 @@ class Yandexmoney extends Basefunction{
 		 $this->BUpdatePay();
 		 $this->BNotificationDiscord('YandexMoney');
 		 $this->LkAddLog('_NewDonat', ['gateway'=>'YandexMoney','order'=>$this->decod[1], 'course'=>$this->Translate->get_translate_module_phrase('module_page_lk_impulse','_AmountCourse'), 'amount' => $this->decod[2], 'steam'=>$this->decod[3]]);
-		 $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM `lvl_web_admins` WHERE `flags` = 'z' ");
+		 $admins = $this->db->queryAll( 'Core', 0, 0, "SELECT * FROM lvl_web_admins WHERE flags = 'z' ");
 		 foreach( $admins as $key ){
 			 $this->Notifications->SendNotification(
 			 		 con_steam64to32($key['steamid']), 
