@@ -464,6 +464,20 @@ return array (
             'BA' => 'Vrsta',
             'TR' => 'Tip'
         ),
+	'_Admin' =>
+        array (
+            'EN' => 'Admin',
+			'BR' => 'Admin',
+            'RU' => 'Admin',
+            'UA' => 'Admin',
+            'LT' => 'Admin',
+            'DE' => 'Admin',
+            'CH' => 'Admin',
+            'CRO' => 'Admin',
+            'RS' => 'Admin',
+            'BA' => 'Admin',
+            'TR' => 'Admin'
+        ),
     '_Nickname' =>
         array (
             'EN' => 'Nickname',
