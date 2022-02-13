@@ -386,13 +386,13 @@ return array (
             'EN' => 'Played Last:',
 			'BR' => 'Visto última vez:',
             'RU' => 'Последняя игра:',
-            'UA' => 'Остання гра',
-            'LT' => 'Paskutinį kartą žaista',
+            'UA' => 'Остання гра:',
+            'LT' => 'Paskutinį kartą žaista:',
             'DE' => 'Zuletzt gespielt:',
             'CH' => '最后游玩：',
-            'CRO' => 'Zadnje odigrano',
-            'RS' => 'Zadnje odigrano',
-            'BA' => 'Zadnje odigrano',
+            'CRO' => 'Zadnje odigrano:',
+            'RS' => 'Zadnje odigrano:',
+            'BA' => 'Zadnje odigrano:',
             'TR' => 'Son oynanan:'
         ),
     '_Headshot' =>
