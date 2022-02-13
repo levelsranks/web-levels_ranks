@@ -590,7 +590,21 @@ return array (
             'BA' => 'Odmutovan',
             'TR' => 'Mute Kaldırma'
         ),
-	'_Session' =>
+	'_Comms_Session' =>
+        array (
+            'EN' => 'Session',
+			'BR' => 'Sessão',
+            'RU' => 'Session',
+            'UA' => 'Session',
+            'LT' => 'Session',
+            'DE' => 'Session',
+            'CH' => 'Session',
+            'CRO' => 'Session',
+            'RS' => 'Session',
+            'BA' => 'Session',
+            'TR' => 'Session'
+        ),
+	'_Bans_Session' =>
         array (
             'EN' => 'Session',
 			'BR' => 'Sessão',
