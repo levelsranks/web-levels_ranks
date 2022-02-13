@@ -464,19 +464,61 @@ return array (
             'BA' => 'Vrsta',
             'TR' => 'Tip'
         ),
-    '_Admin' =>
+    '_Nickname' =>
         array (
-            'EN' => 'Admin',
-			'BR' => 'Administradores',
-            'RU' => 'Админ.',
-            'UA' => 'Адмін.',
-            'LT' => 'Admin.',
-            'DE' => 'Admin',
-            'CH' => '管理员',
-            'CRO' => 'Admin',
-            'RS' => 'Admin',
-            'BA' => 'Admin',
-            'TR' => 'Admin'
+            'EN' => 'Nickname',
+			'BR' => 'Nick',
+            'RU' => 'Nickname',
+            'UA' => 'Nickname',
+            'LT' => 'Nickname',
+            'DE' => 'Nickname',
+            'CH' => 'Nickname',
+            'CRO' => 'Nickname',
+            'RS' => 'Nickname',
+            'BA' => 'Nickname',
+            'TR' => 'Nickname'
+        ),
+	'_Privilege_Group' =>
+        array (
+            'EN' => 'Privilege Group',
+			'BR' => 'Grupo de Privilégios',
+            'RU' => 'Privilege Group',
+            'UA' => 'Privilege Group',
+            'LT' => 'Privilege Group',
+            'DE' => 'Privilege Group',
+            'CH' => 'Privilege Group',
+            'CRO' => 'Privilege Group',
+            'RS' => 'Privilege Group',
+            'BA' => 'Privilege Group',
+            'TR' => 'Privilege Group'
+        ),
+	'_Number_Bans' =>
+        array (
+            'EN' => 'Number Bans',
+			'BR' => 'Número de Bans',
+            'RU' => 'Number Bans',
+            'UA' => 'Number Bans',
+            'LT' => 'Number Bans',
+            'DE' => 'Number Bans',
+            'CH' => 'Number Bans',
+            'CRO' => 'Number Bans',
+            'RS' => 'Number Bans',
+            'BA' => 'Number Bans',
+            'TR' => 'Number Bans'
+        ),
+	'_Number_Mutes_Gags' =>
+        array (
+            'EN' => 'Number Mutes/Gags',
+			'BR' => 'Número de Mutes/Gags',
+            'RU' => 'Number Mutes/Gags',
+            'UA' => 'Number Mutes/Gags',
+            'LT' => 'Number Mutes/Gags',
+            'DE' => 'Number Mutes/Gags',
+            'CH' => 'Number Mutes/Gags',
+            'CRO' => 'Number Mutes/Gags',
+            'RS' => 'Number Mutes/Gags',
+            'BA' => 'Number Mutes/Gags',
+            'TR' => 'Number Mutes/Gags'
         ),
     '_Reason' =>
         array (
