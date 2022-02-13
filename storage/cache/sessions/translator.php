@@ -1381,6 +1381,7 @@ return array (
     '_CountOnline' =>
         array (
             'EN' => 'Count online',
+			'BR' => 'Players online',
             'RU' => 'Общий онлайн',
             'UA' => 'Загальний онлайн',
             'LT' => 'Žaidėjų skaičius',
@@ -1418,10 +1419,10 @@ return array (
             'LT' => 'Šablonas sėkmingai ištrintas',
             'TR' => 'Şablon başarıyla silindi'
         ),
-        // idk why
     '_Download' =>
         array (
             'EN' => 'Download match demo',
+			'BR' => 'Download match demo',
             'RU' => 'Скачать демо матча',
             'UA' => 'Завантажити демо матчу',
         )
