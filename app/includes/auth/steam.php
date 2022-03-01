@@ -12,7 +12,8 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try 
     {
-        $openid = new LightOpenID( empty( $_SERVER['HTTPS'] ) ? 'http:' : "https:" . $this->General->arr_general['site'] );
+        // empty( $_SERVER['HTTPS'] ) ? 'http:' : "https:" - Bad idea.
+        $openid = new LightOpenID( "http:" . $this->General->arr_general['site'] );
         if ( ! $openid->mode ) 
         {
             $openid->identity = 'https://steamcommunity.com/openid';

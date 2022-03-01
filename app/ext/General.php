@@ -37,6 +37,12 @@ class General {
     public $server_list_count = 0;
 
     /**
+     * Массив с буффером аватарок и прочего
+     * @var array 
+     */
+    protected static $json_buff = [];
+
+    /**
      * Инициализация основных настроек.
      *
      * @param object $Db
@@ -103,26 +109,27 @@ class General {
      *
      * @return string                  Выводит ссылку на аватар если он существует.
      */
-    public function getAvatar( $profile, $type ) {
-        $url = CACHE . 'img/avatars/' . $profile . '.json';
-        switch ( $type ) {
-            case 1:
-                if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
-                    $file = json_decode(file_get_contents($url), true);
-                    return $file['avatar'];
-                elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
-                    return $this->arr_general['site'] . 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
-                endif;
-                break;
-            case 2:
-                if ( file_exists( $url ) && $this->arr_general['avatars'] == 1 ):
-                    $file = json_decode(file_get_contents($url), true);
-                    return $file['slim'];
-                elseif ( ! file_exists( $url ) || $this->arr_general['avatars'] == 0 || $this->arr_general['avatars'] == 2 ):
-                    return $this->arr_general['site'] .'storage/cache/img/avatars_random/' . rand(1,30) . '_xs.jpg';
-                endif;
-                break;
+    public function getAvatar( $profile, $type ) 
+    {
+        $avatar_type = $type == 1 ? "avatar" : "slim";
+
+        if( $this->arr_general['avatars'] == 1 )
+        {
+            if( isset( self::$json_buff[ $profile ] ) && !empty( self::$json_buff[ $profile ] ) )
+                return self::$json_buff[ $profile ][ $avatar_type ];
+
+            $url = sprintf("%simg/avatars/%s.json", CACHE, $profile);
+
+            if( file_exists( $url ) )
+            {
+                $avatar = json_decode(file_get_contents($url), true);
+                self::$json_buff[$profile] = $avatar;
+
+                return $avatar[$avatar_type];
+            }
         }
+
+        return $this->arr_general['site'] . 'storage/cache/img/avatars_random/' . rand(1,30) . '.jpg';
     }
 
     /**
@@ -160,15 +167,10 @@ class General {
      *
      * @return string                   Выводит итог проверки.
      */
-    public function checkName( $profile ) {
-        $url = CACHE . 'img/avatars/' . $profile . '.json';
-        if ( file_exists( $url ) ) {
-            $file = json_decode(file_get_contents($url), true);
-            return $file['name'];
-        } else {
-            $this->getAvatar($profile, 1);
-            return false;
-        }
+    public function checkName( $profile ) 
+    {
+        !isset( self::$json_buff[$profile] ) && $this->getAvatar($profile, 1);
+        return self::$json_buff[$profile]["name"] ?? "Unnamed";
     }
 
     /**
