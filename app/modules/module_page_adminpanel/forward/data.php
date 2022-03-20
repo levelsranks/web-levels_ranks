@@ -26,6 +26,9 @@ use app\modules\module_page_adminpanel\ext\Admin;
 // Создаём экземпляр класса для работы с админкой
 $Admin = new Admin ( $General, $Modules, $Auth, $Db, $Translate );
 
+# Убираем кеширование
+isset( $_POST ) && opcache_reset();
+
 # Настройки модулей
 
 // Нажатие на кнопку - Очистить кэш модулей.

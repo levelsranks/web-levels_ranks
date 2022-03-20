@@ -14,20 +14,20 @@
     <meta name="twitter:image" content="<?php echo $Modules->get_page_image()?>">
 <?php if( empty( $General->arr_general['enable_css_cache'] ) ) : ?>
         <?php for ( $style = 0, $style_s = sizeof( $Modules->css_library ); $style < $style_s; $style++ ):?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . $Modules->css_library[ $style ]?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . $Modules->css_library[ $style ]?><?php $General->arr_general['css_off_cache'] == 1 && print "?".time() ?>">
 <?php   endfor;
 if( ! empty( $Modules->arr_module_init['page'][ $Modules->route ]['css'] ) ):
     for ( $css = 0, $css_s = sizeof( $Modules->arr_module_init['page'][ $Modules->route ]['css'] ); $css < $css_s; $css++ ):?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . 'app/modules/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['name'] . '/assets/css/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['type'] . '.css'?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $General->arr_general['site'] . 'app/modules/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['name'] . '/assets/css/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['type'] . '.css'?><?php $General->arr_general['css_off_cache'] == 1 && print "?".time() ?>">
     <?php if(isset($Modules->template_modules)):
         if(isset($Modules->template_modules[ $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['name'] ][ 'css' ])) { ?>
-            <link rel="stylesheet" href="<?php echo $General->arr_general['site'] . 'app/templates/' . $General->arr_general['theme'] . '/modules/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['name'] . '/dop.css'; ?>">
+            <link rel="stylesheet" href="<?php echo $General->arr_general['site'] . 'app/templates/' . $General->arr_general['theme'] . '/modules/' . $Modules->arr_module_init['page'][ $Modules->route ]['css'][ $css ]['name'] . '/dop.css'; ?><?php $General->arr_general['css_off_cache'] == 1 && print "?".time() ?>">
         <?php }
     endif;
   endfor;
 endif;
 else: ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css' ) ? $General->arr_general['site'] . 'app/templates/'.$General->arr_general['theme'].'css/style' :  $General->arr_general['site'] . 'storage/assets/css/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver']?>.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ! file_exists( ASSETS_CSS . '/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver'] . '.css' ) ? $General->arr_general['site'] . 'app/templates/'.$General->arr_general['theme'].'css/style' :  $General->arr_general['site'] . 'storage/assets/css/generation/style_generated.min.ver.' . $Modules->actual_library['actual_css_ver']?>.css<?php $General->arr_general['css_off_cache'] == 1 && print "?".time() ?>">
 <?php endif; ?>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <style>

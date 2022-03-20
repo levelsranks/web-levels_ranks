@@ -67,6 +67,18 @@ class Auth {
     public    $Db;
 
     /**
+     * Длина токена
+     * @var int 
+     */
+    protected $token_length = 16;
+
+    /**
+     * Время жизни куки
+     * @var int
+     */
+    protected $cookie_days = 30;
+
+    /**
      * Организация работы вэб-приложения с авторизацией.
      *
      * @param object $General
@@ -85,6 +97,8 @@ class Auth {
         // Импорт класса отвечающего за работу с базой данных.
         $this->Db = $Db;
 
+        !isset( $_SESSION["steamid"] ) && $this->authByCookie();
+
         // Работа с авторизованным пользователем.
         if( isset( $_SESSION['steamid'] ) ):
             // Проверка сессии.
@@ -100,7 +114,8 @@ class Auth {
         // Работа со Steam авторизацией.
         if(isset( $_GET["auth"] ))
         {
-            if($this->General->arr_general['steam_auth'] == 1 && $_GET["auth"] == 'login') require 'app/includes/auth/steam.php';
+            if($this->General->arr_general['steam_auth'] == 1 && $_GET["auth"] == 'login') 
+                require 'app/includes/auth/steam.php';
         }
 
         // Работа с No-Steam авторизацией
@@ -108,29 +123,133 @@ class Auth {
 
         // Выход пользователя из аккаунта.
         isset( $_GET["auth"] ) && $_GET["auth"] == 'logout' && require 'app/includes/auth/steam.php';
-
-        ( $General->arr_general['auth_cock'] == 1 && !empty($_SESSION) && empty($_COOKIE['session']) ) && $this->check_cookie();
-
-        ( $General->arr_general['auth_cock'] == 1 && empty($_SESSION) && !empty($_COOKIE['session']) ) && $this->auth_cookie();
-
-        if( $General->arr_general['auth_cock'] == 0 && !empty( $_COOKIE['session'] ) )
-            unset($_COOKIE['session']);
     }
 
-    // Запись в куки данных о сессии
-    private function check_cookie()
+    /**
+     * Если не существует столбца, он его создает
+     */
+    protected function checkTokenCol()
     {
-        foreach ($_SESSION as $key => $val)
+        if( !$this->Db->mysql_table_search( "Core", 0, 0, "lr_web_cookie_tokens" ) )
+            $this->Db->query("Core", 0, 0, "CREATE TABLE IF NOT EXISTS `lr_web_cookie_tokens` (
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `steam` varchar(255) NOT NULL DEFAULT '0',
+              `cookie_expire` varchar(255) NOT NULL DEFAULT '0',
+              `cookie_token` varchar(255) NOT NULL DEFAULT '0',
+              PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+    }
+
+    /**
+     * Просто возвращает true/false, включены ли токены
+     */
+    protected function cookieEnabled() : bool
+    {
+        return (bool) $this->General->arr_general['auth_cock'];
+    }
+
+    /**
+     * Получить пользователя по текущему токену
+     */
+    public function getUserToken( string $token )
+    {
+        if( $this->cookieEnabled() )
+            return $this->Db->query("Core", 0, 0, "SELECT * FROM `lr_web_cookie_tokens` WHERE `cookie_token` = :token", [
+                "token" => $token
+            ]);
+
+        return [];
+    }
+
+    /**
+     * Авторизация пользователя по кукам
+     */
+    public function authByCookie()
+    {
+        $this->clearOldTokens();
+
+        if( isset( $_COOKIE["cookie_token"] ) )
         {
-            setcookie("session[".$key."]", $val, strtotime('+1 day'));
+            if( !empty( $user = $this->getUserToken( htmlentities($_COOKIE["cookie_token"]) ) ) )
+            {
+                if( $user["cookie_expire"] > time() )
+                {
+                    $steam32 = con_steam64to32( $user["steam"] );
+
+                    $_SESSION = [
+                        "steamid"           => $user["steam"],
+                        "steamid64"         => $user["steam"],
+                        "steamid32"         => $steam32,
+                        "steamid32_short"   => substr( $steam32, 8 ),
+                        "USER_AGENT"        => $_SERVER['HTTP_USER_AGENT'],
+                        "REMOTE_ADDR"       => $this->General->get_client_ip_cdn()
+                    ];
+
+                    header('Location: ' . $this->General->arr_general['site'] );
+                }
+            }
         }
     }
 
-    // Авторизация пользователя с помощью куки
-    private function auth_cookie()
+    /**
+     * Почистить старые токены
+     */
+    public function clearOldTokens()
     {
-        $_SESSION = $_COOKIE['session'];
-        header("Location: ".$this->General->arr_general['site']);
+        $this->checkTokenCol();
+
+        $this->Db->query("Core", 0, 0, "DELETE FROM `lr_web_cookie_tokens` WHERE `cookie_expire` < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL ".$this->cookie_days." DAY))");
+    }
+
+    /**
+     * функция, которая генерирует токен для авторизации по куки
+     */
+    public function generateToken()
+    {
+        if( $this->cookieEnabled() )
+        {
+            $this->checkTokenCol();
+            $token = bin2hex(random_bytes( $this->token_length ));
+            $this->setUserToken($token, $_SESSION["steamid64"]);
+            
+            setcookie("cookie_token", $token, strtotime("+".$this->cookie_days." days"), "/", ".".$_SERVER['HTTP_HOST']);
+        }
+    }
+    
+    /**
+     * Записать данные токена в пользователя
+     */
+    protected function setUserToken( string $token, int $steamid64 )
+    {
+        if( $this->cookieEnabled() )
+        {
+            if( !empty( $this->Db->query("Core", 0, 0, "SELECT * FROM `lr_web_cookie_tokens` WHERE `steam` = :steam", ["steam" => $steamid64]) ) )
+            {
+                $this->Db->query("Core", 0, 0, "UPDATE `lr_web_cookie_tokens` SET `cookie_token` = :token, `cookie_expire` = :expire WHERE `steam` = :steam", [
+                    "steam" => $steamid64,
+                    "token" => $token,
+                    "expire"=> strtotime("+".$this->cookie_days." days")
+                ]);
+            }
+            else
+            {
+                $this->Db->query("Core", 0, 0, "INSERT INTO `lr_web_cookie_tokens`(`steam`, `cookie_token`, `cookie_expire`) VALUES (:steam, :token, :expire)", [
+                    "steam" => $steamid64,
+                    "token" => $token,
+                    "expire"=> strtotime("+".$this->cookie_days." days")
+                ]);
+            }
+        }
+    }
+
+    /**
+     * Удалить определенный токен при разлогине
+     */
+    public function delToken( string $steam )
+    {
+        $this->Db->query("Core", 0, 0, "DELETE FROM `lr_web_cookie_tokens` WHERE `steam` = :steam", [
+            "steam" => (int) $steam
+        ]);
     }
 
     /**
@@ -159,7 +278,9 @@ class Auth {
      * @since 0.2.120
      */
     public function check_session_admin() {
-        $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins` WHERE `steamid`={$_SESSION['steamid']} LIMIT 1" );
+        $result = $this->Db->query( 'Core', 0, 0,"SELECT `steamid`, `group`, `flags`, `access` FROM `lvl_web_admins` WHERE `steamid`= :steamid LIMIT 1", [
+            "steamid" => $_SESSION["steamid64"]
+        ]);
         if( ! empty( $result ) ):
             $_SESSION['user_admin'] = 1;
             $_SESSION['user_group'] = $result['group'];

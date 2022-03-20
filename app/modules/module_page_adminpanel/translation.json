@@ -877,5 +877,9 @@
   "_Template":{
     "EN": "Choose Template",
     "RU": "Выберете шаблон"
+  },
+  "_Css_off_cache": {
+    "EN": "Disable CSS/JS Browser Cache",
+    "RU": "Отключение браузерного кеша CSS/JS"
   }
 }
