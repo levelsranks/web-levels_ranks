@@ -16,8 +16,9 @@ ini_set('display_startup_errors', 0);
 // Ограничиваем время выполнения скрипта.
 set_time_limit(3);
 
-// Убрать кеширование, чтобы кучу раз не тыкать
-opcache_reset();
+# Убираем кеширование
+if( function_exists("opcache_reset") )
+    isset( $_POST ) && opcache_reset();
 
 (!empty($_GET['code']) && !empty($_GET['description'])) && exit(require PAGE_CUSTOM . '/error/index.php');
 

@@ -27,7 +27,8 @@ use app\modules\module_page_adminpanel\ext\Admin;
 $Admin = new Admin ( $General, $Modules, $Auth, $Db, $Translate );
 
 # Убираем кеширование
-isset( $_POST ) && opcache_reset();
+if( function_exists("opcache_reset") )
+    isset( $_POST ) && opcache_reset();
 
 # Настройки модулей
 
