@@ -28,7 +28,7 @@ $Admin = new Admin ( $General, $Modules, $Auth, $Db, $Translate );
 
 # Убираем кеширование
 if( function_exists("opcache_reset") )
-    isset( $_POST ) && opcache_reset();
+    !empty( $_POST ) &&  opcache_reset();
 
 # Настройки модулей
 
