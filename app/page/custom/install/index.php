@@ -18,7 +18,7 @@ set_time_limit(3);
 
 # Убираем кеширование
 if( function_exists("opcache_reset") )
-    isset( $_POST ) && opcache_reset();
+    !empty( $_POST ) && opcache_reset();
 
 (!empty($_GET['code']) && !empty($_GET['description'])) && exit(require PAGE_CUSTOM . '/error/index.php');
 
