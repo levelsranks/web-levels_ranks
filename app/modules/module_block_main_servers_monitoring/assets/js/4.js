@@ -28,7 +28,9 @@ if (servers != 0) {
                         for (var i2 = 0; i2 < players.length; i2++) {
                             var str = '<tr>' +
                                 '<th class="text-center">' + b++ + '</th>' +
-                                '<th class="text-center">' + players[i2]['Name'] + '</th>' +
+                                '<th class="text-center">' + players[i2]['Name'].replace(/[\u00A0-\u9999<>\&]/g, function(i) {
+                                    return '&#'+i.charCodeAt(0)+';';
+                                 }) + '</th>' +
                                 '<th class="text-center">' + players[i2]['Frags'] + '</th>' +
                                 '<th class="text-center">' + players[i2]['TimeF'] + '</th>' +
                                 '</tr>';

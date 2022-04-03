@@ -16,6 +16,10 @@ ini_set('display_startup_errors', 0);
 // Ограничиваем время выполнения скрипта.
 set_time_limit(3);
 
+# Убираем кеширование
+if( function_exists("opcache_reset") )
+    !empty( $_POST ) && opcache_reset();
+
 (!empty($_GET['code']) && !empty($_GET['description'])) && exit(require PAGE_CUSTOM . '/error/index.php');
 
 // Проверка на PDO
@@ -75,6 +79,7 @@ if ( ! file_exists( SESSIONS . '/options.php' ) ):
     $options['graphics.blocks_blur'] = 0;
     $options['background_image'] = 'null';
     $options['auth_cock'] = 0;
+    $options['css_off_cache'] = 0;
     $options['session_check'] = 0;
     $options['avatars_cache_time'] = 259200;
     file_put_contents(SESSIONS . '/options.php', '<?php return ' . var_export_min( $options ) . ";\n");

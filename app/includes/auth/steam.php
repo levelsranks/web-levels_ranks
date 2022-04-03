@@ -7,12 +7,12 @@
  *
  * @license GNU General Public License Version 3
  */
-$red = $_SESSION['page_redirect'] ?? '';
+$red = $_SESSION['rpage'] ?? '';
 if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
     require 'app/ext/LightOpenID.php';
     try 
     {
-        $openid = new LightOpenID( empty( $_SERVER['HTTPS'] ) ? 'http:' : "https:" . $this->General->arr_general['site'] );
+        $openid = new LightOpenID( "http:" . $this->General->arr_general['site'] );
         if ( ! $openid->mode ) 
         {
             $openid->identity = 'https://steamcommunity.com/openid';
@@ -67,6 +67,8 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
                     }
                 }
 
+                $this->generateToken();
+
                 header('Location: ' . $this->General->arr_general['site']);
             }
         }
@@ -77,10 +79,19 @@ if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'login' ) {
         header('Location: ' . $this->General->arr_general['site']);
     }
 };
-if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'logout' ) {
+if ( ! empty( $_GET["auth"] ) && $_GET["auth"] == 'logout' ) 
+{
+    // Чистим токен из базы
+    $this->cookieEnabled() && $this->delToken( $_SESSION["steamid64"] );
+
+    // Удаляем сессию
     session_unset();
     session_destroy();
-    setcookie('session', null, 1);
+
+    // Чистим токен у пользователя
+    setcookie('cookie_token', null, 1, "/", ".".$_SERVER['HTTP_HOST']);
+
+    // Редирект
     header('Location: ' . $this->General->arr_general['site']);
     if ( ! headers_sent() ) {?>
         <script type="text/javascript">window.location.href="<?php echo $this->General->arr_general['site'] ?>";</script>
