@@ -442,7 +442,7 @@ return array (
 	'_Date' =>
 		array (
 			'EN' => 'Date',
-			'BR' => 'Date',
+			'BR' => 'Data',
 			'RU' => 'Дата',
 			'UA' => 'Дата',
 			'LT' => 'Data',

@@ -77,7 +77,7 @@
             </div>
             <div class="btn_form">
             <form enctype="multipart/form-data" method="post">
-                <input class="btn" type="submit" name="clear_templates_cache" Value="Очистить кеш шаблонов">
+				<input class="btn" type="submit" name="clear_templates_cache" Value="<?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Clear_templates_cache')?>">
             </form>
             </div>
         </div>
