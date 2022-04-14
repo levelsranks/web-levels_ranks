@@ -344,6 +344,7 @@ return array (
 	'_Page' =>
 		array (
 			'EN' => 'Page',
+			'BR' => 'Página',
 			'RU' => 'Страница',
 			'UA' => 'Сторінка',
 			'LT' => 'Puslapis',
@@ -455,6 +456,7 @@ return array (
 	'_Type' =>
 		array (
 			'EN' => 'Type',
+			'BR' => 'Tipo',
 			'RU' => 'Тип',
 			'UA' => 'Вид',
 			'LT' => 'Rūšis',
@@ -552,6 +554,7 @@ return array (
 	'_Term' =>
 		array (
 			'EN' => 'Length',
+			'BR' => 'Tempo',
 			'RU' => 'Срок',
 			'UA' => 'Термін',
 			'LT' => 'Terminas',
@@ -636,6 +639,7 @@ return array (
 	'_Has_expired' =>
 		array (
 			'EN' => 'Expired',
+			'BR' => 'Expirado',
 			'RU' => 'Истёк',
 			'UA' => 'Закінчився',
 			'LT' => 'Pasibaigęs',
@@ -649,6 +653,7 @@ return array (
 	'_List_recent_bans' =>
 		array (
 			'EN' => 'Banlist Overview',
+			'BR' => 'Lista de Banimentos',
 			'RU' => 'Список последних банов',
 			'UA' => 'Список останніх банів',
 			'LT' => 'List of recent bans',
@@ -661,7 +666,8 @@ return array (
 		),
 	'_List_recent_mut_gags' =>
 		array (
-			'EN' => 'Communications Blocklist Overview',
+			'EN' => 'Comms Blocklist Overview',
+			'BR' => 'Lista de Comms',
 			'RU' => 'Список последних мутов / гагов',
 			'UA' => 'Список останніх мутов / гагов',
 			'LT' => 'List of recent mut / gags',
@@ -716,6 +722,7 @@ return array (
 	'_Login' =>
 		array (
 			'EN' => 'Login',
+			'BR' => 'Login',
 			'RU' => 'Логин',
 			'UA' => 'Логін',
 			'LT' => 'Login',
@@ -729,6 +736,7 @@ return array (
 	'_Password' =>
 		array (
 			'EN' => 'Password',
+			'BR' => 'Password',
 			'RU' => 'Пароль',
 			'UA' => 'Пароль',
 			'LT' => 'Password',
@@ -1433,6 +1441,7 @@ return array (
 	'_ModuleAdded' =>
 		array (
 			'EN' => 'The module was added successfully',
+			'BR' => 'Módulo foi adicionado com sucesso',
 			'RU' => 'Был успешно добавлен модуль',
 			'UA' => 'Був успішно доданий модуль',
 			'LT' => 'Modulis sėkmingai pridėtas',
@@ -1441,6 +1450,7 @@ return array (
 	'_ModuleDeleted' =>
 		array (
 			'EN' => 'The module was removed successfully',
+			'BR' => 'Módulo foi removido com sucesso',
 			'RU' => 'Был успешно удален модуль',
 			'UA' => 'Був успішно видалений модуль',
 			'LT' => 'Modulis sėkmingai pašalintas',
@@ -1449,6 +1459,7 @@ return array (
 	'_TemplateAdded' =>
 		array (
 			'EN' => 'The template was added successfully',
+			'BR' => 'Template foi adicionado com sucesso',
 			'RU' => 'Был успешно добавлен шаблон',
 			'UA' => 'Був успішно доданий шаблон',
 			'LT' => 'Šablonas sėkmingai pridėtas',
@@ -1457,6 +1468,7 @@ return array (
 	'_TemplateDeleted' =>
 		array (
 			'EN' => 'Template was deleted successfully',
+			'BR' => 'Template foi excluído com sucesso',
 			'RU' => 'Был успешно удален шаблон',
 			'UA' => 'Був успішно видалений шаблон',
 			'LT' => 'Šablonas sėkmingai ištrintas',
@@ -1465,7 +1477,7 @@ return array (
 	'_Download' =>
 		array (
 			'EN' => 'Download match demo',
-			'BR' => 'Download match demo',
+			'BR' => 'Download da demo da partida',
 			'RU' => 'Скачать демо матча',
 			'UA' => 'Завантажити демо матчу',
 		)
