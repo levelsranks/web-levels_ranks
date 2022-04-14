@@ -1474,7 +1474,7 @@ return array (
 			'LT' => 'Šablonas sėkmingai ištrintas',
 			'TR' => 'Şablon başarıyla silindi'
 		),
-	'_Download' =>
+	'_Download' => // Module Demo Download
 		array (
 			'EN' => 'Download match demo',
 			'BR' => 'Download da demo da partida',
