@@ -1,18 +1,18 @@
 {
   "_Total_players": {
-    "EN": "Total Players",
+	"EN": "Total Players",
 	"BR": "Total de Players",
-    "RU": "Всего игроков",
-    "UA": "Всього гравців",
-    "LT": "Iš viso žaidėjų",
+	"RU": "Всего игроков",
+	"UA": "Всього гравців",
+	"LT": "Iš viso žaidėjų",
 	"CH": "玩家总数"
   },
   "_Players_24_hours": {
-    "EN": "Players in 24 hours",
+	"EN": "Players in 24 hours",
 	"BR": "Players nas últimas 24 horas",
-    "RU": "Игроков за 24 часа",
-    "UA": "Гравців за 24 години",
-    "LT": "Žaidėjai per 24 valandas",
+	"RU": "Игроков за 24 часа",
+	"UA": "Гравців за 24 години",
+	"LT": "Žaidėjai per 24 valandas",
 	"CH": "24小时内玩家数"
   }
 }
