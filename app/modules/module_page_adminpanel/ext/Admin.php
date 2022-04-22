@@ -34,9 +34,7 @@ class Admin
     //Позволяет обновить страницу без проблем с кавычками
     function ReloadPage()
     {
-        if (strlen($_SERVER['QUERY_STRING']) > 0) {
-            header("Location: ?".$_SERVER['QUERY_STRING']);
-        }
+        header("Location: ?".$_SERVER['QUERY_STRING']);
     }
 
     // Очистка кеша шаблонов
