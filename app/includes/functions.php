@@ -171,7 +171,7 @@ function set_url_section( $url, $command, $change ) {
 
     // Генерируем новую ссылку.
     $finally = urldecode( http_build_query( $query ) );
-    return $url . '?' . $finally;
+    return $url . '/?' . $finally;
 }
 
 /**
