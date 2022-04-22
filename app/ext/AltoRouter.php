@@ -59,7 +59,19 @@ class AltoRouter
     {
         $server = $_SERVER['REQUEST_URI'];
         $replace = substr($server, strlen($this->basePath));
-        $match = explode("/", $replace);
+        $first_query_param_index = strpos($replace, "?");
+        $fragment_index = strpos($replace, "#");
+
+        // Determine query params / fragments cutoff
+        $filter_length = strlen($replace);
+        if ($first_query_param_index) {
+            $filter_length = $first_query_param_index;
+        } else if ($fragment_index) {
+            $filter_length = $fragment_index;
+        }
+
+        $filtered_uri = substr($replace, 0, $filter_length);
+        $match = explode("/", $filtered_uri);
         return $match[0];
     }
 
