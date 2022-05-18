@@ -1474,7 +1474,11 @@ return array (
 			'LT' => 'Šablonas sėkmingai ištrintas',
 			'TR' => 'Şablon başarıyla silindi'
 		),
-	'_Download' => // Module Demo Download
+	/*
+	Module Demo Download
+	In the file /app/modules/module_page_demos/includes/match.php on line 145, replace Скачать демо матча with get_translate_phrase ('_ Download')?> In the Admin panel update the translation cache
+	*/
+	'_Download' =>
 		array (
 			'EN' => 'Download match demo',
 			'BR' => 'Download da demo da partida',

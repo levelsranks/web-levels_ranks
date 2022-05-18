@@ -284,7 +284,7 @@ class Player {
             ],
             'NoScope' => [
                 'phrase' => '_Killing_without_scope',
-                'icon' => 'circle-o',
+                'icon' => 'gps-off',
             ],
             'Run' => [
                 'phrase' => '_Kills_on_run',
@@ -300,7 +300,7 @@ class Player {
             ],
             'Smoke' => [
                 'phrase' => '_Smoke_kills',
-                'icon' => 'mood-bad',
+                'icon' => 'cloud-outline-alt',
             ],
             'Whirl' => [
                 'phrase' => '_Kills_whirl',
