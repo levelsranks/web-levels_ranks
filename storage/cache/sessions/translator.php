@@ -428,7 +428,7 @@ return array (
 	'_Connect_2' =>
 		array (
 			'EN' => 'Join',
-			'BR' => 'Junte-se',
+			'BR' => 'Conectar',
 			'RU' => 'Играть',
 			'UA' => 'Играть',
 			'LT' => 'Jungtis',
