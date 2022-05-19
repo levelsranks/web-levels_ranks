@@ -133,7 +133,7 @@
 								<tbody>
 									<?php $maps_names = empty( $Player->maps ) ? [] : array_keys( $Player->maps ); for ( $w = 0, $_c = count( $Player->maps ); $w < $_c; $w++ ) {?>
 									<tr>
-										<th class="text-right"><img src="<?php echo $General->arr_general['site'] ?>/storage/cache/img/pins/maps/_<?php echo $maps_names[ $w ]; ?>.png"></th>
+										<th class="text-right"><img src="<?php echo $General->arr_general['site'] ?>storage/cache/img/pins/maps/_<?php echo $maps_names[ $w ]; ?>.png"></th>
 										<th class="text-left"><?php echo $maps_names[ $w ]; ?></th>
 										<th class="text-center"><?php echo $Player->maps[ $maps_names[ $w ] ]; ?></th>
 									</tr>
