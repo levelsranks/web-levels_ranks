@@ -77,7 +77,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        Balance: <?=$Modules->get_balance() ?? 0 ?>
+                        Balance <?=$Modules->get_balance() ?? 0 ?>
                     </a>
                 </li>
                 <?php if( isset( $_SESSION['user_admin'] ) ): ?>
