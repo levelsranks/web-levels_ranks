@@ -9,13 +9,13 @@ if (servers != 0) {
         success: function( data ) {
             for (var i = 0; i < data.length; i++) {
                 document.getElementById('server-name-' + i).innerHTML = data[i]['HostName'];
-                document.getElementById('server-map-image-' + i).setAttribute("src", "./storage/cache/img/maps/"+ data[i]['Mod'] +"/" + data[i]['Map_image'] + ".jpg");
+                document.getElementById('server-map-image-' + i).setAttribute("src", "/storage/cache/img/maps/"+ data[i]['Mod'] +"/" + data[i]['Map_image'] + ".jpg");
                 document.getElementById('server-players-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
                 document.getElementById('online_gr-' + i).setAttribute("style", "width:" + 100*data[i]['Players']/data[i]['MaxPlayers'] + "%");
                 document.getElementById('server-ip-' + i).innerHTML = data[i]['ip'];
                 document.getElementById('server-tablename-' + i).innerHTML = data[i]['HostName'];
                 document.getElementById('server-tablemap-' + i).innerHTML = data[i]['Map'];
-                document.getElementById('server-tablemod-' + i).setAttribute("src", "./storage/cache/img/mods/" + data[i]['Mod'] + ".png");
+                document.getElementById('server-tablemod-' + i).setAttribute("src", "/storage/cache/img/mods/" + data[i]['Mod'] + ".png");
                 document.getElementById('server-tableplayers-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
 
                 var b = 1;
