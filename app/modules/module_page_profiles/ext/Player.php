@@ -635,9 +635,12 @@ class Player {
                                                            SUM(`fps_weapons_stats`.`hits_right_leg`) AS `RightLeg`
                                                            FROM `fps_weapons_stats`
                                                            INNER JOIN `fps_servers_stats` ON `fps_weapons_stats`.`account_id` = `fps_servers_stats`.`account_id`
-                                                           WHERE `fps_weapons_stats`.`account_id` = '{$this->check_user[ $this->server_group ]['account_id']}'
-                                                          AND `fps_servers_stats`.`server_id` = '{$this->found[ $this->server_group ]['server_int']}'
-                                                    LIMIT 1");
+                                                           WHERE `fps_weapons_stats`.`account_id` = :account_id
+                                                          AND `fps_servers_stats`.`server_id` = :sid
+                                                    LIMIT 1", [
+                                                        "account_id" => $this->check_user[ $this->server_group ]['account_id'],
+                                                        "sid" => $this->found[ $this->server_group ]['server_int']
+                                                    ]);
                 return $this->hits = empty( $h ) ? [] : $h + $this->hits;
             break;
         }

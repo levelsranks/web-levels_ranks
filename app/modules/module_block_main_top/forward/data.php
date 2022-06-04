@@ -82,8 +82,10 @@ switch ( empty( $Modules->array_modules['module_block_main_top']['setting']['cac
                                                         CASE WHEN `fps_servers_stats`.`deaths` = 0 THEN `fps_servers_stats`.`deaths` = 1 END, TRUNCATE( `fps_servers_stats`.`kills`/`fps_servers_stats`.`deaths`, 2 ) AS `kd`
                                                         FROM `fps_players`
                                                         INNER JOIN `fps_servers_stats` ON `fps_players`.`account_id` = `fps_servers_stats`.`account_id`
-                                                        WHERE `fps_servers_stats`.`server_id` = `' . $d . '` AND `fps_servers_stats`.`lastconnect` > 0
-                                                        order by `value` desc LIMIT 10' );
+                                                        WHERE `fps_servers_stats`.`server_id` = :sid AND `fps_servers_stats`.`lastconnect` > 0
+                                                        order by `value` desc LIMIT 10', [
+                                                            "sid" => $d
+                                                        ] );
                 endfor;
             endif;
 
