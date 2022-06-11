@@ -33,7 +33,7 @@ if ( ( empty( $data['module_page_rankstats'] ) ) || ( time() > $data['module_pag
     // Проверка на подключенный мод - FPS
     if ( ! empty( $Db->db_data['FPS'] ) ):
         for ($d = 1; $d <= $Db->table_count['FPS']; $d++ ):
-            $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, "SELECT `rank`, COUNT(`rank`) * 100.0 / ((SELECT COUNT(`rank`) FROM `fps_servers_stats` WHERE `fps_servers_stats`.`server_id` = '{$d}') * 1.0) AS `Percent` FROM `fps_servers_stats` WHERE `fps_servers_stats.server_id` = '{$d}' GROUP BY `rank`" );
+            $data['module_page_rankstats']['data'][]  = $Db->queryAll( 'FPS', 0, 0, "SELECT `rank`, COUNT(`rank`) * 100.0 / ((SELECT COUNT(`rank`) FROM `fps_servers_stats` WHERE `fps_servers_stats`.`server_id` = '{$d}') * 1.0) AS `Percent` FROM `fps_servers_stats` WHERE `fps_servers_stats`.`server_id` = '{$d}' GROUP BY `rank`" );
         endfor;
     endif;
     

@@ -116,7 +116,7 @@ class General {
         if( $this->arr_general['avatars'] == 1 )
         {
             if( isset( self::$json_buff[ $profile ] ) && !empty( self::$json_buff[ $profile ] ) )
-                return self::$json_buff[ $profile ][ $avatar_type ];
+                return htmlentities(self::$json_buff[ $profile ][ $avatar_type ]);
 
             $url = sprintf("%simg/avatars/%s.json", CACHE, $profile);
 
@@ -125,7 +125,7 @@ class General {
                 $avatar = json_decode(file_get_contents($url), true);
                 self::$json_buff[$profile] = $avatar;
 
-                return $avatar[$avatar_type];
+                return htmlentities($avatar[$avatar_type]);
             }
         }
 
@@ -170,7 +170,7 @@ class General {
     public function checkName( $profile ) 
     {
         !isset( self::$json_buff[$profile] ) && $this->getAvatar($profile, 1);
-        return self::$json_buff[$profile]["name"] ?? "Unnamed";
+        return htmlentities(self::$json_buff[$profile]["name"]) ?? "Unnamed";
     }
 
     /**
