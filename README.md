@@ -64,7 +64,6 @@
 -----
 ```
 location / {
-    auth_basic $auth;
     try_files $uri $uri/ /index.php?$query_string;
     rewrite ^([^.]*[^/])$ $1/ permanent;
     rewrite !.(gif|jpg|png|ico|css|js|svg|js_controller.php)$ /index.php;
