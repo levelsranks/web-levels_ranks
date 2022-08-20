@@ -607,7 +607,7 @@ class Lk_module{
 				if(empty($data[0]['status']))
 					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoney']),'error');
 					$this->LKRegPay($order,$post,'YandexMoney');
-					$this->message('<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml"> 
+					$this->message('<form method="POST" action="https://yoomoney.ru/quickpay/confirm.xml"> 
     				<input name="receiver" value="'.$data[0]['shop_id'].'"><input name="quickpay-form" value="shop"><input name="targets" value="'.$desc.'"> 
     				<input name="paymentType" value="PC"><input name="label" value="'.$lk_sign.'"> 
     				<input name="sum" value="'.$post['amount'].'"><input id="punsh" type="submit"></form>','');
@@ -616,7 +616,7 @@ class Lk_module{
 				if(empty($data[0]['status']))
 					$this->message(LangValReplace($this->Translate->get_translate_module_phrase('module_page_lk_impulse','_GatwayOff'),['name'=>'YandexMoneyCard']),'error');
 					$this->LKRegPay($order,$post,'YandexMoneyCard');
-					$this->message('<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml"> 
+					$this->message('<form method="POST" action="https://yoomoney.ru/quickpay/confirm.xml"> 
     				<input name="receiver" value="'.$data[0]['shop_id'].'"><input name="quickpay-form" value="shop"><input name="targets" value="'.$desc.'"> 
     				<input name="paymentType" value="AC"><input name="label" value="'.$lk_sign.'"> 
     				<input name="sum" value="'.$this->WM($post['amount']).'"><input id="punsh" type="submit"></form>','');

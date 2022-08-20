@@ -968,7 +968,7 @@ class Modules {
      */
     public function get_balance()
     {
-        if(isset($_SESSION['steamid32']) && $this->route != 'lk' && isset($this->General->Db->db_data['lk']))
+        if(isset($_SESSION['steamid32']) && isset($this->General->Db->db_data['lk']))
         {
             preg_match('/:[0-9]{1}:\d+/i', $_SESSION['steamid32'], $auth);
             $param = ['auth'=> '%'.$auth[0].'%'];
