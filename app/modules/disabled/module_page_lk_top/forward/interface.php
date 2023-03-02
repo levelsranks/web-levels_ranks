@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_top', '_Top_donations')?></h5>
+                <h5 class="badge"><?php echo $Translate->translate('module_page_lk_top', '_Top_donations')?></h5>
             </div>
             <table class="table table-hover">
                 <thead>
@@ -20,7 +20,7 @@
                     <th class="text-center">#</th>
                     <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="tb-avatar"></th><?php } ?>
                     <th class="text-left"><?php echo $Translate->get_translate_phrase('_Player') ?></th>
-                    <th class="text-center"><?php echo $Translate->get_translate_module_phrase('module_page_lk_top', '_Amount')?></th>
+                    <th class="text-center"><?php echo $Translate->translate('module_page_lk_top', '_Amount')?></th>
                 </tr>
                 </thead>
                 <tbody><?php for ( $sz_i = 0, $sz = sizeof( $res ); $sz_i < $sz; $sz_i++ ):

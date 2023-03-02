@@ -14,27 +14,27 @@
         <div class="user-sidebar-right-block">
             <div class="info">
                 <div class="details">
-                    <div class="admin_type"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Chief_admin')?></div>
-                    <div class="admin_rights"><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_All_access_rights')?></div>
+                    <div class="admin_type"><?php echo $Translate->translate( 'module_page_adminpanel','_Chief_admin')?></div>
+                    <div class="admin_rights"><?php echo $Translate->translate( 'module_page_adminpanel','_All_access_rights')?></div>
                 </div>
             </div>
         </div>
         <div class="card menu">
             <ul class="nav">
                 <li <?php get_section( 'section', 'modules' ) == 'stats' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','stats')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Admin_stats')?></a>
+                    <a><?php echo $Translate->translate( 'module_page_adminpanel','_Admin_stats')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'general' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','general')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_General_settings')?></a>
+                    <a><?php echo $Translate->translate( 'module_page_adminpanel','_General_settings')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'modules' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','modules')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Configuring_modules')?></a>
+                    <a><?php echo $Translate->translate( 'module_page_adminpanel','_Configuring_modules')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'servers' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','servers')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Server_setting')?></a>
+                    <a><?php echo $Translate->translate( 'module_page_adminpanel','_Server_setting')?></a>
                 </li>
                 <li <?php get_section( 'section', 'modules' ) == 'db' && print 'class="table-active"'?> onclick="location.href = '<?php echo set_url_section(get_url( 2 ),'section','db')?>';">
-                    <a><?php echo $Translate->get_translate_module_phrase( 'module_page_adminpanel','_Database_settings')?></a>
+                    <a><?php echo $Translate->translate( 'module_page_adminpanel','_Database_settings')?></a>
                 </li>
                 <!--
                 <li <?php //get_section( 'section', 'modules' ) == 'web' && print 'class="table-active"'?> onclick="location.href = '<?php //echo set_url_section(get_url( 2 ),'section','web')?>';">

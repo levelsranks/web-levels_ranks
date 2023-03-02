@@ -81,10 +81,10 @@
                             </div>
                             <div class="item-name">
                             <?php if(substr( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'], 0, 1) == '_') {
-                                    if ($Translate->get_translate_module_phrase( $Modules->arr_module_init['sidebar'][ $d ],$Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) == 'No Translation'){
+                                    if ($Translate->translate( $Modules->arr_module_init['sidebar'][ $d ],$Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) == 'No Translation'){
                                         print $Translate->get_translate_phrase($Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
                                     } else {
-                                        print $Translate->get_translate_module_phrase( $Modules->arr_module_init['sidebar'][ $d ], $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
+                                        print $Translate->translate( $Modules->arr_module_init['sidebar'][ $d ], $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
                                     }
                                   }else{
                                     print $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'];
@@ -113,10 +113,10 @@ for ( $d = 0, $c = sizeof( $Modules->arr_module_init['sidebar'] ); $d < $c; $d++
         for ( $_d = 0, $_c = sizeof( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'] ); $_d < $_c; $_d++ ):?>
             <div class="tooltip-sidebar box-button-<?php  print $d."-".$_d;?>">
                 <?php if(substr( $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'], 0, 1) == '_') {
-                    if ($Translate->get_translate_module_phrase( $Modules->arr_module_init['sidebar'][ $d ],$Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) == 'No Translation'){
+                    if ($Translate->translate( $Modules->arr_module_init['sidebar'][ $d ],$Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']) == 'No Translation'){
                         print $Translate->get_translate_phrase($Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
                     } else {
-                        print $Translate->get_translate_module_phrase( $Modules->arr_module_init['sidebar'][ $d ], $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
+                        print $Translate->translate( $Modules->arr_module_init['sidebar'][ $d ], $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name']);
                     }
                     }else{
                     print $Modules->array_modules[ $Modules->arr_module_init['sidebar'][ $d ] ]['sidebar'][ $_d ]['name'];

@@ -18,7 +18,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="header-profile">
-			<h5 class="badge"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Player_profile')?> :: <?php echo action_text_clear( action_text_trim( $Player->get_name(),16 ) )?></h5>
+			<h5 class="badge"><?php echo $Translate->translate( 'module_page_profiles','_Player_profile')?> :: <?php echo action_text_clear( action_text_trim( $Player->get_name(),16 ) )?></h5>
 			<div class="select-panel select-panel-table badge">
 				<select onChange="window.location.href=this.value">
 					<option style="display:none" value="" disabled selected><?php echo $Player->found[  $Player->server_group  ]['name_servers']?></option>
@@ -63,7 +63,7 @@
 							<thead>
 								<tr>
 									<th class="text-right"></th>
-									<th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Weapon')?></th>
+									<th class="text-left"><?php echo $Translate->translate( 'module_page_profiles','_Weapon')?></th>
 									<th class="text-center"><?php echo $Translate->get_translate_phrase('_Kills')?></th>
 								</tr>
 							</thead>
@@ -86,12 +86,12 @@
 				<div class="block" style="padding: 18px;">
 					<div class="left-stats-block">
 						<ul>
-							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Total_winning_percentage')?></li>
-							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Ratio_KD')?></li>
-							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Ratio_SH')?></li>
-							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Game_time')?></li>
+							<li><?php echo $Translate->translate( 'module_page_profiles','_Total_winning_percentage')?></li>
+							<li><?php echo $Translate->translate( 'module_page_profiles','_Ratio_KD')?></li>
+							<li><?php echo $Translate->translate( 'module_page_profiles','_Ratio_SH')?></li>
+							<li><?php echo $Translate->translate( 'module_page_profiles','_Game_time')?></li>
 							<li><?php echo $Translate->get_translate_phrase('_Headshot')?>:</li>
-							<li><?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Last_connect')?>:</li>
+							<li><?php echo $Translate->translate( 'module_page_profiles','_Last_connect')?>:</li>
 						</ul>
 					</div>
 					<div class="right-stats-block">
@@ -148,14 +148,14 @@
 				<div class="block">
 					<img class="back" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/back' ?>.jpg">
 					<div class="hit_player">
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Head')?>: <?php echo $Player->get_hits_head()?>"><img class="hit_head" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/head' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Neak')?>: <?php echo $Player->get_hits_neak()?>"><img class="hit_neak" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/neak' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Light_arm')?>: <?php echo $Player->get_hits_leftarm()?>"><img class="hit_left_arm" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/left_arm' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Right_arm')?>: <?php echo $Player->get_hits_rightarm()?>"><img class="hit_right_arm" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/right_arm' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Left_leg')?>: <?php echo $Player->get_hits_leftleg()?>"><img class="hit_left_leg" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/left_leg' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Right_leg')?>: <?php echo $Player->get_hits_rightleg()?>"><img class="hit_right_leg" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/right_leg' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Belly')?>: <?php echo $Player->get_hits_belly()?>"><img class="hit_belly" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/belly' ?>.png"></a>
-						<a class="tooltip-top" data-tooltip="<?php echo $Translate->get_translate_module_phrase( 'module_page_profiles','_Chest')?>: <?php echo $Player->get_hits_chest()?>"><img class="hit_chest" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/chest' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Head')?>: <?php echo $Player->get_hits_head()?>"><img class="hit_head" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/head' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Neak')?>: <?php echo $Player->get_hits_neak()?>"><img class="hit_neak" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/neak' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Light_arm')?>: <?php echo $Player->get_hits_leftarm()?>"><img class="hit_left_arm" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/left_arm' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Right_arm')?>: <?php echo $Player->get_hits_rightarm()?>"><img class="hit_right_arm" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/right_arm' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Left_leg')?>: <?php echo $Player->get_hits_leftleg()?>"><img class="hit_left_leg" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/left_leg' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Right_leg')?>: <?php echo $Player->get_hits_rightleg()?>"><img class="hit_right_leg" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/right_leg' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Belly')?>: <?php echo $Player->get_hits_belly()?>"><img class="hit_belly" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/belly' ?>.png"></a>
+						<a class="tooltip-top" data-tooltip="<?php echo $Translate->translate( 'module_page_profiles','_Chest')?>: <?php echo $Player->get_hits_chest()?>"><img class="hit_chest" ondrag="return false" ondragstart="return false" src="<?php echo $General->arr_general['site'] . CACHE . 'img/hitstats/chest' ?>.png"></a>
 					</div>
 				</div>
 			</div>
@@ -169,7 +169,7 @@
 			<div class="unusualkills_block<?php if(!$left_c): echo '_left'; $left_c = 3; endif; ?>">
 				<div class="block">
 					<div class="unusualkills_score"><?php echo $Player->unusualkills[$uk_names[$u]]; ?></div>
-					<div class="unusualkills_text"><?php echo $Translate->get_translate_module_phrase('module_page_profiles', $Player->msettings[$uk_names[$u]]['phrase']); ?></div>
+					<div class="unusualkills_text"><?php echo $Translate->translate('module_page_profiles', $Player->msettings[$uk_names[$u]]['phrase']); ?></div>
 					<div class="unusualkills_percent"><?php echo round($Player->unusualkills[$uk_names[$u]] / $Player->get_kills() * 100.0, 2); ?>%</div>
 					<div class="icon_block">
 						<i class="zmdi zmdi-<?php echo $Player->msettings[$uk_names[$u]]['icon']; ?> zmdi-hc-fw"></i>
