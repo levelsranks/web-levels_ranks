@@ -113,7 +113,7 @@
 			<div class="best-maps">
 				<div class="block">
 					<div class="map-top">
-						<img src="<?php echo $General->arr_general['site'] ?>storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod'] . '/' . array_keys( $Player->maps )[0]; ?>.jpg">
+						<img src="<?php echo $General->arr_general['site'] ?>storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod'] . '/' . array_keys( $Player->maps )[0]; ?>.jpg" onerror="this.onerror=null;this.src='<?php echo $General->arr_general['site'] ?>storage/cache/img/maps/<?php echo $Player->found[ $Player->server_group ]['mod'] . '/'?>-.jpg';">
 						<div class="map-lower">
 							<div class="map-one"><span>1</span></div>
 							<div class="map-pretty-name"><span><?php echo array_keys( $Player->maps )[0]; ?></span></div>
@@ -133,7 +133,7 @@
 								<tbody>
 									<?php $maps_names = empty( $Player->maps ) ? [] : array_keys( $Player->maps ); for ( $w = 0, $_c = count( $Player->maps ); $w < $_c; $w++ ) {?>
 									<tr>
-										<th class="text-right"><img src="<?php echo $General->arr_general['site'] ?>storage/cache/img/pins/maps/_<?php echo $maps_names[ $w ]; ?>.png"></th>
+										<th class="text-right"><img src="<?php echo $General->arr_general['site'] ?>/storage/cache/img/pins/maps/_<?php echo $maps_names[ $w ]; ?>.png" onerror="this.onerror=null;this.src='<?php echo $General->arr_general['site'] ?>/storage/cache/img/pins/maps/_.png';"></th>
 										<th class="text-left"><?php echo $maps_names[ $w ]; ?></th>
 										<th class="text-center"><?php echo $Player->maps[ $maps_names[ $w ] ]; ?></th>
 									</tr>
