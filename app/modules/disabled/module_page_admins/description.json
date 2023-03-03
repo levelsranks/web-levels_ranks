@@ -5,7 +5,8 @@
   "page": "admins",
   "version": "0.1",
   "required": {
-    "core":"0.2","php":"5.4"
+    "core":"0.2",
+	"php":"5.4"
   },
   "setting": {
     "status": 1,
@@ -16,8 +17,7 @@
     "data": 1,
     "data_always": 1
   },
-  "sidebar":
-  {
+  "sidebar": {
     "0": {
       "href": "?page=admins",
       "open_new_tab": "0",
@@ -26,5 +26,6 @@
       "icon": "accounts-list",
       "name": "_Admins_sb",
       "sidebar_directory": "_Sidebar_blocks"
-    }}
+    }
+}
 }

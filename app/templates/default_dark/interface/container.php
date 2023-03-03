@@ -58,17 +58,22 @@
                         </a>
                     </li>
                 <?php endif;?>
-                <!--
-                <li class="section">
-                    <form id="search_form" enctype="multipart/form-data" method="post">
-                        <div class="search_form">
-                            <input type="text" value="" name="_steam_id" placeholder="STEAM_1:1:390... / 7656119803..." required>
-                            <button name="btn_search" type="submit" form="search_form" class="navbar-icon">
-                                <div class="search">$General->get_icon( 'zmdi', 'search' )</div>
-                            </button>
-                        </div>
-                    </form>
-                </li>-->
+				<li class="section">
+					<a href="#" class="navbar-icon">
+						<div class="search"><?php $General->get_icon( 'zmdi', 'search' )?></div>
+					</a>
+					<ul class="subsection">
+						<form enctype="multipart/form-data" method="post">
+							<div class="search_form">
+								<div class="input-form">
+									<label>Поиск</label>
+									<input type="text" value="" name="_steam_id" placeholder="STEAM_1:1:390... / 7656119803..." >
+								</div>
+								<input class="btn no_steam" name="btn_search" type="submit" value="Найти">
+							</div>
+						</form>
+					</ul>
+				</li>				
             </ul>
         </div>
     </div>
