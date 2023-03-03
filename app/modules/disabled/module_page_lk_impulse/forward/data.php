@@ -151,7 +151,7 @@ if(isset($Db->db_data['lk'])){
 $LK->LkBalancePlayer();
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK'));
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->translate('module_page_lk_impulse','_LK'));
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK') . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_impulse','_DescPageLK'));
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' . $Translate->translate('module_page_lk_impulse','_LK') . ' :: ' . $Translate->translate('module_page_lk_impulse','_DescPageLK'));

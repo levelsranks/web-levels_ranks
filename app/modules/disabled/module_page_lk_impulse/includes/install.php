@@ -207,29 +207,29 @@ if( isset( $_POST['table_install'] ) ) {
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LKInstall')?></h5>
+                    <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_LKInstall')?></h5>
                 </div>
                 <?php if(!empty($table)):?>
                     <div class="card-container option_one">
-                        <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_InstallTable')?> <?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK')?></h5><br>
-                        <?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_ForWork')?><br>
+                        <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_InstallTable')?> <?php echo $Translate->translate('module_page_lk_impulse','_LK')?></h5><br>
+                        <?php echo $Translate->translate('module_page_lk_impulse','_ForWork')?><br>
                         <?php foreach($table as $tableKey => $val):?>
                             <b>`<?php echo $tableKey?>`</b><br>
                         <?php endforeach;?>
                         <form enctype="multipart/form-data" method="post">
-                            <input class="btn" name="table_install" type="submit" value="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_InstallBTN')?>">
+                            <input class="btn" name="table_install" type="submit" value="<?php echo $Translate->translate('module_page_lk_impulse','_InstallBTN')?>">
                         </form>
                     </div>
                <?php else :?>
                 <div class="card-container option_one">
-                    <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_SettingsBD')?></h5><br>
-                    <?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LKForInstall')?> <a href="https://hlmod.ru/resources/lichnyj-kabinet-1mpulse-core-modules.887/"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LK')?></a>
+                    <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_SettingsBD')?></h5><br>
+                    <?php echo $Translate->translate('module_page_lk_impulse','_LKForInstall')?> <a href="https://hlmod.ru/resources/lichnyj-kabinet-1mpulse-core-modules.887/"><?php echo $Translate->translate('module_page_lk_impulse','_LK')?></a>
                     <form id="db_check" enctype="multipart/form-data" method="post">
                     <div class="input-form"><div class="input_text">Host: </div><input name="host" value="<?php echo $_POST['host']?>"></div>
                         <div class="input-form"><div class="input_text">User: </div><input name="user" value="<?php echo $_POST['user']?>"></div>
                         <div class="input-form"><div class="input_text">Pass: </div><input name="pass" value="<?php echo $_POST['pass']?>"></div>
                         <div class="input-form"><div class="input_text">DB: </div><input name="db_1" value="<?php echo $_POST['db_1']?>"></div>
-                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Example')?>: lk" name="table" value="<?php echo $_POST['table']?>"></div>
+                        <div class="input-form"><div class="input_text">Table: </div><input placeholder="<?php echo $Translate->translate('module_page_lk_impulse','_Example')?>: lk" name="table" value="<?php echo $_POST['table']?>"></div>
                         <div class="input-form"><div class="input_text">LK mod</div>
                             <select name="lk_mod">
                                 <option value="1">LK Impulse</option>
@@ -238,9 +238,9 @@ if( isset( $_POST['table_install'] ) ) {
                         </div>
                     </form>
                     <?php if ( $db_check != 2 ):?>
-                    <input class="btn" name="db_check" type="submit" form="db_check" value="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_DBCheckBTN')?>">
+                    <input class="btn" name="db_check" type="submit" form="db_check" value="<?php echo $Translate->translate('module_page_lk_impulse','_DBCheckBTN')?>">
                     <?php elseif( $db_check == 2 ):?>
-                        <input class="btn" name="save_db" type="submit" form="db_check" value="<?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_NextBTN')?>">
+                        <input class="btn" name="save_db" type="submit" form="db_check" value="<?php echo $Translate->translate('module_page_lk_impulse','_NextBTN')?>">
                     <?php endif;?>
                 </div>
         <?php endif;?>
@@ -249,7 +249,7 @@ if( isset( $_POST['table_install'] ) ) {
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Information')?></h5>
+                    <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_Information')?></h5>
                     <ul class="right-area" style="right: 30px;top: 20px;">
                         <li class="section">
                             <a href="#" class="navbar-icon">
@@ -281,8 +281,8 @@ if( isset( $_POST['table_install'] ) ) {
                     </ul>
                 </div>
                 <div class="card-container">
-                    <?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_Php')?> <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
-                    <div>'.$Translate->get_translate_module_phrase('module_page_lk_impulse','_PhpRecomendation').'</div>';} ?>
+                    <?php echo $Translate->translate('module_page_lk_impulse','_Php')?> <?php if( PHP_VERSION >= '7' ) { echo '<div class="color-green">'  . PHP_VERSION . '</div>';} else { echo '<div class="color-red">'  . PHP_VERSION . '</div>
+                    <div>'.$Translate->translate('module_page_lk_impulse','_PhpRecomendation').'</div>';} ?>
                     <div>cURL:</div>
                     <?php if (in_array ('curl', get_loaded_extensions())):?>
                           <span style="color:#4fa361;">installed</span>
@@ -290,9 +290,9 @@ if( isset( $_POST['table_install'] ) ) {
                            <span style="color:#dc4f49">not installed</span>
                      <?php endif; ?>
                     <?php if ( $db_check == 1 ):?>
-                        <div><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_DBCheckConnect')?></div>
+                        <div><?php echo $Translate->translate('module_page_lk_impulse','_DBCheckConnect')?></div>
                     <?php elseif( $db_check == 2 ): ?>
-                        <div><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_DBCheckConnectSucc')?></div>
+                        <div><?php echo $Translate->translate('module_page_lk_impulse','_DBCheckConnectSucc')?></div>
                     <?php endif; ?>
                 </div>
             </div>
