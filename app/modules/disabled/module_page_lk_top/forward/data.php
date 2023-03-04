@@ -19,7 +19,7 @@ endif;
 $res == [] && header('Location: ' . $General->arr_general['site']);
 
 // Задаём заголовок страницы.
-$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->get_translate_module_phrase('module_page_lk_top', '_Top_donations') );
+$Modules->set_page_title( $General->arr_general['short_name'] . ' :: ' . $Translate->translate('module_page_lk_top', '_Top_donations') );
 
 // Задаём описание страницы.
-$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' .  $Translate->get_translate_module_phrase('module_page_lk_top', '_Top_donations') );
+$Modules->set_page_description( $General->arr_general['short_name'] . ' :: ' .  $Translate->translate('module_page_lk_top', '_Top_donations') );

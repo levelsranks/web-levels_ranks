@@ -14,7 +14,7 @@ if(isset( $_SESSION['user_admin'] )):
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_PaymentsList')?></h5>
+                <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_PaymentsList')?></h5>
             </div>
             <div class="card-container">
                 <?php if(!empty($pays)):?>
@@ -23,11 +23,11 @@ if(isset( $_SESSION['user_admin'] )):
                     <tr>
                         <th class="text-left">#</th>
                         <th class="text-left">Steam</th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Date' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Gateways' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Amount' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Promo' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Status' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Date' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Gateways' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Amount' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Promo' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Status' )?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,7 +55,7 @@ if(isset( $_SESSION['user_admin'] )):
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_PaymentsList')?></h5>
+            <h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_PaymentsList')?></h5>
         </div>
         <div class="card-container module_block">
                 <?php if(!empty($pays)):?>
@@ -63,11 +63,11 @@ if(isset( $_SESSION['user_admin'] )):
                     <thead>
                     <tr>
                         <th class="text-left">#</th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Date' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Gateways' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Amount' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Promo' )?></th>
-                        <th class="text-left"><?php echo $Translate->get_translate_module_phrase( 'module_page_lk_impulse', '_Status' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Date' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Gateways' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Amount' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Promo' )?></th>
+                        <th class="text-left"><?php echo $Translate->translate( 'module_page_lk_impulse', '_Status' )?></th>
                     </tr>
                     </thead>
                     <tbody>

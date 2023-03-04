@@ -2,7 +2,7 @@
 <div class="col-md-2">
 	<div class="card">
 		<div class="card-header">
-        	<h5 class="badge"><?php echo $Translate->get_translate_module_phrase('module_page_lk_impulse','_LogList');?></h5>
+        	<h5 class="badge"><?php echo $Translate->translate('module_page_lk_impulse','_LogList');?></h5>
              <form id="clean_logs" data-default="true" enctype="multipart/form-data" method="post"><input type="hidden" name="clean_logs">
                         <button form="clean_logs" name="clean_logs" class="btn" style="padding: 1px 6px;" type="submit"><i  class='zmdi zmdi-delete zmdi-hc-fw'></i> кроме этого месяца</button>
             </form>
@@ -28,7 +28,7 @@
     	<div class="card-container">
     		<div style="text-align: left;font-size: 11px;">
     		<?php foreach ($LK->LkLogContent($_GET['log']) as $key):?>
-    			<?php echo $key['log_name'].$key['log_time'].LangValReplace($Translate->get_translate_module_phrase('module_page_lk_impulse',$key['log_content']), json_decode(str_replace('[]','',$key['log_value']), true));?><br>
+    			<?php echo $key['log_name'].$key['log_time'].LangValReplace($Translate->translate('module_page_lk_impulse',$key['log_content']), json_decode(str_replace('[]','',$key['log_value']), true));?><br>
     		<?php endforeach;?>
     		</div>
     	</div>
