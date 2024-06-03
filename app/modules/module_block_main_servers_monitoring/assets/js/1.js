@@ -15,7 +15,7 @@ if (servers != 0) {
                 document.getElementById('server-ip-' + i).innerHTML = data[i]['ip'];
                 document.getElementById('server-tablename-' + i).innerHTML = data[i]['HostName'];
                 document.getElementById('server-tablemap-' + i).innerHTML = data[i]['Map'];
-                document.getElementById('server-tablemod-' + i).setAttribute("src", "./storage/cache/img/mods/" + data[i]['Mod'] + ".png");
+                document.getElementById('server-tablemod-' + i).setAttribute("src", "/storage/cache/img/mods/" + data[i]['Mod'] + ".png");
                 document.getElementById('server-tableplayers-' + i).innerHTML = data[i]['Players'] + "/" + data[i]['MaxPlayers'];
 
                 var b = 1;
