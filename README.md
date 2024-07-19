@@ -1,4 +1,16 @@
- <p align="center">
+<h1 align="center">
+    Внимание! Этот проект заброшен и имеет множество уязвимостей. Ставить его не рекомендуется!
+</h1>
+<h1 align="center">
+   	Attention! This project is abandoned and has many vulnerabilities. It is not recommended to use it!
+</h1>
+<h2 align="center">
+    Сейчас разрабатывается и дорабатывается новый проект - <a href="https://github.com/Flute-CMS/cms">Flute CMS</a>
+</h2> 
+<h2 align="center">
+  A new project - <a href="https://github.com/Flute-CMS/cms">Flute CMS</a> - is being developed and finalized now
+</h2> 
+<p align="center">
         <img height="250px" src="https://raw.githubusercontent.com/levelsranks/levels-ranks-web/alpha/.github/logo.png">
 </p>
 <h1 align="center">
