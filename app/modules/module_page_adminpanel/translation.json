@@ -1,885 +1,1033 @@
 {
   "_Count_admins": {
     "EN": "Total Admins",
-	"BR": "Total de Administradores",
+    "FR": "Total Admins",
+    "BR": "Total de Administradores",
     "RU": "Всего админ-ов.",
     "UA": "Всього адмін-ов.",
     "LT": "Iš viso administratorių.",
-	"CH": "管理员总数",
-	"CRO": "Ukupno Admina",
+    "CH": "管理员总数",
+    "CRO": "Ukupno Admina",
     "RS": "Ukupno Admina",
-	"BA": "Ukupno Admina"	
+    "BA": "Ukupno Admina"
   },
   "_Module_loading": {
     "EN": "Modules loading order",
-	"BR": "Ordem de carregamento dos módulos",
+    "FR": "Ordre de chargement des modules",
+    "BR": "Ordem de carregamento dos módulos",
     "RU": "Порядок загрузки модулей",
     "UA": "Порядок завантаження модулів",
     "LT": "Module loading order",
-	"CH": "模块加载命令",
-	"CRO": "Redoslijed očitavanja modula",
+    "CH": "模块加载命令",
+    "CRO": "Redoslijed očitavanja modula",
     "RS": "Redosled očitavanja modula",
-	"BA": "Redoslijed očitavanja modula"	
+    "BA": "Redoslijed očitavanja modula"
   },
   "_Page": {
     "EN": "Page",
-	"BR": "Página",
+    "FR": "Page",
+    "BR": "Página",
     "RU": "Страница",
     "UA": "Сторінка",
     "LT": "Page",
-	"CH": "页面",
-	"CRO": "Stranica",
+    "CH": "页面",
+    "CRO": "Stranica",
     "RS": "Stranica",
-	"BA": "Stranica"	
+    "BA": "Stranica"
   },
   "_Options": {
     "EN": "Options",
-	"BR": "Opções",
+    "FR": "Options",
+    "BR": "Opções",
     "RU": "Опции",
     "UA": "Опції",
     "LT": "Options",
-	"CH": "选项",
-	"CRO": "Opcije",
+    "CH": "选项",
+    "CRO": "Opcije",
     "RS": "Podešavanja",
-	"BA": "Opcije"	
+    "BA": "Opcije"
   },
   "_Refresh_cache_modules": {
     "EN": "To refresh the cache modules",
-	"BR": "Atualizar cache de módulos",
+    "FR": "Pour actualiser les modules en cache",
+    "BR": "Atualizar cache de módulos",
     "RU": "Обновить кэш модулей",
     "UA": "Оновити кеш модулів",
     "LT": "To refresh the cache modules",
-	"CH": "刷新模块缓存",
-	"CRO": "Refrešuj module",
+    "CH": "刷新模块缓存",
+    "CRO": "Refrešuj module",
     "RS": "Osveži module",
-	"BA": "Refrešuj module"	
+    "BA": "Refrešuj module"
   },
   "_Refresh_cache_translations": {
     "EN": "To refresh the cache of translations",
-	"BR": "Atualizar cache de traduções",
+    "FR": "Pour actualiser le cache des traductions",
+    "BR": "Atualizar cache de traduções",
     "RU": "Обновить кэш переводов",
     "UA": "Оновити кеш перекладів",
     "LT": "To refresh the cache of translations",
-	"CH": "刷新翻译缓存",
-	"CRO": "Refrešuj prevode",
+    "CH": "刷新翻译缓存",
+    "CRO": "Refrešuj prevode",
     "RS": "Osveži prevode",
-	"BA": "Refrešuj prevode"	
+    "BA": "Refrešuj prevode"
   },
   "_Update_list_modules": {
     "EN": "To update the list of modules",
-	"BR": "Atualizar lista de módulos",
+    "FR": "Pour mettre à jour la liste des modules",
+    "BR": "Atualizar lista de módulos",
     "RU": "Обновить список модулей",
     "UA": "Оновити список модулів",
     "LT": "To update the list of modules",
-	"CH": "更新列表中的模块",
-	"CRO": "Obnovi spisak modula",
+    "CH": "更新列表中的模块",
+    "CRO": "Obnovi spisak modula",
     "RS": "Osveži spisak modula",
-	"BA": "Obnovi spisak modula"	
+    "BA": "Obnovi spisak modula"
+  },
+  "_Clear_templates_cache": {
+    "EN": "Clear templates cache",
+    "FR": "Effacer le cache des modèles",
+    "BR": "Limar cache de templates",
+    "RU": "Очистить кеш шаблонов"
   },
   "_Chief_admin": {
     "EN": "Chief Administrator",
-	"BR": "Administrador Chefe",
+    "EN": "Administrateur en chef",
+    "BR": "Administrador Root",
     "RU": "Гл. Администратор",
     "UA": "Головний Адміністратор",
     "LT": "Chief Administrator",
-	"CH": "最高管理员",
-	"CRO": "Glavni Administrator",
+    "CH": "最高管理员",
+    "CRO": "Glavni Administrator",
     "RS": "Glavni Administrator",
-	"BA": "Glavni Administrator"	
+    "BA": "Glavni Administrator"
   },
   "_General_settings": {
     "EN": "General Settings",
-	"BR": "Configurações Gerais",
+    "FR": "Paramètres généraux",
+    "BR": "Configurações Gerais",
     "RU": "Основные настройки",
     "UA": "Основні налаштування",
     "LT": "General settings",
-	"CH": "主要设置",
-	"CRO": "Generalna podešavanja",
+    "CH": "主要设置",
+    "CRO": "Generalna podešavanja",
     "RS": "Generalna podešavanja",
-	"BA": "Generalna podešavanja"	
+    "BA": "Generalna podešavanja"
   },
   "_Configuring_modules": {
     "EN": "Configuring Modules",
-	"BR": "Configurando Módulos",
+    "FR": "Configuration des modules",
+    "BR": "Configurando Módulos",
     "RU": "Настройка модулей",
     "UA": "Налаштування модулів",
     "LT": "Configuring modules",
-	"CH": "设置模块",
-	"CRO": "Konfiguriši module",
+    "CH": "设置模块",
+    "CRO": "Konfiguriši module",
     "RS": "Konfiguriši module",
-	"BA": "Konfiguriši module"	
+    "BA": "Konfiguriši module"
   },
   "_Server_setting": {
     "EN": "Servers Settings",
-	"BR": "Configuração dos Servidores",
+    "FR": "Paramètres des serveurs",
+    "BR": "Configuração dos Servidores",
     "RU": "Настройка серверов",
     "UA": "Налаштування серверів",
     "LT": "Server setting",
-	"CH": "服务器设置",
-	"CRO": "Server postavke",
+    "CH": "服务器设置",
+    "CRO": "Server postavke",
     "RS": "Server podešavanja",
-	"BA": "Server podešavanja"	
+    "BA": "Server podešavanja"
   },
   "_Database_settings": {
     "EN": "Database Settings",
-	"BR": "Configuração dos Banco de Dados",
+    "FR": "Paramètres base de données",
+    "BR": "Configuração dos Banco de Dados",
     "RU": "Настройка базы данных",
     "UA": "Налаштування бази даних",
     "LT": "Database settings",
-	"CH": "数据库设置",
-	"CRO": "Postavke databaze",
+    "CH": "数据库设置",
+    "CRO": "Postavke databaze",
     "RS": "Podešavanja databaze",
-	"BA": "Podešavanja databaze"	
+    "BA": "Podešavanja databaze"
   },
   "_Translation_settings": {
     "EN": "Translation Settings",
-	"BR": "Configurações de Tradução",
+    "FR": "Paramètres de traduction",
+    "BR": "Configurações de Tradução",
     "RU": "Настройка переводов",
     "UA": "Налаштування перекладів",
     "LT": "Translation settings",
-	"CH": "翻译设置",
-	"CRO": "Postavke prevoda",
+    "CH": "翻译设置",
+    "CRO": "Postavke prevoda",
     "RS": "Podešavanja prevoda",
-	"BA": "Podešavanja prevoda"	
+    "BA": "Podešavanja prevoda"
   },
   "_Extra_settingss": {
     "EN": "Extra Settings",
-	"BR": "Configurações Extras",
+    "FR": "Paramètres supplémentaires",
+    "BR": "Configurações Extras",
     "RU": "Дополнительные настройки",
     "UA": "Додаткові налаштування",
     "LT": "Extra Settings",
-	"CH": "额外设置",
-	"CRO": "Extra postavke",
+    "CH": "额外设置",
+    "CRO": "Extra postavke",
     "RS": "Extra podešavanja",
-	"BA": "Extra podešavanja"	
+    "BA": "Extra podešavanja"
   },
   "_Full_name": {
     "EN": "Full Name",
-	"BR": "Nome Completo",
+    "FR": "Nom et Prénom",
+    "BR": "Nome Completo",
     "RU": "Полное название",
     "UA": "Полное название",
     "LT": "Full name",
-	"CH": "网站全名",
-	"CRO": "Puno ime",
+    "CH": "网站全名",
+    "CRO": "Puno ime",
     "RS": "Puno ime",
-	"BA": "Puno ime"	
+    "BA": "Puno ime"
   },
   "_Short_name": {
     "EN": "Short Name",
-	"BR": "Nome Curto",
+    "FR": "Nom court",
+    "BR": "Nome Curto",
     "RU": "Короткое название",
     "UA": "Коротка назва",
     "LT": "Short name",
-	"CH": "网站略称",
-	"CRO": "Kratko ime",
+    "CH": "网站略称",
+    "CRO": "Kratko ime",
     "RS": "Kratko ime",
-	"BA": "Kratko ime"	
+    "BA": "Kratko ime"
   },
   "_Basic_information": {
     "EN": "Basic Information",
-	"BR": "Informação Básica",
+    "FR": "Informations de base",
+    "BR": "Informação Básica",
     "RU": "Общая информация",
     "UA": "Загальна інформація",
     "LT": "Basic information",
-	"CH": "基本信息",
-	"CRO": "Osnovne informacije",
+    "CH": "基本信息",
+    "CRO": "Osnovne informacije",
     "RS": "Osnovne informacije",
-	"BA": "Osnovne informacije"	
+    "BA": "Osnovne informacije"
   },
   "_Language": {
     "EN": "Language",
-	"BR": "Idioma",
+    "FR": "Langue",
+    "BR": "Idioma",
     "RU": "Язык",
     "UA": "Мова",
     "LT": "Language",
-	"CH": "默认语言",
-	"CRO": "Jezik",
+    "CH": "默认语言",
+    "CRO": "Jezik",
     "RS": "Jezik",
-	"BA": "Jezik"	
+    "BA": "Jezik"
   },
   "_Chief_administrator_Steam": {
     "EN": "Chief Administrator (Steam Authorization)",
-	"BR": "Administrador Chefe (Autorização Steam)",
+    "FR": "Administrateur en chef (autorisation Steam)",
+    "BR": "Administrador Root (Autorização Steam)",
     "RU": "Глав. администратор (Steam авторизация)",
     "UA": "Головний адміністратор (Steam авторизація)",
     "LT": "Chief administrator (Steam authorization)",
-	"CH": "最高管理员 (Steam 验证)",
-	"CRO": "Glavni Administrator (Stim autorizacija)",
+    "CH": "最高管理员 (Steam 验证)",
+    "CRO": "Glavni Administrator (Stim autorizacija)",
     "RS": "Glavni Administrator (Stim autorizacija)",
-	"BA": "Glavni Administrator (Stim autorizacija)"	
+    "BA": "Glavni Administrator (Stim autorizacija)"
   },
   "_Use_Steam_ID": {
     "EN": "Use Steam ID 64",
-	"BR": "Use Steam ID 64",
+    "FR": "Utiliser Steam ID 64",
+    "BR": "Use Steam ID 64",
     "RU": "Использовать Steam ID 64",
     "UA": "Використовувати Steam ID 64",
     "LT": "Use Steam ID 64",
-	"CH": "使用Steam 64位ID",
-	"CRO": "Koristi STEAM ID 64",
+    "CH": "使用Steam 64位ID",
+    "CRO": "Koristi STEAM ID 64",
     "RS": "Koristi STEAM ID 64",
-	"BA": "Koristi STEAM ID 64"	
+    "BA": "Koristi STEAM ID 64"
   },
   "_Import_admin_list": {
     "EN": "Import Admin List from SB/MA (Steam)",
-	"BR": "Importar Lista de Admin do SB/MA (Steam)",
+    "FR": "Importer la liste des administrateurs depuis SB/MA (Steam)",
+    "BR": "Importar Lista de Admin do SB/MA (Steam)",
     "RU": "Импорт админ листа из SB/MA (Steam)",
     "UA": "Імпорт Адмін листа з SB/MA (Steam)",
     "LT": "Import admin list from SB/MA (Steam)",
-	"CH": "从SB/MA (Steam)导入管理员",
-	"CRO": "Importuj admin listu sa SB/MA",
+    "CH": "从SB/MA (Steam)导入管理员",
+    "CRO": "Importuj admin listu sa SB/MA",
     "RS": "Importuj admin listu sa SB/MA",
-	"BA": "Importuj admin listu sa SB/MA"	
+    "BA": "Importuj admin listu sa SB/MA"
   },
   "_Save": {
     "EN": "Save",
-	"BR": "Salvar",
+    "FR": "Sauvegarder",
+    "BR": "Salvar",
     "RU": "Сохранить",
     "UA": "Зберегти",
     "LT": "Save",
-	"CH": "保存",
-	"CRO": "Snimi",
+    "CH": "保存",
+    "CRO": "Snimi",
     "RS": "Snimi",
-	"BA": "Snimi"
+    "BA": "Snimi"
   },
   "_Dark_mode_default": {
     "EN": "Dark Mode - Default",
-	"BR": "Modo Escuro - Padrão",
+    "FR": "Mode sombre - Par défaut",
+    "BR": "Modo Escuro - Padrão",
     "RU": "Тёмный режим - По умолчанию",
     "UA": "Темний режим - За замовчуванням",
     "LT": "Dark mode - default",
-	"CH": "黑夜模式",
-	"CRO": "Tamni mod - podrazumjevano",
+    "CH": "黑夜模式",
+    "CRO": "Tamni mod - podrazumjevano",
     "RS": "Tamni mod - podrazumevano",
-	"BA": "Tamni mod - podrazumjevano"	
+    "BA": "Tamni mod - podrazumjevano"
   },
   "_Animation_default": {
     "EN": "Animation",
-	"BR": "Animação",
+    "FR": "Animation",
+    "BR": "Animação",
     "RU": "Анимации",
     "UA": "Анімації",
     "LT": "Animation",
-	"CH": "动画",
-	"CRO": "Animacije",
+    "CH": "动画",
+    "CRO": "Animacije",
     "RS": "Animacije",
-	"BA": "Animacije"	
+    "BA": "Animacije"
   },
   "_Show_avatars": {
     "EN": "Show Avatars",
-	"BR": "Mostrar Avatares",
+    "FR": "Afficher les avatars",
+    "BR": "Mostrar Avatares",
     "RU": "Показывать ли аватарки",
     "UA": "Чи показувати аватарки",
     "LT": "Show avatars",
-	"CH": "显示头像",
-	"CRO": "Prikaži slike",
+    "CH": "显示头像",
+    "CRO": "Prikaži slike",
     "RS": "Prikaži avatare",
-	"BA": "Prikaži avatare"	
+    "BA": "Prikaži avatare"
   },
   "_Sidebar_default": {
     "EN": "Open Sidebar - Default",
-	"BR": "Abrir Sidebar - Padrão",
+    "FR": "Ouvrir la barre latérale – Par défaut",
+    "BR": "Abrir Sidebar - Padrão",
     "RU": "Открытый сайтбар - По умолчанию",
     "UA": "Відкритий сайдбар - За замовчуванням",
     "LT": "Open sidebar - default",
-	"CH": "侧边栏 ( 默认 )",
-	"CRO": "Otvori bočni meni - podrazumjevano",
+    "CH": "侧边栏 ( 默认 )",
+    "CRO": "Otvori bočni meni - podrazumjevano",
     "RS": "Otvori sidebar - podrazumevano",
-	"BA": "Otvori sidebar - podrazumjevano"	
+    "BA": "Otvori sidebar - podrazumjevano"
   },
   "_Round_shapes": {
     "EN": "Do round shapes",
-	"BR": "Faça formas redondas",
+    "FR": "Faire des formes arrondies",
+    "BR": "Faça formas redondas",
     "RU": "Закруглять ли углы у форм",
     "UA": "Чи закругляти кути у форми",
     "LT": "Do round shapes",
-	"CH": "圆边",
-	"CRO": "Bočne linije zaobljene",
+    "CH": "圆边",
+    "CRO": "Bočne linije zaobljene",
     "RS": "Bočne linije zaobljene",
-	"BA": "Bočne linije zaobljene"	
+    "BA": "Bočne linije zaobljene"
   },
   "_All_access_rights": {
     "EN": "All access rights",
-	"BR": "Todos os direitos de acesso",
+    "FR": "Tous les droits d'accès",
+    "BR": "Todos os direitos de acesso",
     "RU": "Полные права доступа",
     "UA": "Повні права доступу",
     "LT": "All access rights",
-	"CH": "所有访问权限",
-	"CRO": "Svi pristupi",
+    "CH": "所有访问权限",
+    "CRO": "Svi pristupi",
     "RS": "Svi pristupi",
-	"BA": "Svi pristupi"	
+    "BA": "Svi pristupi"
   },
   "_Steam_access_authorization": {
     "EN": "Steam Access Authorization",
-	"BR": "Autorização Acesso Steam",
+    "FR": "Autorisation d'accès Steam",
+    "BR": "Autorização Acesso Steam",
     "RU": "Доступ к Steam авторизации",
-	"UA": "Доступ до Steam авторизації",
-	"CH": "Steam 权限认证",
-	"CRO": "Steam autorizacija",
+    "UA": "Доступ до Steam авторизації",
+    "CH": "Steam 权限认证",
+    "CRO": "Steam autorizacija",
     "RS": "Stim autorizacija",
-	"BA": "Stim autorizacija"	
+    "BA": "Stim autorizacija"
   },
   "_Steam_only_authorization": {
     "EN": "Steam Authorization Only",
-	"BR": "Apenas Autorização Steam",
+    "FR": "Autorisation Steam uniquement",
+    "BR": "Apenas Autorização Steam",
     "RU": "Авторизация только по Steam",
-	"UA": "Авторизація тільки по Steam",
-	"CH": "仅使用Steam登录认证",
-	"CRO": "Samo Steam autorizacija",
+    "UA": "Авторизація тільки по Steam",
+    "CH": "仅使用Steam登录认证",
+    "CRO": "Samo Steam autorizacija",
     "RS": "Samo Stim autorizacija",
-	"BA": "Samo Steam autorizacija"	
+    "BA": "Samo Steam autorizacija"
   },
   "_Design": {
     "EN": "Design",
-	"BR": "Design",
+    "FR": "Désign",
+    "BR": "Design",
     "RU": "Дизайн",
-	"UA": "Дизайн",
-	"CH": "网页样式",
-	"CRO": "Dizajn",
+    "UA": "Дизайн",
+    "CH": "网页样式",
+    "CRO": "Dizajn",
     "RS": "Dizajn",
-	"BA": "Dizajn"	
+    "BA": "Dizajn"
   },
   "_Configuration": {
     "EN": "Configuration",
-	"BR": "Configuração",
+    "FR": "Configuration",
+    "BR": "Configuração",
     "RU": "Конфигурация",
-	"UA": "Конфігурація",
-	"CH": "其他设置",
-	"CRO": "Konfiguracija",
+    "UA": "Конфігурація",
+    "CH": "其他设置",
+    "CRO": "Konfiguracija",
     "RS": "Konfiguracija",
-	"BA": "Konfiguracija"	
+    "BA": "Konfiguracija"
   },
   "_Enable_css_cache": {
     "EN": "Enable Cache - CSS",
-	"BR": "Habilitar Cache - CSS",
+    "FR": "Activer le cache - CSS",
+    "BR": "Habilitar Cache - CSS",
     "RU": "Включить кэш - CSS",
-	"UA": "Включити кеш - CSS",
-	"CRO": "Omogući CSS keš",
+    "UA": "Включити кеш - CSS",
+    "CRO": "Omogući CSS keš",
     "RS": "Omogući CSS keš",
-	"BA": "Omogući CSS keš"
+    "BA": "Omogući CSS keš"
   },
   "_Enable_js_cache": {
     "EN": "Enable Cache - JS",
-	"BR": "Habilitar Cache - JS",
+    "FR": "Activer le cache - JS",
+    "BR": "Habilitar Cache - JS",
     "RU": "Включить кэш - JS",
-	"UA": "Включити кеш - JS",
-	"CRO": "Omogući JS keš",
+    "UA": "Включити кеш - JS",
+    "CRO": "Omogući JS keš",
     "RS": "Omogući JS keš",
-	"BA": "Omogući JS keš"	
+    "BA": "Omogući JS keš"
   },
   "_Optimization": {
     "EN": "Optimization",
-	"BR": "Otimização",
+    "FR": "Optimisation",
+    "BR": "Otimização",
     "RU": "Оптимизация",
-	"UA": "Оптимізація",
-	"CRO": "Optimizacija",
+    "UA": "Оптимізація",
+    "CRO": "Optimizacija",
     "RS": "Optimizacija",
-	"BA": "Optimizacija"	
+    "BA": "Optimizacija"
   },
   "_Decor": {
     "EN": "Decor",
-	"BR": "Decor",
+    "FR": "Décor",
+    "BR": "Decor",
     "RU": "Оформление",
-	"UA": "Оформлення",
-	"CRO": "Dekoracija",
+    "UA": "Оформлення",
+    "CRO": "Dekoracija",
     "RS": "Dekor",
-	"BA": "Dekoracija"	
+    "BA": "Dekoracija"
   },
   "_White_color_palettes": {
     "EN": "White Сolor Palettes",
+    "FR": "Palettes de couleurs blanches",
     "RU": "Белая палитра сайта",
-	"UA": "Біла палітра сайту",
-	"CRO": "Svijetla tema",
+    "UA": "Біла палітра сайту",
+    "CRO": "Svijetla tema",
     "RS": "Svetla tema",
-	"BA": "Svijetla tema"	
+    "BA": "Svijetla tema"
   },
   "_Dark_color_palettes": {
     "EN": "Dark Сolor Palettes",
+    "FR": "Palettes de couleurs sombres",
     "RU": "Тёмная палитра сайта",
-	"UA": "Темна палітра сайту",
-	"CRO": "Tamna tema",
+    "UA": "Темна палітра сайту",
+    "CRO": "Tamna tema",
     "RS": "Tamna tema",
-	"BA": "Tamna tema"	
+    "BA": "Tamna tema"
   },
   "_Background_image": {
     "EN": "Background Image",
-	"BR": "Imagem de Fundo",
+    "FR": "Image de fond",
+    "BR": "Imagem de Fundo",
     "RU": "Фоновое изображение",
-	"UA": "Фонове зображення",
-	"CRO": "Pozadinska slika",
+    "UA": "Фонове зображення",
+    "CRO": "Pozadinska slika",
     "RS": "Pozadinska slika",
-	"BA": "Pozadinska slika"	
+    "BA": "Pozadinska slika"
   },
   "_No_image": {
     "EN": "No image",
-	"BR": "Sem imagem",
+    "FR": "Pas d'image",
+    "BR": "Sem imagem",
     "RU": "Без изображения",
-	"UA": "Без зображення",
+    "UA": "Без зображення",
     "CRO": "Bez slike",
     "RS": "Bez slike",
-    "BA": "Bez slike"	
+    "BA": "Bez slike"
   },
   "_Security": {
     "EN": "Security",
-	"BR": "Segurança",
+    "FR": "Sécurité",
+    "BR": "Segurança",
     "RU": "Безопасность",
-	"UA": "Безпека",
+    "UA": "Безпека",
     "CRO": "Zaštita",
     "RS": "Bezbednost",
-    "BA": "Bezbjednost"	
+    "BA": "Bezbjednost"
   },
   "_Session_check": {
     "EN": "Check PHP Sessions",
+    "FR": "Vérifier les sessions PHP",
     "RU": "Проверка PHP сессий",
-	"UA": "Перевірка PHP сесій",
+    "UA": "Перевірка PHP сесій",
     "CRO": "Provjeri PHP sesiju",
     "RS": "Proveri PHP sesiju",
-    "BA": "Provjeri PHP sesiju"	
+    "BA": "Provjeri PHP sesiju"
   },
   "_Primary_graphics_container": {
     "EN": "Primary Graphics Container",
+    "FR": "Conteneur graphique principal",
     "RU": "Основной графический контейнер",
-	"UA": "Основний графічний контейнер",
+    "UA": "Основний графічний контейнер",
     "CRO": "Primarna veličina",
     "RS": "Primarna veličina",
-    "BA": "Primarna veličina"	
+    "BA": "Primarna veličina"
   },
   "_Stretch": {
     "EN": "Stretch/Fluid",
-	"BR": "Stretch/Fluid",
+    "FR": "Étirement/Fluide",
+    "BR": "Stretch/Fluid",
     "RU": "Растягивать по ширине экрана",
-	"UA": "Розтягувати по ширині екрану",
+    "UA": "Розтягувати по ширині екрану",
     "CRO": "Razvučeno/Fluid",
     "RS": "Razvučeno/Fluid",
-    "BA": "Razvučeno/Fluid"	
+    "BA": "Razvučeno/Fluid"
   },
   "_Static": {
     "EN": "Static - Max 1400px",
+    "FR": "Statique - Max 1400px",
     "RU": "Статика - Макс 1400px",
-	"UA": "Статика - Макс 1400px",
+    "UA": "Статика - Макс 1400px",
     "CRO": "Statična - Max 1400px",
     "RS": "Statična - Max 1400px",
-    "BA": "Statična - Max 1400px"	
+    "BA": "Statična - Max 1400px"
   },
   "_Disable_sidebar_change": {
     "EN": "Disable Sidebar Change",
+    "FR": "Désactiver le changement de la barre latérale",
     "RU": "Запретить изменение вида боковой панели",
-	"UA": "Заборонити зміну виду бічній панелі",
+    "UA": "Заборонити зміну виду бічній панелі",
     "CRO": "Onemogući pomjeranje bočnog menija",
     "RS": "Onemogući pomeranje sidebara",
-    "BA": "Onemogući pomjeranje sidebara"	
+    "BA": "Onemogući pomjeranje sidebara"
   },
   "_Disable_palettes_change": {
     "EN": "Disable Palettes Change",
+    "FR": "Désactiver le changement de palettes",
     "RU": "Запретить изменение палитры сайта",
-	"UA": "Заборонити зміну палітри сайту",
-	"CRO": "Onemogući menjanje teme",
+    "UA": "Заборонити зміну палітри сайту",
+    "CRO": "Onemogući menjanje teme",
     "RS": "Onemogući menjanje teme",
-	"BA": "Onemogući menjanje teme"	
+    "BA": "Onemogući menjanje teme"
   },
   "_Sidebar_blur": {
     "EN": "Enable Sidebar Blur",
+    "FR": "Activer le flou de la barre latérale",
     "RU": "Включить размытие у боковой панели",
-	"UA": "Включити розмиття в бічній панелі"
+    "UA": "Включити розмиття в бічній панелі"
   },
   "_Blocks_blur": {
     "EN": "Enable Blocks Blur",
+    "FR": "Activer le flou des blocs",
     "RU": "Включить размытие у блоков",
-	"UA": "Включити розмиття у блоків"
+    "UA": "Включити розмиття у блоків"
   },
   "_Add_Server": {
     "EN": "Add Server",
-	"BR": "Add Servidor",
+    "FR": "Ajouter un serveur",
+    "BR": "Add Servidor",
     "RU": "Добавить сервер"
   },
   "_Server_name": {
     "EN": "Server Name",
+    "FR": "Nom du serveur",
     "RU": "Название сервера"
   },
   "_TechnoName": {
     "EN": "Technical Name",
+    "FR": "Nom technique",
     "RU": "Техническое название"
   },
   "_Ip_Port_Server": {
     "EN": "IP:PORT Server",
+    "FR": "IP:PORT Serveur",
     "RU": "IP:PORT Сервера"
   },
   "_Ip_Port_View": {
     "EN": "IP:PORT Output",
+    "FR": "IP:PORT Sortir",
     "RU": "IP:PORT Выводимый"
   },
   "_Rcon": {
     "EN": "RCON",
+    "FR": "RCON",
     "RU": "RCON"
   },
   "_Stat_Table": {
     "EN": "Statistics :: Table",
+    "FR": "Statistiques :: Table",
     "RU": "Статистика :: Таблица"
   },
   "_Vip_Table": {
     "EN": "VIP CORE :: Table",
+    "FR": "VIP CORE :: Table",
     "RU": "VIP CORE :: Таблица"
   },
   "_Vip_Sid": {
     "EN": "Server ID (vipc_core.cfg)",
-	"BR": "Server ID (vipc_core.cfg)",
+    "FR": "Serveur ID (vipc_core.cfg)",
+    "BR": "Server ID (vipc_core.cfg)",
     "RU": "ID Сервера (vip_core.cfg)"
   },
   "_Sb_Table": {
     "EN": "SB/MA :: Table",
-	"BR": "SB/MA :: Tabela",
+    "FR": "SB/MA :: Table",
+    "BR": "SB/MA :: Tabela",
     "RU": "SB/MA :: Таблица"
   },
   "_Shop_Table": {
     "EN": "Shop :: Table",
-	"BR": "Shop :: Tabela",
+    "FR": "Boutique :: Table",
+    "BR": "Shop :: Tabela",
     "RU": "Shop :: Таблица"
   },
   "_WarnSystem_Table": {
     "EN": "WarnSystem :: Table",
-	"BR": "WarnSystem :: Tabela",
+    "FR": "Système d'avertissement :: Table",
+    "BR": "WarnSystem :: Tabela",
     "RU": "WarnSystem :: Таблица"
   },
   "_Lk_Table": {
     "EN": "LK :: Table",
-	"BR": "LK :: Tabela",
+    "FR": "LK :: Table",
+    "BR": "LK :: Tabela",
     "RU": "LK :: Таблица"
   },
   "_Server_Name": {
     "EN": "Title",
+    "FR": "Titre",
     "RU": "Название"
   },
   "_View": {
     "EN": "Visual",
+    "FR": "Visuel",
     "RU": "Визуальный"
   },
   "_Server": {
     "EN": "Server",
+    "FR": "Serveur",
     "RU": "Сервер"
   },
   "_Add_con": {
     "EN": "Add Connection",
+    "FR": "Ajouter une connexion",
     "RU": "Добавить подключение"
   },
   "_type_con": {
     "EN": "Type of new connection:",
+    "FR": "Type de nouvelle connexion :",
     "RU": "Тип нового подключения:"
   },
   "_table_con": {
     "EN": "Table",
+    "FR": "Table",
     "RU": "Таблица"
   },
   "_db_con": {
     "EN": "Database",
+    "FR": "Base De Données",
     "RU": "База данных"
   },
   "_take_db_con": {
     "EN": "Choose Database",
+    "FR": "Choisissez la base de données",
     "RU": "Выбери базу данных"
   },
   "_non_take_con": {
     "EN": "Not chosen",
+    "FR": "Non choisi",
     "RU": "Не выбрано"
   },
   "_host": {
     "EN": "Host",
+    "EN": "Hôte",
     "RU": "Хост"
   },
   "_name_db": {
     "EN": "Database Name:",
+    "FR": "Nom de la base de données:",
     "RU": "Имя базы данных:"
   },
   "_username": {
     "EN": "DB Username:",
+    "FR": "Nom d'utilisateur BDD:",
     "RU": "Имя пользователя бд:"
   },
   "_password": {
     "EN": "User Password DB:",
+    "FR": "Mot de passe utilisateur BDD:",
     "RU": "Пароль пользователя бд:"
   },
   "_port": {
     "EN": "Port:",
+    "FR": "Port:",
     "RU": "Порт:"
   },
   "_table_name": {
     "EN": "Table Name:",
+    "FR": "Nom Table:",
     "RU": "Название таблицы:"
   },
   "_rank_pack": {
     "EN": "Grade Pack:",
+    "FR": "Grade Pack:",
     "RU": "Пакет рангов:"
   },
   "_add": {
     "EN": "Add",
+    "FR": "Ajouter",
     "RU": "Добавить"
   },
   "_mod_list": {
     "EN": "Mods List",
+    "FR": "Liste Mods",
     "RU": "Список модов"
   },
   "_mod": {
     "EN": "Mod",
+    "FR": "Mod",
     "RU": "Mод"
   },
   "_configure": {
     "EN": "Configurator",
+    "FR": "Configurateur",
     "RU": "Конфигуратор"
   },
   "_connection": {
     "EN": "Connections",
+    "FR": "Connexions",
     "RU": "Подключения"
   },
   "_take_mod": {
     "EN": "Choose Mod",
+    "FR": "Choisissez Mod",
     "RU": "Выберите мод"
   },
   "_custom_mode": {
     "EN": "Own Mod",
+    "FR": "Votre Mod",
     "RU": "Свой мод"
   },
   "_enter_mode_name": {
     "EN": "Enter the name of the mod:",
+    "FR": "Entrez le nom du Mod:",
     "RU": "Введите название мода:"
   },
   "_list_con": {
     "EN": "General",
+    "FR": "Générale",
     "RU": "Общий"
   },
   "_user": {
     "EN": "User",
+    "FR": "Utilisateur",
     "RU": "Пользователь"
   },
   "_table_prefix": {
     "EN": "Table | Prefix",
+    "FR": "Table | Prefix",
     "RU": "Таблица | Префикс"
   },
   "_error": {
     "EN": "Error!",
+    "FR": "Erreur!",
     "RU": "Ошибка!"
   },
   "_error_host": {
     "EN": "Enter host!",
+    "FR": "Entrez l'hôte!",
     "RU": "Введите хост!"
   },
   "_error_db": {
     "EN": "Enter a database name!",
+    "FR": "Entrez un nom de base de données!",
     "RU": "Введите название базы данных!"
   },
   "_error_password": {
     "EN": "Enter user password DB!",
+    "FR": "Entrez le mot de passe utilisateur BDD!",
     "RU": "Введите пароль пользователя бд!"
   },
   "_error_username": {
     "EN": "Enter DB username!",
+    "FR": "Entrez le nom d'utilisateur BDD!",
     "RU": "Введите имя пользователя бд!"
   },
   "_error_port": {
     "EN": "Enter port!",
+    "FR": "Entrez port!",
     "RU": "Введите порт!"
   },
   "_error_name_table": {
     "EN": "Enter a table name!",
+    "FR": "Entrez un nom de table!",
     "RU": "Введите название таблицы!"
   },
   "_error_rank_pack": {
     "EN": "Enter Rank Pack!",
+    "FR": "Entrez le Rank Pack!",
     "RU": "Введите пакет рангов!"
   },
   "_success_db_created": {
     "EN": "New database added!",
+    "FR": "Nouvelle base de données ajoutée!",
     "RU": "Новая база данных добавлена!"
   },
   "_error_create_db": {
     "EN": "First create a database!",
+    "FR": "Créez d'abord une base de données!",
     "RU": "Сначала создайте базу данных!"
   },
   "_error_enter_db": {
     "EN": "Choose a database!",
+    "FR": "Choisissez une base de données!",
     "RU": "Выберите базу данных!"
   },
   "_success_table_created": {
     "EN": "New table added!",
+    "FR": "Nouvelle table ajoutée!",
     "RU": "Новая таблица добавлена!"
   },
   "_error_db_not_found": {
     "EN": "The specified database was not found!",
+    "FR": "La base de données spécifiée est introuvable!",
     "RU": "Указанная база данных не найдена!"
   },
   "_error_not_found": {
     "EN": "Unknown error!",
+    "FR": "Erreur inconnue!",
     "RU": "Неизвестная ошибка!"
   },
   "_success_mod_created": {
     "EN": "New mod created!",
+    "FR": "Nouveau mod créé!",
     "RU": "Новый мод создан!"
   },
   "_error_con_db": {
     "EN": "Error connecting to database!",
+    "FR": "Erreur de connexion à la base de données!",
     "RU": "Ошибка подключения к базе данных!"
   },
-  "_Admin_stats":{
+  "_Admin_stats": {
     "EN": "Statistics",
-	"BR": "Estatisticas",
+    "FR": "Statistiques",
+    "BR": "Estatisticas",
     "RU": "Статистика",
     "UA": "Статистика",
     "LT": "Statistika",
     "TR": "İstatistik"
   },
-  "_Visits":{
+  "_Visits": {
     "EN": "Visits",
-	"BR": "Visitas",
+    "FR": "Visites",
+    "BR": "Visitas",
     "RU": "Посещения"
   },
-  "_Online":{
+  "_Online": {
     "EN": "Online now:",
-	"BR": "Online agora:",
+    "FR": "En ligne maintenant:",
+    "BR": "Online agora:",
     "RU": "Сейчас онлайн:"
   },
-  "_Total":{
+  "_Total": {
     "EN": "Total:",
+    "FR": "Total:",
     "RU": "Всего переходов:"
   },
-  "_For":{
+  "_For": {
     "EN": "For",
+    "FR": "Pour",
     "RU": "За"
   },
-  "_Jan":{
+  "_Jan": {
     "EN": "January",
-	"BR": "Janeiro",
+    "FR": "Janvier",
+    "BR": "Janeiro",
     "RU": "Январь"
   },
-  "_Feb":{
+  "_Feb": {
     "EN": "February",
-	"BR": "Fevereiro",
+    "FR": "Février",
+    "BR": "Fevereiro",
     "RU": "Февраль"
   },
-  "_Mar":{
+  "_Mar": {
     "EN": "March",
+    "FR": "Mars",
     "BR": "Março",
-	"RU": "Март"
+    "RU": "Март"
   },
-  "_Apr":{
+  "_Apr": {
     "EN": "April",
-	"BR": "Abril",
+    "FR": "Avril",
+    "BR": "Abril",
     "RU": "Апрель"
   },
-  "_May":{
+  "_May": {
     "EN": "May",
-	"BR": "Maio",
+    "FR": "Mai",
+    "BR": "Maio",
     "RU": "Май"
   },
-  "_Jun":{
+  "_Jun": {
     "EN": "June",
-	"BR": "Junho",
+    "FR": "Juin",
+    "BR": "Junho",
     "RU": "Июнь"
   },
-  "_Jul":{
+  "_Jul": {
     "EN": "July",
-	"BR": "Julho",
+    "FR": "Juillet",
+    "BR": "Julho",
     "RU": "Июль"
   },
-  "_Aug":{
+  "_Aug": {
     "EN": "August",
-	"BR": "Agosto",
+    "FR": "Août",
+    "BR": "Agosto",
     "RU": "Август"
   },
-  "_Sep":{
+  "_Sep": {
     "EN": "September",
-	"BR": "Setembro",
+    "FR": "Septembre",
+    "BR": "Setembro",
     "RU": "Сентябрь"
   },
-  "_Oct":{
+  "_Oct": {
     "EN": "October",
-	"BR": "Outubro",
+    "FR": "Octobre",
+    "BR": "Outubro",
     "RU": "Октябрь"
   },
-  "_Nov":{
+  "_Nov": {
     "EN": "November",
-	"BR": "Novembro",
+    "FR": "Novembre",
+    "BR": "Novembro",
     "RU": "Ноябрь"
   },
-  "_Dec":{
+  "_Dec": {
     "EN": "December",
-	"BR": "Dezembro",
+    "FR": "Décembre",
+    "BR": "Dezembro",
     "RU": "Декабрь"
   },
-  "_Mset":{
+  "_Mset": {
     "EN": "Module Settings:",
+    "FR": "Paramètres Module:",
     "RU": "Настройки модуля:"
   },
-  "_MAuth":  {
-	"EN": "Author:",
-	"BR": "Autor:",
+  "_MAuth": {
+    "EN": "Author:",
+    "FR": "Autheur:",
+    "BR": "Autor:",
     "RU": "Автор:"
   },
-  "_MKer":{
+  "_MKer": {
     "EN": "Min Kernel Version:",
+    "FR": "Version minimale du noyau:",
     "RU": "Мин. версия ядра:"
   },
-  "_MVer":{
+  "_MVer": {
     "EN": "Module Version:",
+    "FR": "Version du module:",
     "RU": "Версия модуля:"
   },
-  "_MPHP":{
+  "_MPHP": {
     "EN": "Min PHP Version:",
+    "FR": "Version PHP minimale :",
     "RU": "Мин версия PHP:"
   },
-  "_MDesc":{
+  "_MDesc": {
     "EN": "Description:",
+    "FR": "Description:",
     "RU": "Описание:"
   },
-  "_MActive":{
+  "_MActive": {
     "EN": "Active Page:",
+    "FR": "Page active :",
     "RU": "Активная страница:"
   },
-  "_MOnoff":{
+  "_MOnoff": {
     "EN": "Module On/Off",
+    "FR": "Marche/Arrêt des modules",
     "RU": "Модуль вкл/выкл"
   },
-  "_MMode":{
+  "_MMode": {
     "EN": "Module Mode:",
+    "FR": "Mode Module:",
     "RU": "Режим модуля:"
   },
-  "_MInterface":{
+  "_MInterface": {
     "EN": "The Grafical Part:",
+    "FR": "La Partie Graphique:",
     "RU": "Графическая часть:"
   },
-  "_MI":{
+  "_MI": {
     "EN": "Pre-Initialization:",
+    "FR": "Pré-initialisation:",
     "RU": "Пре-инициализация:"
   },
-  "_MAP":{
+  "_MAP": {
     "EN": "Additional pre-initialization associated with the main thread:",
+    "FR": "Pré-initialisation supplémentaire associée au thread principal :",
     "RU": "Дополнительная пре-инициализацию связанная с основным потоком:"
   },
-  "_MCache":{
+  "_MCache": {
     "EN": "Cache Usage:",
+    "FR": "Utilisation du cache:",
     "RU": "Использование кэша:"
   },
-  "_MCT":{
+  "_MCT": {
     "EN": "Cache Time (Sec):",
+    "FR": "Temps de cache (Sec):",
     "RU": "Время кэширования(Сек.):"
   },
-  "_MTR":{
+  "_MTR": {
     "EN": "Own translation file:",
+    "FR": "Fichier de traduction personnel:",
     "RU": "Собственный файл перевода:"
   },
-  "_MCSS":{
+  "_MCSS": {
     "EN": "Native CSS Style:",
+    "FR": "Style CSS natif :",
     "RU": "Собственный CSS стиль:"
   },
-  "_MJS":{
+  "_MJS": {
     "EN": "Own JS Library:",
+    "FR": "Propre bibliothèque JS :",
     "RU": "Собственная JS библиотека:"
   },
-  "_Cockie":{
+  "_Cockie": {
     "EN": "Storing data in cookies (NOT SECURE)",
+    "FR": "Stockage des données dans des cookies (NON SÉCURISÉ)",
     "RU": "Сохранение данных в куки (НЕ БЕЗОПАСНО)"
   },
-  "_Template":{
+  "_Template": {
     "EN": "Choose Template",
+    "FR": "Choisir le modèle",
     "RU": "Выберете шаблон"
   },
   "_Css_off_cache": {
     "EN": "Disable CSS/JS Browser Cache",
+    "FR": "Désactiver le cache du navigateur CSS/JS",
     "RU": "Отключение браузерного кеша CSS/JS"
   }
 }

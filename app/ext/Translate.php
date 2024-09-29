@@ -91,33 +91,7 @@ class Translate {
 
     /**
      * Получить перевод определенной фразы из общего кэша.
-     * 
-     * @since 0.2.28
-     * 
-     * @author stwx.#0239
      *
-     * @param string $module_id         ID модуля.
-     * @param string $phrase            Слово для перевода.
-     * @param array $values             Заменяет перменные в тексте
-     *
-     * @return string                   Выводит слово в переводе.
-     */
-    public function translate($module_id, $phrase, $values = [])
-    {
-        $translations = $this->arr_translations[$module_id];
-        $word = isset($translations[$phrase][$_SESSION['language']]) ? $translations[$phrase][$_SESSION['language']] : $translations[$phrase]['EN'] ?? 'No Translation';
-
-        foreach ($values as $key => $value) {
-            $key = "{" . $key . "}";
-            $word = str_replace($key, $value, $word);
-        }
-
-        return $word;
-    }
-
-    /**
-     * Получить перевод определенной фразы из общего кэша.
-     * 
      * @since 0.2
      *
      * @param string $phrase        Слово для перевода.
@@ -144,8 +118,6 @@ class Translate {
     /**
      * Получить перевод определенной фразы из кэша модуля.
      *
-     * @deprecated
-     * 
      * @since 0.2
      *
      * @param string $module_id         ID модуля.

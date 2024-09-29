@@ -17,7 +17,7 @@ define('PLAYERS_ON_PAGE', '80');
 $page_num = (int) intval ( get_section( 'num', '1' ) );
 
 // Типа мутов.
-$comms_type = [0 => '<div class="color-red">' . $Translate->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Translate->get_translate_phrase('_Uncomm') . '</div>',2 => '<strike>Сессия</strike>'];
+$comms_type = [0 => '<div class="color-red">' . $Translate->get_translate_phrase('_Forever') . '</div>',1 => '<div class="color-blue">' . $Translate->get_translate_phrase('_Uncomm') . '</div>',2 => '<strike>' . $Translate->get_translate_phrase('_Comms_Session') . '</strike>'];
 
 // CSGO || CSS
 $mod = $Db->db_data['SourceBans'][0]['mod'];

@@ -15,7 +15,7 @@
   "sidebar":
   {
     "0": {
-      "href": "https://steamcommunity.com/",
+      "href": "https://steamcommunity.com/groups/royal-multi-gamers",
       "open_new_tab": "1",
       "icon_group": "zmdi",
       "icon_category": "",
@@ -24,16 +24,16 @@
       "sidebar_directory": "_Sidebar_social"
     },
     "1": {
-      "href": "https://vk.com/",
+      "href": "https://www.clan-rmg.com",
       "open_new_tab": "1",
-      "icon_group": "zmdi",
-      "icon_category": "",
-      "icon": "vk",
-      "name": "Vkontakte Community",
+      "icon_group": "custom",
+      "icon_category": "socials",
+      "icon": "world",
+      "name": "Royal Multi Gamers Community",
       "sidebar_directory": "_Sidebar_social"
     },
     "2": {
-      "href": "https://discord.gg/",
+      "href": "https://discord.gg/tqPtgyk6yT",
       "open_new_tab": "1",
       "icon_group": "custom",
       "icon_category": "socials",

@@ -2,6 +2,7 @@
   "_Ratio_KD": {
     "DE": "K/D Verhältnis:",
     "EN": "K/D Ratio:",
+    "FR": "Ratio K/D:",
     "RU": "Убийств / Смертей - К/Д:",
     "UA": "Вбивств / Смертей - К/Д:",
 	"LT": "Nužydymų / Mirčių - N/M:",
@@ -13,6 +14,7 @@
   "_Ratio_SH": {
     "DE": "Schüsse / Treffer:",
     "EN": "Shoots / Hits:",
+    "FR": "Tirs / Hits:",
     "RU": "Попаданий / Выстрелов:",
     "UA": "Влучень / Пострілів:",
 	"LT": "Šūvių / Pataikymų:",
@@ -46,6 +48,7 @@
   "_Game_time": {
     "DE": "Spielzeit",
     "EN": "Playtime:",
+    "FR": "Temps de jeu:",
 	"BR": "Tempo de Jogo:",
     "RU": "Игровое время:",
     "UA": "ігровий час:",
@@ -58,6 +61,7 @@
    "_First_round_kills": {
     "DE": "Erstes Blut",
     "EN": "First Blood",
+    "FR": "Premier sang",
     "RU": "Первых убийств",
     "UA": "Перших вбивств",
 	"LT": "Pirmas kraujas",
@@ -69,6 +73,7 @@
   "_Favorite_weapons": {
     "DE": "Lieblingswaffen:",
     "EN": "Favorite Weapons:",
+    "FR": "Armes Favorites:",
 	"BR": "Armas Favoritas:",
     "RU": "Любимое оружие:",
     "UA": "Улюблена зброя:",
@@ -81,6 +86,7 @@
   "_Kill count": {
     "DE": "Die Anzahl der Kills:",
     "EN": "Nº of Kills:",
+    "FR": "Nº de Kills:",
 	"BR": "Nº de Kills:",
     "RU": "Количество убийств:",
     "UA": "Кількість вбивств:",
@@ -93,6 +99,7 @@
   "_Matches": {
     "DE": "Spiele:",
     "EN": "Matches:",
+    "FR": "Matches:",
 	"BR": "Matches:",
     "RU": "Матчей:",
     "UA": "Матчів:",
@@ -105,6 +112,7 @@
   "_Winning_percentage": {
     "DE": "Gewinnrate",
     "EN": "Win Rate",
+    "FR": "Taux Victoire",
     "RU": "Побед %",
     "UA": "Перемог %",
 	"LT": "Laimėjimų %",
@@ -116,6 +124,7 @@
   "_Triple_Kills": {
     "DE": "Dreifacher Kill:",
     "EN": "Triple Kills:",
+    "FR": "Triple Kills:",
     "RU": "Трипл-киллов:",
     "UA": "Три вбивства:",
 	"LT": "Trigubi nužudymai:",
@@ -127,6 +136,7 @@
   "_Quad_kills": {
     "DE": "Vierfacher Kill:",
     "EN": "Quad Kills:",
+    "FR": "Quatre Kills:",
     "RU": "Квадро-киллов:",
     "UA": "Чотири вбивства:",
 	"LT": "Keturgubi nužudymai:",
@@ -138,6 +148,7 @@
   "_Ace": {
     "DE": "Ace",
     "EN": "Ace:",
+    "FR": "Ace:",
     "RU": "Эйсов:",
     "UA": "Ace:",
 	"LT": "Ace:",
@@ -149,6 +160,7 @@
   "_Value_rank": {
     "DE": "Gesamtpunktzahl / Rang:",
     "EN": "Total Points / Rank:",
+    "FR": "Total Points / Rang :",
 	"BR": "Total de Pontos / Rank:",
     "RU": "Количество очков / ранг:",
     "UA": "Кількість поінтів / звання:",
@@ -161,6 +173,7 @@
   "_Total_winning_percentage": {
     "DE": "Gesamtprozentsatz der Gewinne:",
     "EN": "Winnings Percentage:",
+    "FR": "Pourcentage de Victoires:",
     "RU": "Общий процент побед:",
     "UA": "Загальний відсоток перемог:",
     "LT": "Laimėjimai procentais %:",
@@ -172,6 +185,7 @@
    "_Weapon": {
      "DE": "Waffe",
     "EN": "Weapon",
+    "FR": "Arme",
     "RU": "Оружие",
     "UA": "Зброя",
 	"LT": "Ginklas",
@@ -183,6 +197,7 @@
   "_Player_profile": {
     "DE": "Spielerprofil",
     "EN": "Player Profile",
+    "FR": "Profil Joueur",
 	"BR": "Perfil do Player",
     "RU": "Профиль игрока",
     "UA": "Сторінка гравця",
@@ -195,6 +210,7 @@
   "_Penetrated_kills": {
     "DE": "Durchdrungene Kills",
     "EN": "Penetrated Kills",
+    "FR": "Kills Pénétré",
     "RU": "Убийств прострелом",
     "UA": "Вбивств прострілом",
 	"LT": "Nužudymai per sieną",
@@ -206,6 +222,7 @@
   "_Killing_without_scope": {
     "DE": "ohne Visier getötet",
     "EN": "No-Scope Kills",
+    "FR": "No-Scope Kills",
     "RU": "Убийств без прицела",
     "UA": "Вбивств без прицілу",
 	"LT": "Nužudymai be taikiklio",
@@ -217,6 +234,7 @@
   "_Kills_on_run": {
     "DE": "Während des Laufens getötet",
     "EN": "While Running Kills",
+    "FR": "Kills en courant",
     "RU": "Убийств на бегу",
     "UA": "Вбивств на бігу",
 	"LT": "Nužudymai bėgant",
@@ -228,6 +246,7 @@
   "_Kills_flash": {
     "DE": "Getötet durch Blendgranate",
     "EN": "While Flashed Kills",
+    "FR": "Kills Flashé",
     "RU": "Убийств слепым",
     "UA": "Вбивств сліпим",
 	"LT": "Nužydymai esant apakus",
@@ -239,6 +258,7 @@
   "_Jump_kills": {
     "DE": "im Sprung getötet",
     "EN": "Jump Kills",
+    "FR": "Kill en Saut",
     "RU": "Убийств в прыжке",
     "UA": "Вбивств в стрибку",
 	"LT": "Nužudymai Ore",
@@ -250,6 +270,7 @@
   "_Smoke_kills": {
     "DE": "Getötet durch Rauchwolke",
     "EN": "Smoke Kills",
+    "FR": "Kills Travers Fumée",
     "RU": "Убийств в дым",
     "UA": "Вбивств в дим",
 	"LT": "Nužudymai naudojant duminę g.",
@@ -261,6 +282,7 @@
   "_Kills_whirl": {
     "DE": "Getötet in der Drehung",
     "EN": "180º-360º Kills",
+    "FR": "180º-360º Kills",
     "RU": "Убийств с разворота",
     "UA": "Вбивств з розвороту",
 	"LT": "Nužudymai 180-360°",
@@ -271,20 +293,23 @@
   },
   "_Kills_last_shoot": {
     "EN": "Last Clip Kills",
+    "FR": "Kills Dernière Balle",
     "RU": "Убийств последним патроном",
     "UA": "Вбивств останнім патроном"
   },
   "_Last_connect": {
     "EN": "Last Connect",
-	"BR": "Última Conexão:",
+    "FR": "Dernière connexion",
+    "BR": "Última Conexão",
     "RU": "Последняя игра",
-	"UA": "Останнє підключення",
-	"CRO": "Posljednja konekcija",
+    "UA": "Останнє підключення",
+    "CRO": "Posljednja konekcija",
     "RS": "Poslednja konekcija",
-	"BA": "Poslednja konekcija"
+    "BA": "Poslednja konekcija"
   },
   "_Head": {
     "EN": "Head",
+    "FR": "Tête",
     "RU": "Голова",
 	"UA": "Голова",
 	"CRO": "Glava",
@@ -293,6 +318,7 @@
   },
   "_Neak": {
     "EN": "Neak",
+    "FR": "Cou",
     "RU": "Шея",
 	"UA": "Шия",
 	"CRO": "Vrat",
@@ -301,6 +327,7 @@
   },
   "_Light_arm": {
     "EN": "Light Arm",
+    "FR": "Bras Gauche",
     "RU": "Левая рука",
 	"UA": "Ліва рука",
 	"CRO": "Lijeva ruka",
@@ -309,6 +336,7 @@
   },
   "_Right_arm": {
     "EN": "Right Arm",
+    "FR": "Bras Droit",
     "RU": "Правая рука",
 	"UA": "Права рука",
 	"CRO": "Desna Ruka",
@@ -317,6 +345,7 @@
   },
   "_Left_leg": {
     "EN": "Left Leg",
+    "FR": "Jambe Gauche",
     "RU": "Левая нога",
 	"UA": "Ліва нога",
 	"CRO": "Lijeva noga",
@@ -325,6 +354,7 @@
   },
   "_Right_leg": {
     "EN": "Right Leg",
+    "FR": "Jambe Droite",
     "RU": "Правая нога",
 	"UA": "Права нога",
 	"CRO": "Desna noga",
@@ -333,6 +363,7 @@
   },
   "_Belly": {
     "EN": "Belly",
+    "FR": "Ventre",
     "RU": "Живот",
 	"UA": "Живіт",
 	"CRO": "Trbuh",
@@ -341,6 +372,7 @@
   },
   "_Chest": {
     "EN": "Chest",
+    "FR": "Poitrine",
     "RU": "Грудь",
 	"UA": "Груди",
 	"CRO": "Prsa",

@@ -33,6 +33,20 @@ return array (
             'BA' => 'Engleski',
             'TR' => 'İngilizce'
         ),
+    '_FR' =>
+        array (
+            'DE' => 'Französisch',
+            'EN' => 'French',
+			'BR' => 'Francés',
+            'RU' => 'Французский',
+            'UA' => 'французька',
+            'LT' => 'Prancūzų kalba',
+            'CH' => '法语',
+            'CRO' => 'Francuski',
+            'RS' => 'Француски',
+            'BA' => 'Francuski',
+            'TR' => 'Fransızca'
+        ),
 	'_BR' =>
         array (
             'DE' => 'Brazil',
@@ -162,6 +176,7 @@ return array (
     '_Server' =>
         array (
             'EN' => 'Server',
+            'FR' => 'Serveur',
 			'BR' => 'Servidores',
             'RU' => 'Сервер',
             'UA' => 'Сервер',
@@ -176,6 +191,7 @@ return array (
     '_Home' =>
         array (
             'EN' => 'Home',
+            'FR' => 'Accueil',
 			'BR' => 'Página Inicial',
             'RU' => 'Главная',
             'UA' => 'Головна',
@@ -190,6 +206,7 @@ return array (
     '_Statistics' =>
         array (
             'EN' => 'Players Statistics',
+            'FR' => 'Statistiques Joueurs',
 			'BR' => 'Estatísticas dos Players',
             'RU' => 'Статистика игроков',
             'UA' => 'Статистика гравців',
@@ -204,6 +221,8 @@ return array (
     '_Sidebar_blocks' =>
         array (
             'EN' => 'Blocking',
+            'FR' => 'Bloquer',
+			'BR' => 'Blocking',
             'RU' => 'Блокировки',
             'UA' => 'Блокування',
             'LT' => 'Spynos',
@@ -217,6 +236,7 @@ return array (
     '_Sidebar_servers' =>
         array (
             'EN' => 'Game Servers',
+            'FR' => 'Serveurs de Jeu',
 			'BR' => 'Game Servers',
             'RU' => 'Игровые сервера',
             'UA' => 'Ігрові сервера',
@@ -231,6 +251,7 @@ return array (
     '_Sidebar_social' =>
         array (
             'EN' => 'Social Networks',
+            'FR' => 'Réseaux Sociaux',
 			'BR' => 'Redes Sociais',
             'RU' => 'Социальные сети',
             'UA' => 'Соціальні мережі',
@@ -245,6 +266,7 @@ return array (
     '_Sidebar_statistics' =>
         array (
             'EN' => 'Statistics',
+            'FR' => 'Statistiques',
 			'BR' => 'Estatisticas',
             'RU' => 'Статистика',
             'UA' => 'Статистика',
@@ -259,6 +281,7 @@ return array (
     '_Comms' =>
         array (
             'EN' => 'Mute List',
+            'FR' => 'Liste des Mute',
 			'BR' => 'Lista de Mute',
             'RU' => 'Список мутов',
             'UA' => 'Перелік мутов',
@@ -273,6 +296,7 @@ return array (
     '_Admins_sb' =>
         array (
             'EN' => 'Admin List',
+            'FR' => 'Liste des Administrateurs',
 			'BR' => 'Lista de Administradores',
             'RU' => 'Список администраторов',
             'UA' => 'Список адміністраторів',
@@ -287,6 +311,7 @@ return array (
     '_Rank_stats' =>
         array (
             'EN' => 'Statistics - Rank Distribution',
+            'FR' => 'Statistiques - Répartition des classements',
 			'BR' => 'Estatísticas - Distribuição de Rank',
             'RU' => 'Статистика - Распределение рангов',
             'UA' => 'Статистика - Розподіл рангів',
@@ -301,6 +326,7 @@ return array (
     '_Game' =>
         array (
             'EN' => 'Game',
+            'FR' => 'Jeu',
 			'BR' => 'Game',
             'RU' => 'Игра',
             'UA' => 'Гра',
@@ -315,6 +341,7 @@ return array (
     '_Bans' =>
         array (
             'EN' => 'Ban List',
+            'FR' => 'Liste des Bannissements',
 			'BR' => 'Lista de Ban',
             'RU' => 'Список банов',
             'UA' => 'Список банів',
@@ -329,6 +356,7 @@ return array (
     '_Demos' =>
         array (
             'EN' => 'Demo Archive',
+            'FR' => 'Archive de Démo',
 			'BR' => 'Arquivo Demo',
             'RU' => 'Архив демо-записей',
             'UA' => 'Архив демо-записей',
@@ -343,6 +371,8 @@ return array (
     '_Page' =>
         array (
             'EN' => 'Page',
+            'FR' => 'Page',
+			'BR' => 'Página',
             'RU' => 'Страница',
             'UA' => 'Сторінка',
             'LT' => 'Puslapis',
@@ -356,6 +386,7 @@ return array (
     '_Notifications' =>
         array (
             'EN' => 'Notifications',
+            'FR' => 'Notifications',
 			'BR' => 'Notificações',
             'RU' => 'Уведомления',
             'UA' => 'Повідомлення',
@@ -370,6 +401,7 @@ return array (
     '_No_Notifications' =>
         array (
             'EN' => 'All Clear',
+            'FR' => 'Tout est clair',
 			'BR' => 'Limpo',
             'RU' => 'нет новых уведомлений',
             'UA' => 'немає нових повідомлень',
@@ -384,20 +416,22 @@ return array (
     '_Plays_since' =>
         array (
             'EN' => 'Played Last:',
-			'BR' => 'Visto última vez:',
-            'RU' => 'Последняя игра:',
-            'UA' => 'Остання гра',
-            'LT' => 'Paskutinį kartą žaista',
-            'DE' => 'Zuletzt gespielt:',
-            'CH' => '最后游玩：',
-            'CRO' => 'Zadnje odigrano',
-            'RS' => 'Zadnje odigrano',
-            'BA' => 'Zadnje odigrano',
-            'TR' => 'Son oynanan:'
+            'FR' => 'Dernière connexion:',
+            'BR' => 'Visto última vez:',
+			'RU' => 'Последняя игра:',
+			'UA' => 'Остання гра:',
+			'LT' => 'Paskutinį kartą žaista:',
+			'DE' => 'Zuletzt gespielt:',
+			'CH' => '最后游玩：',
+			'CRO' => 'Zadnje odigrano:',
+			'RS' => 'Zadnje odigrano:',
+			'BA' => 'Zadnje odigrano:',
+			'TR' => 'Son oynanan:'
         ),
     '_Headshot' =>
         array (
             'EN' => 'HeadShots',
+            'FR' => 'HeadShots',
 			'BR' => 'HeadShots',
             'RU' => 'Убийств в голову',
             'UA' => 'Вбивств в голову',
@@ -412,6 +446,7 @@ return array (
     '_Connect' =>
         array (
             'EN' => 'Connect',
+            'FR' => 'Se connecter',
 			'BR' => 'Conectar',
             'RU' => 'Присоединиться',
             'UA' => 'Приєднатися',
@@ -426,7 +461,8 @@ return array (
     '_Connect_2' =>
         array (
             'EN' => 'Join',
-			'BR' => 'Junte-se',
+            'FR' => 'Rejoindre',
+			'BR' => 'Conectar',
             'RU' => 'Играть',
             'UA' => 'Играть',
             'LT' => 'Jungtis',
@@ -440,7 +476,8 @@ return array (
     '_Date' =>
         array (
             'EN' => 'Date',
-			'BR' => 'Date',
+            'FR' => 'Date',
+			'BR' => 'Data',
             'RU' => 'Дата',
             'UA' => 'Дата',
             'LT' => 'Data',
@@ -454,6 +491,8 @@ return array (
     '_Type' =>
         array (
             'EN' => 'Type',
+            'FR' => 'Type',
+			'BR' => 'Tipo',
             'RU' => 'Тип',
             'UA' => 'Вид',
             'LT' => 'Rūšis',
@@ -467,20 +506,82 @@ return array (
     '_Admin' =>
         array (
             'EN' => 'Admin',
-			'BR' => 'Administradores',
-            'RU' => 'Админ.',
-            'UA' => 'Адмін.',
-            'LT' => 'Admin.',
-            'DE' => 'Admin',
-            'CH' => '管理员',
+            'FR' => 'Admin',
+			'BR' => 'Admin',
+			'RU' => 'Admin',
+			'UA' => 'Admin',
+			'LT' => 'Admin',
+			'DE' => 'Admin',
+			'CH' => 'Admin',
             'CRO' => 'Admin',
             'RS' => 'Admin',
             'BA' => 'Admin',
             'TR' => 'Admin'
-        ),
+        ),   
+	'_Nickname' =>
+		array (
+			'EN' => 'Nickname',
+			'FR' => 'Surnom',
+			'BR' => 'Nick',
+			'RU' => 'Nickname',
+			'UA' => 'Nickname',
+			'LT' => 'Nickname',
+			'DE' => 'Nickname',
+			'CH' => 'Nickname',
+			'CRO' => 'Nickname',
+			'RS' => 'Nickname',
+			'BA' => 'Nickname',
+			'TR' => 'Nickname'
+		),
+	'_Privilege_Group' =>
+		array (
+			'EN' => 'Privilege Group',
+			'FR' => 'Groupe Privilège',
+			'BR' => 'Grupo de Privilégios',
+			'RU' => 'Privilege Group',
+			'UA' => 'Privilege Group',
+			'LT' => 'Privilege Group',
+			'DE' => 'Privilege Group',
+			'CH' => 'Privilege Group',
+			'CRO' => 'Privilege Group',
+			'RS' => 'Privilege Group',
+			'BA' => 'Privilege Group',
+			'TR' => 'Privilege Group'
+		),
+	'_Number_Bans' =>
+		array (
+			'EN' => 'Number Bans',
+			'FR' => 'Nombre Bans',
+			'BR' => 'Número de Bans',
+			'RU' => 'Number Bans',
+			'UA' => 'Number Bans',
+			'LT' => 'Number Bans',
+			'DE' => 'Number Bans',
+			'CH' => 'Number Bans',
+			'CRO' => 'Number Bans',
+			'RS' => 'Number Bans',
+			'BA' => 'Number Bans',
+			'TR' => 'Number Bans'
+		),
+	'_Number_Mutes_Gags' =>
+		array (
+			'EN' => 'Number Mutes/Gags',
+			'FR' => 'Nombre Mutes/Gags',
+			'BR' => 'Número de Mutes/Gags',
+			'RU' => 'Number Mutes/Gags',
+			'UA' => 'Number Mutes/Gags',
+			'LT' => 'Number Mutes/Gags',
+			'DE' => 'Number Mutes/Gags',
+			'CH' => 'Number Mutes/Gags',
+			'CRO' => 'Number Mutes/Gags',
+			'RS' => 'Number Mutes/Gags',
+			'BA' => 'Number Mutes/Gags',
+			'TR' => 'Number Mutes/Gags'
+		),
     '_Reason' =>
         array (
             'EN' => 'Reason',
+            'FR' => 'Raison',
 			'BR' => 'Motivo',
             'RU' => 'Причина',
             'UA' => 'Чому',
@@ -495,6 +596,8 @@ return array (
     '_Term' =>
         array (
             'EN' => 'Length',
+            'FR' => 'Durée',
+			'BR' => 'Tempo',
             'RU' => 'Срок',
             'UA' => 'Термін',
             'LT' => 'Terminas',
@@ -509,6 +612,7 @@ return array (
     '_Forever' =>
         array (
             'EN' => 'Permanent',
+            'FR' => 'Permanent',
 			'BR' => 'Permanente',
             'RU' => 'Навсегда',
             'UA' => 'Назавжди',
@@ -523,6 +627,7 @@ return array (
     '_Unban' =>
         array (
             'EN' => 'Unbanned',
+            'FR' => 'Non banni',
 			'BR' => 'Unbanned',
             'RU' => 'Разбанен',
             'UA' => 'Разбанен',
@@ -537,6 +642,7 @@ return array (
     '_Uncomm' =>
         array (
             'EN' => 'Unmuted',
+            'FR' => 'Non Muté',
 			'BR' => 'Unmuted',
             'RU' => 'Размут',
             'UA' => 'Размут',
@@ -548,9 +654,41 @@ return array (
             'BA' => 'Odmutovan',
             'TR' => 'Mute Kaldırma'
         ),
+	'_Comms_Session' =>
+		array (
+			'EN' => 'Session',
+			'FR' => 'Session',
+			'BR' => 'Sessão',
+			'RU' => 'Session',
+			'UA' => 'Session',
+			'LT' => 'Session',
+			'DE' => 'Session',
+			'CH' => 'Session',
+			'CRO' => 'Session',
+			'RS' => 'Session',
+			'BA' => 'Session',
+			'TR' => 'Session'
+		),
+	'_Bans_Session' =>
+		array (
+			'EN' => 'Session',
+			'FR' => 'Session',
+			'BR' => 'Sessão',
+			'RU' => 'Session',
+			'UA' => 'Session',
+			'LT' => 'Session',
+			'DE' => 'Session',
+			'CH' => 'Session',
+			'CRO' => 'Session',
+			'RS' => 'Session',
+			'BA' => 'Session',
+			'TR' => 'Session'
+		),
     '_Has_expired' =>
         array (
             'EN' => 'Expired',
+            'FR' => 'Expiré',
+			'BR' => 'Expirado',
             'RU' => 'Истёк',
             'UA' => 'Закінчився',
             'LT' => 'Pasibaigęs',
@@ -564,6 +702,8 @@ return array (
     '_List_recent_bans' =>
         array (
             'EN' => 'Banlist Overview',
+            'FR' => 'Aperçu Liste de Bannissement',
+			'BR' => 'Lista de Banimentos',
             'RU' => 'Список последних банов',
             'UA' => 'Список останніх банів',
             'LT' => 'List of recent bans',
@@ -576,7 +716,9 @@ return array (
         ),
     '_List_recent_mut_gags' =>
         array (
-            'EN' => 'Communications Blocklist Overview',
+            'EN' => 'Comms Blocklist Overview',
+            'FR' => 'Aperçu de la Liste Noire des Communications',
+			'BR' => 'Lista de Comms',
             'RU' => 'Список последних мутов / гагов',
             'UA' => 'Список останніх мутов / гагов',
             'LT' => 'List of recent mut / gags',
@@ -590,6 +732,7 @@ return array (
     '_Rank_distribution' =>
         array (
             'EN' => 'Rank Distribution',
+            'FR' => 'Répartition des rangs',
 			'BR' => 'Distribuição de Rank',
             'RU' => 'Распределение рангов',
             'UA' => 'Розподіл рангів',
@@ -604,6 +747,7 @@ return array (
     '_Hero_without_name' =>
         array (
             'EN' => 'Hello, Stranger',
+            'FR' => 'Bonjour étranger',
 			'BR' => 'Olá, Visitante',
             'RU' => 'Герой без имени',
             'UA' => 'Герой без імені',
@@ -617,6 +761,7 @@ return array (
     '_Authorization' =>
         array (
             'EN' => 'Authorization',
+            'FR' => 'Autorisation',
 			'BR' => 'Autorização',
             'RU' => 'Авторизация',
             'UA' => 'Авторизація',
@@ -631,6 +776,8 @@ return array (
     '_Login' =>
         array (
             'EN' => 'Login',
+            'FR' => 'Login',
+			'BR' => 'Login',
             'RU' => 'Логин',
             'UA' => 'Логін',
             'LT' => 'Login',
@@ -644,6 +791,8 @@ return array (
     '_Password' =>
         array (
             'EN' => 'Password',
+            'FR' => 'Mot de passe',
+			'BR' => 'Password',
             'RU' => 'Пароль',
             'UA' => 'Пароль',
             'LT' => 'Password',
@@ -657,6 +806,7 @@ return array (
     '_Steam_login' =>
         array (
             'EN' => 'Sign In through Steam',
+            'FR' => 'Connectez-vous via Steamm',
 			'BR' => 'Faça login pela Steam',
             'RU' => 'Войти через Steam',
             'UA' => 'Увійти через Steam',
@@ -671,6 +821,7 @@ return array (
     '_Update' =>
         array (
             'EN' => 'Update',
+            'FR' => 'Mise à jour',
 			'BR' => 'Atualizar',
             'RU' => 'Обновление',
             'UA' => 'Оновлення',
@@ -685,6 +836,7 @@ return array (
     '_Result' =>
         array (
             'EN' => 'Result',
+            'FR' => 'Résultat',
 			'BR' => 'Resultado',
             'RU' => 'Результат',
             'UA' => 'Результат',
@@ -699,6 +851,7 @@ return array (
     '_Name' =>
         array (
             'EN' => 'Name',
+            'FR' => 'Nom',
             'RU' => 'Название',
             'UA' => 'Назва',
             'LT' => 'Vardas',
@@ -712,6 +865,7 @@ return array (
     '_Score' =>
         array (
             'EN' => 'Score',
+            'FR' => 'Score',
             'RU' => 'Счёт',
             'UA' => 'Рахунок',
             'LT' => 'Taškai',
@@ -725,6 +879,7 @@ return array (
     '_Map' =>
         array (
             'EN' => 'Map',
+            'FR' => 'Carte',
 			'BR' => 'Mapa',
             'RU' => 'Карта',
             'UA' => 'Мапа',
@@ -739,6 +894,7 @@ return array (
     '_Online_mon' =>
         array (
             'EN' => 'Online Monitoring',
+            'FR' => 'Monitoring en ligne',
 			'BR' => 'Monitoramento Online',
             'RU' => 'Мониторинг онлайна',
             'UA' => 'Моніторинг онлайну',
@@ -753,6 +909,7 @@ return array (
     '_Rating' =>
         array (
             'EN' => 'Rating',
+            'FR' => 'Notation',
             'RU' => 'Место',
             'UA' => 'Місце',
             'LT' => 'Reitingas',
@@ -766,6 +923,7 @@ return array (
     '_Player' =>
         array (
             'EN' => 'Player',
+            'FR' => 'Joueur',
             'RU' => 'Игрок',
             'UA' => 'Гравець',
             'LT' => 'Žaidėjas',
@@ -779,6 +937,7 @@ return array (
     '_Players' =>
         array (
             'EN' => 'Players',
+            'FR' => 'Joueurs',
             'RU' => 'Игроков',
             'UA' => 'Гравців',
             'LT' => 'Žaidėjai',
@@ -792,6 +951,7 @@ return array (
     '_Point' =>
         array (
             'EN' => 'Points',
+            'FR' => 'Points',
 			'BR' => 'Pontos',
             'RU' => 'Очки',
             'UA' => 'Поінти',
@@ -806,6 +966,7 @@ return array (
     '_Rank' =>
         array (
             'EN' => 'Rank',
+            'FR' => 'Rang',
             'RU' => 'Звание',
             'UA' => 'Звання',
             'LT' => 'Rangas',
@@ -819,6 +980,7 @@ return array (
     '_Kills' =>
         array (
             'EN' => 'Kills',
+            'FR' => 'Tués',
             'RU' => 'Убийства',
             'UA' => 'Вбивства',
             'LT' => 'Nužudymai',
@@ -832,6 +994,7 @@ return array (
     '_Deaths' =>
         array (
             'EN' => 'Deaths',
+            'FR' => 'Morts',
             'RU' => 'Смерти',
             'UA' => 'Смерті',
             'LT' => 'Mirtys',
@@ -845,6 +1008,7 @@ return array (
     '_Play_time' =>
         array (
             'EN' => 'Playtime',
+            'FR' => 'Temps de jeu',
 			'BR' => 'Tempo de Jogo',
             'RU' => 'Время игры',
             'UA' => 'Час гри',
@@ -859,6 +1023,7 @@ return array (
     '_Win' =>
         array (
             'EN' => 'Win',
+            'FR' => 'Victoire',
             'RU' => 'Победа',
             'UA' => 'Перемога',
             'LT' => 'Laimėjimai',
@@ -872,6 +1037,7 @@ return array (
     '_Wins' =>
         array (
             'EN' => 'Wins',
+            'FR' => 'Victoires',
             'RU' => 'Победы',
             'UA' => 'Перемога',
             'LT' => 'Wins',
@@ -885,6 +1051,7 @@ return array (
     '_Loss' =>
         array (
             'EN' => 'Loss',
+            'FR' => 'Défaites',
             'RU' => 'Проигрыш',
             'UA' => 'Програш',
             'LT' => 'Pralaimėjimų',
@@ -898,6 +1065,7 @@ return array (
     '_Ratio_KD_short' =>
         array (
             'EN' => 'K/D',
+            'FR' => 'K/D',
             'RU' => 'К/Д',
             'UA' => 'К/Д',
             'LT' => 'N/M',
@@ -911,6 +1079,7 @@ return array (
     '_Top_players' =>
         array (
             'EN' => 'Top Players',
+            'FR' => 'Meilleurs Joueurs',
             'RU' => 'Рейтинг игроков',
             'UA' => 'Рейтинг гравців',
             'LT' => 'Žaidėjų reitingai',
@@ -924,6 +1093,7 @@ return array (
     '_Month_january' =>
         array (
             'EN' => 'Jan.',
+            'FR' => 'Jan.',
             'RU' => 'Янв.',
             'UA' => 'січ.',
             'LT' => 'Sau.',
@@ -937,6 +1107,7 @@ return array (
     '_Month_february' =>
         array (
             'EN' => 'Feb.',
+            'FR' => 'Fev.',
 			'BR' => 'Fev.',
             'RU' => 'Фев.',
             'UA' => 'лют.',
@@ -951,6 +1122,7 @@ return array (
     '_Month_march' =>
         array (
             'EN' => 'Mar.',
+            'FR' => 'Mar.',
             'RU' => 'мар.',
             'UA' => 'бер.',
             'LT' => 'Kov.',
@@ -964,6 +1136,7 @@ return array (
     '_Month_april' =>
         array (
             'EN' => 'Apr.',
+            'FR' => 'Avr.',
 			'BR' => 'Abr.',
             'RU' => 'Апр.',
             'UA' => 'квіт.',
@@ -978,6 +1151,7 @@ return array (
     '_Month_may' =>
         array (
             'EN' => 'May.',
+			'FR' => 'Mai.',
 			'BR' => 'Mai.',
             'RU' => 'Май,',
             'UA' => 'Трав.',
@@ -992,6 +1166,7 @@ return array (
     '_Month_june' =>
         array (
             'EN' => 'Jun.',
+            'FR' => 'Juin.',
             'RU' => 'Июн.',
             'UA' => 'Чер.',
             'LT' => 'Bir.',
@@ -1005,6 +1180,7 @@ return array (
     '_Month_july' =>
         array (
             'EN' => 'Jul.',
+            'FR' => 'Juil.',
             'RU' => 'Июл.',
             'UA' => 'Лип.',
             'LT' => 'Lie.',
@@ -1018,6 +1194,7 @@ return array (
     '_Month_august' =>
         array (
             'EN' => 'Aug.',
+            'FR' => 'Aou.',
 			'BR' => 'Ago.',
             'RU' => 'Авг.',
             'UA' => 'Сер.',
@@ -1032,6 +1209,7 @@ return array (
     '_Month_september' =>
         array (
             'EN' => 'Sep.',
+            'FR' => 'Sep.',
 			'BR' => 'Set.',
             'RU' => 'Сен.',
             'UA' => 'Вер.',
@@ -1046,6 +1224,7 @@ return array (
     '_Month_october' =>
         array (
             'EN' => 'Oct.',
+            'FR' => 'Oct.',
 			'BR' => 'Out.',
             'RU' => 'Окт.',
             'UA' => 'Жов.',
@@ -1060,6 +1239,7 @@ return array (
     '_Month_november' =>
         array (
             'EN' => 'Nov.',
+            'FR' => 'Nov.',
             'RU' => 'Нояб.',
             'UA' => 'Лис.',
             'LT' => 'Lap.',
@@ -1073,6 +1253,7 @@ return array (
     '_Month_december' =>
         array (
             'EN' => 'Dec.',
+            'FR' => 'Dec.',
 			'BR' => 'Dez.',
             'RU' => 'Дек.',
             'UA' => 'Груд.',
@@ -1087,6 +1268,7 @@ return array (
     '_Second' =>
         array (
             'EN' => 'Sec.',
+            'FR' => 'Sec.',
 			'BR' => 'Seg.',
             'RU' => 'Сек.',
             'UA' => 'Сек.',
@@ -1101,6 +1283,7 @@ return array (
     '_Minute' =>
         array (
             'EN' => 'Min.',
+            'FR' => 'Min.',
             'RU' => 'Мин.',
             'UA' => 'Хвил.',
             'LT' => 'Min.',
@@ -1114,6 +1297,7 @@ return array (
     '_Hour' =>
         array (
             'EN' => 'h.',
+            'FR' => 'h.',
             'RU' => 'Ч.',
             'UA' => 'г.',
             'LT' => 'h.',
@@ -1127,6 +1311,7 @@ return array (
     '_Day' =>
         array (
             'EN' => 'Day',
+            'FR' => 'Jour',
 			'BR' => 'Dia',
             'RU' => 'День',
             'UA' => 'День',
@@ -1141,6 +1326,7 @@ return array (
     '_Days' =>
         array (
             'EN' => 'Days',
+            'FR' => 'Jours',
 			'BR' => 'Dias',
             'RU' => 'Дн.',
             'UA' => 'Дн.',
@@ -1156,6 +1342,7 @@ return array (
     '_Week' =>
         array (
             'EN' => 'Week',
+            'FR' => 'Semaine',
 			'BR' => 'Semana',
             'RU' => 'Неделя',
             'UA' => 'Тиждень',
@@ -1171,6 +1358,7 @@ return array (
     '_Weeks' =>
         array (
             'EN' => 'Weeks',
+            'FR' => 'Semaines',
 			'BR' => 'Semanas',
             'RU' => 'Недели',
             'UA' => 'Тижні',
@@ -1185,6 +1373,7 @@ return array (
     '_Month' =>
         array (
             'EN' => 'Month',
+            'FR' => 'Mois',
 			'BR' => 'Mês',
             'RU' => 'Мес.',
             'UA' => 'Міс.',
@@ -1199,6 +1388,7 @@ return array (
     '_Months' =>
         array (
             'EN' => 'Months',
+            'FR' => 'Mois',
 			'BR' => 'Meses',
             'RU' => 'Мес.',
             'UA' => 'Міс.',
@@ -1213,6 +1403,7 @@ return array (
     '_Log_in' =>
         array (
             'EN' => 'Log in',
+            'FR' => 'Connexion',
 			'BR' => 'Login',
             'RU' => 'Войти',
             'UA' => 'Увійти',
@@ -1227,6 +1418,7 @@ return array (
     '_Logout' =>
         array (
             'EN' => 'Log out',
+            'FR' => 'Se déconnecter',
 			'BR' => 'Logout',
             'RU' => 'Выйти',
             'UA' => 'Вийти',
@@ -1241,6 +1433,7 @@ return array (
     '_Admin_panel' =>
         array (
             'EN' => 'Admin Panel',
+            'FR' => 'Admin Panel',
 			'BR' => 'Painel Administrativo',
             'RU' => 'Панель администратора',
             'UA' => 'Панель адміністратора',
@@ -1255,6 +1448,7 @@ return array (
 	'_LK' =>
         array (
             'EN' => 'Personal Area',
+            'FR' => 'Espace Personnel',
 			'BR' => 'Área Pessoal',
             'RU' => 'Личный кабинет',
             'UA' => 'Особистий кабінет',
@@ -1269,6 +1463,7 @@ return array (
 	'_Vips' =>
         array (
             'EN' => 'VIPS List',
+            'FR' => 'Liste VIPS',
 			'BR' => 'Lista de VIPS',
             'RU' => 'Список вип игроков',
 			'UA' => 'Список віп гравців',
@@ -1280,6 +1475,7 @@ return array (
     '_Banned' =>
         array (
             'EN' => 'Banned',
+            'FR' => 'Banni',
 			'BR' => 'Banido',
             'RU' => 'Забанен',
 			'UA' => 'Забанен',
@@ -1291,6 +1487,7 @@ return array (
     '_Server_Information' =>
         array (
             'EN' => 'Server Information',
+            'FR' => 'Informations Serveur',
 			'BR' => 'Informação do Servidor',
             'RU' => 'Информация о сервере',
 			'UA' => 'Інформація про сервер',
@@ -1302,6 +1499,7 @@ return array (
     '_OpenCase' =>
         array (
             'EN' => 'Open Case',
+            'FR' => 'Cas ouvert',
             'RU' => 'Open Case',
             'UA' => 'Open Case',
             'LT' => 'Open Case',
@@ -1313,6 +1511,7 @@ return array (
 		'_Console' =>
         array (
             'EN' => 'Console',
+            'FR' => 'Console',
 			'BR' => 'Console',
             'RU' => 'Консоль',
             'UA' => 'Консоль',
@@ -1322,6 +1521,7 @@ return array (
     '_SP' =>
         array (
             'EN' => 'Shop',
+            'FR' => 'Boutique',
             'RU' => 'Магазин',
             'UA' => 'Магазин',
             'LT' => 'Parduotuvė',
@@ -1330,6 +1530,7 @@ return array (
     '_Unknown' =>
         array (
             'EN' => 'Unknown',
+            'FR' => 'Inconnu',
 			'BR' => 'Desconhecido',
             'RU' => 'Неизвестно',
             'UA' => 'Неізвестноi',
@@ -1339,6 +1540,8 @@ return array (
     '_CountOnline' =>
         array (
             'EN' => 'Count online',
+            'FR' => 'Joueurs en lignes',
+			'BR' => 'Players online',
             'RU' => 'Общий онлайн',
             'UA' => 'Загальний онлайн',
             'LT' => 'Žaidėjų skaičius',
@@ -1347,6 +1550,8 @@ return array (
     '_ModuleAdded' =>
         array (
             'EN' => 'The module was added successfully',
+            'FR' => 'Le module a été ajouté avec succès',
+			'BR' => 'Módulo foi adicionado com sucesso',
             'RU' => 'Был успешно добавлен модуль',
             'UA' => 'Був успішно доданий модуль',
             'LT' => 'Modulis sėkmingai pridėtas',
@@ -1355,6 +1560,8 @@ return array (
     '_ModuleDeleted' =>
         array (
             'EN' => 'The module was removed successfully',
+            'FR' => 'Le module a été supprimé avec succès',
+			'BR' => 'Módulo foi removido com sucesso',
             'RU' => 'Был успешно удален модуль',
             'UA' => 'Був успішно видалений модуль',
             'LT' => 'Modulis sėkmingai pašalintas',
@@ -1363,6 +1570,8 @@ return array (
     '_TemplateAdded' =>
         array (
             'EN' => 'The template was added successfully',
+            'FR' => 'Le modèle a été ajouté avec succès',
+			'BR' => 'Template foi adicionado com sucesso',
             'RU' => 'Был успешно добавлен шаблон',
             'UA' => 'Був успішно доданий шаблон',
             'LT' => 'Šablonas sėkmingai pridėtas',
@@ -1371,15 +1580,22 @@ return array (
     '_TemplateDeleted' =>
         array (
             'EN' => 'Template was deleted successfully',
+            'FR' => 'Le modèle a été supprimé avec succès',
+			'BR' => 'Template foi excluído com sucesso',
             'RU' => 'Был успешно удален шаблон',
             'UA' => 'Був успішно видалений шаблон',
             'LT' => 'Šablonas sėkmingai ištrintas',
             'TR' => 'Şablon başarıyla silindi'
         ),
-        // idk why
+	/*
+	Module Demo Download
+	In the file /app/modules/module_page_demos/includes/match.php on line 145, replace Скачать демо матча with get_translate_phrase ('_ Download')?> In the Admin panel update the translation cache
+	*/
     '_Download' =>
         array (
             'EN' => 'Download match demo',
+            'FR' => 'Télécharger la démo du match',
+			'BR' => 'Download da demo da partida',
             'RU' => 'Скачать демо матча',
             'UA' => 'Завантажити демо матчу',
         )

@@ -18,10 +18,10 @@
                 <thead>
                 <tr class="pointer">
                     <?php if( $General->arr_general['avatars'] != 0 ) {?><th class="text-right tb-avatar"></th><?php }?>
-                    <th class="text-left"><?php echo $Translate->get_translate_phrase('_Admin') ?></th>
-                    <th class="text-center">Группа</th>
-                    <th class="text-center">Количество банов</th>
-                    <th class="text-center">Количество мутов / гагов</th>
+                    <th class="text-left"><?php echo $Translate->get_translate_phrase('_Nickname') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Privilege_Group') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Number_Bans') ?></th>
+                    <th class="text-center"><?php echo $Translate->get_translate_phrase('_Number_Mutes_Gags') ?></th>
                 </tr>
                 </thead>
                 <tbody>

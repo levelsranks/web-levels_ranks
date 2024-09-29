@@ -74,9 +74,6 @@ switch ( $Modules->array_modules['module_block_main_servers_monitoring']['settin
     <div class="row">
         <div class="col-md-12 mon-2">
             <div class="card">
-                <div class="card-header">
-                    <h5><?php echo $Translate->get_translate_phrase('_Online_mon')?></h5>
-                </div>
                 <div class=table-responsive>
                     <table class="table table-hover">
                         <thead>
